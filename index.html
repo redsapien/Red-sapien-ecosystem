@@ -47,8 +47,8 @@
                             '100%': { opacity: '0', visibility: 'hidden' } 
                         },
                         pulseCol: { 
-                            '0%, 100%': { opacity: '0.7', transform: 'scaleY(1)' }, 
-                            '50%': { opacity: '1', transform: 'scaleY(1.2)' } 
+                            '0%, 100%': { opacity: '0.4', transform: 'scaleY(1)' }, 
+                            '50%': { opacity: '0.6', transform: 'scaleY(1.1)' } 
                         }
                     }
                 }
@@ -57,113 +57,27 @@
     </script>
 
     <style>
-        body { 
-            background-color: #050505; 
-            color: #ffffff; 
-            -webkit-font-smoothing: antialiased; 
-            overflow-x: hidden; 
-        }
+        body { background-color: #050505; color: #ffffff; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        .bg-subtle-red { background: radial-gradient(circle at 50% -20%, rgba(255, 60, 0, 0.05), transparent 75%); }
+        #mobile-menu { transition: opacity 0.4s ease, visibility 0.4s ease; background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%); }
         
-        .bg-subtle-red { 
-            background: radial-gradient(circle at 50% -20%, rgba(255, 60, 0, 0.06), transparent 75%); 
-        }
+        /* Botón Registro - Animación desfasada del fondo para evitar interferencia */
+        .neon-premium-btn { position: relative; overflow: hidden; box-shadow: 0 0 15px rgba(255, 60, 0, 0.12); border: 1px solid rgba(255, 60, 0, 0.25); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .neon-premium-btn:hover { box-shadow: 0 0 25px rgba(255, 60, 0, 0.35); border-color: rgba(255, 60, 0, 0.7); background-color: rgba(23, 23, 23, 0.8); }
+        .neon-premium-btn::after { content: ''; position: absolute; top: -50%; left: -60%; width: 30%; height: 200%; background: linear-gradient(90deg, transparent, rgba(255, 60, 0, 0.3), transparent); transform: rotate(25deg); animation: technicalSheen 11s infinite linear; } /* Duración distinta al fondo */
+        @keyframes technicalSheen { 0% { left: -60%; } 15% { left: 140%; } 100% { left: 140%; } }
         
-        #mobile-menu { 
-            transition: opacity 0.4s ease, visibility 0.4s ease; 
-            background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%); 
-        }
-        
-        /* Botón de Registro */
-        .neon-premium-btn {
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 15px rgba(255, 60, 0, 0.12);
-            border: 1px solid rgba(255, 60, 0, 0.25);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .neon-premium-btn:hover {
-            box-shadow: 0 0 25px rgba(255, 60, 0, 0.35);
-            border-color: rgba(255, 60, 0, 0.7);
-            background-color: rgba(23, 23, 23, 0.8);
-        }
-        .neon-premium-btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -60%;
-            width: 30%;
-            height: 200%;
-            background: linear-gradient(90deg, transparent, rgba(255, 60, 0, 0.25), transparent);
-            transform: rotate(25deg);
-            animation: technicalSheen 9s infinite linear;
-        }
-        @keyframes technicalSheen {
-            0% { left: -60%; }
-            15% { left: 140%; }
-            100% { left: 140%; }
-        }
-        
-        /* Slider de imágenes */
         .logo-track { display: flex; width: max-content; gap: 4rem; }
-        .logo-item { 
-            filter: grayscale(100%) opacity(0.4) drop-shadow(0 4px 12px rgba(255, 60, 0, 0.15)); 
-            transition: all 0.3s ease; 
-        }
-        .logo-item:hover { 
-            filter: grayscale(0%) opacity(0.9) drop-shadow(0 6px 20px rgba(255, 60, 0, 0.25)); 
-        }
+        .logo-item { filter: grayscale(100%) opacity(0.4) drop-shadow(0 4px 12px rgba(255, 60, 0, 0.15)); transition: all 0.3s ease; }
+        .logo-item:hover { filter: grayscale(0%) opacity(0.9) drop-shadow(0 6px 20px rgba(255, 60, 0, 0.25)); }
 
-        /* Malla de Fondo sutil optimizada */
-        .tech-mesh-layer {
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(circle at center, black 20%, transparent 85%);
-            -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 85%);
-            opacity: 0.65;
-            pointer-events: none;
-            z-index: 0;
-        }
+        .tech-mesh-layer { position: absolute; inset: 0; background-image: linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(circle at center, black 20%, transparent 85%); -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 85%); opacity: 0.5; pointer-events: none; z-index: 0; }
 
-        /* Nav Inicio: Más oscuro a la derecha, degradado hacia la izquierda, sin líneas */
-        .glass-nav-premium {
-            background: linear-gradient(to left, rgba(5, 5, 5, 0.95) 0%, rgba(5, 5, 5, 0.2) 100%);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        /* Nav Scrolled: Color sólido perfecto, sin transparencias ni líneas blancas */
-        .glass-nav-scrolled {
-            background-color: #050505; /* Mismo negro de fondo, limpio y sólido */
-            border-bottom: 1px solid rgba(255, 60, 0, 0.15); /* Delimitador sutil */
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
-        }
+        .glass-nav-premium { background: linear-gradient(to left, rgba(5, 5, 5, 0.95) 0%, rgba(5, 5, 5, 0.2) 100%); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-nav-scrolled { background-color: #050505; border-bottom: 1px solid rgba(255, 60, 0, 0.15); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7); }
 
-        /* Bloques de Enlace Estilo Ecosistema */
-        .matrix-link-box {
-            position: relative;
-            background: rgba(10, 10, 10, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .matrix-link-box::before {
-            content: "0101101011001";
-            position: absolute;
-            font-family: monospace;
-            font-size: 9px;
-            color: rgba(255, 60, 0, 0.04);
-            top: 2px;
-            right: 4px;
-            letter-spacing: 2px;
-        }
-        .matrix-link-box:hover {
-            border-color: rgba(255, 60, 0, 0.3);
-            background: rgba(255, 60, 0, 0.02);
-            box-shadow: inset 0 0 12px rgba(255, 60, 0, 0.05);
-        }
+        .matrix-link-box { position: relative; background: rgba(10, 10, 10, 0.4); border: 1px solid rgba(255, 255, 255, 0.03); overflow: hidden; transition: all 0.3s ease; }
+        .matrix-link-box:hover { border-color: rgba(255, 60, 0, 0.3); background: rgba(255, 60, 0, 0.02); }
     </style>
 </head>
 
@@ -178,220 +92,117 @@
     </div>
 
     <header class="fixed top-0 w-full z-50">
-        <!-- Barra de la Bandera de Colombia -->
         <div class="h-1.5 w-full" style="background: linear-gradient(to right, #FCD116 50%, #003893 50% 75%, #CE1126 75%);"></div>
-        
         <nav id="main-nav" class="px-6 py-4 md:px-12 flex justify-between items-center glass-nav-premium">
-            <div class="flex items-center">
-                <select id="lang-selector" onchange="changeLanguage(this.value)" class="bg-transparent text-xs font-bold text-gray-400 outline-none cursor-pointer border-none focus:ring-0">
-                    <option value="es">ES</option>
-                    <option value="en">EN</option>
-                    <option value="pt">PT</option>
-                </select>
-            </div>
-
-            <button id="menu-trigger" class="p-2 hover:bg-white/5 rounded-lg transition-all text-white focus:outline-none border border-white/5" aria-label="Abrir menú">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="7" height="7"></rect>
-                    <rect x="14" y="3" width="7" height="7"></rect>
-                    <rect x="3" y="14" width="7" height="7"></rect>
-                    <path d="M17 17l4 4M21 17l-4 4"/>
-                </svg>
+            <div class="flex items-center"><select id="lang-selector" onchange="changeLanguage(this.value)" class="bg-transparent text-xs font-bold text-gray-400 outline-none cursor-pointer border-none focus:ring-0"><option value="es">ES</option><option value="en">EN</option><option value="pt">PT</option></select></div>
+            <button id="menu-trigger" class="p-2 hover:bg-white/5 rounded-lg transition-all text-white border border-white/5" aria-label="Abrir menú">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><path d="M17 17l4 4M21 17l-4 4"/></svg>
             </button>
         </nav>
     </header>
 
     <div id="mobile-menu" class="fixed inset-0 z-[60] opacity-0 invisible flex flex-col items-center justify-center px-6">
-        <button id="close-menu" class="absolute top-8 right-8 text-gray-400 hover:text-rs-red scale-125 transition-colors focus:outline-none">✕ Close</button>
+        <button id="close-menu" class="absolute top-8 right-8 text-gray-400 hover:text-rs-red scale-125">✕ Close</button>
         <div class="w-full max-w-sm space-y-4">
-            <div class="matrix-link-box p-6 rounded-xl">
-                <a href="#" class="block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300">Ecosistema</a>
-            </div>
-            <div class="matrix-link-box p-6 rounded-xl">
-                <a href="#" class="block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300">Plataforma</a>
-            </div>
-            <div class="matrix-link-box p-6 rounded-xl">
-                <a href="#" class="block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300">Contacto</a>
-            </div>
+            <div class="matrix-link-box p-6 rounded-xl"><a href="#" class="block text-2xl font-display font-bold text-white hover:text-rs-red">Ecosistema</a></div>
+            <div class="matrix-link-box p-6 rounded-xl"><a href="#" class="block text-2xl font-display font-bold text-white hover:text-rs-red">Plataforma</a></div>
+            <div class="matrix-link-box p-6 rounded-xl"><a href="#" class="block text-2xl font-display font-bold text-white hover:text-rs-red">Contacto</a></div>
         </div>
     </div>
 
     <main class="bg-subtle-red relative min-h-screen flex flex-col items-center justify-center pt-32 md:pt-40 pb-6 text-center overflow-hidden">
-        
         <div class="tech-mesh-layer"></div>
-
         <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
-            <svg class="w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 800">
+            <svg class="w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 800">
                 <path d="M -50 120 Q 350 80 720 380 T 1500 680" fill="none" stroke="url(#neon-flow-gradient)" stroke-width="2" />
                 <path d="M 1500 150 Q 1000 450 720 380 T -50 700" fill="none" stroke="url(#neon-flow-gradient)" stroke-width="1.5" />
-                <defs>
-                    <linearGradient id="neon-flow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#FF3C00" stop-opacity="0"></stop>
-                        <stop offset="50%" stop-color="#FF3C00" stop-opacity="1">
-                            <animate id="pulse-anim" attributeName="offset" values="-1; 2" dur="3s" begin="3s; pulse-anim.end+3s" fill="freeze" />
-                        </stop>
-                        <stop offset="100%" stop-color="#FF3C00" stop-opacity="0"></stop>
-                    </linearGradient>
-                </defs>
+                <defs><linearGradient id="neon-flow-gradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF3C00" stop-opacity="0"></stop><stop offset="50%" stop-color="#FF3C00" stop-opacity="1"><animate attributeName="offset" values="-1; 2" dur="4s" repeatCount="indefinite"/></stop><stop offset="100%" stop-color="#FF3C00" stop-opacity="0"></stop></linearGradient></defs>
             </svg>
         </div>
         
-        <div class="absolute top-[35%] left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-rs-red/5 rounded-full blur-[100px] md:blur-[140px] pointer-events-none -z-10"></div>
+        <div class="absolute top-[35%] left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-rs-red/5 rounded-full blur-[100px] pointer-events-none -z-10"></div>
         
-        <div class="flex flex-col items-center w-full mt-[40px] md:mt-[50px] relative z-10 px-4">
+        <div class="flex flex-col items-center w-full mt-[52px] md:mt-[62px] relative z-10 px-4">
             <h1 id="hero-title" class="font-display text-4xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1] max-w-4xl">
                 Ecosistema Digital Que Vende.
             </h1>
-
             <p id="hero-desc" class="text-base md:text-lg text-gray-400 font-light mb-12 max-w-sm mx-auto leading-relaxed">
                 Implementamos maquinaria de ventas automatizada para negocios con resultados reales.
             </p>
-
             <div class="flex flex-col sm:flex-row gap-4 w-full max-w-[320px] md:max-w-md mb-16">
                 <button onclick="handleGoogleSignIn()" class="flex-1 flex items-center justify-center gap-3 bg-white text-black py-4 rounded-lg text-sm font-bold shadow-lg transition hover:bg-gray-200">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24">
-                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 8.7 4.53z" fill="#EA4335"/>
-                    </svg>
+                    <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 8.7 4.53z" fill="#EA4335"/></svg>
                     Google
                 </button>
-                
                 <button onclick="openRegisterModal()" class="flex-1 py-4 rounded-lg text-sm font-semibold text-white transition bg-rs-gray/40 neon-premium-btn">
                     Comenzar Gratis
                 </button>
             </div>
         </div>
 
-        <div class="w-full mt-auto mb-4">
-            <p id="trust-text" class="text-xs uppercase tracking-[0.2em] text-gray-500 font-bold mb-8 px-4">
-                Con la confianza de marcas líderes en Colombia
-            </p>
-            
+        <div class="w-full mt-[13px] mb-4">
+            <p id="trust-text" class="text-xs uppercase tracking-[0.2em] text-gray-500 font-bold mb-8 px-4">Con la confianza de marcas líderes</p>
             <div class="w-full overflow-hidden relative py-2">
                 <div class="flex animate-bullet-train logo-track items-center">
-                    
                     <div class="flex items-center gap-16 md:gap-24 px-4">
-                        <img src="ruta/a/tu/logo-bross.png" alt="Bross" class="logo-item h-7 md:h-9 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-supabase.png" alt="Supabase" class="logo-item h-7 md:h-9 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-make.png" alt="Make" class="logo-item h-7 md:h-9 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-meta.png" alt="Meta" class="logo-item h-7 md:h-9 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-openai.png" alt="OpenAI" class="logo-item h-7 md:h-9 w-auto object-contain">
+                        <img src="ruta/a/tu/logo-bross.png" alt="Bross" class="logo-item h-7 md:h-9 object-contain">
+                        <img src="ruta/a/tu/logo-supabase.png" alt="Supabase" class="logo-item h-7 md:h-9 object-contain">
+                        <img src="ruta/a/tu/logo-make.png" alt="Make" class="logo-item h-7 md:h-9 object-contain">
+                        <img src="ruta/a/tu/logo-meta.png" alt="Meta" class="logo-item h-7 md:h-9 object-contain">
                     </div>
-                    
                     <div class="flex items-center gap-16 md:gap-24 px-4">
-                        <img src="ruta/a/tu/logo-bross.png" alt="Bross" class="logo-item h-7 md:h-9 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-supabase.png" alt="Supabase" class="logo-item h-7 md:h-9 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-make.png" alt="Make" class="logo-item h-7 md:h-9 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-meta.png" alt="Meta" class="logo-item h-7 md:h-9 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-openai.png" alt="OpenAI" class="logo-item h-7 md:h-9 w-auto object-contain">
+                        <img src="ruta/a/tu/logo-bross.png" alt="Bross" class="logo-item h-7 md:h-9 object-contain">
+                        <img src="ruta/a/tu/logo-supabase.png" alt="Supabase" class="logo-item h-7 md:h-9 object-contain">
+                        <img src="ruta/a/tu/logo-make.png" alt="Make" class="logo-item h-7 md:h-9 object-contain">
+                        <img src="ruta/a/tu/logo-meta.png" alt="Meta" class="logo-item h-7 md:h-9 object-contain">
                     </div>
-
                 </div>
-            </div>
-
-            <div class="flex justify-center items-center mt-6 gap-2 text-gray-600 px-4">
-                <svg class="w-4 h-4 text-rs-red opacity-60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                </svg>
-                <span class="text-[10px] font-sans tracking-widest uppercase opacity-50">Infraestructura Protegida & Certificada</span>
             </div>
         </div>
     </main>
 
     <div id="register-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
         <div class="bg-[#171717] border border-white/10 w-full max-w-sm p-8 rounded-2xl relative shadow-2xl">
-            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none">✕</button>
+            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-gray-400 hover:text-rs-red">✕</button>
             <h2 id="modal-title" class="text-xl font-display font-bold mb-6 text-white text-center">Registro Ecosistema</h2>
             <form id="email-form" class="space-y-4" onsubmit="event.preventDefault();">
-                <div>
-                    <input type="email" required placeholder="Correo electrónico" class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors">
+                <div><input type="email" required placeholder="Correo electrónico" class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors"></div>
+                <div class="relative">
+                    <input type="password" id="pass-input" required placeholder="Contraseña segura" class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors">
+                    <button type="button" onclick="togglePass()" class="absolute right-3 top-3 text-gray-500 hover:text-white">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    </button>
                 </div>
-                <div>
-                    <input type="password" required placeholder="Contraseña segura" class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors">
-                </div>
-                <button type="submit" id="btn-submit" class="w-full py-3 bg-rs-red rounded-lg font-bold text-white hover:bg-opacity-90 transition-all shadow-lg shadow-rs-red/20">
-                    Registrarse
-                </button>
+                <button type="submit" id="btn-submit" class="w-full py-3 bg-rs-red rounded-lg font-bold text-white hover:bg-opacity-90 transition-all">Registrarse</button>
             </form>
         </div>
     </div>
 
     <script>
-        const content = {
-            es: { title: "Ecosistema Digital Que Vende.", desc: "Implementamos maquinaria de ventas automatizada para negocios con resultados reales.", trust: "Con la confianza de marcas líderes en Colombia", modal: "Registro Ecosistema", btn: "Registrarse" },
-            en: { title: "Digital Ecosystem That Sells.", desc: "We implement automated sales machinery for businesses with real results.", trust: "Trusted by leading brands in the market", modal: "Ecosystem Registration", btn: "Register" },
-            pt: { title: "Ecossistema Digital Que Vende.", desc: "Implementamos maquinário de vendas automatizado para empresas com resultados reais.", trust: "Com a confiança de marcas líderes no mercado", modal: "Registro Ecossistema", btn: "Registrar-se" }
-        };
-
-        function changeLanguage(lang) {
-            const data = content[lang];
-            if (data) {
-                document.getElementById('hero-title').innerText = data.title;
-                document.getElementById('hero-desc').innerText = data.desc;
-                document.getElementById('trust-text').innerText = data.trust;
-                document.getElementById('modal-title').innerText = data.modal;
-                document.getElementById('btn-submit').innerText = data.btn;
-            }
+        function togglePass() {
+            const input = document.getElementById('pass-input');
+            input.type = input.type === 'password' ? 'text' : 'password';
         }
 
-        /* Removido el setTimeout largo para carga instantánea */
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            preloader.classList.add('animate-fade-out');
-            setTimeout(() => { preloader.style.display = 'none'; }, 600);
-        });
+        const content = { es: { title: "Ecosistema Digital Que Vende.", desc: "Implementamos maquinaria de ventas automatizada para negocios con resultados reales.", trust: "Con la confianza de marcas líderes", modal: "Registro Ecosistema", btn: "Registrarse" }, en: { title: "Digital Ecosystem That Sells.", desc: "We implement automated sales machinery.", trust: "Trusted by leading brands", modal: "Registration", btn: "Register" }, pt: { title: "Ecossistema Digital Que Vende.", desc: "Implementamos maquinário de vendas.", trust: "Com a confiança de marcas", modal: "Registro", btn: "Registrar-se" } };
 
-        // Manejo Dinámico del Nav Superior
-        const mainNav = document.getElementById('main-nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 40) {
-                mainNav.classList.add('glass-nav-scrolled');
-            } else {
-                mainNav.classList.remove('glass-nav-scrolled');
-            }
-        });
+        function changeLanguage(lang) { const data = content[lang]; if (data) { document.getElementById('hero-title').innerText = data.title; document.getElementById('hero-desc').innerText = data.desc; document.getElementById('trust-text').innerText = data.trust; document.getElementById('modal-title').innerText = data.modal; document.getElementById('btn-submit').innerText = data.btn; } }
 
-        const menuTrigger = document.getElementById('menu-trigger');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMenu = document.getElementById('close-menu');
+        window.addEventListener('load', () => { const preloader = document.getElementById('preloader'); preloader.classList.add('animate-fade-out'); setTimeout(() => { preloader.style.display = 'none'; }, 600); });
 
-        menuTrigger.addEventListener('click', () => {
-            mobileMenu.classList.remove('opacity-0', 'invisible');
-            mobileMenu.classList.add('opacity-100', 'visible');
-            document.body.style.overflow = 'hidden'; 
-        });
+        window.addEventListener('scroll', () => { const nav = document.getElementById('main-nav'); if (window.scrollY > 40) nav.classList.add('glass-nav-scrolled'); else nav.classList.remove('glass-nav-scrolled'); });
 
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.remove('opacity-100', 'visible');
-            mobileMenu.classList.add('opacity-0', 'invisible');
-            document.body.style.overflow = 'auto'; 
-        });
+        const menuTrigger = document.getElementById('menu-trigger'); const mobileMenu = document.getElementById('mobile-menu'); const closeMenu = document.getElementById('close-menu');
+        menuTrigger.addEventListener('click', () => { mobileMenu.classList.remove('opacity-0', 'invisible'); mobileMenu.classList.add('opacity-100', 'visible'); document.body.style.overflow = 'hidden'; });
+        closeMenu.addEventListener('click', () => { mobileMenu.classList.remove('opacity-100', 'visible'); mobileMenu.classList.add('opacity-0', 'invisible'); document.body.style.overflow = 'auto'; });
 
-        function openRegisterModal() {
-            const modal = document.getElementById('register-modal');
-            modal.classList.remove('hidden');
-            setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeRegisterModal() {
-            const modal = document.getElementById('register-modal');
-            modal.classList.add('opacity-0');
-            setTimeout(() => { modal.classList.add('hidden'); }, 300);
-            document.body.style.overflow = 'auto';
-        }
-
-        document.getElementById('register-modal').addEventListener('click', function(event) {
-            if (event.target === this) { closeRegisterModal(); }
-        });
-
-        function handleGoogleSignIn() {
-            console.log("Iniciando flujo de autenticación...");
-            alert("Redirigiendo a Google Auth...");
-        }
+        function openRegisterModal() { const modal = document.getElementById('register-modal'); modal.classList.remove('hidden'); setTimeout(() => { modal.classList.remove('opacity-0'); }, 10); document.body.style.overflow = 'hidden'; }
+        function closeRegisterModal() { const modal = document.getElementById('register-modal'); modal.classList.add('opacity-0'); setTimeout(() => { modal.classList.add('hidden'); }, 300); document.body.style.overflow = 'auto'; }
+        document.getElementById('register-modal').addEventListener('click', function(event) { if (event.target === this) { closeRegisterModal(); } });
+        function handleGoogleSignIn() { console.log("Google Auth Flow Triggered"); }
     </script>
+</body>
+</html>
     
 <section id="maquinaria-automatizada" class="relative w-full bg-[#050505] text-white py-20 md:py-28 overflow-hidden select-none">
     
