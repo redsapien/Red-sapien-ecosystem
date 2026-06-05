@@ -179,7 +179,6 @@
 
 <body class="font-sans">
 
-    <!-- Preloader corporativo -->
     <div id="preloader" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center transition-opacity duration-500">
         <div class="relative w-24 h-24 flex items-center justify-center mb-6">
             <div class="absolute w-full h-full border-t-4 border-rs-red rounded-full animate-spin-slow"></div>
@@ -189,7 +188,7 @@
     </div>
 
     <header class="fixed top-0 w-full z-50">
-        <div class="colombia-border animate-pulse-col"></div>
+        <div class="colombia-border"></div>
         
         <nav id="main-nav" class="px-6 py-4 md:px-12 flex justify-between items-center glass-nav-premium">
             <div class="flex items-center">
@@ -211,7 +210,6 @@
         </nav>
     </header>
 
-    <!-- Menú móvil con bloques estilizados Matrix desaturados -->
     <div id="mobile-menu" class="fixed inset-0 z-[60] opacity-0 invisible flex flex-col items-center justify-center px-6">
         <button id="close-menu" class="absolute top-8 right-8 text-gray-400 hover:text-rs-red scale-125 transition-colors focus:outline-none">✕ Close</button>
         <div class="w-full max-w-sm space-y-4">
@@ -229,19 +227,16 @@
 
     <main class="bg-subtle-red relative min-h-screen flex flex-col items-center justify-center pt-32 md:pt-40 pb-6 text-center overflow-hidden">
         
-        <!-- Malla tecnológica sutil -->
         <div class="tech-mesh-layer"></div>
 
-        <!-- Sistema de Corriente Vectorial Avanzada (Pulso Neon) -->
         <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
-            <svg class="w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 800">
+            <svg class="w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 800">
                 <path d="M -50 120 Q 350 80 720 380 T 1500 680" fill="none" stroke="url(#neon-flow-gradient)" stroke-width="2" />
                 <path d="M 1500 150 Q 1000 450 720 380 T -50 700" fill="none" stroke="url(#neon-flow-gradient)" stroke-width="1.5" />
                 <defs>
                     <linearGradient id="neon-flow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" stop-color="#FF3C00" stop-opacity="0"></stop>
                         <stop offset="50%" stop-color="#FF3C00" stop-opacity="1">
-                            <!-- Animación controlada dinámicamente con retraso inicial exacto de 3s -->
                             <animate id="pulse-anim" attributeName="offset" values="-1; 2" dur="3s" begin="3s; pulse-anim.end+3s" fill="freeze" />
                         </stop>
                         <stop offset="100%" stop-color="#FF3C00" stop-opacity="0"></stop>
@@ -250,10 +245,8 @@
             </svg>
         </div>
         
-        <!-- Esfera central de fondo ambiental -->
         <div class="absolute top-[35%] left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-rs-red/5 rounded-full blur-[100px] md:blur-[140px] pointer-events-none -z-10"></div>
         
-        <!-- Contenedor del Hero -->
         <div class="flex flex-col items-center w-full mt-[40px] md:mt-[50px] relative z-10 px-4">
             <h1 id="hero-title" class="font-display text-4xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1] max-w-4xl">
                 Ecosistema Digital Que Vende.
@@ -263,7 +256,7 @@
                 Implementamos maquinaria de ventas automatizada para negocios con resultados reales.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-4 w-full max-w-[320px] md:max-w-md mb-16">
+            <div class="flex flex-col sm:flex-row gap-4 w-full max-w-[320px] md:max-w-md mb-20">
                 <button onclick="handleGoogleSignIn()" class="flex-1 flex items-center justify-center gap-3 bg-white text-black py-4 rounded-lg text-sm font-bold shadow-lg transition hover:bg-gray-200">
                     <svg class="w-5 h-5" viewBox="0 0 24 24">
                         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -280,7 +273,6 @@
             </div>
         </div>
 
-        <!-- Slider 100% de Ancho Completo sin bordes ni fondos artificiales -->
         <div class="w-full mt-auto mb-4">
             <p id="trust-text" class="text-xs uppercase tracking-[0.2em] text-gray-500 font-bold mb-8 px-4">
                 Con la confianza de marcas líderes en Colombia
@@ -308,7 +300,6 @@
                 </div>
             </div>
 
-            <!-- Insignia Profesional de Confianza Técnica -->
             <div class="flex justify-center items-center mt-6 gap-2 text-gray-600 px-4">
                 <svg class="w-4 h-4 text-rs-red opacity-60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
@@ -318,7 +309,6 @@
         </div>
     </main>
 
-    <!-- Modal de registro intacto -->
     <div id="register-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
         <div class="bg-[#171717] border border-white/10 w-full max-w-sm p-8 rounded-2xl relative shadow-2xl">
             <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none">✕</button>
@@ -411,7 +401,7 @@
             console.log("Iniciando flujo de autenticación...");
             alert("Redirigiendo a Google Auth...");
         }
-    </script>
+    </script> 
 
 <section id="maquinaria-automatizada" class="relative w-full bg-[#050505] text-white py-20 md:py-28 overflow-hidden select-none">
     
@@ -822,5 +812,6 @@
     </script>
 </section>
 
-</body>
+
+    </body>
 </html>
