@@ -400,13 +400,11 @@
             --rs-border-subtle: rgba(255, 255, 255, 0.03);
         }
         
-        /* Blending limpio para clips de video integrados en las tarjetas */
         .clip-blend-container {
             mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
             -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
         }
 
-        /* Efecto de Apilamiento Avanzado y Fluido en Scroll */
         .stacking-card {
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, box-shadow 0.4s ease, border-color 0.3s ease;
             transform-origin: center top;
@@ -420,7 +418,6 @@
             border-color: rgba(255, 60, 0, 0.15) !important;
         }
 
-        /* Títulos estilizados refinados con marco sutil */
         .premium-title-frame {
             background: rgba(255, 255, 255, 0.015);
             backdrop-filter: blur(16px);
@@ -429,7 +426,6 @@
             border-left: 3px solid var(--rs-orange);
         }
 
-        /* Visibilidad Optimizada para Números de Fondo */
         .neon-phase-number {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 800;
@@ -446,7 +442,6 @@
             text-shadow: 0 0 40px rgba(255, 60, 0, 0.1);
         }
 
-        /* Animación perimetral limpia para el botón de WhatsApp */
         .wa-premium-glow-button {
             position: relative;
             isolation: isolate;
@@ -466,7 +461,6 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* Estructura de Red de Fondo Sutilizada */
         .cyber-grid-overlay-clean {
             background-image: linear-gradient(rgba(255, 255, 255, 0.008) 1px, transparent 1px),
                               linear-gradient(90deg, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
@@ -476,14 +470,12 @@
         }
     </style>
 
-    <!-- Fondos de Iluminación Ambiental y Claridad Dinámica -->
     <div class="absolute inset-0 pointer-events-none z-0 cyber-grid-overlay-clean"></div>
     <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-neutral-900/30 rounded-full blur-[140px] pointer-events-none z-0"></div>
     <div class="absolute bottom-20 right-12 w-[400px] h-[400px] bg-[#FF3C00]/3 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
     <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <!-- Encabezado Principal -->
         <div class="w-full mb-16 md:mb-20 text-left raw-reveal max-w-4xl">
             <div class="premium-title-frame p-6 md:p-8 rounded-2xl shadow-[0_24px_60px_rgba(0,0,0,0.7)] pl-6 md:pl-10">
                 <span class="text-[10px] font-mono tracking-[0.4em] text-[#FF3C00] uppercase block mb-3 font-bold">INFRAESTRUCTURA DE CONVERSIÓN</span>
@@ -493,13 +485,10 @@
             </div>
         </div>
 
-        <!-- Contenedor Principal de Tarjetas (Stacking Wrapper) -->
         <div id="cards-stack-wrapper" class="space-y-10 md:space-y-14 w-full">
             
-            <!-- TARJETA 1: CAPTACIÓN -->
             <div id="card-phase-1" class="stacking-card sticky top-24 w-full rounded-2xl border border-white/[0.03] overflow-hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
-                    
                     <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 clip-blend-container overflow-hidden">
                         <video class="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-40" autoplay loop muted playsinline>
                             <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-32111-large.mp4" type="video/mp4">
@@ -507,46 +496,32 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent lg:hidden"></div>
                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050505] hidden lg:block"></div>
                     </div>
-
                     <div class="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
                         <div class="absolute bottom-[-20px] right-4 text-[10rem] sm:text-[14rem] neon-phase-number">1</div>
-                        
                         <div class="relative z-10">
                             <div class="flex items-center gap-3 mb-5">
                                 <div class="p-2 rounded-xl bg-[#FF3C00]/10 border border-[#FF3C00]/20 text-[#FF3C00]">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9s2.015-9 4.5-9m0 0a9.003 9.003 0 018.716 2.253M12 3a9.003 9.003 0 00-8.716 2.253M12 12h.008v.008H12V12z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12h19.5M4.5 6h15M6 9h.008v.008H6V9z" />
-                                    </svg>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9s2.015-9 4.5-9m0 0a9.003 9.003 0 018.716 2.253M12 3a9.003 9.003 0 00-8.716 2.253M12 12h.008v.008H12V12z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12h19.5M4.5 6h15M6 9h.008v.008H6V9z" /></svg>
                                 </div>
                                 <div class="premium-title-frame px-3 py-0.5 rounded-md">
                                     <span class="font-mono text-[9px] text-neutral-400 tracking-widest uppercase">Fase Inicial // Tráfico</span>
                                 </div>
                             </div>
                             <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Captación Inmediata de Prospectos</h3>
-                            <p class="text-base sm:text-lg text-neutral-300 font-normal Desert-prose leading-relaxed max-w-xl">
+                            <p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl">
                                 Estructuramos pauta avanzada en canales nativos para capturar decisores de inmediato. Datos reales, alto impacto y cero presupuesto desperdiciado.
                             </p>
                         </div>
-
                         <div class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-4 max-w-md font-mono text-[11px] text-neutral-400 relative z-10">
-                            <div>
-                                <span class="block text-white font-bold text-sm mb-0.5">> 4.19%</span>
-                                CTR Promedio Estimado
-                            </div>
-                            <div>
-                                <span class="block text-white font-bold text-sm mb-0.5">Meta / Google</span>
-                                Inyección de Canales
-                            </div>
+                            <div><span class="block text-white font-bold text-sm mb-0.5">> 4.19%</span>CTR Promedio Estimado</div>
+                            <div><span class="block text-white font-bold text-sm mb-0.5">Meta / Google</span>Inyección de Canales</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TARJETA 2: PROCESAMIENTO (PUNTO DE ACTIVACIÓN DE WHATSAPP) -->
             <div id="card-phase-2" class="stacking-card sticky top-28 w-full rounded-2xl border border-white/[0.03] overflow-hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
-                    
                     <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 clip-blend-container overflow-hidden">
                         <video class="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-35" autoplay loop muted playsinline>
                             <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-technology-digital-interface-background-43073-large.mp4" type="video/mp4">
@@ -554,16 +529,12 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent lg:hidden"></div>
                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050505] hidden lg:block"></div>
                     </div>
-
                     <div class="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
                         <div class="absolute bottom-[-20px] left-4 text-[10rem] sm:text-[14rem] neon-phase-number">2</div>
-                        
                         <div class="relative z-10 lg:pl-4">
                             <div class="flex items-center gap-3 mb-5">
                                 <div class="p-2 rounded-xl bg-[#1877F2]/10 border border-[#1877F2]/20 text-[#1877F2]">
-                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                                    </svg>
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                                 </div>
                                 <div class="premium-title-frame px-3 py-0.5 rounded-md">
                                     <span class="font-mono text-[9px] text-neutral-400 tracking-widest uppercase">Fase Intermedia // Filtro</span>
@@ -574,25 +545,16 @@
                                 Filtramos mirones y segmentamos compradores reales. Con integraciones ágiles en Make y Activepieces, usted solo consume tiempo con prospectos calificados.
                             </p>
                         </div>
-
                         <div class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-4 max-w-md font-mono text-[11px] text-neutral-400 relative z-10 lg:pl-4">
-                            <div>
-                                <span class="block text-white font-bold text-sm mb-0.5">Make / API Webhooks</span>
-                                Interconexión Total
-                            </div>
-                            <div>
-                                <span class="block text-white font-bold text-sm mb-0.5">100% Automatizado</span>
-                                Cero Procesos Manuales
-                            </div>
+                            <div><span class="block text-white font-bold text-sm mb-0.5">Make / API Webhooks</span>Interconexión Total</div>
+                            <div><span class="block text-white font-bold text-sm mb-0.5">100% Automatizado</span>Cero Procesos Manuales</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TARJETA 3: TABLEROS -->
             <div id="card-phase-3" class="stacking-card sticky top-32 w-full rounded-2xl border border-white/[0.03] overflow-hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
-                    
                     <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 clip-blend-container overflow-hidden">
                         <video class="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-35" autoplay loop muted playsinline>
                             <source src="https://assets.mixkit.co/videos/preview/mixkit-matrix-style-falling-binary-code-background-43075-large.mp4" type="video/mp4">
@@ -600,16 +562,12 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent lg:hidden"></div>
                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050505] hidden lg:block"></div>
                     </div>
-
                     <div class="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
                         <div class="absolute bottom-[-20px] right-4 text-[10rem] sm:text-[14rem] neon-phase-number">3</div>
-                        
                         <div class="relative z-10">
                             <div class="flex items-center gap-3 mb-5">
                                 <div class="p-2 rounded-xl bg-[#4285F4]/10 border border-[#4285F4]/20 text-[#4285F4]">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 13.5h3.86a2.25 2.25 0 012.008 1.24l.885 1.77a2.25 2.25 0 002.007 1.24h1.98a2.25 2.25 0 002.007-1.24l.885-1.77a2.25 2.25 0 012.007-1.24h3.86m-18 0h18M2.25 9h18M2.25 18h18M11.47 2.47a.75.75 0 011.06 0l3 3a.75.75 0 01-1.06 1.06l-1.72-1.72V12a.75.75 0 01-1.5 0V4.81L9.53 6.53a.75.75 0 01-1.06-1.06l3-3z" />
-                                    </svg>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 13.5h3.86a2.25 2.25 0 012.008 1.24l.885 1.77a2.25 2.25 0 002.007 1.24h1.98a2.25 2.25 0 002.007-1.24l.885-1.77a2.25 2.25 0 012.007-1.24h3.86m-18 0h18M2.25 9h18M2.25 18h18M11.47 2.47a.75.75 0 011.06 0l3 3a.75.75 0 01-1.06 1.06l-1.72-1.72V12a.75.75 0 01-1.5 0V4.81L9.53 6.53a.75.75 0 01-1.06-1.06l3-3z" /></svg>
                                 </div>
                                 <div class="premium-title-frame px-3 py-0.5 rounded-md">
                                     <span class="font-mono text-[9px] text-neutral-400 tracking-widest uppercase">Fase Final // Retorno</span>
@@ -620,120 +578,74 @@
                                 Desarrollamos paneles personalizados para monitorear métricas clave en vivo. Controle su ROAS y flujos consolidados de forma inmediata y sin fricciones.
                             </p>
                         </div>
-
                         <div class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-4 max-w-md font-mono text-[11px] text-neutral-400 relative z-10">
-                            <div>
-                                <span class="block text-white font-bold text-sm mb-0.5">Supabase Realtime</span>
-                                Datos Consolidados
-                            </div>
-                            <div>
-                                <span class="block text-white font-bold text-sm mb-0.5">Métricas en Vivo</span>
-                                Control Absoluto
-                            </div>
+                            <div><span class="block text-white font-bold text-sm mb-0.5">Supabase Realtime</span>Datos Consolidados</div>
+                            <div><span class="block text-white font-bold text-sm mb-0.5">Métricas en Vivo</span>Control Absoluto</div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <!-- MÓDULO: HUMANO + INTELIGENCIA ARTIFICIAL (Impecable, Sin Marcos y Soporta Video/Foto) -->
-        <div class="mt-20 md:mt-24 w-full border border-white/[0.03] rounded-2xl p-6 sm:p-12 bg-gradient-to-b from-neutral-900/20 to-transparent relative overflow-hidden">
+        <div class="mt-20 md:mt-24 w-full border border-white/[0.03] rounded-2xl p-6 sm:p-12 bg-gradient-to-b from-neutral-900/5 to-transparent relative overflow-hidden">
             
             <div class="w-full mb-10 text-center max-w-2xl mx-auto">
                 <div class="premium-title-frame inline-block px-4 py-1 rounded-full mb-4 mx-auto">
                     <span class="font-mono text-[9px] tracking-[0.25em] text-[#FF3C00] uppercase font-bold">INGENIERÍA HÍBRIDA</span>
                 </div>
                 <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Procesos ejecutados por humanos junto a la IA</h4>
-                <p class="text-sm sm:text-base text-neutral-400 font-light mt-2 leading-relaxed">
-                    Unión perfecta: automatización avanzada gobernada por analistas expertos para asegurar blindaje estratégico y conversiones reales.
-                </p>
             </div>
 
-            <!-- Grid de Contenido Absolutamente Limpio (Sin Marcos Notables) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto items-center justify-center">
                 
-                <!-- Nodo Agente IA: Antonella -->
                 <div class="group relative flex flex-col items-center justify-center text-center transition-all duration-300">
                     <div class="absolute top-0 right-2 font-mono text-[7px] text-neutral-600 group-hover:text-[#FF3C00] transition-colors">AI_NODE // V.02</div>
-                    
-                    <!-- Contenedor Ultra Limpio Totalmente Ajustable para Video o Foto (w-32 h-36) -->
-                    <div class="w-32 h-36 rounded-xl overflow-hidden relative flex items-center justify-center transition-all group-hover:scale-105 duration-500">
-                        <!-- Puedes usar <video> o <img> de manera intercambiable aquí sin errores -->
+                    <div class="w-32 h-36 rounded-xl overflow-hidden relative flex items-center justify-center transition-all group-hover:scale-105 duration-500 bg-neutral-900">
                         <video class="absolute inset-0 w-full h-full object-cover opacity-80" autoplay loop muted playsinline onerror="this.style.display='none'">
                             <source src="ruta_a_clip_antonella.mp4" type="video/mp4">
                         </video>
                         <img src="ruta_a_imagen_antonella.png" alt="Antonella Core" class="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-500" onerror="this.style.display='none';">
-                        
-                        <!-- Fallback Visual Elegante en caso de que falten los recursos -->
                         <div class="absolute inset-0 bg-neutral-900/60 backdrop-blur-sm flex flex-col items-center justify-center text-neutral-500 font-mono text-[8px] tracking-widest">
                             <svg class="w-5 h-5 mb-1 text-[#FF3C00] opacity-70" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path d="M9.813 15.904L9 21l8.904-4.473L21 9l-3.473-1.904M9.813 15.904L4.5 10.5m5.313 5.404L15 9m-10.5 1.5L3 3l5.404 1.5M4.5 10.5L9 9"/></svg>
                             ANTONELLA_IA
                         </div>
                     </div>
-                    
                     <span class="font-mono text-[11px] tracking-widest text-[#FF3C00] uppercase font-bold mt-4">Antonella</span>
-                    <p class="text-xs text-neutral-400 font-light max-w-xs mt-1 leading-normal">Sistemas autónomos que operan y optimizan pauta 24/7.</p>
                 </div>
 
-                <!-- Nodo Humano: Dirección -->
                 <div class="group relative flex flex-col items-center justify-center text-center transition-all duration-300">
                     <div class="absolute top-0 right-2 font-mono text-[7px] text-neutral-600 group-hover:text-white transition-colors">HUMAN // INTEL</div>
-                    
-                    <!-- Contenedor Ultra Limpio Totalmente Ajustable para Video o Foto (w-32 h-36) -->
-                    <div class="w-32 h-36 rounded-xl overflow-hidden relative flex items-center justify-center transition-all group-hover:scale-105 duration-500">
-                        <!-- Soporte Nativo para Video o Foto indistintamente -->
+                    <div class="w-32 h-36 rounded-xl overflow-hidden relative flex items-center justify-center transition-all group-hover:scale-105 duration-500 bg-neutral-900">
                         <video class="absolute inset-0 w-full h-full object-cover opacity-80" autoplay loop muted playsinline onerror="this.style.display='none'">
                             <source src="ruta_a_clip_humano.mp4" type="video/mp4">
                         </video>
                         <img src="ruta_a_tu_foto_cedula.jpg" alt="Especialista Red Sapien" class="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-500" onerror="this.style.display='none';">
-                        
-                        <!-- Fallback Visual Elegante -->
                         <div class="absolute inset-0 bg-neutral-900/60 backdrop-blur-sm flex flex-col items-center justify-center text-neutral-500 font-mono text-[8px] tracking-widest">
                             <svg class="w-5 h-5 mb-1 text-white opacity-60" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 01-7.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
                             HUMAN_CORE
                         </div>
                     </div>
-                    
                     <span class="font-mono text-[11px] tracking-widest text-white uppercase font-bold mt-4">Dirección Operativa</span>
-                    <p class="text-xs text-neutral-400 font-light max-w-xs mt-1 leading-normal">Arquitectura de lógica y control estricto del ROAS final.</p>
                 </div>
-
             </div>
         </div>
-
     </div>
 
-    <!-- BOTÓN DE WHATSAPP FLOTANTE INTELIGENTE (OCULTO POR DEFECTO, SE DETECTA EN SCROLL) -->
     <div id="floating-whatsapp-container" class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-2 group opacity-0 translate-y-10 pointer-events-none transition-all duration-500 ease-out">
-        
         <div class="bg-neutral-950/95 backdrop-blur-md border border-white/10 py-2 px-3.5 rounded-xl opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-2xl pointer-events-auto">
             <div class="flex items-center gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
                 <span class="text-[9px] font-mono tracking-wider text-white uppercase font-bold">Asesor Comercial Online</span>
             </div>
-            <p class="text-[10px] text-neutral-400 font-light mt-0.5">¿Iniciamos la automatización de su negocio?</p>
         </div>
-
-        <a href="https://wa.me/573000000000?text=Hola%20Red%20Sapien.%20Solicito%20diagn%C3%B3stico%20de%20conversiones%20para%20mi%20empresa." 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-[0_8px_25px_rgba(37,211,102,0.35)] pointer-events-auto wa-premium-glow-button"
-           aria-label="Conexión Directa con Red Sapien">
-            
-            <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.457 3.422 1.257 4.877L2 22l5.292-1.389c1.4.762 2.99 1.186 4.712 1.186 5.51 0 9.993-4.483 9.993-9.994C21.997 6.483 17.514 2 12.004 2zm5.787 14.394c-.242.68-.1.173-1.42 1.507-.344.348-.795.534-1.285.534-.413 0-.877-.13-1.49-.408-2.612-1.183-4.32-3.82-4.452-4.004-.127-.174-1.092-1.455-1.092-2.776 0-1.32.693-1.966.942-2.233.243-.26.533-.327.712-.327.18 0 .36 0 .513.007.16.007.373-.06.586.447.213.513.733 1.787.794 1.913.067.127.113.273.027.447-.087.173-.16.287-.313.466-.154.18-.327.4-.467.54-.153.154-.313.32-.133.627.18.307.806 1.327 1.727 2.147.92.82 1.693 1.073 2.006 1.2.313.127.493.107.68-.107.187-.213.8-1.026.933-1.22.133-.193.28-.16.473-.086.193.073 1.22.573 1.48.7.26.127.433.193.493.3.06.107.06.62-.18 1.3z"/>
-            </svg>
+        <a href="https://wa.me/573000000000?text=Hola%20Red%20Sapien." target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-[0_8px_25px_rgba(37,211,102,0.35)] pointer-events-auto wa-premium-glow-button">
+            <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.457 3.422 1.257 4.877L2 22l5.292-1.389c1.4.762 2.99 1.186 4.712 1.186 5.51 0 9.993-4.483 9.993-9.994C21.997 6.483 17.514 2 12.004 2zm5.787 14.394c-.242.68-.1.173-1.42 1.507-.344.348-.795.534-1.285.534-.413 0-.877-.13-1.49-.408-2.612-1.183-4.32-3.82-4.452-4.004-.127-.174-1.092-1.455-1.092-2.776 0-1.32.693-1.966.942-2.233.243-.26.533-.327.712-.327.18 0 .36 0 .513.007.16.007.373-.06.586.447.213.513.733 1.787.794 1.913.067.127.113.273.027.447-.087.173-.16.287-.313.466-.154.18-.327.4-.467.54-.153.154-.313.32-.133.627.18.307.806 1.327 1.727 2.147.92.82 1.693 1.073 2.006 1.2.313.127.493.107.68-.107.187-.213.8-1.026.933-1.22.133-.193.28-.16.473-.086.193.073 1.22.573 1.48.7.26.127.433.193.493.3.06.107.06.62-.18 1.3z"/></svg>
         </a>
     </div>
 
-    <!-- LÓGICA DE RENDIMIENTO E INTERSECCIÓN AVANZADA -->
     <script>
         (function() {
             document.addEventListener('DOMContentLoaded', () => {
-                
-                // 1. Observer de Revelación Progresiva para Títulos
-                const revealElements = document.querySelectorAll('.raw-reveal');
                 const revealObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if(entry.isIntersecting) {
@@ -744,19 +656,15 @@
                     });
                 }, { threshold: 0.1 });
 
-                revealElements.forEach(el => {
+                document.querySelectorAll('.raw-reveal').forEach(el => {
                     el.style.opacity = '0';
                     el.style.transform = 'translateY(15px)';
                     el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
                     revealObserver.observe(el);
                 });
 
-                // 2. Control de Apilamiento de Tarjetas (Efecto Stacking Scroll)
                 const cards = document.querySelectorAll('.stacking-card');
                 window.addEventListener('scroll', () => {
-                    const stackWrapper = document.getElementById('cards-stack-wrapper');
-                    if (!stackWrapper) return;
-                    
                     cards.forEach((card, index) => {
                         const cardTop = card.getBoundingClientRect().top;
                         if (cardTop <= (96 + (index * 12))) { 
@@ -770,33 +678,155 @@
                     });
                 });
 
-                // 3. Lógica Única e Infalible de WhatsApp para aparecer SOLO al llegar a la Sección / Tarjeta 2
                 const whatsappContainer = document.getElementById('floating-whatsapp-container');
                 const targetCardPhase2 = document.getElementById('card-phase-2');
-                
                 if (whatsappContainer && targetCardPhase2) {
-                    const whatsappObserver = new IntersectionObserver((entries) => {
+                    const observer = new IntersectionObserver((entries) => {
                         entries.forEach(entry => {
-                            // Se muestra si la tarjeta 2 entra en pantalla o si el usuario ya bajó más allá de ella
                             if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
                                 whatsappContainer.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
                                 whatsappContainer.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
                             } else {
-                                // Se oculta automáticamente si regresa arriba de la tarjeta 2
                                 whatsappContainer.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
                                 whatsappContainer.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
                             }
                         });
-                    }, {
-                        threshold: 0.05, // Se activa de inmediato al tocar el inicio de la tarjeta 2
-                        rootMargin: "0px 0px -10% 0px"
-                    });
-                    
-                    whatsappObserver.observe(targetCardPhase2);
+                    }, { threshold: 0.05, rootMargin: "0px 0px -10% 0px" });
+                    observer.observe(targetCardPhase2);
                 }
             });
         })();
     </script>
+</section>
+
+<section id="casos-exito-ecosistemas" class="relative w-full bg-[#0A0A0A] text-white py-24 md:py-32 overflow-hidden selection:bg-[#FF3C00] selection:text-white">
+    <!-- Fondo: Detalle sutil "Tech" -->
+    <div class="absolute inset-0 z-0 opacity-20" style="background-image: radial-gradient(#333 0.5px, transparent 0.5px); background-size: 30px 30px;"></div>
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#FF3C00]/5 rounded-full blur-[150px]"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="flex flex-col md:items-end mb-16 md:mb-24">
+            <span class="text-[#FF3C00] font-mono tracking-[0.4em] text-[10px] uppercase font-bold mb-4">Portafolio Operativo</span>
+            <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-right">
+                Ecosistemas que <br><span class="text-transparent bg-clip-text bg-gradient-to-l from-white to-neutral-500">convierten en real</span>
+            </h2>
+        </div>
+
+        <div class="relative group">
+            <!-- Flechas -->
+            <button id="prevBtn" class="absolute -left-4 top-1/2 z-20 hidden md:flex bg-[#111] p-3 rounded-full border border-white/10 hover:border-[#FF3C00] transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"></path></svg></button>
+            <button id="nextBtn" class="absolute -right-4 top-1/2 z-20 hidden md:flex bg-[#111] p-3 rounded-full border border-white/10 hover:border-[#FF3C00] transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+
+            <!-- Slider / Grid -->
+            <div id="ecosystem-slider" class="flex md:grid md:grid-cols-4 gap-6 overflow-x-auto pb-8 snap-x scrollbar-hide scroll-smooth">
+                
+                <!-- Caso 1: La Papa Prohibida (Alto impacto) -->
+                <article class="min-w-[280px] md:min-w-0 flex flex-col bg-[#111] border border-white/5 rounded-2xl overflow-hidden hover:border-[#FF3C00]/40 transition-all duration-500 snap-start">
+                    <div class="p-4 bg-black">
+                        <!-- Efecto Doble Marco / Ghost Frame -->
+                        <div class="relative p-1 bg-[#1A1A1A] border border-neutral-800 rounded-lg">
+                            <div class="relative aspect-[4/3] bg-black border border-neutral-700/50 rounded-sm overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400" alt="Conversion" class="w-full h-full object-cover opacity-80">
+                                <div class="absolute bottom-2 left-2 bg-black/80 px-2 py-1 text-[9px] font-mono border border-neutral-700">CTR: 4.19%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Food Delivery Funnel</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-6">Arquitectura de alta conversión con 49 ventas efectivas en menos de 30 horas. Validación total.</p>
+                        <a href="#" class="mt-auto w-full py-3 bg-white/5 border border-white/10 hover:bg-[#FF3C00] transition-colors text-center font-bold text-xs uppercase tracking-widest rounded-lg">Ver Datos</a>
+                    </div>
+                </article>
+
+                <!-- Caso 2: Bross (Anonimizado a Detailing) -->
+                <article class="min-w-[280px] md:min-w-0 flex flex-col bg-[#111] border border-white/5 rounded-2xl overflow-hidden hover:border-[#FF3C00]/40 transition-all duration-500 snap-start">
+                    <div class="p-4 bg-black">
+                        <div class="relative p-1 bg-[#1A1A1A] border border-neutral-800 rounded-lg">
+                            <div class="relative aspect-[4/3] bg-black border border-neutral-700/50 rounded-sm overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=400" alt="Detailing" class="w-full h-full object-cover opacity-80">
+                                <div class="absolute bottom-2 left-2 bg-black/80 px-2 py-1 text-[9px] font-mono border border-neutral-700">AUT: SYSTEM</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Detailing Ecosystem</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-6">Automatización integral de agendamiento y sistema de fidelización personalizado para servicios premium.</p>
+                        <a href="#" class="mt-auto w-full py-3 bg-white/5 border border-white/10 hover:bg-[#FF3C00] transition-colors text-center font-bold text-xs uppercase tracking-widest rounded-lg">Ver Datos</a>
+                    </div>
+                </article>
+
+                <!-- Caso 3: NutriBox -->
+                <article class="min-w-[280px] md:min-w-0 flex flex-col bg-[#111] border border-white/5 rounded-2xl overflow-hidden hover:border-[#FF3C00]/40 transition-all duration-500 snap-start">
+                    <div class="p-4 bg-black">
+                        <div class="relative p-1 bg-[#1A1A1A] border border-neutral-800 rounded-lg">
+                            <div class="relative aspect-[4/3] bg-black border border-neutral-700/50 rounded-sm overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400" alt="Nutri" class="w-full h-full object-cover opacity-80">
+                                <div class="absolute bottom-2 left-2 bg-black/80 px-2 py-1 text-[9px] font-mono border border-neutral-700">WEB: OPS</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">NutriBox Flow</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-6">Optimización de captación web para gastronomía saludable, enfocada en ventas recurrentes.</p>
+                        <a href="#" class="mt-auto w-full py-3 bg-white/5 border border-white/10 hover:bg-[#FF3C00] transition-colors text-center font-bold text-xs uppercase tracking-widest rounded-lg">Ver Datos</a>
+                    </div>
+                </article>
+
+                <!-- Caso 4: Construventas -->
+                <article class="min-w-[280px] md:min-w-0 flex flex-col bg-[#111] border border-white/5 rounded-2xl overflow-hidden hover:border-[#FF3C00]/40 transition-all duration-500 snap-start">
+                    <div class="p-4 bg-black">
+                        <div class="relative p-1 bg-[#1A1A1A] border border-neutral-800 rounded-lg">
+                            <div class="relative aspect-[4/3] bg-black border border-neutral-700/50 rounded-sm overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1554224155-6726b3e858f9?auto=format&fit=crop&q=80&w=400" alt="Dashboard" class="w-full h-full object-cover opacity-80">
+                                <div class="absolute bottom-2 left-2 bg-black/80 px-2 py-1 text-[9px] font-mono border border-neutral-700">DATA: REAL</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Construventas</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-6">Panel personalizado de gestión de inventarios y métricas de venta en tiempo real para equipo.</p>
+                        <a href="#" class="mt-auto w-full py-3 bg-white/5 border border-white/10 hover:bg-[#FF3C00] transition-colors text-center font-bold text-xs uppercase tracking-widest rounded-lg">Ver Datos</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const slider = document.getElementById('ecosystem-slider');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (!slider) return;
+
+            // Lógica de Scroll
+            const scrollAmount = 320; 
+            
+            nextBtn.addEventListener('click', () => slider.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
+            prevBtn.addEventListener('click', () => slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
+
+            // Autoplay (Solo en Móvil)
+            let autoPlay = setInterval(() => {
+                if (window.innerWidth < 768) {
+                    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+                        slider.scrollTo({ left: 0, behavior: 'smooth' }); // Loop infinito
+                    } else {
+                        slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    }
+                }
+            }, 3000);
+
+            // Detener autoplay al interactuar
+            slider.addEventListener('mouseenter', () => clearInterval(autoPlay));
+            slider.addEventListener('touchstart', () => clearInterval(autoPlay));
+        })();
+    </script>
+    
+    <style>
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 </section>
 
 </body>
