@@ -68,19 +68,12 @@
             background: radial-gradient(circle at 50% -20%, rgba(255, 60, 0, 0.06), transparent 75%); 
         }
         
-        .colombia-border { 
-            height: 3px; 
-            width: 100%; 
-            background: linear-gradient(90deg, #FCD116 33%, #003893 33% 66%, #CE1126 66%); 
-            transform-origin: top;
-        }
-        
         #mobile-menu { 
             transition: opacity 0.4s ease, visibility 0.4s ease; 
             background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%); 
         }
         
-        /* Botón de Registro con brillo refinado continuo sin deformación */
+        /* Botón de Registro */
         .neon-premium-btn {
             position: relative;
             overflow: hidden;
@@ -110,7 +103,7 @@
             100% { left: 140%; }
         }
         
-        /* Slider de imágenes optimizado */
+        /* Slider de imágenes */
         .logo-track { display: flex; width: max-content; gap: 4rem; }
         .logo-item { 
             filter: grayscale(100%) opacity(0.4) drop-shadow(0 4px 12px rgba(255, 60, 0, 0.15)); 
@@ -135,23 +128,20 @@
             z-index: 0;
         }
 
-        /* Nav Micro-definido de alta experiencia */
+        /* Nav Inicio: Más oscuro a la derecha, degradado hacia la izquierda, sin líneas */
         .glass-nav-premium {
-            background: rgba(5, 5, 5, 0.65);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            background: linear-gradient(to left, rgba(5, 5, 5, 0.95) 0%, rgba(5, 5, 5, 0.2) 100%);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
+        /* Nav Scrolled: Color sólido perfecto, sin transparencias ni líneas blancas */
         .glass-nav-scrolled {
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 60, 0, 0.15);
+            background-color: #050505; /* Mismo negro de fondo, limpio y sólido */
+            border-bottom: 1px solid rgba(255, 60, 0, 0.15); /* Delimitador sutil */
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
         }
 
-        /* Bloques de Enlace Estilo Ecosistema Matrix Desaturado */
+        /* Bloques de Enlace Estilo Ecosistema */
         .matrix-link-box {
             position: relative;
             background: rgba(10, 10, 10, 0.4);
@@ -188,8 +178,6 @@
     </div>
 
     <header class="fixed top-0 w-full z-50">
-        <div class="colombia-border"></div>
-        
         <nav id="main-nav" class="px-6 py-4 md:px-12 flex justify-between items-center glass-nav-premium">
             <div class="flex items-center">
                 <select id="lang-selector" onchange="changeLanguage(this.value)" class="bg-transparent text-xs font-bold text-gray-400 outline-none cursor-pointer border-none focus:ring-0">
@@ -230,7 +218,7 @@
         <div class="tech-mesh-layer"></div>
 
         <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
-            <svg class="w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 800">
+            <svg class="w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 800">
                 <path d="M -50 120 Q 350 80 720 380 T 1500 680" fill="none" stroke="url(#neon-flow-gradient)" stroke-width="2" />
                 <path d="M 1500 150 Q 1000 450 720 380 T -50 700" fill="none" stroke="url(#neon-flow-gradient)" stroke-width="1.5" />
                 <defs>
@@ -256,7 +244,7 @@
                 Implementamos maquinaria de ventas automatizada para negocios con resultados reales.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-4 w-full max-w-[320px] md:max-w-md mb-20">
+            <div class="flex flex-col sm:flex-row gap-4 w-full max-w-[320px] md:max-w-md mb-16">
                 <button onclick="handleGoogleSignIn()" class="flex-1 flex items-center justify-center gap-3 bg-white text-black py-4 rounded-lg text-sm font-bold shadow-lg transition hover:bg-gray-200">
                     <svg class="w-5 h-5" viewBox="0 0 24 24">
                         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -345,12 +333,11 @@
             }
         }
 
+        /* Removido el setTimeout largo para carga instantánea */
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                const preloader = document.getElementById('preloader');
-                preloader.classList.add('animate-fade-out');
-                setTimeout(() => { preloader.style.display = 'none'; }, 600);
-            }, 800);
+            const preloader = document.getElementById('preloader');
+            preloader.classList.add('animate-fade-out');
+            setTimeout(() => { preloader.style.display = 'none'; }, 600);
         });
 
         // Manejo Dinámico del Nav Superior
@@ -401,7 +388,7 @@
             console.log("Iniciando flujo de autenticación...");
             alert("Redirigiendo a Google Auth...");
         }
-    </script> 
+    </script>
 
 <section id="maquinaria-automatizada" class="relative w-full bg-[#050505] text-white py-20 md:py-28 overflow-hidden select-none">
     
@@ -812,6 +799,5 @@
     </script>
 </section>
 
-
-    </body>
+</body>
 </html>
