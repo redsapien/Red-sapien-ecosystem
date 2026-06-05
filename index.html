@@ -65,7 +65,7 @@
         }
         
         .bg-subtle-red { 
-            background: radial-gradient(circle at 50% -20%, rgba(255, 60, 0, 0.08), transparent 70%); 
+            background: radial-gradient(circle at 50% -20%, rgba(255, 60, 0, 0.06), transparent 75%); 
         }
         
         .colombia-border { 
@@ -77,30 +77,112 @@
         
         #mobile-menu { 
             transition: opacity 0.4s ease, visibility 0.4s ease; 
-            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%); 
+            background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%); 
         }
         
-        .neon-border { transition: all 0.3s ease; }
-        .neon-border:hover { box-shadow: 0 0 20px rgba(255, 60, 0, 0.3); border-color: #FF3C00; }
+        /* Botón de Registro con brillo refinado continuo sin deformación */
+        .neon-premium-btn {
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 60, 0, 0.12);
+            border: 1px solid rgba(255, 60, 0, 0.25);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .neon-premium-btn:hover {
+            box-shadow: 0 0 25px rgba(255, 60, 0, 0.35);
+            border-color: rgba(255, 60, 0, 0.7);
+            background-color: rgba(23, 23, 23, 0.8);
+        }
+        .neon-premium-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 30%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255, 60, 0, 0.25), transparent);
+            transform: rotate(25deg);
+            animation: technicalSheen 9s infinite linear;
+        }
+        @keyframes technicalSheen {
+            0% { left: -60%; }
+            15% { left: 140%; }
+            100% { left: 140%; }
+        }
         
-        /* Slider de imágenes */
+        /* Slider de imágenes optimizado */
         .logo-track { display: flex; width: max-content; gap: 4rem; }
-        .logo-item { filter: grayscale(100%) opacity(0.6); transition: 0.3s; }
-        .logo-item:hover { filter: grayscale(0%) opacity(1); }
+        .logo-item { 
+            filter: grayscale(100%) opacity(0.4) drop-shadow(0 4px 12px rgba(255, 60, 0, 0.15)); 
+            transition: all 0.3s ease; 
+        }
+        .logo-item:hover { 
+            filter: grayscale(0%) opacity(0.9) drop-shadow(0 6px 20px rgba(255, 60, 0, 0.25)); 
+        }
 
-        /* Navbar Dinámico */
-        #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease; }
+        /* Malla de Fondo sutil optimizada */
+        .tech-mesh-layer {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(circle at center, black 20%, transparent 85%);
+            -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 85%);
+            opacity: 0.65;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Nav Micro-definido de alta experiencia */
+        .glass-nav-premium {
+            background: rgba(5, 5, 5, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-nav-scrolled {
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 60, 0, 0.15);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Bloques de Enlace Estilo Ecosistema Matrix Desaturado */
+        .matrix-link-box {
+            position: relative;
+            background: rgba(10, 10, 10, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .matrix-link-box::before {
+            content: "0101101011001";
+            position: absolute;
+            font-family: monospace;
+            font-size: 9px;
+            color: rgba(255, 60, 0, 0.04);
+            top: 2px;
+            right: 4px;
+            letter-spacing: 2px;
+        }
+        .matrix-link-box:hover {
+            border-color: rgba(255, 60, 0, 0.3);
+            background: rgba(255, 60, 0, 0.02);
+            box-shadow: inset 0 0 12px rgba(255, 60, 0, 0.05);
+        }
     </style>
 </head>
 
 <body class="font-sans">
 
+    <!-- Preloader corporativo -->
     <div id="preloader" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center transition-opacity duration-500">
         <div class="relative w-24 h-24 flex items-center justify-center mb-6">
-            <!-- El borde giratorio -->
             <div class="absolute w-full h-full border-t-4 border-rs-red rounded-full animate-spin-slow"></div>
-            
-            <!-- TU LOGO AQUÍ -->
             <img src="assets/Image/Logo-Red-Sapien.webp" alt="Logo" class="w-12 h-12 object-contain">
         </div>
         <div class="text-[10px] uppercase tracking-[0.3em] text-gray-500">Iniciando...</div>
@@ -109,7 +191,7 @@
     <header class="fixed top-0 w-full z-50">
         <div class="colombia-border animate-pulse-col"></div>
         
-        <nav id="main-nav" class="px-6 py-4 md:px-12 flex justify-between items-center bg-transparent">
+        <nav id="main-nav" class="px-6 py-4 md:px-12 flex justify-between items-center glass-nav-premium">
             <div class="flex items-center">
                 <select id="lang-selector" onchange="changeLanguage(this.value)" class="bg-transparent text-xs font-bold text-gray-400 outline-none cursor-pointer border-none focus:ring-0">
                     <option value="es">ES</option>
@@ -118,8 +200,8 @@
                 </select>
             </div>
 
-            <button id="menu-trigger" class="p-2 hover:bg-white/10 rounded-lg transition-all text-white focus:outline-none" aria-label="Abrir menú">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <button id="menu-trigger" class="p-2 hover:bg-white/5 rounded-lg transition-all text-white focus:outline-none border border-white/5" aria-label="Abrir menú">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="3" width="7" height="7"></rect>
                     <rect x="14" y="3" width="7" height="7"></rect>
                     <rect x="3" y="14" width="7" height="7"></rect>
@@ -129,22 +211,50 @@
         </nav>
     </header>
 
-    <div id="mobile-menu" class="fixed inset-0 z-[60] opacity-0 invisible flex flex-col items-center justify-center">
-        <button id="close-menu" class="absolute top-8 right-8 text-white hover:text-rs-red scale-150 transition-colors focus:outline-none">✕</button>
-        <div class="space-y-10 text-center">
-            <a href="#" class="block text-4xl font-display font-bold text-white hover:text-rs-red transition duration-300">Ecosistema</a>
-            <a href="#" class="block text-4xl font-display font-bold text-white hover:text-rs-red transition duration-300">Plataforma</a>
-            <a href="#" class="block text-4xl font-display font-bold text-white hover:text-rs-red transition duration-300">Contacto</a>
+    <!-- Menú móvil con bloques estilizados Matrix desaturados -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] opacity-0 invisible flex flex-col items-center justify-center px-6">
+        <button id="close-menu" class="absolute top-8 right-8 text-gray-400 hover:text-rs-red scale-125 transition-colors focus:outline-none">✕ Close</button>
+        <div class="w-full max-w-sm space-y-4">
+            <div class="matrix-link-box p-6 rounded-xl">
+                <a href="#" class="block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300">Ecosistema</a>
+            </div>
+            <div class="matrix-link-box p-6 rounded-xl">
+                <a href="#" class="block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300">Plataforma</a>
+            </div>
+            <div class="matrix-link-box p-6 rounded-xl">
+                <a href="#" class="block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300">Contacto</a>
+            </div>
         </div>
     </div>
 
-    <main class="bg-subtle-red relative min-h-screen flex flex-col items-center justify-center pt-32 md:pt-40 pb-10 px-6 text-center overflow-hidden">
+    <main class="bg-subtle-red relative min-h-screen flex flex-col items-center justify-center pt-32 md:pt-40 pb-6 text-center overflow-hidden">
         
-        <!-- EFECTO GLOW SUTIL DE FONDO -->
-        <div class="absolute top-[35%] left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-rs-red/10 rounded-full blur-[100px] md:blur-[140px] pointer-events-none -z-10"></div>
+        <!-- Malla tecnológica sutil -->
+        <div class="tech-mesh-layer"></div>
+
+        <!-- Sistema de Corriente Vectorial Avanzada (Pulso Neon) -->
+        <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
+            <svg class="w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 800">
+                <path d="M -50 120 Q 350 80 720 380 T 1500 680" fill="none" stroke="url(#neon-flow-gradient)" stroke-width="2" />
+                <path d="M 1500 150 Q 1000 450 720 380 T -50 700" fill="none" stroke="url(#neon-flow-gradient)" stroke-width="1.5" />
+                <defs>
+                    <linearGradient id="neon-flow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#FF3C00" stop-opacity="0"></stop>
+                        <stop offset="50%" stop-color="#FF3C00" stop-opacity="1">
+                            <!-- Animación controlada dinámicamente con retraso inicial exacto de 3s -->
+                            <animate id="pulse-anim" attributeName="offset" values="-1; 2" dur="3s" begin="3s; pulse-anim.end+3s" fill="freeze" />
+                        </stop>
+                        <stop offset="100%" stop-color="#FF3C00" stop-opacity="0"></stop>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
         
-        <!-- CONTENEDOR DEL HERO EMPUJADO HACIA ABAJO -->
-        <div class="flex flex-col items-center w-full mt-[70px] md:mt-[80px]">
+        <!-- Esfera central de fondo ambiental -->
+        <div class="absolute top-[35%] left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-rs-red/5 rounded-full blur-[100px] md:blur-[140px] pointer-events-none -z-10"></div>
+        
+        <!-- Contenedor del Hero -->
+        <div class="flex flex-col items-center w-full mt-[40px] md:mt-[50px] relative z-10 px-4">
             <h1 id="hero-title" class="font-display text-4xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1] max-w-4xl">
                 Ecosistema Digital Que Vende.
             </h1>
@@ -153,7 +263,7 @@
                 Implementamos maquinaria de ventas automatizada para negocios con resultados reales.
             </p>
 
-            <div class="flex flex-col md:flex-row gap-4 w-full max-w-[320px] md:max-w-md mb-20">
+            <div class="flex flex-col sm:flex-row gap-4 w-full max-w-[320px] md:max-w-md mb-16">
                 <button onclick="handleGoogleSignIn()" class="flex-1 flex items-center justify-center gap-3 bg-white text-black py-4 rounded-lg text-sm font-bold shadow-lg transition hover:bg-gray-200">
                     <svg class="w-5 h-5" viewBox="0 0 24 24">
                         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -164,42 +274,51 @@
                     Google
                 </button>
                 
-                <button onclick="openRegisterModal()" class="flex-1 py-4 rounded-lg text-sm font-semibold text-white transition bg-rs-gray border border-white/10 neon-border">
+                <button onclick="openRegisterModal()" class="flex-1 py-4 rounded-lg text-sm font-semibold text-white transition bg-rs-gray/40 neon-premium-btn">
                     Comenzar Gratis
                 </button>
             </div>
         </div>
 
-        <!-- SLIDER ANCLADO AL FONDO -->
-        <div class="w-full max-w-4xl px-4 mt-auto mb-10">
-            <p id="trust-text" class="text-xs uppercase tracking-[0.2em] text-gray-500 font-bold mb-8">
+        <!-- Slider 100% de Ancho Completo sin bordes ni fondos artificiales -->
+        <div class="w-full mt-auto mb-4">
+            <p id="trust-text" class="text-xs uppercase tracking-[0.2em] text-gray-500 font-bold mb-8 px-4">
                 Con la confianza de marcas líderes en Colombia
             </p>
             
-            <div class="w-full overflow-hidden relative">
+            <div class="w-full overflow-hidden relative py-2">
                 <div class="flex animate-bullet-train logo-track items-center">
                     
                     <div class="flex items-center gap-16 md:gap-24 px-4">
-                        <img src="ruta/a/tu/logo-bross.png" alt="Bross" class="logo-item h-8 md:h-10 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-supabase.png" alt="Supabase" class="logo-item h-8 md:h-10 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-make.png" alt="Make" class="logo-item h-8 md:h-10 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-meta.png" alt="Meta" class="logo-item h-8 md:h-10 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-openai.png" alt="OpenAI" class="logo-item h-8 md:h-10 w-auto object-contain">
+                        <img src="ruta/a/tu/logo-bross.png" alt="Bross" class="logo-item h-7 md:h-9 w-auto object-contain">
+                        <img src="ruta/a/tu/logo-supabase.png" alt="Supabase" class="logo-item h-7 md:h-9 w-auto object-contain">
+                        <img src="ruta/a/tu/logo-make.png" alt="Make" class="logo-item h-7 md:h-9 w-auto object-contain">
+                        <img src="ruta/a/tu/logo-meta.png" alt="Meta" class="logo-item h-7 md:h-9 w-auto object-contain">
+                        <img src="ruta/a/tu/logo-openai.png" alt="OpenAI" class="logo-item h-7 md:h-9 w-auto object-contain">
                     </div>
                     
                     <div class="flex items-center gap-16 md:gap-24 px-4">
-                        <img src="ruta/a/tu/logo-bross.png" alt="Bross" class="logo-item h-8 md:h-10 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-supabase.png" alt="Supabase" class="logo-item h-8 md:h-10 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-make.png" alt="Make" class="logo-item h-8 md:h-10 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-meta.png" alt="Meta" class="logo-item h-8 md:h-10 w-auto object-contain">
-                        <img src="ruta/a/tu/logo-openai.png" alt="OpenAI" class="logo-item h-8 md:h-10 w-auto object-contain">
+                        <img src="ruta/a/tu/logo-bross.png" alt="Bross" class="logo-item h-7 md:h-9 w-auto object-contain">
+                        <img src="ruta/a/tu/logo-supabase.png" alt="Supabase" class="logo-item h-7 md:h-9 w-auto object-contain">
+                        <img src="ruta/a/tu/logo-make.png" alt="Make" class="logo-item h-7 md:h-9 w-auto object-contain">
+                        <img src="ruta/a/tu/logo-meta.png" alt="Meta" class="logo-item h-7 md:h-9 w-auto object-contain">
+                        <img src="ruta/a/tu/logo-openai.png" alt="OpenAI" class="logo-item h-7 md:h-9 w-auto object-contain">
                     </div>
 
                 </div>
             </div>
+
+            <!-- Insignia Profesional de Confianza Técnica -->
+            <div class="flex justify-center items-center mt-6 gap-2 text-gray-600 px-4">
+                <svg class="w-4 h-4 text-rs-red opacity-60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+                <span class="text-[10px] font-sans tracking-widest uppercase opacity-50">Infraestructura Protegida & Certificada</span>
+            </div>
         </div>
     </main>
 
+    <!-- Modal de registro intacto -->
     <div id="register-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
         <div class="bg-[#171717] border border-white/10 w-full max-w-sm p-8 rounded-2xl relative shadow-2xl">
             <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none">✕</button>
@@ -244,15 +363,13 @@
             }, 800);
         });
 
-        // NAVBAR SCROLL MÁGICO
+        // Manejo Dinámico del Nav Superior
         const mainNav = document.getElementById('main-nav');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                mainNav.classList.remove('bg-transparent', 'py-4');
-                mainNav.classList.add('bg-black/80', 'backdrop-blur-md', 'py-3', 'shadow-lg');
+            if (window.scrollY > 40) {
+                mainNav.classList.add('glass-nav-scrolled');
             } else {
-                mainNav.classList.remove('bg-black/80', 'backdrop-blur-md', 'py-3', 'shadow-lg');
-                mainNav.classList.add('bg-transparent', 'py-4');
+                mainNav.classList.remove('glass-nav-scrolled');
             }
         });
 
@@ -295,5 +412,415 @@
             alert("Redirigiendo a Google Auth...");
         }
     </script>
+
+<section id="maquinaria-automatizada" class="relative w-full bg-[#050505] text-white py-20 md:py-28 overflow-hidden select-none">
+    
+    <style>
+        :root {
+            --rs-orange: #FF3C00;
+            --rs-orange-glow: rgba(255, 60, 0, 0.15);
+            --rs-card-bg: rgba(12, 12, 12, 0.85);
+            --rs-border-subtle: rgba(255, 255, 255, 0.03);
+        }
+        
+        /* Blending limpio para clips de video integrados en las tarjetas */
+        .clip-blend-container {
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+        }
+
+        /* Efecto de Apilamiento Avanzado y Fluido en Scroll */
+        .stacking-card {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, box-shadow 0.4s ease, border-color 0.3s ease;
+            transform-origin: center top;
+            background: var(--rs-card-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        
+        .stacking-card:hover {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            border-color: rgba(255, 60, 0, 0.15) !important;
+        }
+
+        /* Títulos estilizados refinados con marco sutil */
+        .premium-title-frame {
+            background: rgba(255, 255, 255, 0.015);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--rs-orange);
+        }
+
+        /* Visibilidad Optimizada para Números de Fondo */
+        .neon-phase-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            line-height: 0.8;
+            color: rgba(255, 255, 255, 0.01);
+            text-shadow: 0 0 30px rgba(255, 60, 0, 0.02);
+            user-select: none;
+            pointer-events: none;
+            transition: color 0.4s ease, text-shadow 0.4s ease;
+        }
+        
+        .stacking-card:hover .neon-phase-number {
+            color: rgba(255, 60, 0, 0.03);
+            text-shadow: 0 0 40px rgba(255, 60, 0, 0.1);
+        }
+
+        /* Animación perimetral limpia para el botón de WhatsApp */
+        .wa-premium-glow-button {
+            position: relative;
+            isolation: isolate;
+        }
+        .wa-premium-glow-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            z-index: -1;
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+            animation: waPulseEngine 2.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes waPulseEngine {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Estructura de Red de Fondo Sutilizada */
+        .cyber-grid-overlay-clean {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(circle at 50% 50%, white 50%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, white 50%, transparent 100%);
+        }
+    </style>
+
+    <!-- Fondos de Iluminación Ambiental y Claridad Dinámica -->
+    <div class="absolute inset-0 pointer-events-none z-0 cyber-grid-overlay-clean"></div>
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-neutral-900/30 rounded-full blur-[140px] pointer-events-none z-0"></div>
+    <div class="absolute bottom-20 right-12 w-[400px] h-[400px] bg-[#FF3C00]/3 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Encabezado Principal -->
+        <div class="w-full mb-16 md:mb-20 text-left raw-reveal max-w-4xl">
+            <div class="premium-title-frame p-6 md:p-8 rounded-2xl shadow-[0_24px_60px_rgba(0,0,0,0.7)] pl-6 md:pl-10">
+                <span class="text-[10px] font-mono tracking-[0.4em] text-[#FF3C00] uppercase block mb-3 font-bold">INFRAESTRUCTURA DE CONVERSIÓN</span>
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-white leading-[1.1] max-w-3xl">
+                    Ecosistemas tecnológicos que multiplican sus ventas
+                </h2>
+            </div>
+        </div>
+
+        <!-- Contenedor Principal de Tarjetas (Stacking Wrapper) -->
+        <div id="cards-stack-wrapper" class="space-y-10 md:space-y-14 w-full">
+            
+            <!-- TARJETA 1: CAPTACIÓN -->
+            <div id="card-phase-1" class="stacking-card sticky top-24 w-full rounded-2xl border border-white/[0.03] overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
+                    
+                    <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 clip-blend-container overflow-hidden">
+                        <video class="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-40" autoplay loop muted playsinline>
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-32111-large.mp4" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent lg:hidden"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050505] hidden lg:block"></div>
+                    </div>
+
+                    <div class="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute bottom-[-20px] right-4 text-[10rem] sm:text-[14rem] neon-phase-number">1</div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-5">
+                                <div class="p-2 rounded-xl bg-[#FF3C00]/10 border border-[#FF3C00]/20 text-[#FF3C00]">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9s2.015-9 4.5-9m0 0a9.003 9.003 0 018.716 2.253M12 3a9.003 9.003 0 00-8.716 2.253M12 12h.008v.008H12V12z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12h19.5M4.5 6h15M6 9h.008v.008H6V9z" />
+                                    </svg>
+                                </div>
+                                <div class="premium-title-frame px-3 py-0.5 rounded-md">
+                                    <span class="font-mono text-[9px] text-neutral-400 tracking-widest uppercase">Fase Inicial // Tráfico</span>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Captación Inmediata de Prospectos</h3>
+                            <p class="text-base sm:text-lg text-neutral-300 font-normal Desert-prose leading-relaxed max-w-xl">
+                                Estructuramos pauta avanzada en canales nativos para capturar decisores de inmediato. Datos reales, alto impacto y cero presupuesto desperdiciado.
+                            </p>
+                        </div>
+
+                        <div class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-4 max-w-md font-mono text-[11px] text-neutral-400 relative z-10">
+                            <div>
+                                <span class="block text-white font-bold text-sm mb-0.5">> 4.19%</span>
+                                CTR Promedio Estimado
+                            </div>
+                            <div>
+                                <span class="block text-white font-bold text-sm mb-0.5">Meta / Google</span>
+                                Inyección de Canales
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETA 2: PROCESAMIENTO (PUNTO DE ACTIVACIÓN DE WHATSAPP) -->
+            <div id="card-phase-2" class="stacking-card sticky top-28 w-full rounded-2xl border border-white/[0.03] overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
+                    
+                    <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 clip-blend-container overflow-hidden">
+                        <video class="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-35" autoplay loop muted playsinline>
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-technology-digital-interface-background-43073-large.mp4" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent lg:hidden"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050505] hidden lg:block"></div>
+                    </div>
+
+                    <div class="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute bottom-[-20px] left-4 text-[10rem] sm:text-[14rem] neon-phase-number">2</div>
+                        
+                        <div class="relative z-10 lg:pl-4">
+                            <div class="flex items-center gap-3 mb-5">
+                                <div class="p-2 rounded-xl bg-[#1877F2]/10 border border-[#1877F2]/20 text-[#1877F2]">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                </div>
+                                <div class="premium-title-frame px-3 py-0.5 rounded-md">
+                                    <span class="font-mono text-[9px] text-neutral-400 tracking-widest uppercase">Fase Intermedia // Filtro</span>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Procesamiento Automatizado</h3>
+                            <p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl">
+                                Filtramos mirones y segmentamos compradores reales. Con integraciones ágiles en Make y Activepieces, usted solo consume tiempo con prospectos calificados.
+                            </p>
+                        </div>
+
+                        <div class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-4 max-w-md font-mono text-[11px] text-neutral-400 relative z-10 lg:pl-4">
+                            <div>
+                                <span class="block text-white font-bold text-sm mb-0.5">Make / API Webhooks</span>
+                                Interconexión Total
+                            </div>
+                            <div>
+                                <span class="block text-white font-bold text-sm mb-0.5">100% Automatizado</span>
+                                Cero Procesos Manuales
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETA 3: TABLEROS -->
+            <div id="card-phase-3" class="stacking-card sticky top-32 w-full rounded-2xl border border-white/[0.03] overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
+                    
+                    <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 clip-blend-container overflow-hidden">
+                        <video class="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-35" autoplay loop muted playsinline>
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-matrix-style-falling-binary-code-background-43075-large.mp4" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent lg:hidden"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050505] hidden lg:block"></div>
+                    </div>
+
+                    <div class="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute bottom-[-20px] right-4 text-[10rem] sm:text-[14rem] neon-phase-number">3</div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-5">
+                                <div class="p-2 rounded-xl bg-[#4285F4]/10 border border-[#4285F4]/20 text-[#4285F4]">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 13.5h3.86a2.25 2.25 0 012.008 1.24l.885 1.77a2.25 2.25 0 002.007 1.24h1.98a2.25 2.25 0 002.007-1.24l.885-1.77a2.25 2.25 0 012.007-1.24h3.86m-18 0h18M2.25 9h18M2.25 18h18M11.47 2.47a.75.75 0 011.06 0l3 3a.75.75 0 01-1.06 1.06l-1.72-1.72V12a.75.75 0 01-1.5 0V4.81L9.53 6.53a.75.75 0 01-1.06-1.06l3-3z" />
+                                    </svg>
+                                </div>
+                                <div class="premium-title-frame px-3 py-0.5 rounded-md">
+                                    <span class="font-mono text-[9px] text-neutral-400 tracking-widest uppercase">Fase Final // Retorno</span>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">Cierre y Tableros Supabase</h3>
+                            <p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl">
+                                Desarrollamos paneles personalizados para monitorear métricas clave en vivo. Controle su ROAS y flujos consolidados de forma inmediata y sin fricciones.
+                            </p>
+                        </div>
+
+                        <div class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-4 max-w-md font-mono text-[11px] text-neutral-400 relative z-10">
+                            <div>
+                                <span class="block text-white font-bold text-sm mb-0.5">Supabase Realtime</span>
+                                Datos Consolidados
+                            </div>
+                            <div>
+                                <span class="block text-white font-bold text-sm mb-0.5">Métricas en Vivo</span>
+                                Control Absoluto
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- MÓDULO: HUMANO + INTELIGENCIA ARTIFICIAL (Impecable, Sin Marcos y Soporta Video/Foto) -->
+        <div class="mt-20 md:mt-24 w-full border border-white/[0.03] rounded-2xl p-6 sm:p-12 bg-gradient-to-b from-neutral-900/20 to-transparent relative overflow-hidden">
+            
+            <div class="w-full mb-10 text-center max-w-2xl mx-auto">
+                <div class="premium-title-frame inline-block px-4 py-1 rounded-full mb-4 mx-auto">
+                    <span class="font-mono text-[9px] tracking-[0.25em] text-[#FF3C00] uppercase font-bold">INGENIERÍA HÍBRIDA</span>
+                </div>
+                <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Procesos ejecutados por humanos junto a la IA</h4>
+                <p class="text-sm sm:text-base text-neutral-400 font-light mt-2 leading-relaxed">
+                    Unión perfecta: automatización avanzada gobernada por analistas expertos para asegurar blindaje estratégico y conversiones reales.
+                </p>
+            </div>
+
+            <!-- Grid de Contenido Absolutamente Limpio (Sin Marcos Notables) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto items-center justify-center">
+                
+                <!-- Nodo Agente IA: Antonella -->
+                <div class="group relative flex flex-col items-center justify-center text-center transition-all duration-300">
+                    <div class="absolute top-0 right-2 font-mono text-[7px] text-neutral-600 group-hover:text-[#FF3C00] transition-colors">AI_NODE // V.02</div>
+                    
+                    <!-- Contenedor Ultra Limpio Totalmente Ajustable para Video o Foto (w-32 h-36) -->
+                    <div class="w-32 h-36 rounded-xl overflow-hidden relative flex items-center justify-center transition-all group-hover:scale-105 duration-500">
+                        <!-- Puedes usar <video> o <img> de manera intercambiable aquí sin errores -->
+                        <video class="absolute inset-0 w-full h-full object-cover opacity-80" autoplay loop muted playsinline onerror="this.style.display='none'">
+                            <source src="ruta_a_clip_antonella.mp4" type="video/mp4">
+                        </video>
+                        <img src="ruta_a_imagen_antonella.png" alt="Antonella Core" class="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-500" onerror="this.style.display='none';">
+                        
+                        <!-- Fallback Visual Elegante en caso de que falten los recursos -->
+                        <div class="absolute inset-0 bg-neutral-900/60 backdrop-blur-sm flex flex-col items-center justify-center text-neutral-500 font-mono text-[8px] tracking-widest">
+                            <svg class="w-5 h-5 mb-1 text-[#FF3C00] opacity-70" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path d="M9.813 15.904L9 21l8.904-4.473L21 9l-3.473-1.904M9.813 15.904L4.5 10.5m5.313 5.404L15 9m-10.5 1.5L3 3l5.404 1.5M4.5 10.5L9 9"/></svg>
+                            ANTONELLA_IA
+                        </div>
+                    </div>
+                    
+                    <span class="font-mono text-[11px] tracking-widest text-[#FF3C00] uppercase font-bold mt-4">Antonella</span>
+                    <p class="text-xs text-neutral-400 font-light max-w-xs mt-1 leading-normal">Sistemas autónomos que operan y optimizan pauta 24/7.</p>
+                </div>
+
+                <!-- Nodo Humano: Dirección -->
+                <div class="group relative flex flex-col items-center justify-center text-center transition-all duration-300">
+                    <div class="absolute top-0 right-2 font-mono text-[7px] text-neutral-600 group-hover:text-white transition-colors">HUMAN // INTEL</div>
+                    
+                    <!-- Contenedor Ultra Limpio Totalmente Ajustable para Video o Foto (w-32 h-36) -->
+                    <div class="w-32 h-36 rounded-xl overflow-hidden relative flex items-center justify-center transition-all group-hover:scale-105 duration-500">
+                        <!-- Soporte Nativo para Video o Foto indistintamente -->
+                        <video class="absolute inset-0 w-full h-full object-cover opacity-80" autoplay loop muted playsinline onerror="this.style.display='none'">
+                            <source src="ruta_a_clip_humano.mp4" type="video/mp4">
+                        </video>
+                        <img src="ruta_a_tu_foto_cedula.jpg" alt="Especialista Red Sapien" class="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-500" onerror="this.style.display='none';">
+                        
+                        <!-- Fallback Visual Elegante -->
+                        <div class="absolute inset-0 bg-neutral-900/60 backdrop-blur-sm flex flex-col items-center justify-center text-neutral-500 font-mono text-[8px] tracking-widest">
+                            <svg class="w-5 h-5 mb-1 text-white opacity-60" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 01-7.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                            HUMAN_CORE
+                        </div>
+                    </div>
+                    
+                    <span class="font-mono text-[11px] tracking-widest text-white uppercase font-bold mt-4">Dirección Operativa</span>
+                    <p class="text-xs text-neutral-400 font-light max-w-xs mt-1 leading-normal">Arquitectura de lógica y control estricto del ROAS final.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- BOTÓN DE WHATSAPP FLOTANTE INTELIGENTE (OCULTO POR DEFECTO, SE DETECTA EN SCROLL) -->
+    <div id="floating-whatsapp-container" class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-2 group opacity-0 translate-y-10 pointer-events-none transition-all duration-500 ease-out">
+        
+        <div class="bg-neutral-950/95 backdrop-blur-md border border-white/10 py-2 px-3.5 rounded-xl opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-2xl pointer-events-auto">
+            <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                <span class="text-[9px] font-mono tracking-wider text-white uppercase font-bold">Asesor Comercial Online</span>
+            </div>
+            <p class="text-[10px] text-neutral-400 font-light mt-0.5">¿Iniciamos la automatización de su negocio?</p>
+        </div>
+
+        <a href="https://wa.me/573000000000?text=Hola%20Red%20Sapien.%20Solicito%20diagn%C3%B3stico%20de%20conversiones%20para%20mi%20empresa." 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-[0_8px_25px_rgba(37,211,102,0.35)] pointer-events-auto wa-premium-glow-button"
+           aria-label="Conexión Directa con Red Sapien">
+            
+            <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.457 3.422 1.257 4.877L2 22l5.292-1.389c1.4.762 2.99 1.186 4.712 1.186 5.51 0 9.993-4.483 9.993-9.994C21.997 6.483 17.514 2 12.004 2zm5.787 14.394c-.242.68-.1.173-1.42 1.507-.344.348-.795.534-1.285.534-.413 0-.877-.13-1.49-.408-2.612-1.183-4.32-3.82-4.452-4.004-.127-.174-1.092-1.455-1.092-2.776 0-1.32.693-1.966.942-2.233.243-.26.533-.327.712-.327.18 0 .36 0 .513.007.16.007.373-.06.586.447.213.513.733 1.787.794 1.913.067.127.113.273.027.447-.087.173-.16.287-.313.466-.154.18-.327.4-.467.54-.153.154-.313.32-.133.627.18.307.806 1.327 1.727 2.147.92.82 1.693 1.073 2.006 1.2.313.127.493.107.68-.107.187-.213.8-1.026.933-1.22.133-.193.28-.16.473-.086.193.073 1.22.573 1.48.7.26.127.433.193.493.3.06.107.06.62-.18 1.3z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- LÓGICA DE RENDIMIENTO E INTERSECCIÓN AVANZADA -->
+    <script>
+        (function() {
+            document.addEventListener('DOMContentLoaded', () => {
+                
+                // 1. Observer de Revelación Progresiva para Títulos
+                const revealElements = document.querySelectorAll('.raw-reveal');
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if(entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                revealElements.forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(15px)';
+                    el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                    revealObserver.observe(el);
+                });
+
+                // 2. Control de Apilamiento de Tarjetas (Efecto Stacking Scroll)
+                const cards = document.querySelectorAll('.stacking-card');
+                window.addEventListener('scroll', () => {
+                    const stackWrapper = document.getElementById('cards-stack-wrapper');
+                    if (!stackWrapper) return;
+                    
+                    cards.forEach((card, index) => {
+                        const cardTop = card.getBoundingClientRect().top;
+                        if (cardTop <= (96 + (index * 12))) { 
+                            const factor = Math.max(0.94, 1 - (Math.abs(cardTop - 96) / 6000));
+                            card.style.transform = `scale(${factor})`;
+                            card.style.opacity = `${Math.max(0.8, 1 - (Math.abs(cardTop - 96) / 3000))}`;
+                        } else {
+                            card.style.transform = 'scale(1)';
+                            card.style.opacity = '1';
+                        }
+                    });
+                });
+
+                // 3. Lógica Única e Infalible de WhatsApp para aparecer SOLO al llegar a la Sección / Tarjeta 2
+                const whatsappContainer = document.getElementById('floating-whatsapp-container');
+                const targetCardPhase2 = document.getElementById('card-phase-2');
+                
+                if (whatsappContainer && targetCardPhase2) {
+                    const whatsappObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            // Se muestra si la tarjeta 2 entra en pantalla o si el usuario ya bajó más allá de ella
+                            if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+                                whatsappContainer.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                                whatsappContainer.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                            } else {
+                                // Se oculta automáticamente si regresa arriba de la tarjeta 2
+                                whatsappContainer.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                                whatsappContainer.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                            }
+                        });
+                    }, {
+                        threshold: 0.05, // Se activa de inmediato al tocar el inicio de la tarjeta 2
+                        rootMargin: "0px 0px -10% 0px"
+                    });
+                    
+                    whatsappObserver.observe(targetCardPhase2);
+                }
+            });
+        })();
+    </script>
+</section>
+
 </body>
 </html>
