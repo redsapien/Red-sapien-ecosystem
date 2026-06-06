@@ -181,12 +181,16 @@
         <div class="h-1.5 w-full" style="background: linear-gradient(to right, #FCD116 50%, #003893 50% 75%, #CE1126 75%);"></div>
         
         <nav id="main-nav" class="px-6 py-4 md:px-12 flex justify-between items-center glass-nav-premium">
-            <div class="flex items-center">
+            <div id="nav-left-slot" class="flex items-center">
                 <select id="lang-selector" onchange="changeLanguage(this.value)" class="bg-transparent text-xs font-bold text-gray-400 outline-none cursor-pointer border-none focus:ring-0">
                     <option value="es">ES</option>
                     <option value="en">EN</option>
                     <option value="pt">PT</option>
                 </select>
+                
+                <button id="scroll-register-btn" onclick="openRegisterModal()" class="hidden px-4 py-2 text-xs font-bold text-white neon-premium-btn rounded-lg whitespace-nowrap">
+                    Regístrate Gratis
+                </button>
             </div>
 
             <button id="menu-trigger" class="p-2 hover:bg-white/5 rounded-lg transition-all text-white focus:outline-none border border-white/5" aria-label="Abrir menú">
@@ -296,23 +300,29 @@
         </div>
     </main>
 
-    <div id="register-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
-        <div class="bg-[#171717] border border-white/10 w-full max-w-sm p-8 rounded-2xl relative shadow-2xl">
-            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none">✕</button>
-            <h2 id="modal-title" class="text-xl font-display font-bold mb-6 text-white text-center">Registro Ecosistema</h2>
-            <form id="email-form" class="space-y-4" onsubmit="event.preventDefault();">
-                <div>
-                    <input type="email" required placeholder="Correo electrónico" class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors">
-                </div>
-                <div>
-                    <input type="password" required placeholder="Contraseña segura" class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors">
-                </div>
-                <button type="submit" id="btn-submit" class="w-full py-3 bg-rs-red rounded-lg font-bold text-white hover:bg-opacity-90 transition-all shadow-lg shadow-rs-red/20">
-                    Registrarse
+   <div id="register-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-[#171717] border border-white/10 w-full max-w-sm p-8 rounded-2xl relative shadow-2xl">
+        <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none">✕</button>
+        <h2 id="modal-title" class="text-xl font-display font-bold mb-6 text-white text-center">Registro Ecosistema</h2>
+        <form id="email-form" class="space-y-4" onsubmit="event.preventDefault();">
+            <div>
+                <input type="email" required placeholder="Correo electrónico" class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors">
+            </div>
+            <div class="relative">
+                <input type="password" id="password-input" required placeholder="Contraseña segura" class="w-full bg-[#0a0a0a] border border-white/10 p-3 pr-12 rounded-lg text-white outline-none focus:border-rs-red transition-colors">
+                <button type="button" onclick="togglePassword()" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors">
+                    <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                    </svg>
                 </button>
-            </form>
-        </div>
+            </div>
+            <button type="submit" id="btn-submit" class="w-full py-3 bg-rs-red rounded-lg font-bold text-white hover:bg-opacity-90 transition-all shadow-lg shadow-rs-red/20">
+                Registrarse
+            </button>
+        </form>
     </div>
+</div>
 
     <script>
         const content = {
@@ -344,15 +354,23 @@
             }, 9000);
         });
 
-        // Manejo Dinámico del Nav Superior
-        const mainNav = document.getElementById('main-nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 40) {
-                mainNav.classList.add('glass-nav-scrolled');
-            } else {
-                mainNav.classList.remove('glass-nav-scrolled');
-            }
-        });
+        // Manejo Dinámico del Nav Superior y Botón
+const mainNav = document.getElementById('main-nav');
+const langSelector = document.getElementById('lang-selector');
+const scrollBtn = document.getElementById('scroll-register-btn');
+
+window.addEventListener('scroll', () => {
+    // CAMBIA EL 200 POR EL VALOR QUE QUIERAS (ej. 300, 400, etc.)
+    if (window.scrollY > 769) { 
+        mainNav.classList.add('glass-nav-scrolled');
+        langSelector.classList.add('hidden');
+        scrollBtn.classList.remove('hidden');
+    } else {
+        mainNav.classList.remove('glass-nav-scrolled');
+        langSelector.classList.remove('hidden');
+        scrollBtn.classList.add('hidden');
+    }
+});
 
         const menuTrigger = document.getElementById('menu-trigger');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -392,6 +410,12 @@
             console.log("Iniciando flujo de autenticación...");
             alert("Redirigiendo a Google Auth...");
         }
+
+        function togglePassword() {
+            const passInput = document.getElementById('password-input');
+            passInput.type = passInput.type === 'password' ? 'text' : 'password';
+        }
+        
     </script>
     
 <section id="maquinaria-automatizada" class="relative w-full bg-[#050505] text-white py-20 md:py-28 overflow-hidden select-none">
