@@ -355,22 +355,21 @@
         });
 
         // Manejo Dinámico del Nav Superior y Botón
-const mainNav = document.getElementById('main-nav');
-const langSelector = document.getElementById('lang-selector');
-const scrollBtn = document.getElementById('scroll-register-btn');
+        const mainNav = document.getElementById('main-nav');
+        const langSelector = document.getElementById('lang-selector');
+        const scrollBtn = document.getElementById('scroll-register-btn');
 
-window.addEventListener('scroll', () => {
-    // CAMBIA EL 200 POR EL VALOR QUE QUIERAS (ej. 300, 400, etc.)
-    if (window.scrollY > 769) { 
-        mainNav.classList.add('glass-nav-scrolled');
-        langSelector.classList.add('hidden');
-        scrollBtn.classList.remove('hidden');
-    } else {
-        mainNav.classList.remove('glass-nav-scrolled');
-        langSelector.classList.remove('hidden');
-        scrollBtn.classList.add('hidden');
-    }
-});
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 769) { 
+                mainNav.classList.add('glass-nav-scrolled');
+                langSelector.classList.add('hidden');
+                scrollBtn.classList.remove('hidden');
+            } else {
+                mainNav.classList.remove('glass-nav-scrolled');
+                langSelector.classList.remove('hidden');
+                scrollBtn.classList.add('hidden');
+            }
+        });
 
         const menuTrigger = document.getElementById('menu-trigger');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -413,7 +412,17 @@ window.addEventListener('scroll', () => {
 
         function togglePassword() {
             const passInput = document.getElementById('password-input');
-            passInput.type = passInput.type === 'password' ? 'text' : 'password';
+            const eyeIcon = document.getElementById('eye-icon');
+
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                // Cambiar a icono de Ojo Abierto
+                eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+            } else {
+                passInput.type = 'password';
+                // Cambiar a icono de Ojo Cerrado (con línea)
+                eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+            }
         }
         
     </script>
