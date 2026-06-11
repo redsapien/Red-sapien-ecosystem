@@ -7,7 +7,7 @@
     <meta id="meta-theme" name="theme-color" content="#050505">
     <title>Red Sapien | Terminal Operativa</title>
     
-    <!-- Favicon dinámico SVG -->
+    <!-- Favicon dinámico SVG (coincide con logo del sidebar) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23050505' stroke='%23FF3C00' stroke-width='4'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='40' fill='%23FF3C00'%3ERS%3C/text%3E%3C/svg%3E">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -49,6 +49,7 @@
             inset: 0;
             background: radial-gradient(circle at 50% -20%, rgba(255, 60, 0, 0.08) 0%, rgba(5,5,5,0) 65%), #050505;
             z-index: 0;
+            transition: background 0.4s ease;
         }
         
         /* Malla Tecnológica */
@@ -143,11 +144,6 @@
             pointer-events: none;
             border-radius: inherit;
         }
-
-        /* Transiciones suaves para elementos del header */
-        .header-transition {
-            transition: color 0.4s ease-in-out, border-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-        }
     </style>
 </head>
 
@@ -202,11 +198,11 @@
 
     <main class="flex-1 flex flex-col h-full relative z-10 overflow-hidden max-w-full">
         
-        <header id="workspace-header" class="h-24 px-6 md:px-10 flex items-center justify-between bg-rs-black/30 backdrop-blur-xl shrink-0 transition-all duration-300 z-20 header-transition" style="border-bottom: 1px solid rgba(255,255,255,0.05); box-shadow: none;">
+        <header id="workspace-header" class="h-24 px-6 md:px-10 flex items-center justify-between bg-rs-black/30 backdrop-blur-xl shrink-0 transition-all duration-300 z-20" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
             
             <div id="header-title-container" class="flex flex-col justify-center mt-1 transition-all duration-300 origin-left">
-                <span id="welcome-subtitle" class="text-[11px] md:text-sm font-semibold tracking-widest uppercase font-sans header-transition" style="color: #9ca3af;" data-i18n="welcome_subtitle">Bienvenid@ al panel de control de</span>
-                <h2 id="brand-headline-name" class="text-2xl md:text-4xl font-display font-black tracking-tighter uppercase mt-0.5 header-transition" style="color: #ffffff; text-shadow: 0 0 20px rgba(255,255,255,0.05);">
+                <span class="text-[11px] md:text-sm font-semibold text-gray-400 tracking-widest uppercase font-sans" data-i18n="welcome_subtitle">Bienvenid@ al panel de control de</span>
+                <h2 id="brand-headline-name" class="text-2xl md:text-4xl font-display font-black tracking-tighter text-white uppercase mt-0.5" style="text-shadow: 0 0 20px rgba(255,255,255,0.05);">
                     Cargando Ecosistema...
                 </h2>
             </div>
@@ -311,7 +307,7 @@
         </div>
     </main>
 
-    <!-- MOBILE CTA CONTAINER -->
+    <!-- MOBILE CTA CONTAINER (con espaciado ajustado: bottom-[100px]) -->
     <div id="mobile-cta-container" class="md:hidden fixed bottom-[100px] left-0 right-0 w-full flex justify-center z-40 px-4 transition-opacity duration-300">
         
         <div id="cta-btn-wrapper-mob" class="relative w-full max-w-sm group">
@@ -363,7 +359,7 @@
         </button>
     </div>
 
-    <!-- Modales existentes centrados -->
+    <!-- Modales existentes centrados correctamente -->
     <div id="terms-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden">
         <div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl">
             <h3 class="font-display font-bold text-lg text-white mb-2" data-i18n="terms_title">Términos del Nodo</h3>
@@ -401,9 +397,9 @@
                 btn_activate: "Activar ahora el Ecosistema", btn_support: "Soporte Técnico",
                 tooltip_activate: "Haz clic para que te contactemos e iniciemos con la activación",
                 tooltip_activate_mobile: "Haz clic para que te contactemos e iniciemos la activación",
-                footer_sys: "SYS.NODE // ONLINE", upload_logo: "Subir Logo del Negocio", panel_global: "Panel Global",
-                accent_color: "🎨 Color de Acento", language: "🌐 Idioma Preferido", terms: "Términos de Uso",
-                delete_account: "Eliminar cuenta y datos", terms_title: "Términos del Nodo",
+                footer_sys: "SYS.NODE // ONLINE", upload_logo: "Subir Logo del Negocio", change_logo: "Cambiar Logo",
+                panel_global: "Panel Global", accent_color: "🎨 Color de Acento", language: "🌐 Idioma Preferido",
+                terms: "Términos de Uso", delete_account: "Eliminar cuenta y datos", terms_title: "Términos del Nodo",
                 terms_text: "Este centro operativo procesa analíticas web y flujos conversacionales. Al interactuar con la plataforma, aceptas la conexión automatizada de la maquinaria comercial.",
                 understand: "Entendido", support_title: "Soporte Técnico",
                 support_text: "Nuestro equipo está listo para asistirte. Envía un mensaje a soporte@redsapien.com o llama al +57 300 000 0000.",
@@ -416,9 +412,9 @@
                 welcome_subtitle: "Welcome to the control panel of", btn_activate: "Activate Ecosystem Now", btn_support: "Technical Support",
                 tooltip_activate: "Click for us to contact you and start activation",
                 tooltip_activate_mobile: "Click for us to contact you and start activation",
-                footer_sys: "SYS.NODE // ONLINE", upload_logo: "Upload Business Logo", panel_global: "Global Panel",
-                accent_color: "🎨 Accent Color", language: "🌐 Preferred Language", terms: "Terms of Use",
-                delete_account: "Delete account and data", terms_title: "Node Terms",
+                footer_sys: "SYS.NODE // ONLINE", upload_logo: "Upload Business Logo", change_logo: "Change Logo",
+                panel_global: "Global Panel", accent_color: "🎨 Accent Color", language: "🌐 Preferred Language",
+                terms: "Terms of Use", delete_account: "Delete account and data", terms_title: "Node Terms",
                 terms_text: "This operational center processes web analytics and conversational flows. By interacting with the platform, you accept the automated connection of commercial machinery.",
                 understand: "Understood", support_title: "Technical Support",
                 support_text: "Our team is ready to assist you. Send a message to support@redsapien.com or call +57 300 000 0000.",
@@ -431,9 +427,9 @@
                 welcome_subtitle: "Bem-vindo ao painel de controle da", btn_activate: "Ativar Ecossistema Agora", btn_support: "Suporte Técnico",
                 tooltip_activate: "Clique para entrarmos em contato e iniciarmos a ativação",
                 tooltip_activate_mobile: "Clique para entrarmos em contato e iniciarmos a ativação",
-                footer_sys: "SYS.NODE // ONLINE", upload_logo: "Enviar Logo da Empresa", panel_global: "Painel Global",
-                accent_color: "🎨 Cor Destaque", language: "🌐 Idioma Preferido", terms: "Termos de Uso",
-                delete_account: "Excluir conta e dados", terms_title: "Termos do Nó",
+                footer_sys: "SYS.NODE // ONLINE", upload_logo: "Enviar Logo da Empresa", change_logo: "Alterar Logo",
+                panel_global: "Painel Global", accent_color: "🎨 Cor Destaque", language: "🌐 Idioma Preferido",
+                terms: "Termos de Uso", delete_account: "Excluir conta e dados", terms_title: "Termos do Nó",
                 terms_text: "Este centro operacional processa análises da web e fluxos conversacionais. Ao interagir com a plataforma, você aceita a conexão automatizada da maquinaria comercial.",
                 understand: "Entendido", support_title: "Central de Suporte",
                 support_text: "Nossa equipe está pronta para ajudá-lo. Envie uma mensagem para suporte@redsapien.com ou ligue para +57 300 000 0000.",
@@ -520,7 +516,7 @@
             updateUIFromState();
         }
 
-        // ---------- TOAST Y ACTIVACIÓN ----------
+        // ---------- TOAST FLOTANTE Y NUEVA LÓGICA DE ACTIVACIÓN ----------
         let activationTimeout = null;
         function showSuccessToast(businessName) {
             const toast = document.createElement('div');
@@ -571,7 +567,6 @@
             }, 3000);
         };
 
-        // -------------------- FUNCIONES DE INTERFAZ --------------------
         function openSupportModal() { toggleSupportModal(true); }
         function toggleSupportModal(show) { document.getElementById("support-modal-overlay").classList.toggle("hidden", !show); }
         function closeDropdownMenu() { document.getElementById("dropdown-menu-card").classList.add("hidden"); }
@@ -594,7 +589,9 @@
                 document.getElementById("avatar-state-empty").classList.add("hidden");
                 document.getElementById("avatar-state-img").src = savedAvatar;
                 document.getElementById("avatar-state-img").classList.remove("hidden");
-                document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.upload_logo || "Cambiar Logo del Negocio";
+                document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.change_logo || "Cambiar Logo";
+            } else {
+                document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.upload_logo || "Subir Logo del Negocio";
             }
         }
         function executeSidebarCollapse() {
@@ -620,7 +617,8 @@
                 document.getElementById("avatar-state-empty").classList.add("hidden");
                 document.getElementById("avatar-state-img").src = base64Img;
                 document.getElementById("avatar-state-img").classList.remove("hidden");
-                document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.upload_logo || "Cambiar Logo del Negocio";
+                // Cambiar el texto del botón a "Cambiar Logo" después de la carga
+                document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.change_logo || "Cambiar Logo";
             };
             reader.readAsDataURL(file);
         }
@@ -643,13 +641,14 @@
         }
         function hexToRgb(hex) { let r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16); return `${r},${g},${b}`; }
         
-        // --- NUEVA LÓGICA DE COLOR INMERSIVA (REFACTORIZADA) ---
+        // ========== LÓGICA DE COLOR INMERSIVA (REFACTORIZADA) ==========
         function changeGlobalNeonPalette(color, glow, border, element) {
             // 1. Actualizar variables CSS globales
             document.documentElement.style.setProperty('--accent-color', color);
             document.documentElement.style.setProperty('--accent-glow', glow);
             document.documentElement.style.setProperty('--neon-border', border);
-            document.getElementById("meta-theme").setAttribute("content", color);
+            // PROHIBIDO: NO cambiar el theme-color meta, permanece #050505 siempre
+            // document.getElementById("meta-theme").setAttribute("content", color);  // ELIMINADO
             
             // 2. Actualizar fondo ambiental (radial gradient)
             const rgbColor = hexToRgb(color);
@@ -658,46 +657,31 @@
                 ambientBg.style.background = `radial-gradient(circle at 50% -20%, rgba(${rgbColor}, 0.08) 0%, rgba(5,5,5,0) 65%), #050505`;
             }
             
-            // 3. Aplicar estilos inmersivos al HEADER (sin cambiar fondo, solo borde y sombra)
+            // 3. Aplicar efectos inmersivos al HEADER (solo borde y sombra, fondo no se toca)
             const header = document.getElementById('workspace-header');
             if (header) {
                 // Borde inferior sutil (1px) con el color seleccionado
                 header.style.borderBottom = `1px solid ${color}`;
                 // Sombra suave hacia abajo (glow) con baja opacidad
                 header.style.boxShadow = `0 4px 20px -8px ${color.replace('rgb', 'rgba').replace(')', ', 0.25)')}`;
-                // Aseguramos que el fondo siga siendo el mismo (negro con blur)
-                header.style.backgroundColor = 'rgba(5,5,5,0.3)';
-                header.style.backdropFilter = 'blur(12px)';
+                // El fondo permanece siempre igual: bg-rs-black/30 backdrop-blur-xl (no se altera)
             }
             
-            // 4. Cambiar color de textos e iconos dentro del header
-            const welcomeSpan = document.getElementById('welcome-subtitle');
-            if (welcomeSpan) welcomeSpan.style.color = color;
-            const brandName = document.getElementById('brand-headline-name');
-            if (brandName) brandName.style.color = color;
+            // 4. NO cambiar colores de textos principales (welcome subtitle ni brand name)
+            // Los textos superiores mantienen su sobriedad (gris y blanco por defecto)
             
-            // 5. Cambiar color del icono de avatar (cuando está vacío) y otros elementos del header que usan --accent-color en hover
-            const avatarIcon = document.querySelector('#dropdown-avatar-btn svg');
-            if (avatarIcon) {
-                // No cambiamos el color directo para que el hover funcione, pero podemos actualizar la variable que ya se usa
-            }
-            // También actualizamos el color de los botones de acento en el menú desplegable y otros elementos que usan var(--accent-color)
-            // Como ya se actualizó la variable CSS, los elementos que la usan se actualizan automáticamente.
-            
-            // 6. Para el botón de soporte (si está visible) y otros elementos que usen border-color dinámico, se actualizan por la variable.
-            
-            // 7. Guardar en localStorage
+            // 5. Guardar en localStorage (excepto theme-color)
             localStorage.setItem("rs_dash_color", color);
             localStorage.setItem("rs_dash_glow", glow);
             localStorage.setItem("rs_dash_neon", border);
             
-            // 8. Actualizar estilo del botón de color seleccionado en el dropdown
+            // 6. Actualizar estilo del botón de color seleccionado en el dropdown
             if (element) {
                 element.parentNode.querySelectorAll("button").forEach(b => b.classList.remove("scale-110", "border-[2px]", "border-white"));
                 element.classList.add("scale-110", "border-[2px]", "border-white");
             }
             
-            // 9. Actualizar color del icono de navegación móvil activo (si existe)
+            // 7. Actualizar color del icono de navegación móvil activo (si existe)
             const activeMobile = document.querySelector(".mobile-nav-btn.text-white svg");
             if (activeMobile) activeMobile.style.color = color;
         }
@@ -723,7 +707,7 @@
         window.addEventListener('resize', () => { const activePane = document.querySelector('.workspace-pane:not(.hidden)')?.id; if (activePane === 'pane-view-panel') handleCtaVisibility(true); else handleCtaVisibility(false); });
         document.getElementById('lang-menu-select')?.addEventListener('change', (e) => applyLanguage(e.target.value));
 
-        // Añadir keyframes para animación del toast
+        // Añadir keyframes de animación para el toast
         const style = document.createElement('style');
         style.textContent = `
             @keyframes fadeInUp {
