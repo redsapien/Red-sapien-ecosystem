@@ -144,6 +144,28 @@
             pointer-events: none;
             border-radius: inherit;
         }
+
+        /* Estilos CSS Avanzados para animaciones del Pipeline y scroll */
+        @keyframes laser-pipe {
+            0% { left: -30%; }
+            100% { left: 130%; }
+        }
+        .animate-laser-pipe {
+            animation: laser-pipe 3s infinite linear;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color, #FF3C00);
+        }
     </style>
 </head>
 
@@ -300,7 +322,166 @@
         </header>
 
         <div class="flex-1 p-6 md:p-8 overflow-hidden relative">
-            <div id="pane-view-panel" class="workspace-pane h-full neon-divider-left transition-opacity duration-200"></div>
+            <div id="pane-view-panel" class="workspace-pane h-full neon-divider-left transition-opacity duration-200">
+                <!-- CONTENIDO DE TARJETAS DE FASES DEL ECOSISTEMA (INTEGRADO) -->
+                <div class="w-full max-h-full overflow-y-auto pr-2 pb-12 font-sans custom-scrollbar select-none relative z-10">
+                    
+                    <div class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/5 pb-6">
+                        <div>
+                            <h3 class="text-xs font-mono tracking-[0.3em] text-[var(--accent-color,#FF3C00)] uppercase mb-1">Ecosistema Activo // Pipeline Operativo</h3>
+                            <p class="text-xl font-display font-black text-white tracking-tight uppercase">Seguimiento de Implementación en 4 Días</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-xl backdrop-blur">
+                            <span class="w-2 h-2 rounded-full bg-green-500 led-green"></span>
+                            <span class="text-[10px] font-mono font-bold tracking-widest text-gray-400 uppercase">Inversión Total Fases: 396.000 COP</span>
+                        </div>
+                    </div>
+
+                    <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-2">
+                        
+                        <div class="hidden lg:block absolute top-[115px] left-[25%] right-[25%] h-[2px] bg-gradient-to-r from-[var(--accent-color,#FF3C00)] via-white/10 to-[var(--accent-color,#FF3C00)] opacity-30 pointer-events-none z-0">
+                            <div class="absolute inset-0 w-1/3 bg-gradient-to-r from-transparent via-[var(--accent-color,#FF3C00)] to-transparent animate-laser-pipe"></div>
+                        </div>
+
+                        <div onclick="openPhaseDetailModal(1)" class="group relative bg-[#0a0a0a]/90 border border-white/10 hover:border-[var(--accent-color,#FF3C00)]/60 rounded-2xl p-6 transition-all duration-400 cursor-pointer flex flex-col justify-between shadow-xl hover:shadow-[0_0_30px_rgba(255,60,0,0.1)] z-10 overflow-hidden">
+                            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[var(--accent-color,#FF3C00)]/10 to-transparent rounded-bl-full pointer-events-none transition-opacity group-hover:opacity-100 opacity-50"></div>
+                            
+                            <div>
+                                <div class="flex items-start justify-between mb-4">
+                                    <span class="text-5xl font-display font-black text-white/5 group-hover:text-[var(--accent-color,#FF3C00)]/20 transition-colors tracking-tighter">01</span>
+                                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[var(--accent-color,#FF3C00)] transition-transform group-hover:scale-110 duration-300">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.856.12-1.685.344-2.468" />
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <h4 class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-1">Fase Inicial // Entrega 48h</h4>
+                                <h3 class="text-lg font-display font-bold text-white uppercase group-hover:text-[var(--accent-color,#FF3C00)] transition-colors mb-3">Sitio Web + Agente de IA</h3>
+                                
+                                <p class="text-xs text-gray-400 leading-relaxed mb-6">Infraestructura premium de 4 secciones diseñada exclusivamente para vender, acoplada a un Agente de Inteligencia Artificial entrenado ilimitadamente.</p>
+                                
+                                <div id="supabase-web-status-container" class="bg-black border border-white/5 rounded-xl p-3 mb-4 flex items-center justify-between">
+                                    <span class="text-[9px] font-mono uppercase tracking-wider text-gray-500">Estado de la Web:</span>
+                                    <div id="web-status-badge" class="flex items-center gap-2 text-amber-400 font-mono text-[10px] uppercase font-bold tracking-widest">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                                        En espera de creación
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-white/5 pt-4 mt-2 flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-gray-500 uppercase tracking-wider">Hito 1 (33%):</span>
+                                <span class="text-sm font-mono font-black text-white bg-white/5 border border-white/10 px-2.5 py-1 rounded-md">130.680 COP</span>
+                            </div>
+                            
+                            <div class="lg:hidden w-[2px] h-8 bg-gradient-to-b from-[var(--accent-color,#FF3C00)] to-transparent mx-auto mt-4 absolute bottom-0 left-1/2 -translate-x-1/2 opacity-30"></div>
+                        </div>
+
+                        <div onclick="openPhaseDetailModal(2)" class="group relative bg-[#0a0a0a]/90 border border-white/10 hover:border-[var(--accent-color,#FF3C00)]/60 rounded-2xl p-6 transition-all duration-400 cursor-pointer flex flex-col justify-between shadow-xl hover:shadow-[0_0_30px_rgba(255,60,0,0.1)] z-10 overflow-hidden">
+                            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[var(--accent-color,#FF3C00)]/10 to-transparent rounded-bl-full pointer-events-none transition-opacity group-hover:opacity-100 opacity-50"></div>
+                            
+                            <div>
+                                <div class="flex items-start justify-between mb-4">
+                                    <span class="text-5xl font-display font-black text-white/5 group-hover:text-[var(--accent-color,#FF3C00)]/20 transition-colors tracking-tighter">02</span>
+                                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[#1877F2] transition-transform group-hover:scale-110 duration-300">
+                                        <svg class="w-6 h-6 fill-currentColor" viewBox="0 0 24 24">
+                                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <h4 class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-1">Fase de Tráfico // Entrega 48h</h4>
+                                <h3 class="text-lg font-display font-bold text-white uppercase group-hover:text-[var(--accent-color,#FF3C00)] transition-colors mb-3">Redes & Campaña Meta</h3>
+                                
+                                <p class="text-xs text-gray-400 leading-relaxed mb-4">Estrategia enfocada 100% en conversión e interacción directa. Píxel optimizado y pre-entrenado para tu nicho operativo específico.</p>
+                                
+                                <div class="grid grid-cols-2 gap-2 mb-4">
+                                    <div class="bg-black/60 border border-white/5 rounded-lg p-2 font-mono">
+                                        <div class="text-[8px] uppercase text-gray-500 tracking-wider">Impresiones</div>
+                                        <div class="text-xs font-bold text-white mt-0.5" id="meta-impressions-val">--</div>
+                                    </div>
+                                    <div class="bg-black/60 border border-white/5 rounded-lg p-2 font-mono">
+                                        <div class="text-[8px] uppercase text-gray-500 tracking-wider">Alcance</div>
+                                        <div class="text-xs font-bold text-white mt-0.5" id="meta-reach-val">--</div>
+                                    </div>
+                                    <div class="bg-black/60 border border-white/5 rounded-lg p-2 font-mono">
+                                        <div class="text-[8px] uppercase text-gray-500 tracking-wider">Clics Únicos</div>
+                                        <div class="text-xs font-bold text-white mt-0.5" id="meta-clicks-val">--</div>
+                                    </div>
+                                    <div class="bg-black/60 border border-white/5 rounded-lg p-2 font-mono">
+                                        <div class="text-[8px] uppercase text-gray-500 tracking-wider">Conversiones</div>
+                                        <div class="text-xs font-bold text-[var(--accent-color,#FF3C00)] mt-0.5" id="meta-conv-val">--</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-white/5 pt-4 flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-gray-500 uppercase tracking-wider">Hito 2 (33%):</span>
+                                <span class="text-sm font-mono font-black text-white bg-white/5 border border-white/10 px-2.5 py-1 rounded-md">130.680 COP</span>
+                            </div>
+                            
+                            <div class="lg:hidden w-[2px] h-8 bg-gradient-to-b from-[var(--accent-color,#FF3C00)] to-transparent mx-auto mt-4 absolute bottom-0 left-1/2 -translate-x-1/2 opacity-30"></div>
+                        </div>
+
+                        <div onclick="openPhaseDetailModal(3)" class="group relative bg-[#0a0a0a]/90 border border-white/10 hover:border-[var(--accent-color,#FF3C00)]/60 rounded-2xl p-6 transition-all duration-400 cursor-pointer flex flex-col justify-between shadow-xl hover:shadow-[0_0_30px_rgba(255,60,0,0.1)] z-10 overflow-hidden">
+                            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[var(--accent-color,#FF3C00)]/10 to-transparent rounded-bl-full pointer-events-none transition-opacity group-hover:opacity-100 opacity-50"></div>
+                            
+                            <div>
+                                <div class="flex items-start justify-between mb-4">
+                                    <span class="text-5xl font-display font-black text-white/5 group-hover:text-[var(--accent-color,#FF3C00)]/20 transition-colors tracking-tighter">03</span>
+                                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-white transition-transform group-hover:scale-110 duration-300">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24">
+                                            <path fill="#EA4335" d="M12.24 10.285V14.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l3.245-3.13C18.465 1.02 15.547 0 12.24 0 5.582 0 0 5.37 0 12s5.582 12 12.24 12c6.96 0 11.57-4.834 11.57-11.743 0-.79-.085-1.393-.19-1.972H12.24z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <h4 class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-1">Fase Orgánica // Entrega 24h</h4>
+                                <h3 class="text-lg font-display font-bold text-white uppercase group-hover:text-[var(--accent-color,#FF3C00)] transition-colors mb-3">Google & SEO Local</h3>
+                                
+                                <p class="text-xs text-gray-400 leading-relaxed mb-6">Optimización y blindaje de tu perfil comercial de Google Business + SEO Local integrado de forma nativa a la arquitectura del sitio web y redes sociales.</p>
+                                
+                                <div class="bg-black border border-white/5 rounded-xl p-3 mb-4 flex items-center justify-between">
+                                    <span class="text-[9px] font-mono uppercase tracking-wider text-gray-500">Sincronización Global:</span>
+                                    <div class="flex items-center gap-1.5 text-[9px] font-bold font-mono tracking-widest text-green-400 uppercase">
+                                        SITIO + REDES OK
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-white/5 pt-4 mt-2 flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-gray-500 uppercase tracking-wider">Hito 3 (34%):</span>
+                                <span class="text-sm font-mono font-black text-white bg-white/5 border border-white/10 px-2.5 py-1 rounded-md">134.640 COP</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- MODAL DE DETALLE DE FASE -->
+                <div id="phase-detail-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+                    <div class="bg-[#0a0a0a] border border-white/10 rounded-2xl w-full max-w-xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 relative flex flex-col justify-between max-h-[90vh]">
+                        
+                        <button onclick="closePhaseDetailModal()" class="absolute top-4 right-4 p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white border border-white/5 transition-colors z-20">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                        </button>
+
+                        <div class="p-6 md:p-8 overflow-y-auto" id="phase-modal-body-content">
+                            </div>
+
+                        <div class="bg-black/40 border-t border-white/5 p-4 flex items-center justify-between gap-3">
+                            <button id="modal-prev-btn" onclick="navigatePhaseModal(-1)" class="px-4 py-2 text-[10px] font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition-all border border-white/5 disabled:opacity-20 disabled:pointer-events-none">
+                                &larr; Anterior
+                            </button>
+                            <div id="modal-phase-indicator-text" class="text-[10px] font-mono font-bold tracking-widest text-gray-500 uppercase">Fase 1 de 3</div>
+                            <button id="modal-next-btn" onclick="navigatePhaseModal(1)" class="px-4 py-2 text-[10px] font-mono font-bold uppercase tracking-wider bg-[var(--accent-color,#FF3C00)] text-white rounded-xl transition-all hover:brightness-110">
+                                Siguiente &rarr;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="pane-view-resultados" class="workspace-pane h-full hidden transition-opacity duration-200"></div>
             <div id="pane-view-casos" class="workspace-pane h-full hidden transition-opacity duration-200"></div>
             <div id="pane-view-notificaciones" class="workspace-pane h-full hidden transition-opacity duration-200"></div>
@@ -617,7 +798,6 @@
                 document.getElementById("avatar-state-empty").classList.add("hidden");
                 document.getElementById("avatar-state-img").src = base64Img;
                 document.getElementById("avatar-state-img").classList.remove("hidden");
-                // Cambiar el texto del botón a "Cambiar Logo" después de la carga
                 document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.change_logo || "Cambiar Logo";
             };
             reader.readAsDataURL(file);
@@ -643,45 +823,26 @@
         
         // ========== LÓGICA DE COLOR INMERSIVA (REFACTORIZADA) ==========
         function changeGlobalNeonPalette(color, glow, border, element) {
-            // 1. Actualizar variables CSS globales
             document.documentElement.style.setProperty('--accent-color', color);
             document.documentElement.style.setProperty('--accent-glow', glow);
             document.documentElement.style.setProperty('--neon-border', border);
-            // PROHIBIDO: NO cambiar el theme-color meta, permanece #050505 siempre
-            // document.getElementById("meta-theme").setAttribute("content", color);  // ELIMINADO
-            
-            // 2. Actualizar fondo ambiental (radial gradient)
             const rgbColor = hexToRgb(color);
             const ambientBg = document.querySelector('.ambient-glow-bg');
             if (ambientBg) {
                 ambientBg.style.background = `radial-gradient(circle at 50% -20%, rgba(${rgbColor}, 0.08) 0%, rgba(5,5,5,0) 65%), #050505`;
             }
-            
-            // 3. Aplicar efectos inmersivos al HEADER (solo borde y sombra, fondo no se toca)
             const header = document.getElementById('workspace-header');
             if (header) {
-                // Borde inferior sutil (1px) con el color seleccionado
                 header.style.borderBottom = `1px solid ${color}`;
-                // Sombra suave hacia abajo (glow) con baja opacidad
                 header.style.boxShadow = `0 4px 20px -8px ${color.replace('rgb', 'rgba').replace(')', ', 0.25)')}`;
-                // El fondo permanece siempre igual: bg-rs-black/30 backdrop-blur-xl (no se altera)
             }
-            
-            // 4. NO cambiar colores de textos principales (welcome subtitle ni brand name)
-            // Los textos superiores mantienen su sobriedad (gris y blanco por defecto)
-            
-            // 5. Guardar en localStorage (excepto theme-color)
             localStorage.setItem("rs_dash_color", color);
             localStorage.setItem("rs_dash_glow", glow);
             localStorage.setItem("rs_dash_neon", border);
-            
-            // 6. Actualizar estilo del botón de color seleccionado en el dropdown
             if (element) {
                 element.parentNode.querySelectorAll("button").forEach(b => b.classList.remove("scale-110", "border-[2px]", "border-white"));
                 element.classList.add("scale-110", "border-[2px]", "border-white");
             }
-            
-            // 7. Actualizar color del icono de navegación móvil activo (si existe)
             const activeMobile = document.querySelector(".mobile-nav-btn.text-white svg");
             if (activeMobile) activeMobile.style.color = color;
         }
@@ -707,18 +868,123 @@
         window.addEventListener('resize', () => { const activePane = document.querySelector('.workspace-pane:not(.hidden)')?.id; if (activePane === 'pane-view-panel') handleCtaVisibility(true); else handleCtaVisibility(false); });
         document.getElementById('lang-menu-select')?.addEventListener('change', (e) => applyLanguage(e.target.value));
 
-        // Añadir keyframes de animación para el toast
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeInUp {
-                from { opacity: 0; transform: translate(-50%, 20px); }
-                to { opacity: 1; transform: translate(-50%, 0); }
+        // --- LÓGICA DE CONTROL DE TARJETAS DE FASES INTERACTIVAS (INTEGRADA) ---
+        let currentActivePhaseInModal = 1;
+
+        const phaseDataContent = {
+            1: {
+                title: "Fase 1: Sitio Web + Agente de IA",
+                badge: "Infraestructura Base // Entrega 48 Horas",
+                desc: "Montaje completo de un ecosistema técnico premium con arquitectura limpia y de alta velocidad. No usamos plantillas lentas de WordPress; construimos código fluido optimizado para indexación y conversión inmediata.",
+                bulletTitle: "¿Qué incluye exactamente esta fase?",
+                bullets: [
+                    "<strong>Sitio Web de 4 secciones:</strong> Diseñado estratégicamente de inicio a fin con embudo de ventas integrado.",
+                    "<strong>Agente de Inteligencia Artificial:</strong> Integración de un clon de IA entrenado de forma ilimitada para responder con el ADN de tu negocio.",
+                    "<strong>Hosting y Dominio de por vida:</strong> Sin cargos ni cobros sorpresa recurrentes a final de año.",
+                    "<strong>Garantía de Riesgo Cero:</strong> Solo liberas el 33% del pago (130.680 COP) cuando el sitio esté completado y visible."
+                ]
+            },
+            2: {
+                title: "Fase 2: Redes Sociales & Campaña Meta",
+                badge: "Tráfico de Alto Impacto // Entrega 48 Horas",
+                desc: "Activamos el motor de demanda. Configuramos e inyectamos pauta directa en los dos únicos canales hiper-efectivos de interacción y mensajería en este 2026: Facebook e Instagram Ads.",
+                bulletTitle: "¿Qué incluye exactamente esta fase?",
+                bullets: [
+                    "<strong>Campaña de Ventas e Interacción:</strong> Configuración milimétrica orientada a optimizar CTR y reducir drásticamente el Costo por Mensaje (CPC).",
+                    "<strong>Píxel de Meta Avanzado:</strong> Instalación y entrenamiento algorítmico adaptado a tu nicho para capturar conversiones reales.",
+                    "<strong>Rebranding de Redes:</strong> Alineación estética premium y técnica de tus perfiles comerciales.",
+                    "<strong>Esquema por Hitos:</strong> Pagas el 33% (130.680 COP) únicamente cuando la campaña esté activa y enviando prospectos a la web."
+                ]
+            },
+            3: {
+                title: "Fase 3: Google & SEO Local",
+                badge: "Posicionamiento Orgánico // Entrega 24 Horas",
+                desc: "Blindamos tu presencia regional. El tráfico de intención en Google es el más propenso a comprar de inmediato. Optimizamos tu ficha de negocio para aparecer en los primeros mapas del motor de búsqueda.",
+                bulletTitle: "¿Qué incluye exactamente esta fase?",
+                bullets: [
+                    "<strong>Optimización de Google Business Profile:</strong> Configuración avanzada de palabras clave geolocalizadas.",
+                    "<strong>Conexión Total al Ecosistema:</strong> Enlazamos de forma nativa tu ficha con el Sitio Web y los canales de conversión.",
+                    "<strong>Estructuración de Datos Técnicos:</strong> Configuración de metadatos SEO en el código de tu Landing para indexación rápida.",
+                    "<strong>Liquidación Final:</strong> Cancelas el 34% restante (134.640 COP) una vez el punto de optimización del perfil esté verificado al 100%."
+                ]
             }
-            .animate-fade-in-up {
-                animation: fadeInUp 0.3s ease-out forwards;
-            }
-        `;
-        document.head.appendChild(style);
+        };
+
+        function openPhaseDetailModal(phaseNum) {
+            currentActivePhaseInModal = phaseNum;
+            const overlay = document.getElementById('phase-detail-overlay');
+            const contentBody = document.getElementById('phase-modal-body-content');
+            
+            if(!overlay || !contentBody) return;
+            
+            const data = phaseDataContent[phaseNum];
+            let bulletsHtml = '';
+            data.bullets.forEach(bullet => {
+                bulletsHtml += `<li class="flex items-start gap-2.5 text-xs text-gray-300 leading-relaxed"><span class="text-[var(--accent-color,#FF3C00)] font-bold mt-0.5">&bull;</span><span>${bullet}</span></li>`;
+            });
+
+            contentBody.innerHTML = `
+                <span class="text-[9px] font-mono font-bold tracking-[0.25em] text-[var(--accent-color,#FF3C00)] uppercase block mb-1">${data.badge}</span>
+                <h3 class="text-xl font-display font-black text-white uppercase tracking-tight mb-4 border-b border-white/5 pb-3">${data.title}</h3>
+                <p class="text-xs text-gray-400 leading-relaxed mb-6 font-sans">${data.desc}</p>
+                <h4 class="text-xs font-mono uppercase tracking-wider text-white mb-3">${data.bulletTitle}</h4>
+                <ul class="space-y-3 bg-black/40 border border-white/5 p-4 rounded-xl">${bulletsHtml}</ul>
+            `;
+            
+            document.getElementById('modal-phase-indicator-text').innerText = `Fase ${phaseNum} de 3`;
+            document.getElementById('modal-prev-btn').disabled = (phaseNum === 1);
+            const nextBtn = document.getElementById('modal-next-btn');
+            if (phaseNum === 3) nextBtn.innerHTML = `Entendido`;
+            else nextBtn.innerHTML = `Siguiente &rarr;`;
+
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0');
+                overlay.querySelector('div').classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closePhaseDetailModal() {
+            const overlay = document.getElementById('phase-detail-overlay');
+            if(!overlay) return;
+            overlay.classList.add('opacity-0');
+            overlay.querySelector('div').classList.add('scale-95');
+            setTimeout(() => overlay.classList.add('hidden'), 300);
+        }
+
+        function navigatePhaseModal(direction) {
+            let nextPhase = currentActivePhaseInModal + direction;
+            if (nextPhase > 3) { closePhaseDetailModal(); return; }
+            if (nextPhase >= 1 && nextPhase <= 3) openPhaseDetailModal(nextPhase);
+        }
+
+        function initRealtimeMetricsSimulation() {
+            const impEl = document.getElementById('meta-impressions-val');
+            const reachEl = document.getElementById('meta-reach-val');
+            const clickEl = document.getElementById('meta-clicks-val');
+            const convEl = document.getElementById('meta-conv-val');
+            if(!impEl) return;
+            let impressions = 41205, reach = 28940, clicks = 1726, conversions = 49;
+            const renderValues = () => {
+                impEl.innerText = impressions.toLocaleString();
+                reachEl.innerText = reach.toLocaleString();
+                clickEl.innerText = clicks.toLocaleString();
+                convEl.innerText = conversions.toLocaleString();
+            };
+            renderValues();
+            setInterval(() => {
+                impressions += Math.floor(Math.random() * 5) + 1;
+                reach += Math.floor(Math.random() * 3) + 1;
+                if(Math.random() > 0.6) clicks += 1;
+                if(Math.random() > 0.9) conversions += 1;
+                renderValues();
+            }, 4000);
+        }
+        setTimeout(initRealtimeMetricsSimulation, 500);
+
+        const styleAnim = document.createElement('style');
+        styleAnim.textContent = `@keyframes fadeInUp { from { opacity: 0; transform: translate(-50%, 20px); } to { opacity: 1; transform: translate(-50%, 0); } } .animate-fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }`;
+        document.head.appendChild(styleAnim);
     </script>
 </body>
 
