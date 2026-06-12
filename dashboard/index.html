@@ -297,8 +297,8 @@
             </div>
         </header>
 
-        <!-- Contenedor principal sin padding lateral izquierdo/derecho en móvil, scroll pegado al borde -->
-        <div class="flex-1 px-0 py-6 md:p-8 overflow-hidden relative">
+        <!-- Contenedor principal con padding horizontal en móvil para que las tarjetas respiren -->
+        <div class="flex-1 px-4 py-6 md:p-8 overflow-hidden relative">
             <!-- PANEL PRINCIPAL (visible siempre) -->
             <div id="pane-view-panel" class="workspace-pane h-full transition-opacity duration-200">
                 <div class="w-full h-full overflow-y-auto pb-12 font-sans custom-scrollbar select-none relative z-10 pr-0">
@@ -313,8 +313,8 @@
                         <span class="text-[9px] font-mono tracking-wider text-gray-400 uppercase" data-i18n="proud_manizales">Orgullosamente Manizaleñ@s</span>
                     </div>
 
-                    <!-- Grid de paneles operativos - ahora con gap reducido y márgenes laterales cero en móvil -->
-                    <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 items-stretch mx-0">
+                    <!-- Grid de paneles operativos - con w-full y centrado -->
+                    <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 items-stretch w-full">
                         <!-- Conectores de energía (neón) entre paneles en desktop -->
                         <div class="hidden lg:block absolute top-1/2 left-[calc(33.33%-1rem)] right-[calc(66.66%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-20 -translate-y-1/2"></div>
                         <div class="hidden lg:block absolute top-1/2 left-[calc(66.66%-1rem)] right-[calc(33.33%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-20 -translate-y-1/2"></div>
@@ -350,7 +350,7 @@
                             <div class="mt-6 text-right text-[10px] font-mono text-gray-500 border-t border-white/10 pt-3">Haz clic para telemetría avanzada</div>
                         </div>
 
-                        <!-- PANEL 2: REDES Y CAMPAÑA (con métricas listas para Supabase) -->
+                        <!-- PANEL 2: REDES Y CAMPAÑA (métricas listas para Supabase) -->
                         <div onclick="openTelemetryModal(2)" class="group relative bg-[#0a0a0a] border border-white/5 hover:border-[var(--accent-color)]/50 rounded-xl p-5 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_20px_rgba(255,60,0,0.1)] z-10 overflow-hidden h-full">
                             <div class="absolute bottom-3 right-3 text-5xl font-black text-white/5 pointer-events-none">📱💸</div>
                             <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/5 to-transparent rounded-bl-full pointer-events-none"></div>
@@ -430,7 +430,7 @@
                 </div>
             </div>
 
-            <!-- MODAL DE TELEMETRÍA (Enterprise) -->
+            <!-- MODAL DE TELEMETRÍA (contenido equilibrado para los tres) -->
             <div id="telemetry-modal-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
                 <div class="bg-[#0a0a0a] border border-white/10 rounded-2xl w-full max-w-md lg:max-w-3xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 relative flex flex-col max-h-[85vh] lg:max-h-[80vh]">
                     <button onclick="closeTelemetryModal()" class="absolute top-4 right-4 p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white border border-white/5 transition-colors z-20">
@@ -451,8 +451,8 @@
         </div>
     </main>
 
-    <!-- MOBILE CTA CONTAINER (con opacidad inicial y posición ajustada) -->
-    <div id="mobile-cta-container" class="md:hidden fixed bottom-24 left-0 right-0 w-full flex justify-center z-40 px-4 transition-all duration-1000 opacity-0">
+    <!-- MOBILE CTA CONTAINER (con margen superior añadido) -->
+    <div id="mobile-cta-container" class="md:hidden fixed bottom-24 left-0 right-0 w-full flex justify-center z-40 px-4 transition-all duration-1000 opacity-0 mt-4">
         <div id="cta-btn-wrapper-mob" class="relative w-full max-w-sm group">
             <div class="tooltip-activate absolute -top-12 left-1/2 -translate-x-1/2 bg-[#1A1A1A] border border-white/10 text-gray-300 text-[9px] font-mono tracking-wider px-3 py-2 rounded-lg whitespace-nowrap shadow-2xl text-center" data-i18n="tooltip_activate_mobile">Haz clic para que te contactemos <br>e iniciemos la activación</div>
             <button id="activate-btn-mob" onclick="handleActivateClick()" class="w-full bg-white text-black py-4 px-6 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 cursor-pointer active:scale-95 transition-transform animate-pulse-activate border border-white/50">
@@ -476,10 +476,62 @@
     <div id="purge-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-rs-red/30 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-red-500 mb-2">🚨 CONFIRMAR PURGA ABSOLUTA</h3><p class="text-xs text-gray-400 leading-relaxed mb-4 font-mono">¿Seguro que deseas purgar la cuenta, el avatar y todo el progreso del ecosistema? Esta acción es irreversible.</p><input type="text" id="purge-confirm-input" placeholder="Escribe ELIMINAR para confirmar" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[var(--accent-color)] mb-4"><div class="flex justify-end gap-3"><button onclick="closePurgeModal()" class="px-5 py-2.5 bg-white/10 text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-white/20 transition-colors">Cancelar</button><button id="confirm-purge-btn" disabled class="px-5 py-2.5 bg-red-500/30 text-gray-400 text-xs font-black uppercase tracking-widest rounded-xl cursor-not-allowed transition-colors">Confirmar Purgado</button></div></div></div>
 
     <script>
-        // -------------------- TRADUCCIONES (mantenidas) --------------------
-        const translations = { es: { nav_panel: "Panel", nav_clientes: "Clientes", nav_casos: "Casos de Éxito", nav_notificaciones: "Notificaciones", welcome_subtitle: "Bienvenid@ al panel de control de", btn_activate: "Activar ahora el Ecosistema", btn_support: "Soporte Técnico", tooltip_activate: "Haz clic para que te contactemos e iniciemos con la activación", tooltip_activate_mobile: "Haz clic para que te contactemos e iniciemos la activación", footer_sys: "SYS.NODE // ONLINE", upload_logo: "Subir Logo del Negocio", change_logo: "Cambiar Logo", panel_global: "Panel Global", accent_color: "🎨 Color de Acento", language: "🌐 Idioma Preferido", terms: "Términos de Uso", delete_account: "Eliminar cuenta y datos", terms_title: "Términos del Nodo", terms_text: "Este centro operativo procesa analíticas web y flujos conversacionales. Al interactuar con la plataforma, aceptas la conexión automatizada de la maquinaria comercial.", understand: "Entendido", support_title: "Soporte Técnico", support_text: "Nuestro equipo está listo para asistirte. Envía un mensaje a soporte@redsapien.com o llama al +57 300 000 0000.", close: "Cerrar", contact: "Contactar", proud_manizales: "Orgullosamente Manizaleñ@s" }, en: { /* ... */ }, pt: { /* ... */ } };
+        // -------------------- TRADUCCIONES COMPLETAS (todos los textos visibles) --------------------
+        const translations = {
+            es: {
+                nav_panel: "Panel", nav_clientes: "Clientes", nav_casos: "Casos de Éxito", nav_notificaciones: "Notificaciones",
+                welcome_subtitle: "Bienvenid@ al panel de control de", btn_activate: "Activar ahora el Ecosistema", btn_support: "Soporte Técnico",
+                tooltip_activate: "Haz clic para que te contactemos e iniciemos con la activación", tooltip_activate_mobile: "Haz clic para que te contactemos e iniciemos la activación",
+                footer_sys: "SYS.NODE // ONLINE", upload_logo: "Subir Logo del Negocio", change_logo: "Cambiar Logo",
+                panel_global: "Panel Global", accent_color: "🎨 Color de Acento", language: "🌐 Idioma Preferido",
+                terms: "Términos de Uso", delete_account: "Eliminar cuenta y datos", terms_title: "Términos del Nodo",
+                terms_text: "Este centro operativo procesa analíticas web y flujos conversacionales. Al interactuar con la plataforma, aceptas la conexión automatizada de la maquinaria comercial.",
+                understand: "Entendido", support_title: "Soporte Técnico",
+                support_text: "Nuestro equipo está listo para asistirte. Envía un mensaje a soporte@redsapien.com o llama al +57 300 000 0000.",
+                close: "Cerrar", contact: "Contactar", proud_manizales: "Orgullosamente Manizaleñ@s"
+            },
+            en: {
+                nav_panel: "Dashboard", nav_clientes: "Clients", nav_casos: "Success Cases", nav_notificaciones: "Notifications",
+                welcome_subtitle: "Welcome to the control panel of", btn_activate: "Activate Ecosystem Now", btn_support: "Technical Support",
+                tooltip_activate: "Click for us to contact you and start activation", tooltip_activate_mobile: "Click for us to contact you and start activation",
+                footer_sys: "SYS.NODE // ONLINE", upload_logo: "Upload Business Logo", change_logo: "Change Logo",
+                panel_global: "Global Panel", accent_color: "🎨 Accent Color", language: "🌐 Preferred Language",
+                terms: "Terms of Use", delete_account: "Delete account and data", terms_title: "Node Terms",
+                terms_text: "This operational center processes web analytics and conversational flows. By interacting with the platform, you accept the automated connection of commercial machinery.",
+                understand: "Understood", support_title: "Technical Support",
+                support_text: "Our team is ready to assist you. Send a message to support@redsapien.com or call +57 300 000 0000.",
+                close: "Close", contact: "Contact", proud_manizales: "Proudly from Manizales"
+            },
+            pt: {
+                nav_panel: "Painel", nav_clientes: "Clientes", nav_casos: "Casos de Sucesso", nav_notificacoes: "Notificações",
+                welcome_subtitle: "Bem-vindo ao painel de controle da", btn_activate: "Ativar Ecossistema Agora", btn_support: "Suporte Técnico",
+                tooltip_activate: "Clique para entrarmos em contato e iniciarmos a ativação", tooltip_activate_mobile: "Clique para entrarmos em contato e iniciarmos a ativação",
+                footer_sys: "SYS.NODE // ONLINE", upload_logo: "Enviar Logo da Empresa", change_logo: "Alterar Logo",
+                panel_global: "Painel Global", accent_color: "🎨 Cor Destaque", language: "🌐 Idioma Preferido",
+                terms: "Termos de Uso", delete_account: "Excluir conta e dados", terms_title: "Termos do Nó",
+                terms_text: "Este centro operacional processa análises da web e fluxos conversacionais. Ao interagir com a plataforma, você aceita a conexão automatizada da maquinaria comercial.",
+                understand: "Entendido", support_title: "Central de Suporte",
+                support_text: "Nossa equipe está pronta para ajudá-lo. Envie uma mensagem para suporte@redsapien.com ou ligue para +57 300 000 0000.",
+                close: "Fechar", contact: "Contato", proud_manizales: "Orgulhosamente de Manizales"
+            }
+        };
         let currentLang = localStorage.getItem("rs_lang") || "es";
-        function applyLanguage(lang) { if (!translations[lang]) lang = "es"; currentLang = lang; document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.getAttribute('data-i18n'); if (translations[lang] && translations[lang][key]) { if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = translations[lang][key]; else el.innerText = translations[lang][key]; } }); updateUIFromState(); localStorage.setItem("rs_lang", lang); const select = document.getElementById('lang-menu-select'); if (select && select.value !== lang) select.value = lang; }
+        function applyLanguage(lang) {
+            if (!translations[lang]) lang = "es";
+            currentLang = lang;
+            // Traducir todos los elementos con data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = translations[lang][key];
+                    else el.innerText = translations[lang][key];
+                }
+            });
+            updateUIFromState();
+            localStorage.setItem("rs_lang", lang);
+            const select = document.getElementById('lang-menu-select');
+            if (select && select.value !== lang) select.value = lang;
+        }
         function loadPersistedLanguage() { applyLanguage(localStorage.getItem("rs_lang") || "es"); }
 
         let ecosystemActive = false;
@@ -489,7 +541,7 @@
         // --- MAPA GLOBAL (para reutilizar en modal 3) ---
         let globalMap = null;
 
-        // --- MODAL DE TELEMETRÍA (contenidos mejorados) ---
+        // --- MODAL DE TELEMETRÍA (contenido equilibrado y reducido) ---
         let currentTelemetryIndex = 1;
         
         function openTelemetryModal(panelId) {
@@ -507,20 +559,19 @@
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="bg-black/40 border border-white/10 rounded-xl p-4">
-                                <div class="text-green-400 text-sm font-mono mb-2">🟢 AGENTE DE IA ATENDIENDO 24/7</div>
+                                <div class="text-green-400 text-sm font-mono mb-2">🟢 AGENTE DE IA 24/7</div>
                                 <div class="text-3xl font-mono font-black text-white">300+</div>
-                                <div class="text-xs text-gray-400">nuevas visitas/mes</div>
+                                <div class="text-xs text-gray-400">visitas/mes</div>
                             </div>
                             <div class="bg-black/40 border border-white/10 rounded-xl p-4">
-                                <div class="text-[var(--accent-color)] text-sm font-mono mb-2">📊 TASA DE CONVERSIÓN</div>
+                                <div class="text-[var(--accent-color)] text-sm font-mono mb-2">📊 CONVERSIÓN</div>
                                 <div class="text-3xl font-mono font-black text-white">12%</div>
-                                <div class="text-xs text-gray-400">proyectada a 3 meses</div>
                             </div>
                         </div>
                         <div class="bg-black/40 border border-white/10 rounded-xl p-4">
                             <div class="flex justify-between items-center">
-                                <span class="text-sm font-mono text-gray-300">TRÁFICO PROCESADO</span>
-                                <span class="text-xl font-bold text-white">8,500 visitas/mes</span>
+                                <span class="text-sm font-mono text-gray-300">TRÁFICO</span>
+                                <span class="text-xl font-bold text-white">8,500/mes</span>
                             </div>
                             <div class="w-full bg-white/10 h-1.5 rounded-full mt-2"><div class="bg-[var(--accent-color)] h-1.5 rounded-full w-3/4"></div></div>
                         </div>
@@ -530,7 +581,7 @@
                 htmlContent = `
                     <div class="space-y-5">
                         <div class="border-b border-[var(--accent-color)]/30 pb-2">
-                            <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight">PRESENCIA, VENTAS Y AGENDAS</h3>
+                            <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight">PRESENCIA Y VENTAS</h3>
                             <p class="text-xs text-gray-400 font-mono">MÉTRICAS EN TIEMPO REAL</p>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -540,16 +591,16 @@
                             </div>
                             <div class="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
                                 <div class="text-4xl font-mono font-black text-white">CLICS</div>
-                                <div class="text-xs text-gray-400">DE ALTO VALOR</div>
+                                <div class="text-xs text-gray-400">ALTO VALOR</div>
                             </div>
                         </div>
                         <div class="bg-black/40 border border-white/10 rounded-xl p-4">
                             <div class="flex justify-between items-center border-b border-white/10 pb-2 mb-2">
-                                <span class="text-sm font-mono text-gray-300">MENSAJES NUEVOS AL MES</span>
+                                <span class="text-sm font-mono text-gray-300">MENSAJES NUEVOS/MES</span>
                                 <span class="text-2xl font-bold text-white">400+</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-sm font-mono text-gray-300">CONVERSIONES / VENTAS</span>
+                                <span class="text-sm font-mono text-gray-300">CONVERSIONES</span>
                                 <span class="text-2xl font-bold text-[var(--accent-color)]">29%</span>
                             </div>
                         </div>
@@ -559,7 +610,6 @@
                                 <defs><linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="var(--accent-color)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--accent-color)" stop-opacity="0"/></linearGradient></defs>
                                 <polygon points="0,60 60,45 120,50 180,30 240,20 300,35 360,10 400,15 400,80 0,80" fill="url(#grad)" opacity="0.5"/>
                             </svg>
-                            <p class="text-[10px] text-center text-gray-500 mt-1">Tendencia de crecimiento proyectada</p>
                         </div>
                     </div>
                 `;
@@ -567,13 +617,13 @@
                 htmlContent = `
                     <div class="space-y-5">
                         <div class="border-b border-[var(--accent-color)]/30 pb-2">
-                            <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight">MÁS PRESENCIA Y REPUTACIÓN EN LA ZONA</h3>
-                            <p class="text-xs text-gray-400 font-mono">COBERTURA LOCAL INTELIGENTE</p>
+                            <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight">PRESENCIA LOCAL</h3>
+                            <p class="text-xs text-gray-400 font-mono">COBERTURA INTELIGENTE</p>
                         </div>
                         <div class="bg-black/40 border border-white/10 rounded-xl p-4">
                             <div class="flex justify-between items-center">
                                 <span class="text-sm font-mono text-gray-300">VISIBILIDAD LOCAL</span>
-                                <span class="text-2xl font-bold text-white">+12,000 impresiones</span>
+                                <span class="text-2xl font-bold text-white">+12,000</span>
                             </div>
                             <div class="flex justify-between items-center mt-2">
                                 <span class="text-sm font-mono text-gray-300">LLAMADAS DIRECTAS</span>
@@ -581,7 +631,6 @@
                             </div>
                         </div>
                         <div id="seo-map" class="w-full h-64 rounded-xl border border-white/20 mt-2 z-0 overflow-hidden"></div>
-                        <p class="text-[10px] text-center text-gray-500">Zona de influencia en Manizales - Radar activo</p>
                     </div>
                 `;
                 body.innerHTML = htmlContent;
@@ -639,7 +688,7 @@
             if (next >= 1 && next <= 3) openTelemetryModal(next); 
         }
 
-        // --- BOTÓN DE ACTIVACIÓN CON PERSISTENCIA Y RETARDO ---
+        // --- BOTÓN DE ACTIVACIÓN CON PERSISTENCIA Y RETARDO DE 4 SEGUNDOS ---
         function handleActivateClick() {
             const pcBtnWrapper = document.getElementById('cta-btn-wrapper-pc');
             const mobBtnWrapper = document.getElementById('cta-btn-wrapper-mob');
@@ -655,7 +704,7 @@
             console.log("Activación registrada permanentemente.");
         }
 
-        // --- FUNCIONES LEGACY ---
+        // --- FUNCIONES LEGACY (sidebar, avatar, etc.) ---
         function executeSidebarCollapse() { const sidebar = document.getElementById("sidebar-panel"), reopenBtn = document.getElementById("trigger-reopen-sidebar"), headerContainer = document.getElementById("header-title-container"); sidebar.classList.add("!w-0", "opacity-0", "pointer-events-none"); reopenBtn.classList.remove("hidden"); setTimeout(() => { reopenBtn.classList.remove("translate-x-[-100px]", "opacity-0"); reopenBtn.classList.add("translate-x-0", "opacity-100"); if(headerContainer) headerContainer.style.marginLeft = "45px"; }, 50); }
         function executeSidebarOpen() { const sidebar = document.getElementById("sidebar-panel"), reopenBtn = document.getElementById("trigger-reopen-sidebar"), headerContainer = document.getElementById("header-title-container"); if(reopenBtn) { reopenBtn.classList.remove("translate-x-0", "opacity-100"); reopenBtn.classList.add("translate-x-[-100px]", "opacity-0"); } if(headerContainer) headerContainer.style.marginLeft = "0px"; setTimeout(() => { if(reopenBtn) reopenBtn.classList.add("hidden"); if(sidebar) sidebar.classList.remove("!w-0", "opacity-0", "pointer-events-none"); }, 200); }
         function toggleProfileDropdownMenu(event) { event.stopPropagation(); document.getElementById("dropdown-menu-card").classList.toggle("hidden"); }
@@ -679,9 +728,8 @@
         window.addEventListener('DOMContentLoaded', () => {
             loadPersistedColorPalette();
             loadPersistedLanguage();
-            // Dominio por defecto
+            // Dominio por defecto y contadores dinámicos preparados para Supabase
             document.getElementById("dynamic-domain").innerText = "brossmanizales.co";
-            // Simular contadores dinámicos (preparados para Supabase)
             let whatsapp = 0, money = 0;
             setInterval(() => {
                 whatsapp += Math.floor(Math.random() * 2);
@@ -700,7 +748,7 @@
             document.getElementById('pane-view-panel').classList.remove('hidden');
             switchWorkspaceView('panel');
             
-            // Lógica de aparición del botón después de 6 segundos si no está activado
+            // Lógica de aparición del botón después de 4 segundos si no está activado
             const isActivated = localStorage.getItem('ecosystem_activated');
             const desktopCta = document.getElementById('desktop-cta-container');
             const mobileCta = document.getElementById('mobile-cta-container');
@@ -708,7 +756,7 @@
                 setTimeout(() => {
                     if (desktopCta) desktopCta.classList.remove('opacity-0');
                     if (mobileCta) mobileCta.classList.remove('opacity-0');
-                }, 6000);
+                }, 4000);
             } else {
                 if (desktopCta) desktopCta.style.display = 'none';
                 if (mobileCta) mobileCta.style.display = 'none';
