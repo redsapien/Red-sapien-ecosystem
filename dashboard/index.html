@@ -151,10 +151,10 @@
             background: var(--accent-color, #FF3C00);
         }
 
-        /* Barra de progreso móvil inmersiva estilo HUD */
+        /* Barra de progreso móvil inmersiva estilo HUD - visible solo en dispositivos móviles */
         .mobile-progress-immersive {
             position: fixed;
-            bottom: 64px; /* Altura de la nav inferior */
+            bottom: 64px;
             left: 0;
             right: 0;
             background: transparent;
@@ -188,24 +188,16 @@
             color: rgba(255,255,255,0.7);
             letter-spacing: 0.05em;
         }
+        /* Ocultar barra de progreso móvil en pantallas de escritorio (>= 768px) */
+        @media (min-width: 768px) {
+            .mobile-progress-immersive {
+                display: none !important;
+            }
+        }
         @media (max-width: 768px) {
             .mobile-progress-immersive {
                 bottom: 64px;
             }
-        }
-
-        /* Efecto de respiración / latido para las tarjetas */
-        @keyframes card-breathe {
-            0% { box-shadow: 0 0 0 0 rgba(255,60,0,0); border-color: rgba(255,255,255,0.1); }
-            50% { box-shadow: 0 0 20px 2px rgba(255,60,0,0.15); border-color: rgba(255,60,0,0.3); }
-            100% { box-shadow: 0 0 0 0 rgba(255,60,0,0); border-color: rgba(255,255,255,0.1); }
-        }
-        .group {
-            animation: card-breathe 3s infinite ease-in-out;
-        }
-        .group:hover {
-            animation: none;
-            box-shadow: 0 0 30px rgba(255,60,0,0.2);
         }
     </style>
 </head>
@@ -271,7 +263,7 @@
                     </h2>
                 </div>
 
-                <!-- Sello Manizales Desktop (se moverá al panel principal, pero se mantiene aquí también como respaldo) -->
+                <!-- Sello Manizales Desktop (se mantiene como respaldo, pero el principal está en el panel) -->
                 <div class="hidden md:flex items-center gap-2 bg-white/5 border-l border-white/10 pl-4 ml-2">
                     <div class="flex gap-0.5">
                         <div class="w-2 h-2 bg-white"></div>
@@ -299,8 +291,8 @@
 
                     <div id="progress-wrapper-pc" class="hidden w-full bg-[#111] border border-white/10 rounded-full p-1.5 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
                         <div class="flex justify-between items-center px-3 mb-1.5 mt-0.5">
-                            <span class="progress-label-text text-[9px] font-mono tracking-widest text-gray-400 uppercase">Pendiente de contactarte e iniciar fase 1</span>
-                            <span class="progress-percent-text text-[10px] font-bold text-white">1%</span>
+                            <span class="progress-label-text text-[9px] font-mono tracking-widest text-gray-400 uppercase">PROGRESO</span>
+                            <span class="progress-percent-text text-[10px] font-bold text-white">PROGRESO 1%</span>
                         </div>
                         <div class="w-full bg-black rounded-full h-1.5 overflow-hidden">
                             <div class="progress-fill-bar h-full bg-[var(--accent-color)] rounded-full transition-all duration-500 ease-out shadow-[0_0_10px_var(--accent-color)]" style="width: 1%;"></div>
@@ -379,10 +371,10 @@
                 <!-- CONTENIDO DE TARJETAS DE FASES DEL ECOSISTEMA (REFACTORIZADO) -->
                 <div class="w-full max-h-full overflow-y-auto pr-2 pb-12 font-sans custom-scrollbar select-none relative z-10">
                     
-                    <!-- Nuevo encabezado principal: Costo único + Sello Manizales -->
-                    <div class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/5 pb-6">
-                        <div class="flex flex-col gap-2">
-                            <h2 class="text-2xl md:text-3xl font-display font-black text-white tracking-tight uppercase" data-i18n="main_heading">Costo único del ecosistema: 396.000 PESOS (Por fases)</h2>
+                    <!-- Encabezado principal minimalista -->
+                    <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/5 pb-4">
+                        <div class="flex flex-col gap-1">
+                            <!-- Frase eliminada: "VALOR TOTAL DEL ECOSISTEMA: 396.000 PESOS (ÚNICO PAGO)" -->
                             <div class="flex items-center gap-2 mt-1">
                                 <div class="flex gap-1">
                                     <div class="w-3 h-3 bg-white"></div>
@@ -398,20 +390,19 @@
                         </div>
                     </div>
 
-                    <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch pt-2">
+                    <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch pt-2">
                         
-                        <div class="hidden lg:block absolute top-[115px] left-[25%] right-[25%] h-[2px] bg-gradient-to-r from-[var(--accent-color,#FF3C00)] via-white/10 to-[var(--accent-color,#FF3C00)] opacity-30 pointer-events-none z-0">
+                        <div class="hidden lg:block absolute top-[85px] left-[25%] right-[25%] h-[2px] bg-gradient-to-r from-[var(--accent-color,#FF3C00)] via-white/10 to-[var(--accent-color,#FF3C00)] opacity-30 pointer-events-none z-0">
                             <div class="absolute inset-0 w-1/3 bg-gradient-to-r from-transparent via-[var(--accent-color,#FF3C00)] to-transparent animate-laser-pipe"></div>
                         </div>
 
-                        <!-- Tarjeta 1: Sitio Web + Agente IA (sin min-h, más compacta) -->
-                        <div onclick="openPhaseDetailModal(1)" class="group relative bg-[#0a0a0a]/90 border border-white/10 hover:border-[var(--accent-color,#FF3C00)]/60 rounded-2xl p-5 transition-all duration-400 cursor-pointer flex flex-col justify-between shadow-xl hover:shadow-[0_0_30px_rgba(255,60,0,0.1)] z-10 overflow-hidden">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[var(--accent-color,#FF3C00)]/10 to-transparent rounded-bl-full pointer-events-none transition-opacity group-hover:opacity-100 opacity-50"></div>
+                        <!-- Tarjeta 1: Sitio Web + Agente IA (con tipografía aumentada) -->
+                        <div onclick="openPhaseDetailModal(1)" class="group relative bg-[#0a0a0a] border border-white/5 hover:border-[var(--accent-color,#FF3C00)]/50 rounded-xl p-4 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_20px_rgba(255,60,0,0.1)] z-10 overflow-hidden">
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color,#FF3C00)]/5 to-transparent rounded-bl-full pointer-events-none transition-opacity group-hover:opacity-100 opacity-0"></div>
                             
                             <div>
                                 <div class="flex items-start justify-between mb-3">
-                                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[var(--accent-color,#FF3C00)] transition-transform group-hover:scale-110 duration-300">
-                                        <!-- SVG Avanzado: Red Mundial + Nodo IA -->
+                                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[var(--accent-color,#FF3C00)] transition-transform group-hover:scale-105 duration-300">
                                         <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
                                             <path d="M3 12h18M12 3v18M5.636 5.636l12.728 12.728M5.636 18.364L18.364 5.636" stroke="currentColor"/>
                                             <circle cx="12" cy="12" r="3" stroke="currentColor"/>
@@ -425,100 +416,87 @@
                                     </div>
                                 </div>
 
-                                <h4 class="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-1" data-i18n="card1_subtitle">Fase Inicial // 48h</h4>
+                                <h4 class="text-[11px] font-mono uppercase tracking-widest text-gray-500 mb-0.5" data-i18n="card1_subtitle">Fase Inicial // 48h</h4>
                                 <h3 class="text-base font-display font-bold text-white uppercase group-hover:text-[var(--accent-color,#FF3C00)] transition-colors mb-2" data-i18n="card1_title">Sitio Web + Agente IA</h3>
                                 
-                                <p class="text-[10px] text-gray-400 leading-relaxed mb-4" data-i18n="card1_desc_short">Infraestructura de ventas con IA entrenada, dominio + hosting de por vida.</p>
+                                <p class="text-sm text-gray-400 leading-relaxed mb-3" data-i18n="card1_desc_short">Infraestructura de ventas con IA entrenada, dominio + hosting de por vida.</p>
                                 
-                                <div class="bg-black border border-white/5 rounded-xl p-2 mb-3 flex items-center justify-between">
-                                    <span class="text-[8px] font-mono uppercase tracking-wider text-gray-500" data-i18n="status_web_label">Estado Web:</span>
-                                    <div id="web-status-badge" class="flex items-center gap-1.5 text-amber-400 font-mono text-[9px] uppercase font-bold tracking-widest">
-                                        <span class="w-1 h-1 rounded-full bg-amber-400 animate-pulse"></span>
-                                        <span data-i18n="status_web_pending">En espera de desarrollo y conexión</span>
+                                <div class="bg-black/40 border border-white/5 rounded-lg p-2 mb-2">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-mono uppercase tracking-wider text-gray-500" data-i18n="server_status">Estado del Servidor:</span>
+                                        <span class="text-xs font-mono text-amber-400 font-bold" data-i18n="server_status_pending">Esperando despliegue</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="border-t border-white/5 pt-3 mt-1 flex items-center justify-between">
-                                <span class="text-[9px] font-mono text-gray-500 uppercase tracking-wider">Hito 1 (33%):</span>
+                                <span class="text-[10px] font-mono text-gray-500 uppercase tracking-wider">Hito 1 (33%):</span>
                                 <span class="text-xs font-mono font-black text-white bg-white/5 border border-white/10 px-2 py-0.5 rounded-md">130.680 PESOS</span>
                             </div>
                             
-                            <!-- Número gigante abajo izquierda -->
                             <div class="absolute bottom-2 left-3 text-5xl font-display font-black text-white/5 group-hover:text-[var(--accent-color)]/10 transition-colors tracking-tighter">1</div>
                             <div class="lg:hidden w-[2px] h-6 bg-gradient-to-b from-[var(--accent-color,#FF3C00)] to-transparent mx-auto mt-3 absolute bottom-0 left-1/2 -translate-x-1/2 opacity-30"></div>
                         </div>
 
-                        <!-- Tarjeta 2: Meta Ads con nuevo texto de inversión y geolocalización -->
-                        <div onclick="openPhaseDetailModal(2)" class="group relative bg-[#0a0a0a]/90 border border-white/10 hover:border-[var(--accent-color,#FF3C00)]/60 rounded-2xl p-5 transition-all duration-400 cursor-pointer flex flex-col justify-between shadow-xl hover:shadow-[0_0_30px_rgba(255,60,0,0.1)] z-10 overflow-hidden">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[var(--accent-color,#FF3C00)]/10 to-transparent rounded-bl-full pointer-events-none transition-opacity group-hover:opacity-100 opacity-50"></div>
+                        <!-- Tarjeta 2: Meta Ads (rediseñada: eliminado texto decorativo y línea de campaña, tipografía aumentada) -->
+                        <div onclick="openPhaseDetailModal(2)" class="group relative bg-[#0a0a0a] border border-white/5 hover:border-[var(--accent-color,#FF3C00)]/50 rounded-xl p-4 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_20px_rgba(255,60,0,0.1)] z-10 overflow-hidden">
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color,#FF3C00)]/5 to-transparent rounded-bl-full pointer-events-none transition-opacity group-hover:opacity-100 opacity-0"></div>
                             
                             <div>
                                 <div class="flex items-start justify-between mb-3">
-                                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[#1877F2] transition-transform group-hover:scale-110 duration-300">
-                                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[#1877F2] transition-transform group-hover:scale-105 duration-300">
+                                        <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
                                             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                                         </svg>
                                     </div>
                                 </div>
 
-                                <h4 class="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-1" data-i18n="card2_subtitle">Fase Tráfico // 48h</h4>
+                                <h4 class="text-[11px] font-mono uppercase tracking-widest text-gray-500 mb-0.5" data-i18n="card2_subtitle">Fase Tráfico // 48h</h4>
                                 <h3 class="text-base font-display font-bold text-white uppercase group-hover:text-[var(--accent-color,#FF3C00)] transition-colors mb-2" data-i18n="card2_title">Redes & Campaña Meta</h3>
                                 
-                                <p class="text-[10px] text-gray-400 leading-relaxed mb-3" data-i18n="card2_desc_short">Píxel optimizado, campañas de conversión directa, mensajería instantánea.</p>
+                                <!-- Texto decorativo eliminado: ya no está card2_desc_short -->
                                 
-                                <!-- Nuevo texto de inversión Nequi -->
-                                <div class="bg-black/40 border border-[var(--accent-color)]/30 rounded-lg p-1.5 mb-3 text-center">
-                                    <span class="text-[9px] font-mono text-[var(--accent-color)] uppercase tracking-wider" data-i18n="nequi_hook">Inversión: 13.000 PESOS diarios directo a Facebook vía Nequi.</span>
+                                <div class="bg-black/40 border border-[var(--accent-color)]/30 rounded-lg p-1.5 mb-2 text-center">
+                                    <span class="text-xs font-mono text-[var(--accent-color)] uppercase tracking-wider" data-i18n="nequi_hook">Presupuesto: 13.000 PESOS/día</span>
                                 </div>
-                                
-                                <div class="grid grid-cols-2 gap-1.5 mb-3">
-                                    <div class="bg-black/60 border border-white/5 rounded-lg p-1.5 font-mono">
-                                        <div class="text-[7px] uppercase text-gray-500 tracking-wider">Impresiones</div>
-                                        <div class="text-[10px] font-bold text-white mt-0.5" id="meta-impressions-val">--</div>
+
+                                <div class="grid grid-cols-2 gap-2 mb-2">
+                                    <div class="bg-black/60 border border-white/5 rounded-lg p-1.5 text-center">
+                                        <div class="text-[10px] uppercase text-gray-500" data-i18n="whatsapp_msgs_label">Mensajes de WhatsApp</div>
+                                        <div class="text-base font-bold text-white" id="whatsapp-msgs-val">0</div>
                                     </div>
-                                    <div class="bg-black/60 border border-white/5 rounded-lg p-1.5 font-mono">
-                                        <div class="text-[7px] uppercase text-gray-500 tracking-wider">Alcance</div>
-                                        <div class="text-[10px] font-bold text-white mt-0.5" id="meta-reach-val">--</div>
-                                    </div>
-                                    <div class="bg-black/60 border border-white/5 rounded-lg p-1.5 font-mono">
-                                        <div class="text-[7px] uppercase text-gray-500 tracking-wider">Clics Únicos</div>
-                                        <div class="text-[10px] font-bold text-white mt-0.5" id="meta-clicks-val">--</div>
-                                    </div>
-                                    <div class="bg-black/60 border border-white/5 rounded-lg p-1.5 font-mono">
-                                        <div class="text-[7px] uppercase text-gray-500 tracking-wider">Conversiones</div>
-                                        <div class="text-[10px] font-bold text-[var(--accent-color,#FF3C00)] mt-0.5" id="meta-conv-val">--</div>
+                                    <div class="bg-black/60 border border-white/5 rounded-lg p-1.5 text-center">
+                                        <div class="text-[10px] uppercase text-gray-500" data-i18n="conversions_label">Conversiones</div>
+                                        <div class="text-base font-bold text-[var(--accent-color)]" id="conversions-val">0</div>
                                     </div>
                                 </div>
 
-                                <div class="bg-black border border-white/5 rounded-xl p-2 mb-3 flex items-center justify-between">
-                                    <span class="text-[8px] font-mono uppercase tracking-wider text-gray-500" data-i18n="status_fb_label">Estado Meta:</span>
-                                    <div class="flex items-center gap-1.5 text-green-400 font-mono text-[9px] uppercase font-bold tracking-widest">
-                                        <span class="w-1 h-1 rounded-full bg-green-400 led-green"></span>
-                                        <span data-i18n="status_fb_ready">Lista para operar en: <span id="target-location-span">Manizales</span></span>
+                                <div class="space-y-1.5 mb-2">
+                                    <div class="flex items-center justify-between bg-black/40 rounded-lg px-2 py-1">
+                                        <span class="text-xs font-mono text-gray-500" data-i18n="pixel_status">Estado del Píxel:</span>
+                                        <span class="text-xs font-mono text-red-400 font-bold" data-i18n="pixel_disconnected">Desconectado</span>
                                     </div>
+                                    <!-- Línea de "Campaña:" eliminada según lo solicitado -->
                                 </div>
                             </div>
 
                             <div class="border-t border-white/5 pt-3 flex items-center justify-between">
-                                <span class="text-[9px] font-mono text-gray-500 uppercase tracking-wider">Hito 2 (33%):</span>
+                                <span class="text-[10px] font-mono text-gray-500 uppercase tracking-wider">Hito 2 (33%):</span>
                                 <span class="text-xs font-mono font-black text-white bg-white/5 border border-white/10 px-2 py-0.5 rounded-md">130.680 PESOS</span>
                             </div>
                             
-                            <!-- Número gigante abajo derecha -->
                             <div class="absolute bottom-2 right-3 text-5xl font-display font-black text-white/5 group-hover:text-[var(--accent-color)]/10 transition-colors tracking-tighter">2</div>
                             <div class="lg:hidden w-[2px] h-6 bg-gradient-to-b from-[var(--accent-color,#FF3C00)] to-transparent mx-auto mt-3 absolute bottom-0 left-1/2 -translate-x-1/2 opacity-30"></div>
                         </div>
 
-                        <!-- Tarjeta 3: Google & SEO con SVG oficial de cuatro colores -->
-                        <div onclick="openPhaseDetailModal(3)" class="group relative bg-[#0a0a0a]/90 border border-white/10 hover:border-[var(--accent-color,#FF3C00)]/60 rounded-2xl p-5 transition-all duration-400 cursor-pointer flex flex-col justify-between shadow-xl hover:shadow-[0_0_30px_rgba(255,60,0,0.1)] z-10 overflow-hidden">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[var(--accent-color,#FF3C00)]/10 to-transparent rounded-bl-full pointer-events-none transition-opacity group-hover:opacity-100 opacity-50"></div>
+                        <!-- Tarjeta 3: Google & SEO (sin cambios de contenido, solo tipografía aumentada ligeramente) -->
+                        <div onclick="openPhaseDetailModal(3)" class="group relative bg-[#0a0a0a] border border-white/5 hover:border-[var(--accent-color,#FF3C00)]/50 rounded-xl p-4 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_20px_rgba(255,60,0,0.1)] z-10 overflow-hidden">
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color,#FF3C00)]/5 to-transparent rounded-bl-full pointer-events-none transition-opacity group-hover:opacity-100 opacity-0"></div>
                             
                             <div>
                                 <div class="flex items-start justify-between mb-3">
-                                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 transition-transform group-hover:scale-110 duration-300">
-                                        <!-- SVG oficial de Google con 4 colores -->
-                                        <svg class="w-6 h-6" viewBox="0 0 24 24">
+                                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 transition-transform group-hover:scale-105 duration-300">
+                                        <svg class="w-7 h-7" viewBox="0 0 24 24">
                                             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                                             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
                                             <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
@@ -527,42 +505,42 @@
                                     </div>
                                 </div>
 
-                                <h4 class="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-1" data-i18n="card3_subtitle">Fase Orgánica // 24h</h4>
+                                <h4 class="text-[11px] font-mono uppercase tracking-widest text-gray-500 mb-0.5" data-i18n="card3_subtitle">Fase Orgánica // 24h</h4>
                                 <h3 class="text-base font-display font-bold text-white uppercase group-hover:text-[var(--accent-color,#FF3C00)] transition-colors mb-2" data-i18n="card3_title">Google & SEO Local</h3>
                                 
-                                <p class="text-[10px] text-gray-400 leading-relaxed mb-4" data-i18n="card3_desc_short">Posicionamiento en mapa, blindaje de perfil Business y datos estructurados.</p>
+                                <p class="text-sm text-gray-400 leading-relaxed mb-3" data-i18n="card3_desc_short">Posicionamiento en mapa, blindaje de perfil Business y datos estructurados.</p>
                                 
-                                <div class="bg-black border border-white/5 rounded-xl p-2 mb-3 flex items-center justify-between">
-                                    <span class="text-[8px] font-mono uppercase tracking-wider text-gray-500" data-i18n="status_google_label">Estado Google:</span>
-                                    <div class="flex items-center gap-1.5 text-amber-400 font-mono text-[9px] uppercase font-bold tracking-widest">
-                                        <span class="w-1 h-1 rounded-full bg-amber-400 animate-pulse"></span>
-                                        <span data-i18n="status_google_pending">En espera de optimización y conexión</span>
+                                <div class="space-y-1.5 mb-2">
+                                    <div class="flex items-center justify-between bg-black/40 rounded-lg px-2 py-1">
+                                        <span class="text-xs font-mono text-gray-500" data-i18n="profile_status">Estado del Perfil:</span>
+                                        <span class="text-xs font-mono text-red-400 font-bold" data-i18n="profile_unoptimized">Sin optimizar</span>
+                                    </div>
+                                    <div class="flex items-center justify-between bg-black/40 rounded-lg px-2 py-1">
+                                        <span class="text-xs font-mono text-gray-500" data-i18n="waiting_optimization">Esperando:</span>
+                                        <span class="text-xs font-mono text-yellow-400 font-bold" data-i18n="waiting_optimization_text">Optimización pendiente</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="border-t border-white/5 pt-3 mt-1 flex items-center justify-between">
-                                <span class="text-[9px] font-mono text-gray-500 uppercase tracking-wider">Hito 3 (34%):</span>
+                                <span class="text-[10px] font-mono text-gray-500 uppercase tracking-wider">Hito 3 (34%):</span>
                                 <span class="text-xs font-mono font-black text-white bg-white/5 border border-white/10 px-2 py-0.5 rounded-md">134.640 PESOS</span>
                             </div>
                             
-                            <!-- Número gigante abajo izquierda -->
                             <div class="absolute bottom-2 left-3 text-5xl font-display font-black text-white/5 group-hover:text-[var(--accent-color)]/10 transition-colors tracking-tighter">3</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- MODAL DE DETALLE DE FASE (TELEMETRÍA) -->
-                <div id="phase-detail-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
-                    <div class="bg-[#0a0a0a] border border-white/10 rounded-2xl w-full max-w-xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 relative flex flex-col max-h-[85vh]">
+                <!-- MODAL DE DETALLE DE FASE (PROYECCIONES DIRECTAS) -->
+                <div id="phase-detail-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+                    <div class="bg-[#0a0a0a] border border-white/10 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 relative flex flex-col max-h-[80vh]">
                         
                         <button onclick="closePhaseDetailModal()" class="absolute top-4 right-4 p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white border border-white/5 transition-colors z-20">
                             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
                         </button>
 
-                        <div class="p-6 md:p-8 overflow-y-auto" id="phase-modal-body-content">
-                            <!-- Contenido dinámico tipo Wall Street -->
-                        </div>
+                        <div class="p-6 overflow-y-auto" id="phase-modal-body-content"></div>
 
                         <div class="bg-black/40 border-t border-white/5 p-4 flex items-center justify-between gap-3">
                             <button id="modal-prev-btn" onclick="navigatePhaseModal(-1)" class="px-4 py-2 text-[10px] font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition-all border border-white/5 disabled:opacity-20 disabled:pointer-events-none">
@@ -601,27 +579,16 @@
         </div>
     </div>
 
-    <!-- BARRA DE PROGRESO INMERSIVA MÓVIL (más gruesa y con márgenes) -->
+    <!-- BARRA DE PROGRESO INMERSIVA MÓVIL (visible solo en móviles) -->
     <div id="mobile-progress-immersive" class="mobile-progress-immersive hidden">
         <div class="mobile-progress-bar-line">
             <div class="mobile-progress-fill" id="mobile-progress-fill" style="width: 1%;"></div>
-            <span class="mobile-progress-text" id="mobile-progress-text">1%</span>
+            <span class="mobile-progress-text" id="mobile-progress-text">PROGRESO 1%</span>
         </div>
     </div>
 
-    <!-- NAV MÓVIL (tabs inferiores) con texto actualizado a Clientes -->
+    <!-- NAV MÓVIL (tabs inferiores) - SE ELIMINÓ EL SELLO DUPLICADO -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-rs-dark/95 border-t border-white/5 backdrop-blur-2xl z-50 flex items-center justify-between px-2 pb-safe shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
-        <!-- Sello Manizales mini en móvil -->
-        <div class="absolute -top-7 left-0 right-0 flex justify-center">
-            <div class="flex items-center gap-1.5 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
-                <div class="flex gap-0.5">
-                    <div class="w-1.5 h-1.5 bg-white"></div>
-                    <div class="w-1.5 h-1.5 bg-green-500"></div>
-                    <div class="w-1.5 h-1.5 bg-red-500"></div>
-                </div>
-                <span class="text-[7px] font-mono tracking-wider text-gray-400 uppercase" data-i18n="proud_manizales">Orgullosamente Manizaleñ@s</span>
-            </div>
-        </div>
         <button onclick="switchWorkspaceView('panel')" class="mobile-nav-btn flex flex-col items-center justify-center text-white w-1/4" data-mod="panel">
             <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" class="transition-transform"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
             <span class="text-[8px] font-bold mt-1 tracking-widest uppercase" data-i18n="nav_panel">Panel</span>
@@ -671,7 +638,7 @@
     </div>
 
     <script>
-        // -------------------- DICCIONARIO DE TRADUCCIONES (ES, EN, PT) EXTENDIDO --------------------
+        // -------------------- DICCIONARIO DE TRADUCCIONES COMPLETO --------------------
         const translations = {
             es: {
                 nav_panel: "Panel", nav_clientes: "Clientes", nav_casos: "Casos de Éxito", nav_notificaciones: "Notificaciones",
@@ -691,15 +658,23 @@
                 card1_subtitle: "Fase Inicial // 48h", card1_title: "Sitio Web + Agente IA", card1_desc_short: "Infraestructura de ventas con IA entrenada, dominio + hosting de por vida.",
                 card2_subtitle: "Fase Tráfico // 48h", card2_title: "Redes & Campaña Meta", card2_desc_short: "Píxel optimizado, campañas de conversión directa, mensajería instantánea.",
                 card3_subtitle: "Fase Orgánica // 24h", card3_title: "Google & SEO Local", card3_desc_short: "Posicionamiento en mapa, blindaje de perfil Business y datos estructurados.",
-                status_web_label: "Estado Web:", status_web_pending: "En espera de desarrollo y conexión",
-                status_fb_label: "Estado Meta:", status_fb_ready: "Lista para operar en: ",
-                status_google_label: "Estado Google:", status_google_pending: "En espera de optimización y conexión",
+                server_status: "Estado del Servidor:", server_status_pending: "Esperando despliegue",
+                whatsapp_msgs_label: "Mensajes de WhatsApp", conversions_label: "Conversiones",
+                pixel_status: "Estado del Píxel:", pixel_disconnected: "Desconectado",
+                campaign_status: "Campaña:", campaign_waiting: "A la espera de creación y Dar Play",
+                profile_status: "Estado del Perfil:", profile_unoptimized: "Sin optimizar",
+                waiting_optimization: "Esperando:", waiting_optimization_text: "Optimización pendiente",
                 proud_manizales: "Orgullosamente Manizaleñ@s",
-                modal_metrics_title: "Telemetría // KPIs Esperados",
-                modal_metric_roi: "ROI Proyectado", modal_metric_traffic: "Tráfico Estimado", modal_metric_conversion: "Tasa Conv.",
-                main_heading: "Costo único del ecosistema: 396.000 PESOS (Por fases)",
+                main_heading: "VALOR TOTAL DEL ECOSISTEMA: 396.000 PESOS (ÚNICO PAGO)",
                 total_investment: "Inversión Total Fases: 396.000 PESOS",
-                nequi_hook: "Inversión: 13.000 PESOS diarios directo a Facebook vía Nequi."
+                nequi_hook: "Presupuesto: 13.000 PESOS/día",
+                modal_projection_title: "Proyecciones Reales",
+                modal_phase1_line1: "Visitas esperadas al mes: 5,000",
+                modal_phase1_line2: "Conversiones esperadas: 15%",
+                modal_phase2_line1: "Mensajes esperados a WhatsApp por mes: 400 nuevos",
+                modal_phase2_line2: "Ventas esperadas: 29%",
+                modal_phase3_line1: "Impresiones locales esperadas: 12,000",
+                modal_phase3_line2: "Llamadas directas: 10%"
             },
             en: {
                 nav_panel: "Dashboard", nav_clientes: "Clients", nav_casos: "Success Cases", nav_notificaciones: "Notifications",
@@ -718,15 +693,23 @@
                 card1_subtitle: "Initial Phase // 48h", card1_title: "Website + AI Agent", card1_desc_short: "Sales infrastructure with trained AI, lifetime domain + hosting.",
                 card2_subtitle: "Traffic Phase // 48h", card2_title: "Social & Meta Campaign", card2_desc_short: "Optimized pixel, direct conversion campaigns, instant messaging.",
                 card3_subtitle: "Organic Phase // 24h", card3_title: "Google & Local SEO", card3_desc_short: "Map ranking, Business profile shield, structured data.",
-                status_web_label: "Web Status:", status_web_pending: "Awaiting development and connection",
-                status_fb_label: "Meta Status:", status_fb_ready: "Ready to operate in: ",
-                status_google_label: "Google Status:", status_google_pending: "Awaiting optimization and connection",
+                server_status: "Server Status:", server_status_pending: "Awaiting deployment",
+                whatsapp_msgs_label: "WhatsApp Messages", conversions_label: "Conversions",
+                pixel_status: "Pixel Status:", pixel_disconnected: "Disconnected",
+                campaign_status: "Campaign:", campaign_waiting: "Awaiting creation and Play",
+                profile_status: "Profile Status:", profile_unoptimized: "Unoptimized",
+                waiting_optimization: "Waiting:", waiting_optimization_text: "Optimization pending",
                 proud_manizales: "Proudly from Manizales",
-                modal_metrics_title: "Telemetry // Expected KPIs",
-                modal_metric_roi: "Projected ROI", modal_metric_traffic: "Estimated Traffic", modal_metric_conversion: "Conv. Rate",
-                main_heading: "Unique ecosystem cost: 396,000 PESOS (By phases)",
+                main_heading: "TOTAL ECOSYSTEM VALUE: 396,000 PESOS (SINGLE PAYMENT)",
                 total_investment: "Total Phase Investment: 396,000 PESOS",
-                nequi_hook: "Investment: 13,000 PESOS daily directly to Facebook via Nequi."
+                nequi_hook: "Budget: 13,000 PESOS/day",
+                modal_projection_title: "Real Projections",
+                modal_phase1_line1: "Expected monthly visits: 5,000",
+                modal_phase1_line2: "Expected conversions: 15%",
+                modal_phase2_line1: "Expected WhatsApp messages per month: 400 new",
+                modal_phase2_line2: "Expected sales: 29%",
+                modal_phase3_line1: "Expected local impressions: 12,000",
+                modal_phase3_line2: "Direct calls: 10%"
             },
             pt: {
                 nav_panel: "Painel", nav_clientes: "Clientes", nav_casos: "Casos de Sucesso", nav_notificacoes: "Notificações",
@@ -745,15 +728,23 @@
                 card1_subtitle: "Fase Inicial // 48h", card1_title: "Site + Agente IA", card1_desc_short: "Infraestrutura de vendas com IA treinada, domínio + hospedagem vitalícia.",
                 card2_subtitle: "Fase de Tráfego // 48h", card2_title: "Redes & Campanha Meta", card2_desc_short: "Pixel otimizado, campanhas de conversão direta, mensagens instantâneas.",
                 card3_subtitle: "Fase Orgânica // 24h", card3_title: "Google & SEO Local", card3_desc_short: "Posicionamento no mapa, blindagem do perfil Business e dados estruturados.",
-                status_web_label: "Status Web:", status_web_pending: "Aguardando desenvolvimento e conexão",
-                status_fb_label: "Status Meta:", status_fb_ready: "Pronto para operar em: ",
-                status_google_label: "Status Google:", status_google_pending: "Aguardando otimização e conexão",
+                server_status: "Status do Servidor:", server_status_pending: "Aguardando implantação",
+                whatsapp_msgs_label: "Mensagens WhatsApp", conversions_label: "Conversões",
+                pixel_status: "Status do Pixel:", pixel_disconnected: "Desconectado",
+                campaign_status: "Campanha:", campaign_waiting: "Aguardando criação e Play",
+                profile_status: "Status do Perfil:", profile_unoptimized: "Não otimizado",
+                waiting_optimization: "Aguardando:", waiting_optimization_text: "Otimização pendente",
                 proud_manizales: "Orgulhosamente de Manizales",
-                modal_metrics_title: "Telemetria // KPIs Esperados",
-                modal_metric_roi: "ROI Projetado", modal_metric_traffic: "Tráfego Estimado", modal_metric_conversion: "Taxa Conv.",
-                main_heading: "Custo único do ecossistema: 396.000 PESOS (Por fases)",
+                main_heading: "VALOR TOTAL DO ECOSSISTEMA: 396.000 PESOS (PAGAMENTO ÚNICO)",
                 total_investment: "Investimento Total Fases: 396.000 PESOS",
-                nequi_hook: "Investimento: 13.000 PESOS diários direto para Facebook via Nequi."
+                nequi_hook: "Orçamento: 13.000 PESOS/dia",
+                modal_projection_title: "Projeções Reais",
+                modal_phase1_line1: "Visitas esperadas por mês: 5.000",
+                modal_phase1_line2: "Conversões esperadas: 15%",
+                modal_phase2_line1: "Mensagens WhatsApp esperadas por mês: 400 novas",
+                modal_phase2_line2: "Vendas esperadas: 29%",
+                modal_phase3_line1: "Impressões locais esperadas: 12.000",
+                modal_phase3_line2: "Chamadas diretas: 10%"
             }
         };
 
@@ -769,12 +760,8 @@
                     else el.innerText = translations[lang][key];
                 }
             });
-            // Actualizar dinámicamente el span de localización dentro del estado de Facebook
             const locationSpan = document.getElementById('target-location-span');
-            if (locationSpan) {
-                // El texto fijo "Manizales" se mantiene, pero se puede traducir si se desea
-                locationSpan.innerText = "Manizales";
-            }
+            if (locationSpan) locationSpan.innerText = "Manizales";
             updateUIFromState();
             localStorage.setItem("rs_lang", lang);
             const select = document.getElementById('lang-menu-select');
@@ -797,14 +784,13 @@
             const percent = EcosystemState.percent, isCompleted = EcosystemState.isCompleted;
             let phaseText = getPhaseText(percent);
             document.querySelectorAll('.progress-fill-bar').forEach(bar => bar.style.width = `${percent}%`);
-            document.querySelectorAll('.progress-percent-text').forEach(txt => txt.innerText = `${percent}%`);
-            document.querySelectorAll('.progress-label-text').forEach(lbl => lbl.innerText = phaseText);
+            document.querySelectorAll('.progress-percent-text').forEach(txt => txt.innerText = `PROGRESO ${percent}%`);
+            document.querySelectorAll('.progress-label-text').forEach(lbl => lbl.innerText = "PROGRESO");
             
-            // Actualizar barra inmersiva móvil
             const mobileFill = document.getElementById('mobile-progress-fill');
             const mobileText = document.getElementById('mobile-progress-text');
             if(mobileFill) mobileFill.style.width = `${percent}%`;
-            if(mobileText) mobileText.innerText = `${percent}%`;
+            if(mobileText) mobileText.innerText = `PROGRESO ${percent}%`;
             
             const progressBars = document.querySelectorAll('.progress-fill-bar');
             if (percent > 0 && percent < 100) {
@@ -1001,37 +987,13 @@
         window.addEventListener('resize', () => { const activePane = document.querySelector('.workspace-pane:not(.hidden)')?.id; if (activePane === 'pane-view-panel') handleCtaVisibility(true); else handleCtaVisibility(false); });
         document.getElementById('lang-menu-select')?.addEventListener('change', (e) => applyLanguage(e.target.value));
 
-        // --- LÓGICA DE CONTROL DE TARJETAS (MODAL TELEMÉTRICO) ---
+        // --- NUEVA LÓGICA DE MODALES CON PROYECCIONES DIRECTAS ---
         let currentActivePhaseInModal = 1;
 
-        const phaseDataContent = {
-            1: {
-                titleKey: "card1_title",
-                badgeKey: "card1_subtitle",
-                metrics: [
-                    { labelKey: "modal_metric_roi", value: "320%", progress: 82 },
-                    { labelKey: "modal_metric_traffic", value: "12.4K", progress: 65 },
-                    { labelKey: "modal_metric_conversion", value: "4.7%", progress: 48 }
-                ]
-            },
-            2: {
-                titleKey: "card2_title",
-                badgeKey: "card2_subtitle",
-                metrics: [
-                    { labelKey: "modal_metric_roi", value: "410%", progress: 91 },
-                    { labelKey: "modal_metric_traffic", value: "38.2K", progress: 78 },
-                    { labelKey: "modal_metric_conversion", value: "6.2%", progress: 69 }
-                ]
-            },
-            3: {
-                titleKey: "card3_title",
-                badgeKey: "card3_subtitle",
-                metrics: [
-                    { labelKey: "modal_metric_roi", value: "250%", progress: 73 },
-                    { labelKey: "modal_metric_traffic", value: "8.9K", progress: 54 },
-                    { labelKey: "modal_metric_conversion", value: "3.9%", progress: 42 }
-                ]
-            }
+        const phaseProjections = {
+            1: { line1Key: "modal_phase1_line1", line2Key: "modal_phase1_line2" },
+            2: { line1Key: "modal_phase2_line1", line2Key: "modal_phase2_line2" },
+            3: { line1Key: "modal_phase3_line1", line2Key: "modal_phase3_line2" }
         };
 
         function openPhaseDetailModal(phaseNum) {
@@ -1039,31 +1001,28 @@
             const overlay = document.getElementById('phase-detail-overlay');
             const contentBody = document.getElementById('phase-modal-body-content');
             if(!overlay || !contentBody) return;
-            const data = phaseDataContent[phaseNum];
-            const title = translations[currentLang][data.titleKey] || data.titleKey;
-            const badge = translations[currentLang][data.badgeKey] || data.badgeKey;
-            let metricsHtml = '';
-            data.metrics.forEach(m => {
-                const label = translations[currentLang][m.labelKey] || m.labelKey;
-                metricsHtml += `
-                    <div class="mb-4">
-                        <div class="flex justify-between text-[10px] font-mono mb-1">
-                            <span class="text-gray-400 uppercase tracking-wider">${label}</span>
-                            <span class="text-white font-bold">${m.value}</span>
-                        </div>
-                        <div class="w-full bg-black/60 rounded-full h-1.5 overflow-hidden">
-                            <div class="h-full bg-[var(--accent-color)] rounded-full" style="width: ${m.progress}%; box-shadow: 0 0 6px var(--accent-color);"></div>
-                        </div>
-                    </div>
-                `;
-            });
+            const proj = phaseProjections[phaseNum];
+            const titleKey = `card${phaseNum}_title`;
+            const badgeKey = `card${phaseNum}_subtitle`;
+            const title = translations[currentLang][titleKey] || titleKey;
+            const badge = translations[currentLang][badgeKey] || badgeKey;
+            const line1 = translations[currentLang][proj.line1Key] || proj.line1Key;
+            const line2 = translations[currentLang][proj.line2Key] || proj.line2Key;
             contentBody.innerHTML = `
                 <span class="text-[9px] font-mono font-bold tracking-[0.25em] text-[var(--accent-color)] uppercase block mb-1">${badge}</span>
                 <h3 class="text-xl font-display font-black text-white uppercase tracking-tight mb-6 border-b border-white/5 pb-3">${title}</h3>
                 <div class="bg-black/40 border border-white/10 rounded-xl p-5">
-                    <div class="text-xs font-mono text-gray-400 mb-4 uppercase tracking-wider" data-i18n="modal_metrics_title">Telemetría // KPIs Esperados</div>
-                    ${metricsHtml}
-                    <div class="mt-4 pt-3 border-t border-white/10 text-[10px] font-mono text-center text-gray-500">* Proyecciones basadas en industria</div>
+                    <div class="text-xs font-mono text-gray-400 mb-4 uppercase tracking-wider" data-i18n="modal_projection_title">Proyecciones Reales</div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                            <span class="text-sm font-mono text-gray-300">${line1.split(':')[0]}:</span>
+                            <span class="text-base font-bold text-white">${line1.split(':')[1] || line1}</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-mono text-gray-300">${line2.split(':')[0]}:</span>
+                            <span class="text-base font-bold text-[var(--accent-color)]">${line2.split(':')[1] || line2}</span>
+                        </div>
+                    </div>
                 </div>
             `;
             document.getElementById('modal-phase-indicator-text').innerText = `Fase ${phaseNum} de 3`;
@@ -1088,29 +1047,20 @@
             if (nextPhase >= 1 && nextPhase <= 3) openPhaseDetailModal(nextPhase);
         }
 
-        function initRealtimeMetricsSimulation() {
-            const impEl = document.getElementById('meta-impressions-val');
-            const reachEl = document.getElementById('meta-reach-val');
-            const clickEl = document.getElementById('meta-clicks-val');
-            const convEl = document.getElementById('meta-conv-val');
-            if(!impEl) return;
-            let impressions = 41205, reach = 28940, clicks = 1726, conversions = 49;
-            const renderValues = () => {
-                impEl.innerText = impressions.toLocaleString();
-                reachEl.innerText = reach.toLocaleString();
-                clickEl.innerText = clicks.toLocaleString();
-                convEl.innerText = conversions.toLocaleString();
-            };
-            renderValues();
+        // Simulación simple para los contadores de tarjeta 2 (Mensajes y Conversiones)
+        function initSimpleCounters() {
+            const whatsappSpan = document.getElementById('whatsapp-msgs-val');
+            const convSpan = document.getElementById('conversions-val');
+            if(!whatsappSpan) return;
+            let whatsapp = 0, conversions = 0;
             setInterval(() => {
-                impressions += Math.floor(Math.random() * 5) + 1;
-                reach += Math.floor(Math.random() * 3) + 1;
-                if(Math.random() > 0.6) clicks += 1;
-                if(Math.random() > 0.9) conversions += 1;
-                renderValues();
-            }, 4000);
+                whatsapp += Math.floor(Math.random() * 3);
+                conversions += Math.random() > 0.7 ? 1 : 0;
+                whatsappSpan.innerText = whatsapp;
+                convSpan.innerText = conversions;
+            }, 5000);
         }
-        setTimeout(initRealtimeMetricsSimulation, 500);
+        setTimeout(initSimpleCounters, 1000);
 
         const styleAnim = document.createElement('style');
         styleAnim.textContent = `@keyframes fadeInUp { from { opacity: 0; transform: translate(-50%, 20px); } to { opacity: 1; transform: translate(-50%, 0); } } .animate-fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }`;
