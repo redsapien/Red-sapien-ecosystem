@@ -210,7 +210,15 @@
             cursor: pointer;
         }
 
-        /* Efecto de resplandor para el candado */
+        /* Efecto de resplandor para el candado (pulso rojo neón) */
+        @keyframes pulse-red-neon {
+            0% { filter: drop-shadow(0 0 2px rgba(255, 60, 0, 0.2)); opacity: 0.03; }
+            50% { filter: drop-shadow(0 0 16px rgba(255, 60, 0, 0.9)); opacity: 0.05; }
+            100% { filter: drop-shadow(0 0 2px rgba(255, 60, 0, 0.2)); opacity: 0.03; }
+        }
+        .lock-pulse-red {
+            animation: pulse-red-neon 3s ease-in-out infinite;
+        }
         .lock-glow {
             filter: drop-shadow(0 0 8px rgba(255,60,0,0.6));
             transition: filter 0.3s ease;
@@ -227,6 +235,15 @@
         }
         .modal-matrix-enter {
             animation: matrixEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Micro-escáner radar para tarjeta Antonella */
+        @keyframes radar-sweep {
+            0% { transform: rotate(0deg); opacity: 0.6; }
+            100% { transform: rotate(360deg); opacity: 0.6; }
+        }
+        .radar-sweep {
+            animation: radar-sweep 4s linear infinite;
         }
     </style>
 </head>
@@ -307,13 +324,13 @@
             </div>
 
             <div class="flex items-center gap-6">
-                <!-- DESKTOP CTA CONTAINER (botón de activación con opacity inicial) -->
+                <!-- DESKTOP CTA CONTAINER (botón de activación con nueva lógica) -->
                 <div id="desktop-cta-container" class="hidden lg:block relative transition-opacity duration-1000 opacity-0 w-64 flex justify-end">
                     <div id="cta-btn-wrapper-pc" class="relative group">
                         <div class="tooltip-activate absolute -top-10 left-1/2 -translate-x-1/2 bg-[#1A1A1A] border border-white/10 text-gray-300 text-[10px] font-mono tracking-wide px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl pointer-events-none" data-i18n="tooltip_activate">
                             Haz clic para que te contactemos e iniciemos con la activación
                         </div>
-                        <button id="activate-btn-pc" onclick="openRegistrationModal()" class="flex items-center gap-2.5 px-6 py-3.5 bg-white text-black text-[11px] font-black uppercase tracking-widest rounded-full hover:bg-gray-200 transition-all active:scale-95 animate-pulse-activate border border-white/50">
+                        <button id="activate-btn-pc" onclick="activateEcosystem()" class="flex items-center gap-2.5 px-6 py-3.5 bg-white text-black text-[11px] font-black uppercase tracking-widest rounded-full hover:bg-gray-200 transition-all active:scale-95 animate-pulse-activate border border-white/50">
                             <span class="w-2 h-2 rounded-full bg-green-500 led-green"></span>
                             <span data-i18n="btn_activate">Activar ahora el Ecosistema</span>
                         </button>
@@ -410,7 +427,7 @@
                                 <div class="space-y-4">
                                     <div>
                                         <span class="text-xs text-gray-400 uppercase tracking-wider" data-i18n="hosting_label">HOSTING + DOMINIO DE POR VIDA GRATIS</span>
-                                        <div class="bg-black border border-white/20 p-2.5 rounded-lg text-green-400 font-mono tracking-widest w-full mt-1 text-sm" id="dynamic-domain">brossmanizales.co</div>
+                                        <div class="bg-black border border-white/20 p-2.5 rounded-lg text-green-400 font-mono tracking-widest w-full mt-1 text-sm" id="dynamic-domain">brossmanizales.redsapien.com</div>
                                     </div>
                                     <div class="pt-2">
                                         <span class="text-xs text-gray-400 uppercase tracking-wider" data-i18n="status_label">Estado operativo</span>
@@ -527,40 +544,47 @@
                 </div>
             </div>
 
-            <!-- MÓDULO 2: SOPORTE (REFACTORIZADO SEGÚN FASE 2 - SIN SCROLL, ESPACIADO PERFECTO) -->
+            <!-- MÓDULO 2: SOPORTE (REFACTORIZADO SEGÚN FASES) -->
             <div id="pane-view-clientes" class="workspace-pane h-full hidden transition-opacity duration-200">
-                <!-- Contenedor principal con clases exactas: centrado, padding superior e inferior para evitar elementos pegados -->
                 <div class="relative w-full h-full overflow-hidden flex flex-col justify-center px-4 pt-16 pb-28 md:pb-16">
                     
-                    <!-- Candado de Seguridad (NO BOMBILLO) con glow y animación -->
+                    <!-- Candado de Seguridad con pulso neón rojo -->
                     <div class="absolute inset-0 z-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
-                        <svg class="w-72 h-72 lock-glow animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <svg class="w-72 h-72 lock-glow lock-pulse-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                             <rect x="5" y="11" width="14" height="10" rx="2"/>
                             <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                         </svg>
                     </div>
 
-                    <!-- Badge de Cloudflare (arriba del todo, centrado) -->
+                    <!-- Badge Cloudflare Corporativo mejorado -->
                     <div class="absolute top-6 left-0 right-0 flex justify-center z-10">
-                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/50 backdrop-blur-sm text-[10px] font-mono font-semibold tracking-wider">
-                            <svg class="w-4 h-4 text-orange-400" viewBox="0 0 24 24" fill="currentColor">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 border border-white/10 bg-black/60 rounded-lg text-[10px] font-mono font-semibold tracking-wider whitespace-nowrap">
+                            <svg class="w-6 h-6 text-orange-400" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12.5 4C10.5 4 8.9 5.3 8.2 7.1C6.9 7.3 5.8 8.4 5.5 9.8C3.5 10.3 2 12.1 2 14.2C2 16.5 3.8 18.3 6 18.3h6.5c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5H9c-1.1 0-2-.9-2-2s.9-2 2-2h.5c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5h-.2c.2-1.1 1.2-2 2.4-2 1.4 0 2.5 1.1 2.5 2.5v.5c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5v-.5c0-3-2.5-5.5-5.5-5.5zM20.5 13c-1.1 0-2 .9-2 2v2h-2c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5h3c.8 0 1.5-.7 1.5-1.5v-3c0-.6-.4-1-1-1z"/>
                             </svg>
-                            <span class="text-white/90">Protección del Ecosistema con Cloudflare Activa</span>
+                            <span class="text-white/90">🟢 Protección del Ecosistema con Cloudflare Activa</span>
                         </div>
                     </div>
 
-                    <!-- Tarjetas Horizontales Adaptativas (con clases exactas y contenedor responsivo) -->
+                    <!-- Tarjetas Horizontales Adaptativas -->
                     <div class="relative z-10 flex flex-col items-center w-full max-w-sm md:max-w-2xl mx-auto gap-4 md:gap-8 mt-auto">
                         
-                        <!-- Tarjeta Antonella IA (horizontal) -->
-                        <div class="w-full bg-white/[0.02] border border-white/5 hover:border-[var(--accent-color)]/30 rounded-xl p-3 md:p-5 flex flex-row items-center gap-4 transition-all shadow-md">
-                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0">
+                        <!-- Tarjeta Antonella IA con micro-escáner radar -->
+                        <div class="w-full bg-white/[0.02] border border-white/5 hover:border-[var(--accent-color)]/30 rounded-xl p-3 md:p-5 flex flex-row items-center gap-4 transition-all shadow-md relative overflow-hidden">
+                            <!-- Radar CSS puro en el lado derecho (sin alterar tamaños) -->
+                            <div class="absolute right-2 top-1/2 transform -translate-y-1/2 w-12 h-12 pointer-events-none z-0">
+                                <div class="relative w-full h-full">
+                                    <div class="absolute inset-0 rounded-full border border-green-400/20"></div>
+                                    <div class="absolute inset-1 rounded-full border border-green-400/30"></div>
+                                    <div class="absolute w-1/2 h-[2px] bg-green-400/40 origin-left top-1/2 left-1/2 -translate-y-1/2 radar-sweep" style="transform-origin: 0% 50%;"></div>
+                                </div>
+                            </div>
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0 z-10">
                                 <img src="Antonella-IA.jpg" alt="Antonella IA" class="w-full h-full object-cover">
                             </div>
-                            <div class="flex flex-col text-left">
-                                <h3 class="text-sm md:text-base font-display font-bold text-white uppercase tracking-tight">Antonella IA</h3>
-                                <p class="text-[10px] md:text-xs text-gray-400 font-mono">Lista para monitorear ecosistema</p>
+                            <div class="flex flex-col text-left z-10">
+                                <h3 class="text-sm md:text-base font-display font-bold text-white uppercase tracking-tight" data-i18n="soporte_monitoreo_titulo">Antonella IA</h3>
+                                <p class="text-[10px] md:text-xs text-gray-400 font-mono" data-i18n="soporte_monitoreo_estado">Lista para monitorear ecosistema</p>
                                 <div class="mt-1 text-[10px] md:text-xs font-mono text-cyan-400 flex items-center gap-1">
                                     <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
                                     <span id="scan-percent">94</span>% escaneo activo
@@ -568,25 +592,29 @@
                             </div>
                         </div>
 
-                        <!-- Tarjeta Ingeniería Red Sapien (horizontal) -->
-                        <div class="w-full bg-white/[0.02] border border-white/5 hover:border-[var(--accent-color)]/30 rounded-xl p-3 md:p-5 flex flex-row items-center gap-4 transition-all shadow-md">
+                        <!-- Tarjeta Ingeniería Red Sapien con mini-terminal -->
+                        <div class="w-full bg-white/[0.02] border border-white/5 hover:border-[var(--accent-color)]/30 rounded-xl p-3 md:p-5 flex flex-row items-center gap-4 transition-all shadow-md relative">
                             <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0">
                                 <img src="Foto-Sapien.webp" alt="Ingeniería Red Sapien" class="w-full h-full object-cover">
                             </div>
                             <div class="flex flex-col text-left">
-                                <h3 class="text-sm md:text-base font-display font-bold text-white uppercase tracking-tight">Ingeniería Red Sapien</h3>
-                                <p class="text-[10px] md:text-xs text-gray-400 font-mono">Asesoría y control de mando activo</p>
+                                <h3 class="text-sm md:text-base font-display font-bold text-white uppercase tracking-tight" data-i18n="soporte_asesoria_titulo">Ingeniería Red Sapien</h3>
+                                <p class="text-[10px] md:text-xs text-gray-400 font-mono" data-i18n="soporte_asesoria_estado">Asesoría y control de mando activo</p>
                                 <div class="mt-1 text-[10px] md:text-xs text-green-400 flex items-center gap-1">
                                     <span class="inline-block w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
                                     <span id="cmd-counter">127</span> comandos ejecutados
                                 </div>
                             </div>
+                            <!-- Mini-terminal de comandos compacta -->
+                            <div class="absolute right-3 bottom-2 w-32 md:w-40 h-8 font-mono text-[8px] text-green-400/50 bg-black/40 rounded border border-white/5 overflow-hidden p-1 select-none pointer-events-none z-10">
+                                <div id="mini-terminal-logs" class="whitespace-nowrap overflow-hidden text-ellipsis">CF_PROXY::OK</div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Botón Táctico (blanco brillante, con animación y espaciado correcto) -->
+                    <!-- Botón Táctico (blanco brillante) -->
                     <div class="w-full max-w-sm mx-auto mt-8 md:mt-12 mb-auto z-10">
-                        <button id="open-support-modal-btn" class="w-full bg-white text-black py-3 md:py-4 rounded-full text-[11px] md:text-xs font-black uppercase tracking-widest transition-all active:scale-95 animate-pulse-activate border border-white/50 shadow-lg hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                        <button id="open-support-modal-btn" class="w-full bg-white text-black py-3 md:py-4 rounded-full text-[11px] md:text-xs font-black uppercase tracking-widest transition-all active:scale-95 animate-pulse-activate border border-white/50 shadow-lg hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]" data-i18n="btn_solicitar_soporte">
                             SOLICITAR SOPORTE
                         </button>
                     </div>
@@ -598,7 +626,7 @@
         </div>
     </main>
 
-    <!-- MODAL MATRIX DE SOPORTE (con p-4 añadido para márgenes en móvil) -->
+    <!-- MODAL MATRIX DE SOPORTE (con márgenes perfectos y datetime-local estilizado) -->
     <div id="matrix-modal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-500 p-4">
         <div class="w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 shadow-2xl modal-matrix-enter">
             <div class="flex justify-between items-center border-b border-white/10 pb-3 mb-5">
@@ -639,55 +667,21 @@
         </div>
     </div>
 
-    <!-- MODAL DE REGISTRO (4 datos + preview dominio con formato nombre.redsapien.com) -->
-    <div id="registration-modal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-500">
-        <div class="w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 shadow-2xl modal-matrix-enter">
-            <div class="flex justify-between items-center border-b border-white/10 pb-3 mb-5">
-                <h3 class="text-lg font-display font-bold text-white uppercase tracking-wider">Activación del Ecosistema</h3>
-                <button id="close-reg-modal" class="text-gray-400 hover:text-white transition-colors p-1">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                </button>
-            </div>
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-2">Nombre del Negocio</label>
-                    <input type="text" id="business-name" placeholder="Ej: Bross Manizales" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[var(--accent-color)]">
-                </div>
-                <div>
-                    <label class="block text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-2">Correo Electrónico</label>
-                    <input type="email" id="business-email" placeholder="contacto@tuempresa.com" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[var(--accent-color)]">
-                </div>
-                <div>
-                    <label class="block text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-2">Teléfono</label>
-                    <input type="tel" id="business-phone" placeholder="+57 300 000 0000" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[var(--accent-color)]">
-                </div>
-                <div>
-                    <label class="block text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-2">Dominio sugerido</label>
-                    <div class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-green-400 font-mono" id="domain-preview">nombre.redsapien.com</div>
-                </div>
-                <button id="confirm-registration-btn" class="w-full bg-white text-black font-black uppercase tracking-widest text-xs py-3 rounded-xl transition-all hover:bg-gray-200 active:scale-95 mt-2">
-                    REGISTRAR Y ACTIVAR
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MOBILE CTA CONTAINER (actualizado para abrir modal de registro) -->
+    <!-- MOBILE CTA CONTAINER (nueva lógica) -->
     <div id="mobile-cta-container" class="md:hidden fixed bottom-[72px] left-0 right-0 w-full flex justify-center z-40 px-4 transition-all duration-1000 opacity-0 mt-4">
         <div id="cta-btn-wrapper-mob" class="relative w-full max-w-sm group">
             <div class="tooltip-activate absolute -top-[42px] left-1/2 -translate-x-1/2 bg-[#1A1A1A] border border-white/10 text-gray-300 text-[9px] font-mono tracking-wider px-3 py-2 rounded-lg whitespace-nowrap shadow-2xl text-center" data-i18n="tooltip_activate_mobile">Haz clic para que te contactemos <br>e iniciemos la activación</div>
-            <button id="activate-btn-mob" onclick="openRegistrationModal()" class="w-full bg-white text-black py-4 px-6 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 cursor-pointer active:scale-95 transition-transform animate-pulse-activate border border-white/50">
+            <button id="activate-btn-mob" onclick="activateEcosystem()" class="w-full bg-white text-black py-4 px-6 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 cursor-pointer active:scale-95 transition-transform animate-pulse-activate border border-white/50">
                 <span class="w-2.5 h-2.5 rounded-full bg-green-500 led-green"></span>
                 <span class="text-[12px] font-black uppercase tracking-widest leading-none mt-0.5" data-i18n="btn_activate">Activar ahora el Ecosistema</span>
             </button>
         </div>
     </div>
 
-    <!-- NAV MÓVIL (actualizado con icono de soporte de diadema clásica igual al desktop) -->
+    <!-- NAV MÓVIL (icono de soporte clásico) -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-rs-dark/95 border-t border-white/5 backdrop-blur-2xl z-50 flex items-center justify-between px-2 pb-safe shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
         <button onclick="switchWorkspaceView('panel')" class="mobile-nav-btn flex flex-col items-center justify-center text-white w-1/4" data-mod="panel"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_panel">Panel</span></button>
         <button onclick="switchWorkspaceView('clientes')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/4" data-mod="clientes">
-            <!-- ICONO DE AURICULARES CLÁSICO (DIADEMA DE SOPORTE) -->
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2a10 10 0 0 0-10 10v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H4c0-4.42 3.58-8 8-8s8 3.58 8 8h-2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a10 10 0 0 0-10-10z"/>
                 <path d="M12 22v-2"/>
@@ -704,7 +698,7 @@
     <div id="purge-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-rs-red/30 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-red-500 mb-2" data-i18n="purge_title">🚨 CONFIRMAR PURGA ABSOLUTA</h3><p class="text-xs text-gray-400 leading-relaxed mb-4 font-mono" data-i18n="purge_text">¿Seguro que deseas purgar la cuenta, el avatar y todo el progreso del ecosistema? Esta acción es irreversible.</p><input type="text" id="purge-confirm-input" placeholder="Escribe ELIMINAR para confirmar" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[var(--accent-color)] mb-4"><div class="flex justify-end gap-3"><button onclick="closePurgeModal()" class="px-5 py-2.5 bg-white/10 text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-white/20 transition-colors" data-i18n="cancel">Cancelar</button><button id="confirm-purge-btn" disabled class="px-5 py-2.5 bg-red-500/30 text-gray-400 text-xs font-black uppercase tracking-widest rounded-xl cursor-not-allowed transition-colors" data-i18n="confirm_purge">Confirmar Purgado</button></div></div></div>
 
     <script>
-        // -------------------- TRADUCCIONES COMPLETAS (actualizadas con nuevos textos) --------------------
+        // -------------------- TRADUCCIONES COMPLETAS (actualizadas con nuevos textos del Módulo 2) --------------------
         const translations = {
             es: {
                 nav_panel: "Panel", nav_clientes: "Soporte", nav_casos: "Casos de Éxito", nav_notificaciones: "Notificaciones",
@@ -738,7 +732,8 @@
                 soporte_monitoreo_titulo: "Antonella IA",
                 soporte_monitoreo_estado: "Lista para monitorear ecosistema",
                 soporte_asesoria_titulo: "Ingeniería Red Sapien",
-                soporte_asesoria_estado: "Asesoría y control de mando activo"
+                soporte_asesoria_estado: "Asesoría y control de mando activo",
+                btn_solicitar_soporte: "SOLICITAR SOPORTE"
             },
             en: {
                 nav_panel: "Dashboard", nav_clientes: "Support", nav_casos: "Success Cases", nav_notificaciones: "Notifications",
@@ -772,7 +767,8 @@
                 soporte_monitoreo_titulo: "Antonella AI",
                 soporte_monitoreo_estado: "Ready to monitor ecosystem",
                 soporte_asesoria_titulo: "Red Sapien Engineering",
-                soporte_asesoria_estado: "Advisory and active command control"
+                soporte_asesoria_estado: "Advisory and active command control",
+                btn_solicitar_soporte: "REQUEST SUPPORT"
             },
             pt: {
                 nav_panel: "Painel", nav_clientes: "Suporte", nav_casos: "Casos de Sucesso", nav_notificacoes: "Notificações",
@@ -806,7 +802,8 @@
                 soporte_monitoreo_titulo: "Antonella IA",
                 soporte_monitoreo_estado: "Pronta para monitorar ecossistema",
                 soporte_asesoria_titulo: "Engenharia Red Sapien",
-                soporte_asesoria_estado: "Consultoria e controle de comando ativo"
+                soporte_asesoria_estado: "Consultoria e controle de comando ativo",
+                btn_solicitar_soporte: "SOLICITAR SUPORTE"
             }
         };
         let currentLang = localStorage.getItem("rs_lang") || "es";
@@ -977,92 +974,51 @@
             if (next >= 1 && next <= 3) openTelemetryModal(next); 
         }
 
-        // --- MODAL DE REGISTRO Y PREVIEW DE DOMINIO (nombre.redsapien.com) ---
-        const regModal = document.getElementById('registration-modal');
-        const closeRegModal = document.getElementById('close-reg-modal');
-        const businessNameInput = document.getElementById('business-name');
-        const domainPreview = document.getElementById('domain-preview');
-        const confirmRegBtn = document.getElementById('confirm-registration-btn');
+        // --- Función de activación limpia (FASE 1) ---
+        function activateEcosystem() {
+            // Crear toast verde flotante
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[200] bg-[#075E54] border border-[#25D366] backdrop-blur-md rounded-2xl p-4 shadow-2xl max-w-xs w-full text-center transition-all duration-300 whatsapp-toast';
+            toast.innerHTML = `<div class="flex items-center gap-3 justify-center mb-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="text-sm font-black uppercase tracking-wider text-white">Pronto le contactamos de la central...</span></div><p class="text-xs text-gray-200 font-medium">Nuestro equipo técnico se pondrá en contacto en breve.</p>`;
+            document.body.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3000);
+            
+            // Ocultar botones de activación
+            const pcWrapper = document.getElementById('cta-btn-wrapper-pc');
+            const mobWrapper = document.getElementById('cta-btn-wrapper-mob');
+            if (pcWrapper) pcWrapper.style.display = 'none';
+            if (mobWrapper) mobWrapper.style.display = 'none';
+            
+            // Marcar en localStorage como activado
+            localStorage.setItem('ecosystem_activated', 'true');
+            
+            // Función vacía para futura conexión a Supabase / Activepieces
+            window.onActivationCallback = function() {
+                // Hook para integraciones futuras (webhook, Supabase, etc.)
+                console.log('Ecosistema activado, hook listo');
+            };
+            // Ejecutar el callback por si se necesita inmediatamente
+            if (window.onActivationCallback) window.onActivationCallback();
+        }
 
-        function openRegistrationModal() {
-            regModal.classList.remove('hidden');
-            regModal.classList.add('flex');
-            const modalContent = regModal.querySelector('.modal-matrix-enter');
-            if (modalContent) {
-                modalContent.style.animation = 'none';
-                setTimeout(() => { modalContent.style.animation = ''; }, 10);
+        // --- Automatización Dinámica de Dominio (Tarjeta 1) ---
+        function updateDynamicDomain() {
+            let businessName = localStorage.getItem('business_name');
+            if (!businessName) {
+                const headerName = document.getElementById('brand-headline-name');
+                if (headerName) businessName = headerName.innerText.trim();
+                else businessName = "BROSS MANIZALES";
             }
+            // Limpiar caracteres especiales, eliminar espacios, minúsculas
+            let slug = businessName.toLowerCase()
+                .replace(/\s+/g, '')
+                .replace(/[^a-z0-9]/g, '');
+            if (slug.length > 30) slug = slug.substring(0, 30);
+            const domainSpan = document.getElementById('dynamic-domain');
+            if (domainSpan) domainSpan.innerText = `${slug}.redsapien.com`;
         }
-
-        if (closeRegModal) {
-            closeRegModal.addEventListener('click', () => {
-                regModal.classList.add('hidden');
-                regModal.classList.remove('flex');
-            });
-        }
-
-        if (businessNameInput) {
-            businessNameInput.addEventListener('input', (e) => {
-                let rawName = e.target.value.trim();
-                if (rawName === "") {
-                    domainPreview.innerText = "nombre.redsapien.com";
-                    return;
-                }
-                // Limpiar espacios, convertir a minúsculas, reemplazar espacios por guiones
-                let slug = rawName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-                if (slug.length > 30) slug = slug.substring(0, 30);
-                domainPreview.innerText = `${slug}.redsapien.com`;
-            });
-        }
-
-        if (confirmRegBtn) {
-            confirmRegBtn.addEventListener('click', () => {
-                const name = businessNameInput.value.trim();
-                const email = document.getElementById('business-email').value.trim();
-                const phone = document.getElementById('business-phone').value.trim();
-                const domain = domainPreview.innerText;
-                if (!name || !email || !phone) {
-                    alert('Por favor completa todos los campos.');
-                    return;
-                }
-                console.log('Registro:', { name, email, phone, domain });
-                const toast = document.createElement('div');
-                toast.className = 'fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[200] bg-[#075E54] border border-[#25D366] backdrop-blur-md rounded-2xl p-4 shadow-2xl max-w-xs w-full text-center transition-all duration-300 whatsapp-toast';
-                toast.innerHTML = `<div class="flex items-center gap-3 justify-center mb-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="text-sm font-black uppercase tracking-wider text-white">Ecosistema Activado</span></div><p class="text-xs text-gray-200 font-medium">Te contactaremos por WhatsApp en breve.</p>`;
-                document.body.appendChild(toast);
-                setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3000);
-                regModal.classList.add('hidden');
-                regModal.classList.remove('flex');
-                const pcBtnWrapper = document.getElementById('cta-btn-wrapper-pc');
-                const mobBtnWrapper = document.getElementById('cta-btn-wrapper-mob');
-                if (pcBtnWrapper) pcBtnWrapper.classList.add('hidden');
-                if (mobBtnWrapper) mobBtnWrapper.classList.add('hidden');
-                localStorage.setItem('ecosystem_activated', 'true');
-            });
-        }
-
-        // --- FUNCIONES LEGACY (sidebar, avatar, etc.) ---
-        function executeSidebarCollapse() { const sidebar = document.getElementById("sidebar-panel"), reopenBtn = document.getElementById("trigger-reopen-sidebar"), headerContainer = document.getElementById("header-title-container"); sidebar.classList.add("!w-0", "opacity-0", "pointer-events-none"); reopenBtn.classList.remove("hidden"); setTimeout(() => { reopenBtn.classList.remove("translate-x-[-100px]", "opacity-0"); reopenBtn.classList.add("translate-x-0", "opacity-100"); if(headerContainer) headerContainer.style.marginLeft = "45px"; }, 50); }
-        function executeSidebarOpen() { const sidebar = document.getElementById("sidebar-panel"), reopenBtn = document.getElementById("trigger-reopen-sidebar"), headerContainer = document.getElementById("header-title-container"); if(reopenBtn) { reopenBtn.classList.remove("translate-x-0", "opacity-100"); reopenBtn.classList.add("translate-x-[-100px]", "opacity-0"); } if(headerContainer) headerContainer.style.marginLeft = "0px"; setTimeout(() => { if(reopenBtn) reopenBtn.classList.add("hidden"); if(sidebar) sidebar.classList.remove("!w-0", "opacity-0", "pointer-events-none"); }, 200); }
-        function toggleProfileDropdownMenu(event) { event.stopPropagation(); document.getElementById("dropdown-menu-card").classList.toggle("hidden"); }
-        function closeDropdownMenu() { document.getElementById("dropdown-menu-card").classList.add("hidden"); }
-        function triggerManualAvatarClick(event) { event.stopPropagation(); document.getElementById("supabase-avatar-uploader").click(); closeDropdownMenu(); }
-        function handleAvatarStorageUpload(event) { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(e) { const base64Img = e.target.result; localStorage.setItem("rs_business_avatar_url", base64Img); document.getElementById("avatar-state-empty").classList.add("hidden"); document.getElementById("avatar-state-img").src = base64Img; document.getElementById("avatar-state-img").classList.remove("hidden"); document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.change_logo || "Cambiar Logo"; }; reader.readAsDataURL(file); }
-        document.addEventListener('click', (e) => { const card = document.getElementById("dropdown-menu-card"), btn = document.getElementById("dropdown-avatar-btn"); if (card && !card.contains(e.target) && !btn.contains(e.target)) card.classList.add("hidden"); });
-        function switchWorkspaceView(tabId) { document.querySelectorAll(".workspace-pane").forEach(p => p.classList.add("hidden")); document.getElementById(`pane-view-${tabId}`).classList.remove("hidden"); document.querySelectorAll(".sidebar-tab-link").forEach(b => { b.classList.remove("bg-white/10", "text-white", "shadow-inner", "border-white/10"); b.classList.add("text-gray-500", "border-transparent"); }); const activePC = document.querySelector(`.sidebar-tab-link[data-mod="${tabId}"]`); if (activePC) { activePC.classList.remove("text-gray-500", "border-transparent"); activePC.classList.add("bg-white/10", "text-white", "shadow-inner", "border-white/10"); } document.querySelectorAll(".mobile-nav-btn").forEach(i => { i.classList.remove("text-white"); i.classList.add("text-gray-500"); const svg = i.querySelector("svg"); if (svg) svg.style.color = "inherit"; if(i.querySelector("svg")) i.querySelector("svg").classList.remove("scale-110"); }); const activeMobile = document.querySelector(`.mobile-nav-btn[data-mod="${tabId}"]`); if (activeMobile) { activeMobile.classList.add("text-white"); activeMobile.classList.remove("text-gray-500"); const svg = activeMobile.querySelector("svg"); if (svg) svg.classList.add("scale-110"); const color = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim(); if (svg) svg.style.color = color; } }
-        function changeGlobalNeonPalette(color, glow, border, element) { document.documentElement.style.setProperty('--accent-color', color); document.documentElement.style.setProperty('--accent-glow', glow); document.documentElement.style.setProperty('--neon-border', border); const rgbColor = (color.slice(1).match(/.{2}/g).map(c=>parseInt(c,16))).join(','); const ambientBg = document.querySelector('.ambient-glow-bg'); if (ambientBg) ambientBg.style.background = `radial-gradient(circle at 50% -20%, rgba(${rgbColor}, 0.08) 0%, rgba(5,5,5,0) 65%), #050505`; const header = document.getElementById('workspace-header'); if (header) { header.style.borderBottom = `1px solid ${color}`; header.style.boxShadow = `0 4px 20px -8px ${color.replace('rgb', 'rgba').replace(')', ', 0.25)')}`; } localStorage.setItem("rs_dash_color", color); localStorage.setItem("rs_dash_glow", glow); localStorage.setItem("rs_dash_neon", border); if (element) { element.parentNode.querySelectorAll("button").forEach(b => b.classList.remove("scale-110", "border-[2px]", "border-white")); element.classList.add("scale-110", "border-[2px]", "border-white"); } const activeMobile = document.querySelector(".mobile-nav-btn.text-white svg"); if (activeMobile) activeMobile.style.color = color; }
-        function loadPersistedColorPalette() { const color = localStorage.getItem("rs_dash_color"), glow = localStorage.getItem("rs_dash_glow"), neon = localStorage.getItem("rs_dash_neon"); if (color && glow && neon) { const btns = document.querySelectorAll('[onclick*="changeGlobalNeonPalette"]'); let activeBtn = null; btns.forEach(b => { if (b.getAttribute('onclick').includes(color)) activeBtn = b; }); changeGlobalNeonPalette(color, glow, neon, activeBtn); } }
-        function openSupportModal() { document.getElementById("support-modal-overlay").classList.remove("hidden"); }
-        function toggleSupportModal(show) { document.getElementById("support-modal-overlay").classList.toggle("hidden", !show); }
-        function toggleTermsModal(show) { document.getElementById("terms-modal-overlay").classList.toggle("hidden", !show); }
-        function openPurgeModal() { let inp = document.getElementById('purge-confirm-input'); if(inp) inp.value = ''; let btn = document.getElementById('confirm-purge-btn'); if(btn) btn.disabled = true; document.getElementById('purge-modal-overlay').classList.remove('hidden'); }
-        function closePurgeModal() { document.getElementById('purge-modal-overlay').classList.add('hidden'); }
-        function executeDataPurge() { openPurgeModal(); }
-        let purgeInput = document.getElementById('purge-confirm-input'), confirmPurgeBtn = document.getElementById('confirm-purge-btn');
-        if(purgeInput) purgeInput.addEventListener('input', (e) => { if(confirmPurgeBtn) { confirmPurgeBtn.disabled = e.target.value !== 'ELIMINAR'; if(e.target.value === 'ELIMINAR') { confirmPurgeBtn.classList.remove('bg-red-500/30','text-gray-400','cursor-not-allowed'); confirmPurgeBtn.classList.add('bg-red-500','text-white','cursor-pointer','hover:bg-red-600'); } else { confirmPurgeBtn.classList.add('bg-red-500/30','text-gray-400','cursor-not-allowed'); confirmPurgeBtn.classList.remove('bg-red-500','text-white','cursor-pointer','hover:bg-red-600'); } } });
-        if(confirmPurgeBtn) confirmPurgeBtn.addEventListener('click', () => { if(!confirmPurgeBtn.disabled) { localStorage.clear(); window.location.reload(); } });
         
-        // --- Simulación de telemetría en módulo 2 ---
+        // --- Simulación de telemetría en módulo 2 (incluye terminal logs) ---
         function startTelemetrySimulation() {
             let scanValue = 94;
             const percentSpan = document.getElementById('scan-percent');
@@ -1079,6 +1035,17 @@
                     cmdCount += Math.floor(Math.random() * 3);
                     cmdSpan.innerText = cmdCount;
                 }, 3500);
+            }
+            
+            // Terminal logs rotativos
+            const terminalDiv = document.getElementById('mini-terminal-logs');
+            if (terminalDiv) {
+                const logs = ['CF_PROXY::OK', 'GH_COMMIT::v2.4', 'SYS_SECURE', 'CACHE_FLUSH', 'ROUTE_OPTIMIZE', 'EDGE_DEPLOY'];
+                let logIndex = 0;
+                setInterval(() => {
+                    terminalDiv.innerText = logs[logIndex % logs.length];
+                    logIndex++;
+                }, 1800);
             }
         }
         
@@ -1123,10 +1090,31 @@
             });
         }
         
+        // --- FUNCIONES LEGACY (sidebar, avatar, etc.) ---
+        function executeSidebarCollapse() { const sidebar = document.getElementById("sidebar-panel"), reopenBtn = document.getElementById("trigger-reopen-sidebar"), headerContainer = document.getElementById("header-title-container"); sidebar.classList.add("!w-0", "opacity-0", "pointer-events-none"); reopenBtn.classList.remove("hidden"); setTimeout(() => { reopenBtn.classList.remove("translate-x-[-100px]", "opacity-0"); reopenBtn.classList.add("translate-x-0", "opacity-100"); if(headerContainer) headerContainer.style.marginLeft = "45px"; }, 50); }
+        function executeSidebarOpen() { const sidebar = document.getElementById("sidebar-panel"), reopenBtn = document.getElementById("trigger-reopen-sidebar"), headerContainer = document.getElementById("header-title-container"); if(reopenBtn) { reopenBtn.classList.remove("translate-x-0", "opacity-100"); reopenBtn.classList.add("translate-x-[-100px]", "opacity-0"); } if(headerContainer) headerContainer.style.marginLeft = "0px"; setTimeout(() => { if(reopenBtn) reopenBtn.classList.add("hidden"); if(sidebar) sidebar.classList.remove("!w-0", "opacity-0", "pointer-events-none"); }, 200); }
+        function toggleProfileDropdownMenu(event) { event.stopPropagation(); document.getElementById("dropdown-menu-card").classList.toggle("hidden"); }
+        function closeDropdownMenu() { document.getElementById("dropdown-menu-card").classList.add("hidden"); }
+        function triggerManualAvatarClick(event) { event.stopPropagation(); document.getElementById("supabase-avatar-uploader").click(); closeDropdownMenu(); }
+        function handleAvatarStorageUpload(event) { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(e) { const base64Img = e.target.result; localStorage.setItem("rs_business_avatar_url", base64Img); document.getElementById("avatar-state-empty").classList.add("hidden"); document.getElementById("avatar-state-img").src = base64Img; document.getElementById("avatar-state-img").classList.remove("hidden"); document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.change_logo || "Cambiar Logo"; }; reader.readAsDataURL(file); }
+        document.addEventListener('click', (e) => { const card = document.getElementById("dropdown-menu-card"), btn = document.getElementById("dropdown-avatar-btn"); if (card && !card.contains(e.target) && !btn.contains(e.target)) card.classList.add("hidden"); });
+        function switchWorkspaceView(tabId) { document.querySelectorAll(".workspace-pane").forEach(p => p.classList.add("hidden")); document.getElementById(`pane-view-${tabId}`).classList.remove("hidden"); document.querySelectorAll(".sidebar-tab-link").forEach(b => { b.classList.remove("bg-white/10", "text-white", "shadow-inner", "border-white/10"); b.classList.add("text-gray-500", "border-transparent"); }); const activePC = document.querySelector(`.sidebar-tab-link[data-mod="${tabId}"]`); if (activePC) { activePC.classList.remove("text-gray-500", "border-transparent"); activePC.classList.add("bg-white/10", "text-white", "shadow-inner", "border-white/10"); } document.querySelectorAll(".mobile-nav-btn").forEach(i => { i.classList.remove("text-white"); i.classList.add("text-gray-500"); const svg = i.querySelector("svg"); if (svg) svg.style.color = "inherit"; if(i.querySelector("svg")) i.querySelector("svg").classList.remove("scale-110"); }); const activeMobile = document.querySelector(`.mobile-nav-btn[data-mod="${tabId}"]`); if (activeMobile) { activeMobile.classList.add("text-white"); activeMobile.classList.remove("text-gray-500"); const svg = activeMobile.querySelector("svg"); if (svg) svg.classList.add("scale-110"); const color = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim(); if (svg) svg.style.color = color; } }
+        function changeGlobalNeonPalette(color, glow, border, element) { document.documentElement.style.setProperty('--accent-color', color); document.documentElement.style.setProperty('--accent-glow', glow); document.documentElement.style.setProperty('--neon-border', border); const rgbColor = (color.slice(1).match(/.{2}/g).map(c=>parseInt(c,16))).join(','); const ambientBg = document.querySelector('.ambient-glow-bg'); if (ambientBg) ambientBg.style.background = `radial-gradient(circle at 50% -20%, rgba(${rgbColor}, 0.08) 0%, rgba(5,5,5,0) 65%), #050505`; const header = document.getElementById('workspace-header'); if (header) { header.style.borderBottom = `1px solid ${color}`; header.style.boxShadow = `0 4px 20px -8px ${color.replace('rgb', 'rgba').replace(')', ', 0.25)')}`; } localStorage.setItem("rs_dash_color", color); localStorage.setItem("rs_dash_glow", glow); localStorage.setItem("rs_dash_neon", border); if (element) { element.parentNode.querySelectorAll("button").forEach(b => b.classList.remove("scale-110", "border-[2px]", "border-white")); element.classList.add("scale-110", "border-[2px]", "border-white"); } const activeMobile = document.querySelector(".mobile-nav-btn.text-white svg"); if (activeMobile) activeMobile.style.color = color; }
+        function loadPersistedColorPalette() { const color = localStorage.getItem("rs_dash_color"), glow = localStorage.getItem("rs_dash_glow"), neon = localStorage.getItem("rs_dash_neon"); if (color && glow && neon) { const btns = document.querySelectorAll('[onclick*="changeGlobalNeonPalette"]'); let activeBtn = null; btns.forEach(b => { if (b.getAttribute('onclick').includes(color)) activeBtn = b; }); changeGlobalNeonPalette(color, glow, neon, activeBtn); } }
+        function openSupportModal() { document.getElementById("support-modal-overlay").classList.remove("hidden"); }
+        function toggleSupportModal(show) { document.getElementById("support-modal-overlay").classList.toggle("hidden", !show); }
+        function toggleTermsModal(show) { document.getElementById("terms-modal-overlay").classList.toggle("hidden", !show); }
+        function openPurgeModal() { let inp = document.getElementById('purge-confirm-input'); if(inp) inp.value = ''; let btn = document.getElementById('confirm-purge-btn'); if(btn) btn.disabled = true; document.getElementById('purge-modal-overlay').classList.remove('hidden'); }
+        function closePurgeModal() { document.getElementById('purge-modal-overlay').classList.add('hidden'); }
+        function executeDataPurge() { openPurgeModal(); }
+        let purgeInput = document.getElementById('purge-confirm-input'), confirmPurgeBtn = document.getElementById('confirm-purge-btn');
+        if(purgeInput) purgeInput.addEventListener('input', (e) => { if(confirmPurgeBtn) { confirmPurgeBtn.disabled = e.target.value !== 'ELIMINAR'; if(e.target.value === 'ELIMINAR') { confirmPurgeBtn.classList.remove('bg-red-500/30','text-gray-400','cursor-not-allowed'); confirmPurgeBtn.classList.add('bg-red-500','text-white','cursor-pointer','hover:bg-red-600'); } else { confirmPurgeBtn.classList.add('bg-red-500/30','text-gray-400','cursor-not-allowed'); confirmPurgeBtn.classList.remove('bg-red-500','text-white','cursor-pointer','hover:bg-red-600'); } } });
+        if(confirmPurgeBtn) confirmPurgeBtn.addEventListener('click', () => { if(!confirmPurgeBtn.disabled) { localStorage.clear(); window.location.reload(); } });
+        
         window.addEventListener('DOMContentLoaded', () => {
             loadPersistedColorPalette();
             loadPersistedLanguage();
-            document.getElementById("dynamic-domain").innerText = "brossmanizales.co";
+            updateDynamicDomain(); // dominio dinámico basado en nombre del negocio
             
             const savedAvatar = localStorage.getItem("rs_business_avatar_url");
             if (savedAvatar) {
