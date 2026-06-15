@@ -69,6 +69,15 @@
             z-index: 1;
         }
 
+        /* Animación unificada para pulsos LED (sincronizados) */
+        @keyframes led-pulse {
+            0%, 100% { transform: scale(0.85); opacity: 0.5; box-shadow: 0 0 0px currentColor; }
+            50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 6px currentColor; }
+        }
+        .led-pulse {
+            animation: led-pulse 2s ease-in-out infinite;
+        }
+        
         @keyframes pulse-activate {
             0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); transform: scale(1); }
             50% { box-shadow: 0 0 30px var(--accent-glow); transform: scale(1.02); }
@@ -77,6 +86,7 @@
             animation: pulse-activate 2.5s infinite ease-in-out;
         }
         
+        /* Mantener led verde original para el botón de activación (independiente) */
         @keyframes led-blink {
             0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(34, 197, 94, 0.6); }
             50% { opacity: 0.4; box-shadow: 0 0 2px rgba(34, 197, 94, 0.1); }
@@ -156,6 +166,68 @@
         @keyframes drawLine {
             to { stroke-dashoffset: 0; }
         }
+
+        /* Estilos para selectores cyber-minimalistas y datetime-local */
+        .cyber-select {
+            background-color: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #e5e5e5;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            width: 100%;
+        }
+        .cyber-select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(255,60,0,0.2);
+        }
+        .cyber-select option {
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+        }
+        input[type="datetime-local"] {
+            background-color: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #e5e5e5;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+        input[type="datetime-local"]:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(255,60,0,0.2);
+        }
+        input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+
+        /* Efecto de resplandor para el candado */
+        .lock-glow {
+            filter: drop-shadow(0 0 8px rgba(255,60,0,0.6));
+            transition: filter 0.3s ease;
+        }
+        .group:hover .lock-glow {
+            filter: drop-shadow(0 0 16px rgba(255,60,0,0.9));
+        }
+
+        /* Animación de entrada del modal Matrix */
+        @keyframes matrixEnter {
+            0% { opacity: 0; transform: scale(0.95); backdrop-filter: blur(0px); }
+            50% { opacity: 0.8; transform: scale(1.01); backdrop-filter: blur(8px); box-shadow: 0 0 30px rgba(255,60,0,0.3); }
+            100% { opacity: 1; transform: scale(1); backdrop-filter: blur(12px); }
+        }
+        .modal-matrix-enter {
+            animation: matrixEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
     </style>
 </head>
 
@@ -184,19 +256,23 @@
         </div>
 
         <nav class="flex-1 p-5 space-y-2.5 mt-2 w-64">
-            <button onclick="switchWorkspaceView('panel')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-white bg-white/10 border border-white/10 shadow-inner group" data-mod="panel">
+            <button onclick="switchWorkspaceView('panel')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-white bg-white/10 border border-white/10 shadow-inner group" data-mod="panel" title="Ir a Panel">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="group-hover:scale-110 transition-transform"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
                 <span class="sidebar-text" data-i18n="nav_panel">Panel</span>
             </button>
-            <button onclick="switchWorkspaceView('clientes')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-gray-500 hover:text-white hover:bg-white/5 border border-transparent group" data-mod="clientes">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="group-hover:scale-110 transition-transform"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
-                <span class="sidebar-text" data-i18n="nav_clientes">Clientes</span>
+            <button onclick="switchWorkspaceView('clientes')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-gray-500 hover:text-white hover:bg-white/5 border border-transparent group" data-mod="clientes" title="Ir a Soporte">
+                <!-- ICONO DE DIADEMA CLÁSICA (FASE 1) -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform">
+                    <path d="M12 2a10 10 0 0 0-10 10v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H4c0-4.42 3.58-8 8-8s8 3.58 8 8h-2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a10 10 0 0 0-10-10z"/>
+                    <path d="M12 22v-2"/>
+                </svg>
+                <span class="sidebar-text" data-i18n="nav_clientes">Soporte</span>
             </button>
-            <button onclick="switchWorkspaceView('casos')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-gray-500 hover:text-white hover:bg-white/5 border border-transparent group" data-mod="casos">
+            <button onclick="switchWorkspaceView('casos')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-gray-500 hover:text-white hover:bg-white/5 border border-transparent group" data-mod="casos" title="Ir a Casos de Éxito">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="group-hover:scale-110 transition-transform"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <span class="sidebar-text" data-i18n="nav_casos">Casos de Éxito</span>
             </button>
-            <button onclick="switchWorkspaceView('notificaciones')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-gray-500 hover:text-white hover:bg-white/5 border border-transparent group relative" data-mod="notificaciones">
+            <button onclick="switchWorkspaceView('notificaciones')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-gray-500 hover:text-white hover:bg-white/5 border border-transparent group relative" data-mod="notificaciones" title="Ir a Notificaciones">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="group-hover:scale-110 transition-transform"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
                 <span class="sidebar-text" data-i18n="nav_notificaciones">Notificaciones</span>
                 <span class="absolute right-4 w-1.5 h-1.5 rounded-full bg-green-500"></span>
@@ -237,7 +313,7 @@
                         <div class="tooltip-activate absolute -top-10 left-1/2 -translate-x-1/2 bg-[#1A1A1A] border border-white/10 text-gray-300 text-[10px] font-mono tracking-wide px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl pointer-events-none" data-i18n="tooltip_activate">
                             Haz clic para que te contactemos e iniciemos con la activación
                         </div>
-                        <button id="activate-btn-pc" onclick="handleActivateClick()" class="flex items-center gap-2.5 px-6 py-3.5 bg-white text-black text-[11px] font-black uppercase tracking-widest rounded-full hover:bg-gray-200 transition-all active:scale-95 animate-pulse-activate border border-white/50">
+                        <button id="activate-btn-pc" onclick="openRegistrationModal()" class="flex items-center gap-2.5 px-6 py-3.5 bg-white text-black text-[11px] font-black uppercase tracking-widest rounded-full hover:bg-gray-200 transition-all active:scale-95 animate-pulse-activate border border-white/50">
                             <span class="w-2 h-2 rounded-full bg-green-500 led-green"></span>
                             <span data-i18n="btn_activate">Activar ahora el Ecosistema</span>
                         </button>
@@ -320,9 +396,8 @@
                         <div class="hidden lg:block absolute top-1/2 left-[calc(33.33%-1rem)] right-[calc(66.66%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-20 -translate-y-1/2"></div>
                         <div class="hidden lg:block absolute top-1/2 left-[calc(66.66%-1rem)] right-[calc(33.33%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-20 -translate-y-1/2"></div>
                         
-                        <!-- PANEL 1: WEB + IA (altura uniforme con flex) - PUNTO LED ELIMINADO -->
+                        <!-- PANEL 1: WEB + IA - LED sincronizado -->
                         <div onclick="openTelemetryModal(1)" class="group relative bg-[#0a0a0a] border border-white/5 hover:border-[var(--accent-color)]/50 rounded-xl p-5 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_20px_rgba(255,60,0,0.1)] z-10 overflow-hidden h-full">
-                            <!-- marca de agua más sutil -->
                             <div class="absolute bottom-3 right-3 text-6xl font-black text-white/[0.02] pointer-events-none select-none">www</div>
                             <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/5 to-transparent rounded-bl-full pointer-events-none"></div>
                             <div>
@@ -340,7 +415,7 @@
                                     <div class="pt-2">
                                         <span class="text-xs text-gray-400 uppercase tracking-wider" data-i18n="status_label">Estado operativo</span>
                                         <div class="flex items-center gap-2 mt-1">
-                                            <span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span></span>
+                                            <span class="relative flex h-3 w-3"><span class="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75 led-pulse"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span></span>
                                             <span class="text-amber-400 text-sm font-mono font-bold tracking-wide" data-i18n="status_pending_deploy">PENDIENTE DE DESPLIEGUE</span>
                                         </div>
                                     </div>
@@ -349,9 +424,8 @@
                             <div class="mt-6 text-right text-[10px] font-mono text-gray-500 border-t border-white/10 pt-3" data-i18n="click_telemetry">Haz clic para telemetría avanzada</div>
                         </div>
 
-                        <!-- PANEL 2: REDES Y CAMPAÑA (métricas fijas en 0) - PUNTO LED ELIMINADO -->
+                        <!-- PANEL 2: REDES Y CAMPAÑA - Números estáticos 0 + flecha única arriba-derecha, LED rojo sincronizado -->
                         <div onclick="openTelemetryModal(2)" class="group relative bg-[#0a0a0a] border border-white/5 hover:border-[var(--accent-color)]/50 rounded-xl p-5 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_20px_rgba(255,60,0,0.1)] z-10 overflow-hidden h-full">
-                            <!-- marca de agua más sutil -->
                             <div class="absolute bottom-3 right-3 text-5xl font-black text-white/[0.02] pointer-events-none">📱💸</div>
                             <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/5 to-transparent rounded-bl-full pointer-events-none"></div>
                             <div>
@@ -362,13 +436,27 @@
                                     <h3 class="text-lg font-display font-bold text-white uppercase tracking-tight" data-i18n="card2_title">REDES Y CAMPAÑA</h3>
                                 </div>
                                 <div class="grid grid-cols-2 gap-4 mb-4">
-                                    <div class="bg-black/40 rounded-lg p-3 text-center border border-white/5">
-                                        <div class="text-xs text-gray-400 uppercase" data-i18n="whatsapp_msgs">Mensajes WhatsApp</div>
-                                        <div class="text-4xl font-mono font-black text-white" id="whatsapp-counter">0</div>
+                                    <div class="bg-black/40 rounded-lg p-3 text-center border border-white/5 w-full">
+                                        <div class="text-xs text-gray-400 uppercase whitespace-nowrap" data-i18n="whatsapp_msgs">Mensajes WhatsApp</div>
+                                        <div class="text-4xl font-mono font-black text-white flex items-center justify-center gap-1">
+                                            <span>0</span>
+                                            <span class="inline-flex ml-1">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/20">
+                                                    <path d="M7 17L17 7M7 7h10v10"/>
+                                                </svg>
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="bg-black/40 rounded-lg p-3 text-center border border-white/5">
-                                        <div class="text-xs text-gray-400 uppercase" data-i18n="money_spent">Dinero gastado</div>
-                                        <div class="text-4xl font-mono font-black text-white" id="money-spent">0</div>
+                                    <div class="bg-black/40 rounded-lg p-3 text-center border border-white/5 w-full">
+                                        <div class="text-xs text-gray-400 uppercase whitespace-nowrap" data-i18n="money_spent">Dinero gastado</div>
+                                        <div class="text-4xl font-mono font-black text-white flex items-center justify-center gap-1">
+                                            <span>0</span>
+                                            <span class="inline-flex ml-1">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/20">
+                                                    <path d="M7 17L17 7M7 7h10v10"/>
+                                                </svg>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="space-y-2 text-xs font-mono">
@@ -382,16 +470,15 @@
                                     </div>
                                     <div class="flex justify-between items-center bg-black/30 px-2 py-1 rounded mt-2">
                                         <span class="text-gray-400" data-i18n="pixel_status_label">ESTADO PÍXEL:</span>
-                                        <span class="inline-flex items-center gap-1"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span></span><span class="text-red-400 font-bold" data-i18n="pixel_disconnected">DESCONECTADO</span></span>
+                                        <span class="inline-flex items-center gap-1"><span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 led-pulse"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span></span><span class="text-red-400 font-bold" data-i18n="pixel_disconnected">DESCONECTADO</span></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="mt-6 text-right text-[10px] font-mono text-gray-500 border-t border-white/10 pt-3" data-i18n="click_telemetry">Haz clic para telemetría avanzada</div>
                         </div>
 
-                        <!-- PANEL 3: SEO Y REPUTACIÓN - PUNTO LED ELIMINADO -->
+                        <!-- PANEL 3: SEO Y REPUTACIÓN - LED sincronizado (ámbar) -->
                         <div onclick="openTelemetryModal(3)" class="group relative bg-[#0a0a0a] border border-white/5 hover:border-[var(--accent-color)]/50 rounded-xl p-5 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_20px_rgba(255,60,0,0.1)] z-10 overflow-hidden h-full">
-                            <!-- marca de agua más sutil -->
                             <div class="absolute bottom-2 right-2 w-16 h-16 text-white/5 pointer-events-none select-none">
                                 <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full opacity-[0.03]"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                             </div>
@@ -413,7 +500,7 @@
                                     <div>
                                         <span class="text-xs text-gray-400 uppercase tracking-wider" data-i18n="status_label">Estado operativo</span>
                                         <div class="flex items-center gap-2 mt-1">
-                                            <span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span></span>
+                                            <span class="relative flex h-3 w-3"><span class="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75 led-pulse"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span></span>
                                             <span class="text-amber-400 text-sm font-mono font-bold tracking-wide" data-i18n="status_waiting_connection">A LA ESPERA DE CONEXIÓN</span>
                                         </div>
                                     </div>
@@ -440,41 +527,187 @@
                 </div>
             </div>
 
-            <div id="pane-view-clientes" class="workspace-pane h-full hidden transition-opacity duration-200"></div>
+            <!-- MÓDULO 2: SOPORTE (REFACTORIZADO SEGÚN FASE 2 - SIN SCROLL, ESPACIADO PERFECTO) -->
+            <div id="pane-view-clientes" class="workspace-pane h-full hidden transition-opacity duration-200">
+                <!-- Contenedor principal con clases exactas: centrado, padding superior e inferior para evitar elementos pegados -->
+                <div class="relative w-full h-full overflow-hidden flex flex-col justify-center px-4 pt-16 pb-28 md:pb-16">
+                    
+                    <!-- Candado de Seguridad (NO BOMBILLO) con glow y animación -->
+                    <div class="absolute inset-0 z-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
+                        <svg class="w-72 h-72 lock-glow animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                            <rect x="5" y="11" width="14" height="10" rx="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                    </div>
+
+                    <!-- Badge de Cloudflare (arriba del todo, centrado) -->
+                    <div class="absolute top-6 left-0 right-0 flex justify-center z-10">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/50 backdrop-blur-sm text-[10px] font-mono font-semibold tracking-wider">
+                            <svg class="w-4 h-4 text-orange-400" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12.5 4C10.5 4 8.9 5.3 8.2 7.1C6.9 7.3 5.8 8.4 5.5 9.8C3.5 10.3 2 12.1 2 14.2C2 16.5 3.8 18.3 6 18.3h6.5c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5H9c-1.1 0-2-.9-2-2s.9-2 2-2h.5c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5h-.2c.2-1.1 1.2-2 2.4-2 1.4 0 2.5 1.1 2.5 2.5v.5c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5v-.5c0-3-2.5-5.5-5.5-5.5zM20.5 13c-1.1 0-2 .9-2 2v2h-2c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5h3c.8 0 1.5-.7 1.5-1.5v-3c0-.6-.4-1-1-1z"/>
+                            </svg>
+                            <span class="text-white/90">Protección del Ecosistema con Cloudflare Activa</span>
+                        </div>
+                    </div>
+
+                    <!-- Tarjetas Horizontales Adaptativas (con clases exactas y contenedor responsivo) -->
+                    <div class="relative z-10 flex flex-col items-center w-full max-w-sm md:max-w-2xl mx-auto gap-4 md:gap-8 mt-auto">
+                        
+                        <!-- Tarjeta Antonella IA (horizontal) -->
+                        <div class="w-full bg-white/[0.02] border border-white/5 hover:border-[var(--accent-color)]/30 rounded-xl p-3 md:p-5 flex flex-row items-center gap-4 transition-all shadow-md">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0">
+                                <img src="Antonella-IA.jpg" alt="Antonella IA" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex flex-col text-left">
+                                <h3 class="text-sm md:text-base font-display font-bold text-white uppercase tracking-tight">Antonella IA</h3>
+                                <p class="text-[10px] md:text-xs text-gray-400 font-mono">Lista para monitorear ecosistema</p>
+                                <div class="mt-1 text-[10px] md:text-xs font-mono text-cyan-400 flex items-center gap-1">
+                                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                                    <span id="scan-percent">94</span>% escaneo activo
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Ingeniería Red Sapien (horizontal) -->
+                        <div class="w-full bg-white/[0.02] border border-white/5 hover:border-[var(--accent-color)]/30 rounded-xl p-3 md:p-5 flex flex-row items-center gap-4 transition-all shadow-md">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0">
+                                <img src="Foto-Sapien.webp" alt="Ingeniería Red Sapien" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex flex-col text-left">
+                                <h3 class="text-sm md:text-base font-display font-bold text-white uppercase tracking-tight">Ingeniería Red Sapien</h3>
+                                <p class="text-[10px] md:text-xs text-gray-400 font-mono">Asesoría y control de mando activo</p>
+                                <div class="mt-1 text-[10px] md:text-xs text-green-400 flex items-center gap-1">
+                                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                                    <span id="cmd-counter">127</span> comandos ejecutados
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón Táctico (blanco brillante, con animación y espaciado correcto) -->
+                    <div class="w-full max-w-sm mx-auto mt-8 md:mt-12 mb-auto z-10">
+                        <button id="open-support-modal-btn" class="w-full bg-white text-black py-3 md:py-4 rounded-full text-[11px] md:text-xs font-black uppercase tracking-widest transition-all active:scale-95 animate-pulse-activate border border-white/50 shadow-lg hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                            SOLICITAR SOPORTE
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <div id="pane-view-casos" class="workspace-pane h-full hidden transition-opacity duration-200"></div>
             <div id="pane-view-notificaciones" class="workspace-pane h-full hidden transition-opacity duration-200"></div>
         </div>
     </main>
 
-    <!-- MOBILE CTA CONTAINER (posición ajustada, tooltip más compacto, margen superior) -->
+    <!-- MODAL MATRIX DE SOPORTE (con p-4 añadido para márgenes en móvil) -->
+    <div id="matrix-modal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-500 p-4">
+        <div class="w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 shadow-2xl modal-matrix-enter">
+            <div class="flex justify-between items-center border-b border-white/10 pb-3 mb-5">
+                <h3 class="text-lg font-display font-bold text-white uppercase tracking-wider">🛰️ Protocolo de Soporte</h3>
+                <button id="close-matrix-modal" class="text-gray-400 hover:text-white transition-colors p-1">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="space-y-5">
+                <div>
+                    <label class="block text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-2">¿Qué deseas solicitar?</label>
+                    <select id="solicitud-select" class="cyber-select">
+                        <option value="" disabled selected>[ Seleccione una opción ]</option>
+                        <option value="Soporte Técnico">Soporte Técnico</option>
+                        <option value="Asesoría Personalizada">Asesoría Personalizada</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-2">Activo Digital</label>
+                    <select id="activo-select" class="cyber-select">
+                        <option value="" disabled selected>[ Seleccione Activo Digital ]</option>
+                        <option value="Web + IA">Web + IA</option>
+                        <option value="Redes y Campaña">Redes y Campaña</option>
+                        <option value="SEO y Reputación">SEO y Reputación</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-2">Fecha y Hora del Soporte</label>
+                    <input type="datetime-local" id="datetime-input" class="cyber-select">
+                </div>
+                <button id="send-whatsapp-btn" class="w-full bg-[#25D366] hover:bg-[#20b859] text-black font-black uppercase tracking-widest text-xs py-4 rounded-xl transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl active:scale-95 mt-4">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                    </svg>
+                    <span>SOLICITAR AHORA</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE REGISTRO (4 datos + preview dominio con formato nombre.redsapien.com) -->
+    <div id="registration-modal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-500">
+        <div class="w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 shadow-2xl modal-matrix-enter">
+            <div class="flex justify-between items-center border-b border-white/10 pb-3 mb-5">
+                <h3 class="text-lg font-display font-bold text-white uppercase tracking-wider">Activación del Ecosistema</h3>
+                <button id="close-reg-modal" class="text-gray-400 hover:text-white transition-colors p-1">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-2">Nombre del Negocio</label>
+                    <input type="text" id="business-name" placeholder="Ej: Bross Manizales" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[var(--accent-color)]">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-2">Correo Electrónico</label>
+                    <input type="email" id="business-email" placeholder="contacto@tuempresa.com" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[var(--accent-color)]">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-2">Teléfono</label>
+                    <input type="tel" id="business-phone" placeholder="+57 300 000 0000" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[var(--accent-color)]">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-2">Dominio sugerido</label>
+                    <div class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-green-400 font-mono" id="domain-preview">nombre.redsapien.com</div>
+                </div>
+                <button id="confirm-registration-btn" class="w-full bg-white text-black font-black uppercase tracking-widest text-xs py-3 rounded-xl transition-all hover:bg-gray-200 active:scale-95 mt-2">
+                    REGISTRAR Y ACTIVAR
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOBILE CTA CONTAINER (actualizado para abrir modal de registro) -->
     <div id="mobile-cta-container" class="md:hidden fixed bottom-[72px] left-0 right-0 w-full flex justify-center z-40 px-4 transition-all duration-1000 opacity-0 mt-4">
         <div id="cta-btn-wrapper-mob" class="relative w-full max-w-sm group">
             <div class="tooltip-activate absolute -top-[42px] left-1/2 -translate-x-1/2 bg-[#1A1A1A] border border-white/10 text-gray-300 text-[9px] font-mono tracking-wider px-3 py-2 rounded-lg whitespace-nowrap shadow-2xl text-center" data-i18n="tooltip_activate_mobile">Haz clic para que te contactemos <br>e iniciemos la activación</div>
-            <button id="activate-btn-mob" onclick="handleActivateClick()" class="w-full bg-white text-black py-4 px-6 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 cursor-pointer active:scale-95 transition-transform animate-pulse-activate border border-white/50">
+            <button id="activate-btn-mob" onclick="openRegistrationModal()" class="w-full bg-white text-black py-4 px-6 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 cursor-pointer active:scale-95 transition-transform animate-pulse-activate border border-white/50">
                 <span class="w-2.5 h-2.5 rounded-full bg-green-500 led-green"></span>
                 <span class="text-[12px] font-black uppercase tracking-widest leading-none mt-0.5" data-i18n="btn_activate">Activar ahora el Ecosistema</span>
             </button>
         </div>
     </div>
 
-    <!-- NAV MÓVIL -->
+    <!-- NAV MÓVIL (actualizado con icono de soporte de diadema clásica igual al desktop) -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-rs-dark/95 border-t border-white/5 backdrop-blur-2xl z-50 flex items-center justify-between px-2 pb-safe shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
         <button onclick="switchWorkspaceView('panel')" class="mobile-nav-btn flex flex-col items-center justify-center text-white w-1/4" data-mod="panel"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_panel">Panel</span></button>
-        <button onclick="switchWorkspaceView('clientes')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/4" data-mod="clientes"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_clientes">Clientes</span></button>
+        <button onclick="switchWorkspaceView('clientes')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/4" data-mod="clientes">
+            <!-- ICONO DE AURICULARES CLÁSICO (DIADEMA DE SOPORTE) -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a10 10 0 0 0-10 10v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H4c0-4.42 3.58-8 8-8s8 3.58 8 8h-2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a10 10 0 0 0-10-10z"/>
+                <path d="M12 22v-2"/>
+            </svg>
+            <span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_clientes">Soporte</span>
+        </button>
         <button onclick="switchWorkspaceView('casos')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/4" data-mod="casos"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_casos">Casos</span></button>
         <button onclick="switchWorkspaceView('notificaciones')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/4 relative" data-mod="notificaciones"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_notificaciones">Alertas</span><span class="absolute top-1.5 right-6 w-1.5 h-1.5 rounded-full bg-green-500"></span></button>
     </div>
 
-    <!-- MODALES EXISTENTES (con data-i18n añadido) -->
+    <!-- MODALES EXISTENTES (sin cambios) -->
     <div id="terms-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-white mb-2" data-i18n="terms_title">Términos del Nodo</h3><p class="text-xs text-gray-400 leading-relaxed mb-6 font-mono" data-i18n="terms_text">Este centro operativo procesa analíticas web y flujos conversacionales. Al interactuar con la plataforma, aceptas la conexión automatizada de la maquinaria comercial.</p><div class="flex justify-end"><button onclick="toggleTermsModal(false)" class="px-5 py-2.5 bg-white text-black text-xs font-black uppercase tracking-widest rounded-xl hover:bg-gray-200 transition-colors" data-i18n="understand">Entendido</button></div></div></div>
     <div id="support-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-white mb-2" data-i18n="support_title">Soporte Técnico</h3><p class="text-xs text-gray-400 leading-relaxed mb-4 font-mono" data-i18n="support_text">Nuestro equipo está listo para asistirte. Envía un mensaje a soporte@redsapien.com o llama al +57 300 000 0000.</p><div class="flex justify-end gap-3"><button onclick="toggleSupportModal(false)" class="px-5 py-2.5 bg-white/10 text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-white/20 transition-colors" data-i18n="close">Cerrar</button><a href="mailto:soporte@redsapien.com" class="px-5 py-2.5 bg-[var(--accent-color)] text-black text-xs font-black uppercase tracking-widest rounded-xl hover:opacity-90 transition-colors" data-i18n="contact">Contactar</a></div></div></div>
     <div id="purge-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-rs-red/30 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-red-500 mb-2" data-i18n="purge_title">🚨 CONFIRMAR PURGA ABSOLUTA</h3><p class="text-xs text-gray-400 leading-relaxed mb-4 font-mono" data-i18n="purge_text">¿Seguro que deseas purgar la cuenta, el avatar y todo el progreso del ecosistema? Esta acción es irreversible.</p><input type="text" id="purge-confirm-input" placeholder="Escribe ELIMINAR para confirmar" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[var(--accent-color)] mb-4"><div class="flex justify-end gap-3"><button onclick="closePurgeModal()" class="px-5 py-2.5 bg-white/10 text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-white/20 transition-colors" data-i18n="cancel">Cancelar</button><button id="confirm-purge-btn" disabled class="px-5 py-2.5 bg-red-500/30 text-gray-400 text-xs font-black uppercase tracking-widest rounded-xl cursor-not-allowed transition-colors" data-i18n="confirm_purge">Confirmar Purgado</button></div></div></div>
 
     <script>
-        // -------------------- TRADUCCIONES COMPLETAS (todos los textos visibles, incluyendo modales) --------------------
+        // -------------------- TRADUCCIONES COMPLETAS (actualizadas con nuevos textos) --------------------
         const translations = {
             es: {
-                nav_panel: "Panel", nav_clientes: "Clientes", nav_casos: "Casos de Éxito", nav_notificaciones: "Notificaciones",
+                nav_panel: "Panel", nav_clientes: "Soporte", nav_casos: "Casos de Éxito", nav_notificaciones: "Notificaciones",
                 welcome_subtitle: "Bienvenid@", btn_activate: "Activar ahora el Ecosistema", btn_support: "Soporte Técnico",
                 tooltip_activate: "Haz clic para que te contactemos e iniciemos con la activación", tooltip_activate_mobile: "Haz clic para que te contactemos e iniciemos la activación",
                 footer_sys: "SYS.NODE // ONLINE", upload_logo: "Subir Logo del Negocio", change_logo: "Cambiar Logo",
@@ -501,10 +734,14 @@
                 modal3_title: "PRESENCIA LOCAL", modal3_sub: "COBERTURA INTELIGENTE",
                 modal3_visibility: "VISIBILIDAD LOCAL", modal3_calls: "LLAMADAS DIRECTAS",
                 purge_title: "🚨 CONFIRMAR PURGA ABSOLUTA", purge_text: "¿Seguro que deseas purgar la cuenta, el avatar y todo el progreso del ecosistema? Esta acción es irreversible.",
-                cancel: "Cancelar", confirm_purge: "Confirmar Purgado"
+                cancel: "Cancelar", confirm_purge: "Confirmar Purgado",
+                soporte_monitoreo_titulo: "Antonella IA",
+                soporte_monitoreo_estado: "Lista para monitorear ecosistema",
+                soporte_asesoria_titulo: "Ingeniería Red Sapien",
+                soporte_asesoria_estado: "Asesoría y control de mando activo"
             },
             en: {
-                nav_panel: "Dashboard", nav_clientes: "Clients", nav_casos: "Success Cases", nav_notificaciones: "Notifications",
+                nav_panel: "Dashboard", nav_clientes: "Support", nav_casos: "Success Cases", nav_notificaciones: "Notifications",
                 welcome_subtitle: "Welcome", btn_activate: "Activate Ecosystem Now", btn_support: "Technical Support",
                 tooltip_activate: "Click for us to contact you and start activation", tooltip_activate_mobile: "Click for us to contact you and start activation",
                 footer_sys: "SYS.NODE // ONLINE", upload_logo: "Upload Business Logo", change_logo: "Change Logo",
@@ -531,10 +768,14 @@
                 modal3_title: "LOCAL PRESENCE", modal3_sub: "SMART COVERAGE",
                 modal3_visibility: "LOCAL VISIBILITY", modal3_calls: "DIRECT CALLS",
                 purge_title: "🚨 CONFIRM ABSOLUTE PURGE", purge_text: "Are you sure you want to purge your account, avatar and all ecosystem progress? This action is irreversible.",
-                cancel: "Cancel", confirm_purge: "Confirm Purge"
+                cancel: "Cancel", confirm_purge: "Confirm Purge",
+                soporte_monitoreo_titulo: "Antonella AI",
+                soporte_monitoreo_estado: "Ready to monitor ecosystem",
+                soporte_asesoria_titulo: "Red Sapien Engineering",
+                soporte_asesoria_estado: "Advisory and active command control"
             },
             pt: {
-                nav_panel: "Painel", nav_clientes: "Clientes", nav_casos: "Casos de Sucesso", nav_notificacoes: "Notificações",
+                nav_panel: "Painel", nav_clientes: "Suporte", nav_casos: "Casos de Sucesso", nav_notificacoes: "Notificações",
                 welcome_subtitle: "Bem-vindo", btn_activate: "Ativar Ecossistema Agora", btn_support: "Suporte Técnico",
                 tooltip_activate: "Clique para entrarmos em contato e iniciarmos a ativação", tooltip_activate_mobile: "Clique para entrarmos em contato e iniciarmos a ativação",
                 footer_sys: "SYS.NODE // ONLINE", upload_logo: "Enviar Logo da Empresa", change_logo: "Alterar Logo",
@@ -561,7 +802,11 @@
                 modal3_title: "PRESENÇA LOCAL", modal3_sub: "COBERTURA INTELIGENTE",
                 modal3_visibility: "VISIBILIDADE LOCAL", modal3_calls: "CHAMADAS DIRETAS",
                 purge_title: "🚨 CONFIRMAR PURGA ABSOLUTA", purge_text: "Tem certeza de que deseja purgar a conta, o avatar e todo o progresso do ecossistema? Esta ação é irreversível.",
-                cancel: "Cancelar", confirm_purge: "Confirmar Purgado"
+                cancel: "Cancelar", confirm_purge: "Confirmar Purgado",
+                soporte_monitoreo_titulo: "Antonella IA",
+                soporte_monitoreo_estado: "Pronta para monitorar ecossistema",
+                soporte_asesoria_titulo: "Engenharia Red Sapien",
+                soporte_asesoria_estado: "Consultoria e controle de comando ativo"
             }
         };
         let currentLang = localStorage.getItem("rs_lang") || "es";
@@ -580,10 +825,6 @@
             if (select && select.value !== lang) select.value = lang;
         }
         function loadPersistedLanguage() { applyLanguage(localStorage.getItem("rs_lang") || "es"); }
-
-        let ecosystemActive = false;
-        function updateUIFromState() { /* dummy */ }
-        window.updateEcosystem = function(p) { /* dummy */ };
 
         // --- MAPA GLOBAL (para reutilizar en modal 3) ---
         let globalMap = null;
@@ -626,7 +867,6 @@
                     </div>
                 `;
             } else if (panelId === 2) {
-                // Modal 2 compactado: espacio reducido y gráfica más pequeña
                 htmlContent = `
                     <div class="space-y-4">
                         <div class="border-b border-[var(--accent-color)]/30 pb-2">
@@ -663,7 +903,6 @@
                     </div>
                 `;
             } else if (panelId === 3) {
-                // Modal 3 compactado: mapa más pequeño (h-40 en lugar de h-64)
                 htmlContent = `
                     <div class="space-y-4">
                         <div class="border-b border-[var(--accent-color)]/30 pb-2">
@@ -738,20 +977,68 @@
             if (next >= 1 && next <= 3) openTelemetryModal(next); 
         }
 
-        // --- BOTÓN DE ACTIVACIÓN CON PERSISTENCIA Y RETARDO DE 6 SEGUNDOS ---
-        function handleActivateClick() {
-            const pcBtnWrapper = document.getElementById('cta-btn-wrapper-pc');
-            const mobBtnWrapper = document.getElementById('cta-btn-wrapper-mob');
-            if (pcBtnWrapper) pcBtnWrapper.classList.add('hidden');
-            if (mobBtnWrapper) mobBtnWrapper.classList.add('hidden');
-            localStorage.setItem('ecosystem_activated', 'true');
-            
-            const toast = document.createElement('div');
-            toast.className = 'fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[200] bg-[#075E54] border border-[#25D366] backdrop-blur-md rounded-2xl p-4 shadow-2xl max-w-xs w-full text-center transition-all duration-300 whatsapp-toast';
-            toast.innerHTML = `<div class="flex items-center gap-3 justify-center mb-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="text-sm font-black uppercase tracking-wider text-white">Activación iniciada</span></div><p class="text-xs text-gray-200 font-medium">Te contactaremos por WhatsApp en breve.</p>`;
-            document.body.appendChild(toast);
-            setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3000);
-            console.log("Activación registrada permanentemente.");
+        // --- MODAL DE REGISTRO Y PREVIEW DE DOMINIO (nombre.redsapien.com) ---
+        const regModal = document.getElementById('registration-modal');
+        const closeRegModal = document.getElementById('close-reg-modal');
+        const businessNameInput = document.getElementById('business-name');
+        const domainPreview = document.getElementById('domain-preview');
+        const confirmRegBtn = document.getElementById('confirm-registration-btn');
+
+        function openRegistrationModal() {
+            regModal.classList.remove('hidden');
+            regModal.classList.add('flex');
+            const modalContent = regModal.querySelector('.modal-matrix-enter');
+            if (modalContent) {
+                modalContent.style.animation = 'none';
+                setTimeout(() => { modalContent.style.animation = ''; }, 10);
+            }
+        }
+
+        if (closeRegModal) {
+            closeRegModal.addEventListener('click', () => {
+                regModal.classList.add('hidden');
+                regModal.classList.remove('flex');
+            });
+        }
+
+        if (businessNameInput) {
+            businessNameInput.addEventListener('input', (e) => {
+                let rawName = e.target.value.trim();
+                if (rawName === "") {
+                    domainPreview.innerText = "nombre.redsapien.com";
+                    return;
+                }
+                // Limpiar espacios, convertir a minúsculas, reemplazar espacios por guiones
+                let slug = rawName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                if (slug.length > 30) slug = slug.substring(0, 30);
+                domainPreview.innerText = `${slug}.redsapien.com`;
+            });
+        }
+
+        if (confirmRegBtn) {
+            confirmRegBtn.addEventListener('click', () => {
+                const name = businessNameInput.value.trim();
+                const email = document.getElementById('business-email').value.trim();
+                const phone = document.getElementById('business-phone').value.trim();
+                const domain = domainPreview.innerText;
+                if (!name || !email || !phone) {
+                    alert('Por favor completa todos los campos.');
+                    return;
+                }
+                console.log('Registro:', { name, email, phone, domain });
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[200] bg-[#075E54] border border-[#25D366] backdrop-blur-md rounded-2xl p-4 shadow-2xl max-w-xs w-full text-center transition-all duration-300 whatsapp-toast';
+                toast.innerHTML = `<div class="flex items-center gap-3 justify-center mb-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="text-sm font-black uppercase tracking-wider text-white">Ecosistema Activado</span></div><p class="text-xs text-gray-200 font-medium">Te contactaremos por WhatsApp en breve.</p>`;
+                document.body.appendChild(toast);
+                setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3000);
+                regModal.classList.add('hidden');
+                regModal.classList.remove('flex');
+                const pcBtnWrapper = document.getElementById('cta-btn-wrapper-pc');
+                const mobBtnWrapper = document.getElementById('cta-btn-wrapper-mob');
+                if (pcBtnWrapper) pcBtnWrapper.classList.add('hidden');
+                if (mobBtnWrapper) mobBtnWrapper.classList.add('hidden');
+                localStorage.setItem('ecosystem_activated', 'true');
+            });
         }
 
         // --- FUNCIONES LEGACY (sidebar, avatar, etc.) ---
@@ -775,14 +1062,71 @@
         if(purgeInput) purgeInput.addEventListener('input', (e) => { if(confirmPurgeBtn) { confirmPurgeBtn.disabled = e.target.value !== 'ELIMINAR'; if(e.target.value === 'ELIMINAR') { confirmPurgeBtn.classList.remove('bg-red-500/30','text-gray-400','cursor-not-allowed'); confirmPurgeBtn.classList.add('bg-red-500','text-white','cursor-pointer','hover:bg-red-600'); } else { confirmPurgeBtn.classList.add('bg-red-500/30','text-gray-400','cursor-not-allowed'); confirmPurgeBtn.classList.remove('bg-red-500','text-white','cursor-pointer','hover:bg-red-600'); } } });
         if(confirmPurgeBtn) confirmPurgeBtn.addEventListener('click', () => { if(!confirmPurgeBtn.disabled) { localStorage.clear(); window.location.reload(); } });
         
+        // --- Simulación de telemetría en módulo 2 ---
+        function startTelemetrySimulation() {
+            let scanValue = 94;
+            const percentSpan = document.getElementById('scan-percent');
+            const cmdSpan = document.getElementById('cmd-counter');
+            let cmdCount = 127;
+            if (percentSpan) {
+                setInterval(() => {
+                    scanValue = Math.min(99, Math.max(85, scanValue + (Math.random() - 0.5) * 2));
+                    percentSpan.innerText = Math.floor(scanValue);
+                }, 2800);
+            }
+            if (cmdSpan) {
+                setInterval(() => {
+                    cmdCount += Math.floor(Math.random() * 3);
+                    cmdSpan.innerText = cmdCount;
+                }, 3500);
+            }
+        }
+        
+        // Modal de soporte Matrix (estandarizado)
+        const supportModal = document.getElementById('matrix-modal');
+        const openSupportBtn = document.getElementById('open-support-modal-btn');
+        const closeSupportModal = document.getElementById('close-matrix-modal');
+        const sendSupportBtn = document.getElementById('send-whatsapp-btn');
+        
+        if (openSupportBtn) {
+            openSupportBtn.addEventListener('click', () => {
+                supportModal.classList.remove('hidden');
+                supportModal.classList.add('flex');
+                const modalContent = supportModal.querySelector('.modal-matrix-enter');
+                if (modalContent) {
+                    modalContent.style.animation = 'none';
+                    setTimeout(() => { modalContent.style.animation = ''; }, 10);
+                }
+            });
+        }
+        if (closeSupportModal) {
+            closeSupportModal.addEventListener('click', () => {
+                supportModal.classList.add('hidden');
+                supportModal.classList.remove('flex');
+            });
+        }
+        if (sendSupportBtn) {
+            sendSupportBtn.addEventListener('click', () => {
+                const solicitud = document.getElementById('solicitud-select').value;
+                const activo = document.getElementById('activo-select').value;
+                const datetime = document.getElementById('datetime-input').value;
+                if (!solicitud || !activo || !datetime) {
+                    alert('Por favor completa todos los campos.');
+                    return;
+                }
+                const formattedDateTime = new Date(datetime).toLocaleString('es-ES', { dateStyle: 'full', timeStyle: 'short' });
+                const mensaje = `🛰️ ENLACE DE SOPORTE RED SAPIEN ACTIVO\n\n• Solicitud: ${solicitud}\n• Activo Digital: ${activo}\n• Fecha y Hora: ${formattedDateTime}\n\n> Esperando conexión segura con la central operativa...`;
+                const url = `https://wa.me/573012800024?text=${encodeURIComponent(mensaje)}`;
+                window.open(url, '_blank');
+                supportModal.classList.add('hidden');
+                supportModal.classList.remove('flex');
+            });
+        }
+        
         window.addEventListener('DOMContentLoaded', () => {
             loadPersistedColorPalette();
             loadPersistedLanguage();
             document.getElementById("dynamic-domain").innerText = "brossmanizales.co";
-            
-            // Contadores fijos en 0 (no incrementan) para generar expectativa
-            document.getElementById('whatsapp-counter').innerText = "0";
-            document.getElementById('money-spent').innerText = "0";
             
             const savedAvatar = localStorage.getItem("rs_business_avatar_url");
             if (savedAvatar) {
@@ -794,7 +1138,8 @@
             document.getElementById('pane-view-panel').classList.remove('hidden');
             switchWorkspaceView('panel');
             
-            // Aparición del botón después de 6 segundos si no está activado
+            startTelemetrySimulation();
+            
             const isActivated = localStorage.getItem('ecosystem_activated');
             const desktopCta = document.getElementById('desktop-cta-container');
             const mobileCta = document.getElementById('mobile-cta-container');
