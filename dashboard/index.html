@@ -302,7 +302,7 @@
         </div>
     </aside>
 
-    <main class="flex-1 flex flex-col h-full relative z-10 overflow-hidden max-w-full">
+    <main class="flex-1 flex flex-col h-full relative z-10 overflow-hidden max-w-full text-sm">
         
         <header id="workspace-header" class="h-24 px-6 md:px-10 flex items-center justify-between bg-rs-black/30 backdrop-blur-xl shrink-0 transition-all duration-300 z-20" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
             
@@ -329,7 +329,7 @@
                 <div id="desktop-cta-container" class="hidden lg:block relative transition-opacity duration-1000 opacity-0 w-64 flex justify-end">
                     <div id="cta-btn-wrapper-pc" class="relative group">
                         <div class="tooltip-activate absolute -top-10 left-1/2 -translate-x-1/2 bg-[#1A1A1A] border border-white/10 text-gray-300 text-xs font-mono tracking-wide px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl pointer-events-none" data-i18n="tooltip_activate">
-                            Haz clic para que te contactemos e iniciemos con la activación
+                            Haz clic para que iniciemos con la activación...
                         </div>
                         <button id="activate-btn-pc" onclick="activateEcosystem()" class="flex items-center gap-2.5 px-6 py-3.5 bg-white text-black text-sm font-black uppercase tracking-widest rounded-full hover:bg-gray-200 transition-all active:scale-95 animate-pulse-activate border border-white/50">
                             <span class="w-2 h-2 rounded-full bg-green-500 led-green"></span>
@@ -492,7 +492,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-6 text-right text-[10px] font-mono text-gray-500 border-t border-white/10 pt-3" data-i18n="click_telemetry">Haz clic para telemetría avanzada</div>
+                            <div class="mt-6 text-right text-sm font-mono text-gray-500 border-t border-white/10 pt-3" data-i18n="click_telemetry">Haz clic para telemetría avanzada</div>
                         </div>
 
                         <!-- PANEL 3: SEO Y REPUTACIÓN - LED sincronizado (ámbar) -->
@@ -676,7 +676,7 @@
     <!-- MOBILE CTA CONTAINER (nueva lógica) -->
     <div id="mobile-cta-container" class="md:hidden fixed bottom-[72px] left-0 right-0 w-full flex justify-center z-40 px-4 transition-all duration-1000 opacity-0 mt-4">
         <div id="cta-btn-wrapper-mob" class="relative w-full max-w-sm group">
-            <div class="tooltip-activate absolute -top-[42px] left-1/2 -translate-x-1/2 bg-[#1A1A1A] border border-white/10 text-gray-300 text-xs font-mono tracking-wide px-3 py-2 rounded-lg whitespace-nowrap shadow-2xl text-center" data-i18n="tooltip_activate_mobile">Haz clic para que te contactemos <br>e iniciemos la activación</div>
+            <div class="tooltip-activate absolute -top-[42px] left-1/2 -translate-x-1/2 bg-[#1A1A1A] border border-white/10 text-gray-300 text-xs font-mono tracking-wide px-3 py-2 rounded-lg whitespace-nowrap shadow-2xl text-center" data-i18n="tooltip_activate_mobile">Haz clic para que iniciemos con la activación...</div>
             <button id="activate-btn-mob" onclick="activateEcosystem()" class="w-full bg-white text-black py-4 px-6 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 cursor-pointer active:scale-95 transition-transform animate-pulse-activate border border-white/50">
                 <span class="w-2.5 h-2.5 rounded-full bg-green-500 led-green"></span>
                 <span class="text-sm font-black uppercase tracking-wider leading-none mt-0.5" data-i18n="btn_activate">Activar ahora el Ecosistema</span>
@@ -709,7 +709,7 @@
             es: {
                 nav_panel: "Panel", nav_clientes: "Soporte", nav_casos: "Casos de Éxito", nav_notificaciones: "Notificaciones",
                 welcome_subtitle: "Bienvenid@", btn_activate: "Activar ahora el Ecosistema", btn_support: "Soporte Técnico",
-                tooltip_activate: "Haz clic para que te contactemos e iniciemos con la activación", tooltip_activate_mobile: "Haz clic para que te contactemos e iniciemos la activación",
+                tooltip_activate: "Haz clic para que iniciemos con la activación...", tooltip_activate_mobile: "Haz clic para que iniciemos con la activación...",
                 footer_sys: "SYS.NODE // ONLINE", upload_logo: "Subir Logo del Negocio", change_logo: "Cambiar Logo",
                 panel_global: "Panel Global", accent_color: "🎨 Color de Acento", language: "🌐 Idioma Preferido",
                 terms: "Términos de Uso", delete_account: "Eliminar cuenta y datos", terms_title: "Términos del Nodo",
@@ -761,7 +761,7 @@
             en: {
                 nav_panel: "Dashboard", nav_clientes: "Support", nav_casos: "Success Cases", nav_notificaciones: "Notifications",
                 welcome_subtitle: "Welcome", btn_activate: "Activate Ecosystem Now", btn_support: "Technical Support",
-                tooltip_activate: "Click for us to contact you and start activation", tooltip_activate_mobile: "Click for us to contact you and start activation",
+                tooltip_activate: "Click to start activation...", tooltip_activate_mobile: "Click to start activation...",
                 footer_sys: "SYS.NODE // ONLINE", upload_logo: "Upload Business Logo", change_logo: "Change Logo",
                 panel_global: "Global Panel", accent_color: "🎨 Accent Color", language: "🌐 Preferred Language",
                 terms: "Terms of Use", delete_account: "Delete account and data", terms_title: "Node Terms",
@@ -813,7 +813,7 @@
             pt: {
                 nav_panel: "Painel", nav_clientes: "Suporte", nav_casos: "Casos de Sucesso", nav_notificacoes: "Notificações",
                 welcome_subtitle: "Bem-vindo", btn_activate: "Ativar Ecossistema Agora", btn_support: "Suporte Técnico",
-                tooltip_activate: "Clique para entrarmos em contato e iniciarmos a ativação", tooltip_activate_mobile: "Clique para entrarmos em contato e iniciarmos a ativação",
+                tooltip_activate: "Clique para iniciarmos a ativação...", tooltip_activate_mobile: "Clique para iniciarmos a ativação...",
                 footer_sys: "SYS.NODE // ONLINE", upload_logo: "Enviar Logo da Empresa", change_logo: "Alterar Logo",
                 panel_global: "Painel Global", accent_color: "🎨 Cor Destaque", language: "🌐 Idioma Preferido",
                 terms: "Termos de Uso", delete_account: "Excluir conta e dados", terms_title: "Termos do Nó",
@@ -874,10 +874,8 @@
                     if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = translations[lang][key];
                     else if (el.tagName === 'OPTION') el.textContent = translations[lang][key];
                     else {
-                        // Manejar el badge de Cloudflare con HTML especial
                         if (key === 'cloudflare_badge') {
                             const translated = translations[lang][key];
-                            // Reemplazar "Cloudflare" por un span resaltado
                             const htmlContent = translated.replace(/Cloudflare/gi, '<span class="font-black tracking-tighter text-orange-400">Cloudflare</span>');
                             el.innerHTML = htmlContent;
                         } else {
@@ -1046,23 +1044,19 @@
         // --- Función de activación con toast estilo WhatsApp real (verde, unificado) ---
         function activateEcosystem() {
             const t = translations[currentLang];
-            // Crear toast con el mismo SVG de WhatsApp que el botón y modal (unificado)
             const toast = document.createElement('div');
-            toast.className = 'fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[200] bg-[#25D366] border border-[#128C7E] backdrop-blur-md rounded-2xl p-4 shadow-2xl max-w-xs w-full text-center transition-all duration-300 whatsapp-toast text-white';
+            toast.className = 'fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[200] bg-[#25D366] border border-white/20 backdrop-blur-md rounded-2xl p-4 shadow-2xl max-w-xs w-full text-center transition-all duration-300 whatsapp-toast text-white';
             toast.innerHTML = `<div class="flex items-center gap-3 justify-center mb-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="text-sm font-black uppercase tracking-wider">${t.toast_title}</span></div><p class="text-xs font-medium">${t.toast_body}</p>`;
             document.body.appendChild(toast);
             setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3000);
             
-            // Ocultar botones de activación
             const pcWrapper = document.getElementById('cta-btn-wrapper-pc');
             const mobWrapper = document.getElementById('cta-btn-wrapper-mob');
             if (pcWrapper) pcWrapper.style.display = 'none';
             if (mobWrapper) mobWrapper.style.display = 'none';
             
-            // Marcar en localStorage como activado
             localStorage.setItem('ecosystem_activated', 'true');
             
-            // Función vacía para futura conexión a Supabase / Activepieces
             window.onActivationCallback = function() {
                 console.log('Ecosistema activado, hook listo');
             };
@@ -1087,7 +1081,6 @@
         
         // --- Simulación de telemetría persistente y orgánica en módulo 2 ---
         function startTelemetrySimulation() {
-            // Recuperar valores de localStorage o usar valores iniciales
             let scanValue = parseFloat(localStorage.getItem('scan_percent')) || 94;
             let cmdCount = parseInt(localStorage.getItem('cmd_count')) || 127;
             
@@ -1097,15 +1090,14 @@
             if (percentSpan) percentSpan.innerText = Math.floor(scanValue);
             if (cmdSpan) cmdSpan.innerText = cmdCount;
             
-            // Función para actualizar scan con comportamiento orgánico (sube y baja lentamente)
             let lastScanUpdate = Date.now();
             let lastCmdUpdate = Date.now();
             
             function updateScan() {
                 const now = Date.now();
-                const interval = 2800 + (Math.random() * 1500); // entre 2.8s y 4.3s
+                const interval = 2800 + (Math.random() * 1500);
                 if (now - lastScanUpdate >= interval) {
-                    let delta = (Math.random() - 0.5) * 3.5; // fluctuación entre -1.75 y +1.75
+                    let delta = (Math.random() - 0.5) * 3.5;
                     scanValue = Math.min(99.9, Math.max(85, scanValue + delta));
                     if (percentSpan) percentSpan.innerText = Math.floor(scanValue);
                     localStorage.setItem('scan_percent', scanValue);
@@ -1116,9 +1108,9 @@
             
             function updateCmd() {
                 const now = Date.now();
-                const interval = 3500 + (Math.random() * 2000); // entre 3.5s y 5.5s
+                const interval = 3500 + (Math.random() * 2000);
                 if (now - lastCmdUpdate >= interval) {
-                    let increment = Math.floor(Math.random() * 3) + 1; // 1 a 3 comandos por paso
+                    let increment = Math.floor(Math.random() * 3) + 1;
                     cmdCount += increment;
                     if (cmdSpan) cmdSpan.innerText = cmdCount;
                     localStorage.setItem('cmd_count', cmdCount);
@@ -1130,7 +1122,6 @@
             updateScan();
             updateCmd();
             
-            // Terminal logs rotativos (sin persistencia necesaria)
             const terminalDiv = document.getElementById('mini-terminal-logs');
             if (terminalDiv) {
                 const logs = ['CF_PROXY::OK', 'GH_COMMIT::v2.4', 'SYS_SECURE', 'CACHE_FLUSH', 'ROUTE_OPTIMIZE', 'EDGE_DEPLOY'];
