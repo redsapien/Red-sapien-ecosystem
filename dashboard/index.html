@@ -378,7 +378,8 @@
             <button onclick="switchWorkspaceView('notificaciones')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-gray-500 hover:text-white hover:bg-white/5 border border-transparent group relative" data-mod="notificaciones" title="Ir a Notificaciones">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="group-hover:scale-110 transition-transform"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
                 <span class="sidebar-text" data-i18n="nav_notificaciones">Notificaciones</span>
-                <span class="absolute right-4 w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                <!-- LED verde controlado dinámicamente -->
+                <span class="absolute right-4 w-1.5 h-1.5 rounded-full bg-green-500 led-green"></span>
             </button>
         </nav>
 
@@ -449,9 +450,10 @@
                         <div class="p-2 hover:bg-white/5 rounded-xl transition-colors">
                             <div class="text-sm font-bold text-gray-400 mb-2 tracking-wider flex items-center gap-1.5" data-i18n="accent_color">🎨 Color de Acento</div>
                             <div class="flex items-center gap-3 px-1">
+                                <!-- Rojo -->
                                 <button onclick="changeGlobalNeonPalette('#FF3C00', 'rgba(255,60,0,0.1)', 'rgba(255,60,0,0.15)', this)" class="w-5 h-5 rounded-full bg-[#FF3C00] border-[2px] border-white scale-110 shadow-[0_0_10px_rgba(255,60,0,0.3)]" title="Rojo"></button>
+                                <!-- Cian -->
                                 <button onclick="changeGlobalNeonPalette('#00ffcc', 'rgba(0,255,204,0.1)', 'rgba(0,255,204,0.15)', this)" class="w-5 h-5 rounded-full bg-[#00ffcc] border border-transparent" title="Cian"></button>
-                                <button onclick="changeGlobalNeonPalette('#a855f7', 'rgba(168,85,247,0.1)', 'rgba(168,85,247,0.15)', this)" class="w-5 h-5 rounded-full bg-purple-500 border border-transparent" title="Púrpura"></button>
                                 <!-- Morado IA -->
                                 <button onclick="changeGlobalNeonPalette('#7B2CBF', 'rgba(123,44,191,0.1)', 'rgba(123,44,191,0.15)', this)" class="w-5 h-5 rounded-full bg-[#7B2CBF] border border-transparent" title="Morado IA"></button>
                             </div>
@@ -944,7 +946,10 @@
             <span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_clientes">Soporte</span>
         </button>
         <button onclick="switchWorkspaceView('casos')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/4" data-mod="casos"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_casos">Casos</span></button>
-        <button onclick="switchWorkspaceView('notificaciones')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/4 relative" data-mod="notificaciones"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_notificaciones">Alertas</span><span class="absolute top-1.5 right-6 w-1.5 h-1.5 rounded-full bg-green-500"></span></button>
+        <button onclick="switchWorkspaceView('notificaciones')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/4 relative" data-mod="notificaciones"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_notificaciones">Alertas</span>
+            <!-- LED verde controlado dinámicamente -->
+            <span class="absolute top-1.5 right-6 w-1.5 h-1.5 rounded-full bg-green-500 led-green"></span>
+        </button>
     </div>
 
     <!-- MODALES EXISTENTES -->
