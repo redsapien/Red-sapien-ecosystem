@@ -237,13 +237,14 @@
             animation: radar-sweep 4s linear infinite;
         }
 
-        /* Animación de aparición escalonada para logos */
+        /* Animación de aparición escalonada para logos - mejorada */
         @keyframes logo-reveal {
-            0% { opacity: 0; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1); }
+            0% { opacity: 0; transform: scale(0.7) rotate(-5deg); filter: blur(2px); }
+            50% { transform: scale(1.1) rotate(1deg); filter: blur(0); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); filter: blur(0); }
         }
         .logo-reveal {
-            animation: logo-reveal 0.4s ease-out forwards;
+            animation: logo-reveal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
         .glass-circle {
             background: rgba(255, 255, 255, 0.02);
@@ -251,11 +252,25 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.3s ease;
             overflow: hidden;
+            position: relative;
+        }
+        .glass-circle::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        .glass-circle:hover::after {
+            opacity: 1;
         }
         .glass-circle:hover {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.08);
             border-color: var(--accent-color);
-            box-shadow: 0 0 15px var(--accent-glow);
+            box-shadow: 0 0 30px var(--accent-glow);
+            transform: translateY(-4px) scale(1.04);
         }
         .glass-circle img {
             width: 100%;
@@ -266,44 +281,40 @@
             transition: all 0.3s ease;
         }
         .case-card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px -8px rgba(255,60,0,0.2);
         }
-
-        /* Fondo de eficiencia para la sección de casos */
-        .casos-bg-pattern {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-            opacity: 0.03;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 900;
-            font-size: 14rem;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            letter-spacing: 0.1em;
-            transform: rotate(-12deg) scale(1.2);
-            text-shadow: 0 0 30px rgba(255,255,255,0.1);
-            user-select: none;
+        /* Ajustes para el modal de casos */
+        .success-modal-nav-btn {
+            transition: all 0.2s ease;
+            font-size: 0.75rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem;
         }
-        .casos-bg-lines {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            background-image: 
-                repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 20px);
-            opacity: 0.4;
+        .success-modal-nav-btn:hover:not(:disabled) {
+            background: rgba(255,255,255,0.08);
         }
-        /* Ajuste para móvil del fondo */
-        @media (max-width: 768px) {
-            .casos-bg-pattern {
-                font-size: 6rem;
-                transform: rotate(-8deg) scale(1.1);
-            }
+        .success-modal-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        /* Mejora del scroll en la columna de tarjetas */
+        .casos-scroll-container {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,0.05) transparent;
+        }
+        .casos-scroll-container::-webkit-scrollbar {
+            width: 4px;
+        }
+        .casos-scroll-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .casos-scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        .casos-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color);
         }
     </style>
 </head>
@@ -665,131 +676,130 @@
                 </div>
             </div>
 
-            <!-- MÓDULO 3: CASOS DE ÉXITO (AJUSTADO) -->
+            <!-- MÓDULO 3: CASOS DE ÉXITO (VERSIÓN DEFINITIVA) -->
             <div id="pane-view-casos" class="workspace-pane h-full hidden transition-opacity duration-200 relative">
-                <!-- Fondo de eficiencia -->
-                <div class="casos-bg-pattern">EFICIENCIA</div>
-                <div class="casos-bg-lines"></div>
-                
-                <div class="relative z-10 flex flex-col lg:flex-row w-full h-full gap-3 p-2 md:p-6 overflow-hidden">
+                <div class="relative z-10 flex flex-col lg:flex-row w-full h-full gap-4 p-3 md:p-6 overflow-hidden">
                     
                     <!-- COLUMNA IZQUIERDA (LOGO WALL) - PC / ARRIBA MÓVIL -->
-                    <div class="w-full lg:w-1/2 flex flex-col justify-center space-y-3 text-center lg:text-left">
-                        <div class="grid grid-cols-3 gap-2 max-w-[200px] mx-auto lg:mx-0">
-                            <!-- 9 logos (3x3) con animación escalonada y imágenes -->
-                            <div class="w-12 h-12 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.05s;">
-                                <img src="https://placehold.co/50x50/F59E0B/FFFFFF?text=LP" alt="La Papa Prohibida" class="w-full h-full object-cover">
+                    <div class="w-full lg:w-1/2 flex flex-col justify-center space-y-4 text-center lg:text-left">
+                        <div class="grid grid-cols-3 gap-4 max-w-[300px] mx-auto lg:mx-0">
+                            <!-- 9 logos (3x3) con animación escalonada mejorada -->
+                            <div class="w-16 h-16 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.05s;">
+                                <img src="https://placehold.co/64x64/F59E0B/FFFFFF?text=LP" alt="La Papa Prohibida" class="w-full h-full object-cover">
                             </div>
-                            <div class="w-12 h-12 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.1s;">
-                                <img src="https://placehold.co/50x50/10B981/FFFFFF?text=BT" alt="Bogotaco" class="w-full h-full object-cover">
+                            <div class="w-16 h-16 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.1s;">
+                                <img src="https://placehold.co/64x64/10B981/FFFFFF?text=BT" alt="Bogotaco" class="w-full h-full object-cover">
                             </div>
-                            <div class="w-12 h-12 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.15s;">
-                                <img src="https://placehold.co/50x50/EF4444/FFFFFF?text=SM" alt="Señor Medrano" class="w-full h-full object-cover">
+                            <div class="w-16 h-16 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.15s;">
+                                <img src="https://placehold.co/64x64/EF4444/FFFFFF?text=SM" alt="Señor Medrano" class="w-full h-full object-cover">
                             </div>
-                            <div class="w-12 h-12 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.2s;">
-                                <img src="https://placehold.co/50x50/FFFFFF/000000?text=NE" alt="Noir Elixir" class="w-full h-full object-cover">
+                            <div class="w-16 h-16 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.2s;">
+                                <img src="https://placehold.co/64x64/FFFFFF/000000?text=NE" alt="Noir Elixir" class="w-full h-full object-cover">
                             </div>
-                            <div class="w-12 h-12 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.25s;">
-                                <img src="https://placehold.co/50x50/666666/FFFFFF?text=+" alt="Logo placeholder" class="w-full h-full object-cover">
+                            <div class="w-16 h-16 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.25s;">
+                                <img src="https://placehold.co/64x64/666666/FFFFFF?text=+" alt="Logo placeholder" class="w-full h-full object-cover">
                             </div>
-                            <div class="w-12 h-12 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.3s;">
-                                <img src="https://placehold.co/50x50/666666/FFFFFF?text=+" alt="Logo placeholder" class="w-full h-full object-cover">
+                            <div class="w-16 h-16 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.3s;">
+                                <img src="https://placehold.co/64x64/666666/FFFFFF?text=+" alt="Logo placeholder" class="w-full h-full object-cover">
                             </div>
-                            <div class="w-12 h-12 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.35s;">
-                                <img src="https://placehold.co/50x50/666666/FFFFFF?text=+" alt="Logo placeholder" class="w-full h-full object-cover">
+                            <div class="w-16 h-16 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.35s;">
+                                <img src="https://placehold.co/64x64/666666/FFFFFF?text=+" alt="Logo placeholder" class="w-full h-full object-cover">
                             </div>
-                            <div class="w-12 h-12 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.4s;">
-                                <img src="https://placehold.co/50x50/666666/FFFFFF?text=+" alt="Logo placeholder" class="w-full h-full object-cover">
+                            <div class="w-16 h-16 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.4s;">
+                                <img src="https://placehold.co/64x64/666666/FFFFFF?text=+" alt="Logo placeholder" class="w-full h-full object-cover">
                             </div>
                             <!-- Noveno logo: "TU LOGO" con icono de espera -->
-                            <div class="w-12 h-12 glass-circle rounded-full flex items-center justify-center logo-reveal border-dashed border-white/20 hover:border-[var(--accent-color)] transition-all" style="animation-delay: 0.45s;">
+                            <div class="w-16 h-16 glass-circle rounded-full flex items-center justify-center logo-reveal border-dashed border-white/20 hover:border-[var(--accent-color)] transition-all" style="animation-delay: 0.45s;">
                                 <div class="flex flex-col items-center leading-none">
-                                    <span class="text-[8px] font-black text-gray-400 uppercase tracking-wider">TU</span>
-                                    <span class="text-[8px] font-black text-gray-400 uppercase tracking-wider">LOGO</span>
-                                    <span class="text-[10px] text-[var(--accent-color)] font-bold">+</span>
+                                    <span class="text-[9px] font-black text-gray-400 uppercase tracking-wider">TU</span>
+                                    <span class="text-[9px] font-black text-gray-400 uppercase tracking-wider">LOGO</span>
+                                    <span class="text-[11px] text-[var(--accent-color)] font-bold">+</span>
                                 </div>
                             </div>
                         </div>
                         <!-- Frase principal reducida y cita a la derecha -->
                         <div class="flex flex-col lg:flex-row items-center justify-between gap-1 mt-1">
-                            <p class="text-[10px] md:text-xs font-display font-black tracking-wider text-white/80 uppercase text-center lg:text-left">
+                            <p class="text-xs md:text-sm font-display font-black tracking-wider text-white/80 uppercase text-center lg:text-left">
                                 HACKEAMOS EL ALGORITMO DE VENTAS
                             </p>
-                            <p class="text-[10px] font-mono text-gray-400 italic text-center lg:text-right flex items-center gap-1">
+                            <p class="text-xs font-mono text-gray-400 italic text-center lg:text-right flex items-center gap-1">
                                 <span class="hidden lg:inline text-gray-600">—</span> Tu logo o tu marca aquí...
                             </p>
                         </div>
                     </div>
 
                     <!-- COLUMNA DERECHA (TARJETAS) - PC / ABAJO MÓVIL -->
-                    <div class="w-full lg:w-1/2 h-full overflow-y-auto custom-scrollbar pb-16 lg:pb-8 space-y-3 pr-1">
+                    <div class="w-full lg:w-1/2 h-full overflow-y-auto casos-scroll-container pb-12 lg:pb-6 space-y-4 pr-0">
                         
                         <!-- Tarjeta 1: La Papa Prohibida (Ámbar) -->
-                        <div class="case-card bg-[#0a0a0a] border border-white/5 hover:border-[#F59E0B]/50 rounded-xl p-2.5 flex flex-col sm:flex-row gap-2.5 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(1)" style="--case-color: #F59E0B;">
-                            <div class="w-10 h-10 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#F59E0B] transition-colors overflow-hidden">
-                                <img src="https://placehold.co/40x40/F59E0B/FFFFFF?text=LP" alt="La Papa" class="w-full h-full object-cover">
+                        <div class="case-card bg-[#0a0a0a] border border-white/5 hover:border-[#F59E0B]/50 rounded-xl p-3 flex flex-col sm:flex-row gap-3 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(1)" style="--case-color: #F59E0B;">
+                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#F59E0B] transition-colors overflow-hidden">
+                                <img src="https://placehold.co/48x48/F59E0B/FFFFFF?text=LP" alt="La Papa" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 min-w-0">
-                                <h3 class="text-sm font-display font-bold text-white">La Papa Prohibida</h3>
-                                <p class="text-[9px] text-gray-500 font-mono flex items-center gap-1">
-                                    <svg width="9" height="9" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                <h3 class="text-base font-display font-bold text-white">La Papa Prohibida</h3>
+                                <p class="text-xs text-gray-500 font-mono flex items-center gap-1">
+                                    <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                                     <span>Villamaría y Manizales</span>
                                 </p>
                                 <div class="bg-black/30 border border-white/5 rounded p-1.5 mt-1">
-                                    <p class="text-[9px] text-gray-300 font-mono">16 pedidos en 30h · 49 conv. · $19.000 COP</p>
+                                    <p class="text-xs text-gray-300 font-mono">16 pedidos en 30h · 49 conv. · $19.000 COP</p>
                                 </div>
-                                <button class="mt-1.5 w-full py-1 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-[9px] hover:bg-[#F59E0B] hover:text-black transition-all border border-white/10 group-hover:border-[#F59E0B]/50">Ver caso</button>
+                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[#F59E0B] hover:text-black transition-all border border-white/10 group-hover:border-[#F59E0B]/50">Ver caso</button>
                             </div>
                         </div>
 
                         <!-- Tarjeta 2: Bogotaco (Verde) -->
-                        <div class="case-card bg-[#0a0a0a] border border-white/5 hover:border-[#10B981]/50 rounded-xl p-2.5 flex flex-col sm:flex-row gap-2.5 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(2)" style="--case-color: #10B981;">
-                            <div class="w-10 h-10 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#10B981] transition-colors overflow-hidden">
-                                <img src="https://placehold.co/40x40/10B981/FFFFFF?text=BT" alt="Bogotaco" class="w-full h-full object-cover">
+                        <div class="case-card bg-[#0a0a0a] border border-white/5 hover:border-[#10B981]/50 rounded-xl p-3 flex flex-col sm:flex-row gap-3 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(2)" style="--case-color: #10B981;">
+                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#10B981] transition-colors overflow-hidden">
+                                <img src="https://placehold.co/48x48/10B981/FFFFFF?text=BT" alt="Bogotaco" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 min-w-0">
-                                <h3 class="text-sm font-display font-bold text-white">Bogotaco</h3>
-                                <p class="text-[9px] text-gray-500 font-mono flex items-center gap-1">
-                                    <svg width="9" height="9" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                <h3 class="text-base font-display font-bold text-white">Bogotaco</h3>
+                                <p class="text-xs text-gray-500 font-mono flex items-center gap-1">
+                                    <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                                     <span>Bogotá, Fontibón (3 sedes)</span>
                                 </p>
                                 <div class="bg-black/30 border border-white/5 rounded p-1.5 mt-1">
-                                    <p class="text-[9px] text-gray-300 font-mono">SEO local · 3 GMB · Web Élite</p>
+                                    <p class="text-xs text-gray-300 font-mono">SEO local · 3 GMB · Web Élite</p>
                                 </div>
-                                <button class="mt-1.5 w-full py-1 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-[9px] hover:bg-[#10B981] hover:text-black transition-all border border-white/10 group-hover:border-[#10B981]/50">Ver caso</button>
+                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[#10B981] hover:text-black transition-all border border-white/10 group-hover:border-[#10B981]/50">Ver caso</button>
                             </div>
                         </div>
 
                         <!-- Tarjeta 3: Señor Medrano (Rojo) -->
-                        <div class="case-card bg-[#0a0a0a] border border-white/5 hover:border-[#EF4444]/50 rounded-xl p-2.5 flex flex-col sm:flex-row gap-2.5 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(3)" style="--case-color: #EF4444;">
-                            <div class="w-10 h-10 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#EF4444] transition-colors overflow-hidden">
-                                <img src="https://placehold.co/40x40/EF4444/FFFFFF?text=SM" alt="Señor Medrano" class="w-full h-full object-cover">
+                        <div class="case-card bg-[#0a0a0a] border border-white/5 hover:border-[#EF4444]/50 rounded-xl p-3 flex flex-col sm:flex-row gap-3 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(3)" style="--case-color: #EF4444;">
+                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#EF4444] transition-colors overflow-hidden">
+                                <img src="https://placehold.co/48x48/EF4444/FFFFFF?text=SM" alt="Señor Medrano" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 min-w-0">
-                                <h3 class="text-sm font-display font-bold text-white">Señor Medrano</h3>
-                                <p class="text-[9px] text-gray-500 font-mono">Servicios / Restauración</p>
+                                <h3 class="text-base font-display font-bold text-white">Señor Medrano</h3>
+                                <p class="text-xs text-gray-500 font-mono flex items-center gap-1">
+                                    <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Manizales y Villamaría</span>
+                                </p>
                                 <div class="bg-black/30 border border-white/5 rounded p-1.5 mt-1">
-                                    <p class="text-[9px] text-gray-300 font-mono">Perfil Google optimizado + Web limpia</p>
+                                    <p class="text-xs text-gray-300 font-mono">Perfil Google optimizado + Web limpia</p>
                                 </div>
-                                <button class="mt-1.5 w-full py-1 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-[9px] hover:bg-[#EF4444] hover:text-black transition-all border border-white/10 group-hover:border-[#EF4444]/50">Ver caso</button>
+                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[#EF4444] hover:text-black transition-all border border-white/10 group-hover:border-[#EF4444]/50">Ver caso</button>
                             </div>
                         </div>
 
                         <!-- Tarjeta 4: Noir Elixir (Blanco) -->
-                        <div class="case-card bg-[#0a0a0a] border border-white/5 hover:border-white/50 rounded-xl p-2.5 flex flex-col sm:flex-row gap-2.5 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(4)" style="--case-color: #FFFFFF;">
-                            <div class="w-10 h-10 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-white transition-colors overflow-hidden">
-                                <img src="https://placehold.co/40x40/FFFFFF/000000?text=NE" alt="Noir Elixir" class="w-full h-full object-cover">
+                        <div class="case-card bg-[#0a0a0a] border border-white/5 hover:border-white/50 rounded-xl p-3 flex flex-col sm:flex-row gap-3 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(4)" style="--case-color: #FFFFFF;">
+                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-white transition-colors overflow-hidden">
+                                <img src="https://placehold.co/48x48/FFFFFF/000000?text=NE" alt="Noir Elixir" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 min-w-0">
-                                <h3 class="text-sm font-display font-bold text-white">Noir Elixir</h3>
-                                <p class="text-[9px] text-gray-500 font-mono flex items-center gap-1">
-                                    <svg width="9" height="9" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                <h3 class="text-base font-display font-bold text-white">Noir Elixir</h3>
+                                <p class="text-xs text-gray-500 font-mono flex items-center gap-1">
+                                    <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                                     <span>Medellín, Antioquia</span>
                                 </p>
                                 <div class="bg-black/30 border border-white/5 rounded p-1.5 mt-1">
-                                    <p class="text-[9px] text-gray-300 font-mono">Rebranding Premium + Catálogo 1s</p>
+                                    <p class="text-xs text-gray-300 font-mono">Rebranding Premium + Catálogo 1s</p>
                                 </div>
-                                <button class="mt-1.5 w-full py-1 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-[9px] hover:bg-white hover:text-black transition-all border border-white/10 group-hover:border-white/50">Ver caso</button>
+                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-white hover:text-black transition-all border border-white/10 group-hover:border-white/50">Ver caso</button>
                             </div>
                         </div>
                     </div>
@@ -871,13 +881,25 @@
     <div id="support-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-white mb-2" data-i18n="support_title">Soporte Técnico</h3><p class="text-sm text-gray-400 leading-relaxed mb-4 font-mono" data-i18n="support_text">Nuestro equipo está listo para asistirte. Envía un mensaje a soporte@redsapien.com o llama al +57 300 000 0000.</p><div class="flex justify-end gap-3"><button onclick="toggleSupportModal(false)" class="px-5 py-2.5 bg-white/10 text-white text-sm font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-colors" data-i18n="close">Cerrar</button><a href="mailto:soporte@redsapien.com" class="px-5 py-2.5 bg-[var(--accent-color)] text-black text-sm font-black uppercase tracking-wider rounded-xl hover:opacity-90 transition-colors" data-i18n="contact">Contactar</a></div></div></div>
     <div id="purge-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-rs-red/30 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-red-500 mb-2" data-i18n="purge_title">🚨 CONFIRMAR PURGA ABSOLUTA</h3><p class="text-sm text-gray-400 leading-relaxed mb-4 font-mono" data-i18n="purge_text">¿Seguro que deseas purgar la cuenta, el avatar y todo el progreso del ecosistema? Esta acción es irreversible.</p><input type="text" id="purge-confirm-input" placeholder="Escribe ELIMINAR para confirmar" data-i18n="purge_placeholder" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[var(--accent-color)] mb-4"><div class="flex justify-end gap-3"><button onclick="closePurgeModal()" class="px-5 py-2.5 bg-white/10 text-white text-sm font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-colors" data-i18n="cancel">Cancelar</button><button id="confirm-purge-btn" disabled class="px-5 py-2.5 bg-red-500/30 text-gray-400 text-sm font-black uppercase tracking-wider rounded-xl cursor-not-allowed transition-colors" data-i18n="confirm_purge">Confirmar Purgado</button></div></div></div>
 
-    <!-- Modal de Caso de Éxito (Dinámico) -->
+    <!-- Modal de Caso de Éxito (Dinámico) con navegación - alineado con modal de telemetría -->
     <div id="success-modal-overlay" class="fixed inset-0 z-[250] hidden items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-500 p-4">
-        <div class="w-full max-w-sm md:max-w-4xl bg-[#0a0a0a] border border-white/10 rounded-2xl p-4 md:p-6 shadow-2xl modal-matrix-enter relative max-h-[85vh] overflow-y-auto custom-scrollbar">
-            <button onclick="closeSuccessModal()" class="absolute top-3 right-3 p-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white border border-white/5 transition-colors z-20">
+        <div class="w-full max-w-md lg:max-w-3xl bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 shadow-2xl modal-matrix-enter relative max-h-[85vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeSuccessModal()" class="absolute top-4 right-4 p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white border border-white/5 transition-colors z-20">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
             <div id="success-modal-content" class="space-y-4"></div>
+            <!-- Navegación entre casos - mejorada -->
+            <div class="flex items-center justify-between mt-5 border-t border-white/10 pt-4">
+                <button id="success-prev-btn" onclick="navigateSuccessCase(-1)" class="success-modal-nav-btn px-4 py-2 text-sm font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition-all border border-white/5 disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-1">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+                    Anterior
+                </button>
+                <span id="success-indicator" class="text-sm font-mono font-bold tracking-wider text-gray-400 bg-white/5 px-4 py-1.5 rounded-full border border-white/5">1 / 4</span>
+                <button id="success-next-btn" onclick="navigateSuccessCase(1)" class="success-modal-nav-btn px-4 py-2 text-sm font-mono font-bold uppercase tracking-wider bg-[var(--accent-color)] text-white rounded-xl transition-all hover:brightness-110 flex items-center gap-1">
+                    Siguiente
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19l7-7-7-7"/></svg>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -1412,15 +1434,15 @@
         if(purgeInput) purgeInput.addEventListener('input', (e) => { if(confirmPurgeBtn) { confirmPurgeBtn.disabled = e.target.value !== (currentLang === 'es' ? 'ELIMINAR' : (currentLang === 'pt' ? 'ELIMINAR' : 'DELETE')); if(e.target.value === (currentLang === 'es' ? 'ELIMINAR' : (currentLang === 'pt' ? 'ELIMINAR' : 'DELETE'))) { confirmPurgeBtn.classList.remove('bg-red-500/30','text-gray-400','cursor-not-allowed'); confirmPurgeBtn.classList.add('bg-red-500','text-white','cursor-pointer','hover:bg-red-600'); } else { confirmPurgeBtn.classList.add('bg-red-500/30','text-gray-400','cursor-not-allowed'); confirmPurgeBtn.classList.remove('bg-red-500','text-white','cursor-pointer','hover:bg-red-600'); } } });
         if(confirmPurgeBtn) confirmPurgeBtn.addEventListener('click', () => { if(!confirmPurgeBtn.disabled) { localStorage.clear(); window.location.reload(); } });
         
-        // DATOS DE LOS 4 CASOS CON IMÁGENES ESPECÍFICAS Y URLS REALES
+        // DATOS DE LOS 4 CASOS CON IMÁGENES ESPECÍFICAS Y URLS REALES (descripciones reducidas 35%)
         const successCases = {
             1: {
                 name: "La Papa Prohibida",
                 title: "Ecosistema de Ventas para La Papa Prohibida",
                 location: "Villamaría y Manizales, Caldas",
                 niche: "Restauración / Fast Food",
-                stat: "16 pedidos efectivos en 30 horas. 49 Conversiones con $19.000 COP",
-                description: "Campaña de Facebook Ads de alto impacto que generó tráfico masivo y conversiones en tiempo récord.",
+                stat: "16 pedidos en 30h · 49 conversiones · $19.000 COP",
+                description: "Campaña de Facebook Ads de alto impacto que generó tráfico y conversiones récord.",
                 img: "https://placehold.co/800x500/0a0a0a/F59E0B?text=Facebook+Ads+-+La+Papa+Prohibida",
                 url: "https://lapapa.redsapien.com/"
             },
@@ -1429,18 +1451,18 @@
                 title: "Dominio SEO Local para Bogotaco",
                 location: "Bogotá, Fontibón (3 sedes)",
                 niche: "Comida Rápida / Tacos",
-                stat: "Dominio absoluto local: SEO optimizado, 3 perfiles Google My Business y Web Élite",
-                description: "Optimización de fichas de Google My Business con palabras clave locales y gestión de reseñas.",
+                stat: "SEO optimizado, 3 perfiles GMB y Web Élite",
+                description: "Optimización de fichas GMB y gestión de reseñas para posicionar las 3 sedes.",
                 img: "https://placehold.co/800x500/0a0a0a/10B981?text=Google+My+Business+-+Bogotaco",
                 url: "https://bogotaco.redsapien.com/"
             },
             3: {
                 name: "Señor Medrano",
                 title: "Ecosistema Web de Alta Velocidad",
-                location: "Colombia",
+                location: "Manizales y Villamaría, Caldas",
                 niche: "Moda / Servicios",
-                stat: "Optimización de Perfil de Google y Ecosistema Web Limpio y de Alta Velocidad",
-                description: "Rediseño completo de la web con tecnologías modernas y optimización del perfil de Google.",
+                stat: "Perfil Google optimizado + Web limpia y veloz",
+                description: "Rediseño web y optimización del perfil de Google para máxima visibilidad.",
                 img: "https://placehold.co/800x500/0a0a0a/EF4444?text=Perfil+Google+Optimizado+-+Se%C3%B1or+Medrano",
                 url: "https://srmedrano.co/"
             },
@@ -1449,20 +1471,32 @@
                 title: "Rebranding Premium y Catálogo Virtual",
                 location: "Medellín, Antioquia",
                 niche: "Ecommerce / Belleza",
-                stat: "Rebranding Premium en Redes + Catálogo Virtual inmersivo con carga de 1 segundo",
-                description: "Estrategia de rebranding en Facebook con diseño de fan page atractivo y catálogo virtual ultraveloz.",
+                stat: "Rebranding Premium + Catálogo virtual 1s",
+                description: "Rebranding en Facebook con fan page atractiva y catálogo virtual ultraveloz.",
                 img: "https://placehold.co/800x500/0a0a0a/FFFFFF?text=Fan+Page+Facebook+-+Noir+Elixir",
                 url: "https://noir.redsapien.com/"
             }
         };
 
-        function openSuccessModal(caseId) {
-            const overlay = document.getElementById('success-modal-overlay');
-            const content = document.getElementById('success-modal-content');
-            const data = successCases[caseId];
-            if (!data) return;
+        // Variables para la navegación del modal de casos
+        let currentCaseIndex = 1;
+        const totalCases = 4;
 
-            // Construcción del contenido dinámico con diferentes disposiciones según el tamaño
+        function openSuccessModal(caseId) {
+            currentCaseIndex = caseId;
+            renderSuccessModal(currentCaseIndex);
+            const overlay = document.getElementById('success-modal-overlay');
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+            }, 10);
+        }
+
+        function renderSuccessModal(index) {
+            const data = successCases[index];
+            if (!data) return;
+            const content = document.getElementById('success-modal-content');
             content.innerHTML = `
                 <div class="flex flex-col md:flex-row gap-4">
                     <div class="md:w-1/2">
@@ -1488,12 +1522,26 @@
                     </div>
                 </div>
             `;
+            // Actualizar indicador y botones
+            document.getElementById('success-indicator').innerText = `${index} / ${totalCases}`;
+            const prevBtn = document.getElementById('success-prev-btn');
+            const nextBtn = document.getElementById('success-next-btn');
+            prevBtn.disabled = (index === 1);
+            if (index === totalCases) {
+                nextBtn.innerHTML = 'Entendido';
+                nextBtn.onclick = function() { closeSuccessModal(); };
+            } else {
+                nextBtn.innerHTML = 'Siguiente →';
+                nextBtn.onclick = function() { navigateSuccessCase(1); };
+            }
+        }
 
-            overlay.classList.remove('hidden');
-            overlay.classList.add('flex');
-            setTimeout(() => {
-                overlay.style.opacity = '1';
-            }, 10);
+        function navigateSuccessCase(delta) {
+            let newIndex = currentCaseIndex + delta;
+            if (newIndex < 1) newIndex = 1;
+            if (newIndex > totalCases) return;
+            currentCaseIndex = newIndex;
+            renderSuccessModal(currentCaseIndex);
         }
 
         function closeSuccessModal() {
