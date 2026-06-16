@@ -37,6 +37,8 @@
             --accent-color: #FF3C00;
             --accent-glow: rgba(255, 60, 0, 0.1);
             --neon-border: rgba(255, 60, 0, 0.15);
+            --ia-color: #7B2CBF;
+            --ia-glow: rgba(123, 44, 191, 0.1);
         }
         
         body {
@@ -450,6 +452,8 @@
                                 <button onclick="changeGlobalNeonPalette('#FF3C00', 'rgba(255,60,0,0.1)', 'rgba(255,60,0,0.15)', this)" class="w-5 h-5 rounded-full bg-[#FF3C00] border-[2px] border-white scale-110 shadow-[0_0_10px_rgba(255,60,0,0.3)]" title="Rojo"></button>
                                 <button onclick="changeGlobalNeonPalette('#00ffcc', 'rgba(0,255,204,0.1)', 'rgba(0,255,204,0.15)', this)" class="w-5 h-5 rounded-full bg-[#00ffcc] border border-transparent" title="Cian"></button>
                                 <button onclick="changeGlobalNeonPalette('#a855f7', 'rgba(168,85,247,0.1)', 'rgba(168,85,247,0.15)', this)" class="w-5 h-5 rounded-full bg-purple-500 border border-transparent" title="Púrpura"></button>
+                                <!-- Morado IA -->
+                                <button onclick="changeGlobalNeonPalette('#7B2CBF', 'rgba(123,44,191,0.1)', 'rgba(123,44,191,0.15)', this)" class="w-5 h-5 rounded-full bg-[#7B2CBF] border border-transparent" title="Morado IA"></button>
                             </div>
                         </div>
                         <div class="p-2 hover:bg-white/5 rounded-xl transition-colors mt-1">
@@ -825,7 +829,57 @@
                 </div>
             </div>
 
-            <div id="pane-view-notificaciones" class="workspace-pane h-full hidden transition-opacity duration-200"></div>
+            <!-- MÓDULO 4: NOTIFICACIONES -->
+            <div id="pane-view-notificaciones" class="workspace-pane h-full hidden transition-opacity duration-200 relative">
+                <!-- Fondo inmersivo con pulsos/conexiones -->
+                <div class="absolute inset-0 z-0 pointer-events-none opacity-20 flex items-center justify-center overflow-hidden">
+                    <svg class="w-full h-full max-w-4xl max-h-4xl" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Círculos pulsantes -->
+                        <circle cx="200" cy="200" r="60" stroke="var(--accent-color)" stroke-width="0.5" opacity="0.3" class="animate-pulse">
+                            <animate attributeName="r" from="60" to="120" dur="3s" repeatCount="indefinite" />
+                            <animate attributeName="opacity" from="0.3" to="0" dur="3s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="600" cy="400" r="80" stroke="#7B2CBF" stroke-width="0.5" opacity="0.3">
+                            <animate attributeName="r" from="80" to="160" dur="4s" repeatCount="indefinite" />
+                            <animate attributeName="opacity" from="0.3" to="0" dur="4s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="350" cy="500" r="50" stroke="var(--accent-color)" stroke-width="0.5" opacity="0.2">
+                            <animate attributeName="r" from="50" to="100" dur="3.5s" repeatCount="indefinite" />
+                            <animate attributeName="opacity" from="0.2" to="0" dur="3.5s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="700" cy="150" r="40" stroke="#7B2CBF" stroke-width="0.5" opacity="0.25">
+                            <animate attributeName="r" from="40" to="90" dur="4.5s" repeatCount="indefinite" />
+                            <animate attributeName="opacity" from="0.25" to="0" dur="4.5s" repeatCount="indefinite" />
+                        </circle>
+                        <!-- Líneas de conexión -->
+                        <line x1="200" y1="200" x2="600" y2="400" stroke="var(--accent-color)" stroke-width="0.3" opacity="0.15" />
+                        <line x1="600" y1="400" x2="350" y2="500" stroke="#7B2CBF" stroke-width="0.3" opacity="0.15" />
+                        <line x1="350" y1="500" x2="200" y2="200" stroke="#7B2CBF" stroke-width="0.3" opacity="0.15" />
+                        <line x1="700" y1="150" x2="200" y2="200" stroke="var(--accent-color)" stroke-width="0.3" opacity="0.1" />
+                        <circle cx="200" cy="200" r="4" fill="var(--accent-color)" opacity="0.5" />
+                        <circle cx="600" cy="400" r="4" fill="#7B2CBF" opacity="0.5" />
+                        <circle cx="350" cy="500" r="4" fill="var(--accent-color)" opacity="0.4" />
+                        <circle cx="700" cy="150" r="4" fill="#7B2CBF" opacity="0.4" />
+                    </svg>
+                </div>
+
+                <div class="relative z-10 flex flex-col w-full h-full p-4 md:p-6 overflow-y-auto custom-scrollbar">
+                    <!-- Título del módulo -->
+                    <div class="flex items-center gap-3 mb-6">
+                        <h2 class="text-xl md:text-2xl font-display font-black text-white uppercase tracking-tight" data-i18n="notifications_title">Centro de Notificaciones</h2>
+                        <span id="notification-badge" class="ml-2 px-2.5 py-0.5 text-[10px] font-mono font-bold rounded-full bg-[var(--accent-color)] text-white hidden">0</span>
+                    </div>
+                    <!-- Contenedor de tarjetas -->
+                    <div id="notifications-container" class="flex flex-col gap-4 max-w-3xl mx-auto w-full">
+                        <!-- Las tarjetas se inyectan dinámicamente -->
+                    </div>
+                    <!-- Mensaje cuando no hay notificaciones -->
+                    <div id="notifications-empty" class="flex flex-col items-center justify-center text-center py-12 text-gray-500 hidden">
+                        <svg class="w-16 h-16 mb-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                        <p class="text-sm font-mono" data-i18n="notifications_empty">No hay notificaciones activas. Todo está en calma.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -995,7 +1049,10 @@
                 caso3_stat: "Perfil Google optimizado + Web limpia y veloz",
                 caso4_name: "Noir Elixir",
                 caso4_location: "Medellín, Antioquia",
-                caso4_stat: "Rebranding Premium + Catálogo virtual 1s"
+                caso4_stat: "Rebranding Premium + Catálogo virtual 1s",
+                // NUEVAS TRADUCCIONES PARA NOTIFICACIONES
+                notifications_title: "Centro de Notificaciones",
+                notifications_empty: "No hay notificaciones activas. Todo está en calma."
             },
             en: {
                 nav_panel: "Dashboard", nav_clientes: "Support", nav_casos: "Success Cases", nav_notificaciones: "Notifications",
@@ -1063,7 +1120,10 @@
                 caso3_stat: "Optimized Google profile + clean & fast website",
                 caso4_name: "Noir Elixir",
                 caso4_location: "Medellín, Antioquia",
-                caso4_stat: "Premium rebranding + immersive virtual catalog (1s load)"
+                caso4_stat: "Premium rebranding + immersive virtual catalog (1s load)",
+                // NUEVAS TRADUCCIONES PARA NOTIFICACIONES
+                notifications_title: "Notification Center",
+                notifications_empty: "No active notifications. All is calm."
             },
             pt: {
                 nav_panel: "Painel", nav_clientes: "Suporte", nav_casos: "Casos de Sucesso", nav_notificacoes: "Notificações",
@@ -1131,7 +1191,10 @@
                 caso3_stat: "Perfil do Google otimizado + site limpo e rápido",
                 caso4_name: "Noir Elixir",
                 caso4_location: "Medellín, Antioquia",
-                caso4_stat: "Rebranding premium + catálogo virtual imersivo (1s)"
+                caso4_stat: "Rebranding premium + catálogo virtual imersivo (1s)",
+                // NUEVAS TRADUCCIONES PARA NOTIFICACIONES
+                notifications_title: "Centro de Notificações",
+                notifications_empty: "Nenhuma notificação ativa. Tudo está calmo."
             }
         };
         let currentLang = localStorage.getItem("rs_lang") || "es";
@@ -1453,9 +1516,72 @@
         function triggerManualAvatarClick(event) { event.stopPropagation(); document.getElementById("supabase-avatar-uploader").click(); closeDropdownMenu(); }
         function handleAvatarStorageUpload(event) { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(e) { const base64Img = e.target.result; localStorage.setItem("rs_business_avatar_url", base64Img); document.getElementById("avatar-state-empty").classList.add("hidden"); document.getElementById("avatar-state-img").src = base64Img; document.getElementById("avatar-state-img").classList.remove("hidden"); document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.change_logo || "Cambiar Logo"; }; reader.readAsDataURL(file); }
         document.addEventListener('click', (e) => { const card = document.getElementById("dropdown-menu-card"), btn = document.getElementById("dropdown-avatar-btn"); if (card && !card.contains(e.target) && !btn.contains(e.target)) card.classList.add("hidden"); });
-        function switchWorkspaceView(tabId) { document.querySelectorAll(".workspace-pane").forEach(p => p.classList.add("hidden")); document.getElementById(`pane-view-${tabId}`).classList.remove("hidden"); document.querySelectorAll(".sidebar-tab-link").forEach(b => { b.classList.remove("bg-white/10", "text-white", "shadow-inner", "border-white/10"); b.classList.add("text-gray-500", "border-transparent"); }); const activePC = document.querySelector(`.sidebar-tab-link[data-mod="${tabId}"]`); if (activePC) { activePC.classList.remove("text-gray-500", "border-transparent"); activePC.classList.add("bg-white/10", "text-white", "shadow-inner", "border-white/10"); } document.querySelectorAll(".mobile-nav-btn").forEach(i => { i.classList.remove("text-white"); i.classList.add("text-gray-500"); const svg = i.querySelector("svg"); if (svg) svg.style.color = "inherit"; if(i.querySelector("svg")) i.querySelector("svg").classList.remove("scale-110"); }); const activeMobile = document.querySelector(`.mobile-nav-btn[data-mod="${tabId}"]`); if (activeMobile) { activeMobile.classList.add("text-white"); activeMobile.classList.remove("text-gray-500"); const svg = activeMobile.querySelector("svg"); if (svg) svg.classList.add("scale-110"); const color = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim(); if (svg) svg.style.color = color; } }
-        function changeGlobalNeonPalette(color, glow, border, element) { document.documentElement.style.setProperty('--accent-color', color); document.documentElement.style.setProperty('--accent-glow', glow); document.documentElement.style.setProperty('--neon-border', border); const rgbColor = (color.slice(1).match(/.{2}/g).map(c=>parseInt(c,16))).join(','); const ambientBg = document.querySelector('.ambient-glow-bg'); if (ambientBg) ambientBg.style.background = `radial-gradient(circle at 50% -20%, rgba(${rgbColor}, 0.05) 0%, rgba(5,5,5,0) 65%), #050505`; const header = document.getElementById('workspace-header'); if (header) { header.style.borderBottom = `1px solid ${color}`; header.style.boxShadow = `0 4px 20px -8px ${color.replace('rgb', 'rgba').replace(')', ', 0.25)')}`; } localStorage.setItem("rs_dash_color", color); localStorage.setItem("rs_dash_glow", glow); localStorage.setItem("rs_dash_neon", border); if (element) { element.parentNode.querySelectorAll("button").forEach(b => b.classList.remove("scale-110", "border-[2px]", "border-white")); element.classList.add("scale-110", "border-[2px]", "border-white"); } const activeMobile = document.querySelector(".mobile-nav-btn.text-white svg"); if (activeMobile) activeMobile.style.color = color; }
-        function loadPersistedColorPalette() { const color = localStorage.getItem("rs_dash_color"), glow = localStorage.getItem("rs_dash_glow"), neon = localStorage.getItem("rs_dash_neon"); if (color && glow && neon) { const btns = document.querySelectorAll('[onclick*="changeGlobalNeonPalette"]'); let activeBtn = null; btns.forEach(b => { if (b.getAttribute('onclick').includes(color)) activeBtn = b; }); changeGlobalNeonPalette(color, glow, neon, activeBtn); } }
+        function switchWorkspaceView(tabId) { 
+            document.querySelectorAll(".workspace-pane").forEach(p => p.classList.add("hidden")); 
+            document.getElementById(`pane-view-${tabId}`).classList.remove("hidden"); 
+            document.querySelectorAll(".sidebar-tab-link").forEach(b => { 
+                b.classList.remove("bg-white/10", "text-white", "shadow-inner", "border-white/10"); 
+                b.classList.add("text-gray-500", "border-transparent"); 
+            }); 
+            const activePC = document.querySelector(`.sidebar-tab-link[data-mod="${tabId}"]`); 
+            if (activePC) { 
+                activePC.classList.remove("text-gray-500", "border-transparent"); 
+                activePC.classList.add("bg-white/10", "text-white", "shadow-inner", "border-white/10"); 
+            } 
+            document.querySelectorAll(".mobile-nav-btn").forEach(i => { 
+                i.classList.remove("text-white"); 
+                i.classList.add("text-gray-500"); 
+                const svg = i.querySelector("svg"); 
+                if (svg) svg.style.color = "inherit"; 
+                if(i.querySelector("svg")) i.querySelector("svg").classList.remove("scale-110"); 
+            }); 
+            const activeMobile = document.querySelector(`.mobile-nav-btn[data-mod="${tabId}"]`); 
+            if (activeMobile) { 
+                activeMobile.classList.add("text-white"); 
+                activeMobile.classList.remove("text-gray-500"); 
+                const svg = activeMobile.querySelector("svg"); 
+                if (svg) svg.classList.add("scale-110"); 
+                const color = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim(); 
+                if (svg) svg.style.color = color; 
+            }
+            // Inicializar notificaciones si se cambia a ese panel
+            if (tabId === 'notificaciones') {
+                ensureNotificationsInitialized();
+            }
+        }
+        function changeGlobalNeonPalette(color, glow, border, element) { 
+            document.documentElement.style.setProperty('--accent-color', color); 
+            document.documentElement.style.setProperty('--accent-glow', glow); 
+            document.documentElement.style.setProperty('--neon-border', border); 
+            const rgbColor = (color.slice(1).match(/.{2}/g).map(c=>parseInt(c,16))).join(','); 
+            const ambientBg = document.querySelector('.ambient-glow-bg'); 
+            if (ambientBg) ambientBg.style.background = `radial-gradient(circle at 50% -20%, rgba(${rgbColor}, 0.05) 0%, rgba(5,5,5,0) 65%), #050505`; 
+            const header = document.getElementById('workspace-header'); 
+            if (header) { 
+                header.style.borderBottom = `1px solid ${color}`; 
+                header.style.boxShadow = `0 4px 20px -8px ${color.replace('rgb', 'rgba').replace(')', ', 0.25)')}`; 
+            } 
+            localStorage.setItem("rs_dash_color", color); 
+            localStorage.setItem("rs_dash_glow", glow); 
+            localStorage.setItem("rs_dash_neon", border); 
+            if (element) { 
+                element.parentNode.querySelectorAll("button").forEach(b => b.classList.remove("scale-110", "border-[2px]", "border-white")); 
+                element.classList.add("scale-110", "border-[2px]", "border-white"); 
+            } 
+            const activeMobile = document.querySelector(".mobile-nav-btn.text-white svg"); 
+            if (activeMobile) activeMobile.style.color = color; 
+        }
+        function loadPersistedColorPalette() { 
+            const color = localStorage.getItem("rs_dash_color"), glow = localStorage.getItem("rs_dash_glow"), neon = localStorage.getItem("rs_dash_neon"); 
+            if (color && glow && neon) { 
+                const btns = document.querySelectorAll('[onclick*="changeGlobalNeonPalette"]'); 
+                let activeBtn = null; 
+                btns.forEach(b => { 
+                    if (b.getAttribute('onclick').includes(color)) activeBtn = b; 
+                }); 
+                changeGlobalNeonPalette(color, glow, neon, activeBtn); 
+            } 
+        }
         function openSupportModal() { document.getElementById("support-modal-overlay").classList.remove("hidden"); }
         function toggleSupportModal(show) { document.getElementById("support-modal-overlay").classList.toggle("hidden", !show); }
         function toggleTermsModal(show) { document.getElementById("terms-modal-overlay").classList.toggle("hidden", !show); }
@@ -1592,11 +1718,263 @@
                 overlay.style.opacity = '';
             }, 300);
         }
+
+        // ============================================
+        // MÓDULO 4: NOTIFICACIONES - Sistema de gestión
+        // ============================================
+
+        // Array de notificaciones activas
+        let activeNotifications = [];
+
+        // Datos de ejemplo (se cargan al iniciar)
+        const defaultNotifications = [
+            {
+                id: 'notif-1',
+                type: 'system',
+                title: 'Alerta de seguridad',
+                message: 'Nuevo acceso detectado desde dispositivo no autorizado (IP: 192.168.1.45).',
+                signature: 'Cristian Lopez Gomez - CTO Red Sapien',
+                icon: '⚠️',
+                color: '#FF3C00'
+            },
+            {
+                id: 'notif-2',
+                type: 'marketing',
+                title: 'Lead calificado',
+                message: 'Empresa XYZ muestra interés en servicios premium. Contacto: Juan Pérez.',
+                signature: 'Antonella IA - Red Sapien',
+                icon: '🧠',
+                color: '#7B2CBF'
+            },
+            {
+                id: 'notif-3',
+                type: 'system',
+                title: 'Actualización completada',
+                message: 'Sistema actualizado a la versión 2.4.1. Todos los servicios operativos.',
+                signature: 'Cristian Lopez Gomez - CTO Red Sapien',
+                icon: '🔄',
+                color: '#FF3C00'
+            },
+            {
+                id: 'notif-4',
+                type: 'marketing',
+                title: 'Recomendación de campaña',
+                message: 'Incrementa presupuesto en Facebook Ads un 20% para maximizar conversiones.',
+                signature: 'Antonella IA - Red Sapien',
+                icon: '📈',
+                color: '#7B2CBF'
+            }
+        ];
+
+        // Inicializar notificaciones (cargar desde localStorage o usar predeterminadas)
+        function initNotifications() {
+            const saved = localStorage.getItem('rs_notifications');
+            if (saved) {
+                try {
+                    activeNotifications = JSON.parse(saved);
+                } catch (e) {
+                    activeNotifications = [...defaultNotifications];
+                }
+            } else {
+                activeNotifications = [...defaultNotifications];
+            }
+            renderNotifications();
+            updateNotificationLED();
+            requestPushPermission();
+        }
+
+        // Renderizar notificaciones (máximo 2 visibles, el resto se apilan)
+        function renderNotifications() {
+            const container = document.getElementById('notifications-container');
+            const emptyMsg = document.getElementById('notifications-empty');
+            const badge = document.getElementById('notification-badge');
+
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            if (activeNotifications.length === 0) {
+                emptyMsg.classList.remove('hidden');
+                badge.classList.add('hidden');
+                updateNotificationLED();
+                return;
+            } else {
+                emptyMsg.classList.add('hidden');
+                badge.classList.remove('hidden');
+                badge.textContent = activeNotifications.length;
+            }
+
+            const visible = activeNotifications.slice(0, 2);
+            const hidden = activeNotifications.slice(2);
+
+            visible.forEach((notif, index) => {
+                const card = createNotificationCard(notif, index);
+                container.appendChild(card);
+            });
+
+            if (hidden.length > 0) {
+                const indicator = document.createElement('div');
+                indicator.className = 'text-center text-xs font-mono text-gray-500 py-2 border-t border-white/5 mt-2';
+                indicator.textContent = `+${hidden.length} notificaciones en espera...`;
+                container.appendChild(indicator);
+            }
+
+            updateNotificationLED();
+        }
+
+        // Crear tarjeta de notificación
+        function createNotificationCard(notif, index) {
+            const isSystem = notif.type === 'system';
+            const accentColor = isSystem ? '#FF3C00' : '#7B2CBF';
+            const bgGradient = isSystem 
+                ? 'bg-gradient-to-br from-[#1a0a0a] to-[#0a0a0a]' 
+                : 'bg-gradient-to-br from-[#0a0a1a] to-[#0a0a0a]';
+            const borderColor = isSystem ? 'border-[#FF3C00]/30' : 'border-[#7B2CBF]/30';
+            const iconBg = isSystem ? 'bg-[#FF3C00]/20' : 'bg-[#7B2CBF]/20';
+
+            const card = document.createElement('div');
+            card.id = notif.id;
+            card.className = `notification-card flex flex-col md:flex-row items-start md:items-center gap-4 p-4 rounded-xl border ${borderColor} ${bgGradient} backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-[${accentColor}]/5`;
+
+            card.innerHTML = `
+                <div class="flex items-center gap-3 w-full md:w-auto">
+                    <div class="w-10 h-10 rounded-full ${iconBg} flex items-center justify-center text-lg flex-shrink-0">
+                        ${notif.icon || (isSystem ? '🔴' : '🧠')}
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-sm font-display font-bold text-white">${notif.title}</h4>
+                        <p class="text-xs text-gray-400 font-mono line-clamp-2">${notif.message}</p>
+                        <div class="mt-1 flex items-center gap-2">
+                            <span class="text-[8px] font-mono text-gray-500 uppercase tracking-wider">${notif.signature}</span>
+                            <span class="w-1 h-1 rounded-full ${isSystem ? 'bg-[#FF3C00]' : 'bg-[#7B2CBF]'} opacity-50"></span>
+                            <span class="text-[8px] font-mono ${isSystem ? 'text-[#FF3C00]' : 'text-[#7B2CBF]'}">●</span>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="dismissNotification('${notif.id}')" class="ml-auto flex-shrink-0 px-4 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-xs font-black uppercase tracking-wider text-gray-300 hover:text-white transition-all border border-white/10 hover:border-white/20">
+                    Listo
+                </button>
+            `;
+
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(12px)';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+                card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            }, 80 * (index + 1));
+
+            return card;
+        }
+
+        // Eliminar notificación con animación y actualizar lista
+        function dismissNotification(id) {
+            const card = document.getElementById(id);
+            if (!card) return;
+
+            card.style.opacity = '0';
+            card.style.transform = 'translateX(40px)';
+            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
+            setTimeout(() => {
+                activeNotifications = activeNotifications.filter(n => n.id !== id);
+                localStorage.setItem('rs_notifications', JSON.stringify(activeNotifications));
+                renderNotifications();
+                updateNotificationLED();
+            }, 350);
+        }
+
+        // Actualizar LED verde en el menú
+        function updateNotificationLED() {
+            const hasNotifications = activeNotifications.length > 0;
+            // Remover leds existentes
+            document.querySelectorAll('.sidebar-tab-link[data-mod="notificaciones"] .led-green, .mobile-nav-btn[data-mod="notificaciones"] .led-green').forEach(el => el.remove());
+
+            if (hasNotifications) {
+                const sidebarLink = document.querySelector('.sidebar-tab-link[data-mod="notificaciones"]');
+                if (sidebarLink) {
+                    const led = document.createElement('span');
+                    led.className = 'absolute right-4 w-1.5 h-1.5 rounded-full bg-green-500 led-green';
+                    sidebarLink.style.position = 'relative';
+                    sidebarLink.appendChild(led);
+                }
+                const mobileLink = document.querySelector('.mobile-nav-btn[data-mod="notificaciones"]');
+                if (mobileLink) {
+                    const led = document.createElement('span');
+                    led.className = 'absolute top-1.5 right-6 w-1.5 h-1.5 rounded-full bg-green-500 led-green';
+                    mobileLink.style.position = 'relative';
+                    mobileLink.appendChild(led);
+                }
+            }
+        }
+
+        // Solicitar permiso para notificaciones push (Web Push API)
+        function requestPushPermission() {
+            if (!('Notification' in window)) {
+                console.log('Este navegador no soporta notificaciones push.');
+                return;
+            }
+            if (Notification.permission === 'granted' || Notification.permission === 'denied') {
+                return;
+            }
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    console.log('Permiso de notificaciones concedido.');
+                    // Aquí se conectaría con el Service Worker y Supabase Realtime
+                    // navigator.serviceWorker.register('/sw.js')
+                } else {
+                    console.log('Permiso de notificaciones denegado.');
+                }
+            });
+        }
+
+        // Función para agregar notificaciones (para futura integración con Supabase)
+        function addNotification(title, message, type = 'system', icon = '🔔') {
+            const newNotif = {
+                id: 'notif-' + Date.now(),
+                type: type,
+                title: title,
+                message: message,
+                signature: type === 'system' 
+                    ? 'Cristian Lopez Gomez - CTO Red Sapien' 
+                    : 'Antonella IA - Red Sapien',
+                icon: icon,
+                color: type === 'system' ? '#FF3C00' : '#7B2CBF'
+            };
+            activeNotifications.push(newNotif);
+            localStorage.setItem('rs_notifications', JSON.stringify(activeNotifications));
+            renderNotifications();
+            updateNotificationLED();
+            if (Notification.permission === 'granted') {
+                try {
+                    const notification = new Notification('Red Sapien', {
+                        body: message,
+                        icon: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="45" fill="%23050505" stroke="%23FF3C00" stroke-width="4"/%3E%3Ctext x="50%25" y="55%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="40" fill="%23FF3C00"%3ERS%3C/text%3E%3C/svg%3E'
+                    });
+                    setTimeout(() => notification.close(), 5000);
+                } catch (e) {}
+            }
+        }
+
+        let notificationsInitialized = false;
+        function ensureNotificationsInitialized() {
+            if (!notificationsInitialized) {
+                initNotifications();
+                notificationsInitialized = true;
+            }
+        }
+
+        // Sobrescribir switchWorkspaceView ya está hecho arriba
+
+        // ============================================
+        // FIN MÓDULO 4: NOTIFICACIONES
+        // ============================================
         
         window.addEventListener('DOMContentLoaded', () => {
             loadPersistedColorPalette();
             loadPersistedLanguage();
             updateDynamicDomain();
+            updateNotificationLED(); // Inicializar LED del menú
             
             const savedAvatar = localStorage.getItem("rs_business_avatar_url");
             if (savedAvatar) {
