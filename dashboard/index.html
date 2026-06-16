@@ -35,8 +35,8 @@
     <style>
         :root {
             --accent-color: #FF3C00;
-            --accent-glow: rgba(255, 60, 0, 0.15);
-            --neon-border: rgba(255, 60, 0, 0.3);
+            --accent-glow: rgba(255, 60, 0, 0.1);
+            --neon-border: rgba(255, 60, 0, 0.15);
         }
         
         body {
@@ -51,7 +51,7 @@
         .ambient-glow-bg {
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 50% -20%, rgba(255, 60, 0, 0.08) 0%, rgba(5,5,5,0) 65%), #050505;
+            background: radial-gradient(circle at 50% -20%, rgba(255, 60, 0, 0.05) 0%, rgba(5,5,5,0) 65%), #050505;
             z-index: 0;
             transition: background 0.4s ease;
         }
@@ -60,12 +60,12 @@
             position: absolute;
             inset: 0;
             background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px), 
-                linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+                linear-gradient(rgba(255, 255, 255, 0.006) 1px, transparent 1px), 
+                linear-gradient(90deg, rgba(255, 255, 255, 0.006) 1px, transparent 1px);
             background-size: 60px 60px;
             mask-image: radial-gradient(circle at center, black 20%, transparent 85%);
             -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 85%);
-            opacity: 0.65;
+            opacity: 0.4;
             pointer-events: none;
             z-index: 1;
         }
@@ -79,7 +79,7 @@
         }
         
         @keyframes pulse-activate {
-            0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); transform: scale(1); }
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.06); transform: scale(1); }
             50% { box-shadow: 0 0 30px var(--accent-glow); transform: scale(1.02); }
         }
         .animate-pulse-activate {
@@ -87,8 +87,8 @@
         }
         
         @keyframes led-blink {
-            0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(34, 197, 94, 0.6); }
-            50% { opacity: 0.4; box-shadow: 0 0 2px rgba(34, 197, 94, 0.1); }
+            0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(34, 197, 94, 0.4); }
+            50% { opacity: 0.4; box-shadow: 0 0 2px rgba(34, 197, 94, 0.08); }
         }
         .led-green {
             animation: led-blink 1.5s infinite ease-in-out;
@@ -118,13 +118,13 @@
             animation: laser-pipe 3s infinite linear;
         }
         .custom-scrollbar::-webkit-scrollbar {
-            width: 4px;
+            width: 3px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
             background: transparent;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
             border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
@@ -164,7 +164,7 @@
 
         .cyber-select {
             background-color: #0a0a0a;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.06);
             border-radius: 0.75rem;
             padding: 0.75rem 1rem;
             font-size: 0.875rem;
@@ -177,7 +177,7 @@
         .cyber-select:focus {
             outline: none;
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 2px rgba(255,60,0,0.2);
+            box-shadow: 0 0 0 2px rgba(255,60,0,0.1);
         }
         .cyber-select option {
             background-color: #0a0a0a;
@@ -185,7 +185,7 @@
         }
         input[type="datetime-local"] {
             background-color: #0a0a0a;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.06);
             border-radius: 0.75rem;
             padding: 0.75rem 1rem;
             font-size: 0.875rem;
@@ -197,7 +197,7 @@
         input[type="datetime-local"]:focus {
             outline: none;
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 2px rgba(255,60,0,0.2);
+            box-shadow: 0 0 0 2px rgba(255,60,0,0.1);
         }
         input[type="datetime-local"]::-webkit-calendar-picker-indicator {
             filter: invert(1);
@@ -222,7 +222,7 @@
 
         @keyframes matrixEnter {
             0% { opacity: 0; transform: scale(0.95); backdrop-filter: blur(0px); }
-            50% { opacity: 0.8; transform: scale(1.01); backdrop-filter: blur(8px); box-shadow: 0 0 30px rgba(255,60,0,0.3); }
+            50% { opacity: 0.8; transform: scale(1.01); backdrop-filter: blur(8px); box-shadow: 0 0 30px rgba(255,60,0,0.2); }
             100% { opacity: 1; transform: scale(1); backdrop-filter: blur(12px); }
         }
         .modal-matrix-enter {
@@ -237,10 +237,10 @@
             animation: radar-sweep 4s linear infinite;
         }
 
-        /* Animación de aparición escalonada para logos - mejorada */
+        /* Animación de aparición escalonada para logos - mejorada y más sutil */
         @keyframes logo-reveal {
-            0% { opacity: 0; transform: scale(0.7) rotate(-5deg); filter: blur(2px); }
-            50% { transform: scale(1.1) rotate(1deg); filter: blur(0); }
+            0% { opacity: 0; transform: scale(0.9) rotate(-2deg); filter: blur(1px); }
+            60% { transform: scale(1.04) rotate(1deg); filter: blur(0); }
             100% { opacity: 1; transform: scale(1) rotate(0deg); filter: blur(0); }
         }
         .logo-reveal {
@@ -249,7 +249,7 @@
         .glass-circle {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
             overflow: hidden;
             position: relative;
@@ -258,7 +258,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08) 0%, transparent 70%);
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.05) 0%, transparent 70%);
             opacity: 0;
             transition: opacity 0.5s ease;
             pointer-events: none;
@@ -267,10 +267,10 @@
             opacity: 1;
         }
         .glass-circle:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05);
             border-color: var(--accent-color);
-            box-shadow: 0 0 30px var(--accent-glow);
-            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-2px) scale(1.02);
         }
         .glass-circle img {
             width: 100%;
@@ -281,36 +281,50 @@
             transition: all 0.3s ease;
         }
         .case-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px -8px rgba(255,60,0,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px -8px rgba(255,60,0,0.12);
         }
         /* Ajustes para el modal de casos */
         .success-modal-nav-btn {
             transition: all 0.2s ease;
             font-size: 0.75rem;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 0.75rem;
         }
         .success-modal-nav-btn:hover:not(:disabled) {
-            background: rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.05);
         }
         .success-modal-nav-btn:disabled {
             opacity: 0.3;
             cursor: not-allowed;
         }
+        /* Puntos de navegación */
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .nav-dot.active {
+            background: var(--accent-color);
+            box-shadow: 0 0 8px var(--accent-glow);
+            transform: scale(1.2);
+        }
         /* Mejora del scroll en la columna de tarjetas */
         .casos-scroll-container {
             scrollbar-width: thin;
-            scrollbar-color: rgba(255,255,255,0.05) transparent;
+            scrollbar-color: rgba(255,255,255,0.04) transparent;
         }
         .casos-scroll-container::-webkit-scrollbar {
-            width: 4px;
+            width: 3px;
         }
         .casos-scroll-container::-webkit-scrollbar-track {
             background: transparent;
         }
         .casos-scroll-container::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
             border-radius: 10px;
         }
         .casos-scroll-container::-webkit-scrollbar-thumb:hover {
@@ -373,7 +387,7 @@
 
     <main class="flex-1 flex flex-col h-full relative z-10 overflow-hidden max-w-full text-sm">
         
-        <header id="workspace-header" class="h-24 px-6 md:px-10 flex items-center justify-between bg-rs-black/30 backdrop-blur-xl shrink-0 transition-all duration-300 z-20" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <header id="workspace-header" class="h-24 px-6 md:px-10 flex items-center justify-between bg-rs-black/30 backdrop-blur-xl shrink-0 transition-all duration-300 z-20" style="border-bottom: 1px solid rgba(255,255,255,0.04);">
             
             <div class="flex items-center gap-6">
                 <div id="header-title-container" class="flex flex-col justify-center mt-1 transition-all duration-300 origin-left">
@@ -433,9 +447,9 @@
                         <div class="p-2 hover:bg-white/5 rounded-xl transition-colors">
                             <div class="text-sm font-bold text-gray-400 mb-2 tracking-wider flex items-center gap-1.5" data-i18n="accent_color">🎨 Color de Acento</div>
                             <div class="flex items-center gap-3 px-1">
-                                <button onclick="changeGlobalNeonPalette('#FF3C00', 'rgba(255,60,0,0.15)', 'rgba(255,60,0,0.3)', this)" class="w-5 h-5 rounded-full bg-[#FF3C00] border-[2px] border-white scale-110 shadow-[0_0_10px_rgba(255,60,0,0.3)]" title="Rojo"></button>
-                                <button onclick="changeGlobalNeonPalette('#00ffcc', 'rgba(0,255,204,0.15)', 'rgba(0,255,204,0.3)', this)" class="w-5 h-5 rounded-full bg-[#00ffcc] border border-transparent" title="Cian"></button>
-                                <button onclick="changeGlobalNeonPalette('#a855f7', 'rgba(168,85,247,0.15)', 'rgba(168,85,247,0.3)', this)" class="w-5 h-5 rounded-full bg-purple-500 border border-transparent" title="Púrpura"></button>
+                                <button onclick="changeGlobalNeonPalette('#FF3C00', 'rgba(255,60,0,0.1)', 'rgba(255,60,0,0.15)', this)" class="w-5 h-5 rounded-full bg-[#FF3C00] border-[2px] border-white scale-110 shadow-[0_0_10px_rgba(255,60,0,0.3)]" title="Rojo"></button>
+                                <button onclick="changeGlobalNeonPalette('#00ffcc', 'rgba(0,255,204,0.1)', 'rgba(0,255,204,0.15)', this)" class="w-5 h-5 rounded-full bg-[#00ffcc] border border-transparent" title="Cian"></button>
+                                <button onclick="changeGlobalNeonPalette('#a855f7', 'rgba(168,85,247,0.1)', 'rgba(168,85,247,0.15)', this)" class="w-5 h-5 rounded-full bg-purple-500 border border-transparent" title="Púrpura"></button>
                             </div>
                         </div>
                         <div class="p-2 hover:bg-white/5 rounded-xl transition-colors mt-1">
@@ -472,13 +486,13 @@
                         <span class="text-xs font-mono tracking-wider text-gray-400" data-i18n="proud_manizales">Orgullosamente Manizaleñ@s</span>
                     </div>
 
-                    <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 items-stretch px-2 md:px-0">
-                        <div class="hidden lg:block absolute top-1/2 left-[calc(33.33%-1rem)] right-[calc(66.66%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-20 -translate-y-1/2"></div>
-                        <div class="hidden lg:block absolute top-1/2 left-[calc(66.66%-1rem)] right-[calc(33.33%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-20 -translate-y-1/2"></div>
+                    <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch px-2 md:px-0">
+                        <div class="hidden lg:block absolute top-1/2 left-[calc(33.33%-1rem)] right-[calc(66.66%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-10 -translate-y-1/2"></div>
+                        <div class="hidden lg:block absolute top-1/2 left-[calc(66.66%-1rem)] right-[calc(33.33%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-10 -translate-y-1/2"></div>
                         
-                        <div onclick="openTelemetryModal(1)" class="group relative bg-[#0a0a0a] border border-white/5 hover:border-[var(--accent-color)]/50 rounded-xl p-5 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_20px_rgba(255,60,0,0.1)] z-10 overflow-hidden h-full">
-                            <div class="absolute bottom-3 right-3 text-6xl font-black text-white/[0.02] pointer-events-none select-none">www</div>
-                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/5 to-transparent rounded-bl-full pointer-events-none"></div>
+                        <div onclick="openTelemetryModal(1)" class="group relative bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-6 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_15px_rgba(255,60,0,0.06)] z-10 overflow-hidden h-full">
+                            <div class="absolute bottom-3 right-3 text-6xl font-black text-white/[0.015] pointer-events-none select-none">www</div>
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/4 to-transparent rounded-bl-full pointer-events-none"></div>
                             <div>
                                 <div class="flex items-center gap-3 mb-4 border-b border-white/10 pb-2">
                                     <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[var(--accent-color)]">
@@ -503,9 +517,9 @@
                             <div class="mt-6 text-right text-sm font-mono text-gray-500 border-t border-white/10 pt-3" data-i18n="click_telemetry">Haz clic para telemetría avanzada</div>
                         </div>
 
-                        <div onclick="openTelemetryModal(2)" class="group relative bg-[#0a0a0a] border border-white/5 hover:border-[var(--accent-color)]/50 rounded-xl p-5 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_20px_rgba(255,60,0,0.1)] z-10 overflow-hidden h-full">
-                            <div class="absolute bottom-3 right-3 text-5xl font-black text-white/[0.02] pointer-events-none">📱💸</div>
-                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/5 to-transparent rounded-bl-full pointer-events-none"></div>
+                        <div onclick="openTelemetryModal(2)" class="group relative bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-6 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_15px_rgba(255,60,0,0.06)] z-10 overflow-hidden h-full">
+                            <div class="absolute bottom-3 right-3 text-5xl font-black text-white/[0.015] pointer-events-none">📱💸</div>
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/4 to-transparent rounded-bl-full pointer-events-none"></div>
                             <div>
                                 <div class="flex items-center gap-3 mb-4 border-b border-white/10 pb-2">
                                     <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[#1877F2]">
@@ -555,11 +569,11 @@
                             <div class="mt-6 text-right text-sm font-mono text-gray-500 border-t border-white/10 pt-3" data-i18n="click_telemetry">Haz clic para telemetría avanzada</div>
                         </div>
 
-                        <div onclick="openTelemetryModal(3)" class="group relative bg-[#0a0a0a] border border-white/5 hover:border-[var(--accent-color)]/50 rounded-xl p-5 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_20px_rgba(255,60,0,0.1)] z-10 overflow-hidden h-full">
+                        <div onclick="openTelemetryModal(3)" class="group relative bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-6 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_15px_rgba(255,60,0,0.06)] z-10 overflow-hidden h-full">
                             <div class="absolute bottom-2 right-2 w-16 h-16 text-white/5 pointer-events-none select-none">
-                                <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full opacity-[0.03]"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full opacity-[0.025]"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                             </div>
-                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/5 to-transparent rounded-bl-full pointer-events-none"></div>
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/4 to-transparent rounded-bl-full pointer-events-none"></div>
                             <div>
                                 <div class="flex items-center gap-3 mb-4 border-b border-white/10 pb-2">
                                     <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
@@ -597,7 +611,12 @@
                     <div class="p-6 overflow-y-auto" id="telemetry-modal-body"></div>
                     <div class="bg-black/40 border-t border-white/5 p-4 flex items-center justify-between gap-3">
                         <button id="telemetry-prev-btn" onclick="navigateTelemetry(-1)" class="px-4 py-2 text-sm font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition-all border border-white/5 disabled:opacity-20 disabled:pointer-events-none" data-i18n="modal_prev">&larr; Anterior</button>
-                        <div id="telemetry-indicator" class="text-sm font-mono font-bold tracking-wider text-gray-500">Activo 1 de 3</div>
+                        <!-- Indicador de puntos en lugar de números -->
+                        <div id="telemetry-dots" class="flex gap-1.5">
+                            <span class="nav-dot active"></span>
+                            <span class="nav-dot"></span>
+                            <span class="nav-dot"></span>
+                        </div>
                         <button id="telemetry-next-btn" onclick="navigateTelemetry(1)" class="px-4 py-2 text-sm font-mono font-bold uppercase tracking-wider bg-[var(--accent-color)] text-white rounded-xl transition-all hover:brightness-110" data-i18n="modal_next">Siguiente &rarr;</button>
                     </div>
                 </div>
@@ -678,11 +697,11 @@
 
             <!-- MÓDULO 3: CASOS DE ÉXITO (VERSIÓN DEFINITIVA) -->
             <div id="pane-view-casos" class="workspace-pane h-full hidden transition-opacity duration-200 relative">
-                <div class="relative z-10 flex flex-col lg:flex-row w-full h-full gap-4 p-3 md:p-6 overflow-hidden">
+                <div class="relative z-10 flex flex-col lg:flex-row w-full h-full gap-6 p-4 md:p-6 overflow-hidden">
                     
                     <!-- COLUMNA IZQUIERDA (LOGO WALL) - PC / ARRIBA MÓVIL -->
-                    <div class="w-full lg:w-1/2 flex flex-col justify-center space-y-4 text-center lg:text-left">
-                        <div class="grid grid-cols-3 gap-4 max-w-[300px] mx-auto lg:mx-0">
+                    <div class="w-full lg:w-1/2 flex flex-col justify-center space-y-5 text-center lg:text-left">
+                        <div class="grid grid-cols-3 gap-5 max-w-[320px] mx-auto lg:mx-0">
                             <!-- 9 logos (3x3) con animación escalonada mejorada -->
                             <div class="w-16 h-16 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.05s;">
                                 <img src="https://placehold.co/64x64/F59E0B/FFFFFF?text=LP" alt="La Papa Prohibida" class="w-full h-full object-cover">
@@ -729,11 +748,11 @@
                     </div>
 
                     <!-- COLUMNA DERECHA (TARJETAS) - PC / ABAJO MÓVIL -->
-                    <div class="w-full lg:w-1/2 h-full overflow-y-auto casos-scroll-container pb-12 lg:pb-6 space-y-4 pr-0">
+                    <div class="w-full lg:w-1/2 h-full overflow-y-auto casos-scroll-container pb-12 lg:pb-6 space-y-5 pr-0">
                         
                         <!-- Tarjeta 1: La Papa Prohibida (Ámbar) -->
-                        <div class="case-card bg-[#0a0a0a] border border-white/5 hover:border-[#F59E0B]/50 rounded-xl p-3 flex flex-col sm:flex-row gap-3 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(1)" style="--case-color: #F59E0B;">
-                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#F59E0B] transition-colors overflow-hidden">
+                        <div class="case-card bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-4 flex flex-col sm:flex-row gap-4 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(1)">
+                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[var(--accent-color)]/30 transition-colors overflow-hidden">
                                 <img src="https://placehold.co/48x48/F59E0B/FFFFFF?text=LP" alt="La Papa" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 min-w-0">
@@ -745,13 +764,13 @@
                                 <div class="bg-black/30 border border-white/5 rounded p-1.5 mt-1">
                                     <p class="text-xs text-gray-300 font-mono">16 pedidos en 30h · 49 conv. · $19.000 COP</p>
                                 </div>
-                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[#F59E0B] hover:text-black transition-all border border-white/10 group-hover:border-[#F59E0B]/50">Ver caso</button>
+                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[var(--accent-color)] hover:text-black transition-all border border-white/10 group-hover:border-[var(--accent-color)]/30">Ver caso</button>
                             </div>
                         </div>
 
                         <!-- Tarjeta 2: Bogotaco (Verde) -->
-                        <div class="case-card bg-[#0a0a0a] border border-white/5 hover:border-[#10B981]/50 rounded-xl p-3 flex flex-col sm:flex-row gap-3 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(2)" style="--case-color: #10B981;">
-                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#10B981] transition-colors overflow-hidden">
+                        <div class="case-card bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-4 flex flex-col sm:flex-row gap-4 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(2)">
+                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[var(--accent-color)]/30 transition-colors overflow-hidden">
                                 <img src="https://placehold.co/48x48/10B981/FFFFFF?text=BT" alt="Bogotaco" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 min-w-0">
@@ -763,13 +782,13 @@
                                 <div class="bg-black/30 border border-white/5 rounded p-1.5 mt-1">
                                     <p class="text-xs text-gray-300 font-mono">SEO local · 3 GMB · Web Élite</p>
                                 </div>
-                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[#10B981] hover:text-black transition-all border border-white/10 group-hover:border-[#10B981]/50">Ver caso</button>
+                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[var(--accent-color)] hover:text-black transition-all border border-white/10 group-hover:border-[var(--accent-color)]/30">Ver caso</button>
                             </div>
                         </div>
 
-                        <!-- Tarjeta 3: Señor Medrano (Rojo) -->
-                        <div class="case-card bg-[#0a0a0a] border border-white/5 hover:border-[#EF4444]/50 rounded-xl p-3 flex flex-col sm:flex-row gap-3 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(3)" style="--case-color: #EF4444;">
-                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#EF4444] transition-colors overflow-hidden">
+                        <!-- Tarjeta 3: Señor Medrano (Rojo) - ahora Comidas Rápidas -->
+                        <div class="case-card bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-4 flex flex-col sm:flex-row gap-4 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(3)">
+                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[var(--accent-color)]/30 transition-colors overflow-hidden">
                                 <img src="https://placehold.co/48x48/EF4444/FFFFFF?text=SM" alt="Señor Medrano" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 min-w-0">
@@ -781,13 +800,13 @@
                                 <div class="bg-black/30 border border-white/5 rounded p-1.5 mt-1">
                                     <p class="text-xs text-gray-300 font-mono">Perfil Google optimizado + Web limpia</p>
                                 </div>
-                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[#EF4444] hover:text-black transition-all border border-white/10 group-hover:border-[#EF4444]/50">Ver caso</button>
+                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[var(--accent-color)] hover:text-black transition-all border border-white/10 group-hover:border-[var(--accent-color)]/30">Ver caso</button>
                             </div>
                         </div>
 
                         <!-- Tarjeta 4: Noir Elixir (Blanco) -->
-                        <div class="case-card bg-[#0a0a0a] border border-white/5 hover:border-white/50 rounded-xl p-3 flex flex-col sm:flex-row gap-3 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(4)" style="--case-color: #FFFFFF;">
-                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-white transition-colors overflow-hidden">
+                        <div class="case-card bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-4 flex flex-col sm:flex-row gap-4 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(4)">
+                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[var(--accent-color)]/30 transition-colors overflow-hidden">
                                 <img src="https://placehold.co/48x48/FFFFFF/000000?text=NE" alt="Noir Elixir" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 min-w-0">
@@ -799,7 +818,7 @@
                                 <div class="bg-black/30 border border-white/5 rounded p-1.5 mt-1">
                                     <p class="text-xs text-gray-300 font-mono">Rebranding Premium + Catálogo 1s</p>
                                 </div>
-                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-white hover:text-black transition-all border border-white/10 group-hover:border-white/50">Ver caso</button>
+                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[var(--accent-color)] hover:text-black transition-all border border-white/10 group-hover:border-[var(--accent-color)]/30">Ver caso</button>
                             </div>
                         </div>
                     </div>
@@ -881,23 +900,28 @@
     <div id="support-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-white mb-2" data-i18n="support_title">Soporte Técnico</h3><p class="text-sm text-gray-400 leading-relaxed mb-4 font-mono" data-i18n="support_text">Nuestro equipo está listo para asistirte. Envía un mensaje a soporte@redsapien.com o llama al +57 300 000 0000.</p><div class="flex justify-end gap-3"><button onclick="toggleSupportModal(false)" class="px-5 py-2.5 bg-white/10 text-white text-sm font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-colors" data-i18n="close">Cerrar</button><a href="mailto:soporte@redsapien.com" class="px-5 py-2.5 bg-[var(--accent-color)] text-black text-sm font-black uppercase tracking-wider rounded-xl hover:opacity-90 transition-colors" data-i18n="contact">Contactar</a></div></div></div>
     <div id="purge-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-rs-red/30 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-red-500 mb-2" data-i18n="purge_title">🚨 CONFIRMAR PURGA ABSOLUTA</h3><p class="text-sm text-gray-400 leading-relaxed mb-4 font-mono" data-i18n="purge_text">¿Seguro que deseas purgar la cuenta, el avatar y todo el progreso del ecosistema? Esta acción es irreversible.</p><input type="text" id="purge-confirm-input" placeholder="Escribe ELIMINAR para confirmar" data-i18n="purge_placeholder" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[var(--accent-color)] mb-4"><div class="flex justify-end gap-3"><button onclick="closePurgeModal()" class="px-5 py-2.5 bg-white/10 text-white text-sm font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-colors" data-i18n="cancel">Cancelar</button><button id="confirm-purge-btn" disabled class="px-5 py-2.5 bg-red-500/30 text-gray-400 text-sm font-black uppercase tracking-wider rounded-xl cursor-not-allowed transition-colors" data-i18n="confirm_purge">Confirmar Purgado</button></div></div></div>
 
-    <!-- Modal de Caso de Éxito (Dinámico) con navegación - alineado con modal de telemetría -->
+    <!-- Modal de Caso de Éxito (Dinámico) con navegación por puntos -->
     <div id="success-modal-overlay" class="fixed inset-0 z-[250] hidden items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-500 p-4">
         <div class="w-full max-w-md lg:max-w-3xl bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 shadow-2xl modal-matrix-enter relative max-h-[85vh] overflow-y-auto custom-scrollbar">
             <button onclick="closeSuccessModal()" class="absolute top-4 right-4 p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white border border-white/5 transition-colors z-20">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
             <div id="success-modal-content" class="space-y-4"></div>
-            <!-- Navegación entre casos - mejorada -->
+            <!-- Navegación entre casos con puntos -->
             <div class="flex items-center justify-between mt-5 border-t border-white/10 pt-4">
-                <button id="success-prev-btn" onclick="navigateSuccessCase(-1)" class="success-modal-nav-btn px-4 py-2 text-sm font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition-all border border-white/5 disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-1">
-                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
-                    Anterior
+                <button id="success-prev-btn" onclick="navigateSuccessCase(-1)" class="success-modal-nav-btn px-3 py-1.5 text-xs font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition-all border border-white/5 disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-1">
+                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+                    <span class="hidden sm:inline">Anterior</span>
                 </button>
-                <span id="success-indicator" class="text-sm font-mono font-bold tracking-wider text-gray-400 bg-white/5 px-4 py-1.5 rounded-full border border-white/5">1 / 4</span>
-                <button id="success-next-btn" onclick="navigateSuccessCase(1)" class="success-modal-nav-btn px-4 py-2 text-sm font-mono font-bold uppercase tracking-wider bg-[var(--accent-color)] text-white rounded-xl transition-all hover:brightness-110 flex items-center gap-1">
-                    Siguiente
-                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19l7-7-7-7"/></svg>
+                <div id="success-dots" class="flex gap-1.5">
+                    <span class="nav-dot active" data-index="1"></span>
+                    <span class="nav-dot" data-index="2"></span>
+                    <span class="nav-dot" data-index="3"></span>
+                    <span class="nav-dot" data-index="4"></span>
+                </div>
+                <button id="success-next-btn" onclick="navigateSuccessCase(1)" class="success-modal-nav-btn px-3 py-1.5 text-xs font-mono font-bold uppercase tracking-wider bg-[var(--accent-color)] text-white rounded-xl transition-all hover:brightness-110 flex items-center gap-1">
+                    <span class="hidden sm:inline">Siguiente</span>
+                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19l7-7-7-7"/></svg>
                 </button>
             </div>
         </div>
@@ -1139,7 +1163,15 @@
 
         let globalMap = null;
         let currentTelemetryIndex = 1;
+        const totalTelemetry = 3;
         
+        function updateTelemetryDots(index) {
+            const dots = document.querySelectorAll('#telemetry-dots .nav-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index - 1);
+            });
+        }
+
         function openTelemetryModal(panelId) {
             currentTelemetryIndex = panelId;
             const overlay = document.getElementById('telemetry-modal-overlay');
@@ -1255,7 +1287,7 @@
                         document.head.appendChild(style);
                     }
                 }, 100);
-                document.getElementById('telemetry-indicator').innerText = t.modal_active_of.replace('{current}', panelId).replace('{total}', '3');
+                updateTelemetryDots(panelId);
                 document.getElementById('telemetry-prev-btn').disabled = (panelId === 1);
                 const nextBtn = document.getElementById('telemetry-next-btn');
                 nextBtn.innerHTML = (panelId === 3) ? t.modal_gotit : t.modal_next;
@@ -1265,7 +1297,7 @@
             }
             
             body.innerHTML = htmlContent;
-            document.getElementById('telemetry-indicator').innerText = t.modal_active_of.replace('{current}', panelId).replace('{total}', '3');
+            updateTelemetryDots(panelId);
             document.getElementById('telemetry-prev-btn').disabled = (panelId === 1);
             const nextBtn = document.getElementById('telemetry-next-btn');
             nextBtn.innerHTML = (panelId === 3) ? t.modal_gotit : t.modal_next;
@@ -1422,7 +1454,7 @@
         function handleAvatarStorageUpload(event) { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(e) { const base64Img = e.target.result; localStorage.setItem("rs_business_avatar_url", base64Img); document.getElementById("avatar-state-empty").classList.add("hidden"); document.getElementById("avatar-state-img").src = base64Img; document.getElementById("avatar-state-img").classList.remove("hidden"); document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.change_logo || "Cambiar Logo"; }; reader.readAsDataURL(file); }
         document.addEventListener('click', (e) => { const card = document.getElementById("dropdown-menu-card"), btn = document.getElementById("dropdown-avatar-btn"); if (card && !card.contains(e.target) && !btn.contains(e.target)) card.classList.add("hidden"); });
         function switchWorkspaceView(tabId) { document.querySelectorAll(".workspace-pane").forEach(p => p.classList.add("hidden")); document.getElementById(`pane-view-${tabId}`).classList.remove("hidden"); document.querySelectorAll(".sidebar-tab-link").forEach(b => { b.classList.remove("bg-white/10", "text-white", "shadow-inner", "border-white/10"); b.classList.add("text-gray-500", "border-transparent"); }); const activePC = document.querySelector(`.sidebar-tab-link[data-mod="${tabId}"]`); if (activePC) { activePC.classList.remove("text-gray-500", "border-transparent"); activePC.classList.add("bg-white/10", "text-white", "shadow-inner", "border-white/10"); } document.querySelectorAll(".mobile-nav-btn").forEach(i => { i.classList.remove("text-white"); i.classList.add("text-gray-500"); const svg = i.querySelector("svg"); if (svg) svg.style.color = "inherit"; if(i.querySelector("svg")) i.querySelector("svg").classList.remove("scale-110"); }); const activeMobile = document.querySelector(`.mobile-nav-btn[data-mod="${tabId}"]`); if (activeMobile) { activeMobile.classList.add("text-white"); activeMobile.classList.remove("text-gray-500"); const svg = activeMobile.querySelector("svg"); if (svg) svg.classList.add("scale-110"); const color = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim(); if (svg) svg.style.color = color; } }
-        function changeGlobalNeonPalette(color, glow, border, element) { document.documentElement.style.setProperty('--accent-color', color); document.documentElement.style.setProperty('--accent-glow', glow); document.documentElement.style.setProperty('--neon-border', border); const rgbColor = (color.slice(1).match(/.{2}/g).map(c=>parseInt(c,16))).join(','); const ambientBg = document.querySelector('.ambient-glow-bg'); if (ambientBg) ambientBg.style.background = `radial-gradient(circle at 50% -20%, rgba(${rgbColor}, 0.08) 0%, rgba(5,5,5,0) 65%), #050505`; const header = document.getElementById('workspace-header'); if (header) { header.style.borderBottom = `1px solid ${color}`; header.style.boxShadow = `0 4px 20px -8px ${color.replace('rgb', 'rgba').replace(')', ', 0.25)')}`; } localStorage.setItem("rs_dash_color", color); localStorage.setItem("rs_dash_glow", glow); localStorage.setItem("rs_dash_neon", border); if (element) { element.parentNode.querySelectorAll("button").forEach(b => b.classList.remove("scale-110", "border-[2px]", "border-white")); element.classList.add("scale-110", "border-[2px]", "border-white"); } const activeMobile = document.querySelector(".mobile-nav-btn.text-white svg"); if (activeMobile) activeMobile.style.color = color; }
+        function changeGlobalNeonPalette(color, glow, border, element) { document.documentElement.style.setProperty('--accent-color', color); document.documentElement.style.setProperty('--accent-glow', glow); document.documentElement.style.setProperty('--neon-border', border); const rgbColor = (color.slice(1).match(/.{2}/g).map(c=>parseInt(c,16))).join(','); const ambientBg = document.querySelector('.ambient-glow-bg'); if (ambientBg) ambientBg.style.background = `radial-gradient(circle at 50% -20%, rgba(${rgbColor}, 0.05) 0%, rgba(5,5,5,0) 65%), #050505`; const header = document.getElementById('workspace-header'); if (header) { header.style.borderBottom = `1px solid ${color}`; header.style.boxShadow = `0 4px 20px -8px ${color.replace('rgb', 'rgba').replace(')', ', 0.25)')}`; } localStorage.setItem("rs_dash_color", color); localStorage.setItem("rs_dash_glow", glow); localStorage.setItem("rs_dash_neon", border); if (element) { element.parentNode.querySelectorAll("button").forEach(b => b.classList.remove("scale-110", "border-[2px]", "border-white")); element.classList.add("scale-110", "border-[2px]", "border-white"); } const activeMobile = document.querySelector(".mobile-nav-btn.text-white svg"); if (activeMobile) activeMobile.style.color = color; }
         function loadPersistedColorPalette() { const color = localStorage.getItem("rs_dash_color"), glow = localStorage.getItem("rs_dash_glow"), neon = localStorage.getItem("rs_dash_neon"); if (color && glow && neon) { const btns = document.querySelectorAll('[onclick*="changeGlobalNeonPalette"]'); let activeBtn = null; btns.forEach(b => { if (b.getAttribute('onclick').includes(color)) activeBtn = b; }); changeGlobalNeonPalette(color, glow, neon, activeBtn); } }
         function openSupportModal() { document.getElementById("support-modal-overlay").classList.remove("hidden"); }
         function toggleSupportModal(show) { document.getElementById("support-modal-overlay").classList.toggle("hidden", !show); }
@@ -1434,15 +1466,15 @@
         if(purgeInput) purgeInput.addEventListener('input', (e) => { if(confirmPurgeBtn) { confirmPurgeBtn.disabled = e.target.value !== (currentLang === 'es' ? 'ELIMINAR' : (currentLang === 'pt' ? 'ELIMINAR' : 'DELETE')); if(e.target.value === (currentLang === 'es' ? 'ELIMINAR' : (currentLang === 'pt' ? 'ELIMINAR' : 'DELETE'))) { confirmPurgeBtn.classList.remove('bg-red-500/30','text-gray-400','cursor-not-allowed'); confirmPurgeBtn.classList.add('bg-red-500','text-white','cursor-pointer','hover:bg-red-600'); } else { confirmPurgeBtn.classList.add('bg-red-500/30','text-gray-400','cursor-not-allowed'); confirmPurgeBtn.classList.remove('bg-red-500','text-white','cursor-pointer','hover:bg-red-600'); } } });
         if(confirmPurgeBtn) confirmPurgeBtn.addEventListener('click', () => { if(!confirmPurgeBtn.disabled) { localStorage.clear(); window.location.reload(); } });
         
-        // DATOS DE LOS 4 CASOS CON IMÁGENES ESPECÍFICAS Y URLS REALES (descripciones reducidas 35%)
+        // DATOS DE LOS 4 CASOS - descripciones reducidas un 35%
         const successCases = {
             1: {
                 name: "La Papa Prohibida",
                 title: "Ecosistema de Ventas para La Papa Prohibida",
                 location: "Villamaría y Manizales, Caldas",
-                niche: "Restauración / Fast Food",
+                niche: "Comidas Rápidas",
                 stat: "16 pedidos en 30h · 49 conversiones · $19.000 COP",
-                description: "Campaña de Facebook Ads de alto impacto que generó tráfico y conversiones récord.",
+                description: "Campaña de Facebook Ads que generó tráfico y conversiones récord.",
                 img: "https://placehold.co/800x500/0a0a0a/F59E0B?text=Facebook+Ads+-+La+Papa+Prohibida",
                 url: "https://lapapa.redsapien.com/"
             },
@@ -1450,9 +1482,9 @@
                 name: "Bogotaco",
                 title: "Dominio SEO Local para Bogotaco",
                 location: "Bogotá, Fontibón (3 sedes)",
-                niche: "Comida Rápida / Tacos",
+                niche: "Comidas Rápidas",
                 stat: "SEO optimizado, 3 perfiles GMB y Web Élite",
-                description: "Optimización de fichas GMB y gestión de reseñas para posicionar las 3 sedes.",
+                description: "Optimización de fichas GMB y gestión de reseñas.",
                 img: "https://placehold.co/800x500/0a0a0a/10B981?text=Google+My+Business+-+Bogotaco",
                 url: "https://bogotaco.redsapien.com/"
             },
@@ -1460,9 +1492,9 @@
                 name: "Señor Medrano",
                 title: "Ecosistema Web de Alta Velocidad",
                 location: "Manizales y Villamaría, Caldas",
-                niche: "Moda / Servicios",
+                niche: "Comidas Rápidas",
                 stat: "Perfil Google optimizado + Web limpia y veloz",
-                description: "Rediseño web y optimización del perfil de Google para máxima visibilidad.",
+                description: "Rediseño web y optimización del perfil de Google.",
                 img: "https://placehold.co/800x500/0a0a0a/EF4444?text=Perfil+Google+Optimizado+-+Se%C3%B1or+Medrano",
                 url: "https://srmedrano.co/"
             },
@@ -1472,7 +1504,7 @@
                 location: "Medellín, Antioquia",
                 niche: "Ecommerce / Belleza",
                 stat: "Rebranding Premium + Catálogo virtual 1s",
-                description: "Rebranding en Facebook con fan page atractiva y catálogo virtual ultraveloz.",
+                description: "Rebranding en Facebook con fan page y catálogo virtual.",
                 img: "https://placehold.co/800x500/0a0a0a/FFFFFF?text=Fan+Page+Facebook+-+Noir+Elixir",
                 url: "https://noir.redsapien.com/"
             }
@@ -1481,6 +1513,13 @@
         // Variables para la navegación del modal de casos
         let currentCaseIndex = 1;
         const totalCases = 4;
+
+        function updateSuccessDots(index) {
+            const dots = document.querySelectorAll('#success-dots .nav-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index - 1);
+            });
+        }
 
         function openSuccessModal(caseId) {
             currentCaseIndex = caseId;
@@ -1522,8 +1561,8 @@
                     </div>
                 </div>
             `;
-            // Actualizar indicador y botones
-            document.getElementById('success-indicator').innerText = `${index} / ${totalCases}`;
+            // Actualizar puntos
+            updateSuccessDots(index);
             const prevBtn = document.getElementById('success-prev-btn');
             const nextBtn = document.getElementById('success-next-btn');
             prevBtn.disabled = (index === 1);
@@ -1531,7 +1570,7 @@
                 nextBtn.innerHTML = 'Entendido';
                 nextBtn.onclick = function() { closeSuccessModal(); };
             } else {
-                nextBtn.innerHTML = 'Siguiente →';
+                nextBtn.innerHTML = `<span class="hidden sm:inline">Siguiente</span><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19l7-7-7-7"/></svg>`;
                 nextBtn.onclick = function() { navigateSuccessCase(1); };
             }
         }
