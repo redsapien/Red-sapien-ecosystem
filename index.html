@@ -765,9 +765,9 @@
                             </div>
                             <div
                                 class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-5 max-w-md font-mono text-xs text-neutral-400 relative z-10">
-                                <div><span class="block text-white font-bold text-sm mb-0.5">Carga ultrarrápida</span><span
+                                <div><span class="block text-white font-bold text-sm mb-0.5">Carga</span><span
                                         data-i18n="phase1Stat1">CTR Promedio Estimado</span></div>
-                                <div><span class="block text-white font-bold text-sm mb-0.5">Hosting y dominio</span><span
+                                <div><span class="block text-white font-bold text-sm mb-0.5">Dominio</span><span
                                         data-i18n="phase1Stat2">Inyección de Canales</span></div>
                             </div>
                         </div>
@@ -817,7 +817,7 @@
                             </div>
                             <div
                                 class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-5 max-w-md font-mono text-xs text-neutral-400 relative z-10 lg:pl-4">
-                                <div><span class="block text-white font-bold text-sm mb-0.5">Mensajes a WhatsApp</span><span data-i18n="phase2Stat1">Interconexión Total</span></div>
+                                <div><span class="block text-white font-bold text-sm mb-0.5">Mensajes/mes</span><span data-i18n="phase2Stat1">Interconexión Total</span></div>
                                 <div><span class="block text-white font-bold text-sm mb-0.5">Inversión diaria</span><span data-i18n="phase2Stat2">Cero Procesos Manuales</span>
                                 </div>
                             </div>
@@ -869,8 +869,8 @@
                             </div>
                             <div
                                 class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-5 max-w-md font-mono text-xs text-neutral-400 relative z-10">
-                                <div><span class="block text-white font-bold text-sm mb-0.5">Llamadas de clientes</span><span data-i18n="phase3Stat1">Datos Consolidados</span></div>
-                                <div><span class="block text-white font-bold text-sm mb-0.5">Optimización SEO</span><span data-i18n="phase3Stat2">Control Absoluto</span></div>
+                                <div><span class="block text-white font-bold text-sm mb-0.5">Llamadas/mes</span><span data-i18n="phase3Stat1">Datos Consolidados</span></div>
+                                <div><span class="block text-white font-bold text-sm mb-0.5">Optimización</span><span data-i18n="phase3Stat2">Control Absoluto</span></div>
                             </div>
                         </div>
                     </div>
@@ -962,9 +962,11 @@
         </script>
     </section>
 
-    <!-- ================= CASOS DE ÉXITO (ECOSISTEMAS) ================= -->
+    <!-- ================= CASOS DE ÉXITO (ECOSISTEMAS) - REDISEÑO VIDRIO 3D ================= -->
     <section id="casos-exito-ecosistemas"
         class="relative w-full bg-[#0A0A0A] text-white py-28 md:py-36 overflow-hidden selection:bg-[#FF3C00] selection:text-white">
+
+        <!-- Fondos decorativos (se mantienen igual) -->
         <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
             <div class="absolute inset-0"
                 style="background-image: radial-gradient(#333 0.5px, transparent 0.5px); background-size: 30px 30px;">
@@ -976,7 +978,9 @@
                 class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[150px] animate-pulse-slow delay-1000">
             </div>
         </div>
+
         <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <!-- Encabezado -->
             <div class="flex flex-col md:items-end mb-20 md:mb-28">
                 <span class="text-[#FF3C00] font-mono tracking-[0.4em] text-xs uppercase font-bold mb-4"
                     data-i18n="portfolioBadge">Portafolio Operativo</span>
@@ -985,7 +989,10 @@
                         class="text-transparent bg-clip-text bg-gradient-to-l from-white to-neutral-500">convierten en
                         real</span></h2>
             </div>
+
+            <!-- Slider de tarjetas con estilo vidrio 3D -->
             <div class="relative group">
+                <!-- Botones de navegación (desktop) -->
                 <button id="prevBtn"
                     class="absolute -left-4 top-1/2 z-20 hidden md:flex bg-[#111] p-3 rounded-full border border-white/10 hover:border-[#FF3C00] transition-colors"><svg
                         class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -996,6 +1003,8 @@
                         class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M9 5l7 7-7 7"></path>
                     </svg></button>
+
+                <!-- Indicadores móviles -->
                 <button id="leftIndicator"
                     class="absolute left-2 top-1/2 -translate-y-1/2 z-30 md:hidden bg-black/20 backdrop-blur-sm p-2 rounded-full border border-white/5 opacity-0 transition-all duration-300"><svg
                         class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1006,107 +1015,249 @@
                         class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M9 5l7 7-7 7"></path>
                     </svg></button>
+
+                <!-- Contenedor del slider -->
                 <div id="ecosystem-slider"
                     class="flex md:grid md:grid-cols-4 gap-6 overflow-x-auto pb-8 snap-x scrollbar-hide scroll-smooth">
+
+                    <!-- TARJETA 1: Food Delivery Funnel -->
                     <article
-                        class="min-w-[280px] md:min-w-0 flex flex-col bg-[#111] border border-white/5 rounded-2xl overflow-hidden hover:border-[#FF3C00]/40 transition-all duration-500 snap-start">
-                        <div class="p-4 bg-black">
-                            <div class="relative p-1 bg-[#1A1A1A] border border-neutral-800 rounded-lg">
-                                <div
-                                    class="relative aspect-[4/3] bg-black border border-neutral-700/50 rounded-sm overflow-hidden">
+                        class="min-w-[260px] md:min-w-0 flex flex-col items-center bg-transparent snap-start transition-all duration-300 hover:scale-[1.02]">
+                        <div class="w-full max-w-[260px] aspect-[9/16]">
+                            <div class="sap-v11-device-glass" style="width:100%; height:100%;">
+                                <div class="v11-screen-content" style="position:relative; width:100%; height:100%; overflow:hidden; border-radius:33px; background:#000;">
                                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400"
-                                        alt="Food Delivery Funnel" class="w-full h-full object-cover opacity-80"
-                                        loading="lazy">
-                                    <div
-                                        class="absolute bottom-2 left-2 bg-black/80 px-2 py-1 text-xs font-mono border border-neutral-700">
-                                        CTR: 4.19%</div>
+                                         alt="Food Delivery Funnel"
+                                         class="v11-app-ui"
+                                         style="width:100%; height:100%; object-fit:cover; opacity:0.4; transition:0.5s;">
+                                    <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
+                                        <h3 class="text-sm md:text-base font-bold text-white mb-1" data-i18n="case1Title">Food Delivery Funnel</h3>
+                                        <p class="text-[10px] md:text-xs text-gray-300 leading-relaxed mb-3" data-i18n="case1Desc">Arquitectura de alta conversión con 49 ventas efectivas en menos de 30 horas.</p>
+                                        <a href="#"
+                                           class="inline-block w-full py-2 bg-[#FF3C00] hover:bg-[#e03500] transition-colors text-center font-bold text-[10px] uppercase tracking-widest rounded-lg text-white shadow-lg shadow-[#FF3C00]/20">
+                                           <span data-i18n="viewCaseBtn">Ver Datos</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-2" data-i18n="case1Title">Food Delivery Funnel</h3>
-                            <p class="text-neutral-400 text-sm leading-relaxed mb-6" data-i18n="case1Desc">Arquitectura
-                                de alta conversión con 49 ventas efectivas en menos de 30 horas.</p><a href="#"
-                                class="mt-auto w-full py-3 bg-white/5 border border-white/10 hover:bg-[#FF3C00] transition-colors text-center font-bold text-xs uppercase tracking-widest rounded-lg"
-                                data-i18n="viewCaseBtn">Ver Datos</a>
-                        </div>
                     </article>
+
+                    <!-- TARJETA 2: Detailing Ecosystem -->
                     <article
-                        class="min-w-[280px] md:min-w-0 flex flex-col bg-[#111] border border-white/5 rounded-2xl overflow-hidden hover:border-[#FF3C00]/40 transition-all duration-500 snap-start">
-                        <div class="p-4 bg-black">
-                            <div class="relative p-1 bg-[#1A1A1A] border border-neutral-800 rounded-lg">
-                                <div
-                                    class="relative aspect-[4/3] bg-black border border-neutral-700/50 rounded-sm overflow-hidden">
+                        class="min-w-[260px] md:min-w-0 flex flex-col items-center bg-transparent snap-start transition-all duration-300 hover:scale-[1.02]">
+                        <div class="w-full max-w-[260px] aspect-[9/16]">
+                            <div class="sap-v11-device-glass" style="width:100%; height:100%;">
+                                <div class="v11-screen-content" style="position:relative; width:100%; height:100%; overflow:hidden; border-radius:33px; background:#000;">
                                     <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=400"
-                                        alt="Detailing Ecosystem" class="w-full h-full object-cover opacity-80"
-                                        loading="lazy">
-                                    <div
-                                        class="absolute bottom-2 left-2 bg-black/80 px-2 py-1 text-xs font-mono border border-neutral-700">
-                                        AUT: SYSTEM</div>
+                                         alt="Detailing Ecosystem"
+                                         class="v11-app-ui"
+                                         style="width:100%; height:100%; object-fit:cover; opacity:0.4; transition:0.5s;">
+                                    <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
+                                        <h3 class="text-sm md:text-base font-bold text-white mb-1" data-i18n="case2Title">Detailing Ecosystem</h3>
+                                        <p class="text-[10px] md:text-xs text-gray-300 leading-relaxed mb-3" data-i18n="case2Desc">Automatización integral de agendamiento y sistema de fidelización personalizado.</p>
+                                        <a href="#"
+                                           class="inline-block w-full py-2 bg-[#FF3C00] hover:bg-[#e03500] transition-colors text-center font-bold text-[10px] uppercase tracking-widest rounded-lg text-white shadow-lg shadow-[#FF3C00]/20">
+                                           <span data-i18n="viewCaseBtn">Ver Datos</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-2" data-i18n="case2Title">Detailing Ecosystem</h3>
-                            <p class="text-neutral-400 text-sm leading-relaxed mb-6" data-i18n="case2Desc">
-                                Automatización integral de agendamiento y sistema de fidelización personalizado.</p><a
-                                href="#"
-                                class="mt-auto w-full py-3 bg-white/5 border border-white/10 hover:bg-[#FF3C00] transition-colors text-center font-bold text-xs uppercase tracking-widest rounded-lg"
-                                data-i18n="viewCaseBtn">Ver Datos</a>
-                        </div>
                     </article>
+
+                    <!-- TARJETA 3: NutriBox Flow -->
                     <article
-                        class="min-w-[280px] md:min-w-0 flex flex-col bg-[#111] border border-white/5 rounded-2xl overflow-hidden hover:border-[#FF3C00]/40 transition-all duration-500 snap-start">
-                        <div class="p-4 bg-black">
-                            <div class="relative p-1 bg-[#1A1A1A] border border-neutral-800 rounded-lg">
-                                <div
-                                    class="relative aspect-[4/3] bg-black border border-neutral-700/50 rounded-sm overflow-hidden">
+                        class="min-w-[260px] md:min-w-0 flex flex-col items-center bg-transparent snap-start transition-all duration-300 hover:scale-[1.02]">
+                        <div class="w-full max-w-[260px] aspect-[9/16]">
+                            <div class="sap-v11-device-glass" style="width:100%; height:100%;">
+                                <div class="v11-screen-content" style="position:relative; width:100%; height:100%; overflow:hidden; border-radius:33px; background:#000;">
                                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400"
-                                        alt="NutriBox Flow" class="w-full h-full object-cover opacity-80"
-                                        loading="lazy">
-                                    <div
-                                        class="absolute bottom-2 left-2 bg-black/80 px-2 py-1 text-xs font-mono border border-neutral-700">
-                                        WEB: OPS</div>
+                                         alt="NutriBox Flow"
+                                         class="v11-app-ui"
+                                         style="width:100%; height:100%; object-fit:cover; opacity:0.4; transition:0.5s;">
+                                    <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
+                                        <h3 class="text-sm md:text-base font-bold text-white mb-1" data-i18n="case3Title">NutriBox Flow</h3>
+                                        <p class="text-[10px] md:text-xs text-gray-300 leading-relaxed mb-3" data-i18n="case3Desc">Optimización de captación web para gastronomía saludable, ventas recurrentes.</p>
+                                        <a href="#"
+                                           class="inline-block w-full py-2 bg-[#FF3C00] hover:bg-[#e03500] transition-colors text-center font-bold text-[10px] uppercase tracking-widest rounded-lg text-white shadow-lg shadow-[#FF3C00]/20">
+                                           <span data-i18n="viewCaseBtn">Ver Datos</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-2" data-i18n="case3Title">NutriBox Flow</h3>
-                            <p class="text-neutral-400 text-sm leading-relaxed mb-6" data-i18n="case3Desc">Optimización
-                                de captación web para gastronomía saludable, ventas recurrentes.</p><a href="#"
-                                class="mt-auto w-full py-3 bg-white/5 border border-white/10 hover:bg-[#FF3C00] transition-colors text-center font-bold text-xs uppercase tracking-widest rounded-lg"
-                                data-i18n="viewCaseBtn">Ver Datos</a>
-                        </div>
                     </article>
+
+                    <!-- TARJETA 4: Construventas -->
                     <article
-                        class="min-w-[280px] md:min-w-0 flex flex-col bg-[#111] border border-white/5 rounded-2xl overflow-hidden hover:border-[#FF3C00]/40 transition-all duration-500 snap-start">
-                        <div class="p-4 bg-black">
-                            <div class="relative p-1 bg-[#1A1A1A] border border-neutral-800 rounded-lg">
-                                <div
-                                    class="relative aspect-[4/3] bg-black border border-neutral-700/50 rounded-sm overflow-hidden">
+                        class="min-w-[260px] md:min-w-0 flex flex-col items-center bg-transparent snap-start transition-all duration-300 hover:scale-[1.02]">
+                        <div class="w-full max-w-[260px] aspect-[9/16]">
+                            <div class="sap-v11-device-glass" style="width:100%; height:100%;">
+                                <div class="v11-screen-content" style="position:relative; width:100%; height:100%; overflow:hidden; border-radius:33px; background:#000;">
                                     <img src="https://images.unsplash.com/photo-1554224155-6726b3e858f9?auto=format&fit=crop&q=80&w=400"
-                                        alt="Construventas" class="w-full h-full object-cover opacity-80"
-                                        loading="lazy">
-                                    <div
-                                        class="absolute bottom-2 left-2 bg-black/80 px-2 py-1 text-xs font-mono border border-neutral-700">
-                                        DATA: REAL</div>
+                                         alt="Construventas"
+                                         class="v11-app-ui"
+                                         style="width:100%; height:100%; object-fit:cover; opacity:0.4; transition:0.5s;">
+                                    <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
+                                        <h3 class="text-sm md:text-base font-bold text-white mb-1" data-i18n="case4Title">Construventas</h3>
+                                        <p class="text-[10px] md:text-xs text-gray-300 leading-relaxed mb-3" data-i18n="case4Desc">Panel personalizado de gestión de inventarios y métricas en tiempo real.</p>
+                                        <a href="#"
+                                           class="inline-block w-full py-2 bg-[#FF3C00] hover:bg-[#e03500] transition-colors text-center font-bold text-[10px] uppercase tracking-widest rounded-lg text-white shadow-lg shadow-[#FF3C00]/20">
+                                           <span data-i18n="viewCaseBtn">Ver Datos</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold mb-2" data-i18n="case4Title">Construventas</h3>
-                            <p class="text-neutral-400 text-sm leading-relaxed mb-6" data-i18n="case4Desc">Panel
-                                personalizado de gestión de inventarios y métricas en tiempo real.</p><a href="#"
-                                class="mt-auto w-full py-3 bg-white/5 border border-white/10 hover:bg-[#FF3C00] transition-colors text-center font-bold text-xs uppercase tracking-widest rounded-lg"
-                                data-i18n="viewCaseBtn">Ver Datos</a>
-                        </div>
                     </article>
-                </div>
-            </div>
-        </div>
+
+                </div> <!-- /ecosystem-slider -->
+            </div> <!-- /relative group -->
+        </div> <!-- /max-w-7xl -->
+
+        <!-- Script del slider (se mantiene exactamente igual) -->
         <script>
-            (function () { const slider = document.getElementById('ecosystem-slider'); const prevBtn = document.getElementById('prevBtn'); const nextBtn = document.getElementById('nextBtn'); const leftIndicator = document.getElementById('leftIndicator'); const rightIndicator = document.getElementById('rightIndicator'); if (!slider) return; let autoPlay = setInterval(triggerAutoplay, 4000); function stopAutoplay() { clearInterval(autoPlay); } function triggerAutoplay() { if (window.innerWidth < 768) { if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) slider.scrollTo({ left: 0, behavior: 'smooth' }); else slider.scrollBy({ left: 320, behavior: 'smooth' }); } } const handleManualScroll = (direction) => { stopAutoplay(); slider.scrollBy({ left: direction * 320, behavior: 'smooth' }); }; nextBtn?.addEventListener('click', () => handleManualScroll(1)); prevBtn?.addEventListener('click', () => handleManualScroll(-1)); rightIndicator?.addEventListener('click', () => handleManualScroll(1)); leftIndicator?.addEventListener('click', () => handleManualScroll(-1)); const updateIndicators = () => { leftIndicator.style.opacity = (slider.scrollLeft > 10) ? '1' : '0'; rightIndicator.style.opacity = (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 20) ? '0' : '1'; }; slider.addEventListener('scroll', updateIndicators); updateIndicators(); slider.addEventListener('mouseenter', stopAutoplay); slider.addEventListener('touchstart', stopAutoplay, { passive: true }); })();
+            (function () {
+                const slider = document.getElementById('ecosystem-slider');
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                const leftIndicator = document.getElementById('leftIndicator');
+                const rightIndicator = document.getElementById('rightIndicator');
+                if (!slider) return;
+
+                let autoPlay = setInterval(triggerAutoplay, 4000);
+
+                function stopAutoplay() {
+                    clearInterval(autoPlay);
+                }
+
+                function triggerAutoplay() {
+                    if (window.innerWidth < 768) {
+                        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+                            slider.scrollTo({ left: 0, behavior: 'smooth' });
+                        } else {
+                            slider.scrollBy({ left: 320, behavior: 'smooth' });
+                        }
+                    }
+                }
+
+                const handleManualScroll = (direction) => {
+                    stopAutoplay();
+                    slider.scrollBy({ left: direction * 320, behavior: 'smooth' });
+                };
+
+                nextBtn?.addEventListener('click', () => handleManualScroll(1));
+                prevBtn?.addEventListener('click', () => handleManualScroll(-1));
+                rightIndicator?.addEventListener('click', () => handleManualScroll(1));
+                leftIndicator?.addEventListener('click', () => handleManualScroll(-1));
+
+                const updateIndicators = () => {
+                    leftIndicator.style.opacity = (slider.scrollLeft > 10) ? '1' : '0';
+                    rightIndicator.style.opacity = (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 20) ? '0' : '1';
+                };
+
+                slider.addEventListener('scroll', updateIndicators);
+                updateIndicators();
+
+                slider.addEventListener('mouseenter', stopAutoplay);
+                slider.addEventListener('touchstart', stopAutoplay, { passive: true });
+            })();
         </script>
+
+        <!-- Estilos inline para el efecto vidrio (se pueden mover al <style> global si se prefiere) -->
+        <style>
+            /* Efecto vidrio 3D (tomado del ejemplo sap-v11) */
+            .sap-v11-device-glass {
+                background: rgba(255, 255, 255, 0.03);
+                border-radius: 35px;
+                padding: 2px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                overflow: hidden;
+                box-shadow: 0 40px 70px -15px rgba(0,0,0,0.6);
+                transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+                transform-style: preserve-3d;
+            }
+            .sap-v11-device-glass:hover {
+                transform: rotateY(-4deg) rotateX(4deg) scale(1.01);
+            }
+            .v11-screen-content {
+                border-radius: 33px;
+                overflow: hidden;
+                position: relative;
+                background: #000;
+            }
+            .v11-app-ui {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0.4;
+                transition: opacity 0.5s ease, transform 0.5s ease;
+            }
+            .sap-v11-device-glass:hover .v11-app-ui {
+                opacity: 0.6;
+                transform: scale(1.05);
+            }
+            /* Ajustes para el overlay */
+            .v11-overlay {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 20px 16px 25px;
+                background: linear-gradient(to top, #000 25%, transparent 80%);
+                text-align: left;
+                pointer-events: none;
+            }
+            .v11-overlay h3,
+            .v11-overlay p,
+            .v11-overlay a {
+                pointer-events: auto;
+            }
+            /* Ajuste para que el grid en desktop ocupe todo el ancho */
+            #ecosystem-slider article {
+                flex-shrink: 0;
+            }
+            @media (min-width: 768px) {
+                #ecosystem-slider {
+                    display: grid !important;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 1.5rem;
+                    overflow-x: visible !important;
+                    padding-bottom: 0 !important;
+                    scroll-snap-type: none !important;
+                }
+                #ecosystem-slider article {
+                    width: 100% !important;
+                    min-width: 0 !important;
+                    max-width: none !important;
+                    scroll-snap-align: none !important;
+                }
+                #ecosystem-slider article .sap-v11-device-glass {
+                    border-radius: 28px;
+                }
+                #ecosystem-slider article .v11-screen-content {
+                    border-radius: 26px;
+                }
+            }
+            @media (max-width: 767px) {
+                #ecosystem-slider {
+                    display: flex !important;
+                    overflow-x: auto !important;
+                    scroll-snap-type: x mandatory !important;
+                    padding-bottom: 1.5rem !important;
+                    gap: 1.5rem;
+                }
+                #ecosystem-slider article {
+                    min-width: 260px !important;
+                    max-width: 260px !important;
+                    scroll-snap-align: start !important;
+                }
+            }
+        </style>
     </section>
 
     <!-- ================= MANIFIESTO MAQUINARIA ================= -->
@@ -1748,19 +1899,19 @@
         const translations = {
             es: {
                 registerBtn: "Regístrate Gratis", mobileRegister: "Registrarse", mobilePlatform: "Plataforma", mobileContact: "Contacto",
-                heroTitle: "¡Más ventas para tu negocio!", heroDesc: "Parcer@, sencillo: Creamos un ecosistema digital que potencia marcas en Colombia y todo el eje cafetero.",
+                heroTitle: "¡Más ventas para tu negocio!", heroDesc: "Creamos el ecosistema digital que potencia marcas en Colombia, Manizales y todo el eje cafetero.",
                 googleBtnText: "Accede con Google", mainCta: "¡Comienza gratis YA!", trustText: "Ell@s ya están a otro nivel, ¿y tú?",
                 securityBadge: "Resultados Reales: Pago Contra Entrega", modalTitle: "Dos datos y estás dentro...", modalBtn: "Conectarme ahora", passwordHint: "Guárdala bien, no la compartas",
                 infraTag: "SIN ESTRÉS", machineryTitle: "Creamos y administramos todo, tú solo cobras y ganas",
                 phase1Badge: "PAGO ÚNICO $132.000 PESOS", phase1Title: "Sitio web + IA", phase1Desc: "Personalizado al ADN de tu marca y hecho para vender, con un agente de IA que atiende a tus clientes 24/7.",
-                phase1Stat1: "1 segundo", phase1Stat2: "Gratis e ilimitados",
-                phase2Badge: "PAGO ÚNICO $132.000 PESOS", phase2Title: "Campaña de ventas", phase2Desc: "Atraemos clientes en tu ciudad list@s para comprar usando segmentación estratégica y píxel de ventas.",
-                phase2Stat1: "300 a 350 nuevos/mes", phase2Stat2: "$13.000 pesos vía Nequi",
-                phase3Badge: "PAGO ÚNICO $132.000 PESOS", phase3Title: "Posicionamiento", phase3Desc: "Aplicamos técnicas de búsqueda para que aparezcas cuando busquen tus productos o servicios en Google.",
-                phase3Stat1: "20 a 35 nuevas/mes", phase3Stat2: "99% en puntuación",
-                hybridBadge: "EQUIPO SAPIEN", hybridTitle: "Estrategia Humana junto a la IA que Potencia",
+                phase1Stat1: "1 segundo", phase1Stat2: "Gratis e ilimitado",
+                phase2Badge: "PAGO ÚNICO $132.000 PESOS", phase2Title: "Campaña de ventas", phase2Desc: "Traemos compradores de Facebook directo a tu WhatsApp, mediante segmentación estratégica en tu ciudad.",
+                phase2Stat1: "300 a 350", phase2Stat2: "$13.000 pesos/Nequi",
+                phase3Badge: "PAGO ÚNICO $132.000 PESOS", phase3Title: "Posicionamiento SEO", phase3Desc: "Dominamos Google para que aparezcas en los primeros resultados cuando busquen tus productos o servicios.",
+                phase3Stat1: "20 a 35", phase3Stat2: "99% en puntuación",
+                hybridBadge: "EQUIPO SAPIEN", hybridTitle: "Estrategia humana, potenciada por IA",
                 antonellaRole: "Monitoreo y Automatización", humanName: "Cristian Lopez", humanRole: "DESARROLLO Y MARKETING",
-                whatsappTooltip: "Asesor Comercial Online", portfolioBadge: "Portafolio Operativo", portfolioTitle: "Ecosistemas que convierten en real",
+                whatsappTooltip: "Asesor Comercial Online", portfolioBadge: "Adaptable a tu nicho", portfolioTitle: "Ecosistema validado en negocios reales",
                 case1Title: "Food Delivery Funnel", case1Desc: "Arquitectura de alta conversión con 49 ventas efectivas en menos de 30 horas.",
                 case2Title: "Detailing Ecosystem", case2Desc: "Automatización integral de agendamiento y sistema de fidelización personalizado.",
                 case3Title: "NutriBox Flow", case3Desc: "Optimización de captación web para gastronomía saludable, ventas recurrentes.",
