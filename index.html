@@ -818,7 +818,7 @@
                             <div
                                 class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-5 max-w-md font-mono text-xs text-neutral-400 relative z-10 lg:pl-4">
                                 <div><span class="block text-white font-bold text-sm mb-0.5">Mensajes/mes</span><span data-i18n="phase2Stat1">Interconexión Total</span></div>
-                                <div><span class="block text-white font-bold text-sm mb-0.5">Inversión diaria</span><span data-i18n="phase2Stat2">Cero Procesos Manuales</span>
+                                <div><span class="block text-white font-bold text-sm mb-0.5">Inversión/dia</span><span data-i18n="phase2Stat2">Cero Procesos Manuales</span>
                                 </div>
                             </div>
                         </div>
@@ -966,6 +966,13 @@
     <section id="casos-exito-ecosistemas"
         class="relative w-full bg-[#0A0A0A] text-white py-28 md:py-36 overflow-hidden selection:bg-[#FF3C00] selection:text-white">
 
+        <!-- Ola superior (transición con sección anterior) -->
+        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-10">
+            <svg class="relative block w-full h-[40px] md:h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="#050505"></path>
+            </svg>
+        </div>
+
         <!-- Fondos decorativos (se mantienen igual) -->
         <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
             <div class="absolute inset-0"
@@ -1031,11 +1038,11 @@
                                          class="v11-app-ui"
                                          style="width:100%; height:100%; object-fit:cover; opacity:0.4; transition:0.5s;">
                                     <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
-                                        <h3 class="text-sm md:text-base font-bold text-white mb-1" data-i18n="case1Title">Food Delivery Funnel</h3>
-                                        <p class="text-[10px] md:text-xs text-gray-300 leading-relaxed mb-3" data-i18n="case1Desc">Arquitectura de alta conversión con 49 ventas efectivas en menos de 30 horas.</p>
+                                        <h3 class="text-base md:text-lg font-bold text-white mb-1" data-i18n="case1Title">Food Delivery Funnel</h3>
+                                        <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-3" data-i18n="case1Desc">Arquitectura de alta conversión con 49 ventas efectivas en menos de 30 horas.</p>
                                         <a href="#"
-                                           class="inline-block w-full py-2 bg-[#FF3C00] hover:bg-[#e03500] transition-colors text-center font-bold text-[10px] uppercase tracking-widest rounded-lg text-white shadow-lg shadow-[#FF3C00]/20">
-                                           <span data-i18n="viewCaseBtn">Ver Datos</span>
+                                           class="inline-block w-full py-2 bg-[#FF3C00] hover:bg-[#e03500] transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-[0_0_20px_rgba(255,60,0,0.5)] text-center font-bold text-[10px] uppercase tracking-widest rounded-lg text-white shadow-lg shadow-[#FF3C00]/20">
+                                           <span data-i18n="viewCaseBtn">Ver ahora</span>
                                         </a>
                                     </div>
                                 </div>
@@ -1054,11 +1061,11 @@
                                          class="v11-app-ui"
                                          style="width:100%; height:100%; object-fit:cover; opacity:0.4; transition:0.5s;">
                                     <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
-                                        <h3 class="text-sm md:text-base font-bold text-white mb-1" data-i18n="case2Title">Detailing Ecosystem</h3>
-                                        <p class="text-[10px] md:text-xs text-gray-300 leading-relaxed mb-3" data-i18n="case2Desc">Automatización integral de agendamiento y sistema de fidelización personalizado.</p>
+                                        <h3 class="text-base md:text-lg font-bold text-white mb-1" data-i18n="case2Title">Detailing Ecosystem</h3>
+                                        <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-3" data-i18n="case2Desc">Automatización integral de agendamiento y sistema de fidelización personalizado.</p>
                                         <a href="#"
-                                           class="inline-block w-full py-2 bg-[#FF3C00] hover:bg-[#e03500] transition-colors text-center font-bold text-[10px] uppercase tracking-widest rounded-lg text-white shadow-lg shadow-[#FF3C00]/20">
-                                           <span data-i18n="viewCaseBtn">Ver Datos</span>
+                                           class="inline-block w-full py-2 bg-[#FF3C00] hover:bg-[#e03500] transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-[0_0_20px_rgba(255,60,0,0.5)] text-center font-bold text-[10px] uppercase tracking-widest rounded-lg text-white shadow-lg shadow-[#FF3C00]/20">
+                                           <span data-i18n="viewCaseBtn">Ver ahora</span>
                                         </a>
                                     </div>
                                 </div>
@@ -1077,11 +1084,11 @@
                                          class="v11-app-ui"
                                          style="width:100%; height:100%; object-fit:cover; opacity:0.4; transition:0.5s;">
                                     <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
-                                        <h3 class="text-sm md:text-base font-bold text-white mb-1" data-i18n="case3Title">NutriBox Flow</h3>
-                                        <p class="text-[10px] md:text-xs text-gray-300 leading-relaxed mb-3" data-i18n="case3Desc">Optimización de captación web para gastronomía saludable, ventas recurrentes.</p>
+                                        <h3 class="text-base md:text-lg font-bold text-white mb-1" data-i18n="case3Title">NutriBox Flow</h3>
+                                        <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-3" data-i18n="case3Desc">Optimización de captación web para gastronomía saludable, ventas recurrentes.</p>
                                         <a href="#"
-                                           class="inline-block w-full py-2 bg-[#FF3C00] hover:bg-[#e03500] transition-colors text-center font-bold text-[10px] uppercase tracking-widest rounded-lg text-white shadow-lg shadow-[#FF3C00]/20">
-                                           <span data-i18n="viewCaseBtn">Ver Datos</span>
+                                           class="inline-block w-full py-2 bg-[#FF3C00] hover:bg-[#e03500] transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-[0_0_20px_rgba(255,60,0,0.5)] text-center font-bold text-[10px] uppercase tracking-widest rounded-lg text-white shadow-lg shadow-[#FF3C00]/20">
+                                           <span data-i18n="viewCaseBtn">Ver ahora</span>
                                         </a>
                                     </div>
                                 </div>
@@ -1100,11 +1107,11 @@
                                          class="v11-app-ui"
                                          style="width:100%; height:100%; object-fit:cover; opacity:0.4; transition:0.5s;">
                                     <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
-                                        <h3 class="text-sm md:text-base font-bold text-white mb-1" data-i18n="case4Title">Construventas</h3>
-                                        <p class="text-[10px] md:text-xs text-gray-300 leading-relaxed mb-3" data-i18n="case4Desc">Panel personalizado de gestión de inventarios y métricas en tiempo real.</p>
+                                        <h3 class="text-base md:text-lg font-bold text-white mb-1" data-i18n="case4Title">Construventas</h3>
+                                        <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-3" data-i18n="case4Desc">Panel personalizado de gestión de inventarios y métricas en tiempo real.</p>
                                         <a href="#"
-                                           class="inline-block w-full py-2 bg-[#FF3C00] hover:bg-[#e03500] transition-colors text-center font-bold text-[10px] uppercase tracking-widest rounded-lg text-white shadow-lg shadow-[#FF3C00]/20">
-                                           <span data-i18n="viewCaseBtn">Ver Datos</span>
+                                           class="inline-block w-full py-2 bg-[#FF3C00] hover:bg-[#e03500] transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-[0_0_20px_rgba(255,60,0,0.5)] text-center font-bold text-[10px] uppercase tracking-widest rounded-lg text-white shadow-lg shadow-[#FF3C00]/20">
+                                           <span data-i18n="viewCaseBtn">Ver ahora</span>
                                         </a>
                                     </div>
                                 </div>
@@ -1115,6 +1122,13 @@
                 </div> <!-- /ecosystem-slider -->
             </div> <!-- /relative group -->
         </div> <!-- /max-w-7xl -->
+
+        <!-- Ola inferior (transición con siguiente sección) -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 transform rotate-180">
+            <svg class="relative block w-full h-[40px] md:h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="#F8F9FA"></path>
+            </svg>
+        </div>
 
         <!-- Script del slider (se mantiene exactamente igual) -->
         <script>
@@ -1899,15 +1913,15 @@
         const translations = {
             es: {
                 registerBtn: "Regístrate Gratis", mobileRegister: "Registrarse", mobilePlatform: "Plataforma", mobileContact: "Contacto",
-                heroTitle: "¡Más ventas para tu negocio!", heroDesc: "Creamos el ecosistema digital que potencia marcas en Colombia, Manizales y todo el eje cafetero.",
+                heroTitle: "¡Más ventas para tu negocio!", heroDesc: "Creamos el ecosistema digital que potencia marcas líderes en Colombia, Manizales y todo el Eje Cafetero.",
                 googleBtnText: "Accede con Google", mainCta: "¡Comienza gratis YA!", trustText: "Ell@s ya están a otro nivel, ¿y tú?",
                 securityBadge: "Resultados Reales: Pago Contra Entrega", modalTitle: "Dos datos y estás dentro...", modalBtn: "Conectarme ahora", passwordHint: "Guárdala bien, no la compartas",
                 infraTag: "SIN ESTRÉS", machineryTitle: "Creamos y administramos todo, tú solo cobras y ganas",
                 phase1Badge: "PAGO ÚNICO $132.000 PESOS", phase1Title: "Sitio web + IA", phase1Desc: "Personalizado al ADN de tu marca y hecho para vender, con un agente de IA que atiende a tus clientes 24/7.",
                 phase1Stat1: "1 segundo", phase1Stat2: "Gratis e ilimitado",
-                phase2Badge: "PAGO ÚNICO $132.000 PESOS", phase2Title: "Campaña de ventas", phase2Desc: "Traemos compradores de Facebook directo a tu WhatsApp, mediante segmentación estratégica en tu ciudad.",
+                phase2Badge: "PAGO ÚNICO $132.000 PESOS", phase2Title: "Campaña de ventas", phase2Desc: "Traemos clientes de Facebook directamente a tu WhatsApp con segmentación estratégica local.",
                 phase2Stat1: "300 a 350", phase2Stat2: "$13.000 pesos/Nequi",
-                phase3Badge: "PAGO ÚNICO $132.000 PESOS", phase3Title: "Posicionamiento SEO", phase3Desc: "Dominamos Google para que aparezcas en los primeros resultados cuando busquen tus productos o servicios.",
+                phase3Badge: "PAGO ÚNICO $132.000 PESOS", phase3Title: "Posicionamiento SEO", phase3Desc: "Hacemos que aparezcas primero en Google cuando busquen tus productos o servicios en tu ciudad.",
                 phase3Stat1: "20 a 35", phase3Stat2: "99% en puntuación",
                 hybridBadge: "EQUIPO SAPIEN", hybridTitle: "Estrategia humana, potenciada por IA",
                 antonellaRole: "Monitoreo y Automatización", humanName: "Cristian Lopez", humanRole: "DESARROLLO Y MARKETING",
@@ -1916,7 +1930,8 @@
                 case2Title: "Detailing Ecosystem", case2Desc: "Automatización integral de agendamiento y sistema de fidelización personalizado.",
                 case3Title: "NutriBox Flow", case3Desc: "Optimización de captación web para gastronomía saludable, ventas recurrentes.",
                 case4Title: "Construventas", case4Desc: "Panel personalizado de gestión de inventarios y métricas en tiempo real.",
-                viewCaseBtn: "Ver Datos", archBadge: "Arquitectura Abierta", manifestoText: "Seguridad de grado militar y código abierto. Tienes el control total para escalar tu operación sin límites, sin retenciones y sin rentas mensuales.",
+                viewCaseBtn: "Ver ahora",
+                archBadge: "Arquitectura Abierta", manifestoText: "Seguridad de grado militar y código abierto. Tienes el control total para escalar tu operación sin límites, sin retenciones y sin rentas mensuales.",
                 videoCaption: "Conoce el ecosistema operativo", scrollInvestment: "Ver Inversión", slotsBadge: "Solo 3 cupos operativos",
                 pricingLabel: "Valor de la Maquinaria", paymentNote: "Único Pago • Sin Contratos", zeroRisk: "Cero riesgo:",
                 priceStep1: "Web Fase 1 + Agente IA", priceStep1Desc: "Solo pagas este % cuando tu web esté lista y funcional en tu propio dominio en 4 días.",
@@ -1953,7 +1968,8 @@
                 case2Title: "Detailing Ecosystem", case2Desc: "Complete scheduling automation and personalized loyalty system.",
                 case3Title: "NutriBox Flow", case3Desc: "Web lead optimization for healthy gastronomy, recurring sales.",
                 case4Title: "Construventas", case4Desc: "Custom inventory management panel and real-time metrics.",
-                viewCaseBtn: "View Data", archBadge: "Open Architecture", manifestoText: "Military-grade security and open source. You have full control to scale your operation without limits, withholdings or monthly fees.",
+                viewCaseBtn: "View now",
+                archBadge: "Open Architecture", manifestoText: "Military-grade security and open source. You have full control to scale your operation without limits, withholdings or monthly fees.",
                 videoCaption: "Meet the operating ecosystem", scrollInvestment: "See Investment", slotsBadge: "Only 3 operational spots",
                 pricingLabel: "Machinery Value", paymentNote: "One Payment • No Contracts", zeroRisk: "Zero risk:",
                 priceStep1: "Web Phase 1 + AI Agent", priceStep1Desc: "You only pay this % when your website is ready and functional on your own domain within 4 days.",
@@ -1990,7 +2006,8 @@
                 case2Title: "Ecossistema de Detalhamento", case2Desc: "Automação integral de agendamento e sistema de fidelização personalizado.",
                 case3Title: "Fluxo NutriBox", case3Desc: "Otimização de captura web para gastronomia saudável, vendas recorrentes.",
                 case4Title: "Construventas", case4Desc: "Painel personalizado de gestão de estoques e métricas em tempo real.",
-                viewCaseBtn: "Ver Dados", archBadge: "Arquitetura Aberta", manifestoText: "Segurança de nível militar e código aberto. Você tem controle total para escalar sua operação sem limites, sem retenções e sem mensalidades.",
+                viewCaseBtn: "Ver agora",
+                archBadge: "Arquitetura Aberta", manifestoText: "Segurança de nível militar e código aberto. Você tem controle total para escalar sua operação sem limites, sem retenções e sem mensalidades.",
                 videoCaption: "Conheça o ecossistema operacional", scrollInvestment: "Ver Investimento", slotsBadge: "Apenas 3 vagas operacionais",
                 pricingLabel: "Valor da Maquinaria", paymentNote: "Pagamento Único • Sem Contratos", zeroRisk: "Risco zero:",
                 priceStep1: "Web Fase 1 + Agente IA", priceStep1Desc: "Você só paga esta % quando seu site estiver pronto e funcional em seu próprio domínio em 4 dias.",
