@@ -943,8 +943,8 @@
         <div id="profile-bubble-wrapper" class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end">
             <!-- Globo de pensamiento (aparece y desaparece) -->
             <div id="thought-bubble"
-                class="thought-bubble bg-gray-800 text-white text-sm font-medium px-4 py-2 rounded-lg mb-2 max-w-[180px] text-center shadow-lg relative">
-                Un gusto, soy Cristian
+                class="thought-bubble bg-gray-800 text-white text-sm font-medium px-4 py-2 rounded-lg mb-2 max-w-[220px] text-center shadow-lg relative">
+                Un gusto, soy Cristian desde Manizales
             </div>
             <!-- Burbuja de perfil (siempre visible después de aparecer) -->
             <div id="profile-bubble" class="profile-bubble w-14 h-14 rounded-full overflow-hidden border-2 border-white/20 shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300">
@@ -955,17 +955,39 @@
         <script>
                 (function () { 
                     document.addEventListener('DOMContentLoaded', () => { 
-                        // ... (código existente de videos, revelaciones, etc.)
                         const videoObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.play(); else entry.target.pause(); }) }, { threshold: 0.3 }); 
                         document.querySelectorAll('video').forEach(video => { videoObserver.observe(video); }); 
                         const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; revealObserver.unobserve(entry.target); } }) }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" }); 
                         document.querySelectorAll('.raw-reveal').forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(15px)'; el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)'; revealObserver.observe(el); }); 
                         const cards = document.querySelectorAll('.stacking-card'); 
                         window.addEventListener('scroll', () => { cards.forEach((card, index) => { const cardTop = card.getBoundingClientRect().top; if (cardTop <= (96 + (index * 12))) { const factor = Math.max(0.94, 1 - (Math.abs(cardTop - 96) / 6000)); card.style.transform = `scale(${factor})`; card.style.opacity = `${Math.max(0.8, 1 - (Math.abs(cardTop - 96) / 3000))}`; } else { card.style.transform = 'scale(1)'; card.style.opacity = '1'; } }) }, { passive: true }); 
+
+                        // ========== OBSERVER PARA EL BOTÓN DE WHATSAPP Y OCULTAR BURBUJA ==========
                         const whatsappContainer = document.getElementById('floating-whatsapp-container'); 
                         const targetCardPhase2 = document.getElementById('card-phase-2'); 
+                        const profileWrapper = document.getElementById('profile-bubble-wrapper');
+
                         if (whatsappContainer && targetCardPhase2) { 
-                            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting || entry.boundingClientRect.top < 0) { whatsappContainer.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none'); whatsappContainer.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto'); } else { whatsappContainer.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto'); whatsappContainer.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none'); } }) }, { threshold: 0.05, rootMargin: "0px 0px -10% 0px" }); 
+                            const observer = new IntersectionObserver((entries) => { 
+                                entries.forEach(entry => { 
+                                    // Condición para mostrar el botón de WhatsApp
+                                    const shouldShow = entry.isIntersecting || entry.boundingClientRect.top < 0;
+                                    if (shouldShow) { 
+                                        // Mostrar botón
+                                        whatsappContainer.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none'); 
+                                        whatsappContainer.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto'); 
+                                        // Ocultar burbuja de perfil si está visible
+                                        if (profileWrapper) {
+                                            profileWrapper.style.display = 'none';
+                                        }
+                                    } else { 
+                                        // Ocultar botón (pero no mostramos la burbuja de nuevo)
+                                        whatsappContainer.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto'); 
+                                        whatsappContainer.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none'); 
+                                        // No volvemos a mostrar la burbuja
+                                    } 
+                                }) 
+                            }, { threshold: 0.05, rootMargin: "0px 0px -10% 0px" }); 
                             observer.observe(targetCardPhase2); 
                         }
 
@@ -977,35 +999,43 @@
                         profileBubble.style.display = 'none';
                         thoughtBubble.style.display = 'none';
 
-                        // Cronograma:
-                        // 0-3s: ocultos
-                        // 3s: aparece la burbuja (fade-in)
-                        // 6s: aparece el globo de pensamiento
-                        // 9s: desaparece el globo, la burbuja permanece
+                        // Función para verificar si el botón de WhatsApp ya es visible
+                        function isWhatsAppVisible() {
+                            return whatsappContainer && 
+                                   whatsappContainer.classList.contains('opacity-100') && 
+                                   whatsappContainer.classList.contains('pointer-events-auto');
+                        }
 
+                        // Programar aparición de la burbuja solo si el botón de WhatsApp no está visible
                         setTimeout(() => {
-                            // Mostrar burbuja con fade
-                            profileBubble.style.display = 'block';
-                            // Forzar reflow para que la transición funcione
-                            void profileBubble.offsetWidth;
-                            profileBubble.classList.add('visible');
+                            if (!isWhatsAppVisible() && profileWrapper) {
+                                // Mostrar burbuja con fade
+                                profileBubble.style.display = 'block';
+                                void profileBubble.offsetWidth; // reflow
+                                profileBubble.classList.add('visible');
+                            }
                         }, 3000);
 
                         setTimeout(() => {
-                            // Mostrar globo de pensamiento
-                            thoughtBubble.style.display = 'block';
-                            void thoughtBubble.offsetWidth;
-                            thoughtBubble.classList.add('visible');
+                            // Mostrar globo de pensamiento solo si la burbuja aún está visible y el botón no está visible
+                            if (profileBubble.style.display !== 'none' && !isWhatsAppVisible()) {
+                                thoughtBubble.style.display = 'block';
+                                void thoughtBubble.offsetWidth;
+                                thoughtBubble.classList.add('visible');
+                            }
                         }, 6000);
 
                         setTimeout(() => {
-                            // Ocultar globo de pensamiento
-                            thoughtBubble.classList.remove('visible');
-                            // Después de la transición, ocultar display
-                            setTimeout(() => {
-                                thoughtBubble.style.display = 'none';
-                            }, 400); // tiempo de transición
+                            // Ocultar globo de pensamiento (si está visible)
+                            if (thoughtBubble.classList.contains('visible')) {
+                                thoughtBubble.classList.remove('visible');
+                                setTimeout(() => {
+                                    thoughtBubble.style.display = 'none';
+                                }, 400);
+                            }
                         }, 9000);
+
+                        // Nota: si el botón de WhatsApp se vuelve visible en cualquier momento, el observer lo ocultará.
 
                     }) 
                 })();
