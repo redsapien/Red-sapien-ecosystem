@@ -512,7 +512,7 @@
                     data-i18n="mobilePlatform">Ingresar</a>
             </div>
             <div class="matrix-link-box p-6 rounded-xl">
-                <a href="#"
+                <a href="https://wa.me/573012800024?text=Hola%20buenas%20deseo%20saber%20mas%20del%20ecosistema%20🌐"
                     class="block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300"
                     data-i18n="mobileContact">Contáctenos</a>
             </div>
@@ -628,7 +628,7 @@
             <button onclick="closeRegisterModal()"
                 class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none">✕</button>
             <h2 id="modal-title" data-i18n="modalTitle"
-                class="text-xl font-display font-bold mb-6 text-center modal-title-glow">Dos datos y ya está adentro</h2>
+                class="text-xl font-display font-bold mb-6 text-center modal-title-glow">Dos datos y está dentro</h2>
             <form id="email-form" class="space-y-5" onsubmit="event.preventDefault();">
                 <div><input type="email" id="email-input" required placeholder="Correo electrónico"
                         class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors">
@@ -890,7 +890,7 @@
                             AGENTE AUTÓNOMO</div>
                         <div
                             class="w-44 h-52 rounded-xl overflow-hidden relative flex items-center justify-center transition-all duration-500 bg-neutral-900 border border-white/10 group-hover:border-[#FF3C00]/40">
-                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=400&h=500"
+                            <img src="assets/Image/Antonella-IA.webp"
                                 alt="Antonella IA - Arquitecta de automatización"
                                 class="absolute inset-0 w-full h-full object-cover opacity-100 grayscale-0 filter-none transition-transform duration-500 group-hover:scale-105"
                                 loading="lazy" decoding="async">
@@ -907,7 +907,7 @@
                             FUNDADOR Y CTO</div>
                         <div
                             class="w-44 h-52 rounded-xl overflow-hidden relative flex items-center justify-center transition-all duration-500 bg-neutral-900 border border-white/10 group-hover:border-[#FF3C00]/40">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=500"
+                            <img src="assets/Image/Foto-Sapien.webp"
                                 alt="Especialista SEO & CEO - Dirección operativa"
                                 class="absolute inset-0 w-full h-full object-cover opacity-100 grayscale-0 filter-none transition-transform duration-500 group-hover:scale-105"
                                 loading="lazy" decoding="async">
@@ -930,7 +930,7 @@
                         class="text-[9px] font-mono tracking-wider text-white uppercase font-bold"
                         data-i18n="whatsappTooltip">Hablemos de una</span></div>
             </div>
-            <a href="https://wa.me/573000000000?text=Hola%20Red%20Sapien." target="_blank" rel="noopener noreferrer"
+            <a href="https://wa.me/573012800024?text=Hola%20buenas%20deseo%20saber%20mas%20del%20ecosistema%20🌐" target="_blank" rel="noopener noreferrer"
                 class="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-[0_8px_25px_rgba(37,211,102,0.35)] pointer-events-auto wa-premium-glow-button">
                 <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
                     <path
@@ -947,8 +947,9 @@
                 Un gusto, soy Cristian desde Manizales
             </div>
             <!-- Burbuja de perfil (siempre visible después de aparecer) -->
-            <div id="profile-bubble" class="profile-bubble w-14 h-14 rounded-full overflow-hidden border-2 border-white/20 shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300">
-                <img src="https://i.pravatar.cc/150?img=11" alt="Cristian" class="w-full h-full object-cover">
+            <div id="profile-bubble" class="profile-bubble relative w-14 h-14 rounded-full overflow-hidden border-2 border-white/20 shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300">
+                <img src="assets/Image/Avatar-Cristian.webp" alt="Cristian" class="w-full h-full object-cover">
+                <span class="absolute bottom-0 right-0 h-3 w-3 bg-green-500 rounded-full border-2 border-white shadow-lg animate-led-pulse"></span>
             </div>
         </div>
 
@@ -999,34 +1000,29 @@
                         profileBubble.style.display = 'none';
                         thoughtBubble.style.display = 'none';
 
-                        // Función para verificar si el botón de WhatsApp ya es visible
-                        function isWhatsAppVisible() {
-                            return whatsappContainer && 
-                                   whatsappContainer.classList.contains('opacity-100') && 
-                                   whatsappContainer.classList.contains('pointer-events-auto');
-                        }
+                        // Evento de clic para abrir WhatsApp con el mensaje de Cristian
+                        profileBubble.addEventListener('click', function() {
+                            window.open('https://wa.me/573012800024?text=Cristian%20como%20vamos%20cuenteme%20mas%20porfa%20🌐', '_blank');
+                        });
 
-                        // Programar aparición de la burbuja solo si el botón de WhatsApp no está visible
+                        // Aparición de la burbuja a los 3 segundos (siempre, sin condiciones)
                         setTimeout(() => {
-                            if (!isWhatsAppVisible() && profileWrapper) {
-                                // Mostrar burbuja con fade
-                                profileBubble.style.display = 'block';
-                                void profileBubble.offsetWidth; // reflow
-                                profileBubble.classList.add('visible');
-                            }
+                            profileBubble.style.display = 'block';
+                            void profileBubble.offsetWidth; // reflow
+                            profileBubble.classList.add('visible');
                         }, 3000);
 
+                        // Aparición del globo de pensamiento a los 6 segundos (si la burbuja está visible)
                         setTimeout(() => {
-                            // Mostrar globo de pensamiento solo si la burbuja aún está visible y el botón no está visible
-                            if (profileBubble.style.display !== 'none' && !isWhatsAppVisible()) {
+                            if (profileBubble.style.display !== 'none') {
                                 thoughtBubble.style.display = 'block';
                                 void thoughtBubble.offsetWidth;
                                 thoughtBubble.classList.add('visible');
                             }
                         }, 6000);
 
+                        // Ocultar globo a los 9 segundos
                         setTimeout(() => {
-                            // Ocultar globo de pensamiento (si está visible)
                             if (thoughtBubble.classList.contains('visible')) {
                                 thoughtBubble.classList.remove('visible');
                                 setTimeout(() => {
@@ -1034,8 +1030,6 @@
                                 }, 400);
                             }
                         }, 9000);
-
-                        // Nota: si el botón de WhatsApp se vuelve visible en cualquier momento, el observer lo ocultará.
 
                     }) 
                 })();
@@ -1524,7 +1518,7 @@
                         </div>
                     </div>
                     <button
-                        onclick="window.open('https://wa.me/573000000000?text=Hola,%20quiero%20reservar%20uno%20de%20los%203%20cupos%20del%20Ecosistema.', '_blank')"
+                        onclick="window.open('https://wa.me/573012800024?text=Buenas%20deseo%20una%20consultoria%20gratso%20de%2015%20minutos%20📅', '_blank')"
                         class="w-full bg-white text-black hover:bg-[#FF3C00] hover:text-white font-bold text-sm uppercase tracking-widest py-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-[0_10px_30px_rgba(255,60,0,0.15)] hover:shadow-[0_10px_40px_rgba(255,60,0,0.4)] flex items-center justify-center gap-3"><svg
                             class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path
@@ -1977,7 +1971,7 @@
                 mainCta: "¡Comience gratis ya!",
                 trustText: "Ya están a otro nivel, ¿y usted?",
                 securityBadge: "Resultados Reales: Pago Contra Entrega",
-                modalTitle: "Dos datos y ya está adentro",
+                modalTitle: "Dos datos y está dentro",
                 modalBtn: "Conéctese ahora",
                 passwordHint: "Guárdela bien, no la comparta",
                 infraTag: "CHAO AL ESTRÉS",
