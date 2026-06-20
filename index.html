@@ -317,20 +317,20 @@
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(255, 60, 0, 0.005);   /* Ultra transparente */
+            background: rgba(255, 60, 0, 0.005);
             transform: translate(-50%, -50%);
-            animation: unlockRipple 5s ease-out forwards;  /* Más lento: 5 segundos */
+            animation: unlockRipple 5s ease-out forwards;
         }
 
         .unlock-wave::after {
-            animation-delay: 2s;   /* Separación más larga entre la primera y segunda onda */
+            animation-delay: 2s;
         }
 
         @keyframes unlockRipple {
             0% {
                 width: 0;
                 height: 0;
-                opacity: 0.005;   /* Nace con opacidad mínima */
+                opacity: 0.005;
             }
             100% {
                 width: 150%;
@@ -415,6 +415,41 @@
             100% {
                 box-shadow: 0 0 0 0 rgba(255, 60, 0, 0);
             }
+        }
+
+        /* Estilos para la burbuja de perfil y globo de pensamiento */
+        .profile-bubble {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .profile-bubble.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .thought-bubble {
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: translateY(10px);
+        }
+
+        .thought-bubble.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .thought-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #1f2937;
         }
     </style>
 </head>
@@ -551,27 +586,27 @@
                 <div class="flex animate-bullet-train logo-track items-center will-change-transform">
                     <!-- Primera copia -->
                     <div class="flex items-center gap-16 md:gap-24 px-4">
-                        <img src="assets/Image/La-plancha-manizales.webp" alt="La Plancha" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Noir-medellin.webp" alt="Noir Elixir" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Bross-manizales.webp" alt="Bross" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Señor-Medrano-manizales.webp" alt="Señor Medrano" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Salchipotato-manizales.webp" alt="Salchipotato" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/La-plancha-manizales.webp" alt="La Plancha" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/Noir-medellin.webp" alt="Noir Elixir" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/Bross-manizales.webp" alt="Bross" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/Señor-Medrano-manizales.webp" alt="Señor Medrano" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/Salchipotato-manizales.webp" alt="Salchipotato" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
                     </div>
                     <!-- Segunda copia -->
                     <div class="flex items-center gap-16 md:gap-24 px-4">
-                        <img src="assets/Image/La-plancha-manizales.webp" alt="La Plancha" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Noir-medellin.webp" alt="Noir Elixir" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Bross-manizales.webp" alt="Bross" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Señor-Medrano-manizales.webp" alt="Señor Medrano" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Salchipotato-manizales.webp" alt="Salchipotato" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/La-plancha-manizales.webp" alt="La Plancha" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/Noir-medellin.webp" alt="Noir Elixir" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/Bross-manizales.webp" alt="Bross" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/Señor-Medrano-manizales.webp" alt="Señor Medrano" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/Salchipotato-manizales.webp" alt="Salchipotato" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
                     </div>
                     <!-- Tercera copia (para evitar saltos en PC) -->
                     <div class="flex items-center gap-16 md:gap-24 px-4">
-                        <img src="assets/Image/La-plancha-manizales.webp" alt="La Plancha" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Noir-medellin.webp" alt="Noir Elixir" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Bross-manizales.webp" alt="Bross" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Señor-Medrano-manizales.webp" alt="Señor Medrano" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Salchipotato-manizales.webp" alt="Salchipotato" class="h-12 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/La-plancha-manizales.webp" alt="La Plancha" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/Noir-medellin.webp" alt="Noir Elixir" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/Bross-manizales.webp" alt="Bross" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/Señor-Medrano-manizales.webp" alt="Señor Medrano" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
+                        <img src="assets/Image/Salchipotato-manizales.webp" alt="Salchipotato" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -847,6 +882,7 @@
                         Estrategia humana, potenciada por IA</h4>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-2xl mx-auto items-center justify-center">
+                    <!-- Tarjeta Antonella (sin overlay, imagen limpia) -->
                     <div
                         class="team-card-hover group relative flex flex-col items-center justify-center text-center transition-all duration-300">
                         <div
@@ -856,21 +892,14 @@
                             class="w-44 h-52 rounded-xl overflow-hidden relative flex items-center justify-center transition-all duration-500 bg-neutral-900 border border-white/10 group-hover:border-[#FF3C00]/40">
                             <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=400&h=500"
                                 alt="Antonella IA - Arquitecta de automatización"
-                                class="absolute inset-0 w-full h-full object-cover opacity-85 transition-transform duration-500 group-hover:scale-105"
+                                class="absolute inset-0 w-full h-full object-cover opacity-100 grayscale-0 filter-none transition-transform duration-500 group-hover:scale-105"
                                 loading="lazy" decoding="async">
-                            <div
-                                class="absolute inset-0 bg-neutral-900/60 backdrop-blur-sm flex flex-col items-center justify-center text-neutral-500 font-mono text-[8px] tracking-widest">
-                                <svg class="w-5 h-5 mb-1 text-[#FF3C00] opacity-70" fill="none" stroke="currentColor"
-                                    stroke-width="1.2" viewBox="0 0 24 24">
-                                    <path
-                                        d="M9.813 15.904L9 21l8.904-4.473L21 9l-3.473-1.904M9.813 15.904L4.5 10.5m5.313 5.404L15 9m-10.5 1.5L3 3l5.404 1.5M4.5 10.5L9 9" />
-                                </svg>ANTONELLA_IA
-                            </div>
                         </div>
                         <span
                             class="font-mono text-[12px] tracking-widest text-[#FF3C00] uppercase font-bold mt-4">Antonella</span>
                         <span class="text-[9px] text-gray-400" data-i18n="antonellaRole">Monitoreo y Automatización</span>
                     </div>
+                    <!-- Tarjeta Cristian (sin overlay, imagen limpia) -->
                     <div
                         class="team-card-hover group relative flex flex-col items-center justify-center text-center transition-all duration-300">
                         <div
@@ -880,16 +909,8 @@
                             class="w-44 h-52 rounded-xl overflow-hidden relative flex items-center justify-center transition-all duration-500 bg-neutral-900 border border-white/10 group-hover:border-[#FF3C00]/40">
                             <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=500"
                                 alt="Especialista SEO & CEO - Dirección operativa"
-                                class="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
+                                class="absolute inset-0 w-full h-full object-cover opacity-100 grayscale-0 filter-none transition-transform duration-500 group-hover:scale-105"
                                 loading="lazy" decoding="async">
-                            <div
-                                class="absolute inset-0 bg-neutral-900/60 backdrop-blur-sm flex flex-col items-center justify-center text-neutral-500 font-mono text-[8px] tracking-widest">
-                                <svg class="w-5 h-5 mb-1 text-white opacity-60" fill="none" stroke="currentColor"
-                                    stroke-width="1.2" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 01-7.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                                </svg>HUMAN_CORE
-                            </div>
                         </div>
                         <span class="font-mono text-[12px] tracking-widest text-white uppercase font-bold mt-4 block"
                             data-i18n="humanName">Cristian Lopez</span>
@@ -917,8 +938,77 @@
                 </svg>
             </a>
         </div>
+
+        <!-- ================= BURBUJA DE PERFIL CON LÓGICA DE TIEMPOS ================= -->
+        <div id="profile-bubble-wrapper" class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end">
+            <!-- Globo de pensamiento (aparece y desaparece) -->
+            <div id="thought-bubble"
+                class="thought-bubble bg-gray-800 text-white text-sm font-medium px-4 py-2 rounded-lg mb-2 max-w-[180px] text-center shadow-lg relative">
+                Un gusto, soy Cristian
+            </div>
+            <!-- Burbuja de perfil (siempre visible después de aparecer) -->
+            <div id="profile-bubble" class="profile-bubble w-14 h-14 rounded-full overflow-hidden border-2 border-white/20 shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300">
+                <img src="https://i.pravatar.cc/150?img=11" alt="Cristian" class="w-full h-full object-cover">
+            </div>
+        </div>
+
         <script>
-                (function () { document.addEventListener('DOMContentLoaded', () => { const videoObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.play(); else entry.target.pause(); }) }, { threshold: 0.3 }); document.querySelectorAll('video').forEach(video => { videoObserver.observe(video); }); const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; revealObserver.unobserve(entry.target); } }) }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" }); document.querySelectorAll('.raw-reveal').forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(15px)'; el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)'; revealObserver.observe(el); }); const cards = document.querySelectorAll('.stacking-card'); window.addEventListener('scroll', () => { cards.forEach((card, index) => { const cardTop = card.getBoundingClientRect().top; if (cardTop <= (96 + (index * 12))) { const factor = Math.max(0.94, 1 - (Math.abs(cardTop - 96) / 6000)); card.style.transform = `scale(${factor})`; card.style.opacity = `${Math.max(0.8, 1 - (Math.abs(cardTop - 96) / 3000))}`; } else { card.style.transform = 'scale(1)'; card.style.opacity = '1'; } }) }, { passive: true }); const whatsappContainer = document.getElementById('floating-whatsapp-container'); const targetCardPhase2 = document.getElementById('card-phase-2'); if (whatsappContainer && targetCardPhase2) { const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting || entry.boundingClientRect.top < 0) { whatsappContainer.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none'); whatsappContainer.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto'); } else { whatsappContainer.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto'); whatsappContainer.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none'); } }) }, { threshold: 0.05, rootMargin: "0px 0px -10% 0px" }); observer.observe(targetCardPhase2); } }) })();
+                (function () { 
+                    document.addEventListener('DOMContentLoaded', () => { 
+                        // ... (código existente de videos, revelaciones, etc.)
+                        const videoObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.play(); else entry.target.pause(); }) }, { threshold: 0.3 }); 
+                        document.querySelectorAll('video').forEach(video => { videoObserver.observe(video); }); 
+                        const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; revealObserver.unobserve(entry.target); } }) }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" }); 
+                        document.querySelectorAll('.raw-reveal').forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(15px)'; el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)'; revealObserver.observe(el); }); 
+                        const cards = document.querySelectorAll('.stacking-card'); 
+                        window.addEventListener('scroll', () => { cards.forEach((card, index) => { const cardTop = card.getBoundingClientRect().top; if (cardTop <= (96 + (index * 12))) { const factor = Math.max(0.94, 1 - (Math.abs(cardTop - 96) / 6000)); card.style.transform = `scale(${factor})`; card.style.opacity = `${Math.max(0.8, 1 - (Math.abs(cardTop - 96) / 3000))}`; } else { card.style.transform = 'scale(1)'; card.style.opacity = '1'; } }) }, { passive: true }); 
+                        const whatsappContainer = document.getElementById('floating-whatsapp-container'); 
+                        const targetCardPhase2 = document.getElementById('card-phase-2'); 
+                        if (whatsappContainer && targetCardPhase2) { 
+                            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting || entry.boundingClientRect.top < 0) { whatsappContainer.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none'); whatsappContainer.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto'); } else { whatsappContainer.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto'); whatsappContainer.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none'); } }) }, { threshold: 0.05, rootMargin: "0px 0px -10% 0px" }); 
+                            observer.observe(targetCardPhase2); 
+                        }
+
+                        // ========== LÓGICA DE LA BURBUJA DE PERFIL ==========
+                        const profileBubble = document.getElementById('profile-bubble');
+                        const thoughtBubble = document.getElementById('thought-bubble');
+
+                        // Inicialmente ocultos
+                        profileBubble.style.display = 'none';
+                        thoughtBubble.style.display = 'none';
+
+                        // Cronograma:
+                        // 0-3s: ocultos
+                        // 3s: aparece la burbuja (fade-in)
+                        // 6s: aparece el globo de pensamiento
+                        // 9s: desaparece el globo, la burbuja permanece
+
+                        setTimeout(() => {
+                            // Mostrar burbuja con fade
+                            profileBubble.style.display = 'block';
+                            // Forzar reflow para que la transición funcione
+                            void profileBubble.offsetWidth;
+                            profileBubble.classList.add('visible');
+                        }, 3000);
+
+                        setTimeout(() => {
+                            // Mostrar globo de pensamiento
+                            thoughtBubble.style.display = 'block';
+                            void thoughtBubble.offsetWidth;
+                            thoughtBubble.classList.add('visible');
+                        }, 6000);
+
+                        setTimeout(() => {
+                            // Ocultar globo de pensamiento
+                            thoughtBubble.classList.remove('visible');
+                            // Después de la transición, ocultar display
+                            setTimeout(() => {
+                                thoughtBubble.style.display = 'none';
+                            }, 400); // tiempo de transición
+                        }, 9000);
+
+                    }) 
+                })();
         </script>
     </section>
 
