@@ -103,7 +103,6 @@
             gap: 4rem;
         }
 
-        /* Logos más claros y grandes (20% más) */
         .logo-item {
             filter: grayscale(70%) opacity(0.7) drop-shadow(0 4px 12px rgba(255, 60, 0, 0.15));
             transition: all 0.3s ease;
@@ -450,6 +449,101 @@
             border-left: 8px solid transparent;
             border-right: 8px solid transparent;
             border-top: 8px solid #1f2937;
+        }
+
+        /* Estilos para el slider del smartphone */
+        .phone-frame {
+            background: #111;
+            border-radius: 36px;
+            border: 8px solid #222;
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.8), inset 0 0 0 2px #333;
+            padding: 8px;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+        .phone-screen {
+            background: #000;
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 9 / 19;
+        }
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 28px;
+            background: #111;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .phone-notch .camera {
+            width: 8px;
+            height: 8px;
+            background: #1a1a2e;
+            border-radius: 50%;
+            border: 1px solid #2a2a3e;
+            box-shadow: inset 0 0 4px #000;
+        }
+        .phone-notch .speaker {
+            width: 40px;
+            height: 4px;
+            background: #1a1a2e;
+            border-radius: 4px;
+            margin-right: 12px;
+        }
+        .slide-container {
+            display: flex;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 100%;
+            height: 100%;
+        }
+        .slide-item {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slide-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .slide-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 20;
+        }
+        .slide-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transition: background 0.3s;
+        }
+        .slide-dots span.active {
+            background: #FF3C00;
+            width: 18px;
+            border-radius: 4px;
+        }
+        .slide-text {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        .slide-text.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -872,54 +966,7 @@
                     </div>
                 </div>
             </div>
-            <div
-                class="mt-24 md:mt-28 w-full border border-white/[0.03] rounded-2xl p-6 sm:p-12 bg-gradient-to-b from-neutral-900/5 to-transparent relative overflow-hidden">
-                <div class="w-full mb-10 text-center max-w-2xl mx-auto">
-                    <div class="premium-title-frame inline-block px-4 py-1 rounded-full mb-4 mx-auto"><span
-                            class="font-mono text-xs tracking-[0.25em] text-[#FF3C00] uppercase font-bold"
-                            data-i18n="hybridBadge">EQUIPO SAPIEN</span></div>
-                    <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white" data-i18n="hybridTitle">
-                        Estrategia humana, potenciada por IA</h4>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-2xl mx-auto items-center justify-center">
-                    <!-- Tarjeta Antonella (sin overlay, imagen limpia) -->
-                    <div
-                        class="team-card-hover group relative flex flex-col items-center justify-center text-center transition-all duration-300">
-                        <div
-                            class="absolute top-0 right-2 font-mono text-[7px] text-neutral-600 group-hover:text-[#FF3C00] transition-colors">
-                            AGENTE AUTÓNOMO</div>
-                        <div
-                            class="w-44 h-52 rounded-xl overflow-hidden relative flex items-center justify-center transition-all duration-500 bg-neutral-900 border border-white/10 group-hover:border-[#FF3C00]/40">
-                            <img src="assets/Image/Antonella-IA.webp"
-                                alt="Antonella IA - Arquitecta de automatización"
-                                class="absolute inset-0 w-full h-full object-cover opacity-100 grayscale-0 filter-none transition-transform duration-500 group-hover:scale-105"
-                                loading="lazy" decoding="async">
-                        </div>
-                        <span
-                            class="font-mono text-[12px] tracking-widest text-[#FF3C00] uppercase font-bold mt-4">Antonella</span>
-                        <span class="text-[9px] text-gray-400" data-i18n="antonellaRole">Monitoreo y Automatización</span>
-                    </div>
-                    <!-- Tarjeta Cristian (sin overlay, imagen limpia) -->
-                    <div
-                        class="team-card-hover group relative flex flex-col items-center justify-center text-center transition-all duration-300">
-                        <div
-                            class="absolute top-0 right-2 font-mono text-[7px] text-neutral-600 group-hover:text-white transition-colors">
-                            FUNDADOR Y CTO</div>
-                        <div
-                            class="w-44 h-52 rounded-xl overflow-hidden relative flex items-center justify-center transition-all duration-500 bg-neutral-900 border border-white/10 group-hover:border-[#FF3C00]/40">
-                            <img src="assets/Image/Foto-Sapien.webp"
-                                alt="Especialista SEO & CEO - Dirección operativa"
-                                class="absolute inset-0 w-full h-full object-cover opacity-100 grayscale-0 filter-none transition-transform duration-500 group-hover:scale-105"
-                                loading="lazy" decoding="async">
-                        </div>
-                        <span class="font-mono text-[12px] tracking-widest text-white uppercase font-bold mt-4 block"
-                            data-i18n="humanName">Cristian Lopez</span>
-                        <span
-                            class="font-mono text-[10px] tracking-widest text-[#FF3C00] uppercase font-bold mt-1 block"
-                            data-i18n="humanRole">DESARROLLO Y MARKETING</span>
-                    </div>
-                </div>
-            </div>
+            <!-- El bloque "EQUIPO SAPIEN" ha sido eliminado -->
         </div>
         <div id="floating-whatsapp-container"
             class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-2 group opacity-0 translate-y-10 pointer-events-none transition-all duration-500 ease-out">
@@ -944,7 +991,7 @@
             <!-- Globo de pensamiento (aparece y desaparece) -->
             <div id="thought-bubble"
                 class="thought-bubble bg-gray-800 text-white text-sm font-medium px-4 py-2 rounded-lg mb-2 max-w-[220px] text-center shadow-lg relative">
-                Un gusto, soy Cristian desde Manizales
+                Un gusto, soy Cristian. Si necesita algo, acá estoy
             </div>
             <!-- Burbuja de perfil (siempre visible después de aparecer) -->
             <div id="profile-bubble" class="profile-bubble relative w-14 h-14 cursor-pointer hover:scale-105 transition-transform duration-300">
@@ -1038,14 +1085,211 @@
         </script>
     </section>
 
+    <!-- ================= MANIFIESTO MAQUINARIA (NUEVA POSICIÓN) ================= -->
+    <section id="manifiesto-maquinaria"
+        class="relative w-full min-h-screen flex flex-col justify-center items-center bg-[#F8F9FA] text-gray-900 py-28 px-6 md:px-12 overflow-hidden snap-start selection:bg-[#FF3C00] selection:text-white">
+        <!-- Ola superior (nueva) conecta con maquinaria-automatizada (#050505) -->
+        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-10">
+            <svg class="relative block w-full h-[40px] md:h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="#050505"></path>
+            </svg>
+        </div>
+
+        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden flex justify-center items-center">
+            <div class="absolute inset-0 opacity-40"
+                style="background-image: radial-gradient(#d1d5db 1px, transparent 1px); background-size: 40px 40px;">
+            </div>
+            <div
+                class="absolute top-10 -left-10 w-[40vw] h-[40vw] max-w-[400px] max-h-[400px] bg-[#FF3C00]/10 rounded-full blur-[80px] animate-blob mix-blend-multiply">
+            </div>
+            <div
+                class="absolute bottom-10 right-10 w-[30vw] h-[30vw] max-w-[350px] max-h-[350px] bg-gray-300/50 rounded-full blur-[80px] animate-blob animation-delay-2000 mix-blend-multiply">
+            </div>
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <!-- Columna izquierda: texto -->
+            <div class="flex flex-col justify-center items-start w-full order-1">
+                <span
+                    class="px-4 py-1.5 mb-6 text-xs md:text-xs font-mono font-bold tracking-[0.2em] uppercase text-[#FF3C00] bg-white border border-gray-200 shadow-sm rounded-full flex items-center gap-2"><span
+                        class="w-2 h-2 rounded-full bg-[#FF3C00] animate-pulse"></span><span
+                        data-i18n="archBadge">Control remoto</span></span>
+                <div
+                    class="bg-white rounded-2xl p-6 md:p-8 mb-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 w-full relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1.5 h-full bg-[#FF3C00]"></div>
+                    <h2
+                        class="text-3xl md:text-5xl font-black tracking-tight text-gray-900 h-[80px] md:h-[100px] flex items-center">
+                        <span id="typewriter-text"></span><span id="typewriter-cursor"
+                            class="inline-block w-[4px] h-[1em] bg-[#FF3C00] ml-2 animate-blink"></span>
+                    </h2>
+                </div>
+                <!-- Contenedor para el texto dinámico del slider -->
+                <div id="slide-text-container" class="w-full max-w-lg">
+                    <p id="slide-text-content" class="text-gray-600 text-sm md:text-base font-medium leading-relaxed slide-text active transition-all duration-500">
+                        Vea cómo funciona su ecosistema desde un panel intuitivo.
+                    </p>
+                </div>
+            </div>
+            <!-- Columna derecha: smartphone slider -->
+            <div class="w-full order-2 flex justify-center lg:justify-end">
+                <div class="phone-frame w-full max-w-[300px] md:max-w-[320px]">
+                    <div class="phone-screen relative">
+                        <!-- Notch / cámara frontal -->
+                        <div class="phone-notch">
+                            <div class="speaker"></div>
+                            <div class="camera"></div>
+                        </div>
+                        <!-- Slider -->
+                        <div id="smartphone-slider" class="slide-container">
+                            <div class="slide-item"><img src="assets/Image/slide1.webp" alt="Slide 1" loading="lazy" decoding="async"></div>
+                            <div class="slide-item"><img src="assets/Image/slide2.webp" alt="Slide 2" loading="lazy" decoding="async"></div>
+                            <div class="slide-item"><img src="assets/Image/slide3.webp" alt="Slide 3" loading="lazy" decoding="async"></div>
+                            <div class="slide-item"><img src="assets/Image/slide4.webp" alt="Slide 4" loading="lazy" decoding="async"></div>
+                        </div>
+                        <!-- Dots -->
+                        <div class="slide-dots">
+                            <span class="active"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="scroll-prompt"
+            class="absolute bottom-6 left-1/2 -translate-x-1/2 opacity-0 transition-opacity duration-1000 flex flex-col items-center gap-2 cursor-pointer pointer-events-none group z-20"
+            onclick="document.getElementById('seccion-5-pricing').scrollIntoView({behavior:'smooth'})">
+            <span
+                class="text-gray-500 text-xs uppercase tracking-widest font-mono group-hover:text-gray-900 transition-colors font-bold"
+                data-i18n="scrollInvestment">Ver Inversión</span>
+            <div
+                class="w-6 h-10 border-2 border-gray-400 group-hover:border-[#FF3C00] transition-colors rounded-full flex justify-center p-1 bg-white shadow-sm">
+                <div class="w-1 h-2 bg-[#FF3C00] rounded-full animate-scroll-wheel"></div>
+            </div>
+        </div>
+
+        <script>
+            (function() {
+                // Efecto máquina de escribir
+                const typeText = "Monitoree su negocio 24/7";
+                const typeElement = document.getElementById('typewriter-text');
+                const cursor = document.getElementById('typewriter-cursor');
+                const paragraph = document.getElementById('slide-text-content');
+                const scrollPrompt = document.getElementById('scroll-prompt');
+                let isTyped = false;
+
+                const typeWriter = (text, i, cb) => {
+                    if (i < text.length) {
+                        typeElement.innerHTML = text.substring(0, i + 1);
+                        setTimeout(() => typeWriter(text, i + 1, cb), 45);
+                    } else {
+                        setTimeout(cb, 200);
+                    }
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !isTyped) {
+                            isTyped = true;
+                            typeWriter(typeText, 0, () => {
+                                cursor.style.display = 'none';
+                                setTimeout(() => {
+                                    scrollPrompt.classList.remove('opacity-0', 'pointer-events-none');
+                                    scrollPrompt.classList.add('pointer-events-auto');
+                                }, 800);
+                            });
+                        }
+                    });
+                }, { threshold: 0.3 });
+                observer.observe(document.getElementById('manifiesto-maquinaria'));
+
+                // Slider de smartphone
+                const slider = document.getElementById('smartphone-slider');
+                const dots = document.querySelectorAll('.slide-dots span');
+                const textContainer = document.getElementById('slide-text-content');
+                const slides = slider.querySelectorAll('.slide-item');
+                let currentIndex = 0;
+                const totalSlides = slides.length;
+                let autoPlayInterval;
+
+                const slideTexts = [
+                    "Vea cómo funciona su ecosistema desde un panel intuitivo.",
+                    "Reciba soporte y monitoreo en tiempo real en un módulo dedicado solo al soporte.",
+                    "Conozca los casos de éxito más relevantes y sus resultados.",
+                    "Lo mantendremos al día con el funcionamiento y nuevas mejoras disponibles a través de notificaciones push."
+                ];
+
+                function goToSlide(index) {
+                    if (index < 0) index = totalSlides - 1;
+                    if (index >= totalSlides) index = 0;
+                    currentIndex = index;
+                    const offset = -currentIndex * 100;
+                    slider.style.transform = `translateX(${offset}%)`;
+                    // Actualizar dots
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === currentIndex);
+                    });
+                    // Actualizar texto
+                    textContainer.textContent = slideTexts[currentIndex];
+                    textContainer.classList.remove('active');
+                    void textContainer.offsetWidth; // reflow
+                    textContainer.classList.add('active');
+                }
+
+                function nextSlide() {
+                    goToSlide(currentIndex + 1);
+                }
+
+                function startAutoPlay() {
+                    if (autoPlayInterval) clearInterval(autoPlayInterval);
+                    autoPlayInterval = setInterval(nextSlide, 4000);
+                }
+
+                function stopAutoPlay() {
+                    if (autoPlayInterval) {
+                        clearInterval(autoPlayInterval);
+                        autoPlayInterval = null;
+                    }
+                }
+
+                // Inicializar
+                goToSlide(0);
+                startAutoPlay();
+
+                // Pausar en hover/touch
+                const phoneFrame = document.querySelector('.phone-frame');
+                phoneFrame.addEventListener('mouseenter', stopAutoPlay);
+                phoneFrame.addEventListener('mouseleave', startAutoPlay);
+                phoneFrame.addEventListener('touchstart', stopAutoPlay, { passive: true });
+                phoneFrame.addEventListener('touchend', startAutoPlay, { passive: true });
+
+                // Reanudar cuando la sección es visible
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            startAutoPlay();
+                        } else {
+                            stopAutoPlay();
+                        }
+                    });
+                }, { threshold: 0.3 });
+                sectionObserver.observe(document.getElementById('manifiesto-maquinaria'));
+
+            })();
+        </script>
+    </section>
+
     <!-- ================= CASOS DE ÉXITO (ECOSISTEMAS) - REDISEÑO VIDRIO 3D ================= -->
     <section id="casos-exito-ecosistemas"
         class="relative w-full bg-[#0A0A0A] text-white py-28 md:py-36 overflow-hidden selection:bg-[#FF3C00] selection:text-white">
 
-        <!-- Ola superior (transición con sección anterior) -->
+        <!-- Ola superior (ajustada para conectar con manifiesto-maquinaria #F8F9FA) -->
         <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-10">
             <svg class="relative block w-full h-[40px] md:h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="#050505"></path>
+                <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="#F8F9FA"></path>
             </svg>
         </div>
 
@@ -1110,7 +1354,7 @@
                                     <img src="assets/Image/Dayro.webp"
                                          alt="Caso de éxito La Plancha Manizales"
                                          class="v11-app-ui"
-                                         style="width:100%; height:100%; object-fit:cover; opacity:0.4; transition:0.5s;">
+                                         style="width:100%; height:100%; object-fit:cover; opacity:0.75; transition:0.5s;">
                                     <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
                                         <h3 class="text-base md:text-lg font-bold text-white mb-1" data-i18n="case1Title">Gastronomía</h3>
                                         <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-3" data-i18n="case1Desc">Logramos para La Plancha Manizales domicilios a 1.000 pesos directo a WhatsApp, web IA y validación de Dayro Moreno.</p>
@@ -1133,7 +1377,7 @@
                                     <img src="assets/Image/Brossmanizales.webp"
                                          alt="Caso de éxito Bross Manizales"
                                          class="v11-app-ui"
-                                         style="width:100%; height:100%; object-fit:cover; opacity:0.4; transition:0.5s;">
+                                         style="width:100%; height:100%; object-fit:cover; opacity:0.75; transition:0.5s;">
                                     <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
                                         <h3 class="text-base md:text-lg font-bold text-white mb-1" data-i18n="case2Title">Detailing y Automotriz</h3>
                                         <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-3" data-i18n="case2Desc">El ecosistema logró +300 clientes potenciales para Bross Manizales con $250k y un sitio web que cierra agendas.</p>
@@ -1156,7 +1400,7 @@
                                     <img src="assets/Image/Srmedrano.webp"
                                          alt="Caso de éxito Señor Medrano"
                                          class="v11-app-ui"
-                                         style="width:100%; height:100%; object-fit:cover; opacity:0.4; transition:0.5s;">
+                                         style="width:100%; height:100%; object-fit:cover; opacity:0.75; transition:0.5s;">
                                     <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
                                         <h3 class="text-base md:text-lg font-bold text-white mb-1" data-i18n="case3Title">Fast & Grill</h3>
                                         <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-3" data-i18n="case3Desc">Desarrollamos para Señor Medrano: la web más avanzada de Manizales, autoridad local y reservas automatizadas.</p>
@@ -1179,7 +1423,7 @@
                                     <img src="assets/Image/Noir.webp"
                                          alt="Caso de éxito Noir Elixir"
                                          class="v11-app-ui"
-                                         style="width:100%; height:100%; object-fit:cover; opacity:0.4; transition:0.5s;">
+                                         style="width:100%; height:100%; object-fit:cover; opacity:0.75; transition:0.5s;">
                                     <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
                                         <h3 class="text-base md:text-lg font-bold text-white mb-1" data-i18n="case4Title">Luxury E-commerce</h3>
                                         <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-3" data-i18n="case4Desc">Red Sapien: creamos un catálogo de lujo para Noir Elixir en Medellín: con un diseño premium optimizado para ventas.</p>
@@ -1197,10 +1441,10 @@
             </div> <!-- /relative group -->
         </div> <!-- /max-w-7xl -->
 
-        <!-- Ola inferior (transición con siguiente sección) -->
+        <!-- Ola inferior (ajustada para conectar con seccion-5-pricing #050505) -->
         <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 transform rotate-180">
             <svg class="relative block w-full h-[40px] md:h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="#F8F9FA"></path>
+                <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="#050505"></path>
             </svg>
         </div>
 
@@ -1281,11 +1525,11 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                opacity: 0.4;
+                opacity: 0.75;
                 transition: opacity 0.5s ease, transform 0.5s ease;
             }
             .sap-v11-device-glass:hover .v11-app-ui {
-                opacity: 0.6;
+                opacity: 0.9;
                 transform: scale(1.05);
             }
             /* Ajustes para el overlay */
@@ -1348,106 +1592,15 @@
         </style>
     </section>
 
-    <!-- ================= MANIFIESTO MAQUINARIA ================= -->
-    <section id="manifiesto-maquinaria"
-        class="relative w-full min-h-screen flex flex-col justify-center items-center bg-[#F8F9FA] text-gray-900 py-28 px-6 md:px-12 overflow-hidden snap-start selection:bg-[#FF3C00] selection:text-white border-t border-gray-200">
-        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden flex justify-center items-center">
-            <div class="absolute inset-0 opacity-40"
-                style="background-image: radial-gradient(#d1d5db 1px, transparent 1px); background-size: 40px 40px;">
-            </div>
-            <div
-                class="absolute top-10 -left-10 w-[40vw] h-[40vw] max-w-[400px] max-h-[400px] bg-[#FF3C00]/10 rounded-full blur-[80px] animate-blob mix-blend-multiply">
-            </div>
-            <div
-                class="absolute bottom-10 right-10 w-[30vw] h-[30vw] max-w-[350px] max-h-[350px] bg-gray-300/50 rounded-full blur-[80px] animate-blob animation-delay-2000 mix-blend-multiply">
-            </div>
-        </div>
-        <div
-            class="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div class="flex flex-col justify-center items-start w-full order-1">
-                <span
-                    class="px-4 py-1.5 mb-6 text-xs md:text-xs font-mono font-bold tracking-[0.2em] uppercase text-[#FF3C00] bg-white border border-gray-200 shadow-sm rounded-full flex items-center gap-2"><span
-                        class="w-2 h-2 rounded-full bg-[#FF3C00] animate-pulse"></span><span
-                        data-i18n="archBadge">Control remoto</span></span>
-                <div
-                    class="bg-white rounded-2xl p-6 md:p-8 mb-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 w-full relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-1.5 h-full bg-[#FF3C00]"></div>
-                    <h2
-                        class="text-3xl md:text-5xl font-black tracking-tight text-gray-900 h-[80px] md:h-[100px] flex items-center">
-                        <span id="typewriter-text"></span><span id="typewriter-cursor"
-                            class="inline-block w-[4px] h-[1em] bg-[#FF3C00] ml-2 animate-blink"></span>
-                    </h2>
-                </div>
-                <p class="text-gray-600 text-sm md:text-base font-medium leading-relaxed max-w-lg opacity-0 transform translate-y-4 transition-all duration-700 ease-out"
-                    id="manifesto-paragraph" data-i18n="manifestoText">Vea los resultados 24/7. Antonella IA le notifica y nosotros resolvemos lo técnico.</p>
-            </div>
-            <div class="w-full opacity-0 transform -translate-x-16 transition-all duration-1000 ease-out order-2"
-                id="hardware-container">
-                <div
-                    class="relative bg-[#111] rounded-t-2xl rounded-b-lg border-t-[3px] border-x-[3px] border-b border-[#222] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] p-2 md:p-3 max-w-[600px] mx-auto lg:ml-auto">
-                    <div class="absolute top-1 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
-                        <div
-                            class="w-1.5 h-1.5 bg-[#050505] rounded-full flex items-center justify-center border border-gray-800">
-                            <div class="w-0.5 h-0.5 bg-blue-500/50 rounded-full"></div>
-                        </div>
-                    </div>
-                    <div
-                        class="relative bg-black rounded-md border-[6px] md:border-[10px] border-[#0A0A0A] overflow-hidden">
-                        <div
-                            class="absolute bottom-2 right-2 md:bottom-3 md:right-3 w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full z-30 animate-led-pulse shadow-[0_0_8px_#22c55e]">
-                        </div>
-                        <div class="relative aspect-video w-full bg-[#111]"><iframe id="ecosystem-video"
-                                class="w-full h-full object-cover"
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&rel=0&modestbranding=1&showinfo=0"
-                                frameborder="0" allowfullscreen loading="lazy"></iframe>
-                            <div id="video-overlay"
-                                class="absolute inset-0 bg-[#050505]/50 backdrop-blur-[2px] flex items-center justify-center z-20 transition-opacity duration-500 cursor-pointer hover:bg-[#050505]/30 group"
-                                onclick="playEcosystemVideo()">
-                                <div class="relative flex items-center justify-center">
-                                    <div
-                                        class="absolute w-16 h-16 bg-[#FF3C00] rounded-full animate-ping opacity-30 group-hover:opacity-50 transition-opacity">
-                                    </div>
-                                    <div
-                                        class="w-14 h-14 bg-[#FF3C00] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,60,0,0.4)] transform transition group-hover:scale-110">
-                                        <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[50%] h-2 bg-[#1a1a1a] rounded-b-xl border-b border-gray-800">
-                    </div>
-                </div>
-                <p class="text-center mt-6 text-gray-400 font-mono text-xs tracking-[0.2em] uppercase"
-                    data-i18n="videoCaption">Mire el panel funcionando</p>
-            </div>
-        </div>
-        <div id="scroll-prompt"
-            class="absolute bottom-6 left-1/2 -translate-x-1/2 opacity-0 transition-opacity duration-1000 flex flex-col items-center gap-2 cursor-pointer pointer-events-none group z-20"
-            onclick="document.getElementById('seccion-5-pricing').scrollIntoView({behavior:'smooth'})">
-            <span
-                class="text-gray-500 text-xs uppercase tracking-widest font-mono group-hover:text-gray-900 transition-colors font-bold"
-                data-i18n="scrollInvestment">Ver Inversión</span>
-            <div
-                class="w-6 h-10 border-2 border-gray-400 group-hover:border-[#FF3C00] transition-colors rounded-full flex justify-center p-1 bg-white shadow-sm">
-                <div class="w-1 h-2 bg-[#FF3C00] rounded-full animate-scroll-wheel"></div>
-            </div>
-        </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => { const section = document.getElementById('manifiesto-maquinaria'); const typeText = "Monitoree su ecosistema"; const typeElement = document.getElementById('typewriter-text'); const cursor = document.getElementById('typewriter-cursor'); const paragraph = document.getElementById('manifesto-paragraph'); const hardware = document.getElementById('hardware-container'); const scrollPrompt = document.getElementById('scroll-prompt'); let isTyped = false; const typeWriter = (text, i, cb) => { if (i < text.length) { typeElement.innerHTML = text.substring(0, i + 1); setTimeout(() => typeWriter(text, i + 1, cb), 45); } else { setTimeout(cb, 200); } }; const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting && !isTyped) { isTyped = true; typeWriter(typeText, 0, () => { cursor.style.display = 'none'; paragraph.classList.remove('opacity-0', 'translate-y-4'); setTimeout(() => { hardware.classList.remove('opacity-0', '-translate-x-16'); hardware.classList.add('translate-x-0'); }, 600); setTimeout(() => { scrollPrompt.classList.remove('opacity-0', 'pointer-events-none'); scrollPrompt.classList.add('pointer-events-auto'); }, 2200); }); } }); }, { threshold: 0.3 }); observer.observe(section); }); function playEcosystemVideo() { const overlay = document.getElementById('video-overlay'); const iframe = document.getElementById('ecosystem-video'); overlay.style.opacity = '0'; setTimeout(() => overlay.style.display = 'none', 500); let src = iframe.src; if (!src.includes('autoplay=1')) iframe.src = src + (src.includes('?') ? '&' : '?') + 'autoplay=1'; }
-        </script>
-    </section>
-
     <!-- ================= SECCIÓN PRICING / INVERSIÓN ================= -->
     <section id="seccion-5-pricing"
         class="relative w-full min-h-screen bg-[#050505] text-white py-28 px-6 md:px-12 overflow-hidden snap-start selection:bg-[#FF3C00] selection:text-white">
-        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-10 transform rotate-180"><svg
-                class="relative block w-full h-[40px] md:h-[60px]" data-name="Layer 1"
-                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="#F8F9FA"></path>
-            </svg></div>
+        <!-- Ola superior (ajustada para conectar con casos-exito-ecosistemas #0A0A0A) -->
+        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-10 transform rotate-180">
+            <svg class="relative block w-full h-[40px] md:h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="#0A0A0A"></path>
+            </svg>
+        </div>
         <div class="absolute inset-0 z-0 pointer-events-none">
             <div
                 class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FF3C00]/5 rounded-full blur-[120px] pointer-events-none">
@@ -1963,14 +2116,14 @@
         // Diccionario de traducciones completo (es, en, pt)
         const translations = {
             es: {
-                registerBtn: "Comience gratis de una",
+                registerBtn: "Comience gratis",
                 mobileRegister: "Comience",
                 mobilePlatform: "Ingresar",
                 mobileContact: "Contáctenos",
                 heroTitle: "¡Más ventas para su negocio!",
                 heroDesc: "Potenciamos marcas líderes en Colombia, Manizales y todo el Eje Cafetero.",
                 googleBtnText: "Acceda con Google",
-                mainCta: "¡Comience gratis ya!",
+                mainCta: "¡Comience gratis ahora!",
                 trustText: "Ya están a otro nivel, ¿y usted?",
                 securityBadge: "Resultados Reales: Pago Contra Entrega",
                 modalTitle: "Dos datos y está dentro",
