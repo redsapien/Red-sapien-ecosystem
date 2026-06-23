@@ -10,12 +10,12 @@
     <title>Red Sapien | Ecosistema Digital</title>
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23050505' stroke='%23FF3C00' stroke-width='4'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='40' fill='%23FF3C00'%3ERS%3C/text%3E%3C/svg%3E">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@700&display=swap"
         rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -31,7 +31,7 @@
                         'spin-slow': 'spin 3s linear infinite',
                     },
                     keyframes: {
-                        scroll: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-33.33%)' } },
+                        scroll: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
                         fadeOut: { '0%': { opacity: '1', visibility: 'visible' }, '100%': { opacity: '0', visibility: 'hidden' } },
                         pulseCol: { '0%, 100%': { opacity: '0.7', transform: 'scaleY(1)' }, '50%': { opacity: '1', transform: 'scaleY(1.2)' } }
                     }
@@ -56,61 +56,10 @@
             background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%);
         }
 
-        .neon-premium-btn {
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 15px rgba(255, 60, 0, 0.12);
-            border: 1px solid rgba(255, 60, 0, 0.25);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .neon-premium-btn:hover {
-            box-shadow: 0 0 25px rgba(255, 60, 0, 0.35);
-            border-color: rgba(255, 60, 0, 0.7);
-            background-color: rgba(23, 23, 23, 0.8);
-        }
-
-        .animate-shine::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -60%;
-            width: 30%;
-            height: 200%;
-            background: linear-gradient(90deg, transparent, rgba(255, 60, 0, 0.25), transparent);
-            transform: rotate(25deg);
-            animation: technicalSheen 9s infinite linear;
-            will-change: left;
-        }
-
-        @keyframes technicalSheen {
-            0% {
-                left: -60%;
-            }
-
-            15% {
-                left: 140%;
-            }
-
-            100% {
-                left: 140%;
-            }
-        }
-
         .logo-track {
             display: flex;
             width: max-content;
             gap: 4rem;
-        }
-
-        .logo-item {
-            filter: grayscale(70%) opacity(0.7) drop-shadow(0 4px 12px rgba(255, 60, 0, 0.15));
-            transition: all 0.3s ease;
-            will-change: filter;
-        }
-
-        .logo-item:hover {
-            filter: grayscale(0%) opacity(0.95) drop-shadow(0 6px 20px rgba(255, 60, 0, 0.3));
         }
 
         .tech-mesh-layer {
@@ -176,17 +125,6 @@
             border-color: rgba(255, 60, 0, 0.15) !important;
         }
 
-        .team-card-hover {
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            will-change: transform;
-        }
-
-        .team-card-hover:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
-            border-color: rgba(255, 60, 0, 0.4);
-        }
-
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
@@ -228,22 +166,6 @@
 
         .animate-blink {
             animation: blink 1s step-end infinite;
-        }
-
-        @keyframes scroll-wheel {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(12px);
-                opacity: 0;
-            }
-        }
-
-        .animate-scroll-wheel {
-            animation: scroll-wheel 1.5s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
         }
 
         @keyframes led-pulse {
@@ -294,7 +216,7 @@
             will-change: transform;
         }
 
-        /* Onda de desbloqueo - Ultra lenta y casi invisible */
+        /* Onda de desbloqueo */
         .unlock-wave {
             position: absolute;
             top: 50%;
@@ -338,7 +260,7 @@
             }
         }
 
-        /* Botón Google con G estilizada */
+        /* Botón Google */
         .google-g-icon {
             display: inline-flex;
             align-items: center;
@@ -353,7 +275,6 @@
             height: 100%;
         }
 
-        /* Detalle sutil en el título del modal */
         .modal-title-glow {
             background: linear-gradient(135deg, #fff 0%, #FF3C00 100%);
             background-clip: text;
@@ -362,7 +283,6 @@
             text-shadow: 0 0 15px rgba(255, 60, 0, 0.3);
         }
 
-        /* Escáner láser mejorado */
         @keyframes scan {
             0% {
                 top: -2%;
@@ -388,7 +308,6 @@
             animation: scan 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
         }
 
-        /* Efecto del botón de WhatsApp más sutil */
         .wa-premium-glow-button {
             isolation: isolate;
         }
@@ -416,7 +335,6 @@
             }
         }
 
-        /* Estilos para la burbuja de perfil y globo de pensamiento */
         .profile-bubble {
             transition: opacity 0.5s ease, transform 0.5s ease;
             opacity: 0;
@@ -451,12 +369,12 @@
             border-top: 8px solid #1f2937;
         }
 
-        /* Estilos para el slider del smartphone */
+        /* Smartphone slider */
         .phone-frame {
             background: #111;
             border-radius: 36px;
             border: 8px solid #222;
-            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.8), inset 0 0 0 2px #333;
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8), inset 0 0 0 2px #333;
             padding: 8px;
             max-width: 320px;
             margin: 0 auto;
@@ -528,7 +446,7 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             transition: background 0.3s;
         }
         .slide-dots span.active {
@@ -546,23 +464,80 @@
             transform: translateY(0);
         }
 
-        /* Gradiente para el slider de logos */
         .logo-slider-gradient {
-            background: linear-gradient(to right, #050505 0%, rgba(5,5,5,0.5) 30%, transparent 100%);
+            background: linear-gradient(to right, #050505 0%, rgba(5, 5, 5, 0.5) 30%, transparent 100%);
             pointer-events: none;
             z-index: 2;
         }
 
-        /* Ajuste para videos: asegura que se vean completos y adaptados al contenedor */
-        .video-fit {
-            object-fit: contain;
-            object-position: center;
-            width: 100%;
-            height: 100%;
-        }
         .video-container {
             background: #000;
             overflow: hidden;
+        }
+
+        .section-transition {
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+        }
+        .section-transition::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(255, 60, 0, 0.1), transparent);
+        }
+
+        /* Estilos para tarjetas de casos de éxito (vidrio) */
+        .sap-v11-device-glass {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 35px;
+            padding: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+            box-shadow: 0 40px 70px -15px rgba(0, 0, 0, 0.6);
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+        }
+        .sap-v11-device-glass:hover {
+            transform: rotateY(-4deg) rotateX(4deg) scale(1.01);
+        }
+        .v11-screen-content {
+            border-radius: 33px;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+        }
+        .v11-app-ui {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.75;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .sap-v11-device-glass:hover .v11-app-ui {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+        .v11-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px 16px 25px;
+            background: linear-gradient(to top, #000 25%, transparent 80%);
+            text-align: left;
+            pointer-events: none;
+        }
+        .v11-overlay h3,
+        .v11-overlay p,
+        .v11-overlay a {
+            pointer-events: auto;
         }
     </style>
 </head>
@@ -575,7 +550,7 @@
         <div class="relative w-24 h-24 flex items-center justify-center mb-6">
             <div class="absolute w-full h-full border-t-4 border-rs-red rounded-full animate-spin-slow"></div>
             <img src="assets/Image/Logo-Red-Sapien.webp" alt="Red Sapien Logo" class="w-12 h-12 object-contain"
-                decoding="async">
+                decoding="async" loading="lazy">
         </div>
         <div class="text-[10px] uppercase tracking-[0.3em] text-gray-500">Conectando...</div>
     </div>
@@ -592,8 +567,8 @@
                     <option value="en">EN</option>
                     <option value="pt">PT</option>
                 </select>
-                <button id="scroll-register-btn" onclick="openRegisterModal()"
-                    class="hidden px-5 py-3 text-xs font-bold text-white neon-premium-btn rounded-lg whitespace-nowrap"
+                <button id="scroll-register-btn" onclick="openRegisterModal('register')"
+                    class="hidden px-5 py-3 text-xs font-bold text-white rounded-lg transition bg-rs-gray/40 border border-rs-red/25 hover:border-rs-red/70 hover:bg-rs-gray/80 shadow-[0_0_15px_rgba(255,60,0,0.12)] whitespace-nowrap"
                     data-i18n="registerBtn">Comience gratis de una</button>
             </div>
             <button id="menu-trigger"
@@ -615,14 +590,14 @@
             Close</button>
         <div class="w-full max-w-sm space-y-4">
             <div class="matrix-link-box p-6 rounded-xl">
-                <button type="button" onclick="openRegisterModal()"
+                <button type="button" onclick="openRegisterModal('register')"
                     class="cursor-pointer block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300 w-full text-left"
                     data-i18n="mobileRegister">Comience</button>
             </div>
             <div class="matrix-link-box p-6 rounded-xl">
-                <a href="#"
-                    class="block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300"
-                    data-i18n="mobilePlatform">Ingresar</a>
+                <button type="button" onclick="openRegisterModal('login')"
+                    class="cursor-pointer block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300 w-full text-left"
+                    data-i18n="mobilePlatform">Ingresar</button>
             </div>
             <div class="matrix-link-box p-6 rounded-xl">
                 <a href="https://wa.me/573012800024?text=Hola%20buenas%20deseo%20saber%20mas%20del%20ecosistema%20🌐"
@@ -644,7 +619,7 @@
                 <path d="M 1500 150 Q 1000 450 720 380 T -50 700" fill="none" stroke="url(#neon-flow-gradient)"
                     stroke-width="1.5" />
                 <defs>
-                    <linearGradient id="neon-flow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <linearGradient id="neon-flow-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" stop-color="#FF3C00" stop-opacity="0"></stop>
                         <stop offset="50%" stop-color="#FF3C00" stop-opacity="1">
                             <animate id="pulse-anim" attributeName="offset" values="-1; 2" dur="8s"
@@ -659,7 +634,6 @@
             class="absolute top-[35%] left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-rs-red/5 rounded-full blur-[100px] md:blur-[140px] pointer-events-none -z-10">
         </div>
         <div class="flex flex-col items-center w-full mt-10 md:mt-14 relative z-10 px-4">
-            <!-- Título sin marco -->
             <h1 id="hero-title" data-i18n="heroTitle"
                 class="font-display text-4xl md:text-7xl font-bold tracking-tight text-white mb-8 leading-snug max-w-4xl">
                 ¡Más ventas para su negocio!
@@ -688,17 +662,16 @@
                     </span>
                     <span data-i18n="googleBtnText">Acceda con Google</span>
                 </button>
-                <button id="main-cta" onclick="openRegisterModal()"
-                    class="flex-1 py-4 rounded-lg text-sm font-semibold text-white transition bg-rs-gray/40 neon-premium-btn"
+                <button id="main-cta" onclick="openRegisterModal('register')"
+                    class="flex-1 py-4 rounded-lg text-sm font-semibold text-white transition bg-rs-gray/40 border border-rs-red/25 hover:border-rs-red/70 hover:bg-rs-gray/80 shadow-[0_0_15px_rgba(255,60,0,0.12)]"
                     data-i18n="mainCta">¡Comience gratis ya!</button>
             </div>
         </div>
         <div class="w-full mt-auto mb-4 bg-gradient-to-t from-[#050505]/50 to-transparent py-6">
             <p id="trust-text" data-i18n="trustText"
                 class="text-xs uppercase tracking-[0.2em] text-gray-400 font-bold mb-8 px-4">Ell@s ya están a otro nivel, ¿y usted?</p>
-            <!-- ================= SLIDER DE LOGOS INFINITO CON 9 LOGOS ================= -->
+            <!-- ================= SLIDER DE LOGOS INFINITO CON 9 LOGOS (2 COPIA) ================= -->
             <div class="w-full overflow-hidden relative py-2">
-                <!-- Gradiente superpuesto (más oscuro a la izquierda) -->
                 <div class="absolute inset-0 logo-slider-gradient"></div>
                 <div class="flex animate-bullet-train logo-track items-center will-change-transform">
                     <!-- Primera copia (9 logos) -->
@@ -725,18 +698,6 @@
                         <img src="assets/Image/Logo-papa.webp" alt="La Papa Prohibida" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
                         <img src="assets/Image/Logo-Construventas.webp" alt="Construventas" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
                     </div>
-                    <!-- Tercera copia (9 logos) -->
-                    <div class="flex items-center gap-16 md:gap-24 px-4">
-                        <img src="assets/Image/La-plancha-manizales.webp" alt="La Plancha" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Noir-medellin.webp" alt="Noir Elixir" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Bross-manizales.webp" alt="Bross" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Señor-Medrano-manizales.webp" alt="Señor Medrano" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Salchipotato-manizales.webp" alt="Salchipotato" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Logo-bogotaco.webp" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Logo-Carolina-Ruiz-Psico-Spa.webp" alt="Carolina Ruiz Psico Spa" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Logo-papa.webp" alt="La Papa Prohibida" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                        <img src="assets/Image/Logo-Construventas.webp" alt="Construventas" class="h-20 w-auto mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" loading="lazy" decoding="async">
-                    </div>
                 </div>
             </div>
             <div class="flex justify-center items-center mt-6 gap-2 text-gray-600 px-4"><svg
@@ -750,16 +711,21 @@
         </div>
     </main>
 
-    <!-- ================= MODAL REGISTRO ================= -->
+    <!-- ================= MODAL REGISTRO / LOGIN INTELIGENTE ================= -->
     <div id="register-modal"
         class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
         <div class="bg-[#171717] border border-white/10 w-full max-w-sm p-8 rounded-2xl relative shadow-2xl">
             <button onclick="closeRegisterModal()"
                 class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none">✕</button>
-            <h2 id="modal-title" data-i18n="modalTitle"
-                class="text-xl font-display font-bold mb-6 text-center modal-title-glow">Dos datos y está dentro</h2>
+            <h2 id="modal-title" class="text-xl font-display font-bold mb-2 text-center modal-title-glow">Crea tu cuenta</h2>
+            <p id="modal-subtitle" class="text-xs text-gray-400 text-center mb-4">Únete al ecosistema de ventas</p>
+
+            <!-- Área de mensajes de error / éxito -->
+            <div id="auth-message" class="hidden text-center text-sm font-medium mb-3"></div>
+
             <form id="email-form" class="space-y-5" onsubmit="event.preventDefault();">
-                <div><input type="email" id="email-input" required placeholder="Correo electrónico"
+                <div>
+                    <input type="email" id="email-input" required placeholder="Correo electrónico"
                         class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors">
                 </div>
                 <div class="relative">
@@ -779,28 +745,56 @@
                 <p class="text-xs text-gray-400 text-center opacity-70 flex items-center justify-center gap-1">
                     <span>🔐</span> <span data-i18n="passwordHint">Guárdela bien, no la comparta</span>
                 </p>
-                <button type="submit" id="btn-submit" data-i18n="modalBtn"
-                    class="w-full py-3 bg-rs-red rounded-lg font-bold text-white hover:bg-opacity-90 transition-all shadow-lg shadow-rs-red/20">Conéctese ahora</button>
+                <button type="submit" id="btn-submit"
+                    class="w-full py-3 bg-rs-red rounded-lg font-bold text-white hover:bg-opacity-90 transition-all shadow-lg shadow-rs-red/20">
+                    Conéctese ahora
+                </button>
             </form>
+
+            <!-- Selector de modo (Login / Registro) -->
+            <div class="mt-4 text-center text-xs text-gray-400">
+                <span id="toggle-mode-text">¿Ya tienes cuenta?</span>
+                <button type="button" id="toggle-mode-btn" onclick="toggleAuthMode()"
+                    class="text-rs-red font-bold hover:underline ml-1">
+                    Inicia sesión
+                </button>
+            </div>
+
+            <!-- Separador -->
+            <div class="relative my-5">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-white/10"></div>
+                </div>
+                <div class="relative flex justify-center text-xs">
+                    <span class="bg-[#171717] px-3 text-gray-500">o continúa con</span>
+                </div>
+            </div>
+
+            <!-- Botón Google (con id para manipular su visibilidad) -->
+            <button id="google-btn" onclick="handleGoogleSignIn()"
+                class="w-full flex items-center justify-center gap-3 bg-[#0a0a0a] border border-white/10 hover:border-white/30 text-white font-semibold py-3 rounded-lg transition-all">
+                <span class="google-g-icon">
+                    <svg class="google-g-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
+                </span>
+                <span>Google</span>
+            </button>
         </div>
     </div>
 
     <!-- ================= SECCIÓN MAQUINARIA AUTOMATIZADA ================= -->
     <section id="maquinaria-automatizada"
-        class="relative w-full bg-[#050505] text-white py-24 md:py-32 overflow-hidden select-none">
+        class="relative w-full bg-[#050505] text-white py-24 md:py-32 overflow-hidden select-none section-transition">
         <style>
-            :root {
-                --rs-orange: #FF3C00;
-                --rs-orange-glow: rgba(255, 60, 0, 0.15);
-                --rs-card-bg: rgba(12, 12, 12, 0.85);
-                --rs-border-subtle: rgba(255, 255, 255, 0.03);
-            }
-
             .premium-title-frame {
                 background: rgba(255, 255, 255, 0.015);
                 backdrop-filter: blur(16px);
                 border: 1px solid rgba(255, 255, 255, 0.03);
-                border-left: 3px solid var(--rs-orange);
+                border-left: 3px solid #FF3C00;
             }
 
             .neon-phase-number {
@@ -843,14 +837,13 @@
                         data-i18n="machineryTitle">Creamos su ecosistema digital</h2>
                 </div>
             </div>
-            <div id="cards-stack-wrapper" class="space-y-10 md:space-y-14 w-full">
+            <div id="cards-stack-wrapper" class="space-y-12 md:space-y-16 w-full">
                 <!-- Card Fase 1 -->
                 <div id="card-phase-1"
-                    class="stacking-card sticky top-24 w-full rounded-2xl border border-white/[0.03] overflow-hidden">
+                    class="stacking-card sticky top-24 w-full rounded-2xl border border-white/[0.03] overflow-hidden p-6 md:p-8">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
                         <div
                             class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 overflow-hidden rounded-l-2xl video-container">
-                            <!-- Video ajustado: se ve completo y adaptado al contenedor sin recortes -->
                             <video class="absolute inset-0 w-full h-full object-contain object-center" loop
                                 muted playsinline preload="none" loading="lazy">
                                 <source
@@ -873,9 +866,6 @@
                                                 d="M2.25 12h19.5M4.5 6h15M6 9h.008v.008H6V9z" />
                                         </svg>
                                     </div>
-                                    <div class="premium-title-frame px-3 py-0.5 rounded-md"><span
-                                            class="font-mono text-xs text-neutral-400 tracking-widest uppercase"
-                                            data-i18n="phase1Badge">PAGO ÚNICO $132.000 PESOS</span></div>
                                 </div>
                                 <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight"
                                     data-i18n="phase1Title">Sitio web + IA</h3>
@@ -894,7 +884,7 @@
                 </div>
                 <!-- Card Fase 2 -->
                 <div id="card-phase-2"
-                    class="stacking-card sticky top-28 w-full rounded-2xl border border-white/[0.03] overflow-hidden">
+                    class="stacking-card sticky top-28 w-full rounded-2xl border border-white/[0.03] overflow-hidden p-6 md:p-8">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
                         <div
                             class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 overflow-hidden rounded-l-2xl video-container">
@@ -917,9 +907,6 @@
                                                 d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                                         </svg>
                                     </div>
-                                    <div class="premium-title-frame px-3 py-0.5 rounded-md"><span
-                                            class="font-mono text-xs text-neutral-400 tracking-widest uppercase"
-                                            data-i18n="phase2Badge">PAGO ÚNICO $132.000 PESOS</span></div>
                                 </div>
                                 <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight"
                                     data-i18n="phase2Title">Campaña de ventas</h3>
@@ -937,7 +924,7 @@
                 </div>
                 <!-- Card Fase 3 -->
                 <div id="card-phase-3"
-                    class="stacking-card sticky top-32 w-full rounded-2xl border border-white/[0.03] overflow-hidden">
+                    class="stacking-card sticky top-32 w-full rounded-2xl border border-white/[0.03] overflow-hidden p-6 md:p-8">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
                         <div
                             class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 overflow-hidden rounded-l-2xl video-container">
@@ -961,9 +948,6 @@
                                                 d="M2.25 13.5h3.86a2.25 2.25 0 012.008 1.24l.885 1.77a2.25 2.25 0 002.007 1.24h1.98a2.25 2.25 0 002.007-1.24l.885-1.77a2.25 2.25 0 012.007-1.24h3.86m-18 0h18M2.25 9h18M2.25 18h18M11.47 2.47a.75.75 0 011.06 0l3 3a.75.75 0 01-1.06 1.06l-1.72-1.72V12a.75.75 0 01-1.5 0V4.81L9.53 6.53a.75.75 0 01-1.06-1.06l3-3z" />
                                         </svg>
                                     </div>
-                                    <div class="premium-title-frame px-3 py-0.5 rounded-md"><span
-                                            class="font-mono text-xs text-neutral-400 tracking-widest uppercase"
-                                            data-i18n="phase3Badge">PAGO ÚNICO $132.000 PESOS</span></div>
                                 </div>
                                 <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight"
                                     data-i18n="phase3Title">Posicionamiento SEO</h3>
@@ -979,7 +963,6 @@
                     </div>
                 </div>
             </div>
-            <!-- El bloque "EQUIPO SAPIEN" ha sido eliminado -->
         </div>
         <div id="floating-whatsapp-container"
             class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-2 group opacity-0 translate-y-10 pointer-events-none transition-all duration-500 ease-out">
@@ -1001,107 +984,272 @@
 
         <!-- ================= BURBUJA DE PERFIL CON LÓGICA DE TIEMPOS ================= -->
         <div id="profile-bubble-wrapper" class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end">
-            <!-- Globo de pensamiento (aparece y desaparece) - TEXTO ACTUALIZADO -->
             <div id="thought-bubble"
-                class="thought-bubble bg-gray-800 text-white text-sm font-medium px-4 py-2 rounded-lg mb-2 max-w-[220px] text-center shadow-lg relative">
-                Un gusto, soy Cristian desde Manizales. Si necesita algo, acá estoy
+                class="thought-bubble bg-gray-800 text-white text-xs font-medium px-4 py-2 rounded-lg mb-2 max-w-[260px] text-center shadow-lg relative">
+                Un gusto, su negocio<br>a otro nivel por<br>$396.000 PESOS
             </div>
-            <!-- Burbuja de perfil (siempre visible después de aparecer) -->
             <div id="profile-bubble" class="profile-bubble relative w-14 h-14 cursor-pointer hover:scale-105 transition-transform duration-300">
                 <div class="w-full h-full rounded-full overflow-hidden border-2 border-white/20 shadow-lg">
-                    <img src="assets/Image/Avatar-Cristian.webp" alt="Cristian" class="w-full h-full object-cover">
+                    <img src="assets/Image/Avatar-Cristian.webp" alt="Cristian" class="w-full h-full object-cover" loading="lazy" decoding="async">
                 </div>
                 <span class="absolute bottom-0 right-0 h-3 w-3 bg-green-500 rounded-full border-2 border-white shadow-lg animate-led-pulse z-10"></span>
             </div>
         </div>
 
         <script>
-                (function () { 
-                    document.addEventListener('DOMContentLoaded', () => { 
-                        const videoObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.play(); else entry.target.pause(); }) }, { threshold: 0.3 }); 
-                        document.querySelectorAll('video').forEach(video => { videoObserver.observe(video); }); 
-                        const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; revealObserver.unobserve(entry.target); } }) }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" }); 
-                        document.querySelectorAll('.raw-reveal').forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(15px)'; el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)'; revealObserver.observe(el); }); 
-                        const cards = document.querySelectorAll('.stacking-card'); 
-                        window.addEventListener('scroll', () => { cards.forEach((card, index) => { const cardTop = card.getBoundingClientRect().top; if (cardTop <= (96 + (index * 12))) { const factor = Math.max(0.94, 1 - (Math.abs(cardTop - 96) / 6000)); card.style.transform = `scale(${factor})`; card.style.opacity = `${Math.max(0.8, 1 - (Math.abs(cardTop - 96) / 3000))}`; } else { card.style.transform = 'scale(1)'; card.style.opacity = '1'; } }) }, { passive: true }); 
+            (function () {
+                document.addEventListener('DOMContentLoaded', () => {
+                    const videoObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) entry.target.play();
+                            else entry.target.pause();
+                        })
+                    }, { threshold: 0.3 });
+                    document.querySelectorAll('video').forEach(video => {
+                        videoObserver.observe(video);
+                    });
+                    const revealObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                                revealObserver.unobserve(entry.target);
+                            }
+                        })
+                    }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+                    document.querySelectorAll('.raw-reveal').forEach(el => {
+                        el.style.opacity = '0';
+                        el.style.transform = 'translateY(15px)';
+                        el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                        revealObserver.observe(el);
+                    });
+                    const cards = document.querySelectorAll('.stacking-card');
+                    window.addEventListener('scroll', () => {
+                        cards.forEach((card, index) => {
+                            const cardTop = card.getBoundingClientRect().top;
+                            if (cardTop <= (96 + (index * 12))) {
+                                const factor = Math.max(0.94, 1 - (Math.abs(cardTop - 96) / 6000));
+                                card.style.transform = `scale(${factor})`;
+                                card.style.opacity = `${Math.max(0.8, 1 - (Math.abs(cardTop - 96) / 3000))}`;
+                            } else {
+                                card.style.transform = 'scale(1)';
+                                card.style.opacity = '1';
+                            }
+                        })
+                    }, { passive: true });
 
-                        // ========== OBSERVER PARA EL BOTÓN DE WHATSAPP Y OCULTAR BURBUJA ==========
-                        const whatsappContainer = document.getElementById('floating-whatsapp-container'); 
-                        const targetCardPhase2 = document.getElementById('card-phase-2'); 
-                        const profileWrapper = document.getElementById('profile-bubble-wrapper');
+                    // WhatsApp floating button
+                    const whatsappContainer = document.getElementById('floating-whatsapp-container');
+                    const targetCardPhase2 = document.getElementById('card-phase-2');
+                    const profileWrapper = document.getElementById('profile-bubble-wrapper');
 
-                        if (whatsappContainer && targetCardPhase2) { 
-                            const observer = new IntersectionObserver((entries) => { 
-                                entries.forEach(entry => { 
-                                    // Condición para mostrar el botón de WhatsApp
-                                    const shouldShow = entry.isIntersecting || entry.boundingClientRect.top < 0;
-                                    if (shouldShow) { 
-                                        // Mostrar botón
-                                        whatsappContainer.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none'); 
-                                        whatsappContainer.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto'); 
-                                        // Ocultar burbuja de perfil si está visible
-                                        if (profileWrapper) {
-                                            profileWrapper.style.display = 'none';
-                                        }
-                                    } else { 
-                                        // Ocultar botón (pero no mostramos la burbuja de nuevo)
-                                        whatsappContainer.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto'); 
-                                        whatsappContainer.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none'); 
-                                        // No volvemos a mostrar la burbuja
-                                    } 
-                                }) 
-                            }, { threshold: 0.05, rootMargin: "0px 0px -10% 0px" }); 
-                            observer.observe(targetCardPhase2); 
+                    if (whatsappContainer && targetCardPhase2) {
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                const shouldShow = entry.isIntersecting || entry.boundingClientRect.top < 0;
+                                if (shouldShow) {
+                                    whatsappContainer.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                                    whatsappContainer.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                                    if (profileWrapper) {
+                                        profileWrapper.style.display = 'none';
+                                    }
+                                } else {
+                                    whatsappContainer.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                                    whatsappContainer.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                                }
+                            })
+                        }, { threshold: 0.05, rootMargin: "0px 0px -10% 0px" });
+                        observer.observe(targetCardPhase2);
+                    }
+
+                    // Profile bubble logic
+                    const profileBubble = document.getElementById('profile-bubble');
+                    const thoughtBubble = document.getElementById('thought-bubble');
+
+                    profileBubble.style.display = 'none';
+                    thoughtBubble.style.display = 'none';
+
+                    profileBubble.addEventListener('click', function() {
+                        window.open('https://wa.me/573012800024?text=Cristian%20como%20vamos%20cuenteme%20mas%20porfa%20🌐', '_blank');
+                    });
+
+                    setTimeout(() => {
+                        profileBubble.style.display = 'block';
+                        void profileBubble.offsetWidth;
+                        profileBubble.classList.add('visible');
+                    }, 3000);
+
+                    setTimeout(() => {
+                        if (profileBubble.style.display !== 'none') {
+                            thoughtBubble.style.display = 'block';
+                            void thoughtBubble.offsetWidth;
+                            thoughtBubble.classList.add('visible');
                         }
+                    }, 4000);
 
-                        // ========== LÓGICA DE LA BURBUJA DE PERFIL ==========
-                        const profileBubble = document.getElementById('profile-bubble');
-                        const thoughtBubble = document.getElementById('thought-bubble');
-
-                        // Inicialmente ocultos
-                        profileBubble.style.display = 'none';
-                        thoughtBubble.style.display = 'none';
-
-                        // Evento de clic para abrir WhatsApp con el mensaje de Cristian
-                        profileBubble.addEventListener('click', function() {
-                            window.open('https://wa.me/573012800024?text=Cristian%20como%20vamos%20cuenteme%20mas%20porfa%20🌐', '_blank');
-                        });
-
-                        // Aparición de la burbuja a los 3 segundos (siempre, sin condiciones)
-                        setTimeout(() => {
-                            profileBubble.style.display = 'block';
-                            void profileBubble.offsetWidth; // reflow
-                            profileBubble.classList.add('visible');
-                        }, 3000);
-
-                        // Aparición del globo de pensamiento a los 6 segundos (si la burbuja está visible)
-                        setTimeout(() => {
-                            if (profileBubble.style.display !== 'none') {
-                                thoughtBubble.style.display = 'block';
-                                void thoughtBubble.offsetWidth;
-                                thoughtBubble.classList.add('visible');
-                            }
-                        }, 6000);
-
-                        // Ocultar globo a los 9 segundos
-                        setTimeout(() => {
-                            if (thoughtBubble.classList.contains('visible')) {
-                                thoughtBubble.classList.remove('visible');
-                                setTimeout(() => {
-                                    thoughtBubble.style.display = 'none';
-                                }, 400);
-                            }
-                        }, 9000);
-
-                    }) 
-                })();
+                    setTimeout(() => {
+                        if (thoughtBubble.classList.contains('visible')) {
+                            thoughtBubble.classList.remove('visible');
+                            setTimeout(() => {
+                                thoughtBubble.style.display = 'none';
+                            }, 400);
+                        }
+                    }, 9000);
+                })
+            })();
         </script>
     </section>
 
-    <!-- ================= MANIFIESTO MAQUINARIA (NUEVA POSICIÓN) ================= -->
+    <!-- ================= SECCIÓN PRICING (AHORA EN TERCER LUGAR) ================= -->
+    <section id="seccion-5-pricing"
+        class="relative w-full min-h-screen bg-[#050505] text-white py-24 md:py-32 px-6 md:px-12 overflow-hidden snap-start selection:bg-[#FF3C00] selection:text-white section-transition">
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <div
+                class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FF3C00]/5 rounded-full blur-[120px] pointer-events-none">
+            </div>
+            <div
+                class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-neutral-800/30 rounded-full blur-[100px] pointer-events-none">
+            </div>
+            <div class="absolute inset-0 opacity-10"
+                style="background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px;">
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto w-full relative z-20 mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div class="lg:col-span-6 w-full flex flex-col justify-center relative">
+                <div
+                    class="absolute -top-4 -right-2 md:-right-6 z-30 bg-[#FF3C00] text-white text-xs md:text-xs font-bold uppercase tracking-widest py-2 px-4 rounded-full shadow-[0_0_20px_rgba(255,60,0,0.5)] animate-pulse border border-white/20 flex items-center gap-2">
+                    <span class="relative flex h-2 w-2"><span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span><span
+                            class="relative inline-flex rounded-full h-2 w-2 bg-white"></span></span><span
+                        data-i18n="slotsBadge">SOLO 4 CUPOS DISPONIBLES</span>
+                </div>
+                <div
+                    class="bg-[#0a0a0a] border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden group hover:border-[#FF3C00]/30 transition-colors duration-500">
+                    <div
+                        class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-transparent via-[#FF3C00] to-transparent opacity-50">
+                    </div>
+                    <div class="text-center mb-8">
+                        <h3 class="text-xs text-gray-400 font-mono tracking-[0.2em] uppercase mb-3"
+                            data-i18n="pricingLabel">Inversión total</h3>
+                        <div class="flex items-center justify-center gap-2"><span
+                                class="text-5xl md:text-6xl font-black text-white tracking-tighter">396.000</span><span
+                                class="text-xl text-[#FF3C00] font-black mt-3">PESOS</span></div>
+                        <span
+                            class="block text-white font-bold text-sm mt-2 uppercase tracking-widest border border-[#FF3C00]/20 bg-[#FF3C00]/5 py-1 px-3 rounded-md inline-block"
+                            data-i18n="paymentNote">PAGO ÚNICO. SIN CONTRATOS</span>
+                    </div>
+                    <div class="text-center mb-8">
+                        <p class="text-sm md:text-base text-gray-300 font-medium">
+                            Páguelo en tres fases de $132.000 PESOS — Contra entrega
+                        </p>
+                    </div>
+                    <button
+                        onclick="window.open('https://wa.me/573012800024?text=Buenas%20deseo%20una%20consultoria%20gratis%20de%2015%20minutos%20📅', '_blank')"
+                        class="w-full bg-white text-black hover:bg-[#FF3C00] hover:text-white font-bold text-sm uppercase tracking-widest py-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-[0_10px_30px_rgba(255,60,0,0.15)] hover:shadow-[0_10px_40px_rgba(255,60,0,0.4)] flex items-center justify-center gap-3"><svg
+                            class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.457 3.422 1.257 4.877L2 22l5.292-1.389c1.4.762 2.99 1.186 4.712 1.186 5.51 0 9.993-4.483 9.993-9.994C21.997 6.483 17.514 2 12.004 2zm5.787 14.394c-.242.68-.1.173-1.42 1.507-.344.348-.795.534-1.285.534-.413 0-.877-.13-1.49-.408-2.612-1.183-4.32-3.82-4.452-4.004-.127-.174-1.092-1.455-1.092-2.776 0-1.32.693-1.966.942-2.233.243-.26.533-.327.712-.327.18 0 .36 0 .513.007.16.007.373-.06.586.447.213.513.733 1.787.794 1.913.067.127.113.273.027.447-.087.173-.16.287-.313.466-.154.18-.327.4-.467.54-.153.154-.313.32-.133.627.18.307.806 1.327 1.727 2.147.92.82 1.693 1.073 2.006 1.2.313.127.493.107.68-.107.187-.213.8-1.026.933-1.22.133-.193.28-.16.473-.086.193.073 1.22.573 1.48.7.26.127.433.193.493.3.06.107.06.62-.18 1.3z" />
+                        </svg><span data-i18n="whatsappCta">Consulte gratis ahora</span></button>
+                </div>
+            </div>
+            <div class="lg:col-span-6 w-full flex flex-col justify-center">
+                <h4 class="text-xl md:text-2xl font-bold text-white mb-6" data-i18n="faqTitle">¿Dudas?</h4>
+                <div class="space-y-3 mb-12" id="faq-container">
+                    <div
+                        class="faq-item bg-[#111] border border-white/5 rounded-xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="w-full text-left p-5 flex justify-between items-center text-sm font-bold text-gray-200 hover:text-white focus:outline-none"
+                            onclick="toggleFaq(this)"><span data-i18n="faq1Q">¿Debo saber de tecnología?</span><svg
+                                class="w-5 h-5 text-[#FF3C00] transform transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg></button>
+                        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-black/50">
+                            <p class="p-5 text-sm text-gray-400 border-t border-white/5" data-i18n="faq1A">¡Para nada! Nosotros creamos todo y damos soporte cuando sea requerido siempre.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="faq-item bg-[#111] border border-white/5 rounded-xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="w-full text-left p-5 flex justify-between items-center text-sm font-bold text-gray-200 hover:text-white focus:outline-none"
+                            onclick="toggleFaq(this)"><span data-i18n="faq2Q">¿Puedo pedir cambios luego?</span><svg
+                                class="w-5 h-5 text-[#FF3C00] transform transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg></button>
+                        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-black/50">
+                            <p class="p-5 text-sm text-gray-400 border-t border-white/5" data-i18n="faq2A">Claro, tenemos soporte exclusivo con precios muy accesibles entre 29.000 y 69.000 pesos por ajuste.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-white/10 pt-8"><span
+                        class="text-xs uppercase tracking-widest text-gray-400 font-bold mb-4 block"
+                        data-i18n="standardsTitle">Calidad con respaldo</span>
+                    <div class="flex flex-wrap gap-6 items-center">
+                        <div
+                            class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-all duration-300 group">
+                            <svg class="w-8 h-8 text-gray-400 group-hover:text-blue-500 transition-colors"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
+                            </svg>
+                            <div class="flex flex-col"><span class="text-[9px] font-mono text-gray-400">Ley 1581 de
+                                    2012</span><span class="text-xs font-bold text-white">Protección de Datos</span>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-all duration-300 group">
+                            <svg class="w-8 h-8 text-gray-400 group-hover:text-green-500 transition-colors"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.9 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                            </svg>
+                            <div class="flex flex-col"><span class="text-[9px] font-mono text-gray-400">Iniciativa
+                                    Global</span><span class="text-xs font-bold text-white">Open Source OSI</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="social-proof-toast"
+            class="fixed bottom-6 right-4 sm:right-6 z-[60] transform translate-y-[150%] opacity-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none">
+            <div
+                class="bg-[#111]/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-[0_15px_40px_rgba(0,0,0,0.8)] flex items-center gap-4 w-[300px] md:w-[340px]">
+                <div class="relative shrink-0">
+                    <div class="absolute inset-0 bg-[#FF3C00] rounded-full animate-ping opacity-20"></div>
+                    <div
+                        class="w-10 h-10 bg-[#FF3C00]/10 border border-[#FF3C00]/30 rounded-full flex items-center justify-center text-xl">
+                        <span id="sp-flag">🇨🇴</span></div>
+                </div>
+                <div class="flex flex-col"><span id="sp-business" class="text-white text-sm font-bold">...</span><span
+                        id="sp-location" class="text-gray-400 text-[11px] mb-1">...</span><span id="sp-action"
+                        class="text-[#FF3C00] text-xs font-mono uppercase tracking-wider font-bold">...</span></div>
+                <div class="absolute top-2 right-2 text-gray-600 text-xs">Justo ahora</div>
+            </div>
+        </div>
+        <!-- OLA INFERIOR (conecta con la siguiente sección clara) -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 transform rotate-180">
+            <svg class="relative block w-full h-[50px] md:h-[70px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="waveGrad1" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#050505" />
+                        <stop offset="100%" stop-color="#F8F9FA" />
+                    </linearGradient>
+                </defs>
+                <path d="M0,0 L0,20 Q300,80 600,60 T1200,20 L1200,0 Z" fill="url(#waveGrad1)" />
+            </svg>
+        </div>
+        <script>
+            function toggleFaq(button) { const content = button.nextElementSibling; const icon = button.querySelector('svg'); const allContents = document.querySelectorAll('.faq-content'); const allIcons = document.querySelectorAll('.faq-item svg'); const parentItem = button.parentElement; allContents.forEach(item => { if (item !== content) { item.style.maxHeight = null; item.parentElement.classList.remove('border-[#FF3C00]/40', 'bg-white/[0.02]'); } }); allIcons.forEach(i => { if (i !== icon) i.style.transform = 'rotate(0deg)'; }); if (content.style.maxHeight) { content.style.maxHeight = null; icon.style.transform = 'rotate(0deg)'; parentItem.classList.remove('border-[#FF3C00]/40', 'bg-white/[0.02]'); } else { content.style.maxHeight = content.scrollHeight + "px"; icon.style.transform = 'rotate(180deg)'; parentItem.classList.add('border-[#FF3C00]/40', 'bg-white/[0.02]'); } }
+            document.addEventListener('DOMContentLoaded', () => { const pricingSection = document.getElementById('seccion-5-pricing'); const waButton = document.getElementById('floating-whatsapp-container'); const spToast = document.getElementById('social-proof-toast'); const storageKey = 'sp_has_seen_seq'; const cities = [{ l: "Medellín, LATAM", f: "🇨🇴" }, { l: "Manizales, LATAM", f: "🇨🇴" }, { l: "Miami, US", f: "🇺🇸" }, { l: "Bogotá, LATAM", f: "🇨🇴" }, { l: "Pereira, LATAM", f: "🇨🇴" }]; const phrases = ["Nuevo Negocio Registrado", "Nuevo Negocio Potenciado"]; function showRandomProof() { const randomCity = cities[Math.floor(Math.random() * cities.length)]; const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)]; document.getElementById('sp-business').innerText = randomPhrase; document.getElementById('sp-location').innerText = randomCity.l; document.getElementById('sp-flag').innerText = randomCity.f; document.getElementById('sp-action').innerText = "Ecosistema Desplegado"; spToast.classList.remove('translate-y-[150%]', 'opacity-0'); setTimeout(() => spToast.classList.add('translate-y-[150%]', 'opacity-0'), 5000); } const observer = new IntersectionObserver((entries) => { if (entries[0].isIntersecting) { if (waButton) waButton.style.display = 'none'; if (!localStorage.getItem(storageKey)) { localStorage.setItem(storageKey, 'true'); setTimeout(() => { showRandomProof(); setTimeout(() => { showRandomProof(); setInterval(showRandomProof, 30000); }, 3000); }, 4000); } } else { if (waButton) waButton.style.display = 'flex'; } }, { threshold: 0.1 }); observer.observe(pricingSection); });
+        </script>
+    </section>
+
+    <!-- ================= MANIFIESTO MAQUINARIA ================= -->
     <section id="manifiesto-maquinaria"
-        class="relative w-full min-h-screen flex flex-col justify-center items-center bg-[#F8F9FA] text-gray-900 py-28 px-6 md:px-12 overflow-hidden snap-start selection:bg-[#FF3C00] selection:text-white">
-        <!-- Ola superior mejorada con gradiente y curva suave -->
+        class="relative w-full min-h-screen flex flex-col justify-center items-center bg-[#F8F9FA] text-gray-900 py-24 md:py-32 px-6 md:px-12 overflow-hidden snap-start selection:bg-[#FF3C00] selection:text-white section-transition">
         <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-10">
             <svg class="relative block w-full h-[50px] md:h-[70px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <defs>
@@ -1128,7 +1276,6 @@
 
         <div
             class="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <!-- Columna izquierda: texto -->
             <div class="flex flex-col justify-center items-start w-full order-1">
                 <span
                     class="px-4 py-1.5 mb-6 text-xs md:text-xs font-mono font-bold tracking-[0.2em] uppercase text-[#FF3C00] bg-white border border-gray-200 shadow-sm rounded-full flex items-center gap-2"><span
@@ -1143,30 +1290,25 @@
                             class="inline-block w-[4px] h-[1em] bg-[#FF3C00] ml-2 animate-blink"></span>
                     </h2>
                 </div>
-                <!-- Contenedor para el texto dinámico del slider -->
                 <div id="slide-text-container" class="w-full max-w-lg">
                     <p id="slide-text-content" class="text-gray-600 text-sm md:text-base font-medium leading-relaxed slide-text active transition-all duration-500">
                         Vea cómo funciona su ecosistema desde un panel intuitivo.
                     </p>
                 </div>
             </div>
-            <!-- Columna derecha: smartphone slider con interacción swipe -->
             <div class="w-full order-2 flex justify-center lg:justify-end">
                 <div class="phone-frame w-full max-w-[300px] md:max-w-[320px]">
                     <div class="phone-screen relative">
-                        <!-- Notch / cámara frontal -->
                         <div class="phone-notch">
                             <div class="speaker"></div>
                             <div class="camera"></div>
                         </div>
-                        <!-- Slider -->
                         <div id="smartphone-slider" class="slide-container">
                             <div class="slide-item"><img src="assets/Image/slide1.webp" alt="Slide 1" loading="lazy" decoding="async"></div>
                             <div class="slide-item"><img src="assets/Image/slide2.webp" alt="Slide 2" loading="lazy" decoding="async"></div>
                             <div class="slide-item"><img src="assets/Image/slide3.webp" alt="Slide 3" loading="lazy" decoding="async"></div>
                             <div class="slide-item"><img src="assets/Image/slide4.webp" alt="Slide 4" loading="lazy" decoding="async"></div>
                         </div>
-                        <!-- Dots -->
                         <div class="slide-dots">
                             <span class="active"></span>
                             <span></span>
@@ -1178,26 +1320,12 @@
             </div>
         </div>
 
-        <div id="scroll-prompt"
-            class="absolute bottom-6 left-1/2 -translate-x-1/2 opacity-0 transition-opacity duration-1000 flex flex-col items-center gap-2 cursor-pointer pointer-events-none group z-20"
-            onclick="document.getElementById('seccion-5-pricing').scrollIntoView({behavior:'smooth'})">
-            <span
-                class="text-gray-500 text-xs uppercase tracking-widest font-mono group-hover:text-gray-900 transition-colors font-bold"
-                data-i18n="scrollInvestment">Ver Inversión</span>
-            <div
-                class="w-6 h-10 border-2 border-gray-400 group-hover:border-[#FF3C00] transition-colors rounded-full flex justify-center p-1 bg-white shadow-sm">
-                <div class="w-1 h-2 bg-[#FF3C00] rounded-full animate-scroll-wheel"></div>
-            </div>
-        </div>
-
         <script>
             (function() {
-                // Efecto máquina de escribir
                 const typeText = "Monitoree su negocio 24/7";
                 const typeElement = document.getElementById('typewriter-text');
                 const cursor = document.getElementById('typewriter-cursor');
                 const paragraph = document.getElementById('slide-text-content');
-                const scrollPrompt = document.getElementById('scroll-prompt');
                 let isTyped = false;
 
                 const typeWriter = (text, i, cb) => {
@@ -1215,17 +1343,12 @@
                             isTyped = true;
                             typeWriter(typeText, 0, () => {
                                 cursor.style.display = 'none';
-                                setTimeout(() => {
-                                    scrollPrompt.classList.remove('opacity-0', 'pointer-events-none');
-                                    scrollPrompt.classList.add('pointer-events-auto');
-                                }, 800);
                             });
                         }
                     });
                 }, { threshold: 0.3 });
                 observer.observe(document.getElementById('manifiesto-maquinaria'));
 
-                // Slider de smartphone con auto-scroll cada 3 segundos y swipe
                 const slider = document.getElementById('smartphone-slider');
                 const dots = document.querySelectorAll('.slide-dots span');
                 const textContainer = document.getElementById('slide-text-content');
@@ -1253,14 +1376,12 @@
                     currentIndex = index;
                     const offset = -currentIndex * 100;
                     slider.style.transform = `translateX(${offset}%)`;
-                    // Actualizar dots
                     dots.forEach((dot, i) => {
                         dot.classList.toggle('active', i === currentIndex);
                     });
-                    // Actualizar texto
                     textContainer.textContent = slideTexts[currentIndex];
                     textContainer.classList.remove('active');
-                    void textContainer.offsetWidth; // reflow
+                    void textContainer.offsetWidth;
                     textContainer.classList.add('active');
                 }
 
@@ -1270,7 +1391,7 @@
 
                 function startAutoPlay() {
                     if (autoPlayInterval) clearInterval(autoPlayInterval);
-                    autoPlayInterval = setInterval(nextSlide, 3000); // Cambiado a 3 segundos
+                    autoPlayInterval = setInterval(nextSlide, 3000);
                 }
 
                 function stopAutoPlay() {
@@ -1280,19 +1401,15 @@
                     }
                 }
 
-                // Inicializar
                 goToSlide(0);
                 startAutoPlay();
 
-                // ========== INTERACCIÓN SWIPE ==========
                 const phoneScreen = document.querySelector('.phone-screen');
 
-                // Touch events
                 phoneScreen.addEventListener('touchstart', touchStart, { passive: true });
                 phoneScreen.addEventListener('touchmove', touchMove, { passive: true });
                 phoneScreen.addEventListener('touchend', touchEnd, { passive: true });
 
-                // Mouse events (drag)
                 phoneScreen.addEventListener('mousedown', mouseDown, { passive: true });
                 phoneScreen.addEventListener('mousemove', mouseMove, { passive: true });
                 phoneScreen.addEventListener('mouseup', mouseUp, { passive: true });
@@ -1314,7 +1431,6 @@
                     const touch = e.touches[0];
                     const diff = startX - touch.clientX;
                     const percent = (diff / phoneScreen.offsetWidth) * 100;
-                    // Limitar el desplazamiento
                     const baseOffset = -currentIndex * 100;
                     let newOffset = baseOffset - percent;
                     if (newOffset > 0) newOffset = 0;
@@ -1326,24 +1442,20 @@
                 function touchEnd(e) {
                     if (!isSwiping) return;
                     isSwiping = false;
-                    const threshold = 30; // umbral de desplazamiento en píxeles
+                    const threshold = 30;
                     const diff = startX - (e.changedTouches[0].clientX);
                     if (Math.abs(diff) > threshold) {
                         if (diff > 0) {
-                            // swipe izquierda -> siguiente
                             goToSlide(currentIndex + 1);
                         } else {
-                            // swipe derecha -> anterior
                             goToSlide(currentIndex - 1);
                         }
                     } else {
-                        // volver a la posición actual
                         goToSlide(currentIndex);
                     }
                     startAutoPlay();
                 }
 
-                // Mouse drag
                 let isMouseDown = false;
                 let mouseStartX = 0;
 
@@ -1381,14 +1493,12 @@
                     startAutoPlay();
                 }
 
-                // Pausar en hover/touch
                 const phoneFrame = document.querySelector('.phone-frame');
                 phoneFrame.addEventListener('mouseenter', stopAutoPlay);
                 phoneFrame.addEventListener('mouseleave', startAutoPlay);
                 phoneFrame.addEventListener('touchstart', stopAutoPlay, { passive: true });
                 phoneFrame.addEventListener('touchend', startAutoPlay, { passive: true });
 
-                // Reanudar cuando la sección es visible
                 const sectionObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -1399,21 +1509,31 @@
                     });
                 }, { threshold: 0.3 });
                 sectionObserver.observe(document.getElementById('manifiesto-maquinaria'));
-
             })();
         </script>
+        <!-- Ola inferior (conecta con Casos de éxito) -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 transform rotate-180">
+            <svg class="relative block w-full h-[50px] md:h-[70px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="waveGrad3" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#0A0A0A" />
+                        <stop offset="100%" stop-color="#050505" />
+                    </linearGradient>
+                </defs>
+                <path d="M0,0 L0,20 Q300,80 600,60 T1200,20 L1200,0 Z" fill="url(#waveGrad3)" />
+            </svg>
+        </div>
     </section>
 
-    <!-- ================= CASOS DE ÉXITO (ECOSISTEMAS) - REDISEÑO VIDRIO 3D ================= -->
+    <!-- ================= CASOS DE ÉXITO ================= -->
     <section id="casos-exito-ecosistemas"
-        class="relative w-full bg-[#0A0A0A] text-white py-28 md:py-36 overflow-hidden selection:bg-[#FF3C00] selection:text-white">
+        class="relative w-full bg-[#0A0A0A] text-white py-24 md:py-32 overflow-hidden selection:bg-[#FF3C00] selection:text-white section-transition">
 
-        <!-- Ola superior mejorada con gradiente y curva suave -->
         <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-10">
             <svg class="relative block w-full h-[50px] md:h-[70px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <defs>
                     <linearGradient id="waveGrad2" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#F8F9FA" />
+                        <stop offset="0%" stop-color="#050505" />
                         <stop offset="100%" stop-color="#0A0A0A" />
                     </linearGradient>
                 </defs>
@@ -1421,7 +1541,6 @@
             </svg>
         </div>
 
-        <!-- Fondos decorativos (se mantienen igual) -->
         <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
             <div class="absolute inset-0"
                 style="background-image: radial-gradient(#333 0.5px, transparent 0.5px); background-size: 30px 30px;">
@@ -1435,7 +1554,6 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <!-- Encabezado -->
             <div class="flex flex-col md:items-end mb-20 md:mb-28">
                 <span class="text-[#FF3C00] font-mono tracking-[0.4em] text-xs uppercase font-bold mb-4"
                     data-i18n="portfolioBadge">Adaptable a su nicho</span>
@@ -1443,9 +1561,7 @@
                     Validado en negocios reales</h2>
             </div>
 
-            <!-- Slider de tarjetas con estilo vidrio 3D -->
             <div class="relative group">
-                <!-- Botones de navegación (desktop) -->
                 <button id="prevBtn"
                     class="absolute -left-4 top-1/2 z-20 hidden md:flex bg-[#111] p-3 rounded-full border border-white/10 hover:border-[#FF3C00] transition-colors"><svg
                         class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1457,7 +1573,6 @@
                         <path d="M9 5l7 7-7 7"></path>
                     </svg></button>
 
-                <!-- Indicadores móviles -->
                 <button id="leftIndicator"
                     class="absolute left-2 top-1/2 -translate-y-1/2 z-30 md:hidden bg-black/20 backdrop-blur-sm p-2 rounded-full border border-white/5 opacity-0 transition-all duration-300"><svg
                         class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1469,11 +1584,9 @@
                         <path d="M9 5l7 7-7 7"></path>
                     </svg></button>
 
-                <!-- Contenedor del slider -->
                 <div id="ecosystem-slider"
                     class="flex md:grid md:grid-cols-4 gap-6 overflow-x-auto pb-8 snap-x scrollbar-hide scroll-smooth">
 
-                    <!-- TARJETA 1: Gastronomía -->
                     <article
                         class="min-w-[260px] md:min-w-0 flex flex-col items-center bg-transparent snap-start transition-all duration-300 hover:scale-[1.02]">
                         <div class="w-full max-w-[260px] aspect-[9/16]">
@@ -1482,7 +1595,7 @@
                                     <img src="assets/Image/Dayro.webp"
                                          alt="Caso de éxito La Plancha Manizales"
                                          class="v11-app-ui"
-                                         style="width:100%; height:100%; object-fit:cover; opacity:0.75; transition:0.5s;">
+                                         style="width:100%; height:100%; object-fit:cover; opacity:0.75; transition:0.5s;" loading="lazy" decoding="async">
                                     <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
                                         <h3 class="text-base md:text-lg font-bold text-white mb-1" data-i18n="case1Title">Gastronomía</h3>
                                         <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-3" data-i18n="case1Desc">Logramos para La Plancha Manizales domicilios a 1.000 pesos directo a WhatsApp, web IA y validación de Dayro Moreno.</p>
@@ -1496,7 +1609,6 @@
                         </div>
                     </article>
 
-                    <!-- TARJETA 2: Detailing -->
                     <article
                         class="min-w-[260px] md:min-w-0 flex flex-col items-center bg-transparent snap-start transition-all duration-300 hover:scale-[1.02]">
                         <div class="w-full max-w-[260px] aspect-[9/16]">
@@ -1505,7 +1617,7 @@
                                     <img src="assets/Image/Brossmanizales.webp"
                                          alt="Caso de éxito Bross Manizales"
                                          class="v11-app-ui"
-                                         style="width:100%; height:100%; object-fit:cover; opacity:0.75; transition:0.5s;">
+                                         style="width:100%; height:100%; object-fit:cover; opacity:0.75; transition:0.5s;" loading="lazy" decoding="async">
                                     <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
                                         <h3 class="text-base md:text-lg font-bold text-white mb-1" data-i18n="case2Title">Detailing y Automotriz</h3>
                                         <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-3" data-i18n="case2Desc">El ecosistema logró +300 clientes potenciales para Bross Manizales con $250k y un sitio web que cierra agendas.</p>
@@ -1519,7 +1631,6 @@
                         </div>
                     </article>
 
-                    <!-- TARJETA 3: Fast & Grill -->
                     <article
                         class="min-w-[260px] md:min-w-0 flex flex-col items-center bg-transparent snap-start transition-all duration-300 hover:scale-[1.02]">
                         <div class="w-full max-w-[260px] aspect-[9/16]">
@@ -1528,7 +1639,7 @@
                                     <img src="assets/Image/Srmedrano.webp"
                                          alt="Caso de éxito Señor Medrano"
                                          class="v11-app-ui"
-                                         style="width:100%; height:100%; object-fit:cover; opacity:0.75; transition:0.5s;">
+                                         style="width:100%; height:100%; object-fit:cover; opacity:0.75; transition:0.5s;" loading="lazy" decoding="async">
                                     <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
                                         <h3 class="text-base md:text-lg font-bold text-white mb-1" data-i18n="case3Title">Fast & Grill</h3>
                                         <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-3" data-i18n="case3Desc">Desarrollamos para Señor Medrano: la web más avanzada de Manizales, autoridad local y reservas automatizadas.</p>
@@ -1542,7 +1653,6 @@
                         </div>
                     </article>
 
-                    <!-- TARJETA 4: Luxury E-commerce -->
                     <article
                         class="min-w-[260px] md:min-w-0 flex flex-col items-center bg-transparent snap-start transition-all duration-300 hover:scale-[1.02]">
                         <div class="w-full max-w-[260px] aspect-[9/16]">
@@ -1551,7 +1661,7 @@
                                     <img src="assets/Image/Noir.webp"
                                          alt="Caso de éxito Noir Elixir"
                                          class="v11-app-ui"
-                                         style="width:100%; height:100%; object-fit:cover; opacity:0.75; transition:0.5s;">
+                                         style="width:100%; height:100%; object-fit:cover; opacity:0.75; transition:0.5s;" loading="lazy" decoding="async">
                                     <div class="v11-overlay" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:20px 16px 25px; background:linear-gradient(to top, #000 25%, transparent 80%); text-align:left;">
                                         <h3 class="text-base md:text-lg font-bold text-white mb-1" data-i18n="case4Title">Luxury E-commerce</h3>
                                         <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-3" data-i18n="case4Desc">Red Sapien: creamos un catálogo de lujo para Noir Elixir en Medellín: con un diseño premium optimizado para ventas.</p>
@@ -1565,11 +1675,10 @@
                         </div>
                     </article>
 
-                </div> <!-- /ecosystem-slider -->
-            </div> <!-- /relative group -->
-        </div> <!-- /max-w-7xl -->
+                </div>
+            </div>
+        </div>
 
-        <!-- Ola inferior mejorada con gradiente y curva suave -->
         <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 transform rotate-180">
             <svg class="relative block w-full h-[50px] md:h-[70px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <defs>
@@ -1582,7 +1691,6 @@
             </svg>
         </div>
 
-        <!-- Script del slider (se mantiene exactamente igual) -->
         <script>
             (function () {
                 const slider = document.getElementById('ecosystem-slider');
@@ -1630,310 +1738,11 @@
                 slider.addEventListener('touchstart', stopAutoplay, { passive: true });
             })();
         </script>
-
-        <!-- Estilos inline para el efecto vidrio (se pueden mover al <style> global si se prefiere) -->
-        <style>
-            /* Efecto vidrio 3D (tomado del ejemplo sap-v11) */
-            .sap-v11-device-glass {
-                background: rgba(255, 255, 255, 0.03);
-                border-radius: 35px;
-                padding: 2px;
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                overflow: hidden;
-                box-shadow: 0 40px 70px -15px rgba(0,0,0,0.6);
-                transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-                transform-style: preserve-3d;
-            }
-            .sap-v11-device-glass:hover {
-                transform: rotateY(-4deg) rotateX(4deg) scale(1.01);
-            }
-            .v11-screen-content {
-                border-radius: 33px;
-                overflow: hidden;
-                position: relative;
-                background: #000;
-            }
-            .v11-app-ui {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                opacity: 0.75;
-                transition: opacity 0.5s ease, transform 0.5s ease;
-            }
-            .sap-v11-device-glass:hover .v11-app-ui {
-                opacity: 0.9;
-                transform: scale(1.05);
-            }
-            /* Ajustes para el overlay */
-            .v11-overlay {
-                position: absolute;
-                inset: 0;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-                padding: 20px 16px 25px;
-                background: linear-gradient(to top, #000 25%, transparent 80%);
-                text-align: left;
-                pointer-events: none;
-            }
-            .v11-overlay h3,
-            .v11-overlay p,
-            .v11-overlay a {
-                pointer-events: auto;
-            }
-            /* Ajuste para que el grid en desktop ocupe todo el ancho */
-            #ecosystem-slider article {
-                flex-shrink: 0;
-            }
-            @media (min-width: 768px) {
-                #ecosystem-slider {
-                    display: grid !important;
-                    grid-template-columns: repeat(4, 1fr);
-                    gap: 1.5rem;
-                    overflow-x: visible !important;
-                    padding-bottom: 0 !important;
-                    scroll-snap-type: none !important;
-                }
-                #ecosystem-slider article {
-                    width: 100% !important;
-                    min-width: 0 !important;
-                    max-width: none !important;
-                    scroll-snap-align: none !important;
-                }
-                #ecosystem-slider article .sap-v11-device-glass {
-                    border-radius: 28px;
-                }
-                #ecosystem-slider article .v11-screen-content {
-                    border-radius: 26px;
-                }
-            }
-            @media (max-width: 767px) {
-                #ecosystem-slider {
-                    display: flex !important;
-                    overflow-x: auto !important;
-                    scroll-snap-type: x mandatory !important;
-                    padding-bottom: 1.5rem !important;
-                    gap: 1.5rem;
-                }
-                #ecosystem-slider article {
-                    min-width: 260px !important;
-                    max-width: 260px !important;
-                    scroll-snap-align: start !important;
-                }
-            }
-        </style>
-    </section>
-
-    <!-- ================= SECCIÓN PRICING / INVERSIÓN ================= -->
-    <section id="seccion-5-pricing"
-        class="relative w-full min-h-screen bg-[#050505] text-white py-28 px-6 md:px-12 overflow-hidden snap-start selection:bg-[#FF3C00] selection:text-white">
-        <!-- Ola superior mejorada con gradiente y curva suave -->
-        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-10 transform rotate-180">
-            <svg class="relative block w-full h-[50px] md:h-[70px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <defs>
-                    <linearGradient id="waveGrad4" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#0A0A0A" />
-                        <stop offset="100%" stop-color="#050505" />
-                    </linearGradient>
-                </defs>
-                <path d="M0,0 L0,20 Q300,80 600,60 T1200,20 L1200,0 Z" fill="url(#waveGrad4)" />
-            </svg>
-        </div>
-        <div class="absolute inset-0 z-0 pointer-events-none">
-            <div
-                class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FF3C00]/5 rounded-full blur-[120px] pointer-events-none">
-            </div>
-            <div
-                class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-neutral-800/30 rounded-full blur-[100px] pointer-events-none">
-            </div>
-            <div class="absolute inset-0 opacity-10"
-                style="background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px;">
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto w-full relative z-20 mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div class="lg:col-span-6 w-full flex flex-col justify-center relative">
-                <div
-                    class="absolute -top-4 -right-2 md:-right-6 z-30 bg-[#FF3C00] text-white text-xs md:text-xs font-bold uppercase tracking-widest py-2 px-4 rounded-full shadow-[0_0_20px_rgba(255,60,0,0.5)] animate-pulse border border-white/20 flex items-center gap-2">
-                    <span class="relative flex h-2 w-2"><span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span><span
-                            class="relative inline-flex rounded-full h-2 w-2 bg-white"></span></span><span
-                        data-i18n="slotsBadge">SOLO 4 CUPOS DISPONIBLES</span>
-                </div>
-                <div
-                    class="bg-[#0a0a0a] border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden group hover:border-[#FF3C00]/30 transition-colors duration-500">
-                    <div
-                        class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-transparent via-[#FF3C00] to-transparent opacity-50">
-                    </div>
-                    <div class="text-center mb-8">
-                        <h3 class="text-xs text-gray-400 font-mono tracking-[0.2em] uppercase mb-3"
-                            data-i18n="pricingLabel">Inversión total</h3>
-                        <div class="flex items-center justify-center gap-2"><span
-                                class="text-5xl md:text-6xl font-black text-white tracking-tighter">396.000</span><span
-                                class="text-xl text-[#FF3C00] font-black mt-3">PESOS</span></div>
-                        <span
-                            class="block text-white font-bold text-sm mt-2 uppercase tracking-widest border border-[#FF3C00]/20 bg-[#FF3C00]/5 py-1 px-3 rounded-md inline-block"
-                            data-i18n="paymentNote">PAGO ÚNICO. SIN CONTRATOS</span>
-                    </div>
-                    <div class="space-y-5 mb-8">
-                        <!-- Fase 1 -->
-                        <div class="flex items-start gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
-                            <div
-                                class="w-8 h-8 rounded-full bg-[#111] flex items-center justify-center text-[#FF3C00] font-bold text-xs shrink-0 border border-white/5">
-                                33%</div>
-                            <div>
-                                <h4 class="text-sm font-bold text-white" data-i18n="priceStep1">Fase 1: Sitio web + IA</h4>
-                                <p class="text-xs mt-1 leading-relaxed">
-                                    <span class="text-[#FF3C00] font-bold" data-i18n="zeroRisk">Cero riesgo:</span>
-                                    <span class="text-gray-300" data-i18n="priceStep1Desc">Entrega en 24 horas, paga al estar listo.</span>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Fase 2 -->
-                        <div class="flex items-start gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
-                            <div
-                                class="w-8 h-8 rounded-full bg-[#111] flex items-center justify-center text-[#FF3C00] font-bold text-xs shrink-0 border border-white/5">
-                                33%</div>
-                            <div>
-                                <h4 class="text-sm font-bold text-white" data-i18n="priceStep2">Fase 2: Campaña de ventas</h4>
-                                <p class="text-xs text-gray-300 mt-1 leading-relaxed" data-i18n="priceStep2Prefix">
-                                    Lista en 48 horas, paga solo cuando esté captando clientes.
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Fase 3 -->
-                        <div class="flex items-start gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
-                            <div
-                                class="w-8 h-8 rounded-full bg-[#111] flex items-center justify-center text-[#FF3C00] font-bold text-xs shrink-0 border border-white/5">
-                                34%</div>
-                            <div>
-                                <h4 class="text-sm font-bold text-white" data-i18n="priceStep3">Fase 3: Posicionamiento SEO</h4>
-                                <p class="text-xs text-gray-300 mt-1 leading-relaxed" data-i18n="priceStep3Desc">
-                                    Listo en 24 horas, paga cuando esté posicionado en el mapa de Google.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <button
-                        onclick="window.open('https://wa.me/573012800024?text=Buenas%20deseo%20una%20consultoria%20gratso%20de%2015%20minutos%20📅', '_blank')"
-                        class="w-full bg-white text-black hover:bg-[#FF3C00] hover:text-white font-bold text-sm uppercase tracking-widest py-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-[0_10px_30px_rgba(255,60,0,0.15)] hover:shadow-[0_10px_40px_rgba(255,60,0,0.4)] flex items-center justify-center gap-3"><svg
-                            class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.457 3.422 1.257 4.877L2 22l5.292-1.389c1.4.762 2.99 1.186 4.712 1.186 5.51 0 9.993-4.483 9.993-9.994C21.997 6.483 17.514 2 12.004 2zm5.787 14.394c-.242.68-.1.173-1.42 1.507-.344.348-.795.534-1.285.534-.413 0-.877-.13-1.49-.408-2.612-1.183-4.32-3.82-4.452-4.004-.127-.174-1.092-1.455-1.092-2.776 0-1.32.693-1.966.942-2.233.243-.26.533-.327.712-.327.18 0 .36 0 .513.007.16.007.373-.06.586.447.213.513.733 1.787.794 1.913.067.127.113.273.027.447-.087.173-.16.287-.313.466-.154.18-.327.4-.467.54-.153.154-.313.32-.133.627.18.307.806 1.327 1.727 2.147.92.82 1.693 1.073 2.006 1.2.313.127.493.107.68-.107.187-.213.8-1.026.933-1.22.133-.193.28-.16.473-.086.193.073 1.22.573 1.48.7.26.127.433.193.493.3.06.107.06.62-.18 1.3z" />
-                        </svg><span data-i18n="whatsappCta">Consulte gratis ahora</span></button>
-                </div>
-            </div>
-            <div class="lg:col-span-6 w-full flex flex-col justify-center">
-                <h4 class="text-xl md:text-2xl font-bold text-white mb-6" data-i18n="faqTitle">¿Dudas?</h4>
-                <div class="space-y-3 mb-12" id="faq-container">
-                    <div
-                        class="faq-item bg-[#111] border border-white/5 rounded-xl overflow-hidden transition-all duration-300">
-                        <button
-                            class="w-full text-left p-5 flex justify-between items-center text-sm font-bold text-gray-200 hover:text-white focus:outline-none"
-                            onclick="toggleFaq(this)"><span data-i18n="faq1Q">¿Debo saber de tecnología?</span><svg
-                                class="w-5 h-5 text-[#FF3C00] transform transition-transform duration-300" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg></button>
-                        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-black/50">
-                            <p class="p-5 text-sm text-gray-400 border-t border-white/5" data-i18n="faq1A">¡Para nada! Nosotros creamos todo y damos soporte cuando sea requerido siempre.</p>
-                        </div>
-                    </div>
-                    <div
-                        class="faq-item bg-[#111] border border-white/5 rounded-xl overflow-hidden transition-all duration-300">
-                        <button
-                            class="w-full text-left p-5 flex justify-between items-center text-sm font-bold text-gray-200 hover:text-white focus:outline-none"
-                            onclick="toggleFaq(this)"><span data-i18n="faq2Q">¿Puedo pedir cambios luego?</span><svg
-                                class="w-5 h-5 text-[#FF3C00] transform transition-transform duration-300" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg></button>
-                        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-black/50">
-                            <p class="p-5 text-sm text-gray-400 border-t border-white/5" data-i18n="faq2A">Claro, tenemos soporte exclusivo con precios muy accesibles entre 29.000 y 69.000 pesos por ajuste.</p>
-                        </div>
-                    </div>
-                    <div
-                        class="faq-item bg-[#111] border border-white/5 rounded-xl overflow-hidden transition-all duration-300">
-                        <button
-                            class="w-full text-left p-5 flex justify-between items-center text-sm font-bold text-gray-200 hover:text-white focus:outline-none"
-                            onclick="toggleFaq(this)"><span data-i18n="faq3Q">¿Soy dueñ@ del ecosistema?</span><svg
-                                class="w-5 h-5 text-[#FF3C00] transform transition-transform duration-300" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg></button>
-                        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-black/50">
-                            <p class="p-5 text-sm text-gray-400 border-t border-white/5" data-i18n="faq3A">Claro, la web, IA, campañas, Google y SEO serán suyos desde el primer día y para siempre.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="border-t border-white/10 pt-8"><span
-                        class="text-xs uppercase tracking-widest text-gray-400 font-bold mb-4 block"
-                        data-i18n="standardsTitle">Calidad con respaldo</span>
-                    <div class="flex flex-wrap gap-6 items-center">
-                        <div
-                            class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-all duration-300 group">
-                            <svg class="w-8 h-8 text-gray-400 group-hover:text-blue-500 transition-colors"
-                                fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
-                            </svg>
-                            <div class="flex flex-col"><span class="text-[9px] font-mono text-gray-400">Ley 1581 de
-                                    2012</span><span class="text-xs font-bold text-white">Protección de Datos</span>
-                            </div>
-                        </div>
-                        <div
-                            class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-all duration-300 group">
-                            <svg class="w-8 h-8 text-gray-400 group-hover:text-green-500 transition-colors"
-                                fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
-                            </svg>
-                            <div class="flex flex-col"><span class="text-[9px] font-mono text-gray-400">Iniciativa
-                                    Global</span><span class="text-xs font-bold text-white">Open Source OSI</span></div>
-                        </div>
-                        <div
-                            class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-all duration-300 group">
-                            <svg class="w-8 h-8 text-gray-400 group-hover:text-yellow-500 transition-colors"
-                                fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
-                            </svg>
-                            <div class="flex flex-col"><span class="text-[9px] font-mono text-gray-400">Cifrado de
-                                    Extremo</span><span class="text-xs font-bold text-white">SSL AES-256</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="social-proof-toast"
-            class="fixed bottom-6 right-4 sm:right-6 z-[60] transform translate-y-[150%] opacity-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none">
-            <div
-                class="bg-[#111]/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-[0_15px_40px_rgba(0,0,0,0.8)] flex items-center gap-4 w-[300px] md:w-[340px]">
-                <div class="relative shrink-0">
-                    <div class="absolute inset-0 bg-[#FF3C00] rounded-full animate-ping opacity-20"></div>
-                    <div
-                        class="w-10 h-10 bg-[#FF3C00]/10 border border-[#FF3C00]/30 rounded-full flex items-center justify-center text-xl">
-                        <span id="sp-flag">🇨🇴</span></div>
-                </div>
-                <div class="flex flex-col"><span id="sp-business" class="text-white text-sm font-bold">...</span><span
-                        id="sp-location" class="text-gray-400 text-[11px] mb-1">...</span><span id="sp-action"
-                        class="text-[#FF3C00] text-xs font-mono uppercase tracking-wider font-bold">...</span></div>
-                <div class="absolute top-2 right-2 text-gray-600 text-xs">Justo ahora</div>
-            </div>
-        </div>
-        <script>
-            function toggleFaq(button) { const content = button.nextElementSibling; const icon = button.querySelector('svg'); const allContents = document.querySelectorAll('.faq-content'); const allIcons = document.querySelectorAll('.faq-item svg'); const parentItem = button.parentElement; allContents.forEach(item => { if (item !== content) { item.style.maxHeight = null; item.parentElement.classList.remove('border-[#FF3C00]/40', 'bg-white/[0.02]'); } }); allIcons.forEach(i => { if (i !== icon) i.style.transform = 'rotate(0deg)'; }); if (content.style.maxHeight) { content.style.maxHeight = null; icon.style.transform = 'rotate(0deg)'; parentItem.classList.remove('border-[#FF3C00]/40', 'bg-white/[0.02]'); } else { content.style.maxHeight = content.scrollHeight + "px"; icon.style.transform = 'rotate(180deg)'; parentItem.classList.add('border-[#FF3C00]/40', 'bg-white/[0.02]'); } }
-            document.addEventListener('DOMContentLoaded', () => { const pricingSection = document.getElementById('seccion-5-pricing'); const waButton = document.getElementById('floating-whatsapp-container'); const spToast = document.getElementById('social-proof-toast'); const storageKey = 'sp_has_seen_seq'; const cities = [{ l: "Medellín, LATAM", f: "🇨🇴" }, { l: "Manizales, LATAM", f: "🇨🇴" }, { l: "Miami, US", f: "🇺🇸" }, { l: "Bogotá, LATAM", f: "🇨🇴" }, { l: "Pereira, LATAM", f: "🇨🇴" }]; const phrases = ["Nuevo Negocio Registrado", "Nuevo Negocio Potenciado"]; function showRandomProof() { const randomCity = cities[Math.floor(Math.random() * cities.length)]; const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)]; document.getElementById('sp-business').innerText = randomPhrase; document.getElementById('sp-location').innerText = randomCity.l; document.getElementById('sp-flag').innerText = randomCity.f; document.getElementById('sp-action').innerText = "Ecosistema Desplegado"; spToast.classList.remove('translate-y-[150%]', 'opacity-0'); setTimeout(() => spToast.classList.add('translate-y-[150%]', 'opacity-0'), 5000); } const observer = new IntersectionObserver((entries) => { if (entries[0].isIntersecting) { if (waButton) waButton.style.display = 'none'; if (!localStorage.getItem(storageKey)) { localStorage.setItem(storageKey, 'true'); setTimeout(() => { showRandomProof(); setTimeout(() => { showRandomProof(); setInterval(showRandomProof, 30000); }, 3000); }, 4000); } } else { if (waButton) waButton.style.display = 'flex'; } }, { threshold: 0.1 }); observer.observe(pricingSection); });
-        </script>
     </section>
 
     <!-- ================= FOOTER ================= -->
     <footer id="footer-red-sapien"
-        class="relative w-full overflow-hidden z-50 selection:bg-[#FF3C00] selection:text-white">
+        class="relative w-full overflow-hidden z-50 selection:bg-[#FF3C00] selection:text-white section-transition">
         <div
             class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#050505] to-transparent z-20 pointer-events-none">
         </div>
@@ -1978,17 +1787,6 @@
                                 <circle cx="50" cy="86" r="2" fill="#DAA520" />
                             </svg></div>
                     </div>
-                    <div class="space-y-4 flex flex-col items-center md:items-start">
-                        <div
-                            class="inline-flex items-center gap-2 bg-[#FF3C00]/5 border border-[#FF3C00]/30 px-5 py-2.5 rounded-full shadow-[0_0_15px_rgba(255,60,0,0.1)]">
-                            <span class="relative flex h-2 w-2"><span
-                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF3C00] opacity-75"></span><span
-                                    class="relative inline-flex rounded-full h-2 w-2 bg-[#FF3C00]"></span></span><span
-                                class="text-xs md:text-sm font-mono font-bold uppercase tracking-[0.2em] text-[#FF3C00]"
-                                data-i18n="footerManizales">Orgullosamente Manizaleñ@s</span></div>
-                        <p class="text-sm text-gray-300 leading-relaxed max-w-[90%] font-normal"
-                            data-i18n="footerDescription">Democratizamos tecnología tipo SpaceX, Amazon, McDonald's y Audi para potenciar su negocio en Colombia. Somos comunidad abierta, buscamos voluntarios de todas las áreas. ¡Únase, aporte y transformemos el mercado!</p>
-                    </div>
                     <div class="flex items-center justify-center md:justify-start gap-4 mt-4 w-full"><a
                             href="https://github.com/" target="_blank"
                             class="w-12 h-12 rounded-xl bg-[#0A0A0A] border border-white/10 flex items-center justify-center text-gray-500 hover:bg-[#FF3C00] hover:text-white hover:border-[#FF3C00] transition-all duration-300 transform hover:-translate-y-1 shadow-[0_0_0_rgba(255,60,0,0)] hover:shadow-[0_10px_20px_rgba(255,60,0,0.3)]"><svg
@@ -2007,17 +1805,16 @@
                     <div class="flex flex-col gap-5">
                         <h4 class="text-white font-bold text-xs tracking-[0.2em] uppercase border-b border-white/10 pb-3 mb-2"
                             data-i18n="footerNodes">Comenzar</h4>
-                        <button onclick="openRegisterModal()"
+                        <button onclick="openRegisterModal('register')"
                             class="text-sm text-gray-400 hover:text-[#FF3C00] transition-colors flex items-center justify-center md:justify-start gap-3 group">
                             <span class="w-1.5 h-1.5 bg-gray-700 rounded-full group-hover:bg-[#FF3C00] group-hover:shadow-[0_0_8px_#FF3C00] transition-all"></span>
                             <span data-i18n="footerActivate">Únase ahora</span>
                         </button>
-                        <a href="/login"
+                        <button onclick="openRegisterModal('login')"
                             class="text-sm text-gray-400 hover:text-[#FF3C00] transition-colors flex items-center justify-center md:justify-start gap-3 group">
                             <span class="w-1.5 h-1.5 bg-gray-700 rounded-full group-hover:bg-[#FF3C00] group-hover:shadow-[0_0_8px_#FF3C00] transition-all"></span>
                             <span data-i18n="footerLogin">Inicie Sesión</span>
-                        </a>
-                        <!-- Enlaces eliminados: Inversionistas y SweetNella -->
+                        </button>
                     </div>
                     <div class="flex flex-col gap-5">
                         <h4 class="text-white font-bold text-xs tracking-[0.2em] uppercase border-b border-white/10 pb-3 mb-2"
@@ -2156,8 +1953,7 @@
             </div>
             <div class="flex flex-col items-center justify-center gap-3 text-center border-t border-white/10 pt-8">
                 <p class="text-xs md:text-[11px] text-gray-400 uppercase tracking-[0.2em] leading-relaxed max-w-4xl font-bold"
-                    data-i18n="copyright">© 2026 Red Sapien. Todos los derechos para el mundo en esta versión</p>
-                <!-- Párrafo "Hecho con pasión..." eliminado -->
+                    data-i18n="copyright">© RED SAPIEN TODOS LOS DERECHOS PARA EL MUNDO...</p>
             </div>
         </div>
         <script>
@@ -2258,7 +2054,222 @@
     <!-- ================= SCRIPTS GLOBALES Y TRADUCCIÓN ================= -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // Diccionario de traducciones completo (es, en, pt) - ACTUALIZADO con "Hablemos"
+        // ================================================================
+        // 1. CONFIGURACIÓN DE SUPABASE
+        // ================================================================
+        const SUPABASE_URL = 'https://krygvuvvenizgebincle.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_06DbVVwkvlDKQ-xYoTyRxg_o4rDpaUh';
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const DASHBOARD_PATH = './dashboard/index.html';
+
+        // ================================================================
+        // 2. ESTADO DEL FORMULARIO (LOGIN / REGISTER)
+        // ================================================================
+        let authMode = 'register'; // 'register' | 'login'
+
+        // ================================================================
+        // 3. ELEMENTOS DEL DOM
+        // ================================================================
+        const modal = document.getElementById('register-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalSubtitle = document.getElementById('modal-subtitle');
+        const btnSubmit = document.getElementById('btn-submit');
+        const toggleBtn = document.getElementById('toggle-mode-btn');
+        const toggleText = document.getElementById('toggle-mode-text');
+        const authMsg = document.getElementById('auth-message');
+        const emailInput = document.getElementById('email-input');
+        const passwordInput = document.getElementById('password-input');
+        const googleBtn = document.getElementById('google-btn');
+
+        // ================================================================
+        // 4. FUNCIONES DE UI DEL MODAL (CON VISIBILIDAD DE GOOGLE)
+        // ================================================================
+        function setAuthMode(mode) {
+            authMode = mode;
+            if (mode === 'register') {
+                modalTitle.textContent = 'Cree su cuenta';
+                modalSubtitle.textContent = 'Fácil, dos datos y estás dentro';
+                btnSubmit.textContent = 'Registrarme';
+                toggleText.textContent = '¿Ya tienes cuenta?';
+                toggleBtn.textContent = 'Inicia sesión';
+                // Ocultar botón de Google
+                googleBtn.classList.add('hidden');
+                // Limpiar mensaje
+                authMsg.classList.add('hidden');
+                authMsg.textContent = '';
+            } else {
+                modalTitle.textContent = 'Inicia sesión';
+                modalSubtitle.textContent = 'Accede a tu panel de control';
+                btnSubmit.textContent = 'Iniciar sesión';
+                toggleText.textContent = '¿No tienes cuenta?';
+                toggleBtn.textContent = 'Regístrate';
+                // Mostrar botón de Google
+                googleBtn.classList.remove('hidden');
+                authMsg.classList.add('hidden');
+                authMsg.textContent = '';
+            }
+        }
+
+        function toggleAuthMode() {
+            const newMode = (authMode === 'register') ? 'login' : 'register';
+            setAuthMode(newMode);
+        }
+
+        // ================================================================
+        // 5. ABRIR / CERRAR MODAL
+        // ================================================================
+        function openRegisterModal(mode = 'register') {
+            setAuthMode(mode);
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
+            document.body.style.overflow = 'hidden';
+            // Limpiar campos y mensajes
+            emailInput.value = '';
+            passwordInput.value = '';
+            authMsg.classList.add('hidden');
+            authMsg.textContent = '';
+        }
+
+        function closeRegisterModal() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        modal.addEventListener('click', function(event) {
+            if (event.target === this) { closeRegisterModal(); }
+        });
+
+        // ================================================================
+        // 6. MOSTRAR/OCULTAR CONTRASEÑA
+        // ================================================================
+        function togglePassword() {
+            const passInput = document.getElementById('password-input');
+            const eyeIcon = document.getElementById('eye-icon');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+            } else {
+                passInput.type = 'password';
+                eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+            }
+        }
+
+        // ================================================================
+        // 7. MOSTRAR MENSAJES DE ERROR EN EL MODAL
+        // ================================================================
+        function showAuthMessage(text, isError = true) {
+            authMsg.textContent = text;
+            authMsg.className = 'text-center text-sm font-medium mb-3';
+            if (isError) {
+                authMsg.classList.add('text-red-500');
+            } else {
+                authMsg.classList.add('text-green-500');
+            }
+            authMsg.classList.remove('hidden');
+        }
+
+        // ================================================================
+        // 8. MANEJO DEL FORMULARIO (REGISTRO / LOGIN)
+        // ================================================================
+        document.getElementById('email-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            if (!email || !password) {
+                showAuthMessage('Por favor, completa todos los campos.', true);
+                return;
+            }
+
+            // Deshabilitar botón durante la petición
+            btnSubmit.disabled = true;
+            const originalText = btnSubmit.textContent;
+            btnSubmit.textContent = 'Procesando...';
+
+            try {
+                let result;
+                if (authMode === 'register') {
+                    // REGISTRO
+                    result = await supabaseClient.auth.signUp({ email, password });
+                    if (result.error) throw result.error;
+                    showAuthMessage('✅ ¡Registro exitoso! Redirigiendo al panel...', false);
+                    // Redirigir al dashboard (el listener también lo hará, pero por si acaso)
+                    setTimeout(() => {
+                        window.location.replace(DASHBOARD_PATH);
+                    }, 1500);
+                } else {
+                    // LOGIN
+                    result = await supabaseClient.auth.signInWithPassword({ email, password });
+                    if (result.error) {
+                        // Manejo específico para credenciales inválidas
+                        if (result.error.message.includes('Invalid login credentials')) {
+                            showAuthMessage('❌ No encontramos una cuenta con este correo. Regístrate ahora.', true);
+                        } else {
+                            showAuthMessage('❌ Error: ' + result.error.message, true);
+                        }
+                        btnSubmit.disabled = false;
+                        btnSubmit.textContent = originalText;
+                        return;
+                    }
+                    showAuthMessage('✅ ¡Bienvenido de nuevo! Redirigiendo...', false);
+                    setTimeout(() => {
+                        window.location.replace(DASHBOARD_PATH);
+                    }, 1500);
+                }
+            } catch (error) {
+                console.error('Auth error:', error);
+                showAuthMessage('❌ Ocurrió un error inesperado. Intenta de nuevo.', true);
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = originalText;
+            }
+        });
+
+        // ================================================================
+        // 9. INICIO DE SESIÓN CON GOOGLE
+        // ================================================================
+        window.handleGoogleSignIn = async () => {
+            try {
+                const { data, error } = await supabaseClient.auth.signInWithOAuth({
+                    provider: 'google',
+                    options: {
+                        redirectTo: window.location.origin + '/' + DASHBOARD_PATH
+                    }
+                });
+                if (error) throw error;
+                // La redirección la maneja Supabase
+            } catch (error) {
+                console.error('Error al iniciar con Google:', error.message);
+                showAuthMessage('❌ No se pudo conectar con Google: ' + error.message, true);
+            }
+        };
+
+        // ================================================================
+        // 10. LISTENER DE AUTENTICACIÓN (REDIRECCIÓN Y PREVENCIÓN DE PARPADEOS)
+        // ================================================================
+        supabaseClient.auth.onAuthStateChange((event, session) => {
+            if (event === 'SIGNED_IN' && session) {
+                // Si hay sesión activa, redirigir al dashboard (replace evita bucle)
+                window.location.replace(DASHBOARD_PATH);
+            }
+            // Si SIGNED_OUT, nos quedamos en la landing (no hacemos nada)
+        });
+
+        // ================================================================
+        // 11. VERIFICACIÓN DE SESIÓN AL CARGAR (para evitar parpadeos)
+        // ================================================================
+        (async function checkInitialSession() {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            if (session) {
+                // Ya hay sesión, redirigir inmediatamente
+                window.location.replace(DASHBOARD_PATH);
+            }
+        })();
+
+        // ================================================================
+        // 12. TRADUCCIONES (mantenidas sin cambios)
+        // ================================================================
         const translations = {
             es: {
                 registerBtn: "Comience gratis",
@@ -2276,26 +2287,18 @@
                 passwordHint: "Guárdela bien, no la comparta",
                 infraTag: "CHAO AL ESTRÉS",
                 machineryTitle: "Creamos su ecosistema digital",
-                phase1Badge: "PAGO ÚNICO $132.000 PESOS",
                 phase1Title: "Sitio web + IA",
                 phase1Desc: "Personalizado al ADN de su marca y hecho para vender, con un agente de IA que atiende a sus clientes 24/7.",
                 phase1Stat1: "1 segundo",
                 phase1Stat2: "Gratis e ilimitado",
-                phase2Badge: "PAGO ÚNICO $132.000 PESOS",
                 phase2Title: "Campaña de ventas",
                 phase2Desc: "Traemos clientes de Facebook directamente a su WhatsApp con segmentación estratégica local.",
                 phase2Stat1: "300 a 350",
                 phase2Stat2: "$13.000/nequi",
-                phase3Badge: "PAGO ÚNICO $132.000 PESOS",
                 phase3Title: "Posicionamiento SEO",
                 phase3Desc: "Hacemos que aparezca primero en Google cuando busquen sus productos o servicios en su ciudad.",
                 phase3Stat1: "20 a 35",
                 phase3Stat2: "99% en puntuación",
-                hybridBadge: "EQUIPO SAPIEN",
-                hybridTitle: "Estrategia humana, potenciada por IA",
-                antonellaRole: "Monitoreo y Automatización",
-                humanName: "Cristian Lopez",
-                humanRole: "DESARROLLO Y MARKETING",
                 whatsappTooltip: "Hablemos de una",
                 portfolioBadge: "Adaptable a su nicho",
                 portfolioTitle: "Validado en negocios reales",
@@ -2309,30 +2312,16 @@
                 case4Desc: "Red Sapien: creamos un catálogo de lujo para Noir Elixir en Medellín: con un diseño premium optimizado para ventas.",
                 viewCaseBtn: "Ver ahora",
                 archBadge: "Control remoto",
-                manifestoText: "Vea los resultados 24/7. Antonella IA le notifica y nosotros resolvemos lo técnico.",
-                videoCaption: "Mire el panel funcionando",
-                scrollInvestment: "Ver Inversión",
                 slotsBadge: "SOLO 4 CUPOS DISPONIBLES",
                 pricingLabel: "Inversión total",
                 paymentNote: "PAGO ÚNICO. SIN CONTRATOS",
-                zeroRisk: "Cero riesgo:",
-                priceStep1: "Fase 1: Sitio web + IA",
-                priceStep1Desc: "Entrega en 24 horas, paga al estar listo.",
-                priceStep2: "Fase 2: Campaña de ventas",
-                priceStep2Prefix: "Lista en 48 horas, paga solo cuando esté captando clientes.",
-                priceStep3: "Fase 3: Posicionamiento SEO",
-                priceStep3Desc: "Listo en 24 horas, paga cuando esté posicionado en el mapa de Google.",
                 whatsappCta: "Consulte gratis ahora",
                 faqTitle: "¿Dudas?",
                 faq1Q: "¿Debo saber de tecnología?",
                 faq1A: "¡Para nada! Nosotros creamos todo y damos soporte cuando sea requerido siempre.",
                 faq2Q: "¿Puedo pedir cambios luego?",
                 faq2A: "Claro, tenemos soporte exclusivo con precios muy accesibles entre 29.000 y 69.000 pesos por ajuste.",
-                faq3Q: "¿Soy dueñ@ del ecosistema?",
-                faq3A: "Claro, la web, IA, campañas, Google y SEO serán suyos desde el primer día y para siempre.",
                 standardsTitle: "Calidad con respaldo",
-                footerManizales: "Orgullosamente Manizaleñ@s",
-                footerDescription: "Democratizamos tecnología tipo SpaceX, Amazon, McDonald's y Audi para potenciar su negocio en Colombia. Somos comunidad abierta, buscamos voluntarios de todas las áreas. ¡Únase, aporte y transformemos el mercado!",
                 footerNodes: "Comenzar",
                 footerActivate: "Únase ahora",
                 footerLogin: "Inicie Sesión",
@@ -2346,13 +2335,13 @@
                 fingerprintSub: "(Ponga su huella)",
                 easterDate: "07/06/2026 - Antonella,",
                 easterMessage: "mi bebesita hermosa, lucharé esta guerra por ti...",
-                copyright: "© 2026 Red Sapien. Todos los derechos para el mundo en esta versión"
+                copyright: "© RED SAPIEN TODOS LOS DERECHOS PARA EL MUNDO..."
             },
             en: {
                 registerBtn: "Start Free Now",
                 mobileRegister: "Start",
                 mobilePlatform: "Sign In",
-                mobileContact: "Hablemos",
+                mobileContact: "Let's talk",
                 heroTitle: "More sales for your business!",
                 heroDesc: "We empower leading brands in Colombia, Manizales and the entire Coffee Region.",
                 googleBtnText: "Sign in with Google",
@@ -2364,26 +2353,18 @@
                 passwordHint: "Keep it safe, don't share it",
                 infraTag: "STRESS GONE",
                 machineryTitle: "We create your digital ecosystem",
-                phase1Badge: "ONE PAYMENT $132,000 COP",
                 phase1Title: "Website + AI",
                 phase1Desc: "Personalized to your brand's DNA and built to sell, with an AI agent that serves your clients 24/7.",
                 phase1Stat1: "1 second",
                 phase1Stat2: "Free and unlimited",
-                phase2Badge: "ONE PAYMENT $132,000 COP",
                 phase2Title: "Sales Campaign",
                 phase2Desc: "We bring customers from Facebook directly to your WhatsApp with local strategic segmentation.",
                 phase2Stat1: "300 to 350",
                 phase2Stat2: "$13,000/nequi",
-                phase3Badge: "ONE PAYMENT $132,000 COP",
                 phase3Title: "SEO Positioning",
                 phase3Desc: "We make you appear first on Google when people search for your products or services in your city.",
                 phase3Stat1: "20 to 35",
                 phase3Stat2: "99% score",
-                hybridBadge: "SAPIEN TEAM",
-                hybridTitle: "Human strategy, powered by AI",
-                antonellaRole: "Monitoring & Automation",
-                humanName: "Cristian Lopez",
-                humanRole: "DEVELOPMENT & MARKETING",
                 whatsappTooltip: "Let's talk",
                 portfolioBadge: "Adaptable to your niche",
                 portfolioTitle: "Validated in real businesses",
@@ -2397,50 +2378,36 @@
                 case4Desc: "Red Sapien: we created a luxury catalog for Noir Elixir in Medellín: with a premium design optimized for sales.",
                 viewCaseBtn: "View now",
                 archBadge: "Remote Control",
-                manifestoText: "See the results 24/7. Antonella AI notifies you and we solve the technical part.",
-                videoCaption: "Watch the panel in action",
-                scrollInvestment: "See Investment",
                 slotsBadge: "ONLY 4 SPOTS AVAILABLE",
                 pricingLabel: "Total Investment",
                 paymentNote: "ONE PAYMENT. NO CONTRACTS",
-                zeroRisk: "Zero risk:",
-                priceStep1: "Phase 1: Website + AI",
-                priceStep1Desc: "Delivery in 24 hours, pay when ready.",
-                priceStep2: "Phase 2: Sales Campaign",
-                priceStep2Prefix: "Ready in 48 hours, pay only when it's capturing clients.",
-                priceStep3: "Phase 3: SEO Positioning",
-                priceStep3Desc: "Ready in 24 hours, pay when you are positioned on the Google map.",
                 whatsappCta: "Consult for free now",
                 faqTitle: "Questions?",
                 faq1Q: "Do I need to know technology?",
                 faq1A: "Not at all! We create everything and provide support whenever required.",
                 faq2Q: "Can I request changes later?",
                 faq2A: "Of course, we have exclusive support with very accessible prices between 29,000 and 69,000 pesos per adjustment.",
-                faq3Q: "Am I the owner of the ecosystem?",
-                faq3A: "Of course, the website, AI, campaigns, Google and SEO will be yours from day one and forever.",
                 standardsTitle: "Quality with backing",
-                footerManizales: "Proudly from Manizales",
-                footerDescription: "We democratize technology like SpaceX, Amazon, McDonald's and Audi to boost your business in Colombia. We are an open community, we seek volunteers from all areas. Join, contribute and let's transform the market!",
                 footerNodes: "Start",
                 footerActivate: "Join now",
                 footerLogin: "Sign In",
                 footerSecurity: "Legal",
                 footerTerms: "Terms of Use",
                 footerPrivacy: "Privacy",
-                footerContact: "Hablemos",
+                footerContact: "Let's talk",
                 footerEmailLabel: "Email",
                 footerPhoneLabel: "Cell phone",
                 fingerprintLabel: "DECRYPT",
                 fingerprintSub: "(Place your fingerprint)",
                 easterDate: "07/06/2026 - Antonella,",
                 easterMessage: "my beautiful baby, I will fight this war for you.",
-                copyright: "© 2026 Red Sapien. All rights reserved worldwide in this version"
+                copyright: "© RED SAPIEN ALL RIGHTS RESERVED FOR THE WORLD..."
             },
             pt: {
                 registerBtn: "Comece grátis agora",
                 mobileRegister: "Comece",
                 mobilePlatform: "Entrar",
-                mobileContact: "Hablemos",
+                mobileContact: "Vamos conversar",
                 heroTitle: "Mais vendas para o seu negócio!",
                 heroDesc: "Potencializamos marcas líderes na Colômbia, Manizales e em todo o Eje Cafetero.",
                 googleBtnText: "Acesse com Google",
@@ -2452,26 +2419,18 @@
                 passwordHint: "Guarde bem, não a compartilhe",
                 infraTag: "CHEGA DE ESTRESSE",
                 machineryTitle: "Criamos seu ecossistema digital",
-                phase1Badge: "PAGAMENTO ÚNICO $132.000 PESOS",
                 phase1Title: "Site + IA",
                 phase1Desc: "Personalizado ao DNA da sua marca e feito para vender, com um agente de IA que atende seus clientes 24/7.",
                 phase1Stat1: "1 segundo",
                 phase1Stat2: "Grátis e ilimitado",
-                phase2Badge: "PAGAMENTO ÚNICO $132.000 PESOS",
                 phase2Title: "Campanha de vendas",
                 phase2Desc: "Trazemos clientes do Facebook diretamente para seu WhatsApp com segmentação estratégica local.",
                 phase2Stat1: "300 a 350",
                 phase2Stat2: "$13.000/nequi",
-                phase3Badge: "PAGAMENTO ÚNICO $132.000 PESOS",
                 phase3Title: "Posicionamento SEO",
                 phase3Desc: "Fazemos você aparecer primeiro no Google quando buscarem seus produtos ou serviços na sua cidade.",
                 phase3Stat1: "20 a 35",
                 phase3Stat2: "99% em pontuação",
-                hybridBadge: "EQUIPE SAPIEN",
-                hybridTitle: "Estratégia humana, potencializada por IA",
-                antonellaRole: "Monitoramento e Automação",
-                humanName: "Cristian Lopez",
-                humanRole: "DESENVOLVIMENTO E MARKETING",
                 whatsappTooltip: "Vamos conversar",
                 portfolioBadge: "Adaptável ao seu nicho",
                 portfolioTitle: "Validado em negócios reais",
@@ -2485,48 +2444,33 @@
                 case4Desc: "Red Sapien: criamos um catálogo de luxo para Noir Elixir em Medellín: com design premium otimizado para vendas.",
                 viewCaseBtn: "Ver agora",
                 archBadge: "Controle remoto",
-                manifestoText: "Veja os resultados 24/7. Antonella IA notifica você e nós resolvemos o técnico.",
-                videoCaption: "Veja o painel funcionando",
-                scrollInvestment: "Ver Investimento",
                 slotsBadge: "APENAS 4 VAGAS DISPONÍVEIS",
                 pricingLabel: "Investimento total",
                 paymentNote: "PAGAMENTO ÚNICO. SEM CONTRATOS",
-                zeroRisk: "Risco zero:",
-                priceStep1: "Fase 1: Site + IA",
-                priceStep1Desc: "Entrega em 24 horas, pague quando estiver pronto.",
-                priceStep2: "Fase 2: Campanha de vendas",
-                priceStep2Prefix: "Pronto em 48 horas, pague só quando estiver captando clientes.",
-                priceStep3: "Fase 3: Posicionamento SEO",
-                priceStep3Desc: "Pronto em 24 horas, pague quando estiver posicionado no mapa do Google.",
                 whatsappCta: "Consulte grátis agora",
                 faqTitle: "Dúvidas?",
                 faq1Q: "Preciso saber de tecnologia?",
                 faq1A: "De jeito nenhum! Nós criamos tudo e damos suporte sempre que for necessário.",
                 faq2Q: "Posso pedir mudanças depois?",
                 faq2A: "Claro, temos suporte exclusivo com preços muito acessíveis entre 29.000 e 69.000 pesos por ajuste.",
-                faq3Q: "Sou don@ do ecossistema?",
-                faq3A: "Claro, o site, IA, campanhas, Google e SEO serão seus desde o primeiro dia e para sempre.",
                 standardsTitle: "Qualidade com respaldo",
-                footerManizales: "Orgulhosamente de Manizales",
-                footerDescription: "Democratizamos tecnologia tipo SpaceX, Amazon, McDonald's e Audi para potencializar seu negócio na Colômbia. Somos comunidade aberta, buscamos voluntários de todas as áreas. Junte-se, contribua e transformemos o mercado!",
                 footerNodes: "Começar",
                 footerActivate: "Junte-se agora",
                 footerLogin: "Iniciar Sessão",
                 footerSecurity: "Legal",
                 footerTerms: "Termos de Uso",
                 footerPrivacy: "Privacidade",
-                footerContact: "Hablemos",
+                footerContact: "Vamos conversar",
                 footerEmailLabel: "E-mail",
                 footerPhoneLabel: "Celular",
                 fingerprintLabel: "DESCRIPTOGRAFAR",
                 fingerprintSub: "(Coloque sua impressão)",
                 easterDate: "07/06/2026 - Antonella,",
                 easterMessage: "minha linda bebê, lutarei esta guerra por você.",
-                copyright: "© 2026 Red Sapien. Todos os direitos reservados mundialmente nesta versão"
+                copyright: "© RED SAPIEN TODOS OS DIREITOS PARA O MUNDO..."
             }
         };
 
-        // Función de traducción global basada en data-i18n
         function changeLanguage(lang) {
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
@@ -2542,7 +2486,6 @@
             localStorage.setItem('selectedLang', lang);
         }
 
-        // Inicializar idioma desde localStorage o por defecto español
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('selectedLang') || 'es';
             const langSelector = document.getElementById('lang-selector');
@@ -2550,59 +2493,35 @@
             changeLanguage(savedLang);
         });
 
-        // Resto de scripts del sistema (preloader, menú, modales, Supabase)
-        window.addEventListener('load', () => { const preloader = document.getElementById('preloader'); preloader.classList.add('animate-fade-out'); setTimeout(() => { preloader.style.display = 'none'; }, 600); setTimeout(() => { const btn = document.getElementById('main-cta'); if (btn) btn.classList.add('animate-shine'); }, 9000); });
-        const mainNav = document.getElementById('main-nav'), langSelector = document.getElementById('lang-selector'), scrollBtn = document.getElementById('scroll-register-btn');
-        window.addEventListener('scroll', () => { if (window.scrollY > 769) { mainNav.classList.add('glass-nav-scrolled'); langSelector.classList.add('hidden'); scrollBtn.classList.remove('hidden'); } else { mainNav.classList.remove('glass-nav-scrolled'); langSelector.classList.remove('hidden'); scrollBtn.classList.add('hidden'); } });
-        const menuTrigger = document.getElementById('menu-trigger'), mobileMenu = document.getElementById('mobile-menu'), closeMenu = document.getElementById('close-menu');
-        menuTrigger.addEventListener('click', () => { mobileMenu.classList.remove('opacity-0', 'invisible'); mobileMenu.classList.add('opacity-100', 'visible'); document.body.style.overflow = 'hidden'; });
-        closeMenu.addEventListener('click', () => { mobileMenu.classList.remove('opacity-100', 'visible'); mobileMenu.classList.add('opacity-0', 'invisible'); document.body.style.overflow = 'auto'; });
-        function openRegisterModal() { const modal = document.getElementById('register-modal'); modal.classList.remove('hidden'); setTimeout(() => { modal.classList.remove('opacity-0'); }, 10); document.body.style.overflow = 'hidden'; }
-        function closeRegisterModal() { const modal = document.getElementById('register-modal'); modal.classList.add('opacity-0'); setTimeout(() => { modal.classList.add('hidden'); }, 300); document.body.style.overflow = 'auto'; }
-        document.getElementById('register-modal').addEventListener('click', function (event) { if (event.target === this) { closeRegisterModal(); } });
-        function togglePassword() { const passInput = document.getElementById('password-input'), eyeIcon = document.getElementById('eye-icon'); if (passInput.type === 'password') { passInput.type = 'text'; eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>'; } else { passInput.type = 'password'; eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>'; } }
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.classList.add('animate-fade-out');
+            setTimeout(() => { preloader.style.display = 'none'; }, 600);
+        });
 
-        // Supabase config
-        (function () {
-            const SUPABASE_URL = 'https://krygvuvvenizgebincle.supabase.co';
-            const SUPABASE_KEY = 'sb_publishable_06DbVVwkvlDKQ-xYoTyRxg_o4rDpaUh';
-            window.supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-            window.handleGoogleSignIn = async () => {
-                try {
-                    const { data, error } = await window.supabaseClient.auth.signInWithOAuth({
-                        provider: 'google',
-                        options: { redirectTo: window.location.origin + '/dashboard.html' }
-                    });
-                    if (error) throw error;
-                } catch (error) {
-                    console.error("Error al iniciar con Google:", error.message);
-                    alert("No se pudo conectar con Google: " + error.message);
-                }
-            };
-            document.addEventListener('submit', async (e) => {
-                if (e.target.id === 'email-form') {
-                    e.preventDefault();
-                    const form = e.target;
-                    const email = form.querySelector('#email-input').value;
-                    const password = form.querySelector('#password-input').value;
-                    const btn = form.querySelector('#btn-submit');
-                    const originalText = btn.innerText;
-                    btn.innerText = "Conectando...";
-                    btn.disabled = true;
-                    try {
-                        const { data, error } = await window.supabaseClient.auth.signUp({ email, password });
-                        if (error) throw error;
-                        alert("¡Registro exitoso! Ya eres parte del Ecosistema.");
-                        form.reset();
-                    } catch (error) {
-                        alert("Error al registrar: " + error.message);
-                    } finally {
-                        btn.innerText = originalText;
-                        btn.disabled = false;
-                    }
-                }
-            });
-        })();
+        const mainNav = document.getElementById('main-nav'), langSelector = document.getElementById('lang-selector'), scrollBtn = document.getElementById('scroll-register-btn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 769) {
+                mainNav.classList.add('glass-nav-scrolled');
+                langSelector.classList.add('hidden');
+                scrollBtn.classList.remove('hidden');
+            } else {
+                mainNav.classList.remove('glass-nav-scrolled');
+                langSelector.classList.remove('hidden');
+                scrollBtn.classList.add('hidden');
+            }
+        });
+        const menuTrigger = document.getElementById('menu-trigger'), mobileMenu = document.getElementById('mobile-menu'), closeMenu = document.getElementById('close-menu');
+        menuTrigger.addEventListener('click', () => {
+            mobileMenu.classList.remove('opacity-0', 'invisible');
+            mobileMenu.classList.add('opacity-100', 'visible');
+            document.body.style.overflow = 'hidden';
+        });
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('opacity-100', 'visible');
+            mobileMenu.classList.add('opacity-0', 'invisible');
+            document.body.style.overflow = 'auto';
+        });
     </script>
 </body>
 

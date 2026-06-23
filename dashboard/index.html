@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta id="meta-theme" name="theme-color" content="#050505">
     <title>Red Sapien | Terminal Operativa</title>
-    
+
     <!-- Favicon dinámico SVG -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23050505' stroke='%23FF3C00' stroke-width='4'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='40' fill='%23FF3C00'%3ERS%3C/text%3E%3C/svg%3E">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +18,10 @@
     <!-- Leaflet CSS y JS para el mapa de telemetría -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- SDK de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js">
+    </script>
 
     <script>
         tailwind.config = {
@@ -40,29 +44,29 @@
             --ia-color: #7B2CBF;
             --ia-glow: rgba(123, 44, 191, 0.1);
         }
-        
+
         body {
             background-color: #050505;
             color: #ffffff;
             -webkit-font-smoothing: antialiased;
             overflow: hidden;
-            height: 100dvh; 
+            height: 100dvh;
             font-family: 'Inter', sans-serif;
         }
 
         .ambient-glow-bg {
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 50% -20%, rgba(255, 60, 0, 0.05) 0%, rgba(5,5,5,0) 65%), #050505;
+            background: radial-gradient(circle at 50% -20%, rgba(255, 60, 0, 0.05) 0%, rgba(5, 5, 5, 0) 65%), #050505;
             z-index: 0;
             transition: background 0.4s ease;
         }
-        
+
         .tech-grid-bg {
             position: absolute;
             inset: 0;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.006) 1px, transparent 1px), 
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.006) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.006) 1px, transparent 1px);
             background-size: 60px 60px;
             mask-image: radial-gradient(circle at center, black 20%, transparent 85%);
@@ -73,24 +77,47 @@
         }
 
         @keyframes led-pulse {
-            0%, 100% { transform: scale(0.85); opacity: 0.5; box-shadow: 0 0 0px currentColor; }
-            50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 6px currentColor; }
+            0%,
+            100% {
+                transform: scale(0.85);
+                opacity: 0.5;
+                box-shadow: 0 0 0px currentColor;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+                box-shadow: 0 0 6px currentColor;
+            }
         }
         .led-pulse {
             animation: led-pulse 2s ease-in-out infinite;
         }
-        
+
         @keyframes pulse-activate {
-            0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.06); transform: scale(1); }
-            50% { box-shadow: 0 0 30px var(--accent-glow); transform: scale(1.02); }
+            0%,
+            100% {
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.06);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 30px var(--accent-glow);
+                transform: scale(1.02);
+            }
         }
         .animate-pulse-activate {
             animation: pulse-activate 2.5s infinite ease-in-out;
         }
-        
+
         @keyframes led-blink {
-            0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(34, 197, 94, 0.4); }
-            50% { opacity: 0.4; box-shadow: 0 0 2px rgba(34, 197, 94, 0.08); }
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+            }
+            50% {
+                opacity: 0.4;
+                box-shadow: 0 0 2px rgba(34, 197, 94, 0.08);
+            }
         }
         .led-green {
             animation: led-blink 1.5s infinite ease-in-out;
@@ -108,13 +135,21 @@
         }
 
         @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
         }
-        
+
         @keyframes laser-pipe {
-            0% { left: -30%; }
-            100% { left: 130%; }
+            0% {
+                left: -30%;
+            }
+            100% {
+                left: 130%;
+            }
         }
         .animate-laser-pipe {
             animation: laser-pipe 3s infinite linear;
@@ -151,8 +186,14 @@
             animation: fadeInUp 0.3s ease-out forwards;
         }
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translate(-50%, 20px); }
-            to { opacity: 1; transform: translate(-50%, 0); }
+            from {
+                opacity: 0;
+                transform: translate(-50%, 20px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
         }
 
         .chart-line {
@@ -161,12 +202,14 @@
             animation: drawLine 1.5s ease-out forwards;
         }
         @keyframes drawLine {
-            to { stroke-dashoffset: 0; }
+            to {
+                stroke-dashoffset: 0;
+            }
         }
 
         .cyber-select {
             background-color: #0a0a0a;
-            border: 1px solid rgba(255,255,255,0.06);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 0.75rem;
             padding: 0.75rem 1rem;
             font-size: 0.875rem;
@@ -179,7 +222,7 @@
         .cyber-select:focus {
             outline: none;
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 2px rgba(255,60,0,0.1);
+            box-shadow: 0 0 0 2px rgba(255, 60, 0, 0.1);
         }
         .cyber-select option {
             background-color: #0a0a0a;
@@ -187,7 +230,7 @@
         }
         input[type="datetime-local"] {
             background-color: #0a0a0a;
-            border: 1px solid rgba(255,255,255,0.06);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 0.75rem;
             padding: 0.75rem 1rem;
             font-size: 0.875rem;
@@ -199,7 +242,7 @@
         input[type="datetime-local"]:focus {
             outline: none;
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 2px rgba(255,60,0,0.1);
+            box-shadow: 0 0 0 2px rgba(255, 60, 0, 0.1);
         }
         input[type="datetime-local"]::-webkit-calendar-picker-indicator {
             filter: invert(1);
@@ -207,43 +250,121 @@
         }
 
         @keyframes pulse-red-neon {
-            0% { filter: drop-shadow(0 0 2px rgba(255, 60, 0, 0.2)); opacity: 0.03; }
-            50% { filter: drop-shadow(0 0 16px rgba(255, 60, 0, 0.9)); opacity: 0.05; }
-            100% { filter: drop-shadow(0 0 2px rgba(255, 60, 0, 0.2)); opacity: 0.03; }
+            0% {
+                filter: drop-shadow(0 0 2px rgba(255, 60, 0, 0.2));
+                opacity: 0.03;
+            }
+            50% {
+                filter: drop-shadow(0 0 16px rgba(255, 60, 0, 0.9));
+                opacity: 0.05;
+            }
+            100% {
+                filter: drop-shadow(0 0 2px rgba(255, 60, 0, 0.2));
+                opacity: 0.03;
+            }
         }
         .lock-pulse-red {
             animation: pulse-red-neon 3s ease-in-out infinite;
         }
         .lock-glow {
-            filter: drop-shadow(0 0 8px rgba(255,60,0,0.6));
+            filter: drop-shadow(0 0 8px rgba(255, 60, 0, 0.6));
             transition: filter 0.3s ease;
         }
-        .group:hover .lock-glow {
-            filter: drop-shadow(0 0 16px rgba(255,60,0,0.9));
+        #casos-overlay:hover .lock-glow {
+            filter: drop-shadow(0 0 16px rgba(255, 60, 0, 0.9));
+        }
+
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            10% {
+                transform: translateX(-10px);
+            }
+            20% {
+                transform: translateX(10px);
+            }
+            30% {
+                transform: translateX(-10px);
+            }
+            40% {
+                transform: translateX(10px);
+            }
+            50% {
+                transform: translateX(-5px);
+            }
+            60% {
+                transform: translateX(5px);
+            }
+            70% {
+                transform: translateX(-5px);
+            }
+            80% {
+                transform: translateX(5px);
+            }
+            90% {
+                transform: translateX(-2px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        .shake {
+            animation: shake 0.5s ease-in-out;
         }
 
         @keyframes matrixEnter {
-            0% { opacity: 0; transform: scale(0.95); backdrop-filter: blur(0px); }
-            50% { opacity: 0.8; transform: scale(1.01); backdrop-filter: blur(8px); box-shadow: 0 0 30px rgba(255,60,0,0.2); }
-            100% { opacity: 1; transform: scale(1); backdrop-filter: blur(12px); }
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+                backdrop-filter: blur(0px);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.01);
+                backdrop-filter: blur(8px);
+                box-shadow: 0 0 30px rgba(255, 60, 0, 0.2);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                backdrop-filter: blur(12px);
+            }
         }
         .modal-matrix-enter {
             animation: matrixEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         @keyframes radar-sweep {
-            0% { transform: rotate(0deg); opacity: 0.6; }
-            100% { transform: rotate(360deg); opacity: 0.6; }
+            0% {
+                transform: rotate(0deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: rotate(360deg);
+                opacity: 0.6;
+            }
         }
         .radar-sweep {
             animation: radar-sweep 4s linear infinite;
         }
 
-        /* Animación de aparición escalonada para logos - más lenta y suave */
         @keyframes logo-reveal {
-            0% { opacity: 0; transform: scale(0.9) rotate(-2deg); filter: blur(1px); }
-            60% { transform: scale(1.04) rotate(1deg); filter: blur(0); }
-            100% { opacity: 1; transform: scale(1) rotate(0deg); filter: blur(0); }
+            0% {
+                opacity: 0;
+                transform: scale(0.9) rotate(-2deg);
+                filter: blur(1px);
+            }
+            60% {
+                transform: scale(1.04) rotate(1deg);
+                filter: blur(0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+                filter: blur(0);
+            }
         }
         .logo-reveal {
             animation: logo-reveal 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -260,7 +381,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.05) 0%, transparent 70%);
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
             opacity: 0;
             transition: opacity 0.5s ease;
             pointer-events: none;
@@ -284,9 +405,8 @@
         }
         .case-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px -8px rgba(255,60,0,0.12);
+            box-shadow: 0 6px 20px -8px rgba(255, 60, 0, 0.12);
         }
-        /* Ajustes para el modal de casos */
         .success-modal-nav-btn {
             transition: all 0.2s ease;
             font-size: 0.75rem;
@@ -294,18 +414,17 @@
             border-radius: 0.75rem;
         }
         .success-modal-nav-btn:hover:not(:disabled) {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
         }
         .success-modal-nav-btn:disabled {
             opacity: 0.3;
             cursor: not-allowed;
         }
-        /* Puntos de navegación */
         .nav-dot {
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             transition: all 0.3s ease;
             cursor: default;
         }
@@ -314,10 +433,9 @@
             box-shadow: 0 0 8px var(--accent-glow);
             transform: scale(1.2);
         }
-        /* Mejora del scroll en la columna de tarjetas */
         .casos-scroll-container {
             scrollbar-width: thin;
-            scrollbar-color: rgba(255,255,255,0.04) transparent;
+            scrollbar-color: rgba(255, 255, 255, 0.04) transparent;
         }
         .casos-scroll-container::-webkit-scrollbar {
             width: 3px;
@@ -332,20 +450,343 @@
         .casos-scroll-container::-webkit-scrollbar-thumb:hover {
             background: var(--accent-color);
         }
+
+        /* Estilos para el wizard de onboarding */
+        .onboarding-modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(5, 5, 5, 0.92);
+            backdrop-filter: blur(16px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .onboarding-modal-overlay.active {
+            display: flex;
+        }
+        .onboarding-modal {
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 2rem;
+            max-width: 640px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+        }
+        .onboarding-modal::-webkit-scrollbar {
+            width: 3px;
+        }
+        .onboarding-modal::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        .progress-bar-track {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 99px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+            border-radius: 99px;
+        }
+
+        .onboarding-step {
+            display: none;
+            animation: fadeStep 0.3s ease;
+        }
+        .onboarding-step.active {
+            display: block;
+        }
+        @keyframes fadeStep {
+            0% {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .niche-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.25rem 0.75rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            flex: 1;
+            min-width: 80px;
+        }
+        .niche-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        .niche-card.selected {
+            border-color: var(--accent-color);
+            background: rgba(255, 60, 0, 0.08);
+            box-shadow: 0 0 20px rgba(255, 60, 0, 0.1);
+        }
+        .niche-card .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .niche-card .label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #ddd;
+        }
+
+        .city-search-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            color: white;
+            font-size: 0.9rem;
+        }
+        .city-search-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(255, 60, 0, 0.1);
+        }
+        .city-options {
+            max-height: 180px;
+            overflow-y: auto;
+            margin-top: 0.5rem;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .city-options .city-option {
+            padding: 0.65rem 1rem;
+            cursor: pointer;
+            transition: background 0.15s ease;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .city-options .city-option:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .city-options .city-option.selected {
+            background: rgba(255, 60, 0, 0.08);
+            color: var(--accent-color);
+        }
+        .city-options .city-option:last-child {
+            border-bottom: none;
+        }
+
+        .phone-input-wrapper {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+        .phone-input-wrapper .country-code {
+            padding: 0.75rem 0.75rem 0.75rem 1rem;
+            font-weight: 600;
+            color: #aaa;
+            background: rgba(255, 255, 255, 0.02);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            user-select: none;
+        }
+        .phone-input-wrapper input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 0.75rem 1rem;
+            color: white;
+            font-size: 0.9rem;
+            outline: none;
+            min-width: 0;
+        }
+        .phone-input-wrapper input::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .onboarding-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            gap: 0.75rem;
+        }
+        .onboarding-nav .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.04);
+            color: #ccc;
+        }
+        .onboarding-nav .btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+        }
+        .onboarding-nav .btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .onboarding-nav .btn-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+        .onboarding-nav .btn-primary:hover:not(:disabled) {
+            background: #e63500;
+            box-shadow: 0 0 20px rgba(255, 60, 0, 0.3);
+        }
+        .onboarding-nav .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .onboarding-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+        .onboarding-sub {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive ajustes */
+        @media (max-width: 480px) {
+            .onboarding-modal {
+                padding: 1.5rem 1rem;
+                border-radius: 1.5rem;
+            }
+            .niche-card {
+                padding: 0.75rem 0.5rem;
+                min-width: 60px;
+            }
+            .niche-card .emoji {
+                font-size: 1.5rem;
+            }
+            .onboarding-title {
+                font-size: 1.25rem;
+            }
+        }
     </style>
 </head>
 
 <body class="font-sans h-[100dvh] flex bg-rs-black overflow-hidden select-none">
-    
+
     <div class="ambient-glow-bg"></div>
     <div class="tech-grid-bg"></div>
+
+    <!-- ============================================================ -->
+    <!-- MODAL DE ONBOARDING (WIZARD DE 4 PASOS)                      -->
+    <!-- ============================================================ -->
+    <div id="onboarding-overlay" class="onboarding-modal-overlay">
+        <div class="onboarding-modal">
+
+            <!-- Barra de progreso (sin títulos) -->
+            <div class="progress-bar-track">
+                <div id="onboarding-progress" class="progress-bar-fill" style="width:0%;"></div>
+            </div>
+
+            <!-- PASO 1: Nombre del negocio (sin texto explicativo) -->
+            <div id="step-1" class="onboarding-step active">
+                <h2 class="onboarding-title">¿Cómo se llama tu negocio?</h2>
+                <input id="input-business-name" type="text" placeholder="Ej: BROSS MANIZALES"
+                    class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[var(--accent-color)] transition">
+            </div>
+
+            <!-- PASO 2: Nicho (4 tarjetas) -->
+            <div id="step-2" class="onboarding-step">
+                <h2 class="onboarding-title">Selecciona tu nicho</h2>
+                <p class="onboarding-sub">Elige la categoría que mejor represente tu actividad.</p>
+                <div class="grid grid-cols-2 gap-3" id="niche-grid">
+                    <div class="niche-card" data-niche="Gastronomía">
+                        <span class="emoji">🍔</span>
+                        <span class="label">Gastronomía</span>
+                    </div>
+                    <div class="niche-card" data-niche="Automotriz">
+                        <span class="emoji">🚗</span>
+                        <span class="label">Automotriz</span>
+                    </div>
+                    <div class="niche-card" data-niche="Servicios Profesionales">
+                        <span class="emoji">👔</span>
+                        <span class="label">Servicios Prof.</span>
+                    </div>
+                    <div class="niche-card" data-niche="E-commerce">
+                        <span class="emoji">🛒</span>
+                        <span class="label">E-commerce</span>
+                    </div>
+                </div>
+                <div id="niche-error" class="text-red-500 text-xs mt-2 hidden">Selecciona un nicho para continuar.</div>
+            </div>
+
+            <!-- PASO 3: Ciudad con buscador filtrable -->
+            <div id="step-3" class="onboarding-step">
+                <h2 class="onboarding-title">¿En qué ciudad operas?</h2>
+                <p class="onboarding-sub">Selecciona tu ciudad principal para activar la ubicación.</p>
+                <input id="city-search-input" type="text" placeholder="Buscar ciudad..." class="city-search-input">
+                <div id="city-options-container" class="city-options">
+                    <!-- Opciones inyectadas por JS -->
+                </div>
+                <div id="city-error" class="text-red-500 text-xs mt-2 hidden">Selecciona una ciudad de la lista.</div>
+            </div>
+
+            <!-- PASO 4: WhatsApp con prefijo +57 -->
+            <div id="step-4" class="onboarding-step">
+                <h2 class="onboarding-title">Número de WhatsApp</h2>
+                <p class="onboarding-sub">Ingresa el número de contacto de tu negocio.</p>
+                <div class="phone-input-wrapper">
+                    <span class="country-code">+57</span>
+                    <input id="input-phone" type="tel" placeholder="300 000 0000" pattern="[0-9]{10}">
+                </div>
+                <div id="phone-error" class="text-red-500 text-xs mt-2 hidden">Ingresa un número válido de 10 dígitos.</div>
+            </div>
+
+            <!-- Navegación del wizard -->
+            <div class="onboarding-nav">
+                <button id="onboarding-prev" class="btn" disabled>Anterior</button>
+                <button id="onboarding-next" class="btn btn-primary">Siguiente</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- CONTENIDO PRINCIPAL (sin cambios estructurales)              -->
+    <!-- ============================================================ -->
 
     <button id="trigger-reopen-sidebar" onclick="executeSidebarOpen()" class="hidden md:flex fixed top-8 left-0 z-40 p-2.5 bg-rs-dark/95 border-y border-r border-white/10 rounded-r-xl text-gray-500 hover:text-white hover:border-[var(--accent-color)] shadow-[0_0_20px_rgba(0,0,0,0.5)] transition-all duration-300 items-center justify-center translate-x-[-100px] opacity-0 group">
         <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M9 19l7-7-7-7"/></svg>
     </button>
 
     <aside id="sidebar-panel" class="hidden md:flex flex-col w-64 border-r border-white/5 bg-rs-dark/95 relative z-30 transition-all duration-300 ease-in-out shrink-0 overflow-hidden shadow-2xl">
-        
+
         <div class="p-6 flex items-center justify-between border-b border-white/5 h-24 w-64 whitespace-nowrap">
             <div id="sidebar-logo-zone" class="flex items-center gap-3 transition-opacity duration-200">
                 <svg class="w-10 h-10 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -378,7 +819,6 @@
             <button onclick="switchWorkspaceView('notificaciones')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-gray-500 hover:text-white hover:bg-white/5 border border-transparent group relative" data-mod="notificaciones" title="Ir a Notificaciones">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="group-hover:scale-110 transition-transform"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
                 <span class="sidebar-text" data-i18n="nav_notificaciones">Notificaciones</span>
-                <!-- LED verde controlado dinámicamente -->
                 <span class="absolute right-4 w-1.5 h-1.5 rounded-full bg-green-500 led-green"></span>
             </button>
         </nav>
@@ -389,14 +829,14 @@
     </aside>
 
     <main class="flex-1 flex flex-col h-full relative z-10 overflow-hidden max-w-full text-sm">
-        
+
         <header id="workspace-header" class="h-24 px-6 md:px-10 flex items-center justify-between bg-rs-black/30 backdrop-blur-xl shrink-0 transition-all duration-300 z-20" style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-            
+
             <div class="flex items-center gap-6">
                 <div id="header-title-container" class="flex flex-col justify-center mt-1 transition-all duration-300 origin-left">
                     <span class="text-xs md:text-sm font-semibold text-gray-300 tracking-wider font-sans" data-i18n="welcome_subtitle">Bienvenid@</span>
                     <h2 id="brand-headline-name" class="text-2xl md:text-4xl font-display font-black tracking-tighter text-white uppercase mt-0.5 leading-snug" style="text-shadow: 0 0 20px rgba(255,255,255,0.05);">
-                        BROSS MANIZALES
+                        RED SAPIEN
                     </h2>
                 </div>
 
@@ -418,7 +858,7 @@
                         </div>
                         <button id="activate-btn-pc" onclick="activateEcosystem()" class="flex items-center gap-2.5 px-6 py-3.5 bg-white text-black text-sm font-black uppercase tracking-widest rounded-full hover:bg-gray-200 transition-all active:scale-95 animate-pulse-activate border border-white/50">
                             <span class="w-2 h-2 rounded-full bg-green-500 led-green"></span>
-                            <span data-i18n="btn_activate">Activar ahora el Ecosistema</span>
+                            <span data-i18n="btn_activate">Pedir ahora la activación</span>
                         </button>
                     </div>
                 </div>
@@ -450,11 +890,8 @@
                         <div class="p-2 hover:bg-white/5 rounded-xl transition-colors">
                             <div class="text-sm font-bold text-gray-300 mb-2 tracking-wider flex items-center gap-1.5" data-i18n="accent_color">🎨 Color de Acento</div>
                             <div class="flex items-center gap-3 px-1">
-                                <!-- Rojo -->
                                 <button onclick="changeGlobalNeonPalette('#FF3C00', 'rgba(255,60,0,0.1)', 'rgba(255,60,0,0.15)', this)" class="w-5 h-5 rounded-full bg-[#FF3C00] border-[2px] border-white scale-110 shadow-[0_0_10px_rgba(255,60,0,0.3)]" title="Rojo"></button>
-                                <!-- Cian -->
                                 <button onclick="changeGlobalNeonPalette('#00ffcc', 'rgba(0,255,204,0.1)', 'rgba(0,255,204,0.15)', this)" class="w-5 h-5 rounded-full bg-[#00ffcc] border border-transparent" title="Cian"></button>
-                                <!-- Morado IA -->
                                 <button onclick="changeGlobalNeonPalette('#7B2CBF', 'rgba(123,44,191,0.1)', 'rgba(123,44,191,0.15)', this)" class="w-5 h-5 rounded-full bg-[#7B2CBF] border border-transparent" title="Morado IA"></button>
                             </div>
                         </div>
@@ -482,7 +919,7 @@
         <div class="flex-1 py-6 md:p-8 overflow-hidden relative">
             <div id="pane-view-panel" class="workspace-pane h-full transition-opacity duration-200">
                 <div class="w-full h-full overflow-y-auto pb-12 font-sans custom-scrollbar select-none relative z-10 px-0">
-                    
+
                     <div class="md:hidden flex items-center justify-center gap-2 bg-white/5 border border-white/10 rounded-lg py-2 px-4 mb-4 w-fit mx-auto">
                         <div class="flex gap-1">
                             <div class="w-2 h-2 bg-white"></div>
@@ -495,8 +932,8 @@
                     <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch px-2 md:px-0">
                         <div class="hidden lg:block absolute top-1/2 left-[calc(33.33%-1rem)] right-[calc(66.66%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-10 -translate-y-1/2"></div>
                         <div class="hidden lg:block absolute top-1/2 left-[calc(66.66%-1rem)] right-[calc(33.33%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-10 -translate-y-1/2"></div>
-                        
-                        <!-- Tarjeta 1: WEB + IA (ajuste de truncado) -->
+
+                        <!-- Tarjeta 1: WEB + IA -->
                         <div onclick="openTelemetryModal(1)" class="group relative bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-6 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_15px_rgba(255,60,0,0.06)] z-10 overflow-hidden h-full">
                             <div class="absolute bottom-3 right-3 text-6xl font-black text-white/[0.015] pointer-events-none select-none">www</div>
                             <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/4 to-transparent rounded-bl-full pointer-events-none"></div>
@@ -510,7 +947,7 @@
                                 <div class="space-y-4">
                                     <div>
                                         <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="hosting_label">Hosting + dominio de por vida gratis</span>
-                                        <div class="bg-black border border-white/20 p-2.5 rounded-lg text-green-400 font-mono tracking-widest w-full mt-1 text-sm truncate" id="dynamic-domain">brossmanizales.redsapien.com</div>
+                                        <div class="bg-black border border-white/20 p-2.5 rounded-lg text-green-400 font-mono tracking-widest w-full mt-1 text-sm truncate" id="dynamic-domain">redsapien.com</div>
                                     </div>
                                     <div class="pt-2">
                                         <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="status_label">Estado operativo</span>
@@ -524,7 +961,7 @@
                             <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Haz clic para telemetría avanzada</div>
                         </div>
 
-                        <!-- Tarjeta 2: REDES Y CAMPAÑA (diseño compacto siempre en paralelo) -->
+                        <!-- Tarjeta 2: REDES Y CAMPAÑA -->
                         <div onclick="openTelemetryModal(2)" class="group relative bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-6 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_15px_rgba(255,60,0,0.06)] z-10 overflow-hidden h-full">
                             <div class="absolute bottom-3 right-3 text-5xl font-black text-white/[0.015] pointer-events-none">📱💸</div>
                             <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/4 to-transparent rounded-bl-full pointer-events-none"></div>
@@ -577,7 +1014,7 @@
                             <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Haz clic para telemetría avanzada</div>
                         </div>
 
-                        <!-- Tarjeta 3: SEO Y REPUTACIÓN (sin cambios) -->
+                        <!-- Tarjeta 3: SEO Y REPUTACIÓN -->
                         <div onclick="openTelemetryModal(3)" class="group relative bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-6 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_15px_rgba(255,60,0,0.06)] z-10 overflow-hidden h-full">
                             <div class="absolute bottom-2 right-2 w-16 h-16 text-white/5 pointer-events-none select-none">
                                 <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full opacity-[0.025]"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
@@ -620,7 +1057,6 @@
                     <div class="p-6 overflow-y-auto" id="telemetry-modal-body"></div>
                     <div class="bg-black/40 border-t border-white/5 p-4 flex items-center justify-between gap-3">
                         <button id="telemetry-prev-btn" onclick="navigateTelemetry(-1)" class="px-4 py-2 text-sm font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition-all border border-white/5 disabled:opacity-20 disabled:pointer-events-none" data-i18n="modal_prev">&larr; Anterior</button>
-                        <!-- Indicador de puntos en lugar de números -->
                         <div id="telemetry-dots" class="flex gap-1.5">
                             <span class="nav-dot active"></span>
                             <span class="nav-dot"></span>
@@ -633,7 +1069,7 @@
 
             <div id="pane-view-clientes" class="workspace-pane h-full hidden transition-opacity duration-200">
                 <div class="relative w-full h-full overflow-hidden flex flex-col justify-center px-4 pt-16 pb-28 md:pb-16">
-                    
+
                     <div class="absolute inset-0 z-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
                         <svg class="w-72 h-72 lock-glow lock-pulse-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                             <rect x="5" y="11" width="14" height="10" rx="2"/>
@@ -651,7 +1087,8 @@
                     </div>
 
                     <div class="relative z-10 flex flex-col items-center w-full max-w-sm md:max-w-2xl mx-auto gap-4 md:gap-8 mt-auto">
-                        
+
+                        <!-- Antonella IA -->
                         <div class="w-full bg-white/[0.02] border border-white/5 hover:border-[var(--accent-color)]/30 rounded-xl p-3 md:p-5 flex flex-row items-center gap-4 transition-all shadow-md relative overflow-hidden">
                             <div class="absolute right-2 top-1/2 transform -translate-y-1/2 w-12 h-12 pointer-events-none z-0">
                                 <div class="relative w-full h-full">
@@ -660,8 +1097,8 @@
                                     <div class="absolute w-1/2 h-[2px] bg-green-400/40 origin-left top-1/2 left-1/2 -translate-y-1/2 radar-sweep" style="transform-origin: 0% 50%;"></div>
                                 </div>
                             </div>
-                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0 z-10">
-                                <img src="Antonella-IA.jpg" alt="Antonella IA" class="w-full h-full object-cover">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0 z-10 bg-[#0a0a0a] flex items-center justify-center">
+                                <img src="Antonella-IA.webp" alt="Antonella IA" class="w-full h-full object-cover">
                             </div>
                             <div class="flex flex-col text-left z-10">
                                 <h3 class="text-base md:text-lg font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="soporte_monitoreo_titulo">Antonella IA</h3>
@@ -674,12 +1111,13 @@
                             </div>
                         </div>
 
+                        <!-- Cristian - CTO Red Sapien -->
                         <div class="w-full bg-white/[0.02] border border-white/5 hover:border-[var(--accent-color)]/30 rounded-xl p-3 md:p-5 flex flex-row items-center gap-4 transition-all shadow-md relative">
-                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0">
-                                <img src="Foto-Sapien.webp" alt="Ingeniería Red Sapien" class="w-full h-full object-cover">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0 bg-[#0a0a0a] flex items-center justify-center">
+                                <img src="Cristian-Sapien.webp" alt="Cristian" class="w-full h-full object-cover">
                             </div>
                             <div class="flex flex-col text-left">
-                                <h3 class="text-base md:text-lg font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="soporte_asesoria_titulo">Ingeniería Red Sapien</h3>
+                                <h3 class="text-base md:text-lg font-display font-bold text-white uppercase tracking-tight leading-snug">Cristian - CTO Red Sapien</h3>
                                 <p class="text-sm text-gray-300 font-mono font-medium" data-i18n="soporte_asesoria_estado">Asesoría y control de mando activo</p>
                                 <div class="mt-1 text-xs text-green-400 flex items-center gap-1">
                                     <span class="inline-block w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
@@ -694,7 +1132,6 @@
                     </div>
 
                     <div class="w-full max-w-sm mx-auto mt-8 md:mt-12 mb-auto z-10">
-                        <!-- Botón de soporte, visible solo si el ecosistema está activado -->
                         <button id="open-support-modal-btn" class="w-full bg-white text-black py-3 md:py-4 rounded-full text-sm font-black uppercase tracking-widest transition-all active:scale-95 animate-pulse-activate border border-white/50 shadow-lg hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] flex items-center justify-center gap-3" style="display: none;">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
@@ -705,39 +1142,47 @@
                 </div>
             </div>
 
-            <!-- MÓDULO 3: CASOS DE ÉXITO (VERSIÓN DEFINITIVA) -->
+            <!-- MÓDULO 3: CASOS DE ÉXITO -->
             <div id="pane-view-casos" class="workspace-pane h-full hidden transition-opacity duration-200 relative">
+                <div id="casos-overlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/70 backdrop-blur-sm rounded-2xl border border-white/10 cursor-not-allowed" style="pointer-events: auto;">
+                    <div id="casos-lock-container" class="flex flex-col items-center justify-center select-none">
+                        <svg id="casos-lock-icon" class="w-16 h-16 text-white/80 lock-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor"/>
+                        </svg>
+                        <p class="mt-4 text-sm font-mono text-gray-300 uppercase tracking-widest">En proceso de mejora</p>
+                    </div>
+                </div>
+
                 <div class="relative z-10 flex flex-col lg:flex-row w-full h-full gap-6 p-4 md:p-6 overflow-hidden">
-                    
-                    <!-- COLUMNA IZQUIERDA (LOGO WALL) - PC / ARRIBA MÓVIL -->
+
                     <div class="w-full lg:w-1/2 flex flex-col justify-center space-y-5 text-center lg:text-left">
                         <div class="grid grid-cols-3 gap-5 max-w-[280px] mx-auto lg:mx-0">
-                            <!-- 9 logos (3x3) con animación escalonada más lenta (1.2s) -->
+                            <!-- Reemplazar imágenes por SVGs -->
                             <div class="w-14 h-14 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.05s;">
-                                <img src="https://placehold.co/56x56/F59E0B/FFFFFF?text=LP" alt="La Papa Prohibida" class="w-full h-full object-cover">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF3C00" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                             </div>
                             <div class="w-14 h-14 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.2s;">
-                                <img src="https://placehold.co/56x56/10B981/FFFFFF?text=BT" alt="Bogotaco" class="w-full h-full object-cover">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF3C00" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                             </div>
                             <div class="w-14 h-14 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.35s;">
-                                <img src="https://placehold.co/56x56/EF4444/FFFFFF?text=SM" alt="Señor Medrano" class="w-full h-full object-cover">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF3C00" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                             </div>
                             <div class="w-14 h-14 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.5s;">
-                                <img src="https://placehold.co/56x56/FFFFFF/000000?text=NE" alt="Noir Elixir" class="w-full h-full object-cover">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF3C00" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                             </div>
                             <div class="w-14 h-14 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.65s;">
-                                <img src="https://placehold.co/56x56/666666/FFFFFF?text=+" alt="Logo placeholder" class="w-full h-full object-cover">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF3C00" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                             </div>
                             <div class="w-14 h-14 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.8s;">
-                                <img src="https://placehold.co/56x56/666666/FFFFFF?text=+" alt="Logo placeholder" class="w-full h-full object-cover">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF3C00" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                             </div>
                             <div class="w-14 h-14 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 0.95s;">
-                                <img src="https://placehold.co/56x56/666666/FFFFFF?text=+" alt="Logo placeholder" class="w-full h-full object-cover">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF3C00" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                             </div>
                             <div class="w-14 h-14 glass-circle rounded-full flex items-center justify-center logo-reveal" style="animation-delay: 1.1s;">
-                                <img src="https://placehold.co/56x56/666666/FFFFFF?text=+" alt="Logo placeholder" class="w-full h-full object-cover">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF3C00" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                             </div>
-                            <!-- Noveno logo: "TU LOGO" con icono de espera -->
                             <div class="w-14 h-14 glass-circle rounded-full flex items-center justify-center logo-reveal border-dashed border-white/20 hover:border-[var(--accent-color)] transition-all" style="animation-delay: 1.25s;">
                                 <div class="flex flex-col items-center leading-none">
                                     <span class="text-[9px] font-black text-gray-400 uppercase tracking-wider">TU</span>
@@ -746,7 +1191,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Frase principal reducida y cita a la derecha -->
                         <div class="flex flex-col lg:flex-row items-center justify-between gap-1 mt-1">
                             <p class="text-xs md:text-sm font-display font-black tracking-wider text-white/80 uppercase text-center lg:text-left">
                                 HACKEAMOS EL ALGORITMO DE VENTAS
@@ -757,78 +1201,77 @@
                         </div>
                     </div>
 
-                    <!-- COLUMNA DERECHA (TARJETAS) - PC / ABAJO MÓVIL -->
                     <div class="w-full lg:w-1/2 h-full overflow-y-auto casos-scroll-container pb-12 lg:pb-6 space-y-5 pr-0">
-                        
-                        <!-- Tarjeta 1: La Papa Prohibida (Ámbar) -->
+
+                        <!-- Caso 1 -->
                         <div class="case-card bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-4 flex flex-col sm:flex-row gap-4 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(1)">
-                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[var(--accent-color)]/30 transition-colors overflow-hidden">
-                                <img src="https://placehold.co/48x48/F59E0B/FFFFFF?text=LP" alt="La Papa" class="w-full h-full object-cover">
+                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[var(--accent-color)]/30 transition-colors">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF3C00" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                             </div>
                             <div class="flex-1 min-w-0">
-                                <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug">La Papa Prohibida</h3>
+                                <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="caso1_name">La Papa Prohibida</h3>
                                 <p class="text-xs text-gray-300 font-mono flex items-center gap-1">
                                     <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                    <span>Villamaría y Manizales</span>
+                                    <span data-i18n="caso1_location">Villamaría y Manizales</span>
                                 </p>
                                 <div class="bg-black/30 border border-white/5 rounded p-1.5 mt-1">
-                                    <p class="text-xs text-gray-300 font-mono">16 pedidos en 30h · 49 conv. · $19.000 COP</p>
+                                    <p class="text-xs text-gray-300 font-mono" data-i18n="caso1_stat">16 pedidos en 30h · 49 conversiones · $19.000 COP</p>
                                 </div>
-                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[var(--accent-color)] hover:text-black transition-all border border-white/10 group-hover:border-[var(--accent-color)]/30">Ver caso</button>
+                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[var(--accent-color)] hover:text-black transition-all border border-white/10 group-hover:border-[var(--accent-color)]/30" data-i18n="btn_view_case">Ver caso</button>
                             </div>
                         </div>
 
-                        <!-- Tarjeta 2: Bogotaco (Verde) -->
+                        <!-- Caso 2 -->
                         <div class="case-card bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-4 flex flex-col sm:flex-row gap-4 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(2)">
-                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[var(--accent-color)]/30 transition-colors overflow-hidden">
-                                <img src="https://placehold.co/48x48/10B981/FFFFFF?text=BT" alt="Bogotaco" class="w-full h-full object-cover">
+                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[var(--accent-color)]/30 transition-colors">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF3C00" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                             </div>
                             <div class="flex-1 min-w-0">
-                                <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug">Bogotaco</h3>
+                                <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="caso2_name">Bogotaco</h3>
                                 <p class="text-xs text-gray-300 font-mono flex items-center gap-1">
                                     <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                    <span>Bogotá, Fontibón (3 sedes)</span>
+                                    <span data-i18n="caso2_location">Bogotá, Fontibón (3 sedes)</span>
                                 </p>
                                 <div class="bg-black/30 border border-white/5 rounded p-1.5 mt-1">
-                                    <p class="text-xs text-gray-300 font-mono">SEO local · 3 GMB · Web Élite</p>
+                                    <p class="text-xs text-gray-300 font-mono" data-i18n="caso2_stat">SEO local · 3 GMB · Web Élite</p>
                                 </div>
-                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[var(--accent-color)] hover:text-black transition-all border border-white/10 group-hover:border-[var(--accent-color)]/30">Ver caso</button>
+                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[var(--accent-color)] hover:text-black transition-all border border-white/10 group-hover:border-[var(--accent-color)]/30" data-i18n="btn_view_case">Ver caso</button>
                             </div>
                         </div>
 
-                        <!-- Tarjeta 3: Señor Medrano (Rojo) - ahora Comidas Rápidas -->
+                        <!-- Caso 3 -->
                         <div class="case-card bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-4 flex flex-col sm:flex-row gap-4 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(3)">
-                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[var(--accent-color)]/30 transition-colors overflow-hidden">
-                                <img src="https://placehold.co/48x48/EF4444/FFFFFF?text=SM" alt="Señor Medrano" class="w-full h-full object-cover">
+                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[var(--accent-color)]/30 transition-colors">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF3C00" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                             </div>
                             <div class="flex-1 min-w-0">
-                                <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug">Señor Medrano</h3>
+                                <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="caso3_name">Señor Medrano</h3>
                                 <p class="text-xs text-gray-300 font-mono flex items-center gap-1">
                                     <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                    <span>Manizales y Villamaría</span>
+                                    <span data-i18n="caso1_location">Manizales y Villamaría</span>
                                 </p>
                                 <div class="bg-black/30 border border-white/5 rounded p-1.5 mt-1">
-                                    <p class="text-xs text-gray-300 font-mono">Perfil Google optimizado + Web limpia</p>
+                                    <p class="text-xs text-gray-300 font-mono" data-i18n="caso3_stat">Perfil Google optimizado + Web limpia</p>
                                 </div>
-                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[var(--accent-color)] hover:text-black transition-all border border-white/10 group-hover:border-[var(--accent-color)]/30">Ver caso</button>
+                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[var(--accent-color)] hover:text-black transition-all border border-white/10 group-hover:border-[var(--accent-color)]/30" data-i18n="btn_view_case">Ver caso</button>
                             </div>
                         </div>
 
-                        <!-- Tarjeta 4: Noir Elixir (Blanco) -->
+                        <!-- Caso 4 -->
                         <div class="case-card bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-4 flex flex-col sm:flex-row gap-4 transition-all duration-300 cursor-pointer shadow-lg group" onclick="openSuccessModal(4)">
-                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[var(--accent-color)]/30 transition-colors overflow-hidden">
-                                <img src="https://placehold.co/48x48/FFFFFF/000000?text=NE" alt="Noir Elixir" class="w-full h-full object-cover">
+                            <div class="w-12 h-12 rounded-full bg-[#1a1a1a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[var(--accent-color)]/30 transition-colors">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF3C00" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                             </div>
                             <div class="flex-1 min-w-0">
-                                <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug">Noir Elixir</h3>
+                                <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="caso4_name">Noir Elixir</h3>
                                 <p class="text-xs text-gray-300 font-mono flex items-center gap-1">
                                     <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                    <span>Medellín, Antioquia</span>
+                                    <span data-i18n="caso4_location">Medellín, Antioquia</span>
                                 </p>
                                 <div class="bg-black/30 border border-white/5 rounded p-1.5 mt-1">
-                                    <p class="text-xs text-gray-300 font-mono">Rebranding Premium + Catálogo 1s</p>
+                                    <p class="text-xs text-gray-300 font-mono" data-i18n="caso4_stat">Rebranding Premium + Catálogo 1s</p>
                                 </div>
-                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[var(--accent-color)] hover:text-black transition-all border border-white/10 group-hover:border-[var(--accent-color)]/30">Ver caso</button>
+                                <button class="mt-2 w-full py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white font-black uppercase tracking-wider text-xs hover:bg-[var(--accent-color)] hover:text-black transition-all border border-white/10 group-hover:border-[var(--accent-color)]/30" data-i18n="btn_view_case">Ver caso</button>
                             </div>
                         </div>
                     </div>
@@ -837,7 +1280,6 @@
 
             <!-- MÓDULO 4: NOTIFICACIONES -->
             <div id="pane-view-notificaciones" class="workspace-pane h-full hidden transition-opacity duration-200 relative">
-                <!-- Fondo inmersivo con pulsos/conexiones (ajustado para móvil) -->
                 <div class="absolute inset-0 z-0 pointer-events-none opacity-20 flex items-center justify-center overflow-hidden">
                     <svg class="w-full h-full max-w-xs md:max-w-4xl max-h-4xl" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="200" cy="200" r="60" stroke="var(--accent-color)" stroke-width="0.5" opacity="0.3" class="animate-pulse">
@@ -868,16 +1310,12 @@
                 </div>
 
                 <div class="relative z-10 flex flex-col w-full h-full p-4 md:p-6 overflow-y-auto custom-scrollbar">
-                    <!-- Título del módulo -->
                     <div class="flex items-center gap-3 mb-6">
                         <h2 class="text-xl md:text-2xl font-display font-black text-white uppercase tracking-tight leading-snug" data-i18n="notifications_title">Centro de Notificaciones</h2>
                         <span id="notification-badge" class="ml-2 px-2.5 py-0.5 text-xs font-mono font-bold rounded-full bg-[var(--accent-color)] text-white hidden">0</span>
                     </div>
-                    <!-- Contenedor de tarjetas -->
                     <div id="notifications-container" class="flex flex-col gap-4 max-w-3xl mx-auto w-full">
-                        <!-- Las tarjetas se inyectan dinámicamente -->
                     </div>
-                    <!-- Mensaje cuando no hay notificaciones -->
                     <div id="notifications-empty" class="flex flex-col items-center justify-center text-center py-12 text-gray-300 hidden">
                         <svg class="w-16 h-16 mb-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
                         <p class="text-sm font-mono" data-i18n="notifications_empty">No hay notificaciones activas. Todo está en calma.</p>
@@ -936,7 +1374,7 @@
             </div>
             <button id="activate-btn-mob" onclick="activateEcosystem()" class="w-full bg-white text-black py-4 px-6 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 cursor-pointer active:scale-95 transition-transform animate-pulse-activate border border-white/50">
                 <span class="w-2.5 h-2.5 rounded-full bg-green-500 led-green"></span>
-                <span class="text-sm font-black uppercase tracking-wider leading-none mt-0.5" data-i18n="btn_activate">Activar ahora el Ecosistema</span>
+                <span class="text-sm font-black uppercase tracking-wider leading-none mt-0.5" data-i18n="btn_activate">Pedir ahora la activación</span>
             </button>
         </div>
     </div>
@@ -953,7 +1391,6 @@
         </button>
         <button onclick="switchWorkspaceView('casos')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/4" data-mod="casos"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_casos">Casos</span></button>
         <button onclick="switchWorkspaceView('notificaciones')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/4 relative" data-mod="notificaciones"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_notificaciones">Alertas</span>
-            <!-- LED verde controlado dinámicamente -->
             <span class="absolute top-1.5 right-6 w-1.5 h-1.5 rounded-full bg-green-500 led-green"></span>
         </button>
     </div>
@@ -963,14 +1400,13 @@
     <div id="support-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-white mb-2 leading-snug" data-i18n="support_title">Soporte Técnico</h3><p class="text-sm text-gray-300 leading-relaxed mb-4 font-mono" data-i18n="support_text">Nuestro equipo está listo para asistirte. Envía un mensaje a soporte@redsapien.com o llama al +57 300 000 0000.</p><div class="flex justify-end gap-3"><button onclick="toggleSupportModal(false)" class="px-5 py-2.5 bg-white/10 text-white text-sm font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-colors" data-i18n="close">Cerrar</button><a href="mailto:soporte@redsapien.com" class="px-5 py-2.5 bg-[var(--accent-color)] text-black text-sm font-black uppercase tracking-wider rounded-xl hover:opacity-90 transition-colors" data-i18n="contact">Contactar</a></div></div></div>
     <div id="purge-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-rs-red/30 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-red-500 mb-2 leading-snug" data-i18n="purge_title">🚨 CONFIRMAR PURGA ABSOLUTA</h3><p class="text-sm text-gray-300 leading-relaxed mb-4 font-mono" data-i18n="purge_text">¿Seguro que deseas purgar la cuenta, el avatar y todo el progreso del ecosistema? Esta acción es irreversible.</p><input type="text" id="purge-confirm-input" placeholder="Escribe ELIMINAR para confirmar" data-i18n="purge_placeholder" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[var(--accent-color)] mb-4"><div class="flex justify-end gap-3"><button onclick="closePurgeModal()" class="px-5 py-2.5 bg-white/10 text-white text-sm font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-colors" data-i18n="cancel">Cancelar</button><button id="confirm-purge-btn" disabled class="px-5 py-2.5 bg-red-500/30 text-gray-400 text-sm font-black uppercase tracking-wider rounded-xl cursor-not-allowed transition-colors" data-i18n="confirm_purge">Confirmar Purgado</button></div></div></div>
 
-    <!-- Modal de Caso de Éxito (Dinámico) con navegación por puntos -->
+    <!-- Modal de Caso de Éxito -->
     <div id="success-modal-overlay" class="fixed inset-0 z-[250] hidden items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-500 p-4">
         <div class="w-full max-w-md lg:max-w-3xl bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 shadow-2xl modal-matrix-enter relative max-h-[85vh] overflow-y-auto custom-scrollbar">
             <button onclick="closeSuccessModal()" class="absolute top-4 right-4 p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white border border-white/5 transition-colors z-20">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
             <div id="success-modal-content" class="space-y-4"></div>
-            <!-- Navegación entre casos con puntos -->
             <div class="flex items-center justify-between mt-5 border-t border-white/10 pt-4">
                 <button id="success-prev-btn" onclick="navigateSuccessCase(-1)" class="success-modal-nav-btn px-3 py-1.5 text-xs font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition-all border border-white/5 disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-1">
                     <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
@@ -990,40 +1426,98 @@
         </div>
     </div>
 
+    <!-- ============================================================ -->
+    <!-- SCRIPT PRINCIPAL: TRADUCCIONES, LÓGICA DE PANEL, ONBOARDING   -->
+    <!-- ============================================================ -->
     <script>
+        // --------------------------------------------------------------
+        // 0. CONFIGURACIÓN DE SUPABASE y CONSTANTES DE REDIRECCIÓN
+        // --------------------------------------------------------------
+        const SUPABASE_URL = 'https://krygvuvvenizgebincle.supabase.co';
+        const SUPABASE_KEY =
+            'sb_publishable_06DbVVwkvlDKQ-xYoTyRxg_o4rDpaUh';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // Ruta relativa a la landing page (desde /dashboard/index.html)
+        const LOGIN_URL = '../index.html';
+        let _authRedirecting = false;
+
+        // --------------------------------------------------------------
+        // 1. TRADUCCIONES (actualizadas)
+        // --------------------------------------------------------------
         const translations = {
             es: {
-                nav_panel: "Panel", nav_clientes: "Soporte", nav_casos: "Casos de Éxito", nav_notificaciones: "Notificaciones",
-                welcome_subtitle: "Bienvenid@", btn_activate: "Activar ahora el Ecosistema", btn_support: "Soporte Técnico",
-                tooltip_activate: "Haz clic para que iniciemos con la activación...", tooltip_activate_mobile: "Haz clic para que iniciemos con la activación...",
-                footer_sys: "SYS.NODE // ONLINE", upload_logo: "Subir Logo del Negocio", change_logo: "Cambiar Logo",
-                panel_global: "Panel Global", accent_color: "🎨 Color de Acento", language: "🌐 Idioma Preferido",
-                terms: "Términos de Uso", delete_account: "Eliminar cuenta y datos", terms_title: "Términos del Nodo",
+                nav_panel: "Panel",
+                nav_clientes: "Soporte",
+                nav_casos: "Casos de Éxito",
+                nav_notificaciones: "Notificaciones",
+                welcome_subtitle: "Bienvenid@",
+                btn_activate: "Pedir ahora la activación",
+                btn_support: "Soporte Técnico",
+                tooltip_activate: "Haz clic para que iniciemos con la activación...",
+                tooltip_activate_mobile: "Haz clic para que iniciemos con la activación...",
+                footer_sys: "SYS.NODE // ONLINE",
+                upload_logo: "Subir Logo del Negocio",
+                change_logo: "Cambiar Logo",
+                panel_global: "Panel Global",
+                accent_color: "🎨 Color de Acento",
+                language: "🌐 Idioma Preferido",
+                terms: "Términos de Uso",
+                delete_account: "Eliminar cuenta y datos",
+                terms_title: "Términos del Nodo",
                 terms_text: "Este centro operativo procesa analíticas web y flujos conversacionales. Al interactuar con la plataforma, aceptas la conexión automatizada de la maquinaria comercial.",
-                understand: "Entendido", support_title: "Soporte Técnico",
+                understand: "Entendido",
+                support_title: "Soporte Técnico",
                 support_text: "Nuestro equipo está listo para asistirte. Envía un mensaje a soporte@redsapien.com o llama al +57 300 000 0000.",
-                close: "Cerrar", contact: "Contactar", proud_manizales: "Orgullosamente Manizaleñ@s",
-                card1_title: "WEB + IA", card2_title: "REDES Y CAMPAÑA", card3_title: "SEO Y REPUTACIÓN",
-                hosting_label: "Hosting + dominio de por vida gratis", status_label: "Estado operativo",
-                status_pending_deploy: "Pendiente de despliegue", click_telemetry: "Haz clic para telemetría avanzada",
-                whatsapp_msgs: "Mensajes WhatsApp", money_spent: "Dinero invertido",
-                budget_label: "Presupuesto:", budget_value: "13.000 pesos/día",
-                flow_label: "Flujo:", flow_value: "11 a 20 mensajes diarios nuevos",
-                pixel_status_label: "Estado píxel:", pixel_disconnected: "Desconectado",
-                rating_label: "Calificación", status_waiting_connection: "A la espera de conexión",
-                modal_prev: "← Anterior", modal_next: "Siguiente →", modal_gotit: "Entendido", modal_active_of: "Activo {current} de {total}",
-                modal1_title: "WEB + IA", modal1_sub: "Infraestructura de alto rendimiento",
-                modal1_ai: "🟢 Agente de IA 24/7", modal1_visits: "visitas/mes", modal1_conversion: "📊 Conversión", modal1_traffic: "Tráfico",
-                modal2_title: "Presencia y Ventas", modal2_sub: "Métricas en tiempo real",
-                modal2_impressions: "Impresiones", modal2_clicks: "Clics", modal2_high_value: "Alto valor",
-                modal2_messages: "Mensajes nuevos/mes", modal2_conversions: "Conversiones",
-                modal3_title: "Presencia Local", modal3_sub: "Cobertura inteligente",
-                modal3_visibility: "Visibilidad local", modal3_calls: "Llamadas directas",
-                purge_title: "🚨 CONFIRMAR PURGA ABSOLUTA", purge_text: "¿Seguro que deseas purgar la cuenta, el avatar y todo el progreso del ecosistema? Esta acción es irreversible.",
-                cancel: "Cancelar", confirm_purge: "Confirmar Purgado", purge_placeholder: "Escribe ELIMINAR para confirmar",
+                close: "Cerrar",
+                contact: "Contactar",
+                proud_manizales: "Orgullosamente Manizaleñ@s",
+                card1_title: "WEB + IA",
+                card2_title: "REDES Y CAMPAÑA",
+                card3_title: "SEO Y REPUTACIÓN",
+                hosting_label: "Hosting + dominio de por vida gratis",
+                status_label: "Estado operativo",
+                status_pending_deploy: "Pendiente de despliegue",
+                click_telemetry: "Haz clic para telemetría avanzada",
+                whatsapp_msgs: "Mensajes WhatsApp",
+                money_spent: "Dinero invertido",
+                budget_label: "Presupuesto:",
+                budget_value: "13.000 pesos/día",
+                flow_label: "Flujo:",
+                flow_value: "11 a 20 mensajes diarios nuevos",
+                pixel_status_label: "Estado píxel:",
+                pixel_disconnected: "Desconectado",
+                rating_label: "Calificación",
+                status_waiting_connection: "A la espera de conexión",
+                modal_prev: "← Anterior",
+                modal_next: "Siguiente →",
+                modal_gotit: "Entendido",
+                modal_active_of: "Activo {current} de {total}",
+                modal1_title: "WEB + IA",
+                modal1_sub: "Infraestructura de alto rendimiento",
+                modal1_ai: "🟢 Agente de IA 24/7",
+                modal1_visits: "visitas/mes",
+                modal1_conversion: "📊 Conversión",
+                modal1_traffic: "Tráfico",
+                modal2_title: "Presencia y Ventas",
+                modal2_sub: "Métricas en tiempo real",
+                modal2_impressions: "Impresiones",
+                modal2_clicks: "Clics",
+                modal2_high_value: "Alto valor",
+                modal2_messages: "Mensajes nuevos/mes",
+                modal2_conversions: "Conversiones",
+                modal3_title: "Presencia Local",
+                modal3_sub: "Cobertura inteligente",
+                modal3_visibility: "Visibilidad local",
+                modal3_calls: "Llamadas directas",
+                purge_title: "🚨 CONFIRMAR PURGA ABSOLUTA",
+                purge_text: "¿Seguro que deseas purgar la cuenta, el avatar y todo el progreso del ecosistema? Esta acción es irreversible.",
+                cancel: "Cancelar",
+                confirm_purge: "Confirmar Purgado",
+                purge_placeholder: "Escribe ELIMINAR para confirmar",
                 soporte_monitoreo_titulo: "Antonella IA",
                 soporte_monitoreo_estado: "Lista para monitorear ecosistema",
-                soporte_asesoria_titulo: "Ingeniería Red Sapien",
+                soporte_asesoria_titulo: "Cristian - CTO Red Sapien",
                 soporte_asesoria_estado: "Asesoría y control de mando activo",
                 btn_solicitar_soporte: "Solicitar Soporte",
                 scan_percent_label: "% escaneo activo",
@@ -1063,37 +1557,77 @@
                 notifications_empty: "No hay notificaciones activas. Todo está en calma."
             },
             en: {
-                nav_panel: "Dashboard", nav_clientes: "Support", nav_casos: "Success Cases", nav_notificaciones: "Notifications",
-                welcome_subtitle: "Welcome", btn_activate: "Activate Ecosystem Now", btn_support: "Technical Support",
-                tooltip_activate: "Click to start activation...", tooltip_activate_mobile: "Click to start activation...",
-                footer_sys: "SYS.NODE // ONLINE", upload_logo: "Upload Business Logo", change_logo: "Change Logo",
-                panel_global: "Global Panel", accent_color: "🎨 Accent Color", language: "🌐 Preferred Language",
-                terms: "Terms of Use", delete_account: "Delete account and data", terms_title: "Node Terms",
+                nav_panel: "Dashboard",
+                nav_clientes: "Support",
+                nav_casos: "Success Cases",
+                nav_notificaciones: "Notifications",
+                welcome_subtitle: "Welcome",
+                btn_activate: "Request activation now",
+                btn_support: "Technical Support",
+                tooltip_activate: "Click to start activation...",
+                tooltip_activate_mobile: "Click to start activation...",
+                footer_sys: "SYS.NODE // ONLINE",
+                upload_logo: "Upload Business Logo",
+                change_logo: "Change Logo",
+                panel_global: "Global Panel",
+                accent_color: "🎨 Accent Color",
+                language: "🌐 Preferred Language",
+                terms: "Terms of Use",
+                delete_account: "Delete account and data",
+                terms_title: "Node Terms",
                 terms_text: "This operational center processes web analytics and conversational flows. By interacting with the platform, you accept the automated connection of commercial machinery.",
-                understand: "Understood", support_title: "Technical Support",
+                understand: "Understood",
+                support_title: "Technical Support",
                 support_text: "Our team is ready to assist you. Send a message to support@redsapien.com or call +57 300 000 0000.",
-                close: "Close", contact: "Contact", proud_manizales: "Proudly from Manizales",
-                card1_title: "WEB + AI", card2_title: "SOCIAL & CAMPAIGN", card3_title: "SEO & REPUTATION",
-                hosting_label: "Lifetime free hosting + domain", status_label: "Operational status",
-                status_pending_deploy: "Pending deployment", click_telemetry: "Click for advanced telemetry",
-                whatsapp_msgs: "WhatsApp Messages", money_spent: "Money invested",
-                budget_label: "Budget:", budget_value: "13,000 COP/day",
-                flow_label: "Flow:", flow_value: "11 to 20 new daily messages",
-                pixel_status_label: "Pixel status:", pixel_disconnected: "Disconnected",
-                rating_label: "Rating", status_waiting_connection: "Awaiting connection",
-                modal_prev: "← Previous", modal_next: "Next →", modal_gotit: "Got it", modal_active_of: "Active {current} of {total}",
-                modal1_title: "WEB + AI", modal1_sub: "High performance infrastructure",
-                modal1_ai: "🟢 AI Agent 24/7", modal1_visits: "visits/month", modal1_conversion: "📊 Conversion", modal1_traffic: "Traffic",
-                modal2_title: "Presence & Sales", modal2_sub: "Real time metrics",
-                modal2_impressions: "Impressions", modal2_clicks: "Clicks", modal2_high_value: "High value",
-                modal2_messages: "New messages/month", modal2_conversions: "Conversions",
-                modal3_title: "Local Presence", modal3_sub: "Smart coverage",
-                modal3_visibility: "Local visibility", modal3_calls: "Direct calls",
-                purge_title: "🚨 CONFIRM ABSOLUTE PURGE", purge_text: "Are you sure you want to purge your account, avatar and all ecosystem progress? This action is irreversible.",
-                cancel: "Cancel", confirm_purge: "Confirm Purge", purge_placeholder: "Type DELETE to confirm",
+                close: "Close",
+                contact: "Contact",
+                proud_manizales: "Proudly from Manizales",
+                card1_title: "WEB + AI",
+                card2_title: "SOCIAL & CAMPAIGN",
+                card3_title: "SEO & REPUTATION",
+                hosting_label: "Lifetime free hosting + domain",
+                status_label: "Operational status",
+                status_pending_deploy: "Pending deployment",
+                click_telemetry: "Click for advanced telemetry",
+                whatsapp_msgs: "WhatsApp Messages",
+                money_spent: "Money invested",
+                budget_label: "Budget:",
+                budget_value: "13,000 COP/day",
+                flow_label: "Flow:",
+                flow_value: "11 to 20 new daily messages",
+                pixel_status_label: "Pixel status:",
+                pixel_disconnected: "Disconnected",
+                rating_label: "Rating",
+                status_waiting_connection: "Awaiting connection",
+                modal_prev: "← Previous",
+                modal_next: "Next →",
+                modal_gotit: "Got it",
+                modal_active_of: "Active {current} of {total}",
+                modal1_title: "WEB + AI",
+                modal1_sub: "High performance infrastructure",
+                modal1_ai: "🟢 AI Agent 24/7",
+                modal1_visits: "visits/month",
+                modal1_conversion: "📊 Conversion",
+                modal1_traffic: "Traffic",
+                modal2_title: "Presence & Sales",
+                modal2_sub: "Real time metrics",
+                modal2_impressions: "Impressions",
+                modal2_clicks: "Clicks",
+                modal2_high_value: "High value",
+                modal2_messages: "New messages/month",
+                modal2_conversions: "Conversions",
+                modal3_title: "Local Presence",
+                modal3_sub: "Smart coverage",
+                modal3_visibility: "Local visibility",
+                modal3_calls: "Direct calls",
+                purge_title: "🚨 CONFIRM ABSOLUTE PURGE",
+                purge_text: "Are you sure you want to purge your account, avatar and all ecosystem progress? This action is irreversible.",
+                cancel: "Cancel",
+                confirm_purge: "Confirm Purge",
+                purge_placeholder: "Type DELETE to confirm",
                 soporte_monitoreo_titulo: "Antonella AI",
                 soporte_monitoreo_estado: "Ready to monitor ecosystem",
-                soporte_asesoria_titulo: "Red Sapien Engineering",
+                soporte_asesoria_titulo: "Cristian - CTO Red Sapien",
                 soporte_asesoria_estado: "Advisory and active command control",
                 btn_solicitar_soporte: "Request Support",
                 scan_percent_label: "% active scan",
@@ -1133,37 +1667,77 @@
                 notifications_empty: "No active notifications. All is calm."
             },
             pt: {
-                nav_panel: "Painel", nav_clientes: "Suporte", nav_casos: "Casos de Sucesso", nav_notificacoes: "Notificações",
-                welcome_subtitle: "Bem-vindo", btn_activate: "Ativar Ecossistema Agora", btn_support: "Suporte Técnico",
-                tooltip_activate: "Clique para iniciarmos a ativação...", tooltip_activate_mobile: "Clique para iniciarmos a ativação...",
-                footer_sys: "SYS.NODE // ONLINE", upload_logo: "Enviar Logo da Empresa", change_logo: "Alterar Logo",
-                panel_global: "Painel Global", accent_color: "🎨 Cor Destaque", language: "🌐 Idioma Preferido",
-                terms: "Termos de Uso", delete_account: "Excluir conta e dados", terms_title: "Termos do Nó",
+                nav_panel: "Painel",
+                nav_clientes: "Suporte",
+                nav_casos: "Casos de Sucesso",
+                nav_notificacoes: "Notificações",
+                welcome_subtitle: "Bem-vindo",
+                btn_activate: "Pedir ativação agora",
+                btn_support: "Suporte Técnico",
+                tooltip_activate: "Clique para iniciarmos a ativação...",
+                tooltip_activate_mobile: "Clique para iniciarmos a ativação...",
+                footer_sys: "SYS.NODE // ONLINE",
+                upload_logo: "Enviar Logo da Empresa",
+                change_logo: "Alterar Logo",
+                panel_global: "Painel Global",
+                accent_color: "🎨 Cor Destaque",
+                language: "🌐 Idioma Preferido",
+                terms: "Termos de Uso",
+                delete_account: "Excluir conta e dados",
+                terms_title: "Termos do Nó",
                 terms_text: "Este centro operacional processa análises da web e fluxos conversacionais. Ao interagir com a plataforma, você aceita a conexão automatizada da maquinaria comercial.",
-                understand: "Entendido", support_title: "Central de Suporte",
+                understand: "Entendido",
+                support_title: "Central de Suporte",
                 support_text: "Nossa equipe está pronta para ajudá-lo. Envie uma mensagem para suporte@redsapien.com ou ligue para +57 300 000 0000.",
-                close: "Fechar", contact: "Contato", proud_manizales: "Orgulhosamente de Manizales",
-                card1_title: "WEB + IA", card2_title: "REDES E CAMPANHA", card3_title: "SEO E REPUTAÇÃO",
-                hosting_label: "Hospedagem + domínio grátis vitalício", status_label: "Estado operacional",
-                status_pending_deploy: "Pendente de implantação", click_telemetry: "Clique para telemetria avançada",
-                whatsapp_msgs: "Mensagens WhatsApp", money_spent: "Dinheiro investido",
-                budget_label: "Orçamento:", budget_value: "13.000 pesos/dia",
-                flow_label: "Fluxo:", flow_value: "11 a 20 novas mensagens diárias",
-                pixel_status_label: "Estado do píxel:", pixel_disconnected: "Desconectado",
-                rating_label: "Classificação", status_waiting_connection: "À espera de conexão",
-                modal_prev: "← Anterior", modal_next: "Próximo →", modal_gotit: "Entendido", modal_active_of: "Ativo {current} de {total}",
-                modal1_title: "WEB + IA", modal1_sub: "Infraestrutura de alto desempenho",
-                modal1_ai: "🟢 Agente de IA 24/7", modal1_visits: "visitas/mês", modal1_conversion: "📊 Conversão", modal1_traffic: "Tráfego",
-                modal2_title: "Presença e Vendas", modal2_sub: "Métricas em tempo real",
-                modal2_impressions: "Impressões", modal2_clicks: "Cliques", modal2_high_value: "Alto valor",
-                modal2_messages: "Novas mensagens/mês", modal2_conversions: "Conversões",
-                modal3_title: "Presença Local", modal3_sub: "Cobertura inteligente",
-                modal3_visibility: "Visibilidade local", modal3_calls: "Chamadas diretas",
-                purge_title: "🚨 CONFIRMAR PURGA ABSOLUTA", purge_text: "Tem certeza de que deseja purgar a conta, o avatar e todo o progresso do ecossistema? Esta ação é irreversível.",
-                cancel: "Cancelar", confirm_purge: "Confirmar Purgado", purge_placeholder: "Digite ELIMINAR para confirmar",
+                close: "Fechar",
+                contact: "Contato",
+                proud_manizales: "Orgulhosamente de Manizales",
+                card1_title: "WEB + IA",
+                card2_title: "REDES E CAMPANHA",
+                card3_title: "SEO E REPUTAÇÃO",
+                hosting_label: "Hospedagem + domínio grátis vitalício",
+                status_label: "Estado operacional",
+                status_pending_deploy: "Pendente de implantação",
+                click_telemetry: "Clique para telemetria avançada",
+                whatsapp_msgs: "Mensagens WhatsApp",
+                money_spent: "Dinheiro investido",
+                budget_label: "Orçamento:",
+                budget_value: "13.000 pesos/dia",
+                flow_label: "Fluxo:",
+                flow_value: "11 a 20 novas mensagens diárias",
+                pixel_status_label: "Estado do píxel:",
+                pixel_disconnected: "Desconectado",
+                rating_label: "Classificação",
+                status_waiting_connection: "À espera de conexão",
+                modal_prev: "← Anterior",
+                modal_next: "Próximo →",
+                modal_gotit: "Entendido",
+                modal_active_of: "Ativo {current} de {total}",
+                modal1_title: "WEB + IA",
+                modal1_sub: "Infraestrutura de alto desempenho",
+                modal1_ai: "🟢 Agente de IA 24/7",
+                modal1_visits: "visitas/mês",
+                modal1_conversion: "📊 Conversão",
+                modal1_traffic: "Tráfego",
+                modal2_title: "Presença e Vendas",
+                modal2_sub: "Métricas em tempo real",
+                modal2_impressions: "Impressões",
+                modal2_clicks: "Cliques",
+                modal2_high_value: "Alto valor",
+                modal2_messages: "Novas mensagens/mês",
+                modal2_conversions: "Conversões",
+                modal3_title: "Presença Local",
+                modal3_sub: "Cobertura inteligente",
+                modal3_visibility: "Visibilidade local",
+                modal3_calls: "Chamadas diretas",
+                purge_title: "🚨 CONFIRMAR PURGA ABSOLUTA",
+                purge_text: "Tem certeza de que deseja purgar a conta, o avatar e todo o progresso do ecossistema? Esta ação é irreversível.",
+                cancel: "Cancelar",
+                confirm_purge: "Confirmar Purgado",
+                purge_placeholder: "Digite ELIMINAR para confirmar",
                 soporte_monitoreo_titulo: "Antonella IA",
                 soporte_monitoreo_estado: "Pronta para monitorar ecossistema",
-                soporte_asesoria_titulo: "Engenharia Red Sapien",
+                soporte_asesoria_titulo: "Cristian - CTO Red Sapien",
                 soporte_asesoria_estado: "Consultoria e controle de comando ativo",
                 btn_solicitar_soporte: "Solicitar Suporte",
                 scan_percent_label: "% escaneamento ativo",
@@ -1204,7 +1778,7 @@
             }
         };
         let currentLang = localStorage.getItem("rs_lang") || "es";
-        
+
         function applyLanguage(lang) {
             if (!translations[lang]) lang = "es";
             currentLang = lang;
@@ -1216,7 +1790,8 @@
                     else {
                         if (key === 'cloudflare_badge') {
                             const translated = translations[lang][key];
-                            const htmlContent = translated.replace(/Cloudflare/gi, '<span class="font-black tracking-tighter text-orange-400">Cloudflare</span>');
+                            const htmlContent = translated.replace(/Cloudflare/gi,
+                                '<span class="font-black tracking-tighter text-orange-400">Cloudflare</span>');
                             el.innerHTML = htmlContent;
                         } else {
                             el.innerText = translations[lang][key];
@@ -1228,12 +1803,16 @@
             const select = document.getElementById('lang-menu-select');
             if (select && select.value !== lang) select.value = lang;
         }
+
         function loadPersistedLanguage() { applyLanguage(localStorage.getItem("rs_lang") || "es"); }
 
+        // --------------------------------------------------------------
+        // 2. FUNCIONES DE PANEL (sin cambios estructurales)
+        // --------------------------------------------------------------
         let globalMap = null;
         let currentTelemetryIndex = 1;
         const totalTelemetry = 3;
-        
+
         function updateTelemetryDots(index) {
             const dots = document.querySelectorAll('#telemetry-dots .nav-dot');
             dots.forEach((dot, i) => {
@@ -1246,91 +1825,91 @@
             const overlay = document.getElementById('telemetry-modal-overlay');
             const body = document.getElementById('telemetry-modal-body');
             const t = translations[currentLang];
-            
+
             let htmlContent = '';
             if (panelId === 1) {
                 htmlContent = `
-                    <div class="space-y-5">
-                        <div class="border-b border-[var(--accent-color)]/30 pb-2">
-                            <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight leading-snug">${t.modal1_title}</h3>
-                            <p class="text-sm text-gray-300 font-mono">${t.modal1_sub}</p>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="bg-black/40 border border-white/10 rounded-xl p-4">
-                                <div class="text-green-400 text-sm font-mono mb-2">${t.modal1_ai}</div>
-                                <div class="text-3xl font-mono font-black text-white">300+</div>
-                                <div class="text-sm text-gray-300">${t.modal1_visits}</div>
+                        <div class="space-y-5">
+                            <div class="border-b border-[var(--accent-color)]/30 pb-2">
+                                <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight leading-snug">${t.modal1_title}</h3>
+                                <p class="text-sm text-gray-300 font-mono">${t.modal1_sub}</p>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-black/40 border border-white/10 rounded-xl p-4">
+                                    <div class="text-green-400 text-sm font-mono mb-2">${t.modal1_ai}</div>
+                                    <div class="text-3xl font-mono font-black text-white">300+</div>
+                                    <div class="text-sm text-gray-300">${t.modal1_visits}</div>
+                                </div>
+                                <div class="bg-black/40 border border-white/10 rounded-xl p-4">
+                                    <div class="text-[var(--accent-color)] text-sm font-mono mb-2">${t.modal1_conversion}</div>
+                                    <div class="text-3xl font-mono font-black text-white">12%</div>
+                                </div>
                             </div>
                             <div class="bg-black/40 border border-white/10 rounded-xl p-4">
-                                <div class="text-[var(--accent-color)] text-sm font-mono mb-2">${t.modal1_conversion}</div>
-                                <div class="text-3xl font-mono font-black text-white">12%</div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm font-mono text-gray-300">${t.modal1_traffic}</span>
+                                    <span class="text-xl font-bold text-white">8,500/mes</span>
+                                </div>
+                                <div class="w-full bg-white/10 h-1.5 rounded-full mt-2"><div class="bg-[var(--accent-color)] h-1.5 rounded-full w-3/4"></div></div>
                             </div>
                         </div>
-                        <div class="bg-black/40 border border-white/10 rounded-xl p-4">
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm font-mono text-gray-300">${t.modal1_traffic}</span>
-                                <span class="text-xl font-bold text-white">8,500/mes</span>
-                            </div>
-                            <div class="w-full bg-white/10 h-1.5 rounded-full mt-2"><div class="bg-[var(--accent-color)] h-1.5 rounded-full w-3/4"></div></div>
-                        </div>
-                    </div>
-                `;
+                    `;
             } else if (panelId === 2) {
                 htmlContent = `
-                    <div class="space-y-4">
-                        <div class="border-b border-[var(--accent-color)]/30 pb-2">
-                            <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight leading-snug">${t.modal2_title}</h3>
-                            <p class="text-sm text-gray-300 font-mono">${t.modal2_sub}</p>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
-                                <div class="text-4xl font-mono font-black text-white">MILES</div>
-                                <div class="text-sm text-gray-300">${t.modal2_impressions}</div>
+                        <div class="space-y-4">
+                            <div class="border-b border-[var(--accent-color)]/30 pb-2">
+                                <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight leading-snug">${t.modal2_title}</h3>
+                                <p class="text-sm text-gray-300 font-mono">${t.modal2_sub}</p>
                             </div>
-                            <div class="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
-                                <div class="text-4xl font-mono font-black text-white">CLICS</div>
-                                <div class="text-sm text-gray-300">${t.modal2_high_value}</div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
+                                    <div class="text-4xl font-mono font-black text-white">MILES</div>
+                                    <div class="text-sm text-gray-300">${t.modal2_impressions}</div>
+                                </div>
+                                <div class="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
+                                    <div class="text-4xl font-mono font-black text-white">CLICS</div>
+                                    <div class="text-sm text-gray-300">${t.modal2_high_value}</div>
+                                </div>
+                            </div>
+                            <div class="bg-black/40 border border-white/10 rounded-xl p-4">
+                                <div class="flex justify-between items-center border-b border-white/10 pb-2 mb-2">
+                                    <span class="text-sm font-mono text-gray-300">${t.modal2_messages}</span>
+                                    <span class="text-2xl font-bold text-white">400+</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm font-mono text-gray-300">${t.modal2_conversions}</span>
+                                    <span class="text-2xl font-bold text-[var(--accent-color)]">29%</span>
+                                </div>
+                            </div>
+                            <div class="mt-1">
+                                <svg width="100%" height="60" viewBox="0 0 400 60" preserveAspectRatio="none" class="rounded-lg">
+                                    <polyline points="0,45 60,34 120,38 180,23 240,15 300,26 360,8 400,11" fill="none" stroke="var(--accent-color)" stroke-width="2" class="chart-line" stroke-dasharray="400" stroke-dashoffset="400"/>
+                                    <defs><linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="var(--accent-color)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--accent-color)" stop-opacity="0"/></linearGradient></defs>
+                                    <polygon points="0,45 60,34 120,38 180,23 240,15 300,26 360,8 400,11 400,60 0,60" fill="url(#grad)" opacity="0.5"/>
+                                </svg>
                             </div>
                         </div>
-                        <div class="bg-black/40 border border-white/10 rounded-xl p-4">
-                            <div class="flex justify-between items-center border-b border-white/10 pb-2 mb-2">
-                                <span class="text-sm font-mono text-gray-300">${t.modal2_messages}</span>
-                                <span class="text-2xl font-bold text-white">400+</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm font-mono text-gray-300">${t.modal2_conversions}</span>
-                                <span class="text-2xl font-bold text-[var(--accent-color)]">29%</span>
-                            </div>
-                        </div>
-                        <div class="mt-1">
-                            <svg width="100%" height="60" viewBox="0 0 400 60" preserveAspectRatio="none" class="rounded-lg">
-                                <polyline points="0,45 60,34 120,38 180,23 240,15 300,26 360,8 400,11" fill="none" stroke="var(--accent-color)" stroke-width="2" class="chart-line" stroke-dasharray="400" stroke-dashoffset="400"/>
-                                <defs><linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="var(--accent-color)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--accent-color)" stop-opacity="0"/></linearGradient></defs>
-                                <polygon points="0,45 60,34 120,38 180,23 240,15 300,26 360,8 400,11 400,60 0,60" fill="url(#grad)" opacity="0.5"/>
-                            </svg>
-                        </div>
-                    </div>
-                `;
+                    `;
             } else if (panelId === 3) {
                 htmlContent = `
-                    <div class="space-y-4">
-                        <div class="border-b border-[var(--accent-color)]/30 pb-2">
-                            <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight leading-snug">${t.modal3_title}</h3>
-                            <p class="text-sm text-gray-300 font-mono">${t.modal3_sub}</p>
-                        </div>
-                        <div class="bg-black/40 border border-white/10 rounded-xl p-4">
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm font-mono text-gray-300">${t.modal3_visibility}</span>
-                                <span class="text-2xl font-bold text-white">+12,000</span>
+                        <div class="space-y-4">
+                            <div class="border-b border-[var(--accent-color)]/30 pb-2">
+                                <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight leading-snug">${t.modal3_title}</h3>
+                                <p class="text-sm text-gray-300 font-mono">${t.modal3_sub}</p>
                             </div>
-                            <div class="flex justify-between items-center mt-2">
-                                <span class="text-sm font-mono text-gray-300">${t.modal3_calls}</span>
-                                <span class="text-2xl font-bold text-[var(--accent-color)]">240/mes</span>
+                            <div class="bg-black/40 border border-white/10 rounded-xl p-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm font-mono text-gray-300">${t.modal3_visibility}</span>
+                                    <span class="text-2xl font-bold text-white">+12,000</span>
+                                </div>
+                                <div class="flex justify-between items-center mt-2">
+                                    <span class="text-sm font-mono text-gray-300">${t.modal3_calls}</span>
+                                    <span class="text-2xl font-bold text-[var(--accent-color)]">240/mes</span>
+                                </div>
                             </div>
+                            <div id="seo-map" class="w-full h-40 rounded-xl border border-white/20 mt-2 z-0 overflow-hidden"></div>
                         </div>
-                        <div id="seo-map" class="w-full h-40 rounded-xl border border-white/20 mt-2 z-0 overflow-hidden"></div>
-                    </div>
-                `;
+                    `;
                 body.innerHTML = htmlContent;
                 setTimeout(() => {
                     if (globalMap) globalMap.remove();
@@ -1352,7 +1931,8 @@
                             className: 'radar-pulse'
                         }).addTo(globalMap);
                         const style = document.createElement('style');
-                        style.textContent = `.radar-pulse { animation: radarPulse 2s infinite ease-out; } @keyframes radarPulse { 0% { stroke-width: 2; opacity: 0.8; r: 2000; } 50% { stroke-width: 1; opacity: 0.4; r: 2500; } 100% { stroke-width: 0.5; opacity: 0; r: 3000; } }`;
+                        style.textContent =
+                            `.radar-pulse { animation: radarPulse 2s infinite ease-out; } @keyframes radarPulse { 0% { stroke-width: 2; opacity: 0.8; r: 2000; } 50% { stroke-width: 1; opacity: 0.4; r: 2500; } 100% { stroke-width: 0.5; opacity: 0; r: 3000; } }`;
                         document.head.appendChild(style);
                     }
                 }, 100);
@@ -1364,7 +1944,7 @@
                 setTimeout(() => overlay.classList.remove('opacity-0'), 10);
                 return;
             }
-            
+
             body.innerHTML = htmlContent;
             updateTelemetryDots(panelId);
             document.getElementById('telemetry-prev-btn').disabled = (panelId === 1);
@@ -1374,16 +1954,18 @@
             setTimeout(() => overlay.classList.remove('opacity-0'), 10);
         }
 
-        function closeTelemetryModal() { 
-            const overlay = document.getElementById('telemetry-modal-overlay'); 
-            overlay.classList.add('opacity-0'); 
+        function closeTelemetryModal() {
+            const overlay = document.getElementById('telemetry-modal-overlay');
+            overlay.classList.add('opacity-0');
             setTimeout(() => overlay.classList.add('hidden'), 300);
-            if (globalMap) { globalMap.remove(); globalMap = null; }
+            if (globalMap) { globalMap.remove();
+                globalMap = null; }
         }
-        function navigateTelemetry(delta) { 
-            let next = currentTelemetryIndex + delta; 
-            if (next > 3) { closeTelemetryModal(); return; } 
-            if (next >= 1 && next <= 3) openTelemetryModal(next); 
+
+        function navigateTelemetry(delta) {
+            let next = currentTelemetryIndex + delta;
+            if (next > 3) { closeTelemetryModal(); return; }
+            if (next >= 1 && next <= 3) openTelemetryModal(next);
         }
 
         function activateEcosystem() {
@@ -1391,63 +1973,59 @@
             const toast = document.createElement('div');
             toast.className = 'fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[200] bg-[#25D366] border border-white/20 backdrop-blur-md rounded-2xl p-4 shadow-2xl max-w-xs w-full text-center transition-all duration-300 whatsapp-toast text-white';
             toast.innerHTML = `
-                <div class="flex items-center gap-3 justify-center">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                    </svg>
-                    <span class="text-base font-black uppercase tracking-wider">Ok ✅ En breve te escribiremos...</span>
-                </div>
-            `;
+                    <div class="flex items-center gap-3 justify-center">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                        </svg>
+                        <span class="text-base font-black uppercase tracking-wider">Ok ✅ En breve te escribiremos...</span>
+                    </div>
+                `;
             document.body.appendChild(toast);
-            setTimeout(() => { 
-                toast.style.opacity = '0'; 
-                setTimeout(() => toast.remove(), 300); 
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
             }, 3000);
-            
+
             const pcWrapper = document.getElementById('cta-btn-wrapper-pc');
             const mobWrapper = document.getElementById('cta-btn-wrapper-mob');
             if (pcWrapper) pcWrapper.style.display = 'none';
             if (mobWrapper) mobWrapper.style.display = 'none';
-            
+
             localStorage.setItem('ecosystem_activated', 'true');
-            
-            // Mostrar botón de soporte si está disponible
             updateSupportButtonVisibility();
-            
-            window.onActivationCallback = function() {
-                console.log('Ecosistema activado, hook listo');
-            };
+
             if (window.onActivationCallback) window.onActivationCallback();
         }
 
         function updateDynamicDomain() {
             let businessName = localStorage.getItem('business_name');
             if (!businessName) {
-                const headerName = document.getElementById('brand-headline-name');
-                if (headerName) businessName = headerName.innerText.trim();
-                else businessName = "BROSS MANIZALES";
+                // Fallback a RED SAPIEN
+                businessName = "RED SAPIEN";
             }
             let slug = businessName.toLowerCase()
                 .replace(/\s+/g, '')
                 .replace(/[^a-z0-9]/g, '');
             if (slug.length > 30) slug = slug.substring(0, 30);
+            // Si slug queda vacío, usar 'redsapien'
+            if (!slug) slug = 'redsapien';
             const domainSpan = document.getElementById('dynamic-domain');
             if (domainSpan) domainSpan.innerText = `${slug}.redsapien.com`;
         }
-        
+
         function startTelemetrySimulation() {
             let scanValue = parseFloat(localStorage.getItem('scan_percent')) || 94;
             let cmdCount = parseInt(localStorage.getItem('cmd_count')) || 127;
-            
+
             const percentSpan = document.getElementById('scan-percent');
             const cmdSpan = document.getElementById('cmd-counter');
-            
+
             if (percentSpan) percentSpan.innerText = Math.floor(scanValue);
             if (cmdSpan) cmdSpan.innerText = cmdCount;
-            
+
             let lastScanUpdate = Date.now();
             let lastCmdUpdate = Date.now();
-            
+
             function updateScan() {
                 const now = Date.now();
                 const interval = 2800 + (Math.random() * 1500);
@@ -1460,7 +2038,7 @@
                 }
                 requestAnimationFrame(updateScan);
             }
-            
+
             function updateCmd() {
                 const now = Date.now();
                 const interval = 3500 + (Math.random() * 2000);
@@ -1473,13 +2051,15 @@
                 }
                 requestAnimationFrame(updateCmd);
             }
-            
+
             updateScan();
             updateCmd();
-            
+
             const terminalDiv = document.getElementById('mini-terminal-logs');
             if (terminalDiv) {
-                const logs = ['CF_PROXY::OK', 'GH_COMMIT::v2.4', 'SYS_SECURE', 'CACHE_FLUSH', 'ROUTE_OPTIMIZE', 'EDGE_DEPLOY'];
+                const logs = ['CF_PROXY::OK', 'GH_COMMIT::v2.4', 'SYS_SECURE', 'CACHE_FLUSH', 'ROUTE_OPTIMIZE',
+                    'EDGE_DEPLOY'
+                ];
                 let logIndex = 0;
                 setInterval(() => {
                     terminalDiv.innerText = logs[logIndex % logs.length];
@@ -1487,12 +2067,13 @@
                 }, 1800);
             }
         }
-        
+
+        // Soporte modal (matrix)
         const supportModal = document.getElementById('matrix-modal');
         const openSupportBtn = document.getElementById('open-support-modal-btn');
         const closeSupportModal = document.getElementById('close-matrix-modal');
         const sendSupportBtn = document.getElementById('send-whatsapp-btn');
-        
+
         if (openSupportBtn) {
             openSupportBtn.addEventListener('click', () => {
                 supportModal.classList.remove('hidden');
@@ -1519,49 +2100,103 @@
                     alert(translations[currentLang]?.matrix_alert || 'Por favor completa todos los campos.');
                     return;
                 }
-                const formattedDateTime = new Date(datetime).toLocaleString(currentLang === 'es' ? 'es-ES' : (currentLang === 'pt' ? 'pt-BR' : 'en-US'), { dateStyle: 'full', timeStyle: 'short' });
-                const mensaje = `🛰️ ENLACE DE SOPORTE RED SAPIEN ACTIVO\n\n• Solicitud: ${solicitud}\n• Activo Digital: ${activo}\n• Fecha y Hora: ${formattedDateTime}\n\n> Esperando conexión segura con la central operativa...`;
+                const formattedDateTime = new Date(datetime).toLocaleString(currentLang === 'es' ? 'es-ES' : (currentLang ===
+                    'pt' ? 'pt-BR' : 'en-US'), { dateStyle: 'full', timeStyle: 'short' });
+                const mensaje =
+                    `🛰️ ENLACE DE SOPORTE RED SAPIEN ACTIVO\n\n• Solicitud: ${solicitud}\n• Activo Digital: ${activo}\n• Fecha y Hora: ${formattedDateTime}\n\n> Esperando conexión segura con la central operativa...`;
                 const url = `https://wa.me/573012800024?text=${encodeURIComponent(mensaje)}`;
                 window.open(url, '_blank');
                 supportModal.classList.add('hidden');
                 supportModal.classList.remove('flex');
             });
         }
-        
-        function executeSidebarCollapse() { const sidebar = document.getElementById("sidebar-panel"), reopenBtn = document.getElementById("trigger-reopen-sidebar"), headerContainer = document.getElementById("header-title-container"); sidebar.classList.add("!w-0", "opacity-0", "pointer-events-none"); reopenBtn.classList.remove("hidden"); setTimeout(() => { reopenBtn.classList.remove("translate-x-[-100px]", "opacity-0"); reopenBtn.classList.add("translate-x-0", "opacity-100"); if(headerContainer) headerContainer.style.marginLeft = "45px"; }, 50); }
-        function executeSidebarOpen() { const sidebar = document.getElementById("sidebar-panel"), reopenBtn = document.getElementById("trigger-reopen-sidebar"), headerContainer = document.getElementById("header-title-container"); if(reopenBtn) { reopenBtn.classList.remove("translate-x-0", "opacity-100"); reopenBtn.classList.add("translate-x-[-100px]", "opacity-0"); } if(headerContainer) headerContainer.style.marginLeft = "0px"; setTimeout(() => { if(reopenBtn) reopenBtn.classList.add("hidden"); if(sidebar) sidebar.classList.remove("!w-0", "opacity-0", "pointer-events-none"); }, 200); }
-        function toggleProfileDropdownMenu(event) { event.stopPropagation(); document.getElementById("dropdown-menu-card").classList.toggle("hidden"); }
+
+        function executeSidebarCollapse() {
+            const sidebar = document.getElementById("sidebar-panel"),
+                reopenBtn = document.getElementById("trigger-reopen-sidebar"),
+                headerContainer = document.getElementById("header-title-container");
+            sidebar.classList.add("!w-0", "opacity-0", "pointer-events-none");
+            reopenBtn.classList.remove("hidden");
+            setTimeout(() => {
+                reopenBtn.classList.remove("translate-x-[-100px]", "opacity-0");
+                reopenBtn.classList.add("translate-x-0", "opacity-100");
+                if (headerContainer) headerContainer.style.marginLeft = "45px";
+            }, 50);
+        }
+
+        function executeSidebarOpen() {
+            const sidebar = document.getElementById("sidebar-panel"),
+                reopenBtn = document.getElementById("trigger-reopen-sidebar"),
+                headerContainer = document.getElementById("header-title-container");
+            if (reopenBtn) {
+                reopenBtn.classList.remove("translate-x-0", "opacity-0");
+                reopenBtn.classList.add("translate-x-[-100px]", "opacity-0");
+            }
+            if (headerContainer) headerContainer.style.marginLeft = "0px";
+            setTimeout(() => {
+                if (reopenBtn) reopenBtn.classList.add("hidden");
+                if (sidebar) sidebar.classList.remove("!w-0", "opacity-0", "pointer-events-none");
+            }, 200);
+        }
+
+        function toggleProfileDropdownMenu(event) { event.stopPropagation();
+            document.getElementById("dropdown-menu-card").classList.toggle("hidden"); }
+
         function closeDropdownMenu() { document.getElementById("dropdown-menu-card").classList.add("hidden"); }
-        function triggerManualAvatarClick(event) { event.stopPropagation(); document.getElementById("supabase-avatar-uploader").click(); closeDropdownMenu(); }
-        function handleAvatarStorageUpload(event) { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(e) { const base64Img = e.target.result; localStorage.setItem("rs_business_avatar_url", base64Img); document.getElementById("avatar-state-empty").classList.add("hidden"); document.getElementById("avatar-state-img").src = base64Img; document.getElementById("avatar-state-img").classList.remove("hidden"); document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.change_logo || "Cambiar Logo"; }; reader.readAsDataURL(file); }
-        document.addEventListener('click', (e) => { const card = document.getElementById("dropdown-menu-card"), btn = document.getElementById("dropdown-avatar-btn"); if (card && !card.contains(e.target) && !btn.contains(e.target)) card.classList.add("hidden"); });
-        function switchWorkspaceView(tabId) { 
-            document.querySelectorAll(".workspace-pane").forEach(p => p.classList.add("hidden")); 
-            document.getElementById(`pane-view-${tabId}`).classList.remove("hidden"); 
-            document.querySelectorAll(".sidebar-tab-link").forEach(b => { 
-                b.classList.remove("bg-white/10", "text-white", "shadow-inner", "border-white/10"); 
-                b.classList.add("text-gray-500", "border-transparent"); 
-            }); 
-            const activePC = document.querySelector(`.sidebar-tab-link[data-mod="${tabId}"]`); 
-            if (activePC) { 
-                activePC.classList.remove("text-gray-500", "border-transparent"); 
-                activePC.classList.add("bg-white/10", "text-white", "shadow-inner", "border-white/10"); 
-            } 
-            document.querySelectorAll(".mobile-nav-btn").forEach(i => { 
-                i.classList.remove("text-white"); 
-                i.classList.add("text-gray-500"); 
-                const svg = i.querySelector("svg"); 
-                if (svg) svg.style.color = "inherit"; 
-                if(i.querySelector("svg")) i.querySelector("svg").classList.remove("scale-110"); 
-            }); 
-            const activeMobile = document.querySelector(`.mobile-nav-btn[data-mod="${tabId}"]`); 
-            if (activeMobile) { 
-                activeMobile.classList.add("text-white"); 
-                activeMobile.classList.remove("text-gray-500"); 
-                const svg = activeMobile.querySelector("svg"); 
-                if (svg) svg.classList.add("scale-110"); 
-                const color = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim(); 
-                if (svg) svg.style.color = color; 
+
+        function triggerManualAvatarClick(event) { event.stopPropagation();
+            document.getElementById("supabase-avatar-uploader").click();
+            closeDropdownMenu(); }
+
+        function handleAvatarStorageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64Img = e.target.result;
+                localStorage.setItem("rs_business_avatar_url", base64Img);
+                document.getElementById("avatar-state-empty").classList.add("hidden");
+                document.getElementById("avatar-state-img").src = base64Img;
+                document.getElementById("avatar-state-img").classList.remove("hidden");
+                document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.change_logo ||
+                    "Cambiar Logo";
+            };
+            reader.readAsDataURL(file);
+        }
+
+        document.addEventListener('click', (e) => {
+            const card = document.getElementById("dropdown-menu-card"),
+                btn = document.getElementById("dropdown-avatar-btn");
+            if (card && !card.contains(e.target) && !btn.contains(e.target)) card.classList.add("hidden");
+        });
+
+        function switchWorkspaceView(tabId) {
+            document.querySelectorAll(".workspace-pane").forEach(p => p.classList.add("hidden"));
+            document.getElementById(`pane-view-${tabId}`).classList.remove("hidden");
+            document.querySelectorAll(".sidebar-tab-link").forEach(b => {
+                b.classList.remove("bg-white/10", "text-white", "shadow-inner", "border-white/10");
+                b.classList.add("text-gray-500", "border-transparent");
+            });
+            const activePC = document.querySelector(`.sidebar-tab-link[data-mod="${tabId}"]`);
+            if (activePC) {
+                activePC.classList.remove("text-gray-500", "border-transparent");
+                activePC.classList.add("bg-white/10", "text-white", "shadow-inner", "border-white/10");
+            }
+            document.querySelectorAll(".mobile-nav-btn").forEach(i => {
+                i.classList.remove("text-white");
+                i.classList.add("text-gray-500");
+                const svg = i.querySelector("svg");
+                if (svg) svg.style.color = "inherit";
+                if (i.querySelector("svg")) i.querySelector("svg").classList.remove("scale-110");
+            });
+            const activeMobile = document.querySelector(`.mobile-nav-btn[data-mod="${tabId}"]`);
+            if (activeMobile) {
+                activeMobile.classList.add("text-white");
+                activeMobile.classList.remove("text-gray-500");
+                const svg = activeMobile.querySelector("svg");
+                if (svg) svg.classList.add("scale-110");
+                const color = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim();
+                if (svg) svg.style.color = color;
             }
             if (tabId === 'notificaciones') {
                 ensureNotificationsInitialized();
@@ -1570,50 +2205,90 @@
                 updateSupportButtonVisibility();
             }
         }
-        function changeGlobalNeonPalette(color, glow, border, element) { 
-            document.documentElement.style.setProperty('--accent-color', color); 
-            document.documentElement.style.setProperty('--accent-glow', glow); 
-            document.documentElement.style.setProperty('--neon-border', border); 
-            const rgbColor = (color.slice(1).match(/.{2}/g).map(c=>parseInt(c,16))).join(','); 
-            const ambientBg = document.querySelector('.ambient-glow-bg'); 
-            if (ambientBg) ambientBg.style.background = `radial-gradient(circle at 50% -20%, rgba(${rgbColor}, 0.05) 0%, rgba(5,5,5,0) 65%), #050505`; 
-            const header = document.getElementById('workspace-header'); 
-            if (header) { 
-                header.style.borderBottom = `1px solid ${color}`; 
-                header.style.boxShadow = `0 4px 20px -8px ${color.replace('rgb', 'rgba').replace(')', ', 0.25)')}`; 
-            } 
-            localStorage.setItem("rs_dash_color", color); 
-            localStorage.setItem("rs_dash_glow", glow); 
-            localStorage.setItem("rs_dash_neon", border); 
-            if (element) { 
-                element.parentNode.querySelectorAll("button").forEach(b => b.classList.remove("scale-110", "border-[2px]", "border-white")); 
-                element.classList.add("scale-110", "border-[2px]", "border-white"); 
-            } 
-            const activeMobile = document.querySelector(".mobile-nav-btn.text-white svg"); 
-            if (activeMobile) activeMobile.style.color = color; 
+
+        function changeGlobalNeonPalette(color, glow, border, element) {
+            document.documentElement.style.setProperty('--accent-color', color);
+            document.documentElement.style.setProperty('--accent-glow', glow);
+            document.documentElement.style.setProperty('--neon-border', border);
+            const rgbColor = (color.slice(1).match(/.{2}/g).map(c => parseInt(c, 16))).join(',');
+            const ambientBg = document.querySelector('.ambient-glow-bg');
+            if (ambientBg) ambientBg.style.background =
+                `radial-gradient(circle at 50% -20%, rgba(${rgbColor}, 0.05) 0%, rgba(5,5,5,0) 65%), #050505`;
+            const header = document.getElementById('workspace-header');
+            if (header) {
+                header.style.borderBottom = `1px solid ${color}`;
+                header.style.boxShadow = `0 4px 20px -8px ${color.replace('rgb', 'rgba').replace(')', ', 0.25)')}`;
+            }
+            localStorage.setItem("rs_dash_color", color);
+            localStorage.setItem("rs_dash_glow", glow);
+            localStorage.setItem("rs_dash_neon", border);
+            if (element) {
+                element.parentNode.querySelectorAll("button").forEach(b => b.classList.remove("scale-110", "border-[2px]",
+                    "border-white"));
+                element.classList.add("scale-110", "border-[2px]", "border-white");
+            }
+            const activeMobile = document.querySelector(".mobile-nav-btn.text-white svg");
+            if (activeMobile) activeMobile.style.color = color;
         }
-        function loadPersistedColorPalette() { 
-            const color = localStorage.getItem("rs_dash_color"), glow = localStorage.getItem("rs_dash_glow"), neon = localStorage.getItem("rs_dash_neon"); 
-            if (color && glow && neon) { 
-                const btns = document.querySelectorAll('[onclick*="changeGlobalNeonPalette"]'); 
-                let activeBtn = null; 
-                btns.forEach(b => { 
-                    if (b.getAttribute('onclick').includes(color)) activeBtn = b; 
-                }); 
-                changeGlobalNeonPalette(color, glow, neon, activeBtn); 
-            } 
+
+        function loadPersistedColorPalette() {
+            const color = localStorage.getItem("rs_dash_color"),
+                glow = localStorage.getItem("rs_dash_glow"),
+                neon = localStorage.getItem("rs_dash_neon");
+            if (color && glow && neon) {
+                const btns = document.querySelectorAll('[onclick*="changeGlobalNeonPalette"]');
+                let activeBtn = null;
+                btns.forEach(b => {
+                    if (b.getAttribute('onclick').includes(color)) activeBtn = b;
+                });
+                changeGlobalNeonPalette(color, glow, neon, activeBtn);
+            }
         }
+
         function openSupportModal() { document.getElementById("support-modal-overlay").classList.remove("hidden"); }
+
         function toggleSupportModal(show) { document.getElementById("support-modal-overlay").classList.toggle("hidden", !show); }
+
         function toggleTermsModal(show) { document.getElementById("terms-modal-overlay").classList.toggle("hidden", !show); }
-        function openPurgeModal() { let inp = document.getElementById('purge-confirm-input'); if(inp) inp.value = ''; let btn = document.getElementById('confirm-purge-btn'); if(btn) btn.disabled = true; document.getElementById('purge-modal-overlay').classList.remove('hidden'); }
+
+        function openPurgeModal() {
+            let inp = document.getElementById('purge-confirm-input');
+            if (inp) inp.value = '';
+            let btn = document.getElementById('confirm-purge-btn');
+            if (btn) btn.disabled = true;
+            document.getElementById('purge-modal-overlay').classList.remove('hidden');
+        }
+
         function closePurgeModal() { document.getElementById('purge-modal-overlay').classList.add('hidden'); }
+
         function executeDataPurge() { openPurgeModal(); }
-        let purgeInput = document.getElementById('purge-confirm-input'), confirmPurgeBtn = document.getElementById('confirm-purge-btn');
-        if(purgeInput) purgeInput.addEventListener('input', (e) => { if(confirmPurgeBtn) { confirmPurgeBtn.disabled = e.target.value !== (currentLang === 'es' ? 'ELIMINAR' : (currentLang === 'pt' ? 'ELIMINAR' : 'DELETE')); if(e.target.value === (currentLang === 'es' ? 'ELIMINAR' : (currentLang === 'pt' ? 'ELIMINAR' : 'DELETE'))) { confirmPurgeBtn.classList.remove('bg-red-500/30','text-gray-400','cursor-not-allowed'); confirmPurgeBtn.classList.add('bg-red-500','text-white','cursor-pointer','hover:bg-red-600'); } else { confirmPurgeBtn.classList.add('bg-red-500/30','text-gray-400','cursor-not-allowed'); confirmPurgeBtn.classList.remove('bg-red-500','text-white','cursor-pointer','hover:bg-red-600'); } } });
-        if(confirmPurgeBtn) confirmPurgeBtn.addEventListener('click', () => { if(!confirmPurgeBtn.disabled) { localStorage.clear(); window.location.reload(); } });
-        
-        // DATOS DE LOS 4 CASOS - descripciones reducidas un 35%
+
+        let purgeInput = document.getElementById('purge-confirm-input'),
+            confirmPurgeBtn = document.getElementById('confirm-purge-btn');
+        if (purgeInput) purgeInput.addEventListener('input', (e) => {
+            if (confirmPurgeBtn) {
+                confirmPurgeBtn.disabled = e.target.value !== (currentLang === 'es' ? 'ELIMINAR' : (currentLang ===
+                    'pt' ? 'ELIMINAR' : 'DELETE'));
+                if (e.target.value === (currentLang === 'es' ? 'ELIMINAR' : (currentLang === 'pt' ? 'ELIMINAR' :
+                    'DELETE'))) {
+                    confirmPurgeBtn.classList.remove('bg-red-500/30', 'text-gray-400', 'cursor-not-allowed');
+                    confirmPurgeBtn.classList.add('bg-red-500', 'text-white', 'cursor-pointer', 'hover:bg-red-600');
+                } else {
+                    confirmPurgeBtn.classList.add('bg-red-500/30', 'text-gray-400', 'cursor-not-allowed');
+                    confirmPurgeBtn.classList.remove('bg-red-500', 'text-white', 'cursor-pointer', 'hover:bg-red-600');
+                }
+            }
+        });
+        if (confirmPurgeBtn) confirmPurgeBtn.addEventListener('click', () => {
+            if (!confirmPurgeBtn.disabled) {
+                localStorage.clear();
+                window.location.reload();
+            }
+        });
+
+        // --------------------------------------------------------------
+        // 3. CASOS DE ÉXITO (sin cambios)
+        // --------------------------------------------------------------
         const successCases = {
             1: {
                 name: "La Papa Prohibida",
@@ -1657,7 +2332,6 @@
             }
         };
 
-        // Variables para la navegación del modal de casos
         let currentCaseIndex = 1;
         const totalCases = 4;
 
@@ -1684,30 +2358,30 @@
             if (!data) return;
             const content = document.getElementById('success-modal-content');
             content.innerHTML = `
-                <div class="flex flex-col md:flex-row gap-4">
-                    <div class="md:w-1/2">
-                        <div class="rounded-xl overflow-hidden border border-white/10 bg-black/30">
-                            <img src="${data.img}" alt="${data.name}" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/800x500/0a0a0a/FF3C00?text=Imagen+del+Caso'">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="md:w-1/2">
+                            <div class="rounded-xl overflow-hidden border border-white/10 bg-black/30 flex items-center justify-center h-48 md:h-auto">
+                                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#FF3C00" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 space-y-3">
+                            <h3 class="text-xl font-display font-black text-white uppercase tracking-tight leading-snug">${data.title}</h3>
+                            <p class="text-sm text-gray-300 font-mono">${data.niche} · ${data.location}</p>
+                            <div class="bg-black/40 border border-white/10 rounded-xl p-3">
+                                <p class="text-sm font-mono text-gray-300 text-center">📊 ${data.stat}</p>
+                            </div>
+                            <div class="bg-[var(--accent-color)]/10 border border-[var(--accent-color)]/20 rounded-xl p-3">
+                                <p class="text-sm text-gray-200 leading-relaxed">${data.description}</p>
+                            </div>
+                            <div class="flex justify-center md:justify-start">
+                                <a href="${data.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black font-black uppercase tracking-wider text-sm rounded-full hover:bg-gray-200 transition-all active:scale-95 border border-white/20 shadow-lg">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                    Visitar Web Oficial
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="md:w-1/2 space-y-3">
-                        <h3 class="text-xl font-display font-black text-white uppercase tracking-tight leading-snug">${data.title}</h3>
-                        <p class="text-sm text-gray-300 font-mono">${data.niche} · ${data.location}</p>
-                        <div class="bg-black/40 border border-white/10 rounded-xl p-3">
-                            <p class="text-sm font-mono text-gray-300 text-center">📊 ${data.stat}</p>
-                        </div>
-                        <div class="bg-[var(--accent-color)]/10 border border-[var(--accent-color)]/20 rounded-xl p-3">
-                            <p class="text-sm text-gray-200 leading-relaxed">${data.description}</p>
-                        </div>
-                        <div class="flex justify-center md:justify-start">
-                            <a href="${data.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black font-black uppercase tracking-wider text-sm rounded-full hover:bg-gray-200 transition-all active:scale-95 border border-white/20 shadow-lg">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-                                Visitar Web Oficial
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            `;
+                `;
             updateSuccessDots(index);
             const prevBtn = document.getElementById('success-prev-btn');
             const nextBtn = document.getElementById('success-next-btn');
@@ -1716,7 +2390,8 @@
                 nextBtn.innerHTML = 'Entendido';
                 nextBtn.onclick = function() { closeSuccessModal(); };
             } else {
-                nextBtn.innerHTML = `<span class="hidden sm:inline">Siguiente</span><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19l7-7-7-7"/></svg>`;
+                nextBtn.innerHTML =
+                    `<span class="hidden sm:inline">Siguiente</span><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19l7-7-7-7"/></svg>`;
                 nextBtn.onclick = function() { navigateSuccessCase(1); };
             }
         }
@@ -1739,54 +2414,48 @@
             }, 300);
         }
 
-        // ============================================
-        // MÓDULO 4: NOTIFICACIONES - Sistema de gestión
-        // ============================================
-
+        // --------------------------------------------------------------
+        // 4. MÓDULO DE NOTIFICACIONES (actualizado con las 3 notificaciones fijas)
+        // --------------------------------------------------------------
         let activeNotifications = [];
         let notificationsInitialized = false;
 
-        // Obtener nombre del negocio desde el header
         function getBusinessName() {
             const el = document.getElementById('brand-headline-name');
-            return el ? el.innerText.trim() : 'tu negocio';
+            return el ? el.innerText.trim() : 'Red Sapien';
         }
 
-        // Notificaciones iniciales personalizadas
         function getDefaultNotifications() {
             const bizName = getBusinessName();
-            return [
-                {
-                    id: 'notif-welcome',
-                    type: 'system',
-                    title: 'Bienvenido al Ecosistema Digital',
-                    message: `Hola, ${bizName}! Recuerda que el valor del ecosistema que creamos desde cero es de 396.000 COP (único pago). Puedes pagarlo en 3 fases de 132.000 COP, solo cuando esté listo.`,
-                    signature: 'Cristian Lopez Gomez - CTO Red Sapien',
-                    icon: '🚀',
-                    color: '#FF3C00'
-                },
-                {
-                    id: 'notif-antonella-1',
-                    type: 'marketing',
-                    title: 'Sistema Protegido y Listo para Desplegar',
-                    message: 'El panel de control está seguro y todas las piezas están conectadas. Tu ecosistema está listo para operar.',
-                    signature: 'Antonella IA - Red Sapien',
-                    icon: '🧠',
-                    color: '#7B2CBF'
-                },
-                {
-                    id: 'notif-antonella-2',
-                    type: 'marketing',
-                    title: 'Tour por tu Panel de Control',
-                    message: 'Descubre las 3 tarjetas clave: Web + IA, Redes y Campaña, SEO y Reputación. Cada una te dará el control total de tu negocio.',
-                    signature: 'Antonella IA - Red Sapien',
-                    icon: '📊',
-                    color: '#7B2CBF'
-                }
-            ];
+            return [{
+                id: 'notif-welcome',
+                type: 'system',
+                title: 'Bienvenido al Ecosistema Digital',
+                message: `Hola, es un gusto tenerte con nosotros ${bizName || 'Red Sapien'}.`,
+                signature: 'Cristian - CTO Red Sapien',
+                icon: '🚀',
+                color: '#FF3C00'
+            }, {
+                id: 'notif-price',
+                type: 'system',
+                title: 'Inversión Única',
+                message: 'Recuerda que tu ecosistema completo solo vale 396.000 pesos, pago contra entrega.',
+                signature: 'Cristian - CTO Red Sapien',
+                icon: '💰',
+                color: '#FF3C00'
+            }, {
+                id: 'notif-action',
+                type: 'system',
+                title: 'Activación Pendiente',
+                message: 'Estamos a la espera de que pidas activar tu máquina de ventas.',
+                signature: 'Antonella IA - Red Sapien',
+                icon: '⚡',
+                color: '#7B2CBF'
+            }];
         }
 
         function initNotifications() {
+            if (notificationsInitialized) return;
             const saved = localStorage.getItem('rs_notifications');
             if (saved) {
                 try {
@@ -1800,6 +2469,7 @@
             renderNotifications();
             updateNotificationLED();
             requestPushPermission();
+            notificationsInitialized = true;
         }
 
         function renderNotifications() {
@@ -1843,35 +2513,36 @@
         function createNotificationCard(notif, index) {
             const isSystem = notif.type === 'system';
             const accentColor = isSystem ? '#FF3C00' : '#7B2CBF';
-            const bgGradient = isSystem 
-                ? 'bg-gradient-to-br from-[#1a0a0a] to-[#0a0a0a]' 
-                : 'bg-gradient-to-br from-[#0a0a1a] to-[#0a0a0a]';
+            const bgGradient = isSystem ?
+                'bg-gradient-to-br from-[#1a0a0a] to-[#0a0a0a]' :
+                'bg-gradient-to-br from-[#0a0a1a] to-[#0a0a0a]';
             const borderColor = isSystem ? 'border-[#FF3C00]/30' : 'border-[#7B2CBF]/30';
             const iconBg = isSystem ? 'bg-[#FF3C00]/20' : 'bg-[#7B2CBF]/20';
 
             const card = document.createElement('div');
             card.id = notif.id;
-            card.className = `notification-card flex flex-col md:flex-row items-start md:items-center gap-4 p-4 rounded-xl border ${borderColor} ${bgGradient} backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-[${accentColor}]/5`;
+            card.className =
+                `notification-card flex flex-col md:flex-row items-start md:items-center gap-4 p-4 rounded-xl border ${borderColor} ${bgGradient} backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-[${accentColor}]/5`;
 
             card.innerHTML = `
-                <div class="flex items-center gap-3 w-full md:w-auto">
-                    <div class="w-10 h-10 rounded-full ${iconBg} flex items-center justify-center text-lg flex-shrink-0">
-                        ${notif.icon || (isSystem ? '🔴' : '🧠')}
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <h4 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug">${notif.title}</h4>
-                        <p class="text-sm text-gray-300 font-mono line-clamp-2">${notif.message}</p>
-                        <div class="mt-1 flex items-center gap-2">
-                            <span class="text-[8px] font-mono text-gray-500 uppercase tracking-wider">${notif.signature}</span>
-                            <span class="w-1 h-1 rounded-full ${isSystem ? 'bg-[#FF3C00]' : 'bg-[#7B2CBF]'} opacity-50"></span>
-                            <span class="text-[8px] font-mono ${isSystem ? 'text-[#FF3C00]' : 'text-[#7B2CBF]'}">●</span>
+                    <div class="flex items-center gap-3 w-full md:w-auto">
+                        <div class="w-10 h-10 rounded-full ${iconBg} flex items-center justify-center text-lg flex-shrink-0">
+                            ${notif.icon || (isSystem ? '🔴' : '🧠')}
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug">${notif.title}</h4>
+                            <p class="text-sm text-gray-300 font-mono line-clamp-2">${notif.message}</p>
+                            <div class="mt-1 flex items-center gap-2">
+                                <span class="text-[8px] font-mono text-gray-500 uppercase tracking-wider">${notif.signature}</span>
+                                <span class="w-1 h-1 rounded-full ${isSystem ? 'bg-[#FF3C00]' : 'bg-[#7B2CBF]'} opacity-50"></span>
+                                <span class="text-[8px] font-mono ${isSystem ? 'text-[#FF3C00]' : 'text-[#7B2CBF]'}">●</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <button onclick="dismissNotification('${notif.id}')" class="ml-auto flex-shrink-0 px-4 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-xs font-black uppercase tracking-wider text-gray-300 hover:text-white transition-all border border-white/10 hover:border-white/20">
-                    Listo
-                </button>
-            `;
+                    <button onclick="dismissNotification('${notif.id}')" class="ml-auto flex-shrink-0 px-4 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-xs font-black uppercase tracking-wider text-gray-300 hover:text-white transition-all border border-white/10 hover:border-white/20">
+                        Listo
+                    </button>
+                `;
 
             card.style.opacity = '0';
             card.style.transform = 'translateY(12px)';
@@ -1902,7 +2573,9 @@
 
         function updateNotificationLED() {
             const hasNotifications = activeNotifications.length > 0;
-            document.querySelectorAll('.sidebar-tab-link[data-mod="notificaciones"] .led-green, .mobile-nav-btn[data-mod="notificaciones"] .led-green').forEach(el => el.remove());
+            document.querySelectorAll(
+                    '.sidebar-tab-link[data-mod="notificaciones"] .led-green, .mobile-nav-btn[data-mod="notificaciones"] .led-green'
+                    ).forEach(el => el.remove());
 
             if (hasNotifications) {
                 const sidebarLink = document.querySelector('.sidebar-tab-link[data-mod="notificaciones"]');
@@ -1928,22 +2601,19 @@
             Notification.requestPermission().then(permission => {
                 if (permission === 'granted') {
                     console.log('Permiso de notificaciones concedido.');
-                    // Aquí se conectará con el Service Worker y Supabase Realtime
-                    // navigator.serviceWorker.register('/sw.js')
                 }
             });
         }
 
-        // Función para agregar notificaciones (integración con Supabase)
         function addNotification(title, message, type = 'system', icon = '🔔') {
             const newNotif = {
                 id: 'notif-' + Date.now(),
                 type: type,
                 title: title,
                 message: message,
-                signature: type === 'system' 
-                    ? 'Cristian Lopez Gomez - CTO Red Sapien' 
-                    : 'Antonella IA - Red Sapien',
+                signature: type === 'system' ?
+                    'Cristian - CTO Red Sapien' :
+                    'Antonella IA - Red Sapien',
                 icon: icon,
                 color: type === 'system' ? '#FF3C00' : '#7B2CBF'
             };
@@ -1965,11 +2635,9 @@
         function ensureNotificationsInitialized() {
             if (!notificationsInitialized) {
                 initNotifications();
-                notificationsInitialized = true;
             }
         }
 
-        // Función para controlar la visibilidad del botón de soporte
         function updateSupportButtonVisibility() {
             const supportBtn = document.getElementById('open-support-modal-btn');
             if (!supportBtn) return;
@@ -1977,29 +2645,438 @@
             supportBtn.style.display = isActivated ? 'flex' : 'none';
         }
 
-        // ============================================
-        // FIN MÓDULO 4: NOTIFICACIONES
-        // ============================================
-        
-        window.addEventListener('DOMContentLoaded', () => {
+        // --------------------------------------------------------------
+        // 5. LÓGICA DE ONBOARDING + SUPABASE
+        // --------------------------------------------------------------
+
+        // Coordenadas de las ciudades
+        const cityCoords = {
+            'Manizales': { lat: 5.0667, lng: -75.5187 },
+            'Medellín': { lat: 6.2442, lng: -75.5812 },
+            'Bogotá': { lat: 4.7110, lng: -74.0721 },
+            'Cartagena': { lat: 10.3910, lng: -75.4794 },
+            'Pereira': { lat: 4.8087, lng: -75.6906 },
+            'Villamaría': { lat: 5.0458, lng: -75.5192 },
+            'Barranquilla': { lat: 10.9639, lng: -74.7964 },
+            'Cali': { lat: 3.4516, lng: -76.5320 },
+            'Envigado': { lat: 6.1697, lng: -75.5917 }
+        };
+
+        // Variables de estado del wizard
+        let wizardStep = 1; // 1..4
+        let wizardData = {
+            business_name: '',
+            niche: '',
+            city: '',
+            phone: ''
+        };
+
+        // DOM references
+        const overlay = document.getElementById('onboarding-overlay');
+        const progress = document.getElementById('onboarding-progress');
+        const steps = document.querySelectorAll('.onboarding-step');
+        const prevBtn = document.getElementById('onboarding-prev');
+        const nextBtn = document.getElementById('onboarding-next');
+
+        // Elementos de cada paso
+        const inputBusiness = document.getElementById('input-business-name');
+        const nicheGrid = document.getElementById('niche-grid');
+        const nicheError = document.getElementById('niche-error');
+        const citySearch = document.getElementById('city-search-input');
+        const cityOptionsContainer = document.getElementById('city-options-container');
+        const cityError = document.getElementById('city-error');
+        const inputPhone = document.getElementById('input-phone');
+        const phoneError = document.getElementById('phone-error');
+
+        // --- Inicializar lista de ciudades en el paso 3 ---
+        function renderCityOptions(filter = '') {
+            const filtered = Object.keys(cityCoords).filter(c =>
+                c.toLowerCase().includes(filter.toLowerCase())
+            );
+            cityOptionsContainer.innerHTML = '';
+            if (filtered.length === 0) {
+                const empty = document.createElement('div');
+                empty.className = 'city-option text-gray-400 text-center py-2';
+                empty.textContent = 'No hay coincidencias';
+                cityOptionsContainer.appendChild(empty);
+                return;
+            }
+            filtered.forEach(city => {
+                const div = document.createElement('div');
+                div.className = 'city-option';
+                div.textContent = city;
+                div.dataset.city = city;
+                if (wizardData.city === city) div.classList.add('selected');
+                div.addEventListener('click', () => {
+                    wizardData.city = city;
+                    citySearch.value = city;
+                    renderCityOptions(city);
+                    cityError.classList.add('hidden');
+                    // Forzar validación y habilitar botón
+                    const valid = validateStep(3);
+                    nextBtn.disabled = !valid;
+                });
+                cityOptionsContainer.appendChild(div);
+            });
+        }
+
+        // --- Validación de pasos ---
+        function validateStep(step) {
+            switch (step) {
+                case 1:
+                    const name = inputBusiness.value.trim();
+                    if (name.length >= 2) {
+                        wizardData.business_name = name;
+                        return true;
+                    }
+                    return false;
+                case 2:
+                    return wizardData.niche !== '';
+                case 3:
+                    return wizardData.city !== '';
+                case 4:
+                    const phone = inputPhone.value.replace(/\s/g, '');
+                    return /^[0-9]{10}$/.test(phone);
+                default:
+                    return false;
+            }
+        }
+
+        // --- Actualizar UI del wizard ---
+        function updateWizard() {
+            // Actualizar pasos
+            steps.forEach((el, idx) => {
+                el.classList.toggle('active', idx + 1 === wizardStep);
+            });
+
+            // Barra de progreso
+            const pct = ((wizardStep - 1) / 3) * 100;
+            progress.style.width = pct + '%';
+
+            // Botones
+            prevBtn.disabled = (wizardStep === 1);
+            if (wizardStep === 4) {
+                nextBtn.textContent = 'Empezar 🚀';
+            } else {
+                nextBtn.textContent = 'Siguiente';
+            }
+
+            // Validar paso actual para habilitar "Siguiente"
+            const valid = validateStep(wizardStep);
+            nextBtn.disabled = !valid;
+        }
+
+        // --- Navegación ---
+        function goToStep(step) {
+            if (step < 1 || step > 4) return;
+            wizardStep = step;
+            updateWizard();
+            // Re-renderizar opciones de ciudad si es el paso 3
+            if (step === 3) {
+                renderCityOptions(citySearch.value);
+            }
+        }
+
+        function nextStep() {
+            if (!validateStep(wizardStep)) return;
+            if (wizardStep === 4) {
+                // Finalizar onboarding
+                finishOnboarding();
+                return;
+            }
+            goToStep(wizardStep + 1);
+        }
+
+        function prevStep() {
+            if (wizardStep > 1) goToStep(wizardStep - 1);
+        }
+
+        // --- Event listeners del wizard ---
+        inputBusiness.addEventListener('input', () => {
+            const name = inputBusiness.value.trim();
+            if (name.length >= 2) {
+                wizardData.business_name = name;
+            }
+            nextBtn.disabled = !validateStep(1);
+        });
+
+        // Nicho: selección por clic en tarjetas
+        nicheGrid.querySelectorAll('.niche-card').forEach(card => {
+            card.addEventListener('click', () => {
+                nicheGrid.querySelectorAll('.niche-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                wizardData.niche = card.dataset.niche;
+                nicheError.classList.add('hidden');
+                nextBtn.disabled = !validateStep(2);
+            });
+        });
+
+        // Ciudad: búsqueda en tiempo real + validación inmediata
+        citySearch.addEventListener('input', (e) => {
+            const val = e.target.value;
+            renderCityOptions(val);
+            // Buscar coincidencia exacta
+            const exact = Object.keys(cityCoords).find(c => c.toLowerCase() === val.toLowerCase());
+            if (exact) {
+                wizardData.city = exact;
+                cityError.classList.add('hidden');
+                renderCityOptions(val);
+                nextBtn.disabled = !validateStep(3);
+            } else {
+                // Si el usuario borra, deseleccionar
+                if (wizardData.city) {
+                    wizardData.city = '';
+                    renderCityOptions(val);
+                    nextBtn.disabled = true;
+                }
+                // Si no coincide exacto, pero hay texto, no deshabilitar si ya estaba seleccionado
+                // (pero la validación fallará si no hay ciudad)
+                if (!wizardData.city) {
+                    nextBtn.disabled = true;
+                }
+            }
+        });
+
+        // También agregar listener 'change' para validar al salir del campo
+        citySearch.addEventListener('change', () => {
+            const val = citySearch.value;
+            const exact = Object.keys(cityCoords).find(c => c.toLowerCase() === val.toLowerCase());
+            if (exact) {
+                wizardData.city = exact;
+                cityError.classList.add('hidden');
+                renderCityOptions(val);
+                nextBtn.disabled = !validateStep(3);
+            } else {
+                if (wizardData.city) {
+                    wizardData.city = '';
+                    renderCityOptions(val);
+                    nextBtn.disabled = true;
+                }
+            }
+        });
+
+        // Teléfono: solo números, formato
+        inputPhone.addEventListener('input', () => {
+            const raw = inputPhone.value.replace(/\D/g, '');
+            if (raw.length > 10) {
+                inputPhone.value = raw.slice(0, 10);
+            } else {
+                inputPhone.value = raw;
+            }
+            wizardData.phone = raw;
+            phoneError.classList.add('hidden');
+            nextBtn.disabled = !validateStep(4);
+        });
+
+        // Botones
+        prevBtn.addEventListener('click', prevStep);
+        nextBtn.addEventListener('click', nextStep);
+
+        // --- Finalizar onboarding: upsert a Supabase con updated_at ---
+        async function finishOnboarding() {
+            // Recolectar datos finales
+            wizardData.business_name = wizardData.business_name || inputBusiness.value.trim();
+            wizardData.phone = wizardData.phone || inputPhone.value.replace(/\D/g, '');
+
+            // Validar nuevamente todos los campos
+            if (!wizardData.business_name || !wizardData.niche || !wizardData.city || !wizardData.phone) {
+                alert('Por favor completa todos los pasos correctamente.');
+                return;
+            }
+
+            // Obtener usuario actual
+            const { data: { user }, error: userError } = await supabase.auth.getUser();
+            if (userError || !user) {
+                alert('No se pudo obtener la sesión. Por favor inicia sesión nuevamente.');
+                console.error(userError);
+                return;
+            }
+
+            // Preparar datos para upsert con updated_at
+            const profileData = {
+                id: user.id,
+                business_name: wizardData.business_name,
+                niche: wizardData.niche,
+                city: wizardData.city,
+                phone: wizardData.phone,
+                onboarding_completed: true,
+                updated_at: new Date().toISOString()
+            };
+
+            try {
+                const { error: upsertError } = await supabase
+                    .from('profiles')
+                    .upsert(profileData, { onConflict: 'id' });
+
+                if (upsertError) {
+                    alert('Error al guardar los datos. Intenta nuevamente.');
+                    console.error(upsertError);
+                    return;
+                }
+
+                // Éxito: ocultar modal, actualizar DOM y guardar en localStorage
+                overlay.classList.remove('active');
+                overlay.style.display = 'none';
+
+                // Guardar en localStorage para referencia
+                localStorage.setItem('business_name', wizardData.business_name);
+                localStorage.setItem('onboarding_completed', 'true');
+
+                // Actualizar saludo
+                const headline = document.getElementById('brand-headline-name');
+                if (headline) headline.textContent = wizardData.business_name.toUpperCase();
+
+                // Actualizar dominio en la tarjeta
+                updateDynamicDomain();
+
+                // Centrar mapa en la ciudad seleccionada (si el mapa existe en el panel de telemetría)
+                localStorage.setItem('user_city', wizardData.city);
+
+                // Inicializar notificaciones (solo ahora que el onboarding está completo)
+                initNotifications();
+
+                // Mostrar toast de éxito con el dominio
+                const slug = wizardData.business_name.toLowerCase()
+                    .replace(/\s+/g, '')
+                    .replace(/[^a-z0-9]/g, '');
+                const domain = `${slug}.redsapien.com`;
+
+                const toast = document.createElement('div');
+                toast.className =
+                    'fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[300] bg-[var(--accent-color)] border border-white/20 backdrop-blur-md rounded-2xl p-4 shadow-2xl max-w-xs w-full text-center transition-all duration-300 whatsapp-toast text-white';
+                toast.innerHTML = `
+                        <span class="text-base font-black uppercase tracking-wider">✅ ¡Ecosistema activado con éxito!</span>
+                        <br><span class="text-xs font-mono opacity-80">${domain}</span>
+                    `;
+                document.body.appendChild(toast);
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 300);
+                }, 4500);
+
+            } catch (err) {
+                alert('Ocurrió un error inesperado. Revisa la consola.');
+                console.error(err);
+            }
+        }
+
+        // --- Lógica de acceso: verificar sesión y perfil ---
+        async function checkOnboardingStatus() {
+            try {
+                const { data: { user }, error: userError } = await supabase.auth.getUser();
+
+                if (userError || !user) {
+                    console.warn('No hay usuario autenticado. El onboarding no se mostrará.');
+                    overlay.style.display = 'none';
+                    return;
+                }
+
+                // Consultar perfil
+                const { data: profile, error: profileError } = await supabase
+                    .from('profiles')
+                    .select('onboarding_completed, business_name, city, niche, phone')
+                    .eq('id', user.id)
+                    .maybeSingle();
+
+                if (profileError) {
+                    console.error('Error al consultar perfil:', profileError);
+                    overlay.style.display = 'none';
+                    return;
+                }
+
+                // Si no existe perfil o onboarding_completed es false, mostrar wizard
+                if (!profile || profile.onboarding_completed === false) {
+                    // Cargar datos existentes si los hay
+                    if (profile) {
+                        if (profile.business_name) {
+                            wizardData.business_name = profile.business_name;
+                            inputBusiness.value = profile.business_name;
+                        }
+                        if (profile.niche) {
+                            wizardData.niche = profile.niche;
+                            const card = nicheGrid.querySelector(`[data-niche="${profile.niche}"]`);
+                            if (card) card.classList.add('selected');
+                        }
+                        if (profile.city) {
+                            wizardData.city = profile.city;
+                            citySearch.value = profile.city;
+                            renderCityOptions(profile.city);
+                        }
+                        if (profile.phone) {
+                            wizardData.phone = profile.phone;
+                            inputPhone.value = profile.phone;
+                        }
+                    }
+                    // Mostrar modal
+                    overlay.style.display = 'flex';
+                    overlay.classList.add('active');
+                    goToStep(1);
+                } else {
+                    // Onboarding ya completado: ocultar modal y actualizar DOM
+                    overlay.style.display = 'none';
+                    overlay.classList.remove('active');
+
+                    // Actualizar saludo con el nombre guardado
+                    if (profile && profile.business_name) {
+                        const headline = document.getElementById('brand-headline-name');
+                        if (headline) headline.textContent = profile.business_name.toUpperCase();
+                        localStorage.setItem('business_name', profile.business_name);
+                        updateDynamicDomain();
+                    }
+                    if (profile && profile.city) {
+                        localStorage.setItem('user_city', profile.city);
+                    }
+                    localStorage.setItem('onboarding_completed', 'true');
+
+                    // Cargar notificaciones (onboarding completado)
+                    initNotifications();
+                }
+            } catch (err) {
+                console.error('Error en checkOnboardingStatus:', err);
+                overlay.style.display = 'none';
+            }
+        }
+
+        // --------------------------------------------------------------
+        // 6. INICIALIZACIÓN AL CARGAR LA PÁGINA (con verificación de sesión)
+        // --------------------------------------------------------------
+        window.addEventListener('DOMContentLoaded', async () => {
+            // --- Verificar sesión al cargar ---
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                if (!_authRedirecting) {
+                    _authRedirecting = true;
+                    window.location.replace(LOGIN_URL);
+                }
+                return;
+            }
+
+            // Si hay sesión, continuar con la inicialización
+            // Cargar preferencias de color, idioma, etc.
             loadPersistedColorPalette();
             loadPersistedLanguage();
             updateDynamicDomain();
             updateNotificationLED();
-            updateSupportButtonVisibility(); // Inicializar visibilidad del botón de soporte
-            
+            updateSupportButtonVisibility();
+
+            // Avatar guardado
             const savedAvatar = localStorage.getItem("rs_business_avatar_url");
             if (savedAvatar) {
                 document.getElementById("avatar-state-empty").classList.add("hidden");
                 document.getElementById("avatar-state-img").src = savedAvatar;
                 document.getElementById("avatar-state-img").classList.remove("hidden");
-                document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.change_logo || "Cambiar Logo";
+                document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.change_logo ||
+                    "Cambiar Logo";
             }
+
+            // Mostrar panel por defecto
             document.getElementById('pane-view-panel').classList.remove('hidden');
             switchWorkspaceView('panel');
-            
+
+            // Iniciar simulaciones
             startTelemetrySimulation();
-                        
+
+            // Mostrar CTA si no está activado
             const isActivated = localStorage.getItem('ecosystem_activated');
             const desktopCta = document.getElementById('desktop-cta-container');
             const mobileCta = document.getElementById('mobile-cta-container');
@@ -2012,9 +3089,132 @@
                 if (desktopCta) desktopCta.style.display = 'none';
                 if (mobileCta) mobileCta.style.display = 'none';
             }
+
+            // === VERIFICAR ONBOARDING ===
+            await checkOnboardingStatus();
+
+            // Event listener para cambio de idioma
+            document.getElementById('lang-menu-select')?.addEventListener('change', (e) => applyLanguage(e.target
+                .value));
+
+            // Si el mapa de telemetría se abre, centrar en la ciudad guardada
+            const savedCity = localStorage.getItem('user_city');
+            if (savedCity && cityCoords[savedCity]) {
+                // No hacer nada aquí, el mapa se centrará cuando se abra el modal 3
+            }
         });
-        document.getElementById('lang-menu-select')?.addEventListener('change', (e) => applyLanguage(e.target.value));
+
+        // --------------------------------------------------------------
+        // 7. CONFIGURACIÓN DEL LISTENER DE AUTENTICACIÓN (después de definir funciones)
+        // --------------------------------------------------------------
+        supabase.auth.onAuthStateChange((event, session) => {
+            if (event === 'SIGNED_OUT' || !session) {
+                if (!_authRedirecting) {
+                    _authRedirecting = true;
+                    window.location.replace(LOGIN_URL);
+                }
+            } else {
+                // Sesión activa, verificar onboarding si no se ha hecho
+                if (typeof checkOnboardingStatus === 'function' && !window._onboardingChecked) {
+                    window._onboardingChecked = true;
+                    checkOnboardingStatus();
+                }
+            }
+        });
+
+        // Override de openTelemetryModal para centrar el mapa en la ciudad guardada (paso 3)
+        const originalOpenTelemetry = openTelemetryModal;
+        openTelemetryModal = function(panelId) {
+            if (panelId === 3) {
+                const savedCity = localStorage.getItem('user_city') || 'Manizales';
+                const coords = cityCoords[savedCity] || cityCoords['Manizales'];
+                const t = translations[currentLang];
+                const body = document.getElementById('telemetry-modal-body');
+                body.innerHTML = `
+                        <div class="space-y-4">
+                            <div class="border-b border-[var(--accent-color)]/30 pb-2">
+                                <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight leading-snug">${t.modal3_title}</h3>
+                                <p class="text-sm text-gray-300 font-mono">${t.modal3_sub}</p>
+                            </div>
+                            <div class="bg-black/40 border border-white/10 rounded-xl p-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm font-mono text-gray-300">${t.modal3_visibility}</span>
+                                    <span class="text-2xl font-bold text-white">+12,000</span>
+                                </div>
+                                <div class="flex justify-between items-center mt-2">
+                                    <span class="text-sm font-mono text-gray-300">${t.modal3_calls}</span>
+                                    <span class="text-2xl font-bold text-[var(--accent-color)]">240/mes</span>
+                                </div>
+                            </div>
+                            <div id="seo-map" class="w-full h-40 rounded-xl border border-white/20 mt-2 z-0 overflow-hidden"></div>
+                        </div>
+                    `;
+                const overlay = document.getElementById('telemetry-modal-overlay');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+                setTimeout(() => {
+                    if (globalMap) globalMap.remove();
+                    const mapDiv = document.getElementById('seo-map');
+                    if (mapDiv) {
+                        globalMap = L.map(mapDiv).setView([coords.lat, coords.lng], 13);
+                        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> & CartoDB',
+                            subdomains: 'abcd',
+                            maxZoom: 19,
+                            minZoom: 3
+                        }).addTo(globalMap);
+                        L.circle([coords.lat, coords.lng], {
+                            color: 'var(--accent-color)',
+                            fillColor: '#FF3C00',
+                            fillOpacity: 0.2,
+                            radius: 2000,
+                            weight: 2,
+                            className: 'radar-pulse'
+                        }).addTo(globalMap);
+                        const style = document.createElement('style');
+                        style.textContent =
+                            `.radar-pulse { animation: radarPulse 2s infinite ease-out; } @keyframes radarPulse { 0% { stroke-width: 2; opacity: 0.8; r: 2000; } 50% { stroke-width: 1; opacity: 0.4; r: 2500; } 100% { stroke-width: 0.5; opacity: 0; r: 3000; } }`;
+                        document.head.appendChild(style);
+                    }
+                }, 150);
+                updateTelemetryDots(3);
+                document.getElementById('telemetry-prev-btn').disabled = false;
+                const nextBtn = document.getElementById('telemetry-next-btn');
+                nextBtn.innerHTML = t.modal_gotit;
+                return;
+            }
+            originalOpenTelemetry(panelId);
+        };
+
+        const originalNavigate = navigateTelemetry;
+        navigateTelemetry = function(delta) {
+            let next = currentTelemetryIndex + delta;
+            if (next > 3) {
+                closeTelemetryModal();
+                return;
+            }
+            if (next >= 1 && next <= 3) openTelemetryModal(next);
+        };
+
+        // Lock overlay para casos de éxito (sin cambios)
+        (function setupLockOverlay() {
+            const overlayCasos = document.getElementById('casos-overlay');
+            const lockIcon = document.getElementById('casos-lock-icon');
+
+            if (overlayCasos && lockIcon) {
+                const addShake = () => {
+                    lockIcon.classList.remove('shake');
+                    void lockIcon.offsetWidth;
+                    lockIcon.classList.add('shake');
+                };
+                overlayCasos.addEventListener('mouseenter', addShake);
+                overlayCasos.addEventListener('click', addShake);
+            }
+        })();
+
+        console.log('🟢 Red Sapien | Terminal Operativa con Onboarding integrado');
     </script>
+
 </body>
 
 </html>
