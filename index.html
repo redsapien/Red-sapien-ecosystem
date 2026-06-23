@@ -358,6 +358,7 @@
             transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             width: 100%;
             height: 100%;
+            will-change: transform;
         }
         .slide-item {
             min-width: 100%;
@@ -501,6 +502,24 @@
                 gap: 2.5rem;
             }
         }
+
+        /* Aceleración GPU para el fondo animado */
+        .hero-background-svg {
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            z-index: 0;
+        }
+        .profile-bubble-wrapper {
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+        .slide-container {
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
     </style>
 </head>
 
@@ -573,7 +592,7 @@
     <main
         class="bg-subtle-red relative min-h-screen flex flex-col items-center justify-center pt-32 md:pt-40 pb-12 text-center overflow-hidden">
         <div class="tech-mesh-layer"></div>
-        <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
+        <div class="absolute inset-0 w-full h-full pointer-events-none z-0 hero-background-svg">
             <svg class="w-full h-full opacity-[0.15]" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
                 viewBox="0 0 1440 800">
                 <path d="M -50 120 Q 350 80 720 380 T 1500 680" fill="none" stroke="url(#neon-flow-gradient)"
@@ -871,7 +890,7 @@
                                 <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight"
                                     data-i18n="phase2Title">Campaña de ventas</h3>
                                 <p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl"
-                                    data-i18n="phase2Desc">Traemos clientes de Facebook directamente a su WhatsApp.</p>
+                                    data-i18n="phase2Desc">Traemos clientes desde Facebook a su WhatsApp.</p>
                             </div>
                             <div
                                 class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-5 max-w-md font-mono text-xs text-neutral-400 relative z-10 lg:pl-4">
@@ -912,7 +931,7 @@
                                 <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight"
                                     data-i18n="phase3Title">Posicionamiento SEO</h3>
                                 <p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl"
-                                    data-i18n="phase3Desc">Aparezca primero en Google cuando busquen sus productos.</p>
+                                    data-i18n="phase3Desc">Aparezca en Google cuando busquen sus productos.</p>
                             </div>
                             <div
                                 class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-5 max-w-md font-mono text-xs text-neutral-400 relative z-10">
@@ -943,7 +962,7 @@
         </div>
 
         <!-- ================= BURBUJA DE PERFIL CON LÓGICA DE TIEMPOS ================= -->
-        <div id="profile-bubble-wrapper" class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end">
+        <div id="profile-bubble-wrapper" class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end profile-bubble-wrapper">
             <div id="thought-bubble"
                 class="thought-bubble bg-gray-800 text-white text-xs font-medium px-4 py-2 rounded-lg mb-2 max-w-[260px] text-center shadow-lg relative">
                 Un gusto, su negocio<br>a otro nivel por<br>$396.000 PESOS
@@ -1022,7 +1041,7 @@
                         observer.observe(targetCardPhase2);
                     }
 
-                    // Profile bubble logic with 6-second delay
+                    // Profile bubble logic with 7s and 8s delays
                     const profileBubble = document.getElementById('profile-bubble');
                     const thoughtBubble = document.getElementById('thought-bubble');
 
@@ -1037,7 +1056,7 @@
                         profileBubble.style.display = 'block';
                         void profileBubble.offsetWidth;
                         profileBubble.classList.add('visible');
-                    }, 6000);
+                    }, 7000);
 
                     setTimeout(() => {
                         if (profileBubble.style.display !== 'none') {
@@ -1045,7 +1064,7 @@
                             void thoughtBubble.offsetWidth;
                             thoughtBubble.classList.add('visible');
                         }
-                    }, 7000);
+                    }, 8000);
 
                     setTimeout(() => {
                         if (thoughtBubble.classList.contains('visible')) {
@@ -2283,7 +2302,7 @@
         })();
 
         // ================================================================
-        // 12. TRADUCCIONES (CORREGIDAS: heroDesc actualizado)
+        // 12. TRADUCCIONES (sincronizadas al 100% con el español)
         // ================================================================
         const translations = {
             es: {
@@ -2307,7 +2326,7 @@
                 phase1Stat1: "1 segundo",
                 phase1Stat2: "Gratis",
                 phase2Title: "Campaña de ventas",
-                phase2Desc: "Traemos clientes de Facebook a su WhatsApp.",
+                phase2Desc: "Traemos clientes desde Facebook a su WhatsApp.",
                 phase2Stat1: "300 a 350",
                 phase2Stat2: "$13.000/nequi",
                 phase3Title: "Posicionamiento",
@@ -2353,7 +2372,7 @@
                 copyright: "© RED SAPIEN TODOS LOS DERECHOS PARA EL MUNDO..."
             },
             en: {
-                registerBtn: "Start Free Now",
+                registerBtn: "Start Free",
                 mobileRegister: "Start",
                 mobilePlatform: "Sign In",
                 mobileContact: "Let's talk",
@@ -2361,7 +2380,7 @@
                 heroDesc: "We bring interested clients directly to your WhatsApp.",
                 googleBtnText: "Sign in with Google",
                 mainCta: "Start Free Now!",
-                trustText: "They are already at another level, and you?",
+                trustText: "They're at another level, and you?",
                 securityBadge: "Real Results: Pay on Delivery",
                 modalTitle: "Two data points and you're in",
                 modalBtn: "Connect Now",
@@ -2369,17 +2388,17 @@
                 infraTag: "STRESS GONE",
                 machineryTitle: "We create your digital ecosystem",
                 phase1Title: "Website + AI",
-                phase1Desc: "Personalized to your brand's DNA and built to sell, with an AI agent that serves your clients 24/7.",
+                phase1Desc: "Personalized to your brand's DNA, built to sell.",
                 phase1Stat1: "1 second",
-                phase1Stat2: "Free and unlimited",
+                phase1Stat2: "Free",
                 phase2Title: "Sales Campaign",
-                phase2Desc: "We bring customers from Facebook directly to your WhatsApp with local strategic segmentation.",
+                phase2Desc: "We bring customers from Facebook to your WhatsApp.",
                 phase2Stat1: "300 to 350",
                 phase2Stat2: "$13,000/nequi",
-                phase3Title: "SEO Positioning",
-                phase3Desc: "We make you appear first on Google when people search for your products or services in your city.",
+                phase3Title: "Positioning",
+                phase3Desc: "Appear on Google when they search for your products.",
                 phase3Stat1: "20 to 35",
-                phase3Stat2: "99% score",
+                phase3Stat2: "99% effective",
                 whatsappTooltip: "Let's talk",
                 portfolioBadge: "Adaptable to your niche",
                 portfolioTitle: "Validated in real businesses",
@@ -2392,7 +2411,7 @@
                 case4Title: "Luxury E-commerce",
                 case4Desc: "Red Sapien: we created a luxury catalog for Noir Elixir in Medellín: with a premium design optimized for sales.",
                 viewCaseBtn: "View now",
-                archBadge: "Remote Control",
+                archBadge: "Total control",
                 slotsBadge: "ONLY 4 SPOTS AVAILABLE",
                 pricingLabel: "Total Investment",
                 paymentNote: "ONE PAYMENT. NO CONTRACTS",
@@ -2419,7 +2438,7 @@
                 copyright: "© RED SAPIEN ALL RIGHTS RESERVED FOR THE WORLD..."
             },
             pt: {
-                registerBtn: "Comece grátis agora",
+                registerBtn: "Comece grátis",
                 mobileRegister: "Comece",
                 mobilePlatform: "Entrar",
                 mobileContact: "Vamos conversar",
@@ -2427,7 +2446,7 @@
                 heroDesc: "Trazemos clientes interessados diretamente para o seu WhatsApp.",
                 googleBtnText: "Acesse com Google",
                 mainCta: "Comece grátis já!",
-                trustText: "El@s já estão em outro nível, e você?",
+                trustText: "Eles já estão em outro nível, e você?",
                 securityBadge: "Resultados Reais: Pagamento na Entrega",
                 modalTitle: "Dois dados e você já está dentro",
                 modalBtn: "Conecte-se agora",
@@ -2435,17 +2454,17 @@
                 infraTag: "CHEGA DE ESTRESSE",
                 machineryTitle: "Criamos seu ecossistema digital",
                 phase1Title: "Site + IA",
-                phase1Desc: "Personalizado ao DNA da sua marca e feito para vender, com um agente de IA que atende seus clientes 24/7.",
+                phase1Desc: "Personalizado ao DNA da sua marca, feito para vender.",
                 phase1Stat1: "1 segundo",
-                phase1Stat2: "Grátis e ilimitado",
+                phase1Stat2: "Grátis",
                 phase2Title: "Campanha de vendas",
-                phase2Desc: "Trazemos clientes do Facebook diretamente para seu WhatsApp com segmentação estratégica local.",
+                phase2Desc: "Trazemos clientes do Facebook para o seu WhatsApp.",
                 phase2Stat1: "300 a 350",
                 phase2Stat2: "$13.000/nequi",
-                phase3Title: "Posicionamento SEO",
-                phase3Desc: "Fazemos você aparecer primeiro no Google quando buscarem seus produtos ou serviços na sua cidade.",
+                phase3Title: "Posicionamento",
+                phase3Desc: "Apareça no Google quando procurarem pelos seus produtos.",
                 phase3Stat1: "20 a 35",
-                phase3Stat2: "99% em pontuação",
+                phase3Stat2: "99% eficaz",
                 whatsappTooltip: "Vamos conversar",
                 portfolioBadge: "Adaptável ao seu nicho",
                 portfolioTitle: "Validado em negócios reais",
@@ -2458,7 +2477,7 @@
                 case4Title: "E-commerce de Luxo",
                 case4Desc: "Red Sapien: criamos um catálogo de luxo para Noir Elixir em Medellín: com design premium otimizado para vendas.",
                 viewCaseBtn: "Ver agora",
-                archBadge: "Controle remoto",
+                archBadge: "Controle total",
                 slotsBadge: "APENAS 4 VAGAS DISPONÍVEIS",
                 pricingLabel: "Investimento total",
                 paymentNote: "PAGAMENTO ÚNICO. SEM CONTRATOS",

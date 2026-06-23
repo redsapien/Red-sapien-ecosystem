@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta id="meta-theme" name="theme-color" content="#050505">
-    <title>Red Sapien | Terminal Operativa</title>
+    <title>Red Sapien | Panel de Control</title>
 
     <!-- Favicon dinámico SVG -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23050505' stroke='%23FF3C00' stroke-width='4'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='40' fill='%23FF3C00'%3ERS%3C/text%3E%3C/svg%3E">
@@ -750,7 +750,7 @@
             <div id="step-3" class="onboarding-step">
                 <h2 class="onboarding-title">¿En qué ciudad operas?</h2>
                 <p class="onboarding-sub">Selecciona tu ciudad principal para activar la ubicación.</p>
-                <input id="city-search-input" type="text" placeholder="Buscar ciudad..." class="city-search-input">
+                <input id="city-search-input" type="text" placeholder="Buscar..." class="city-search-input">
                 <div id="city-options-container" class="city-options">
                     <!-- Opciones inyectadas por JS -->
                 </div>
@@ -763,7 +763,7 @@
                 <p class="onboarding-sub">Ingresa el número de contacto de tu negocio.</p>
                 <div class="phone-input-wrapper">
                     <span class="country-code">+57</span>
-                    <input id="input-phone" type="tel" placeholder="300 000 0000" pattern="[0-9]{10}">
+                    <input id="input-phone" type="tel" placeholder="Tu número" pattern="[0-9]{10}">
                 </div>
                 <div id="phone-error" class="text-red-500 text-xs mt-2 hidden">Ingresa un número válido de 10 dígitos.</div>
             </div>
@@ -814,17 +814,17 @@
             </button>
             <button onclick="switchWorkspaceView('casos')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-gray-500 hover:text-white hover:bg-white/5 border border-transparent group" data-mod="casos" title="Ir a Casos de Éxito">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="group-hover:scale-110 transition-transform"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <span class="sidebar-text" data-i18n="nav_casos">Casos de Éxito</span>
+                <span class="sidebar-text" data-i18n="nav_casos">Casos</span>
             </button>
             <button onclick="switchWorkspaceView('notificaciones')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-gray-500 hover:text-white hover:bg-white/5 border border-transparent group relative" data-mod="notificaciones" title="Ir a Notificaciones">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="group-hover:scale-110 transition-transform"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-                <span class="sidebar-text" data-i18n="nav_notificaciones">Notificaciones</span>
+                <span class="sidebar-text" data-i18n="nav_notificaciones">Alertas</span>
                 <span class="absolute right-4 w-1.5 h-1.5 rounded-full bg-green-500 led-green"></span>
             </button>
         </nav>
 
         <div class="p-5 border-t border-white/5 text-[10px] font-mono tracking-[0.2em] text-gray-600 text-center w-64">
-            <span data-i18n="footer_sys">SYS.NODE // ONLINE</span>
+            <span data-i18n="footer_sys">Sistema en línea</span>
         </div>
     </aside>
 
@@ -846,7 +846,7 @@
                         <div class="w-2 h-2 bg-green-500"></div>
                         <div class="w-2 h-2 bg-red-500"></div>
                     </div>
-                    <span class="text-xs font-mono tracking-wider text-gray-300" data-i18n="proud_manizales">Orgullosamente Manizaleñ@s</span>
+                    <span class="text-xs font-mono tracking-wider text-gray-300" data-i18n="proud_manizales">Orgullosamente de Manizales</span>
                 </div>
             </div>
 
@@ -854,11 +854,11 @@
                 <div id="desktop-cta-container" class="hidden lg:block relative transition-opacity duration-1000 opacity-0 w-64 flex justify-end">
                     <div id="cta-btn-wrapper-pc" class="relative group">
                         <div class="tooltip-activate absolute -top-10 left-1/2 -translate-x-1/2 bg-[#1A1A1A] border border-white/10 text-gray-300 text-xs font-mono tracking-wide px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl pointer-events-none" data-i18n="tooltip_activate">
-                            Activa tu ecosistema ahora
+                            Haznos saber para iniciar
                         </div>
                         <button id="activate-btn-pc" onclick="activateEcosystem()" class="flex items-center gap-2.5 px-6 py-3.5 bg-white text-black text-sm font-black uppercase tracking-widest rounded-full hover:bg-gray-200 transition-all active:scale-95 animate-pulse-activate border border-white/50">
                             <span class="w-2 h-2 rounded-full bg-green-500 led-green"></span>
-                            <span data-i18n="btn_activate">Pedir ahora la activación</span>
+                            <span data-i18n="btn_activate">Solicitar activación ahora</span>
                         </button>
                     </div>
                 </div>
@@ -883,12 +883,12 @@
                         <div class="p-1 mb-2 border-b border-white/5 pb-2">
                             <button onclick="triggerManualAvatarClick(event)" id="dropdown-logo-trigger" class="w-full flex items-center justify-center gap-2.5 bg-white/5 hover:bg-white/10 text-white text-sm uppercase tracking-wider font-bold py-2.5 rounded-xl transition-colors border border-white/5">
                                 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                                <span id="dropdown-logo-text" data-i18n="upload_logo">Subir Logo del Negocio</span>
+                                <span id="dropdown-logo-text" data-i18n="upload_logo">Subir logo</span>
                             </button>
                         </div>
-                        <div class="px-2 py-1 mb-1"><span class="text-xs uppercase font-bold text-gray-300 tracking-wider font-mono" data-i18n="panel_global">Panel Global</span></div>
+                        <div class="px-2 py-1 mb-1"><span class="text-xs uppercase font-bold text-gray-300 tracking-wider font-mono" data-i18n="panel_global">Panel</span></div>
                         <div class="p-2 hover:bg-white/5 rounded-xl transition-colors">
-                            <div class="text-sm font-bold text-gray-300 mb-2 tracking-wider flex items-center gap-1.5" data-i18n="accent_color">🎨 Color de Acento</div>
+                            <div class="text-sm font-bold text-gray-300 mb-2 tracking-wider flex items-center gap-1.5" data-i18n="accent_color">🎨 Color</div>
                             <div class="flex items-center gap-3 px-1">
                                 <button onclick="changeGlobalNeonPalette('#FF3C00', 'rgba(255,60,0,0.1)', 'rgba(255,60,0,0.15)', this)" class="w-5 h-5 rounded-full bg-[#FF3C00] border-[2px] border-white scale-110 shadow-[0_0_10px_rgba(255,60,0,0.3)]" title="Rojo"></button>
                                 <button onclick="changeGlobalNeonPalette('#00ffcc', 'rgba(0,255,204,0.1)', 'rgba(0,255,204,0.15)', this)" class="w-5 h-5 rounded-full bg-[#00ffcc] border border-transparent" title="Cian"></button>
@@ -896,7 +896,7 @@
                             </div>
                         </div>
                         <div class="p-2 hover:bg-white/5 rounded-xl transition-colors mt-1">
-                            <div class="text-sm font-bold text-gray-300 mb-2 tracking-wider flex items-center gap-1.5" data-i18n="language">🌐 Idioma Preferido</div>
+                            <div class="text-sm font-bold text-gray-300 mb-2 tracking-wider flex items-center gap-1.5" data-i18n="language">🌐 Idioma</div>
                             <select id="lang-menu-select" class="w-full bg-[#050505] border border-white/10 rounded-lg px-3 py-2 text-sm tracking-wide text-white focus:outline-none focus:border-[var(--accent-color)] font-semibold cursor-pointer">
                                 <option value="es">Español (ES)</option>
                                 <option value="en">English (EN)</option>
@@ -904,11 +904,11 @@
                             </select>
                         </div>
                         <button onclick="toggleTermsModal(true)" class="w-full text-left px-3 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:bg-white/5 flex items-center gap-2 mt-2 transition-colors">
-                            📄 <span data-i18n="terms">Términos de Uso</span>
+                            📄 <span data-i18n="terms">Términos</span>
                         </button>
                         <div class="border-t border-white/5 mt-3 pt-2">
                             <button onclick="executeDataPurge()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm font-bold text-red-500 hover:bg-red-500/10 flex items-center gap-2 transition-colors">
-                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0 1 16.138 21H7.862a2 2 0 0 1-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v3M4 7h16"/></svg> <span data-i18n="delete_account">Eliminar cuenta y datos</span>
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0 1 16.138 21H7.862a2 2 0 0 1-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v3M4 7h16"/></svg> <span data-i18n="delete_account">Eliminar cuenta</span>
                             </button>
                         </div>
                     </div>
@@ -926,7 +926,7 @@
                             <div class="w-2 h-2 bg-green-500"></div>
                             <div class="w-2 h-2 bg-red-500"></div>
                         </div>
-                        <span class="text-xs font-mono tracking-wider text-gray-300" data-i18n="proud_manizales">Orgullosamente Manizaleñ@s</span>
+                        <span class="text-xs font-mono tracking-wider text-gray-300" data-i18n="proud_manizales">Orgullosamente de Manizales</span>
                     </div>
 
                     <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch px-2 md:px-0">
@@ -942,23 +942,23 @@
                                     <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[var(--accent-color)]">
                                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12h18M12 3v18M5.636 5.636l12.728 12.728M5.636 18.364L18.364 5.636" stroke="currentColor"/><circle cx="12" cy="12" r="3" stroke="currentColor"/><path d="M12 9a3 3 0 0 1 3 3" stroke="currentColor"/><path d="M12 15a3 3 0 0 1-3-3" stroke="currentColor"/></svg>
                                     </div>
-                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card1_title">WEB + IA</h3>
+                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card1_title">PÁGINA WEB + IA</h3>
                                 </div>
                                 <div class="space-y-4">
                                     <div>
-                                        <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="hosting_label">Hosting + dominio de por vida gratis</span>
+                                        <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="hosting_label">Tu Dominio</span>
                                         <div class="bg-black border border-white/20 p-2.5 rounded-lg text-green-400 font-mono tracking-widest w-full mt-1 text-sm truncate" id="dynamic-domain">redsapien.com</div>
                                     </div>
                                     <div class="pt-2">
-                                        <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="status_label">Estado operativo</span>
+                                        <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="status_label">Estado</span>
                                         <div class="flex items-center gap-2 mt-1">
                                             <span class="relative flex h-3 w-3"><span class="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75 led-pulse"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span></span>
-                                            <span class="text-amber-400 text-xs font-mono font-bold tracking-wide" data-i18n="status_pending_deploy">Pendiente de despliegue</span>
+                                            <span class="text-amber-400 text-xs font-mono font-bold tracking-wide" data-i18n="status_pending_deploy">Esperando conexión</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Haz clic para telemetría avanzada</div>
+                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Clic para ver proyecciones</div>
                         </div>
 
                         <!-- Tarjeta 2: REDES Y CAMPAÑA -->
@@ -970,11 +970,11 @@
                                     <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[#1877F2]">
                                         <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                                     </div>
-                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card2_title">REDES Y CAMPAÑA</h3>
+                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card2_title">CAMPAÑA + REDES</h3>
                                 </div>
                                 <div class="grid grid-cols-2 gap-3 mb-4">
                                     <div class="bg-black/40 rounded-lg p-3 text-center border border-white/5 w-full">
-                                        <div class="text-[11px] md:text-xs text-gray-300 uppercase text-center leading-tight font-medium" data-i18n="whatsapp_msgs">Mensajes WhatsApp</div>
+                                        <div class="text-[11px] md:text-xs text-gray-300 uppercase text-center leading-tight font-medium" data-i18n="whatsapp_msgs">Mensajes</div>
                                         <div class="text-2xl md:text-3xl font-mono font-black text-white flex items-center justify-center gap-1">
                                             <span>0</span>
                                             <span class="inline-flex ml-1">
@@ -985,7 +985,7 @@
                                         </div>
                                     </div>
                                     <div class="bg-black/40 rounded-lg p-3 text-center border border-white/5 w-full">
-                                        <div class="text-[11px] md:text-xs text-gray-300 uppercase text-center leading-tight font-medium" data-i18n="money_spent">Dinero invertido</div>
+                                        <div class="text-[11px] md:text-xs text-gray-300 uppercase text-center leading-tight font-medium" data-i18n="money_spent">Inversión</div>
                                         <div class="text-2xl md:text-3xl font-mono font-black text-white flex items-center justify-center gap-1">
                                             <span>0</span>
                                             <span class="inline-flex ml-1">
@@ -998,20 +998,20 @@
                                 </div>
                                 <div class="space-y-2 text-xs font-mono">
                                     <div class="flex justify-between items-center bg-black/30 px-2 py-1 rounded">
-                                        <span class="text-gray-300 font-medium" data-i18n="budget_label">PRESUPUESTO:</span>
-                                        <span class="text-[var(--accent-color)] font-bold" data-i18n="budget_value">13.000 PESOS/DÍA</span>
+                                        <span class="text-gray-300 font-medium" data-i18n="budget_label">Presupuesto</span>
+                                        <span class="text-[var(--accent-color)] font-bold" data-i18n="budget_value">$13.000/día</span>
                                     </div>
                                     <div class="flex justify-between items-center bg-black/30 px-2 py-1 rounded">
-                                        <span class="text-gray-300 font-medium" data-i18n="flow_label">FLUJO:</span>
-                                        <span class="text-green-400 font-bold" data-i18n="flow_value">11 a 20 MENSAJES DIARIOS NUEVOS</span>
+                                        <span class="text-gray-300 font-medium" data-i18n="flow_label">Flujo</span>
+                                        <span class="text-green-400 font-bold" data-i18n="flow_value">11 a 20 prospectos nuevos</span>
                                     </div>
                                     <div class="flex justify-between items-center bg-black/30 px-2 py-1 rounded mt-2">
-                                        <span class="text-gray-300 font-medium" data-i18n="pixel_status_label">ESTADO PÍXEL:</span>
-                                        <span class="inline-flex items-center gap-1"><span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 led-pulse"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span></span><span class="text-red-400 font-bold" data-i18n="pixel_disconnected">DESCONECTADO</span></span>
+                                        <span class="text-gray-300 font-medium" data-i18n="pixel_status_label">Pixel</span>
+                                        <span class="inline-flex items-center gap-1"><span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 led-pulse"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span></span><span class="text-red-400 font-bold" data-i18n="pixel_disconnected">Desconectado</span></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Haz clic para telemetría avanzada</div>
+                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Clic para ver proyecciones</div>
                         </div>
 
                         <!-- Tarjeta 3: SEO Y REPUTACIÓN -->
@@ -1025,7 +1025,7 @@
                                     <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
                                         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="3"/></svg>
                                     </div>
-                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card3_title">SEO Y REPUTACIÓN</h3>
+                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card3_title">SEO + REPUTACIÓN</h3>
                                 </div>
                                 <div class="space-y-4">
                                     <div>
@@ -1035,15 +1035,15 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="status_label">Estado operativo</span>
+                                        <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="status_label">Estado</span>
                                         <div class="flex items-center gap-2 mt-1">
                                             <span class="relative flex h-3 w-3"><span class="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75 led-pulse"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span></span>
-                                            <span class="text-amber-400 text-xs font-mono font-bold tracking-wide" data-i18n="status_waiting_connection">A la espera de conexión</span>
+                                            <span class="text-amber-400 text-xs font-mono font-bold tracking-wide" data-i18n="status_waiting_connection">Esperando conexión</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Haz clic para telemetría avanzada</div>
+                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Clic para ver proyecciones</div>
                         </div>
                     </div>
                 </div>
@@ -1056,13 +1056,13 @@
                     </button>
                     <div class="p-6 overflow-y-auto" id="telemetry-modal-body"></div>
                     <div class="bg-black/40 border-t border-white/5 p-4 flex items-center justify-between gap-3">
-                        <button id="telemetry-prev-btn" onclick="navigateTelemetry(-1)" class="px-4 py-2 text-sm font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition-all border border-white/5 disabled:opacity-20 disabled:pointer-events-none" data-i18n="modal_prev">&larr; Anterior</button>
+                        <button id="telemetry-prev-btn" onclick="navigateTelemetry(-1)" class="px-4 py-2 text-sm font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition-all border border-white/5 disabled:opacity-20 disabled:pointer-events-none" data-i18n="modal_prev">← Atrás</button>
                         <div id="telemetry-dots" class="flex gap-1.5">
                             <span class="nav-dot active"></span>
                             <span class="nav-dot"></span>
                             <span class="nav-dot"></span>
                         </div>
-                        <button id="telemetry-next-btn" onclick="navigateTelemetry(1)" class="px-4 py-2 text-sm font-mono font-bold uppercase tracking-wider bg-[var(--accent-color)] text-white rounded-xl transition-all hover:brightness-110" data-i18n="modal_next">Siguiente &rarr;</button>
+                        <button id="telemetry-next-btn" onclick="navigateTelemetry(1)" class="px-4 py-2 text-sm font-mono font-bold uppercase tracking-wider bg-[var(--accent-color)] text-white rounded-xl transition-all hover:brightness-110" data-i18n="modal_next">Siguiente →</button>
                     </div>
                 </div>
             </div>
@@ -1082,7 +1082,7 @@
                             <svg class="w-6 h-6 text-orange-400 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12.5 4C10.5 4 8.9 5.3 8.2 7.1C6.9 7.3 5.8 8.4 5.5 9.8C3.5 10.3 2 12.1 2 14.2C2 16.5 3.8 18.3 6 18.3h6.5c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5H9c-1.1 0-2-.9-2-2s.9-2 2-2h.5c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5h-.2c.2-1.1 1.2-2 2.4-2 1.4 0 2.5 1.1 2.5 2.5v.5c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5v-.5c0-3-2.5-5.5-5.5-5.5zM20.5 13c-1.1 0-2 .9-2 2v2h-2c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5h3c.8 0 1.5-.7 1.5-1.5v-3c0-.6-.4-1-1-1z"/>
                             </svg>
-                            <span class="text-white/90 truncate" data-i18n="cloudflare_badge">Protección de Red <span class="font-black tracking-tighter text-orange-400">Cloudflare</span></span>
+                            <span class="text-white/90 truncate" data-i18n="cloudflare_badge">Protección Cloudflare</span>
                         </div>
                     </div>
 
@@ -1098,15 +1098,15 @@
                                 </div>
                             </div>
                             <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0 z-10 bg-[#0a0a0a] flex items-center justify-center">
-                                <img src="Antonella-IA.webp" alt="Antonella IA" class="w-full h-full object-cover">
+                                <img src="Image/Antonella-IA.webp" alt="Antonella IA" class="w-full h-full object-cover">
                             </div>
                             <div class="flex flex-col text-left z-10">
                                 <h3 class="text-base md:text-lg font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="soporte_monitoreo_titulo">Antonella IA</h3>
-                                <p class="text-sm text-gray-300 font-mono font-medium" data-i18n="soporte_monitoreo_estado">Lista para monitorear ecosistema</p>
+                                <p class="text-sm text-gray-300 font-mono font-medium" data-i18n="soporte_monitoreo_estado">Monitoreando...</p>
                                 <div class="mt-1 text-xs font-mono text-cyan-400 flex items-center gap-1">
                                     <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
                                     <span id="scan-percent">94</span>
-                                    <span data-i18n="scan_percent_label">% escaneo activo</span>
+                                    <span data-i18n="scan_percent_label">% escaneo</span>
                                 </div>
                             </div>
                         </div>
@@ -1114,15 +1114,15 @@
                         <!-- Cristian - CTO Red Sapien -->
                         <div class="w-full bg-white/[0.02] border border-white/5 hover:border-[var(--accent-color)]/30 rounded-xl p-3 md:p-5 flex flex-row items-center gap-4 transition-all shadow-md relative">
                             <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0 bg-[#0a0a0a] flex items-center justify-center">
-                                <img src="Cristian-Sapien.webp" alt="Cristian" class="w-full h-full object-cover">
+                                <img src="Image/Foto-Sapien.webp" alt="Cristian" class="w-full h-full object-cover">
                             </div>
                             <div class="flex flex-col text-left">
-                                <h3 class="text-base md:text-lg font-display font-bold text-white uppercase tracking-tight leading-snug">Cristian - CTO Red Sapien</h3>
-                                <p class="text-sm text-gray-300 font-mono font-medium" data-i18n="soporte_asesoria_estado">Asesoría y control de mando activo</p>
+                                <h3 class="text-base md:text-lg font-display font-bold text-white uppercase tracking-tight leading-snug">Cristian López</h3>
+                                <p class="text-sm text-gray-300 font-mono font-medium" data-i18n="soporte_asesoria_estado">Optimizando...</p>
                                 <div class="mt-1 text-xs text-green-400 flex items-center gap-1">
                                     <span class="inline-block w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
                                     <span id="cmd-counter">127</span>
-                                    <span data-i18n="cmd_counter_label">comandos ejecutados</span>
+                                    <span data-i18n="cmd_counter_label">comandos</span>
                                 </div>
                             </div>
                             <div class="absolute right-3 bottom-2 w-32 md:w-40 h-8 font-mono text-xs text-green-400/50 bg-black/40 rounded border border-white/5 overflow-hidden p-1 select-none pointer-events-none z-10">
@@ -1136,7 +1136,7 @@
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                             </svg>
-                            <span data-i18n="btn_solicitar_soporte">Solicitar Soporte</span>
+                            <span data-i18n="btn_solicitar_soporte">Pedir soporte</span>
                         </button>
                     </div>
                 </div>
@@ -1311,14 +1311,14 @@
 
                 <div class="relative z-10 flex flex-col w-full h-full p-4 md:p-6 overflow-y-auto custom-scrollbar">
                     <div class="flex items-center gap-3 mb-6">
-                        <h2 class="text-xl md:text-2xl font-display font-black text-white uppercase tracking-tight leading-snug" data-i18n="notifications_title">Centro de Notificaciones</h2>
+                        <h2 class="text-xl md:text-2xl font-display font-black text-white uppercase tracking-tight leading-snug" data-i18n="notifications_title">Notificaciones</h2>
                         <span id="notification-badge" class="ml-2 px-2.5 py-0.5 text-xs font-mono font-bold rounded-full bg-[var(--accent-color)] text-white hidden">0</span>
                     </div>
                     <div id="notifications-container" class="flex flex-col gap-4 max-w-3xl mx-auto w-full">
                     </div>
                     <div id="notifications-empty" class="flex flex-col items-center justify-center text-center py-12 text-gray-300 hidden">
                         <svg class="w-16 h-16 mb-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-                        <p class="text-sm font-mono" data-i18n="notifications_empty">No hay notificaciones activas. Todo está en calma.</p>
+                        <p class="text-sm font-mono" data-i18n="notifications_empty">Sin notificaciones.</p>
                     </div>
                 </div>
             </div>
@@ -1329,38 +1329,38 @@
     <div id="matrix-modal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-500 p-4">
         <div class="w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 shadow-2xl modal-matrix-enter">
             <div class="flex justify-between items-center border-b border-white/10 pb-3 mb-5">
-                <h3 class="text-lg font-display font-bold text-white uppercase tracking-wider leading-snug" data-i18n="matrix_title">🛰️ Protocolo de Soporte</h3>
+                <h3 class="text-lg font-display font-bold text-white uppercase tracking-wider leading-snug" data-i18n="matrix_title">🛰️ Soporte</h3>
                 <button id="close-matrix-modal" class="text-gray-400 hover:text-white transition-colors p-1">
                     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
                 </button>
             </div>
             <div class="space-y-5">
                 <div>
-                    <label class="block text-sm font-mono text-gray-300 tracking-wider mb-2" data-i18n="matrix_request_label">¿Qué deseas solicitar?</label>
+                    <label class="block text-sm font-mono text-gray-300 tracking-wider mb-2" data-i18n="matrix_request_label">¿Qué necesitas?</label>
                     <select id="solicitud-select" class="cyber-select">
-                        <option value="" disabled selected data-i18n="matrix_select_option">[ Seleccione una opción ]</option>
-                        <option value="Soporte Técnico" data-i18n="matrix_option_technical">Soporte Técnico</option>
-                        <option value="Asesoría Personalizada" data-i18n="matrix_option_advice">Asesoría Personalizada</option>
+                        <option value="" disabled selected data-i18n="matrix_select_option">[ Elige ]</option>
+                        <option value="Soporte Técnico" data-i18n="matrix_option_technical">Soporte</option>
+                        <option value="Asesoría Personalizada" data-i18n="matrix_option_advice">Asesoría</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-mono text-gray-300 tracking-wider mb-2" data-i18n="matrix_asset_label">Activo Digital</label>
+                    <label class="block text-sm font-mono text-gray-300 tracking-wider mb-2" data-i18n="matrix_asset_label">Activo</label>
                     <select id="activo-select" class="cyber-select">
-                        <option value="" disabled selected data-i18n="matrix_select_asset">[ Seleccione Activo Digital ]</option>
+                        <option value="" disabled selected data-i18n="matrix_select_asset">[ Elige activo ]</option>
                         <option value="Web + IA" data-i18n="matrix_asset_web">Web + IA</option>
-                        <option value="Redes y Campaña" data-i18n="matrix_asset_social">Redes y Campaña</option>
-                        <option value="SEO y Reputación" data-i18n="matrix_asset_seo">SEO y Reputación</option>
+                        <option value="Redes y Campaña" data-i18n="matrix_asset_social">Redes</option>
+                        <option value="SEO y Reputación" data-i18n="matrix_asset_seo">SEO</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-mono text-gray-300 tracking-wider mb-2" data-i18n="matrix_datetime_label">Fecha y Hora del Soporte</label>
+                    <label class="block text-sm font-mono text-gray-300 tracking-wider mb-2" data-i18n="matrix_datetime_label">Fecha y hora</label>
                     <input type="datetime-local" id="datetime-input" class="cyber-select">
                 </div>
                 <button id="send-whatsapp-btn" class="w-full bg-[#25D366] hover:bg-[#20b859] text-black font-black uppercase tracking-wider text-sm py-4 rounded-xl transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl active:scale-95 mt-4">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                     </svg>
-                    <span data-i18n="matrix_btn_send">Solicitar Ahora</span>
+                    <span data-i18n="matrix_btn_send">Enviar</span>
                 </button>
             </div>
         </div>
@@ -1370,11 +1370,11 @@
     <div id="mobile-cta-container" class="md:hidden fixed bottom-[72px] left-0 right-0 w-full flex justify-center z-40 px-4 transition-all duration-1000 opacity-0 mt-4">
         <div id="cta-btn-wrapper-mob" class="relative w-full max-w-sm group">
             <div class="tooltip-activate absolute -top-[42px] left-1/2 -translate-x-1/2 bg-[#1A1A1A] border border-white/10 text-gray-300 text-xs font-mono tracking-wide px-3 py-2 rounded-lg whitespace-nowrap shadow-2xl text-center" data-i18n="tooltip_activate_mobile">
-                Activa tu ecosistema ahora
+                Haznos saber para iniciar
             </div>
             <button id="activate-btn-mob" onclick="activateEcosystem()" class="w-full bg-white text-black py-4 px-6 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 cursor-pointer active:scale-95 transition-transform animate-pulse-activate border border-white/50">
                 <span class="w-2.5 h-2.5 rounded-full bg-green-500 led-green"></span>
-                <span class="text-sm font-black uppercase tracking-wider leading-none mt-0.5" data-i18n="btn_activate">Pedir ahora la activación</span>
+                <span class="text-sm font-black uppercase tracking-wider leading-none mt-0.5" data-i18n="btn_activate">Solicitar activación ahora</span>
             </button>
         </div>
     </div>
@@ -1396,9 +1396,9 @@
     </div>
 
     <!-- MODALES EXISTENTES -->
-    <div id="terms-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-white mb-2 leading-snug" data-i18n="terms_title">Términos del Nodo</h3><p class="text-sm text-gray-300 leading-relaxed mb-6 font-mono" data-i18n="terms_text">Este centro operativo procesa analíticas web y flujos conversacionales. Al interactuar con la plataforma, aceptas la conexión automatizada de la maquinaria comercial.</p><div class="flex justify-end"><button onclick="toggleTermsModal(false)" class="px-5 py-2.5 bg-white text-black text-sm font-black uppercase tracking-wider rounded-xl hover:bg-gray-200 transition-colors" data-i18n="understand">Entendido</button></div></div></div>
-    <div id="support-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-white mb-2 leading-snug" data-i18n="support_title">Soporte Técnico</h3><p class="text-sm text-gray-300 leading-relaxed mb-4 font-mono" data-i18n="support_text">Nuestro equipo está listo para asistirte. Envía un mensaje a soporte@redsapien.com o llama al +57 300 000 0000.</p><div class="flex justify-end gap-3"><button onclick="toggleSupportModal(false)" class="px-5 py-2.5 bg-white/10 text-white text-sm font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-colors" data-i18n="close">Cerrar</button><a href="mailto:soporte@redsapien.com" class="px-5 py-2.5 bg-[var(--accent-color)] text-black text-sm font-black uppercase tracking-wider rounded-xl hover:opacity-90 transition-colors" data-i18n="contact">Contactar</a></div></div></div>
-    <div id="purge-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-rs-red/30 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-red-500 mb-2 leading-snug" data-i18n="purge_title">🚨 CONFIRMAR PURGA ABSOLUTA</h3><p class="text-sm text-gray-300 leading-relaxed mb-4 font-mono" data-i18n="purge_text">¿Seguro que deseas purgar la cuenta, el avatar y todo el progreso del ecosistema? Esta acción es irreversible.</p><input type="text" id="purge-confirm-input" placeholder="Escribe ELIMINAR para confirmar" data-i18n="purge_placeholder" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[var(--accent-color)] mb-4"><div class="flex justify-end gap-3"><button onclick="closePurgeModal()" class="px-5 py-2.5 bg-white/10 text-white text-sm font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-colors" data-i18n="cancel">Cancelar</button><button id="confirm-purge-btn" disabled class="px-5 py-2.5 bg-red-500/30 text-gray-400 text-sm font-black uppercase tracking-wider rounded-xl cursor-not-allowed transition-colors" data-i18n="confirm_purge">Confirmar Purgado</button></div></div></div>
+    <div id="terms-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-white mb-2 leading-snug" data-i18n="terms_title">Términos</h3><p class="text-sm text-gray-300 leading-relaxed mb-6 font-mono" data-i18n="terms_text">Al usar esta plataforma, aceptas nuestros términos.</p><div class="flex justify-end"><button onclick="toggleTermsModal(false)" class="px-5 py-2.5 bg-white text-black text-sm font-black uppercase tracking-wider rounded-xl hover:bg-gray-200 transition-colors" data-i18n="understand">Entendido</button></div></div></div>
+    <div id="support-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-white mb-2 leading-snug" data-i18n="support_title">Soporte</h3><p class="text-sm text-gray-300 leading-relaxed mb-4 font-mono" data-i18n="support_text">Contáctanos: soporte@redsapien.com o +57 300 000 0000.</p><div class="flex justify-end gap-3"><button onclick="toggleSupportModal(false)" class="px-5 py-2.5 bg-white/10 text-white text-sm font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-colors" data-i18n="close">Cerrar</button><a href="mailto:soporte@redsapien.com" class="px-5 py-2.5 bg-[var(--accent-color)] text-black text-sm font-black uppercase tracking-wider rounded-xl hover:opacity-90 transition-colors" data-i18n="contact">Contactar</a></div></div></div>
+    <div id="purge-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-rs-red/30 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-red-500 mb-2 leading-snug" data-i18n="purge_title">🚨 Confirmar</h3><p class="text-sm text-gray-300 leading-relaxed mb-4 font-mono" data-i18n="purge_text">¿Eliminar todo? Esta acción no se puede deshacer.</p><input type="text" id="purge-confirm-input" placeholder="Escribe ELIMINAR" data-i18n="purge_placeholder" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[var(--accent-color)] mb-4"><div class="flex justify-end gap-3"><button onclick="closePurgeModal()" class="px-5 py-2.5 bg-white/10 text-white text-sm font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-colors" data-i18n="cancel">Cancelar</button><button id="confirm-purge-btn" disabled class="px-5 py-2.5 bg-red-500/30 text-gray-400 text-sm font-black uppercase tracking-wider rounded-xl cursor-not-allowed transition-colors" data-i18n="confirm_purge">Confirmar</button></div></div></div>
 
     <!-- Modal de Caso de Éxito -->
     <div id="success-modal-overlay" class="fixed inset-0 z-[250] hidden items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-500 p-4">
@@ -1410,7 +1410,7 @@
             <div class="flex items-center justify-between mt-5 border-t border-white/10 pt-4">
                 <button id="success-prev-btn" onclick="navigateSuccessCase(-1)" class="success-modal-nav-btn px-3 py-1.5 text-xs font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition-all border border-white/5 disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-1">
                     <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
-                    <span class="hidden sm:inline">Anterior</span>
+                    <span class="hidden sm:inline">Atrás</span>
                 </button>
                 <div id="success-dots" class="flex gap-1.5">
                     <span class="nav-dot active" data-index="1"></span>
@@ -1443,104 +1443,110 @@
         let _authRedirecting = false;
 
         // --------------------------------------------------------------
-        // 1. TRADUCCIONES (actualizadas)
+        // 1. TRADUCCIONES (humanizadas, cortas y en tuteo)
         // --------------------------------------------------------------
         const translations = {
             es: {
                 nav_panel: "Panel",
                 nav_clientes: "Soporte",
-                nav_casos: "Casos de Éxito",
-                nav_notificaciones: "Notificaciones",
+                nav_casos: "Casos",
+                nav_notificaciones: "Alertas",
                 welcome_subtitle: "Bienvenid@",
-                btn_activate: "Pedir ahora la activación",
-                btn_support: "Soporte Técnico",
-                tooltip_activate: "Haz clic para que iniciemos con la activación...",
-                tooltip_activate_mobile: "Haz clic para que iniciemos con la activación...",
-                footer_sys: "SYS.NODE // ONLINE",
-                upload_logo: "Subir Logo del Negocio",
-                change_logo: "Cambiar Logo",
-                panel_global: "Panel Global",
-                accent_color: "🎨 Color de Acento",
-                language: "🌐 Idioma Preferido",
-                terms: "Términos de Uso",
-                delete_account: "Eliminar cuenta y datos",
-                terms_title: "Términos del Nodo",
-                terms_text: "Este centro operativo procesa analíticas web y flujos conversacionales. Al interactuar con la plataforma, aceptas la conexión automatizada de la maquinaria comercial.",
+                btn_activate: "Solicitar activación ahora",
+                btn_support: "Soporte",
+                tooltip_activate: "Haznos saber para iniciar",
+                tooltip_activate_mobile: "Haznos saber para iniciar",
+                footer_sys: "Sistema en línea",
+                upload_logo: "Subir logo",
+                change_logo: "Cambiar logo",
+                panel_global: "Panel",
+                accent_color: "🎨 Color",
+                language: "🌐 Idioma",
+                terms: "Términos",
+                delete_account: "Eliminar cuenta",
+                terms_title: "Términos",
+                terms_text: "Al usar esta plataforma, aceptas nuestros términos.",
                 understand: "Entendido",
-                support_title: "Soporte Técnico",
-                support_text: "Nuestro equipo está listo para asistirte. Envía un mensaje a soporte@redsapien.com o llama al +57 300 000 0000.",
+                support_title: "Soporte",
+                support_text: "Contáctanos: soporte@redsapien.com o +57 300 000 0000.",
                 close: "Cerrar",
                 contact: "Contactar",
-                proud_manizales: "Orgullosamente Manizaleñ@s",
-                card1_title: "WEB + IA",
-                card2_title: "REDES Y CAMPAÑA",
-                card3_title: "SEO Y REPUTACIÓN",
-                hosting_label: "Hosting + dominio de por vida gratis",
-                status_label: "Estado operativo",
-                status_pending_deploy: "Pendiente de despliegue",
-                click_telemetry: "Haz clic para telemetría avanzada",
-                whatsapp_msgs: "Mensajes WhatsApp",
-                money_spent: "Dinero invertido",
-                budget_label: "Presupuesto:",
-                budget_value: "13.000 pesos/día",
-                flow_label: "Flujo:",
-                flow_value: "11 a 20 mensajes diarios nuevos",
-                pixel_status_label: "Estado píxel:",
+                proud_manizales: "Orgullosamente de Manizales",
+                card1_title: "PÁGINA WEB + IA",
+                card2_title: "CAMPAÑA + REDES",
+                card3_title: "SEO + REPUTACIÓN",
+                hosting_label: "Tu Dominio",
+                status_label: "Estado",
+                status_pending_deploy: "Esperando conexión",
+                click_telemetry: "Clic para ver proyecciones",
+                whatsapp_msgs: "Mensajes",
+                money_spent: "Inversión",
+                budget_label: "Presupuesto",
+                budget_value: "$13.000/día",
+                flow_label: "Flujo",
+                flow_value: "11 a 20 prospectos nuevos",
+                pixel_status_label: "Pixel",
                 pixel_disconnected: "Desconectado",
                 rating_label: "Calificación",
-                status_waiting_connection: "A la espera de conexión",
-                modal_prev: "← Anterior",
+                status_waiting_connection: "Esperando conexión",
+                modal_prev: "← Atrás",
                 modal_next: "Siguiente →",
                 modal_gotit: "Entendido",
-                modal_active_of: "Activo {current} de {total}",
+                modal_active_of: "{current} de {total}",
                 modal1_title: "WEB + IA",
-                modal1_sub: "Infraestructura de alto rendimiento",
-                modal1_ai: "🟢 Agente de IA 24/7",
-                modal1_visits: "visitas/mes",
-                modal1_conversion: "📊 Conversión",
-                modal1_traffic: "Tráfico",
-                modal2_title: "Presencia y Ventas",
-                modal2_sub: "Métricas en tiempo real",
+                modal1_sub: "Rendimiento alto",
+                modal1_ai: "🤖 IA 24/7",
+                modal1_visits: "120+",
+                modal1_conversion: "15%",
+                modal1_traffic: "150/mes",
+                modal1_visits_label: "visitas esperadas",
+                modal1_conversion_label: "conversión estimada",
+                modal2_title: "Ventas",
+                modal2_sub: "Métricas reales",
                 modal2_impressions: "Impresiones",
                 modal2_clicks: "Clics",
                 modal2_high_value: "Alto valor",
-                modal2_messages: "Mensajes nuevos/mes",
-                modal2_conversions: "Conversiones",
-                modal3_title: "Presencia Local",
-                modal3_sub: "Cobertura inteligente",
-                modal3_visibility: "Visibilidad local",
-                modal3_calls: "Llamadas directas",
-                purge_title: "🚨 CONFIRMAR PURGA ABSOLUTA",
-                purge_text: "¿Seguro que deseas purgar la cuenta, el avatar y todo el progreso del ecosistema? Esta acción es irreversible.",
+                modal2_messages: "320+",
+                modal2_conversions: "29%",
+                modal2_messages_label: "prospectos nuevos",
+                modal2_conversions_label: "conversiones",
+                modal3_title: "Local",
+                modal3_sub: "Cobertura",
+                modal3_visibility: "+600",
+                modal3_calls: "35/mes",
+                modal3_visibility_label: "visibilidad",
+                modal3_calls_label: "llamadas directas",
+                purge_title: "🚨 Confirmar",
+                purge_text: "¿Eliminar todo? Esta acción no se puede deshacer.",
                 cancel: "Cancelar",
-                confirm_purge: "Confirmar Purgado",
-                purge_placeholder: "Escribe ELIMINAR para confirmar",
+                confirm_purge: "Confirmar",
+                purge_placeholder: "Escribe ELIMINAR",
                 soporte_monitoreo_titulo: "Antonella IA",
-                soporte_monitoreo_estado: "Lista para monitorear ecosistema",
+                soporte_monitoreo_estado: "Monitoreando...",
                 soporte_asesoria_titulo: "Cristian - CTO Red Sapien",
-                soporte_asesoria_estado: "Asesoría y control de mando activo",
-                btn_solicitar_soporte: "Solicitar Soporte",
-                scan_percent_label: "% escaneo activo",
-                cmd_counter_label: "comandos ejecutados",
-                matrix_title: "🛰️ Protocolo de Soporte",
-                matrix_request_label: "¿Qué deseas solicitar?",
-                matrix_select_option: "[ Seleccione una opción ]",
-                matrix_option_technical: "Soporte Técnico",
-                matrix_option_advice: "Asesoría Personalizada",
-                matrix_asset_label: "Activo Digital",
-                matrix_select_asset: "[ Seleccione Activo Digital ]",
+                soporte_asesoria_estado: "Optimizando...",
+                btn_solicitar_soporte: "Pedir soporte",
+                scan_percent_label: "% escaneo",
+                cmd_counter_label: "comandos",
+                matrix_title: "🛰️ Soporte",
+                matrix_request_label: "¿Qué necesitas?",
+                matrix_select_option: "[ Elige ]",
+                matrix_option_technical: "Soporte",
+                matrix_option_advice: "Asesoría",
+                matrix_asset_label: "Activo",
+                matrix_select_asset: "[ Elige activo ]",
                 matrix_asset_web: "Web + IA",
-                matrix_asset_social: "Redes y Campaña",
-                matrix_asset_seo: "SEO y Reputación",
-                matrix_datetime_label: "Fecha y Hora del Soporte",
-                matrix_btn_send: "Solicitar Ahora",
-                toast_title: "Pronto le contactamos de la central...",
-                toast_body: "Nuestro equipo técnico se pondrá en contacto en breve.",
-                cloudflare_badge: "Protección de Red Cloudflare",
-                casos_headline: "Ecosistemas que hackearon el algoritmo y llevaron marcas a otro nivel",
-                casos_subheadline: "Resultados reales, medibles y replicables. Cada cliente es un caso de estudio que demuestra el poder de la automatización inteligente.",
-                casos_motivational: "Tu logo y tu marca, liderando aquí...",
-                btn_view_case: "Ver caso de éxito",
+                matrix_asset_social: "Redes",
+                matrix_asset_seo: "SEO",
+                matrix_datetime_label: "Fecha y hora",
+                matrix_btn_send: "Enviar",
+                toast_title: "¡En breve te contactamos!",
+                toast_body: "Te escribiremos pronto.",
+                cloudflare_badge: "Protección Cloudflare",
+                casos_headline: "Negocios que triunfan",
+                casos_subheadline: "Resultados reales, casos de éxito.",
+                casos_motivational: "Tu marca aquí",
+                btn_view_case: "Ver caso",
                 caso1_name: "La Papa Prohibida",
                 caso1_location: "Villamaría y Manizales",
                 caso1_stat: "16 pedidos en 30h · 49 conversiones · $19.000 COP",
@@ -1553,214 +1559,226 @@
                 caso4_name: "Noir Elixir",
                 caso4_location: "Medellín, Antioquia",
                 caso4_stat: "Rebranding Premium + Catálogo virtual 1s",
-                notifications_title: "Centro de Notificaciones",
-                notifications_empty: "No hay notificaciones activas. Todo está en calma."
+                notifications_title: "Notificaciones",
+                notifications_empty: "Sin notificaciones."
             },
             en: {
-                nav_panel: "Dashboard",
+                nav_panel: "Panel",
                 nav_clientes: "Support",
-                nav_casos: "Success Cases",
-                nav_notificaciones: "Notifications",
+                nav_casos: "Cases",
+                nav_notificaciones: "Alerts",
                 welcome_subtitle: "Welcome",
                 btn_activate: "Request activation now",
-                btn_support: "Technical Support",
-                tooltip_activate: "Click to start activation...",
-                tooltip_activate_mobile: "Click to start activation...",
-                footer_sys: "SYS.NODE // ONLINE",
-                upload_logo: "Upload Business Logo",
-                change_logo: "Change Logo",
-                panel_global: "Global Panel",
-                accent_color: "🎨 Accent Color",
-                language: "🌐 Preferred Language",
-                terms: "Terms of Use",
-                delete_account: "Delete account and data",
-                terms_title: "Node Terms",
-                terms_text: "This operational center processes web analytics and conversational flows. By interacting with the platform, you accept the automated connection of commercial machinery.",
+                btn_support: "Support",
+                tooltip_activate: "Let us know to start",
+                tooltip_activate_mobile: "Let us know to start",
+                footer_sys: "System online",
+                upload_logo: "Upload logo",
+                change_logo: "Change logo",
+                panel_global: "Panel",
+                accent_color: "🎨 Color",
+                language: "🌐 Language",
+                terms: "Terms",
+                delete_account: "Delete account",
+                terms_title: "Terms",
+                terms_text: "By using this platform, you accept our terms.",
                 understand: "Understood",
-                support_title: "Technical Support",
-                support_text: "Our team is ready to assist you. Send a message to support@redsapien.com or call +57 300 000 0000.",
+                support_title: "Support",
+                support_text: "Contact us: support@redsapien.com or +57 300 000 0000.",
                 close: "Close",
                 contact: "Contact",
                 proud_manizales: "Proudly from Manizales",
-                card1_title: "WEB + AI",
-                card2_title: "SOCIAL & CAMPAIGN",
-                card3_title: "SEO & REPUTATION",
-                hosting_label: "Lifetime free hosting + domain",
-                status_label: "Operational status",
-                status_pending_deploy: "Pending deployment",
-                click_telemetry: "Click for advanced telemetry",
-                whatsapp_msgs: "WhatsApp Messages",
-                money_spent: "Money invested",
-                budget_label: "Budget:",
-                budget_value: "13,000 COP/day",
-                flow_label: "Flow:",
-                flow_value: "11 to 20 new daily messages",
-                pixel_status_label: "Pixel status:",
+                card1_title: "WEBSITE + AI",
+                card2_title: "CAMPAIGN + SOCIAL",
+                card3_title: "SEO + REPUTATION",
+                hosting_label: "Your Domain",
+                status_label: "Status",
+                status_pending_deploy: "Awaiting connection",
+                click_telemetry: "Click to see projections",
+                whatsapp_msgs: "Messages",
+                money_spent: "Investment",
+                budget_label: "Budget",
+                budget_value: "$13,000/day",
+                flow_label: "Flow",
+                flow_value: "11 to 20 new prospects",
+                pixel_status_label: "Pixel",
                 pixel_disconnected: "Disconnected",
                 rating_label: "Rating",
                 status_waiting_connection: "Awaiting connection",
-                modal_prev: "← Previous",
+                modal_prev: "← Back",
                 modal_next: "Next →",
-                modal_gotit: "Got it",
-                modal_active_of: "Active {current} of {total}",
+                modal_gotit: "Understood",
+                modal_active_of: "{current} of {total}",
                 modal1_title: "WEB + AI",
-                modal1_sub: "High performance infrastructure",
-                modal1_ai: "🟢 AI Agent 24/7",
-                modal1_visits: "visits/month",
-                modal1_conversion: "📊 Conversion",
-                modal1_traffic: "Traffic",
-                modal2_title: "Presence & Sales",
-                modal2_sub: "Real time metrics",
+                modal1_sub: "High performance",
+                modal1_ai: "🤖 AI 24/7",
+                modal1_visits: "120+",
+                modal1_conversion: "15%",
+                modal1_traffic: "150/month",
+                modal1_visits_label: "expected visits",
+                modal1_conversion_label: "estimated conversion",
+                modal2_title: "Sales",
+                modal2_sub: "Real metrics",
                 modal2_impressions: "Impressions",
                 modal2_clicks: "Clicks",
                 modal2_high_value: "High value",
-                modal2_messages: "New messages/month",
-                modal2_conversions: "Conversions",
-                modal3_title: "Local Presence",
-                modal3_sub: "Smart coverage",
-                modal3_visibility: "Local visibility",
-                modal3_calls: "Direct calls",
-                purge_title: "🚨 CONFIRM ABSOLUTE PURGE",
-                purge_text: "Are you sure you want to purge your account, avatar and all ecosystem progress? This action is irreversible.",
+                modal2_messages: "320+",
+                modal2_conversions: "29%",
+                modal2_messages_label: "new prospects",
+                modal2_conversions_label: "conversions",
+                modal3_title: "Local",
+                modal3_sub: "Coverage",
+                modal3_visibility: "+600",
+                modal3_calls: "35/month",
+                modal3_visibility_label: "visibility",
+                modal3_calls_label: "direct calls",
+                purge_title: "🚨 Confirm",
+                purge_text: "Delete everything? This action cannot be undone.",
                 cancel: "Cancel",
-                confirm_purge: "Confirm Purge",
-                purge_placeholder: "Type DELETE to confirm",
+                confirm_purge: "Confirm",
+                purge_placeholder: "Type DELETE",
                 soporte_monitoreo_titulo: "Antonella AI",
-                soporte_monitoreo_estado: "Ready to monitor ecosystem",
+                soporte_monitoreo_estado: "Monitoring...",
                 soporte_asesoria_titulo: "Cristian - CTO Red Sapien",
-                soporte_asesoria_estado: "Advisory and active command control",
-                btn_solicitar_soporte: "Request Support",
-                scan_percent_label: "% active scan",
-                cmd_counter_label: "commands executed",
-                matrix_title: "🛰️ Support Protocol",
+                soporte_asesoria_estado: "Optimizing...",
+                btn_solicitar_soporte: "Request support",
+                scan_percent_label: "% scan",
+                cmd_counter_label: "commands",
+                matrix_title: "🛰️ Support",
                 matrix_request_label: "What do you need?",
-                matrix_select_option: "[ Select an option ]",
-                matrix_option_technical: "Technical Support",
-                matrix_option_advice: "Personalized Advice",
-                matrix_asset_label: "Digital Asset",
-                matrix_select_asset: "[ Select Digital Asset ]",
+                matrix_select_option: "[ Choose ]",
+                matrix_option_technical: "Support",
+                matrix_option_advice: "Advice",
+                matrix_asset_label: "Asset",
+                matrix_select_asset: "[ Choose asset ]",
                 matrix_asset_web: "Web + AI",
-                matrix_asset_social: "Social & Campaign",
-                matrix_asset_seo: "SEO & Reputation",
-                matrix_datetime_label: "Support Date and Time",
-                matrix_btn_send: "Request Now",
-                toast_title: "We will contact you shortly...",
-                toast_body: "Our technical team will get in touch soon.",
-                cloudflare_badge: "Cloudflare Network Protection",
-                casos_headline: "Ecosystems that hacked the algorithm and took brands to the next level",
-                casos_subheadline: "Real, measurable and replicable results. Each client is a case study that demonstrates the power of intelligent automation.",
-                casos_motivacional: "Your logo and your brand, leading here...",
-                btn_view_case: "View success case",
+                matrix_asset_social: "Social",
+                matrix_asset_seo: "SEO",
+                matrix_datetime_label: "Date and time",
+                matrix_btn_send: "Send",
+                toast_title: "We'll contact you shortly!",
+                toast_body: "We'll write to you soon.",
+                cloudflare_badge: "Cloudflare Protection",
+                casos_headline: "Businesses that succeed",
+                casos_subheadline: "Real results, success stories.",
+                casos_motivational: "Your brand here",
+                btn_view_case: "View case",
                 caso1_name: "La Papa Prohibida",
                 caso1_location: "Villamaría & Manizales",
                 caso1_stat: "16 orders in 30h · 49 conversions · $19,000 COP",
                 caso2_name: "Bogotaco",
                 caso2_location: "Bogotá, Fontibón (3 locations)",
-                caso2_stat: "Local SEO · 3 GMB profiles · Elite Web",
+                caso2_stat: "Local SEO · 3 GMB · Elite Web",
                 caso3_name: "Señor Medrano",
                 caso3_niche: "Services / Restoration",
                 caso3_stat: "Optimized Google profile + clean & fast website",
                 caso4_name: "Noir Elixir",
                 caso4_location: "Medellín, Antioquia",
-                caso4_stat: "Premium rebranding + immersive virtual catalog (1s load)",
-                notifications_title: "Notification Center",
-                notifications_empty: "No active notifications. All is calm."
+                caso4_stat: "Premium rebranding + virtual catalog 1s",
+                notifications_title: "Notifications",
+                notifications_empty: "No notifications."
             },
             pt: {
                 nav_panel: "Painel",
                 nav_clientes: "Suporte",
-                nav_casos: "Casos de Sucesso",
-                nav_notificacoes: "Notificações",
-                welcome_subtitle: "Bem-vindo",
-                btn_activate: "Pedir ativação agora",
-                btn_support: "Suporte Técnico",
-                tooltip_activate: "Clique para iniciarmos a ativação...",
-                tooltip_activate_mobile: "Clique para iniciarmos a ativação...",
-                footer_sys: "SYS.NODE // ONLINE",
-                upload_logo: "Enviar Logo da Empresa",
-                change_logo: "Alterar Logo",
-                panel_global: "Painel Global",
-                accent_color: "🎨 Cor Destaque",
-                language: "🌐 Idioma Preferido",
-                terms: "Termos de Uso",
-                delete_account: "Excluir conta e dados",
-                terms_title: "Termos do Nó",
-                terms_text: "Este centro operacional processa análises da web e fluxos conversacionais. Ao interagir com a plataforma, você aceita a conexão automatizada da maquinaria comercial.",
+                nav_casos: "Casos",
+                nav_notificacoes: "Alertas",
+                welcome_subtitle: "Bem-vind@",
+                btn_activate: "Solicitar ativação agora",
+                btn_support: "Suporte",
+                tooltip_activate: "Avise-nos para iniciar",
+                tooltip_activate_mobile: "Avise-nos para iniciar",
+                footer_sys: "Sistema online",
+                upload_logo: "Enviar logo",
+                change_logo: "Alterar logo",
+                panel_global: "Painel",
+                accent_color: "🎨 Cor",
+                language: "🌐 Idioma",
+                terms: "Termos",
+                delete_account: "Excluir conta",
+                terms_title: "Termos",
+                terms_text: "Ao usar esta plataforma, você aceita nossos termos.",
                 understand: "Entendido",
-                support_title: "Central de Suporte",
-                support_text: "Nossa equipe está pronta para ajudá-lo. Envie uma mensagem para suporte@redsapien.com ou ligue para +57 300 000 0000.",
+                support_title: "Suporte",
+                support_text: "Contate-nos: suporte@redsapien.com ou +57 300 000 0000.",
                 close: "Fechar",
                 contact: "Contato",
                 proud_manizales: "Orgulhosamente de Manizales",
-                card1_title: "WEB + IA",
-                card2_title: "REDES E CAMPANHA",
-                card3_title: "SEO E REPUTAÇÃO",
-                hosting_label: "Hospedagem + domínio grátis vitalício",
-                status_label: "Estado operacional",
-                status_pending_deploy: "Pendente de implantação",
-                click_telemetry: "Clique para telemetria avançada",
-                whatsapp_msgs: "Mensagens WhatsApp",
-                money_spent: "Dinheiro investido",
-                budget_label: "Orçamento:",
-                budget_value: "13.000 pesos/dia",
-                flow_label: "Fluxo:",
-                flow_value: "11 a 20 novas mensagens diárias",
-                pixel_status_label: "Estado do píxel:",
+                card1_title: "SITE + IA",
+                card2_title: "CAMPANHA + REDES",
+                card3_title: "SEO + REPUTAÇÃO",
+                hosting_label: "Seu Domínio",
+                status_label: "Estado",
+                status_pending_deploy: "Aguardando conexão",
+                click_telemetry: "Clique para ver projeções",
+                whatsapp_msgs: "Mensagens",
+                money_spent: "Investimento",
+                budget_label: "Orçamento",
+                budget_value: "$13.000/dia",
+                flow_label: "Fluxo",
+                flow_value: "11 a 20 novos prospects",
+                pixel_status_label: "Pixel",
                 pixel_disconnected: "Desconectado",
                 rating_label: "Classificação",
-                status_waiting_connection: "À espera de conexão",
-                modal_prev: "← Anterior",
+                status_waiting_connection: "Aguardando conexão",
+                modal_prev: "← Voltar",
                 modal_next: "Próximo →",
                 modal_gotit: "Entendido",
-                modal_active_of: "Ativo {current} de {total}",
+                modal_active_of: "{current} de {total}",
                 modal1_title: "WEB + IA",
-                modal1_sub: "Infraestrutura de alto desempenho",
-                modal1_ai: "🟢 Agente de IA 24/7",
-                modal1_visits: "visitas/mês",
-                modal1_conversion: "📊 Conversão",
-                modal1_traffic: "Tráfego",
-                modal2_title: "Presença e Vendas",
-                modal2_sub: "Métricas em tempo real",
+                modal1_sub: "Alto desempenho",
+                modal1_ai: "🤖 IA 24/7",
+                modal1_visits: "120+",
+                modal1_conversion: "15%",
+                modal1_traffic: "150/mês",
+                modal1_visits_label: "visitas esperadas",
+                modal1_conversion_label: "conversão estimada",
+                modal2_title: "Vendas",
+                modal2_sub: "Métricas reais",
                 modal2_impressions: "Impressões",
                 modal2_clicks: "Cliques",
                 modal2_high_value: "Alto valor",
-                modal2_messages: "Novas mensagens/mês",
-                modal2_conversions: "Conversões",
-                modal3_title: "Presença Local",
-                modal3_sub: "Cobertura inteligente",
-                modal3_visibility: "Visibilidade local",
-                modal3_calls: "Chamadas diretas",
-                purge_title: "🚨 CONFIRMAR PURGA ABSOLUTA",
-                purge_text: "Tem certeza de que deseja purgar a conta, o avatar e todo o progresso do ecossistema? Esta ação é irreversível.",
+                modal2_messages: "320+",
+                modal2_conversions: "29%",
+                modal2_messages_label: "novos prospects",
+                modal2_conversions_label: "conversões",
+                modal3_title: "Local",
+                modal3_sub: "Cobertura",
+                modal3_visibility: "+600",
+                modal3_calls: "35/mês",
+                modal3_visibility_label: "visibilidade",
+                modal3_calls_label: "chamadas diretas",
+                purge_title: "🚨 Confirmar",
+                purge_text: "Excluir tudo? Esta ação não pode ser desfeita.",
                 cancel: "Cancelar",
-                confirm_purge: "Confirmar Purgado",
-                purge_placeholder: "Digite ELIMINAR para confirmar",
+                confirm_purge: "Confirmar",
+                purge_placeholder: "Digite ELIMINAR",
                 soporte_monitoreo_titulo: "Antonella IA",
-                soporte_monitoreo_estado: "Pronta para monitorar ecossistema",
+                soporte_monitoreo_estado: "Monitorando...",
                 soporte_asesoria_titulo: "Cristian - CTO Red Sapien",
-                soporte_asesoria_estado: "Consultoria e controle de comando ativo",
-                btn_solicitar_soporte: "Solicitar Suporte",
-                scan_percent_label: "% escaneamento ativo",
-                cmd_counter_label: "comandos executados",
-                matrix_title: "🛰️ Protocolo de Suporte",
+                soporte_asesoria_estado: "Otimizando...",
+                btn_solicitar_soporte: "Pedir suporte",
+                scan_percent_label: "% escaneo",
+                cmd_counter_label: "comandos",
+                matrix_title: "🛰️ Suporte",
                 matrix_request_label: "O que você precisa?",
-                matrix_select_option: "[ Selecione uma opção ]",
-                matrix_option_technical: "Suporte Técnico",
-                matrix_option_advice: "Consultoria Personalizada",
-                matrix_asset_label: "Ativo Digital",
-                matrix_select_asset: "[ Selecione o Ativo Digital ]",
+                matrix_select_option: "[ Escolha ]",
+                matrix_option_technical: "Suporte",
+                matrix_option_advice: "Consultoria",
+                matrix_asset_label: "Ativo",
+                matrix_select_asset: "[ Escolha ativo ]",
                 matrix_asset_web: "Web + IA",
-                matrix_asset_social: "Redes e Campanha",
-                matrix_asset_seo: "SEO e Reputação",
-                matrix_datetime_label: "Data e Hora do Suporte",
-                matrix_btn_send: "Solicitar Agora",
-                toast_title: "Em breve entraremos em contato...",
-                toast_body: "Nossa equipe técnica entrará em contato em breve.",
-                cloudflare_badge: "Proteção de Rede Cloudflare",
-                casos_headline: "Ecossistemas que hackearam o algoritmo e levaram marcas a outro nível",
-                casos_subheadline: "Resultados reais, mensuráveis e replicáveis. Cada cliente é um estudo de caso que demonstra o poder da automação inteligente.",
-                casos_motivacional: "Sua logo e sua marca, liderando aqui...",
-                btn_view_case: "Ver caso de sucesso",
+                matrix_asset_social: "Redes",
+                matrix_asset_seo: "SEO",
+                matrix_datetime_label: "Data e hora",
+                matrix_btn_send: "Enviar",
+                toast_title: "Em breve entraremos em contato!",
+                toast_body: "Escreveremos para você em breve.",
+                cloudflare_badge: "Proteção Cloudflare",
+                casos_headline: "Negócios que dão certo",
+                casos_subheadline: "Resultados reais, casos de sucesso.",
+                casos_motivational: "Sua marca aqui",
+                btn_view_case: "Ver caso",
                 caso1_name: "La Papa Prohibida",
                 caso1_location: "Villamaría e Manizales",
                 caso1_stat: "16 pedidos em 30h · 49 conversões · $19.000 COP",
@@ -1769,12 +1787,12 @@
                 caso2_stat: "SEO local · 3 GMB · Web Elite",
                 caso3_name: "Señor Medrano",
                 caso3_niche: "Serviços / Restauração",
-                caso3_stat: "Perfil do Google otimizado + site limpo e rápido",
+                caso3_stat: "Perfil Google otimizado + site limpo e rápido",
                 caso4_name: "Noir Elixir",
                 caso4_location: "Medellín, Antioquia",
-                caso4_stat: "Rebranding premium + catálogo virtual imersivo (1s)",
-                notifications_title: "Centro de Notificações",
-                notifications_empty: "Nenhuma notificação ativa. Tudo está calmo."
+                caso4_stat: "Rebranding premium + catálogo virtual 1s",
+                notifications_title: "Notificações",
+                notifications_empty: "Sem notificações."
             }
         };
         let currentLang = localStorage.getItem("rs_lang") || "es";
@@ -1835,20 +1853,21 @@
                                 <p class="text-sm text-gray-300 font-mono">${t.modal1_sub}</p>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="bg-black/40 border border-white/10 rounded-xl p-4">
+                                <div class="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
                                     <div class="text-green-400 text-sm font-mono mb-2">${t.modal1_ai}</div>
-                                    <div class="text-3xl font-mono font-black text-white">300+</div>
-                                    <div class="text-sm text-gray-300">${t.modal1_visits}</div>
+                                    <div class="text-3xl font-mono font-black text-white">${t.modal1_visits}</div>
+                                    <div class="text-sm text-gray-300">${t.modal1_visits_label}</div>
                                 </div>
-                                <div class="bg-black/40 border border-white/10 rounded-xl p-4">
+                                <div class="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
                                     <div class="text-[var(--accent-color)] text-sm font-mono mb-2">${t.modal1_conversion}</div>
-                                    <div class="text-3xl font-mono font-black text-white">12%</div>
+                                    <div class="text-3xl font-mono font-black text-white">${t.modal1_conversion}</div>
+                                    <div class="text-sm text-gray-300">${t.modal1_conversion_label}</div>
                                 </div>
                             </div>
                             <div class="bg-black/40 border border-white/10 rounded-xl p-4">
                                 <div class="flex justify-between items-center">
                                     <span class="text-sm font-mono text-gray-300">${t.modal1_traffic}</span>
-                                    <span class="text-xl font-bold text-white">8,500/mes</span>
+                                    <span class="text-xl font-bold text-white">${t.modal1_traffic}</span>
                                 </div>
                                 <div class="w-full bg-white/10 h-1.5 rounded-full mt-2"><div class="bg-[var(--accent-color)] h-1.5 rounded-full w-3/4"></div></div>
                             </div>
@@ -1873,12 +1892,12 @@
                             </div>
                             <div class="bg-black/40 border border-white/10 rounded-xl p-4">
                                 <div class="flex justify-between items-center border-b border-white/10 pb-2 mb-2">
-                                    <span class="text-sm font-mono text-gray-300">${t.modal2_messages}</span>
-                                    <span class="text-2xl font-bold text-white">400+</span>
+                                    <span class="text-sm font-mono text-gray-300">${t.modal2_messages_label}</span>
+                                    <span class="text-2xl font-bold text-white">${t.modal2_messages}</span>
                                 </div>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-sm font-mono text-gray-300">${t.modal2_conversions}</span>
-                                    <span class="text-2xl font-bold text-[var(--accent-color)]">29%</span>
+                                    <span class="text-sm font-mono text-gray-300">${t.modal2_conversions_label}</span>
+                                    <span class="text-2xl font-bold text-[var(--accent-color)]">${t.modal2_conversions}</span>
                                 </div>
                             </div>
                             <div class="mt-1">
@@ -1899,30 +1918,33 @@
                             </div>
                             <div class="bg-black/40 border border-white/10 rounded-xl p-4">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-sm font-mono text-gray-300">${t.modal3_visibility}</span>
-                                    <span class="text-2xl font-bold text-white">+12,000</span>
+                                    <span class="text-sm font-mono text-gray-300">${t.modal3_visibility_label}</span>
+                                    <span class="text-2xl font-bold text-white">${t.modal3_visibility}</span>
                                 </div>
                                 <div class="flex justify-between items-center mt-2">
-                                    <span class="text-sm font-mono text-gray-300">${t.modal3_calls}</span>
-                                    <span class="text-2xl font-bold text-[var(--accent-color)]">240/mes</span>
+                                    <span class="text-sm font-mono text-gray-300">${t.modal3_calls_label}</span>
+                                    <span class="text-2xl font-bold text-[var(--accent-color)]">${t.modal3_calls}</span>
                                 </div>
                             </div>
                             <div id="seo-map" class="w-full h-40 rounded-xl border border-white/20 mt-2 z-0 overflow-hidden"></div>
                         </div>
                     `;
                 body.innerHTML = htmlContent;
+                // Inicializar mapa con la ciudad guardada
+                const savedCity = localStorage.getItem('user_city') || 'Manizales';
+                const coords = cityCoords[savedCity] || cityCoords['Manizales'];
                 setTimeout(() => {
                     if (globalMap) globalMap.remove();
                     const mapDiv = document.getElementById('seo-map');
                     if (mapDiv) {
-                        globalMap = L.map(mapDiv).setView([5.0667, -75.5187], 13);
+                        globalMap = L.map(mapDiv).setView([coords.lat, coords.lng], 13);
                         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
                             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> & CartoDB',
                             subdomains: 'abcd',
                             maxZoom: 19,
                             minZoom: 3
                         }).addTo(globalMap);
-                        L.circle([5.0667, -75.5187], {
+                        L.circle([coords.lat, coords.lng], {
                             color: 'var(--accent-color)',
                             fillColor: '#FF3C00',
                             fillOpacity: 0.2,
@@ -1935,7 +1957,7 @@
                             `.radar-pulse { animation: radarPulse 2s infinite ease-out; } @keyframes radarPulse { 0% { stroke-width: 2; opacity: 0.8; r: 2000; } 50% { stroke-width: 1; opacity: 0.4; r: 2500; } 100% { stroke-width: 0.5; opacity: 0; r: 3000; } }`;
                         document.head.appendChild(style);
                     }
-                }, 100);
+                }, 150);
                 updateTelemetryDots(panelId);
                 document.getElementById('telemetry-prev-btn').disabled = (panelId === 1);
                 const nextBtn = document.getElementById('telemetry-next-btn');
@@ -1964,7 +1986,10 @@
 
         function navigateTelemetry(delta) {
             let next = currentTelemetryIndex + delta;
-            if (next > 3) { closeTelemetryModal(); return; }
+            if (next > 3) {
+                closeTelemetryModal();
+                return;
+            }
             if (next >= 1 && next <= 3) openTelemetryModal(next);
         }
 
@@ -2000,14 +2025,12 @@
         function updateDynamicDomain() {
             let businessName = localStorage.getItem('business_name');
             if (!businessName) {
-                // Fallback a RED SAPIEN
                 businessName = "RED SAPIEN";
             }
             let slug = businessName.toLowerCase()
                 .replace(/\s+/g, '')
                 .replace(/[^a-z0-9]/g, '');
             if (slug.length > 30) slug = slug.substring(0, 30);
-            // Si slug queda vacío, usar 'redsapien'
             if (!slug) slug = 'redsapien';
             const domainSpan = document.getElementById('dynamic-domain');
             if (domainSpan) domainSpan.innerText = `${slug}.redsapien.com`;
@@ -2103,7 +2126,7 @@
                 const formattedDateTime = new Date(datetime).toLocaleString(currentLang === 'es' ? 'es-ES' : (currentLang ===
                     'pt' ? 'pt-BR' : 'en-US'), { dateStyle: 'full', timeStyle: 'short' });
                 const mensaje =
-                    `🛰️ ENLACE DE SOPORTE RED SAPIEN ACTIVO\n\n• Solicitud: ${solicitud}\n• Activo Digital: ${activo}\n• Fecha y Hora: ${formattedDateTime}\n\n> Esperando conexión segura con la central operativa...`;
+                    `🛰️ ENLACE DE SOPORTE RED SAPIEN ACTIVO\n\n• Solicitud: ${solicitud}\n• Activo Digital: ${activo}\n• Fecha y Hora: ${formattedDateTime}\n> Esperando conexión segura con la central operativa...`;
                 const url = `https://wa.me/573012800024?text=${encodeURIComponent(mensaje)}`;
                 window.open(url, '_blank');
                 supportModal.classList.add('hidden');
@@ -2159,7 +2182,7 @@
                 document.getElementById("avatar-state-img").src = base64Img;
                 document.getElementById("avatar-state-img").classList.remove("hidden");
                 document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.change_logo ||
-                    "Cambiar Logo";
+                    "Cambiar logo";
             };
             reader.readAsDataURL(file);
         }
@@ -2712,7 +2735,6 @@
                     citySearch.value = city;
                     renderCityOptions(city);
                     cityError.classList.add('hidden');
-                    // Forzar validación y habilitar botón
                     const valid = validateStep(3);
                     nextBtn.disabled = !valid;
                 });
@@ -2744,16 +2766,13 @@
 
         // --- Actualizar UI del wizard ---
         function updateWizard() {
-            // Actualizar pasos
             steps.forEach((el, idx) => {
                 el.classList.toggle('active', idx + 1 === wizardStep);
             });
 
-            // Barra de progreso
             const pct = ((wizardStep - 1) / 3) * 100;
             progress.style.width = pct + '%';
 
-            // Botones
             prevBtn.disabled = (wizardStep === 1);
             if (wizardStep === 4) {
                 nextBtn.textContent = 'Empezar 🚀';
@@ -2761,7 +2780,6 @@
                 nextBtn.textContent = 'Siguiente';
             }
 
-            // Validar paso actual para habilitar "Siguiente"
             const valid = validateStep(wizardStep);
             nextBtn.disabled = !valid;
         }
@@ -2771,7 +2789,6 @@
             if (step < 1 || step > 4) return;
             wizardStep = step;
             updateWizard();
-            // Re-renderizar opciones de ciudad si es el paso 3
             if (step === 3) {
                 renderCityOptions(citySearch.value);
             }
@@ -2780,7 +2797,6 @@
         function nextStep() {
             if (!validateStep(wizardStep)) return;
             if (wizardStep === 4) {
-                // Finalizar onboarding
                 finishOnboarding();
                 return;
             }
@@ -2800,7 +2816,6 @@
             nextBtn.disabled = !validateStep(1);
         });
 
-        // Nicho: selección por clic en tarjetas
         nicheGrid.querySelectorAll('.niche-card').forEach(card => {
             card.addEventListener('click', () => {
                 nicheGrid.querySelectorAll('.niche-card').forEach(c => c.classList.remove('selected'));
@@ -2811,11 +2826,9 @@
             });
         });
 
-        // Ciudad: búsqueda en tiempo real + validación inmediata
         citySearch.addEventListener('input', (e) => {
             const val = e.target.value;
             renderCityOptions(val);
-            // Buscar coincidencia exacta
             const exact = Object.keys(cityCoords).find(c => c.toLowerCase() === val.toLowerCase());
             if (exact) {
                 wizardData.city = exact;
@@ -2823,21 +2836,17 @@
                 renderCityOptions(val);
                 nextBtn.disabled = !validateStep(3);
             } else {
-                // Si el usuario borra, deseleccionar
                 if (wizardData.city) {
                     wizardData.city = '';
                     renderCityOptions(val);
                     nextBtn.disabled = true;
                 }
-                // Si no coincide exacto, pero hay texto, no deshabilitar si ya estaba seleccionado
-                // (pero la validación fallará si no hay ciudad)
                 if (!wizardData.city) {
                     nextBtn.disabled = true;
                 }
             }
         });
 
-        // También agregar listener 'change' para validar al salir del campo
         citySearch.addEventListener('change', () => {
             const val = citySearch.value;
             const exact = Object.keys(cityCoords).find(c => c.toLowerCase() === val.toLowerCase());
@@ -2855,7 +2864,6 @@
             }
         });
 
-        // Teléfono: solo números, formato
         inputPhone.addEventListener('input', () => {
             const raw = inputPhone.value.replace(/\D/g, '');
             if (raw.length > 10) {
@@ -2868,23 +2876,19 @@
             nextBtn.disabled = !validateStep(4);
         });
 
-        // Botones
         prevBtn.addEventListener('click', prevStep);
         nextBtn.addEventListener('click', nextStep);
 
         // --- Finalizar onboarding: upsert a Supabase con updated_at ---
         async function finishOnboarding() {
-            // Recolectar datos finales
             wizardData.business_name = wizardData.business_name || inputBusiness.value.trim();
             wizardData.phone = wizardData.phone || inputPhone.value.replace(/\D/g, '');
 
-            // Validar nuevamente todos los campos
             if (!wizardData.business_name || !wizardData.niche || !wizardData.city || !wizardData.phone) {
                 alert('Por favor completa todos los pasos correctamente.');
                 return;
             }
 
-            // Obtener usuario actual
             const { data: { user }, error: userError } = await supabase.auth.getUser();
             if (userError || !user) {
                 alert('No se pudo obtener la sesión. Por favor inicia sesión nuevamente.');
@@ -2892,7 +2896,6 @@
                 return;
             }
 
-            // Preparar datos para upsert con updated_at
             const profileData = {
                 id: user.id,
                 business_name: wizardData.business_name,
@@ -2914,28 +2917,21 @@
                     return;
                 }
 
-                // Éxito: ocultar modal, actualizar DOM y guardar en localStorage
                 overlay.classList.remove('active');
                 overlay.style.display = 'none';
 
-                // Guardar en localStorage para referencia
                 localStorage.setItem('business_name', wizardData.business_name);
                 localStorage.setItem('onboarding_completed', 'true');
 
-                // Actualizar saludo
                 const headline = document.getElementById('brand-headline-name');
                 if (headline) headline.textContent = wizardData.business_name.toUpperCase();
 
-                // Actualizar dominio en la tarjeta
                 updateDynamicDomain();
 
-                // Centrar mapa en la ciudad seleccionada (si el mapa existe en el panel de telemetría)
                 localStorage.setItem('user_city', wizardData.city);
 
-                // Inicializar notificaciones (solo ahora que el onboarding está completo)
                 initNotifications();
 
-                // Mostrar toast de éxito con el dominio
                 const slug = wizardData.business_name.toLowerCase()
                     .replace(/\s+/g, '')
                     .replace(/[^a-z0-9]/g, '');
@@ -2954,6 +2950,20 @@
                     setTimeout(() => toast.remove(), 300);
                 }, 4500);
 
+                // --- NUEVO: Mostrar CTA después de 12 segundos ---
+                setTimeout(() => {
+                    const desktopCta = document.getElementById('desktop-cta-container');
+                    const mobileCta = document.getElementById('mobile-cta-container');
+                    if (desktopCta) {
+                        desktopCta.style.display = ''; // asegurar visible
+                        desktopCta.classList.remove('opacity-0');
+                    }
+                    if (mobileCta) {
+                        mobileCta.style.display = '';
+                        mobileCta.classList.remove('opacity-0');
+                    }
+                }, 12000);
+
             } catch (err) {
                 alert('Ocurrió un error inesperado. Revisa la consola.');
                 console.error(err);
@@ -2971,7 +2981,6 @@
                     return;
                 }
 
-                // Consultar perfil
                 const { data: profile, error: profileError } = await supabase
                     .from('profiles')
                     .select('onboarding_completed, business_name, city, niche, phone')
@@ -2984,9 +2993,7 @@
                     return;
                 }
 
-                // Si no existe perfil o onboarding_completed es false, mostrar wizard
                 if (!profile || profile.onboarding_completed === false) {
-                    // Cargar datos existentes si los hay
                     if (profile) {
                         if (profile.business_name) {
                             wizardData.business_name = profile.business_name;
@@ -3007,16 +3014,13 @@
                             inputPhone.value = profile.phone;
                         }
                     }
-                    // Mostrar modal
                     overlay.style.display = 'flex';
                     overlay.classList.add('active');
                     goToStep(1);
                 } else {
-                    // Onboarding ya completado: ocultar modal y actualizar DOM
                     overlay.style.display = 'none';
                     overlay.classList.remove('active');
 
-                    // Actualizar saludo con el nombre guardado
                     if (profile && profile.business_name) {
                         const headline = document.getElementById('brand-headline-name');
                         if (headline) headline.textContent = profile.business_name.toUpperCase();
@@ -3028,8 +3032,24 @@
                     }
                     localStorage.setItem('onboarding_completed', 'true');
 
-                    // Cargar notificaciones (onboarding completado)
                     initNotifications();
+
+                    // Si ya estaba completado, mostrar CTA después de 12s (simulando el cierre)
+                    const isActivated = localStorage.getItem('ecosystem_activated');
+                    if (!isActivated) {
+                        setTimeout(() => {
+                            const desktopCta = document.getElementById('desktop-cta-container');
+                            const mobileCta = document.getElementById('mobile-cta-container');
+                            if (desktopCta) {
+                                desktopCta.style.display = '';
+                                desktopCta.classList.remove('opacity-0');
+                            }
+                            if (mobileCta) {
+                                mobileCta.style.display = '';
+                                mobileCta.classList.remove('opacity-0');
+                            }
+                        }, 12000);
+                    }
                 }
             } catch (err) {
                 console.error('Error en checkOnboardingStatus:', err);
@@ -3041,7 +3061,6 @@
         // 6. INICIALIZACIÓN AL CARGAR LA PÁGINA (con verificación de sesión)
         // --------------------------------------------------------------
         window.addEventListener('DOMContentLoaded', async () => {
-            // --- Verificar sesión al cargar ---
             const { data: { session } } = await supabase.auth.getSession();
             if (!session) {
                 if (!_authRedirecting) {
@@ -3051,56 +3070,36 @@
                 return;
             }
 
-            // Si hay sesión, continuar con la inicialización
-            // Cargar preferencias de color, idioma, etc.
             loadPersistedColorPalette();
             loadPersistedLanguage();
             updateDynamicDomain();
             updateNotificationLED();
             updateSupportButtonVisibility();
 
-            // Avatar guardado
             const savedAvatar = localStorage.getItem("rs_business_avatar_url");
             if (savedAvatar) {
                 document.getElementById("avatar-state-empty").classList.add("hidden");
                 document.getElementById("avatar-state-img").src = savedAvatar;
                 document.getElementById("avatar-state-img").classList.remove("hidden");
                 document.getElementById("dropdown-logo-text").innerText = translations[currentLang]?.change_logo ||
-                    "Cambiar Logo";
+                    "Cambiar logo";
             }
 
-            // Mostrar panel por defecto
             document.getElementById('pane-view-panel').classList.remove('hidden');
             switchWorkspaceView('panel');
 
-            // Iniciar simulaciones
             startTelemetrySimulation();
 
-            // Mostrar CTA si no está activado
-            const isActivated = localStorage.getItem('ecosystem_activated');
-            const desktopCta = document.getElementById('desktop-cta-container');
-            const mobileCta = document.getElementById('mobile-cta-container');
-            if (!isActivated) {
-                setTimeout(() => {
-                    if (desktopCta) desktopCta.classList.remove('opacity-0');
-                    if (mobileCta) mobileCta.classList.remove('opacity-0');
-                }, 6000);
-            } else {
-                if (desktopCta) desktopCta.style.display = 'none';
-                if (mobileCta) mobileCta.style.display = 'none';
-            }
+            // Se eliminó el setTimeout de 6s que mostraba el CTA.
 
-            // === VERIFICAR ONBOARDING ===
             await checkOnboardingStatus();
 
-            // Event listener para cambio de idioma
             document.getElementById('lang-menu-select')?.addEventListener('change', (e) => applyLanguage(e.target
                 .value));
 
-            // Si el mapa de telemetría se abre, centrar en la ciudad guardada
             const savedCity = localStorage.getItem('user_city');
             if (savedCity && cityCoords[savedCity]) {
-                // No hacer nada aquí, el mapa se centrará cuando se abra el modal 3
+                // El mapa se centrará cuando se abra el modal 3
             }
         });
 
@@ -3114,87 +3113,12 @@
                     window.location.replace(LOGIN_URL);
                 }
             } else {
-                // Sesión activa, verificar onboarding si no se ha hecho
                 if (typeof checkOnboardingStatus === 'function' && !window._onboardingChecked) {
                     window._onboardingChecked = true;
                     checkOnboardingStatus();
                 }
             }
         });
-
-        // Override de openTelemetryModal para centrar el mapa en la ciudad guardada (paso 3)
-        const originalOpenTelemetry = openTelemetryModal;
-        openTelemetryModal = function(panelId) {
-            if (panelId === 3) {
-                const savedCity = localStorage.getItem('user_city') || 'Manizales';
-                const coords = cityCoords[savedCity] || cityCoords['Manizales'];
-                const t = translations[currentLang];
-                const body = document.getElementById('telemetry-modal-body');
-                body.innerHTML = `
-                        <div class="space-y-4">
-                            <div class="border-b border-[var(--accent-color)]/30 pb-2">
-                                <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight leading-snug">${t.modal3_title}</h3>
-                                <p class="text-sm text-gray-300 font-mono">${t.modal3_sub}</p>
-                            </div>
-                            <div class="bg-black/40 border border-white/10 rounded-xl p-4">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm font-mono text-gray-300">${t.modal3_visibility}</span>
-                                    <span class="text-2xl font-bold text-white">+12,000</span>
-                                </div>
-                                <div class="flex justify-between items-center mt-2">
-                                    <span class="text-sm font-mono text-gray-300">${t.modal3_calls}</span>
-                                    <span class="text-2xl font-bold text-[var(--accent-color)]">240/mes</span>
-                                </div>
-                            </div>
-                            <div id="seo-map" class="w-full h-40 rounded-xl border border-white/20 mt-2 z-0 overflow-hidden"></div>
-                        </div>
-                    `;
-                const overlay = document.getElementById('telemetry-modal-overlay');
-                overlay.classList.remove('hidden');
-                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
-                setTimeout(() => {
-                    if (globalMap) globalMap.remove();
-                    const mapDiv = document.getElementById('seo-map');
-                    if (mapDiv) {
-                        globalMap = L.map(mapDiv).setView([coords.lat, coords.lng], 13);
-                        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> & CartoDB',
-                            subdomains: 'abcd',
-                            maxZoom: 19,
-                            minZoom: 3
-                        }).addTo(globalMap);
-                        L.circle([coords.lat, coords.lng], {
-                            color: 'var(--accent-color)',
-                            fillColor: '#FF3C00',
-                            fillOpacity: 0.2,
-                            radius: 2000,
-                            weight: 2,
-                            className: 'radar-pulse'
-                        }).addTo(globalMap);
-                        const style = document.createElement('style');
-                        style.textContent =
-                            `.radar-pulse { animation: radarPulse 2s infinite ease-out; } @keyframes radarPulse { 0% { stroke-width: 2; opacity: 0.8; r: 2000; } 50% { stroke-width: 1; opacity: 0.4; r: 2500; } 100% { stroke-width: 0.5; opacity: 0; r: 3000; } }`;
-                        document.head.appendChild(style);
-                    }
-                }, 150);
-                updateTelemetryDots(3);
-                document.getElementById('telemetry-prev-btn').disabled = false;
-                const nextBtn = document.getElementById('telemetry-next-btn');
-                nextBtn.innerHTML = t.modal_gotit;
-                return;
-            }
-            originalOpenTelemetry(panelId);
-        };
-
-        const originalNavigate = navigateTelemetry;
-        navigateTelemetry = function(delta) {
-            let next = currentTelemetryIndex + delta;
-            if (next > 3) {
-                closeTelemetryModal();
-                return;
-            }
-            if (next >= 1 && next <= 3) openTelemetryModal(next);
-        };
 
         // Lock overlay para casos de éxito (sin cambios)
         (function setupLockOverlay() {
@@ -3212,7 +3136,7 @@
             }
         })();
 
-        console.log('🟢 Red Sapien | Terminal Operativa con Onboarding integrado');
+        console.log('🟢 Red Sapien | Panel de Control con Onboarding integrado');
     </script>
 
 </body>
