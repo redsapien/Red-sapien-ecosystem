@@ -717,8 +717,8 @@
         <div class="bg-[#171717] border border-white/10 w-full max-w-sm p-8 rounded-2xl relative shadow-2xl">
             <button onclick="closeRegisterModal()"
                 class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none">✕</button>
-            <h2 id="modal-title" class="text-xl font-display font-bold mb-2 text-center modal-title-glow">Crea tu cuenta</h2>
-            <p id="modal-subtitle" class="text-xs text-gray-400 text-center mb-4">Únete al ecosistema de ventas</p>
+            <h2 id="modal-title" class="text-xl font-display font-bold mb-2 text-center modal-title-glow">Cree su cuenta</h2>
+            <p id="modal-subtitle" class="text-xs text-gray-400 text-center mb-4">Únase al ecosistema de ventas</p>
 
             <!-- Área de mensajes de error / éxito -->
             <div id="auth-message" class="hidden text-center text-sm font-medium mb-3"></div>
@@ -753,7 +753,7 @@
 
             <!-- Selector de modo (Login / Registro) -->
             <div class="mt-4 text-center text-xs text-gray-400">
-                <span id="toggle-mode-text">¿Ya tienes cuenta?</span>
+                <span id="toggle-mode-text">¿Ya tiene cuenta?</span>
                 <button type="button" id="toggle-mode-btn" onclick="toggleAuthMode()"
                     class="text-rs-red font-bold hover:underline ml-1">
                     Inicia sesión
@@ -761,7 +761,7 @@
             </div>
 
             <!-- Separador -->
-            <div class="relative my-5">
+            <div id="google-separator" class="relative my-5">
                 <div class="absolute inset-0 flex items-center">
                     <div class="w-full border-t border-white/10"></div>
                 </div>
@@ -870,7 +870,7 @@
                                 <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight"
                                     data-i18n="phase1Title">Sitio web + IA</h3>
                                 <p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl"
-                                    data-i18n="phase1Desc">Personalizado al ADN de su marca y hecho para vender, con un agente de IA que atiende a sus clientes 24/7.</p>
+                                    data-i18n="phase1Desc">Personalizado al ADN de su marca y hecho para vender.</p>
                             </div>
                             <div
                                 class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-5 max-w-md font-mono text-xs text-neutral-400 relative z-10">
@@ -911,7 +911,7 @@
                                 <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight"
                                     data-i18n="phase2Title">Campaña de ventas</h3>
                                 <p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl"
-                                    data-i18n="phase2Desc">Traemos clientes de Facebook directamente a su WhatsApp con segmentación estratégica local.</p>
+                                    data-i18n="phase2Desc">Traemos clientes de Facebook directamente a su WhatsApp.</p>
                             </div>
                             <div
                                 class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-5 max-w-md font-mono text-xs text-neutral-400 relative z-10 lg:pl-4">
@@ -952,7 +952,7 @@
                                 <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight"
                                     data-i18n="phase3Title">Posicionamiento SEO</h3>
                                 <p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl"
-                                    data-i18n="phase3Desc">Hacemos que aparezca primero en Google cuando busquen sus productos o servicios en su ciudad.</p>
+                                    data-i18n="phase3Desc">Aparezca primero en Google cuando busquen sus productos.</p>
                             </div>
                             <div
                                 class="mt-10 pt-6 border-t border-white/[0.04] grid grid-cols-2 gap-5 max-w-md font-mono text-xs text-neutral-400 relative z-10">
@@ -1243,7 +1243,16 @@
         </div>
         <script>
             function toggleFaq(button) { const content = button.nextElementSibling; const icon = button.querySelector('svg'); const allContents = document.querySelectorAll('.faq-content'); const allIcons = document.querySelectorAll('.faq-item svg'); const parentItem = button.parentElement; allContents.forEach(item => { if (item !== content) { item.style.maxHeight = null; item.parentElement.classList.remove('border-[#FF3C00]/40', 'bg-white/[0.02]'); } }); allIcons.forEach(i => { if (i !== icon) i.style.transform = 'rotate(0deg)'; }); if (content.style.maxHeight) { content.style.maxHeight = null; icon.style.transform = 'rotate(0deg)'; parentItem.classList.remove('border-[#FF3C00]/40', 'bg-white/[0.02]'); } else { content.style.maxHeight = content.scrollHeight + "px"; icon.style.transform = 'rotate(180deg)'; parentItem.classList.add('border-[#FF3C00]/40', 'bg-white/[0.02]'); } }
-            document.addEventListener('DOMContentLoaded', () => { const pricingSection = document.getElementById('seccion-5-pricing'); const waButton = document.getElementById('floating-whatsapp-container'); const spToast = document.getElementById('social-proof-toast'); const storageKey = 'sp_has_seen_seq'; const cities = [{ l: "Medellín, LATAM", f: "🇨🇴" }, { l: "Manizales, LATAM", f: "🇨🇴" }, { l: "Miami, US", f: "🇺🇸" }, { l: "Bogotá, LATAM", f: "🇨🇴" }, { l: "Pereira, LATAM", f: "🇨🇴" }]; const phrases = ["Nuevo Negocio Registrado", "Nuevo Negocio Potenciado"]; function showRandomProof() { const randomCity = cities[Math.floor(Math.random() * cities.length)]; const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)]; document.getElementById('sp-business').innerText = randomPhrase; document.getElementById('sp-location').innerText = randomCity.l; document.getElementById('sp-flag').innerText = randomCity.f; document.getElementById('sp-action').innerText = "Ecosistema Desplegado"; spToast.classList.remove('translate-y-[150%]', 'opacity-0'); setTimeout(() => spToast.classList.add('translate-y-[150%]', 'opacity-0'), 5000); } const observer = new IntersectionObserver((entries) => { if (entries[0].isIntersecting) { if (waButton) waButton.style.display = 'none'; if (!localStorage.getItem(storageKey)) { localStorage.setItem(storageKey, 'true'); setTimeout(() => { showRandomProof(); setTimeout(() => { showRandomProof(); setInterval(showRandomProof, 30000); }, 3000); }, 4000); } } else { if (waButton) waButton.style.display = 'flex'; } }, { threshold: 0.1 }); observer.observe(pricingSection); });
+            document.addEventListener('DOMContentLoaded', () => { const pricingSection = document.getElementById('seccion-5-pricing'); const waButton = document.getElementById('floating-whatsapp-container'); const spToast = document.getElementById('social-proof-toast'); const storageKey = 'sp_has_seen_seq'; const cities = [
+                { l: "Manizales, Colombia", f: "🇨🇴" },
+                { l: "Pereira, Colombia", f: "🇨🇴" },
+                { l: "Medellín, Colombia", f: "🇨🇴" },
+                { l: "Bogotá, Colombia", f: "🇨🇴" },
+                { l: "Villamaría, Colombia", f: "🇨🇴" },
+                { l: "Barranquilla, Colombia", f: "🇨🇴" },
+                { l: "Cartagena, Colombia", f: "🇨🇴" },
+                { l: "Cali, Colombia", f: "🇨🇴" }
+            ]; const phrases = ["Nuevo Negocio Registrado", "Nuevo Negocio Potenciado"]; function showRandomProof() { const randomCity = cities[Math.floor(Math.random() * cities.length)]; const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)]; document.getElementById('sp-business').innerText = randomPhrase; document.getElementById('sp-location').innerText = randomCity.l; document.getElementById('sp-flag').innerText = randomCity.f; document.getElementById('sp-action').innerText = "Ecosistema Desplegado"; spToast.classList.remove('translate-y-[150%]', 'opacity-0'); setTimeout(() => spToast.classList.add('translate-y-[150%]', 'opacity-0'), 5000); } const observer = new IntersectionObserver((entries) => { if (entries[0].isIntersecting) { if (waButton) waButton.style.display = 'none'; if (!localStorage.getItem(storageKey)) { localStorage.setItem(storageKey, 'true'); setTimeout(() => { showRandomProof(); setTimeout(() => { showRandomProof(); setInterval(showRandomProof, 30000); }, 3000); }, 4000); } } else { if (waButton) waButton.style.display = 'flex'; } }, { threshold: 0.1 }); observer.observe(pricingSection); });
         </script>
     </section>
 
@@ -2080,31 +2089,34 @@
         const emailInput = document.getElementById('email-input');
         const passwordInput = document.getElementById('password-input');
         const googleBtn = document.getElementById('google-btn');
+        const googleSeparator = document.getElementById('google-separator');
 
         // ================================================================
-        // 4. FUNCIONES DE UI DEL MODAL (CON VISIBILIDAD DE GOOGLE)
+        // 4. FUNCIONES DE UI DEL MODAL (CON VISIBILIDAD DE GOOGLE Y SEPARADOR)
         // ================================================================
         function setAuthMode(mode) {
             authMode = mode;
             if (mode === 'register') {
                 modalTitle.textContent = 'Cree su cuenta';
-                modalSubtitle.textContent = 'Fácil, dos datos y estás dentro';
+                modalSubtitle.textContent = 'Fácil, dos datos y está dentro';
                 btnSubmit.textContent = 'Registrarme';
-                toggleText.textContent = '¿Ya tienes cuenta?';
+                toggleText.textContent = '¿Ya tiene cuenta?';
                 toggleBtn.textContent = 'Inicia sesión';
-                // Ocultar botón de Google
+                // Ocultar botón de Google y separador
                 googleBtn.classList.add('hidden');
+                googleSeparator.classList.add('hidden');
                 // Limpiar mensaje
                 authMsg.classList.add('hidden');
                 authMsg.textContent = '';
             } else {
                 modalTitle.textContent = 'Inicia sesión';
-                modalSubtitle.textContent = 'Accede a tu panel de control';
+                modalSubtitle.textContent = 'Acceda a su panel de control';
                 btnSubmit.textContent = 'Iniciar sesión';
-                toggleText.textContent = '¿No tienes cuenta?';
-                toggleBtn.textContent = 'Regístrate';
-                // Mostrar botón de Google
+                toggleText.textContent = '¿No tiene cuenta?';
+                toggleBtn.textContent = 'Regístrese';
+                // Mostrar botón de Google y separador
                 googleBtn.classList.remove('hidden');
+                googleSeparator.classList.remove('hidden');
                 authMsg.classList.add('hidden');
                 authMsg.textContent = '';
             }
@@ -2205,7 +2217,7 @@
                     if (result.error) {
                         // Manejo específico para credenciales inválidas
                         if (result.error.message.includes('Invalid login credentials')) {
-                            showAuthMessage('❌ No encontramos una cuenta con este correo. Regístrate ahora.', true);
+                            showAuthMessage('❌ No encontramos una cuenta con este correo. Regístrese ahora.', true);
                         } else {
                             showAuthMessage('❌ Error: ' + result.error.message, true);
                         }
@@ -2288,17 +2300,17 @@
                 infraTag: "CHAO AL ESTRÉS",
                 machineryTitle: "Creamos su ecosistema digital",
                 phase1Title: "Sitio web + IA",
-                phase1Desc: "Personalizado al ADN de su marca y hecho para vender, con un agente de IA que atiende a sus clientes 24/7.",
+                phase1Desc: "Personalizado al ADN de su marca y hecho para vender.",
                 phase1Stat1: "1 segundo",
-                phase1Stat2: "Gratis e ilimitado",
+                phase1Stat2: "Gratis",
                 phase2Title: "Campaña de ventas",
-                phase2Desc: "Traemos clientes de Facebook directamente a su WhatsApp con segmentación estratégica local.",
+                phase2Desc: "Traemos clientes de Facebook directamente a su WhatsApp.",
                 phase2Stat1: "300 a 350",
                 phase2Stat2: "$13.000/nequi",
                 phase3Title: "Posicionamiento SEO",
-                phase3Desc: "Hacemos que aparezca primero en Google cuando busquen sus productos o servicios en su ciudad.",
+                phase3Desc: "Aparezca primero en Google cuando busquen sus productos.",
                 phase3Stat1: "20 a 35",
-                phase3Stat2: "99% en puntuación",
+                phase3Stat2: "99% óptimo",
                 whatsappTooltip: "Hablemos de una",
                 portfolioBadge: "Adaptable a su nicho",
                 portfolioTitle: "Validado en negocios reales",
