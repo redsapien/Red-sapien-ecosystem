@@ -651,7 +651,7 @@
         </div>
         <div class="w-full mt-auto mb-4 bg-gradient-to-t from-[#050505]/50 to-transparent py-6">
             <p id="trust-text" data-i18n="trustText"
-                class="text-xs uppercase tracking-[0.2em] text-gray-400 font-bold mb-8 px-4">Ell@s ya están a otro nivel, ¿y usted?</p>
+                class="text-xs uppercase tracking-[0.2em] text-gray-400 font-bold mb-8 px-4">Ya están a otro nivel, ¿y usted?</p>
             <!-- ================= SLIDER DE LOGOS INFINITO CON 9 LOGOS (2 COPIA) ================= -->
             <div class="w-full overflow-hidden relative py-2">
                 <div class="absolute inset-0 logo-slider-gradient"></div>
@@ -1984,7 +1984,7 @@
             </div>
             <div class="flex flex-col items-center justify-center gap-3 text-center border-t border-white/10 pt-8">
                 <p class="text-xs md:text-[11px] text-gray-400 uppercase tracking-[0.2em] leading-relaxed max-w-4xl font-bold"
-                    data-i18n="copyright">© RED SAPIEN TODOS LOS DERECHOS PARA EL MUNDO...</p>
+                    data-i18n="copyright">Red Sapien Made for the world...</p>
             </div>
         </div>
         <script>
@@ -2345,7 +2345,7 @@
                 case4Title: "Luxury E-commerce",
                 case4Desc: "Red Sapien: creamos un catálogo de lujo para Noir Elixir en Medellín: con un diseño premium optimizado para ventas.",
                 viewCaseBtn: "Ver ahora",
-                archBadge: "Control total",
+                archBadge: "Control remoto",
                 slotsBadge: "SOLO 4 CUPOS DISPONIBLES",
                 pricingLabel: "Inversión total",
                 paymentNote: "PAGO ÚNICO.",
@@ -2369,7 +2369,14 @@
                 fingerprintSub: "(Ponga su huella)",
                 easterDate: "07/06/2026 - Antonella,",
                 easterMessage: "mi bebesita hermosa, lucharé esta guerra por ti...",
-                copyright: "© RED SAPIEN TODOS LOS DERECHOS PARA EL MUNDO..."
+                copyright: "Red Sapien Made for the world...",
+                typewriterText: "Monitoree su negocio 24/7",
+                slideTexts: [
+                    "Vea cómo funciona su ecosistema desde un panel intuitivo.",
+                    "Reciba soporte y monitoreo en tiempo real en un módulo dedicado solo al soporte.",
+                    "Conozca los casos de éxito más relevantes y sus resultados.",
+                    "Lo mantendremos al día con el funcionamiento y nuevas mejoras disponibles a través de notificaciones push."
+                ]
             },
             en: {
                 registerBtn: "Start Free",
@@ -2380,7 +2387,7 @@
                 heroDesc: "We bring interested clients directly to your WhatsApp.",
                 googleBtnText: "Sign in with Google",
                 mainCta: "Start Free Now!",
-                trustText: "They're at another level, and you?",
+                trustText: "They are at another level, and you?",
                 securityBadge: "Real Results: Pay on Delivery",
                 modalTitle: "Two data points and you're in",
                 modalBtn: "Connect Now",
@@ -2435,7 +2442,14 @@
                 fingerprintSub: "(Place your fingerprint)",
                 easterDate: "07/06/2026 - Antonella,",
                 easterMessage: "my beautiful baby, I will fight this war for you.",
-                copyright: "© RED SAPIEN ALL RIGHTS RESERVED FOR THE WORLD..."
+                copyright: "Red Sapien Made for the world...",
+                typewriterText: "Monitor your business 24/7",
+                slideTexts: [
+                    "See how your ecosystem works from an intuitive panel.",
+                    "Receive support and real-time monitoring in a module dedicated solely to support.",
+                    "Learn about the most relevant success stories and their results.",
+                    "We will keep you updated on the operation and new improvements available through push notifications."
+                ]
             },
             pt: {
                 registerBtn: "Comece grátis",
@@ -2501,7 +2515,14 @@
                 fingerprintSub: "(Coloque sua impressão)",
                 easterDate: "07/06/2026 - Antonella,",
                 easterMessage: "minha linda bebê, lutarei esta guerra por você.",
-                copyright: "© RED SAPIEN TODOS OS DIREITOS PARA O MUNDO..."
+                copyright: "Red Sapien Made for the world...",
+                typewriterText: "Monitore seu negócio 24/7",
+                slideTexts: [
+                    "Veja como funciona seu ecossistema a partir de um painel intuitivo.",
+                    "Receba suporte e monitoramento em tempo real em um módulo dedicado apenas ao suporte.",
+                    "Conheça os casos de sucesso mais relevantes e seus resultados.",
+                    "Manteremos você atualizado sobre o funcionamento e novas melhorias disponíveis através de notificações push."
+                ]
             }
         };
 
@@ -2517,16 +2538,176 @@
                     }
                 }
             });
+
+            // Actualizar texto del typewriter
+            const typeElement = document.getElementById('typewriter-text');
+            const cursor = document.getElementById('typewriter-cursor');
+            if (typeElement && translations[lang] && translations[lang].typewriterText) {
+                const newText = translations[lang].typewriterText;
+                // Si el cursor ya no está visible (la animación terminó), simplemente cambiamos el texto
+                if (cursor && cursor.style.display === 'none') {
+                    typeElement.innerHTML = newText;
+                } else {
+                    // Si la animación no ha terminado, reiniciamos el proceso
+                    // Para ello, reiniciamos la variable isTyped y volvemos a ejecutar el observer
+                    // Pero como la lógica está en una IIFE, necesitamos acceder a la variable isTyped.
+                    // Podemos guardar una referencia global o forzar la re-escritura.
+                    // Vamos a simplemente actualizar el texto y ocultar el cursor si ya estaba oculto, o forzar la escritura.
+                    // Usaremos un enfoque simple: si no ha terminado, cambiamos el texto y reiniciamos la animación.
+                    // Obtenemos la función typeWriter desde el ámbito global o la recreamos.
+                    // Para no complicar, usamos un enfoque: si la animación está en curso, la reiniciamos.
+                    // Para ello, guardamos el estado en una variable global.
+                    if (window._typewriterRunning) {
+                        // Reiniciar
+                        clearTimeout(window._typewriterTimeout);
+                        window._typewriterRunning = false;
+                        // Iniciar de nuevo con el nuevo texto
+                        typeElement.innerHTML = '';
+                        cursor.style.display = 'inline-block';
+                        window._typewriterRunning = true;
+                        const typeWriter = (text, i, cb) => {
+                            if (i < text.length) {
+                                typeElement.innerHTML = text.substring(0, i + 1);
+                                window._typewriterTimeout = setTimeout(() => typeWriter(text, i + 1, cb), 45);
+                            } else {
+                                setTimeout(cb, 200);
+                            }
+                        };
+                        typeWriter(newText, 0, () => {
+                            cursor.style.display = 'none';
+                            window._typewriterRunning = false;
+                        });
+                    } else {
+                        // Si ya terminó, solo cambiamos el texto
+                        typeElement.innerHTML = newText;
+                    }
+                }
+            }
+
+            // Actualizar frases del slider del teléfono
+            const slideTexts = translations[lang] && translations[lang].slideTexts;
+            if (slideTexts && Array.isArray(slideTexts) && slideTexts.length === 4) {
+                // Actualizar el array global que usa el slider
+                window._slideTexts = slideTexts;
+                // Actualizar el texto del slide actual
+                const textContainer = document.getElementById('slide-text-content');
+                const currentIndex = window._currentSlideIndex || 0;
+                if (textContainer) {
+                    textContainer.textContent = slideTexts[currentIndex] || slideTexts[0];
+                }
+                // También actualizar el texto inicial del párrafo (el que está visible al cargar)
+                // ya que el primer slide es el que se muestra al inicio
+                const initialText = slideTexts[0];
+                if (textContainer && !textContainer.classList.contains('active')) {
+                    // Si el slider no ha comenzado, el texto es el primero
+                    textContainer.textContent = initialText;
+                }
+            }
+
             localStorage.setItem('selectedLang', lang);
         }
+
+        // Exponer variables para el slider
+        window._slideTexts = translations.es.slideTexts;
+        window._currentSlideIndex = 0;
 
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('selectedLang') || 'es';
             const langSelector = document.getElementById('lang-selector');
             if (langSelector) langSelector.value = savedLang;
             changeLanguage(savedLang);
+
+            // Inicializar el slider con las traducciones
+            const slider = document.getElementById('smartphone-slider');
+            const dots = document.querySelectorAll('.slide-dots span');
+            const textContainer = document.getElementById('slide-text-content');
+            if (slider && textContainer) {
+                const totalSlides = slider.querySelectorAll('.slide-item').length;
+                let currentIndex = 0;
+                window._currentSlideIndex = currentIndex;
+                const slideTexts = window._slideTexts || translations.es.slideTexts;
+                textContainer.textContent = slideTexts[0] || '';
+            }
         });
 
+        // Modificar la lógica del slider para usar el array global
+        // Para no reescribir todo, podemos sobrescribir la función goToSlide original.
+        // Pero como el código del slider está en una IIFE, podemos inyectar una nueva función.
+        // Sin embargo, es más sencillo modificar el script del slider para que use window._slideTexts.
+        // Como el usuario pidió no cortar código, vamos a añadir un pequeño script que sobrescriba la función goToSlide.
+        // Pero el código original ya está en el HTML, y no podemos modificarlo directamente desde aquí.
+        // Lo que haremos es, después de que cargue el DOM, redefinir la función goToSlide del slider.
+        // Para ello, usamos un MutationObserver o simplemente esperamos a que el script se ejecute.
+        // Dado que el script está después, podemos agregar un script al final que sobrescriba.
+        // Sin embargo, para mantener la integridad, voy a modificar el script del slider directamente en el código original.
+        // En la sección "MANIFIESTO MAQUINARIA" hay un script que define el slider. Lo modificaré para que use window._slideTexts.
+        // Como ya he modificado el código anteriormente, ahora voy a ajustar ese script.
+
+        // Para no reescribir todo, voy a reemplazar el script del slider con uno que use window._slideTexts.
+        // Lo haré directamente en el código final.
+    </script>
+    <!-- Script adicional para sincronizar el slider con las traducciones -->
+    <script>
+        // Este script se ejecuta después de que el DOM esté listo y después de que el slider se haya inicializado.
+        // Sobrescribimos la función goToSlide para que use window._slideTexts.
+        document.addEventListener('DOMContentLoaded', function() {
+            // Esperamos un poco para que el slider se haya inicializado
+            setTimeout(function() {
+                const slider = document.getElementById('smartphone-slider');
+                const dots = document.querySelectorAll('.slide-dots span');
+                const textContainer = document.getElementById('slide-text-content');
+                if (!slider || !textContainer) return;
+
+                // Guardamos el índice actual
+                let currentIndex = window._currentSlideIndex || 0;
+                const totalSlides = slider.querySelectorAll('.slide-item').length;
+
+                // Redefinir goToSlide
+                window.goToSlide = function(index) {
+                    if (index < 0) index = totalSlides - 1;
+                    if (index >= totalSlides) index = 0;
+                    currentIndex = index;
+                    window._currentSlideIndex = currentIndex;
+                    const offset = -currentIndex * 100;
+                    slider.style.transform = 'translateX(' + offset + '%)';
+                    dots.forEach(function(dot, i) {
+                        dot.classList.toggle('active', i === currentIndex);
+                    });
+                    const slideTexts = window._slideTexts || translations.es.slideTexts;
+                    textContainer.textContent = slideTexts[currentIndex] || slideTexts[0];
+                    textContainer.classList.remove('active');
+                    void textContainer.offsetWidth;
+                    textContainer.classList.add('active');
+                };
+
+                // Redefinir nextSlide
+                window.nextSlide = function() {
+                    window.goToSlide(currentIndex + 1);
+                };
+
+                // Inicializar con el índice actual
+                window.goToSlide(currentIndex);
+
+                // Detener el autoplay original y usar el nuevo
+                // Para ello, detenemos el intervalo y lo reiniciamos con nuestra función
+                // Pero como el autoplay original está en el script, lo detenemos.
+                // Podemos obtener el intervalo de la variable global si existe.
+                if (window._autoPlayInterval) {
+                    clearInterval(window._autoPlayInterval);
+                    window._autoPlayInterval = null;
+                }
+                // Iniciar nuevo autoplay
+                if (window._startAutoPlay) {
+                    window._startAutoPlay();
+                } else {
+                    // Si no existe, creamos uno
+                    window._autoPlayInterval = setInterval(window.nextSlide, 3000);
+                }
+            }, 500); // tiempo para que el slider original se haya cargado
+        });
+    </script>
+
+    <script>
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             preloader.classList.add('animate-fade-out');
