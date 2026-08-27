@@ -918,14 +918,14 @@ window.rsGoogleAuth=function(){
 <p class="text-xs text-gray-400 text-center mb-4" id="modal-subtitle">Únase al ecosistema de ventas</p>
 <!-- Área de mensajes de error / éxito -->
 <div class="hidden text-center text-sm font-medium mb-3" id="auth-message"></div>
-<div class="relative my-5" id="google-separator">
+<div class="relative my-6" id="google-separator">
 <div class="absolute inset-0 flex items-center">
 <div class="w-full border-t border-white/10"></div>
 </div>
 <div class="relative flex justify-center text-xs">
 <span class="bg-[#171717] px-3 text-gray-500">o continue con</span>
 </div>
-</div><button class="w-full flex items-center justify-center gap-3 bg-[#0a0a0a] border border-white/10 hover:border-white/30 text-white font-semibold py-3 rounded-lg transition-all" id="google-btn" aria-label="Continuar con Google" type="button" onclick="window.rsGoogleAuth()">
+</div><button class="w-full flex items-center justify-center gap-3 bg-[#0a0a0a] border border-white/10 hover:border-white/30 text-white font-semibold py-3 rounded-lg transition-all mb-6" id="google-btn" aria-label="Continuar con Google" type="button" onclick="window.rsGoogleAuth()">
 <span class="google-g-icon">
 <svg class="google-g-svg" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
@@ -935,7 +935,7 @@ window.rsGoogleAuth=function(){
 </svg>
 </span>
 <span>Continuar con Google</span>
-</button><form class="space-y-5" id="email-form" onsubmit="event.preventDefault();">
+</button><form class="space-y-5 mt-6" id="email-form" onsubmit="event.preventDefault();">
 <div>
 <input class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors" id="email-input" autocomplete="email" placeholder="Correo electrónico" required="" type="email"/>
 </div>
