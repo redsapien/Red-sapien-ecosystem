@@ -37,6 +37,21 @@
         fbq('init', '3070185119839151');
         fbq('track', 'PageView');
     </script>
+<script>
+window.rsOpenAuth=function(mode){
+  var modal=document.getElementById('register-modal');
+  if(!modal)return;
+  if(typeof window.openRegisterModal==='function' && window.openRegisterModal!==window.rsOpenAuth){ window.openRegisterModal(mode||'register'); return; }
+  modal.classList.remove('hidden','opacity-0');
+  document.body.style.overflow='hidden';
+  var title=document.getElementById('modal-title'), submit=document.getElementById('btn-submit'), toggle=document.getElementById('toggle-mode-btn');
+  var login=mode==='login';
+  if(title)title.textContent=login?'Inicie sesión':'Cree su cuenta';
+  if(submit)submit.textContent=login?'Iniciar ahora':'Registrarme';
+  if(toggle)toggle.textContent=login?'Regístrese':'Inicie sesión';
+};
+</script>
+
 <noscript><img alt="" height="1" src="https://www.facebook.com/tr?id=3070185119839151&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 <!-- End Meta Pixel Code -->
 <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
@@ -780,7 +795,7 @@
 <option value="en">EN</option>
 <option value="pt">PT</option>
 </select>
-<button class="hidden md:inline-flex px-4 py-2 text-xs font-bold text-white rounded-lg transition bg-rs-gray/40 border border-rs-red/25 hover:border-rs-red/70 hover:bg-rs-gray/80 shadow-[0_0_15px_rgba(255,60,0,0.12)] whitespace-nowrap" data-i18n="registerBtn" id="scroll-register-btn" onclick="openRegisterModal('register')" type="button">Comience</button></div>
+<button class="hidden md:inline-flex px-4 py-2 text-xs font-bold text-white rounded-lg transition bg-rs-gray/40 border border-rs-red/25 hover:border-rs-red/70 hover:bg-rs-gray/80 shadow-[0_0_15px_rgba(255,60,0,0.12)] whitespace-nowrap" data-i18n="registerBtn" id="scroll-register-btn" onclick="window.rsOpenAuth('register')" type="button">Comience</button></div>
 <div aria-live="polite" class="scroll-support-banner" id="scroll-support-banner" role="status">
 <span class="scroll-support-copy">
 <span data-i18n="scrollSupportCity">Manizales, Pereira y Cali:</span>
@@ -808,7 +823,7 @@
 <div class="fixed inset-0 z-[60] opacity-0 invisible flex flex-col items-center justify-center px-6" id="mobile-menu">
 <button class="absolute top-8 right-8 text-gray-400 hover:text-rs-red scale-125 transition-colors focus:outline-none" id="close-menu">✕
             Close</button>
-<div class="w-full max-w-sm space-y-4"><div class="matrix-link-box p-6 rounded-xl"><button class="cursor-pointer block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300 w-full text-left" data-i18n="mobilePlatform" onclick="openRegisterModal('login')" type="button">Ingresar</button></div><div class="matrix-link-box p-6 rounded-xl"><button class="cursor-pointer block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300 w-full text-left" data-i18n="mobileRegister" onclick="openRegisterModal('register')" type="button">Comience</button></div>
+<div class="w-full max-w-sm space-y-4"><div class="matrix-link-box p-6 rounded-xl"><button class="cursor-pointer block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300 w-full text-left" data-i18n="mobilePlatform" onclick="window.rsOpenAuth('login')" type="button">Ingresar</button></div><div class="matrix-link-box p-6 rounded-xl"><button class="cursor-pointer block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300 w-full text-left" data-i18n="mobileRegister" onclick="window.rsOpenAuth('register')" type="button">Comience</button></div>
 <div class="matrix-link-box p-6 rounded-xl">
 <a class="block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300" data-i18n="mobileContact" href="https://wa.me/573012800024?text=Hola%2C%20deseo%20saber%20m%C3%A1s%20de%20la%20web%20de%20ventas...%20%F0%9F%8C%90">Hablemos</a>
 </div>
@@ -1988,7 +2003,7 @@ function toggleFaq(button) {
 </div>
 <div class="w-full max-w-lg" id="slide-text-container">
 <p class="text-gray-600 text-sm md:text-base font-medium leading-relaxed slide-text active transition-all duration-500" id="slide-text-content">Revise su negocio desde un panel intuitivo.</p>
-<button class="panel-register-cta" data-i18n="panelRegister" id="panel-register-cta" onclick="openRegisterModal('register')" type="button">Registrarse</button></div>
+<button class="panel-register-cta" data-i18n="panelRegister" id="panel-register-cta" onclick="window.rsOpenAuth('register')" type="button">Registrarse</button></div>
 </div>
 <div class="w-full order-2 flex justify-center lg:justify-end">
 <div class="phone-frame w-full max-w-[300px] md:max-w-[320px]">
