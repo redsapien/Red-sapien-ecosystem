@@ -904,8 +904,8 @@ window.rsOpenAuth=function(mode){
 </div>
 </main>
 <!-- ================= MODAL REGISTRO / LOGIN INTELIGENTE ================= -->
-<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" id="register-modal">
-<div class="bg-[#171717] border border-white/10 w-full max-w-sm p-8 rounded-2xl relative shadow-2xl">
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" id="register-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<div class="bg-[#171717] border border-white/10 w-full max-w-sm max-h-[90vh] overflow-y-auto p-6 sm:p-8 rounded-2xl relative shadow-2xl">
 <button class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none" onclick="closeRegisterModal()" type="button">✕</button>
 <h2 class="text-xl font-display font-bold mb-2 text-center modal-title-glow" id="modal-title">Cree su cuenta
             </h2>
@@ -931,10 +931,10 @@ window.rsOpenAuth=function(mode){
 <span>Continuar con Google</span>
 </button><form class="space-y-5" id="email-form" onsubmit="event.preventDefault();">
 <div>
-<input class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors" id="email-input" placeholder="Correo electrónico" required="" type="email"/>
+<input class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors" id="email-input" autocomplete="email" placeholder="Correo electrónico" required="" type="email"/>
 </div>
 <div class="relative">
-<input class="w-full bg-[#0a0a0a] border border-white/10 p-3 pr-12 rounded-lg text-white outline-none focus:border-rs-red transition-colors" id="password-input" placeholder="Contraseña segura" required="" type="password"/>
+<input class="w-full bg-[#0a0a0a] border border-white/10 p-3 pr-12 rounded-lg text-white outline-none focus:border-rs-red transition-colors" id="password-input" autocomplete="current-password" placeholder="Contraseña segura" required="" type="password"/>
 <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors" onclick="togglePassword()" type="button">
 <svg fill="none" height="20" id="eye-icon" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
 <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
@@ -2166,7 +2166,7 @@ function toggleFaq(button) {
         const SUPABASE_URL = 'https://krygvuvvenizgebincle.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_06DbVVwkvlDKQ-xYoTyRxg_o4rDpaUh';
         const supabaseClient = (window.supabase && typeof window.supabase.createClient === 'function') ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
-        const DASHBOARD_PATH = './dashboard/index.html';
+        const DASHBOARD_PATH = 'dashboard/index.html';
 
         // ================================================================
         // 2. ESTADO DEL FORMULARIO (LOGIN / REGISTER)
@@ -2356,7 +2356,8 @@ function toggleFaq(button) {
                     }
                 });
                 if (error) throw error;
-                // La redirección la maneja Supabase
+                // Redirección explícita para evitar que el navegador deje el flujo incompleto.
+                if (data && data.url) window.location.assign(data.url);
             } catch (error) {
                 console.error('Error al iniciar con Google:', error.message);
                 showAuthMessage('❌ No se pudo conectar con Google: ' + error.message, true);
