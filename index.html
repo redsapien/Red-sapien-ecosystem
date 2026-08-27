@@ -53,7 +53,8 @@ window.rsOpenAuth=function(mode){
 window.rsCloseAuth=function(){ var modal=document.getElementById('register-modal'); if(!modal)return; modal.classList.add('opacity-0'); setTimeout(function(){modal.classList.add('hidden');},300); document.body.style.overflow=''; };
 window.rsGoogleAuth=function(){
   if(typeof window.handleGoogleSignIn==='function'){ window.handleGoogleSignIn(); return; }
-  var m=document.getElementById('auth-message'); if(m){m.textContent='La conexión con Google no está disponible en este momento.';m.className='text-center text-sm font-medium mb-3 text-red-500';}
+  var base='https://krygvuvvenizgebincle.supabase.co/auth/v1/authorize?provider=google&redirect_to='+encodeURIComponent(window.location.origin+'/dashboard/index.html')+'&apikey='+encodeURIComponent('sb_publishable_06DbVVwkvlDKQ-xYoTyRxg_o4rDpaUh');
+  window.location.assign(base);
 };
 </script>
 
@@ -2349,15 +2350,18 @@ function toggleFaq(button) {
         // 9. INICIO DE SESIÓN CON GOOGLE
         // ================================================================
         window.handleGoogleSignIn = async () => {
+            const redirectTo = window.location.origin + '/' + DASHBOARD_PATH;
+            // Fallback directo: Google no depende de que la librería JS haya terminado de cargar.
             if (!supabaseClient) {
-                showAuthMessage('La conexión con Google no está disponible en este momento.', true);
+                const oauthUrl = SUPABASE_URL + '/auth/v1/authorize?provider=google&redirect_to=' + encodeURIComponent(redirectTo) + '&apikey=' + encodeURIComponent(SUPABASE_KEY);
+                window.location.assign(oauthUrl);
                 return;
             }
             try {
                 const { data, error } = await supabaseClient.auth.signInWithOAuth({
                     provider: 'google',
                     options: {
-                        redirectTo: window.location.origin + '/' + DASHBOARD_PATH
+                        redirectTo: redirectTo
                     }
                 });
                 if (error) throw error;
