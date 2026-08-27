@@ -57,10 +57,9 @@ window.rsGoogleAuth=function(){
   window.location.assign(base);
 };
 </script>
-
 <noscript><img alt="" height="1" src="https://www.facebook.com/tr?id=3070185119839151&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 <!-- End Meta Pixel Code -->
-<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml" sizes="any"/><link href="/favicon.svg" rel="shortcut icon" type="image/svg+xml"/><link href="/favicon.svg" rel="apple-touch-icon"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
@@ -109,6 +108,10 @@ window.rsGoogleAuth=function(){
             gap: 1.5rem;
             will-change: transform;
         }
+        @keyframes logo-drift-right { from { transform: translate3d(-50%,0,0); } to { transform: translate3d(0,0,0); } }
+        .logo-track { animation: logo-drift-right 34s linear infinite; }
+        .logo-track:hover { animation-play-state: paused; }
+        @media (prefers-reduced-motion: reduce) { .logo-track { animation: none; transform: none; } }
 
             .logo-track-static {
                 width: max-content;
@@ -562,7 +565,7 @@ window.rsGoogleAuth=function(){
 
         .phone-notch {
             position: absolute;
-            top: 0;
+            top: 7px;
             left: 50%;
             transform: translateX(-50%);
             width: 120px;
@@ -593,10 +596,12 @@ window.rsGoogleAuth=function(){
         }
 
         .slide-container {
+            position: absolute;
+            inset: 30px 0 30px;
             display: flex;
             transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            width: 100%;
-            height: 100%;
+            width: auto;
+            height: auto;
             will-change: transform;
         }
 
@@ -616,13 +621,15 @@ window.rsGoogleAuth=function(){
 
         .slide-dots {
             position: absolute;
-            bottom: 12px;
+            bottom: 27px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             gap: 6px;
             z-index: 20;
         }
+
+        .phone-home-indicator { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); width:64px; height:4px; border-radius:999px; background:rgba(255,255,255,.65); z-index:21; }
 
         .slide-dots span {
             width: 6px;
@@ -876,7 +883,7 @@ window.rsGoogleAuth=function(){
 <!-- ================= SLIDER DE LOGOS INFINITO CON 9 LOGOS (2 COPIA) ================= -->
 <div class="w-full overflow-x-auto overflow-y-hidden scrollbar-hide relative py-2">
 <div class="absolute inset-0 logo-slider-gradient pointer-events-none"></div>
-<div class="flex logo-track logo-track-static items-center">
+<div class="flex logo-track items-center">
 <!-- Primera copia (9 logos) -->
 <div class="flex items-center gap-4 md:gap-6 px-4">
 <div class="logo-item"><img alt="La Plancha" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" decoding="async" loading="lazy" src="assets/Image/La-plancha-manizales.webp"/></div>
@@ -910,7 +917,7 @@ window.rsGoogleAuth=function(){
 </div>
 </main>
 <!-- ================= MODAL REGISTRO / LOGIN INTELIGENTE ================= -->
-<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" id="register-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" id="register-modal" role="dialog">
 <div class="bg-[#171717] border border-white/10 w-full max-w-sm max-h-[90vh] overflow-y-auto p-6 sm:p-8 rounded-2xl relative shadow-2xl">
 <button class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none" onclick="window.rsCloseAuth()" type="button">✕</button>
 <h2 class="text-xl font-display font-bold mb-2 text-center modal-title-glow" id="modal-title">Cree su cuenta
@@ -925,7 +932,7 @@ window.rsGoogleAuth=function(){
 <div class="relative flex justify-center text-xs">
 <span class="bg-[#171717] px-3 text-gray-500">o continue con</span>
 </div>
-</div><button class="w-full flex items-center justify-center gap-3 bg-[#0a0a0a] border border-white/10 hover:border-white/30 text-white font-semibold py-3 rounded-lg transition-all mb-6" id="google-btn" aria-label="Continuar con Google" type="button" onclick="window.rsGoogleAuth()">
+</div><button aria-label="Continuar con Google" class="w-full flex items-center justify-center gap-3 bg-[#0a0a0a] border border-white/10 hover:border-white/30 text-white font-semibold py-3 rounded-lg transition-all mb-6" id="google-btn" onclick="window.rsGoogleAuth()" type="button">
 <span class="google-g-icon">
 <svg class="google-g-svg" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
@@ -937,10 +944,10 @@ window.rsGoogleAuth=function(){
 <span>Continuar con Google</span>
 </button><form class="space-y-5 mt-6" id="email-form" onsubmit="event.preventDefault();">
 <div>
-<input class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors" id="email-input" autocomplete="email" placeholder="Correo electrónico" required="" type="email"/>
+<input autocomplete="email" class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors" id="email-input" placeholder="Correo electrónico" required="" type="email"/>
 </div>
 <div class="relative">
-<input class="w-full bg-[#0a0a0a] border border-white/10 p-3 pr-12 rounded-lg text-white outline-none focus:border-rs-red transition-colors" id="password-input" autocomplete="current-password" placeholder="Contraseña segura" required="" type="password"/>
+<input autocomplete="current-password" class="w-full bg-[#0a0a0a] border border-white/10 p-3 pr-12 rounded-lg text-white outline-none focus:border-rs-red transition-colors" id="password-input" placeholder="Contraseña segura" required="" type="password"/>
 <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors" onclick="togglePassword()" type="button">
 <svg fill="none" height="20" id="eye-icon" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
 <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
@@ -2014,18 +2021,20 @@ function toggleFaq(button) {
 <div class="w-full order-2 flex justify-center lg:justify-end">
 <div class="phone-frame w-full max-w-[300px] md:max-w-[320px]">
 <div class="phone-screen relative">
+<div aria-hidden="true" class="phone-notch"><span class="speaker"></span><span class="camera"></span></div>
 <div class="slide-container" id="smartphone-slider">
 <div class="slide-item"><img alt="Panel de control del ecosistema Red Sapien" decoding="async" loading="lazy" src="assets/Image/Panel-red-sapien.webp"/></div>
 <div class="slide-item"><img alt="Módulo de soporte Red Sapien" decoding="async" loading="lazy" src="assets/Image/Soporte-red-sapien.webp"/></div>
 <div class="slide-item"><img alt="Casos de éxito en el panel Red Sapien" decoding="async" loading="lazy" src="assets/Image/Casos-red-sapien.webp"/></div>
 <div class="slide-item"><img alt="Notificaciones del ecosistema Red Sapien" decoding="async" loading="lazy" src="assets/Image/Notificaciones-red-sapien.webp"/></div>
 </div>
-<div class="slide-dots">
+<div aria-label="Navegación del panel" class="slide-dots">
 <span class="active"></span>
 <span></span>
 <span></span>
 <span></span>
 </div>
+<div aria-hidden="true" class="phone-home-indicator"></div>
 </div>
 </div>
 </div>
@@ -2096,8 +2105,6 @@ function toggleFaq(button) {
 </div>
 <div class="flex items-center justify-center md:justify-start gap-4 mt-4 w-full"><a class="w-12 h-12 rounded-xl bg-[#0A0A0A] border border-white/10 flex items-center justify-center text-gray-500 hover:bg-[#FF3C00] hover:text-white hover:border-[#FF3C00] transition-all duration-300 transform hover:-translate-y-1 shadow-[0_0_0_rgba(255,60,0,0)] hover:shadow-[0_10px_20px_rgba(255,60,0,0.3)]" href="https://github.com/redsapien/Red-sapien-ecosystem" rel="noopener noreferrer" target="_blank"><svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
 <path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path>
-</svg></a><a class="w-12 h-12 rounded-xl bg-[#0A0A0A] border border-white/10 flex items-center justify-center text-gray-500 hover:bg-[#FF3C00] hover:text-white hover:border-[#FF3C00] transition-all duration-300 transform hover:-translate-y-1 shadow-[0_0_0_rgba(255,60,0,0)] hover:shadow-[0_10px_20px_rgba(255,60,0,0.3)]" href="https://t.me/573012800024" rel="noopener noreferrer" target="_blank"><svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
-<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.68c.223-.198-.054-.31-.346-.116l-6.405 4.032-2.766-.864c-.602-.188-.616-.602.126-.894l10.796-4.16c.5-.188.948.106.843.91l-.568 1.427z"></path>
 </svg></a></div>
 </div>
 <div class="md:col-span-4 grid grid-cols-2 gap-8 text-center md:text-left">
