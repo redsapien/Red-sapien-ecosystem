@@ -50,6 +50,7 @@ window.rsOpenAuth=function(mode){
   if(submit)submit.textContent=login?'Iniciar ahora':'Registrarme';
   if(toggle)toggle.textContent=login?'Regístrese':'Inicie sesión';
 };
+window.rsCloseAuth=function(){ var modal=document.getElementById('register-modal'); if(!modal)return; modal.classList.add('opacity-0'); setTimeout(function(){modal.classList.add('hidden');},300); document.body.style.overflow=''; };
 window.rsGoogleAuth=function(){
   if(typeof window.handleGoogleSignIn==='function'){ window.handleGoogleSignIn(); return; }
   var m=document.getElementById('auth-message'); if(m){m.textContent='La conexión con Google no está disponible en este momento.';m.className='text-center text-sm font-medium mb-3 text-red-500';}
@@ -910,7 +911,7 @@ window.rsGoogleAuth=function(){
 <!-- ================= MODAL REGISTRO / LOGIN INTELIGENTE ================= -->
 <div class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" id="register-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
 <div class="bg-[#171717] border border-white/10 w-full max-w-sm max-h-[90vh] overflow-y-auto p-6 sm:p-8 rounded-2xl relative shadow-2xl">
-<button class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none" onclick="closeRegisterModal()" type="button">✕</button>
+<button class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none" onclick="window.rsCloseAuth()" type="button">✕</button>
 <h2 class="text-xl font-display font-bold mb-2 text-center modal-title-glow" id="modal-title">Cree su cuenta
             </h2>
 <p class="text-xs text-gray-400 text-center mb-4" id="modal-subtitle">Únase al ecosistema de ventas</p>
