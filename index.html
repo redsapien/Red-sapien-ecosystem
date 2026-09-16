@@ -815,6 +815,18 @@ window.rsGoogleAuth=function(){
 @media(max-width:600px){.rs-selector{gap:14px;margin-top:22px}.rs-selector-btn{min-height:128px;padding:22px 20px}.rs-selector-icon{width:42px;height:42px;border-radius:14px}.rs-selector-status{top:14px;right:16px;font-size:.5rem}.rs-selector-btn.is-active:after{inset:auto 20px 0}}
 @media(prefers-reduced-motion:reduce){.rs-selector-btn,.rs-selector-icon,.rs-selector-status{transition:none}.rs-selector-btn:hover,.rs-selector-btn.is-active{transform:none}}
 </style>
+
+<style>
+/* Tema global por nicho: la web acompaña la decisión del visitante */
+:root{--rs-theme:#ff3c00;--rs-theme-soft:rgba(255,60,0,.12)}
+html[data-niche="health"]{--rs-theme:#39c6a2;--rs-theme-soft:rgba(57,198,162,.12)}
+body[data-niche="health"] .rs-sectors-section{background:radial-gradient(circle at 50% 0,rgba(57,198,162,.07),transparent 38%),#090909}
+body[data-niche="health"] .rs-selector-btn.is-active{border-color:var(--rs-theme);box-shadow:0 0 0 1px var(--rs-theme),0 22px 60px rgba(57,198,162,.16),inset 0 1px 0 rgba(255,255,255,.12)}
+body[data-niche="health"] .phase-primary{box-shadow:0 0 55px rgba(57,198,162,.14)!important}
+body[data-niche="health"] .phase-card-label,body[data-niche="health"] .phase-entry-label{color:var(--rs-theme)}
+body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-transition-label{border-color:var(--rs-theme);color:var(--rs-theme)}
+.rs-selector-btn,.rs-niche-result,.phase-primary,.rs-case-card{transition:background .35s ease,border-color .35s ease,box-shadow .35s ease,transform .28s ease}
+</style>
 </head>
 <body class="font-sans overflow-x-hidden">
 <!-- ================= PRELOADER ================= -->
@@ -2989,7 +3001,7 @@ function toggleFaq(button) {
   document.querySelectorAll('.rs-selector-btn').forEach(btn=>btn.addEventListener('click',()=>{
     const niche=btn.dataset.niche, d=copy[niche];
     document.querySelectorAll('.rs-selector-btn').forEach(b=>{const active=b===btn;b.classList.toggle('is-active',active);b.setAttribute('aria-selected',active?'true':'false')});
-    document.body.dataset.niche=niche;
+    document.documentElement.dataset.niche=niche;document.body.dataset.niche=niche;
     set('hero-title',d.hero);set('hero-desc',d.desc);set('main-cta-label',d.cta);set('phase1-title',d.phase1[0]);set('phase1-desc',d.phase1[1]);set('phase2-title',d.phase2[0]);set('phase2-desc',d.phase2[1]);set('phase3-title',d.phase3[0]);set('phase3-desc',d.phase3[1]);set('portfolio-title',d.portfolio[0]);set('portfolio-intro',d.portfolio[1]);set('niche-result-title',d.result[0]);set('niche-result-copy',d.result[1]);const c=document.getElementById('niche-result-cta');if(c)c.href=d.result[2];
   }));
 })();
@@ -3000,6 +3012,7 @@ function toggleFaq(button) {
     health:{badge:'Salud y servicios',title:'Casos reales',intro:'Experiencias digitales para negocios que trabajan con agenda.',cards:[['01','Carolina Ruiz Spa','Presencia + atención','Una experiencia cercana para presentar sus servicios.', 'assets/Image/Logo-Carolina-Ruiz-Psico-Spa.webp',null],['02','Noir Elixir','Catálogo + decisión','Una presencia premium para mostrar productos y facilitar la elección.', 'assets/Image/Noir-medellin.webp',null],['03','Adme Dental','Web + solicitudes','Un ecosistema para presentar servicios y recibir solicitudes.', null,'https://admedental.redsapien.com/']]}
   };
   const renderCases=(niche)=>{const d=cases[niche];const track=document.getElementById('ecosystem-slider');if(!track)return;const accent=niche==='food'?'#ff3c00':'#39c6a2';track.innerHTML=d.cards.map(c=>{const media=c[4]?`<img src="${c[4]}" alt="Caso ${c[1]}" loading="lazy">`:'<span>Imagen del caso</span>';const link=c[5]?`<a class="rs-case-link" href="${c[5]}" target="_blank" rel="noopener">Ver sitio →</a>`:'<span class="rs-case-link is-disabled">Enlace en preparación</span>';return `<article class="rs-case-card ${c[6]||''}" style="--case-accent:${accent}"><div class="rs-case-media ${c[4]?'':'is-empty'}">${media}</div><div class="rs-case-body"><div><span class="rs-case-number">${c[0]}</span><span class="rs-case-type">${c[2]}</span><h3>${c[1]}</h3><p>${c[3]}</p></div>${link}</div></article>`}).join('');setCase('portfolio-badge',d.badge);setCase('portfolio-title',d.title);setCase('portfolio-intro',d.intro)};
+  document.documentElement.dataset.niche='food';document.body.dataset.niche='food';
   renderCases('food');
   document.querySelectorAll('.rs-selector-btn').forEach(btn=>btn.addEventListener('click',()=>renderCases(btn.dataset.niche)));
 </script>
