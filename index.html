@@ -2137,7 +2137,8 @@ function toggleFaq(button) {
         const SUPABASE_URL = 'https://krygvuvvenizgebincle.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_06DbVVwkvlDKQ-xYoTyRxg_o4rDpaUh';
         const supabaseClient = (window.supabase && typeof window.supabase.createClient === 'function') ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
-        const DASHBOARD_PATH = 'dashboard/index.html';
+        const DASHBOARD_PATH = '/dashboard/index.html';
+        const AUTH_REDIRECT_URL = window.location.origin + DASHBOARD_PATH;
 
         // ================================================================
         // 2. ESTADO DEL FORMULARIO (LOGIN / REGISTER)
@@ -2259,12 +2260,17 @@ function toggleFaq(button) {
             const password = passwordInput.value.trim();
 
             if (!email || !password) {
-                showAuthMessage('Por favor, completa todos los campos.', true);
+                showAuthMessage('Por favor, complete el correo y la contraseña.', true);
                 return;
             }
 
             if (!supabaseClient) {
-                showAuthMessage('El formulario está listo, pero la conexión de autenticación no está disponible en este momento.', true);
+                showAuthMessage('El registro no está disponible en este momento. Puede escribirnos por WhatsApp y le ayudamos directamente.', true);
+                return;
+            }
+
+            if (password.length < 8) {
+                showAuthMessage('La contraseña debe tener al menos 8 caracteres.', true);
                 return;
             }
 
@@ -2277,13 +2283,16 @@ function toggleFaq(button) {
                 let result;
                 if (authMode === 'register') {
                     // REGISTRO
-                    result = await supabaseClient.auth.signUp({ email, password });
+                    result = await supabaseClient.auth.signUp({ email, password, options: { emailRedirectTo: AUTH_REDIRECT_URL } });
                     if (result.error) throw result.error;
-                    showAuthMessage('✅ ¡Registro exitoso! Redirigiendo al panel...', false);
-                    // Redirigir al dashboard (el listener también lo hará, pero por si acaso)
-                    setTimeout(() => {
-                        window.location.replace(DASHBOARD_PATH);
-                    }, 1500);
+                    if (result.data && result.data.session) {
+                        showAuthMessage('✅ Registro exitoso. Abriendo su panel...', false);
+                        setTimeout(() => window.location.replace(DASHBOARD_PATH), 900);
+                    } else {
+                        showAuthMessage('✅ Cuenta creada. Revise su correo para confirmar el acceso y luego inicie sesión.', false);
+                        btnSubmit.disabled = false;
+                        btnSubmit.textContent = originalText;
+                    }
                 } else {
                     // LOGIN
                     result = await supabaseClient.auth.signInWithPassword({ email, password });
@@ -2315,7 +2324,7 @@ function toggleFaq(button) {
         // 9. INICIO DE SESIÓN CON GOOGLE
         // ================================================================
         window.handleGoogleSignIn = async () => {
-            const redirectTo = window.location.origin + '/' + DASHBOARD_PATH;
+            const redirectTo = AUTH_REDIRECT_URL;
             // Fallback directo: Google no depende de que la librería JS haya terminado de cargar.
             if (!supabaseClient) {
                 const oauthUrl = SUPABASE_URL + '/auth/v1/authorize?provider=google&redirect_to=' + encodeURIComponent(redirectTo) + '&apikey=' + encodeURIComponent(SUPABASE_KEY);
@@ -2341,7 +2350,7 @@ function toggleFaq(button) {
         // ================================================================
         // 10. LISTENER DE AUTENTICACIÓN (REDIRECCIÓN Y PREVENCIÓN DE PARPADEOS)
         // ================================================================
-        supabaseClient.auth.onAuthStateChange((event, session) => {
+        if (supabaseClient) supabaseClient.auth.onAuthStateChange((event, session) => {
             if (event === 'SIGNED_IN' && session) {
                 // Si hay sesión activa, redirigir al dashboard (replace evita bucle)
                 window.location.replace(DASHBOARD_PATH);
@@ -2353,6 +2362,7 @@ function toggleFaq(button) {
         // 11. VERIFICACIÓN DE SESIÓN AL CARGAR (para evitar parpadeos)
         // ================================================================
         (async function checkInitialSession() {
+            if (!supabaseClient) return;
             const { data: { session } } = await supabaseClient.auth.getSession();
             if (session) {
                 // Ya hay sesión, redirigir inmediatamente
@@ -2369,10 +2379,10 @@ function toggleFaq(button) {
                 mobileRegister: "Comenzar",
                 mobilePlatform: "Ingresar",
                 mobileContact: "Hablemos",
-                heroTitle: "Haga que más personas le elijan.",
-                heroDesc: "Una web clara, WhatsApp y seguimiento para convertir interés en clientes.",
+                heroTitle: "Que más personas encuentren y elijan su negocio.",
+                heroDesc: "Le ayudamos a mostrar lo que hace, recibir mensajes y no dejar oportunidades sueltas.",
                 googleBtnText: "Acceda con Google",
-                mainCta: "Quiero crecer",
+                mainCta: "Hablemos de su negocio",
                 trustText: "Marcas reales ya dieron el paso.",
                 scrollPhase0: "Manizales, Pereira y Cali: Juntos logramos más...",
                 scrollPhase1: "Ayudamos a estabilizar mercados tras el sismo",
@@ -2951,8 +2961,8 @@ function toggleFaq(button) {
 <script>
 (() => {
   const copy = {
-    food:{cta:'Quiero más pedidos',hero:'Haga que más personas pidan hoy.',desc:'Su comida merece más que likes: merece pedidos.',phase1:['Muestre su oferta.','Una web clara para vender.'],phase2:['Reciba y cierre.','WhatsApp, correo, agenda y Zapia IA.'],phase3:['Aparezca primero.','Google, SEO local y reputación.'],portfolio:['Casos reales','Marcas que convirtieron presencia en pedidos.'],result:['Vender más comida.','Web, WhatsApp y campañas para lograrlo.','https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20gastron%C3%B3mico.']},
-    health:{cta:'Quiero más citas',hero:'Llene su agenda con mejores oportunidades.',desc:'Mostramos su servicio y ayudamos a no perder seguimientos.',phase1:['Explique su servicio.','Una web que facilita decidir.'],phase2:['Cierre más citas.','WhatsApp, correo, agenda y Zapia IA.'],phase3:['Gane confianza.','Google, SEO local y reputación.'],portfolio:['Casos reales','Experiencias de negocios con agenda.'],result:['Llenar su agenda.','Web, WhatsApp y seguimiento para lograrlo.','https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20de%20salud%20o%20servicios.']}
+    food:{cta:'Hablemos de pedidos',hero:'Que más personas conozcan y pidan su comida.',desc:'Una web clara para mostrar su oferta y llevar conversaciones a WhatsApp.',phase1:['Muestre su oferta.','Una web clara para vender.'],phase2:['Reciba y cierre.','WhatsApp, correo, agenda y Zapia IA.'],phase3:['Aparezca primero.','Google, SEO local y reputación.'],portfolio:['Casos reales','Marcas que convirtieron presencia en pedidos.'],result:['Vender más comida.','Web, WhatsApp y campañas para lograrlo.','https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20gastron%C3%B3mico.']},
+    health:{cta:'Hablemos de su agenda',hero:'Que más personas conozcan y agenden con usted.',desc:'Una web clara para explicar su servicio y dar seguimiento a cada oportunidad.',phase1:['Explique su servicio.','Una web que facilita decidir.'],phase2:['Cierre más citas.','WhatsApp, correo, agenda y Zapia IA.'],phase3:['Gane confianza.','Google, SEO local y reputación.'],portfolio:['Casos reales','Experiencias de negocios con agenda.'],result:['Llenar su agenda.','Web, WhatsApp y seguimiento para lograrlo.','https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20de%20salud%20o%20servicios.']}
   };
   const set=(id,text)=>{const el=document.getElementById(id);if(el)el.textContent=text};
   document.querySelectorAll('.rs-selector-btn').forEach(btn=>btn.addEventListener('click',()=>{
