@@ -827,6 +827,18 @@ body[data-niche="health"] .phase-card-label,body[data-niche="health"] .phase-ent
 body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-transition-label{border-color:var(--rs-theme);color:var(--rs-theme)}
 .rs-selector-btn,.rs-niche-result,.phase-primary,.rs-case-card{transition:background .35s ease,border-color .35s ease,box-shadow .35s ease,transform .28s ease}
 </style>
+
+<style>
+/* Microcopy y señales de acción del selector */
+.rs-selector-btn{grid-template-rows:auto auto auto;align-content:center}
+.rs-selector-btn small{grid-column:2}
+.rs-selector-note{grid-column:2;display:block;margin-top:10px;color:color-mix(in srgb,var(--rs-accent) 78%,white);font-size:.68rem;font-weight:700;letter-spacing:.01em;opacity:.82}
+.rs-selector-btn:focus-visible .rs-selector-note,.rs-selector-btn:hover .rs-selector-note,.rs-selector-btn.is-active .rs-selector-note{opacity:1}
+.rs-selector-status{white-space:nowrap}
+.rs-niche-result a{display:inline-flex;align-items:center;gap:6px;width:max-content;margin-top:7px;padding:9px 0;font-size:.78rem;transition:gap .2s ease}
+.rs-niche-result a:hover{gap:10px}
+@media(max-width:600px){.rs-selector-note{font-size:.64rem;margin-top:8px}.rs-selector-btn small{font-size:.7rem}}
+</style>
 </head>
 <body class="font-sans overflow-x-hidden">
 <!-- ================= PRELOADER ================= -->
@@ -962,10 +974,10 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
     <span class="rs-eyebrow">Hablemos de su negocio</span>
     <h2 id="sectores-title">Llevamos clientes a su WhatsApp.</h2>
     <div class="rs-selector" role="tablist" aria-label="Seleccione su sector">
-      <button class="rs-selector-btn is-active rs-food" data-niche="food" role="tab" aria-selected="true" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10h16M6 10l1 9h10l1-9M8 10V7a4 4 0 018 0v3M9 19v2m6-2v2"/></svg></span><strong>Más pedidos</strong><small>Comida rápida · Asados · Alta cocina</small><span class="rs-selector-status" aria-hidden="true">Su enfoque</span></button>
-      <button class="rs-selector-btn rs-health" data-niche="health" role="tab" aria-selected="false" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg></span><strong>Más citas</strong><small>Odontología · Spa · Optometría</small><span class="rs-selector-status" aria-hidden="true">Su enfoque</span></button>
+      <button class="rs-selector-btn is-active rs-food" data-niche="food" role="tab" aria-selected="true" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10h16M6 10l1 9h10l1-9M8 10V7a4 4 0 018 0v3M9 19v2m6-2v2"/></svg></span><strong>Más pedidos</strong><small>Comida rápida · Asados · Alta cocina</small><span class="rs-selector-note">Menú, pedidos y WhatsApp.</span><span class="rs-selector-status" aria-hidden="true">Su enfoque</span></button>
+      <button class="rs-selector-btn rs-health" data-niche="health" role="tab" aria-selected="false" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg></span><strong>Más citas</strong><small>Odontología · Spa · Optometría</small><span class="rs-selector-note">Servicios, citas y WhatsApp.</span><span class="rs-selector-status" aria-hidden="true">Su enfoque</span></button>
     </div>
-    <div class="rs-niche-result" aria-live="polite"><strong id="niche-result-title">Más pedidos.</strong><span id="niche-result-copy">Web, WhatsApp y campañas juntas.</span><a id="niche-result-cta" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20gastron%C3%B3mico." target="_blank" rel="noopener">Hablar de mi negocio →</a></div>
+    <div class="rs-niche-result" aria-live="polite"><strong id="niche-result-title">Más pedidos.</strong><span id="niche-result-copy">Web, WhatsApp y campañas juntas.</span><a id="niche-result-cta" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20gastron%C3%B3mico." target="_blank" rel="noopener">Hablemos →</a></div>
   </div>
 </section>
 <!-- ================= MODAL REGISTRO / LOGIN INTELIGENTE ================= -->
@@ -3002,7 +3014,7 @@ function toggleFaq(button) {
     const niche=btn.dataset.niche, d=copy[niche];
     document.querySelectorAll('.rs-selector-btn').forEach(b=>{const active=b===btn;b.classList.toggle('is-active',active);b.setAttribute('aria-selected',active?'true':'false')});
     document.documentElement.dataset.niche=niche;document.body.dataset.niche=niche;
-    set('hero-title',d.hero);set('hero-desc',d.desc);set('main-cta-label',d.cta);set('phase1-title',d.phase1[0]);set('phase1-desc',d.phase1[1]);set('phase2-title',d.phase2[0]);set('phase2-desc',d.phase2[1]);set('phase3-title',d.phase3[0]);set('phase3-desc',d.phase3[1]);set('portfolio-title',d.portfolio[0]);set('portfolio-intro',d.portfolio[1]);set('niche-result-title',d.result[0]);set('niche-result-copy',d.result[1]);const c=document.getElementById('niche-result-cta');if(c)c.href=d.result[2];
+    set('hero-title',d.hero);set('hero-desc',d.desc);set('main-cta-label',d.cta);set('phase1-title',d.phase1[0]);set('phase1-desc',d.phase1[1]);set('phase2-title',d.phase2[0]);set('phase2-desc',d.phase2[1]);set('phase3-title',d.phase3[0]);set('phase3-desc',d.phase3[1]);set('portfolio-title',d.portfolio[0]);set('portfolio-intro',d.portfolio[1]);set('niche-result-title',d.result[0]);set('niche-result-copy',d.result[1]);const c=document.getElementById('niche-result-cta');if(c){c.href=d.result[2];c.textContent='Hablemos →';}
   }));
 })();
 
