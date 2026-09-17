@@ -1831,16 +1831,16 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-right" id="portfolio-title" data-i18n="portfolioTitle">Casos reales</h2>
 <p class="mt-5 max-w-xl text-sm md:text-base text-gray-400 leading-relaxed text-right" id="portfolio-intro" data-i18n="portfolioIntro">Vea cómo una buena web puede abrir conversaciones.</p></div>
 <div class="relative group">
-<button class="absolute -left-4 top-1/2 z-20 hidden md:flex bg-[#111] p-3 rounded-full border border-white/10 hover:border-[#FF3C00] transition-colors" id="prevBtn"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<button aria-label="Caso anterior" class="absolute -left-4 top-1/2 z-20 hidden md:flex bg-[#111] p-3 rounded-full border border-white/10 hover:border-[#FF3C00] transition-colors" id="prevBtn"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M15 19l-7-7 7-7"></path>
 </svg></button>
-<button class="absolute -right-4 top-1/2 z-20 hidden md:flex bg-[#111] p-3 rounded-full border border-white/10 hover:border-[#FF3C00] transition-colors" id="nextBtn"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<button aria-label="Siguiente caso" class="absolute -right-4 top-1/2 z-20 hidden md:flex bg-[#111] p-3 rounded-full border border-white/10 hover:border-[#FF3C00] transition-colors" id="nextBtn"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M9 5l7 7-7 7"></path>
 </svg></button>
-<button class="absolute left-2 top-1/2 -translate-y-1/2 z-30 md:hidden bg-black/20 backdrop-blur-sm p-2 rounded-full border border-white/5 opacity-0 transition-all duration-300" id="leftIndicator"><svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<button aria-label="Caso anterior" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 md:hidden bg-black/20 backdrop-blur-sm p-2 rounded-full border border-white/5 opacity-0 transition-all duration-300" id="leftIndicator"><svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M15 19l-7-7 7-7"></path>
 </svg></button>
-<button class="absolute right-2 top-1/2 -translate-y-1/2 z-30 md:hidden bg-black/20 backdrop-blur-sm p-2 rounded-full border border-white/5 transition-all duration-300" id="rightIndicator"><svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<button aria-label="Siguiente caso" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 md:hidden bg-black/20 backdrop-blur-sm p-2 rounded-full border border-white/5 transition-all duration-300" id="rightIndicator"><svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M9 5l7 7-7 7"></path>
 </svg></button>
 <div class="rs-case-track" id="ecosystem-slider" aria-live="polite"></div><script>
@@ -3070,6 +3070,25 @@ function toggleFaq(button) {
 .rs-niche-result>strong{font-size:clamp(.9rem,1.25vw,1.03rem)!important}
 .rs-niche-result>span{font-size:.74rem!important;line-height:1.35!important}
 @media(max-width:760px){.rs-selector-btn .rs-selector-kicker{font-size:.55rem!important}.rs-selector-btn>strong{font-size:1rem!important}.rs-selector-btn small{font-size:.67rem!important}.rs-selector-btn .rs-selector-note{font-size:.61rem!important}}
+</style>
+
+<style id="rs-sections-polish">
+/* Capa final de coherencia visual para fases, casos y oferta. */
+#maquinaria-automatizada{padding-block:clamp(4.5rem,9vw,7.5rem)}
+#maquinaria-automatizada .premium-title-frame{max-width:760px;padding:clamp(1.1rem,3vw,2rem);border-left-width:2px;border-radius:18px}
+#maquinaria-automatizada .premium-title-frame h2{font-size:clamp(2rem,4.8vw,3.8rem);line-height:1.02;max-width:15ch}
+#maquinaria-automatizada .phase-offer-callout{max-width:760px;margin-inline:auto;margin-bottom:clamp(2.5rem,6vw,5rem);border-radius:18px}
+#maquinaria-automatizada .stacking-card{border-radius:22px!important}
+#maquinaria-automatizada .stacking-card h3{font-size:clamp(1.35rem,2.6vw,2rem);line-height:1.05}
+#maquinaria-automatizada .stacking-card p{font-size:clamp(.92rem,1.35vw,1.08rem);line-height:1.55}
+#maquinaria-automatizada .neon-phase-number{font-size:clamp(8rem,16vw,14rem);opacity:.7}
+#casos-exito-ecosistemas{padding-block:clamp(4.5rem,9vw,7.5rem)}
+#casos-exito-ecosistemas #portfolio-title{font-size:clamp(2rem,5vw,3.9rem);line-height:1.02}
+#casos-exito-ecosistemas #portfolio-intro{font-size:clamp(.9rem,1.35vw,1.05rem);line-height:1.5}
+#seccion-5-pricing{padding-block:clamp(4.5rem,9vw,7.5rem)}
+#seccion-5-pricing h2{font-size:clamp(2rem,5vw,3.7rem);line-height:1.03}
+#seccion-5-pricing .faq-item{border-radius:14px}
+@media(max-width:640px){#maquinaria-automatizada .stacking-card{padding:1.25rem!important}#maquinaria-automatizada .neon-phase-number{font-size:8rem;right:.5rem!important;opacity:.45}#casos-exito-ecosistemas #portfolio-title,#casos-exito-ecosistemas #portfolio-intro{text-align:left}}
 </style>
 </body>
 </html>
