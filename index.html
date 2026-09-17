@@ -3059,5 +3059,17 @@ function toggleFaq(button) {
   tabs.forEach(tab => tab.addEventListener('click', () => tabs.forEach(item => item.tabIndex = item === tab ? 0 : -1)));
 })();
 </script>
+
+<style id="rs-selector-final-tuning">
+/* Última capa visual: evita que estilos heredados agranden el selector. */
+.rs-selector-btn .rs-selector-kicker{font-size:.58rem!important;line-height:1!important;letter-spacing:.15em!important;margin:0 0 3px!important}
+.rs-selector-btn>strong{font-size:clamp(1rem,1.45vw,1.2rem)!important;line-height:1.08!important}
+.rs-selector-btn small{font-size:clamp(.67rem, .9vw, .75rem)!important;line-height:1.35!important}
+.rs-selector-btn .rs-selector-note{font-size:.66rem!important;line-height:1.2!important;margin-top:6px!important;letter-spacing:.02em!important}
+.rs-selector-btn .rs-selector-status{font-size:.49rem!important;line-height:1!important}
+.rs-niche-result>strong{font-size:clamp(.9rem,1.25vw,1.03rem)!important}
+.rs-niche-result>span{font-size:.74rem!important;line-height:1.35!important}
+@media(max-width:760px){.rs-selector-btn .rs-selector-kicker{font-size:.55rem!important}.rs-selector-btn>strong{font-size:1rem!important}.rs-selector-btn small{font-size:.67rem!important}.rs-selector-btn .rs-selector-note{font-size:.61rem!important}}
+</style>
 </body>
 </html>
