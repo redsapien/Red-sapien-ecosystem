@@ -839,6 +839,15 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 .rs-niche-result a:hover{gap:10px}
 @media(max-width:600px){.rs-selector-note{font-size:.64rem;margin-top:8px}.rs-selector-btn small{font-size:.7rem}}
 </style>
+
+<style>
+/* Identidad de cada nicho: clara antes de la interacción */
+.rs-selector-btn{grid-template-rows:auto auto auto auto;align-content:center}
+.rs-selector-kicker{grid-column:2;display:block;margin-bottom:7px;color:var(--rs-accent);font:700 .62rem/1 'Space Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.rs-selector-btn strong{grid-column:2}
+.rs-selector-btn small{grid-column:2}
+@media(max-width:600px){.rs-selector-kicker{font-size:.56rem;margin-bottom:5px}}
+</style>
 </head>
 <body class="font-sans overflow-x-hidden">
 <!-- ================= PRELOADER ================= -->
@@ -973,9 +982,9 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
   <div class="rs-sectors-inner">
     <span class="rs-eyebrow">Hablemos de su negocio</span>
     <h2 id="sectores-title">¿Qué quiere lograr primero?</h2>
-    <div class="rs-selector" role="tablist" aria-label="Seleccione su sector">
-      <button class="rs-selector-btn is-active rs-food" data-niche="food" role="tab" aria-selected="true" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10h16M6 10l1 9h10l1-9M8 10V7a4 4 0 018 0v3M9 19v2m6-2v2"/></svg></span><strong>Más pedidos</strong><small>Comida rápida · Asados · Alta cocina</small><span class="rs-selector-note">Oferta · Pedidos · WhatsApp.</span><span class="rs-selector-status" aria-hidden="true">Elegido</span></button>
-      <button class="rs-selector-btn rs-health" data-niche="health" role="tab" aria-selected="false" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg></span><strong>Más citas</strong><small>Odontología · Spa · Optometría</small><span class="rs-selector-note">Servicios · Citas · WhatsApp.</span><span class="rs-selector-status" aria-hidden="true">Elegido</span></button>
+    <div class="rs-selector" role="tablist" aria-label="Seleccione gastronomía o servicios profesionales">
+      <button class="rs-selector-btn is-active rs-food" data-niche="food" role="tab" aria-selected="true" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10h16M6 10l1 9h10l1-9M8 10V7a4 4 0 018 0v3M9 19v2m6-2v2"/></svg></span><span class="rs-selector-kicker">Gastronomía</span><strong>Más pedidos</strong><small>Comida rápida · Asados · Alta cocina</small><span class="rs-selector-note">Oferta · Pedidos · WhatsApp.</span><span class="rs-selector-status" aria-hidden="true">Elegido</span></button>
+      <button class="rs-selector-btn rs-health" data-niche="health" role="tab" aria-selected="false" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg></span><span class="rs-selector-kicker">Servicios profesionales</span><strong>Más citas</strong><small>Odontología · Spa y estética · Óptica y optometría</small><span class="rs-selector-note">Servicios · Citas · WhatsApp.</span><span class="rs-selector-status" aria-hidden="true">Elegido</span></button>
     </div>
     <div class="rs-niche-result" aria-live="polite"><strong id="niche-result-title">Más pedidos.</strong><span id="niche-result-copy">Web, WhatsApp y campañas juntas.</span><a id="niche-result-cta" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20gastron%C3%B3mico." target="_blank" rel="noopener">Hablemos →</a></div>
   </div>
