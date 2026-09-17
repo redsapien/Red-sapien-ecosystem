@@ -913,7 +913,7 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 <path class="heart-scan" d="M15.2 23.3h4.4l1.5-2.1 2.1 4.2 2-5.1 1.6 3h5.8"></path>
 </svg>
 </div>
-<button aria-label="Abrir menú" class="p-2 hover:bg-white/5 rounded-lg transition-all text-white focus:outline-none border border-white/5" id="menu-trigger">
+<button aria-label="Abrir menú" class="p-2 hover:bg-white/5 rounded-lg transition-all text-white focus:outline-none border border-white/5" id="menu-trigger" type="button">
 <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20">
 <rect height="7" width="7" x="3" y="3"></rect>
 <rect height="7" width="7" x="14" y="3"></rect>
@@ -924,7 +924,7 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 </nav>
 </header>
 <div class="fixed inset-0 z-[60] opacity-0 invisible flex flex-col items-center justify-center px-6" id="mobile-menu">
-<button class="absolute top-8 right-8 text-gray-400 hover:text-rs-red scale-125 transition-colors focus:outline-none" id="close-menu">✕
+<button class="absolute top-8 right-8 text-gray-400 hover:text-rs-red scale-125 transition-colors focus:outline-none" id="close-menu" type="button">✕
             Close</button>
 <div class="w-full max-w-sm space-y-4"><div class="matrix-link-box p-6 rounded-xl"><button class="cursor-pointer block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300 w-full text-left" data-i18n="mobilePlatform" onclick="window.rsOpenAuth('login')" type="button">Ingresar</button></div><div class="matrix-link-box p-6 rounded-xl"><button class="cursor-pointer block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300 w-full text-left" data-i18n="mobileRegister" onclick="window.rsOpenAuth('register')" type="button">Comience</button></div>
 <div class="matrix-link-box p-6 rounded-xl">
@@ -1832,16 +1832,16 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-right" id="portfolio-title" data-i18n="portfolioTitle">Casos reales</h2>
 <p class="mt-5 max-w-xl text-sm md:text-base text-gray-400 leading-relaxed text-right" id="portfolio-intro" data-i18n="portfolioIntro">Vea cómo una buena web puede abrir conversaciones.</p></div>
 <div class="relative group">
-<button aria-label="Caso anterior" class="absolute -left-4 top-1/2 z-20 hidden md:flex bg-[#111] p-3 rounded-full border border-white/10 hover:border-[#FF3C00] transition-colors" id="prevBtn"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<button aria-label="Caso anterior" class="absolute -left-4 top-1/2 z-20 hidden md:flex bg-[#111] p-3 rounded-full border border-white/10 hover:border-[#FF3C00] transition-colors" id="prevBtn" type="button"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M15 19l-7-7 7-7"></path>
 </svg></button>
-<button aria-label="Siguiente caso" class="absolute -right-4 top-1/2 z-20 hidden md:flex bg-[#111] p-3 rounded-full border border-white/10 hover:border-[#FF3C00] transition-colors" id="nextBtn"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<button aria-label="Siguiente caso" class="absolute -right-4 top-1/2 z-20 hidden md:flex bg-[#111] p-3 rounded-full border border-white/10 hover:border-[#FF3C00] transition-colors" id="nextBtn" type="button"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M9 5l7 7-7 7"></path>
 </svg></button>
-<button aria-label="Caso anterior" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 md:hidden bg-black/20 backdrop-blur-sm p-2 rounded-full border border-white/5 opacity-0 transition-all duration-300" id="leftIndicator"><svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<button aria-label="Caso anterior" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 md:hidden bg-black/20 backdrop-blur-sm p-2 rounded-full border border-white/5 opacity-0 transition-all duration-300" id="leftIndicator" type="button"><svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M15 19l-7-7 7-7"></path>
 </svg></button>
-<button aria-label="Siguiente caso" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 md:hidden bg-black/20 backdrop-blur-sm p-2 rounded-full border border-white/5 transition-all duration-300" id="rightIndicator"><svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<button aria-label="Siguiente caso" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 md:hidden bg-black/20 backdrop-blur-sm p-2 rounded-full border border-white/5 transition-all duration-300" id="rightIndicator" type="button"><svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M9 5l7 7-7 7"></path>
 </svg></button>
 <div class="rs-case-track" id="ecosystem-slider" aria-live="polite"></div><script>
@@ -2486,9 +2486,6 @@ function toggleFaq(button) {
                 portfolioBadge: "Webs que generan confianza",
                 portfolioTitle: "Casos reales",
                 portfolioIntro: "Vea cómo una buena web puede abrir conversaciones.",
-                scrollPhase0: "Manizales, Pereira and Cali: Together we achieve more...",
-                scrollPhase1: "We help stabilize markets after the earthquake",
-                scrollPhase2: "Activate your ecosystem and sell better today",
                 case1Title: "La Plancha Manizales",
                 case1Desc: "Web, IA y WhatsApp para presentar domicilios y facilitar pedidos.",
                 case2Title: "La Papa Prohibida",
