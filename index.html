@@ -21,7 +21,6 @@
 <meta content="Red Sapien | Ecosistema completo para captar clientes" name="twitter:title"/>
 <meta content="Web + IA, captación, SEO, GEO y reputación para negocios en Colombia. Ecosistema $327.000 COP; entrada desde $109.000 COP." name="twitter:description"/>
 <meta content="https://raw.githubusercontent.com/redsapien/Red-sapien-ecosystem/3c4f9ec6e988c16d4cc3efd12559ae1f4986eb84/assets/Image/Imagen-Open-Red-Sapien.webp" name="twitter:image"/>
-<!-- Meta Pixel Code -->
 <script>
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
@@ -58,9 +57,9 @@ window.rsGoogleAuth=function(){
 };
 </script>
 <noscript><img alt="" height="1" src="https://www.facebook.com/tr?id=3070185119839151&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
-<!-- End Meta Pixel Code -->
 <link href="/favicon.svg" rel="icon" type="image/svg+xml" sizes="any"/><link href="/favicon.svg" rel="shortcut icon" type="image/svg+xml"/><link href="/favicon.svg" rel="apple-touch-icon"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://cdn.jsdelivr.net" rel="preconnect" crossorigin/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -848,9 +847,13 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 .rs-selector-btn small{grid-column:2}
 @media(max-width:600px){.rs-selector-kicker{font-size:.56rem;margin-bottom:5px}}
 </style>
+
+<style>
+/* Rendimiento: no bloquear el primer pantallazo con contenido inferior */
+#maquinaria-automatizada,#casos-exito-ecosistemas,#seccion-5-pricing,#manifiesto-maquinaria{content-visibility:auto;contain-intrinsic-size:auto 720px}
+</style>
 </head>
 <body class="font-sans overflow-x-hidden">
-<!-- ================= PRELOADER ================= -->
 <div aria-label="Cargando Red Sapien" aria-live="polite" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center transition-opacity duration-500" id="preloader" role="status">
 <div class="relative w-24 h-24 flex items-center justify-center mb-6">
 <div class="absolute w-full h-full border-t-4 border-rs-red rounded-full animate-spin-slow"></div>
@@ -858,7 +861,6 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 </div>
 <div class="text-[10px] uppercase tracking-[0.3em] text-gray-500">Conectando...</div>
 </div>
-<!-- ================= MENÚ PRINCIPAL ================= -->
 <header class="fixed top-0 w-full z-50">
 <div class="h-1.5 w-full" id="colombia-stripe" style="background: linear-gradient(to right, #FCD116 50%, #003893 50% 75%, #CE1126 75%);"></div>
 <nav class="relative px-6 py-4 md:px-12 flex justify-between items-center glass-nav-premium" id="main-nav">
@@ -903,7 +905,6 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 </div>
 </div>
 </div>
-<!-- ================= HERO / SECCIÓN PRINCIPAL ================= -->
 <main class="bg-subtle-red relative min-h-screen flex flex-col items-center justify-center pt-32 md:pt-40 pb-12 text-center overflow-hidden">
 <div class="tech-mesh-layer"></div>
 <div class="absolute inset-0 w-full h-full pointer-events-none z-0 hero-background-svg">
@@ -941,11 +942,9 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 </div>
 <div class="w-full mt-auto mb-4 bg-gradient-to-t from-[#050505]/50 to-transparent py-6">
 <p class="text-xs uppercase tracking-[0.2em] text-gray-400 font-bold mb-8 px-4" data-i18n="trustText" id="trust-text">Marcas reales ya dieron el paso.</p>
-<!-- ================= SLIDER DE LOGOS INFINITO CON 9 LOGOS (2 COPIA) ================= -->
 <div class="w-full overflow-x-auto overflow-y-hidden scrollbar-hide relative py-2">
 <div class="absolute inset-0 logo-slider-gradient pointer-events-none"></div>
 <div class="flex logo-track items-center">
-<!-- Primera copia (9 logos) -->
 <div class="flex items-center gap-4 md:gap-6 px-4">
 <div class="logo-item"><img alt="La Plancha" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" decoding="async" loading="lazy" src="assets/Image/La-plancha-manizales.webp"/></div>
 <div class="logo-item"><img alt="Noir Elixir" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" decoding="async" loading="lazy" src="assets/Image/Noir-medellin.webp"/></div>
@@ -957,7 +956,6 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 <div class="logo-item"><img alt="La Papa Prohibida" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" decoding="async" loading="lazy" src="assets/Image/Logo-papa.webp"/></div>
 <div class="logo-item"><img alt="Construventas" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" decoding="async" loading="lazy" src="assets/Image/Logo-Construventas.webp"/></div>
 </div>
-<!-- Segunda copia (9 logos) -->
 <div class="flex items-center gap-4 md:gap-6 px-4">
 <div class="logo-item"><img alt="La Plancha" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" decoding="async" loading="lazy" src="assets/Image/La-plancha-manizales.webp"/></div>
 <div class="logo-item"><img alt="Noir Elixir" class="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300" decoding="async" loading="lazy" src="assets/Image/Noir-medellin.webp"/></div>
@@ -977,7 +975,6 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 </svg><span class="text-xs font-sans tracking-widest uppercase opacity-50" data-i18n="securityBadge">Resultados Reales: Pago Contra Entrega</span></div>
 </div>
 </main>
-<!-- ================= SECTORES PRIORITARIOS ================= -->
 <section id="sectores" class="rs-sectors-section" aria-labelledby="sectores-title">
   <div class="rs-sectors-inner">
     <span class="rs-eyebrow">Hablemos de su negocio</span>
@@ -989,14 +986,12 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
     <div class="rs-niche-result" aria-live="polite"><strong id="niche-result-title">Más pedidos.</strong><span id="niche-result-copy">Web, WhatsApp y campañas juntas.</span><a id="niche-result-cta" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20gastron%C3%B3mico." target="_blank" rel="noopener">Hablemos →</a></div>
   </div>
 </section>
-<!-- ================= MODAL REGISTRO / LOGIN INTELIGENTE ================= -->
 <div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" id="register-modal" role="dialog">
 <div class="bg-[#171717] border border-white/10 w-full max-w-sm max-h-[90vh] overflow-y-auto p-6 sm:p-8 rounded-2xl relative shadow-2xl">
 <button class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none" onclick="window.rsCloseAuth()" type="button">✕</button>
 <h2 class="text-xl font-display font-bold mb-2 text-center modal-title-glow" id="modal-title">Cree su cuenta
             </h2>
 <p class="text-xs text-gray-400 text-center mb-4" id="modal-subtitle">Únase al ecosistema de ventas</p>
-<!-- Área de mensajes de error / éxito -->
 <div class="hidden text-center text-sm font-medium mb-3" id="auth-message"></div>
 <div class="relative my-6" id="google-separator">
 <div class="absolute inset-0 flex items-center">
@@ -1036,18 +1031,14 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
                     Conéctese ahora
                 </button>
 </form>
-<!-- Selector de modo (Login / Registro) -->
 <div class="mt-4 text-center text-xs text-gray-400">
 <span id="toggle-mode-text">¿Ya tiene cuenta?</span>
 <button class="text-rs-red font-bold hover:underline ml-1" id="toggle-mode-btn" onclick="window.rsOpenAuth('register')" type="button">
                     Inicia sesión
                 </button>
 </div>
-<!-- Separador -->
-<!-- Botón Google (con id para manipular su visibilidad) -->
 </div>
 </div>
-<!-- ================= SECCIÓN MAQUINARIA AUTOMATIZADA ================= -->
 <section class="relative w-full bg-[#050505] text-white py-28 md:py-36 overflow-hidden select-none section-transition" id="maquinaria-automatizada">
 <style>
             .premium-title-frame {
@@ -1590,7 +1581,6 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 <a class="phase-offer-cta" data-i18n="phaseOfferCta" href="https://wa.me/573012800024?text=Hola%2C%20deseo%20saber%20m%C3%A1s%20de%20la%20web%20de%20ventas...%20%F0%9F%8C%90" rel="noopener noreferrer" target="_blank">Hablar por WhatsApp</a>
 </div>
 <div class="space-y-0 w-full" id="cards-stack-wrapper">
-<!-- Card Fase 1 -->
 <div class="stacking-card phase-primary w-full rounded-2xl overflow-hidden p-8 md:p-10 ring-1 ring-[#FF3C00]/40 shadow-[0_0_55px_rgba(255,60,0,0.09)]" data-phase="primary" id="card-phase-1">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
 <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 overflow-hidden rounded-l-2xl video-container phase-video-frame">
@@ -1626,7 +1616,6 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 <span class="phase-transition-label" data-i18n="phaseTransition">SIGUIENTE FASE · CAPTACIÓN</span>
 <span class="phase-transition-line"></span>
 </div>
-<!-- Card Fase 2 -->
 <div class="stacking-card mt-16 sticky top-56 w-full rounded-2xl overflow-hidden p-8 md:p-10" id="card-phase-2">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
 <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 overflow-hidden rounded-l-2xl video-container">
@@ -1656,7 +1645,6 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 <span class="phase-transition-label" data-i18n="phaseFinalTransition">FASE FINAL · POSICIONAMIENTO</span>
 <span class="phase-transition-line"></span>
 </div>
-<!-- Card Fase 3 -->
 <div class="stacking-card mt-16 sticky top-56 w-full rounded-2xl overflow-hidden p-8 md:p-10" id="card-phase-3">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
 <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 overflow-hidden rounded-l-2xl video-container">
@@ -1693,7 +1681,6 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 </svg>
 </a>
 </div>
-<!-- ================= BURBUJA DE PERFIL CON LÓGICA DE TIEMPOS ================= -->
 <div class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end profile-bubble-wrapper" id="profile-bubble-wrapper">
 <div class="profile-bubble relative w-14 h-14 cursor-pointer hover:scale-105 transition-transform duration-300" id="profile-bubble">
 <div class="w-full h-full rounded-full overflow-hidden border-2 border-white/20 shadow-lg">
@@ -1791,7 +1778,6 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
                 })();
         </script>
 </section>
-<!-- ================= SECCIÓN PRICING (AHORA EN TERCER LUGAR) ================= -->
 <section class="relative w-full bg-[#0A0A0A] text-white py-28 md:py-36 overflow-hidden selection:bg-[#FF3C00] selection:text-white section-transition" id="casos-exito-ecosistemas">
 <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-10">
 <svg class="relative block w-full h-[50px] md:h-[70px]" preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
@@ -1983,7 +1969,6 @@ function toggleFaq(button) {
 </script>
 </div>
 </div>
-<!-- OLA INFERIOR (conecta con la siguiente sección clara) -->
 <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 transform rotate-180">
 <svg class="relative block w-full h-[50px] md:h-[70px]" preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
 <defs>
@@ -1996,7 +1981,6 @@ function toggleFaq(button) {
 </svg>
 </div>
 </section>
-<!-- ================= MANIFIESTO MAQUINARIA ================= -->
 <section class="relative w-full min-h-screen flex flex-col justify-center items-center bg-[#F8F9FA] text-gray-900 py-28 md:py-36 px-6 md:px-12 overflow-hidden snap-start selection:bg-[#FF3C00] selection:text-white section-transition" id="manifiesto-maquinaria">
 <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-10">
 <svg class="relative block w-full h-[50px] md:h-[70px]" preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
@@ -2061,7 +2045,6 @@ function toggleFaq(button) {
  const type=document.getElementById('typewriter-text'), cursor=document.getElementById('typewriter-cursor'); if(type){ const value=(window.translations&&window.translations.es&&window.translations.es.typewriterText)||'Monitoree su negocio 24/7'; type.textContent=''; let n=0; const tick=()=>{ if(n<value.length){type.textContent=value.slice(0,++n);setTimeout(tick,38);}else if(cursor)cursor.style.display='none'; }; tick(); }
 })();
 </script>
-<!-- Ola inferior (conecta con Casos de éxito) -->
 <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 transform rotate-180">
 <svg class="relative block w-full h-[50px] md:h-[70px]" preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
 <defs>
@@ -2074,8 +2057,6 @@ function toggleFaq(button) {
 </svg>
 </div>
 </section>
-<!-- ================= CASOS DE ÉXITO ================= -->
-<!-- ================= FOOTER ================= -->
 <footer class="relative w-full overflow-hidden z-50 selection:bg-[#FF3C00] selection:text-white section-transition" id="footer-red-sapien">
 <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#050505] to-transparent z-20 pointer-events-none">
 </div>
@@ -2182,7 +2163,6 @@ function toggleFaq(button) {
 </div>
 </div>
 </footer>
-<!-- ================= SCRIPTS GLOBALES Y TRADUCCIÓN ================= -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
         // ================================================================
@@ -2856,7 +2836,6 @@ function toggleFaq(button) {
         // Para no reescribir todo, voy a reemplazar el script del slider con uno que use window._slideTexts.
         // Lo haré directamente en el código final.
     </script>
-<!-- Script adicional para sincronizar el slider con las traducciones -->
 <script>
         // Este script se ejecuta después de que el DOM esté listo y después de que el slider se haya inicializado.
         // Sobrescribimos la función goToSlide para que use window._slideTexts.
