@@ -852,6 +852,33 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 /* Rendimiento: no bloquear el primer pantallazo con contenido inferior */
 #maquinaria-automatizada,#casos-exito-ecosistemas,#seccion-5-pricing,#manifiesto-maquinaria{content-visibility:auto;contain-intrinsic-size:auto 720px}
 </style>
+
+<style id="rs-selector-pro-overrides">
+/* Selector de nicho: tarjetas compactas, táctiles y legibles en cualquier pantalla. */
+.rs-sectors-section{--rs-selector-max:880px;position:relative;isolation:isolate;overflow:hidden}
+.rs-sectors-section::before{content:"";position:absolute;inset:8% -12% auto;height:420px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 0,color-mix(in srgb,var(--rs-accent,#ff3c00) 8%,transparent),transparent 68%);opacity:.75}
+.rs-sectors-inner{width:min(100% - 32px,var(--rs-selector-max));margin-inline:auto}
+.rs-sectors-section .rs-eyebrow{display:block;margin-bottom:10px;font-size:.66rem;line-height:1;letter-spacing:.18em;text-transform:uppercase;color:color-mix(in srgb,var(--rs-accent,#ff3c00) 82%,white);font-weight:800}
+.rs-sectors-section h2{max-width:18ch;margin:0;font-size:clamp(1.65rem,3.4vw,2.55rem);line-height:1.06;letter-spacing:-.045em}
+.rs-selector{width:100%;max-width:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.rs-selector-btn{width:100%;min-width:0;min-height:146px;display:grid;grid-template-columns:44px minmax(0,1fr);grid-template-rows:auto auto auto auto;column-gap:14px;row-gap:4px;align-content:center;padding:22px 24px;border-radius:20px;text-align:left;background:linear-gradient(145deg,rgba(27,27,27,.96),rgba(10,10,10,.98));border:1px solid rgba(255,255,255,.14);box-shadow:0 12px 32px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.06);transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease,background .24s ease}
+.rs-selector-btn::before{opacity:.1}
+.rs-selector-btn:hover{transform:translateY(-3px)}
+.rs-selector-btn:active{transform:translateY(-1px) scale(.995)}
+.rs-selector-btn:focus-visible{outline:2px solid color-mix(in srgb,var(--rs-accent,#ff3c00) 78%,white);outline-offset:4px}
+.rs-selector-icon{grid-column:1;grid-row:1 / span 4;width:44px;height:44px;border-radius:13px}
+.rs-selector-icon svg{width:20px;height:20px}
+.rs-selector-kicker{font-size:.59rem;line-height:1;letter-spacing:.16em;margin:0 0 3px}
+.rs-selector-btn strong{grid-column:2;font-size:clamp(1.02rem,1.7vw,1.26rem);line-height:1.08;letter-spacing:-.025em}
+.rs-selector-btn small{grid-column:2;margin:2px 0 0;font-size:clamp(.68rem,1vw,.76rem);line-height:1.4;color:#aaa;overflow-wrap:anywhere}
+.rs-selector-note{grid-column:2;margin-top:6px;font-size:.65rem;line-height:1.2}
+.rs-selector-status{top:15px;right:17px;font-size:.5rem;letter-spacing:.13em}
+.rs-niche-result{width:100%;max-width:none;margin-top:14px;padding:14px 18px;border-radius:14px;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:14px;background:linear-gradient(110deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border-left-width:2px}
+.rs-niche-result strong,.rs-niche-result span{min-width:0}.rs-niche-result strong{font-size:clamp(.92rem,1.4vw,1.05rem)}.rs-niche-result span{font-size:.75rem;line-height:1.35}.rs-niche-result a{white-space:nowrap;font-size:.72rem}
+@media (max-width:760px){.rs-sectors-inner{width:min(100% - 24px,620px)}.rs-selector{grid-template-columns:1fr;gap:12px;margin-top:20px}.rs-selector-btn{min-height:122px;padding:19px 18px;border-radius:17px}.rs-selector-icon{width:40px;height:40px;border-radius:12px}.rs-selector-status{top:13px;right:14px}.rs-niche-result{grid-template-columns:1fr;row-gap:5px;padding:13px 15px}.rs-niche-result a{margin-top:3px}}
+@media (max-width:380px){.rs-selector-btn{grid-template-columns:38px minmax(0,1fr);column-gap:11px;padding:17px 15px}.rs-selector-icon{width:36px;height:36px}.rs-selector-btn small{font-size:.65rem}.rs-selector-note{font-size:.6rem}}
+@media (prefers-reduced-motion:reduce){.rs-selector-btn,.rs-selector-icon{transition:none}.rs-selector-btn:hover,.rs-selector-btn.is-active{transform:none}}
+</style>
 </head>
 <body class="font-sans overflow-x-hidden">
 <div aria-label="Cargando Red Sapien" aria-live="polite" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center transition-opacity duration-500" id="preloader" role="status">
@@ -980,10 +1007,10 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
     <span class="rs-eyebrow">Hablemos de su negocio</span>
     <h2 id="sectores-title">¿Qué quiere lograr primero?</h2>
     <div class="rs-selector" role="tablist" aria-label="Seleccione gastronomía o servicios profesionales">
-      <button class="rs-selector-btn is-active rs-food" data-niche="food" role="tab" aria-selected="true" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10h16M6 10l1 9h10l1-9M8 10V7a4 4 0 018 0v3M9 19v2m6-2v2"/></svg></span><span class="rs-selector-kicker">Gastronomía</span><strong>Más pedidos</strong><small>Comida rápida · Asados · Alta cocina</small><span class="rs-selector-note">Oferta · Pedidos · WhatsApp.</span><span class="rs-selector-status" aria-hidden="true">Elegido</span></button>
-      <button class="rs-selector-btn rs-health" data-niche="health" role="tab" aria-selected="false" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg></span><span class="rs-selector-kicker">Servicios profesionales</span><strong>Más citas</strong><small>Odontología · Spa y estética · Óptica y optometría</small><span class="rs-selector-note">Servicios · Citas · WhatsApp.</span><span class="rs-selector-status" aria-hidden="true">Elegido</span></button>
+      <button class="rs-selector-btn is-active rs-food" data-niche="food" role="tab" aria-selected="true" aria-controls="niche-result" tabindex="0" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10h16M6 10l1 9h10l1-9M8 10V7a4 4 0 018 0v3M9 19v2m6-2v2"/></svg></span><span class="rs-selector-kicker">Gastronomía</span><strong>Más pedidos</strong><small>Comida rápida · Asados · Alta cocina</small><span class="rs-selector-note">Oferta · Pedidos · WhatsApp.</span><span class="rs-selector-status" aria-hidden="true">Elegido</span></button>
+      <button class="rs-selector-btn rs-health" data-niche="health" role="tab" aria-selected="false" aria-controls="niche-result" tabindex="-1" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg></span><span class="rs-selector-kicker">Servicios profesionales</span><strong>Más citas</strong><small>Odontología · Spa y estética · Óptica y optometría</small><span class="rs-selector-note">Servicios · Citas · WhatsApp.</span><span class="rs-selector-status" aria-hidden="true">Elegido</span></button>
     </div>
-    <div class="rs-niche-result" aria-live="polite"><strong id="niche-result-title">Más pedidos.</strong><span id="niche-result-copy">Web, WhatsApp y campañas juntas.</span><a id="niche-result-cta" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20gastron%C3%B3mico." target="_blank" rel="noopener">Hablemos →</a></div>
+    <div id="niche-result" class="rs-niche-result" role="tabpanel" aria-live="polite"><strong id="niche-result-title">Más pedidos.</strong><span id="niche-result-copy">Web, WhatsApp y campañas juntas.</span><a id="niche-result-cta" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20gastron%C3%B3mico." target="_blank" rel="noopener">Hablemos →</a></div>
   </div>
 </section>
 <div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" id="register-modal" role="dialog">
@@ -2959,7 +2986,7 @@ function toggleFaq(button) {
             if (!benefitText) return;
             const lists = {
                 es: ["4 secciones personalizadas", "Adaptado a su marca", "Diseño responsive", "WhatsApp integrado", "Código optimizado", "Pago único"],
-                en: ["4 custom sections", "Adapted to your brand", "Responsive design", "WhatsApp integrated", "Optimized code", "Pay on delivery"],
+                en: ["4 custom sections", "Adapted to your brand", "Responsive design", "WhatsApp integrated", "Optimized code", "One-time payment"],
                 pt: ["4 seções personalizadas", "Adaptado à sua marca", "Design responsivo", "WhatsApp integrado", "Código otimizado", "Pagamento único"]
             };
             let index = 0;
@@ -3015,6 +3042,22 @@ function toggleFaq(button) {
   document.documentElement.dataset.niche='food';document.body.dataset.niche='food';
   renderCases('food');
   document.querySelectorAll('.rs-selector-btn').forEach(btn=>btn.addEventListener('click',()=>renderCases(btn.dataset.niche)));
+</script>
+
+<script>
+/* Teclado: el selector también funciona como un tablist accesible. */
+(() => {
+  const tabs = [...document.querySelectorAll('.rs-selector-btn[role="tab"]')];
+  if (tabs.length < 2) return;
+  const focusTab = (index) => { const next = tabs[(index + tabs.length) % tabs.length]; next.focus(); next.click(); };
+  tabs.forEach((tab, index) => tab.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') { event.preventDefault(); focusTab(index + 1); }
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') { event.preventDefault(); focusTab(index - 1); }
+    if (event.key === 'Home') { event.preventDefault(); focusTab(0); }
+    if (event.key === 'End') { event.preventDefault(); focusTab(tabs.length - 1); }
+  }));
+  tabs.forEach(tab => tab.addEventListener('click', () => tabs.forEach(item => item.tabIndex = item === tab ? 0 : -1)));
+})();
 </script>
 </body>
 </html>
