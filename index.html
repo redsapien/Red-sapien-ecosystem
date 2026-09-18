@@ -3229,5 +3229,19 @@ footer{overflow:hidden}footer a{min-width:0}footer .break-all{overflow-wrap:anyw
 #main-cta svg,.phase-offer-cta svg,.panel-register-cta svg{flex:0 0 auto}
 button:focus-visible,a:focus-visible{outline:2px solid color-mix(in srgb,var(--rs-accent,#ff3c00) 75%,white);outline-offset:3px}
 </style>
+
+<style id="rs-niche-icon-motion">
+/* Iconos propios por nicho: movimiento breve, sutil y solo en el estado activo. */
+@keyframes rs-food-icon-pulse{0%,100%{transform:rotate(0) scale(1)}45%{transform:rotate(-5deg) scale(1.07)}}
+@keyframes rs-health-icon-breathe{0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 transparent)}50%{transform:scale(1.08);filter:drop-shadow(0 0 7px rgba(57,198,162,.55))}}
+.rs-selector-btn.rs-food .rs-selector-icon{color:#ff7047}
+.rs-selector-btn.rs-health .rs-selector-icon{color:#39c6a2}
+.rs-selector-btn.rs-food.is-active .rs-selector-icon svg{animation:rs-food-icon-pulse 2.8s ease-in-out infinite}
+.rs-selector-btn.rs-health.is-active .rs-selector-icon svg{animation:rs-health-icon-breathe 2.8s ease-in-out infinite}
+.rs-selector-btn.rs-food.is-active .rs-selector-icon{background:linear-gradient(145deg,rgba(255,60,0,.2),rgba(255,60,0,.05))}
+.rs-selector-btn.rs-health.is-active .rs-selector-icon{background:linear-gradient(145deg,rgba(57,198,162,.2),rgba(57,198,162,.05))}
+.rs-selector-btn:not(.is-active) .rs-selector-icon svg{animation:none}
+@media(prefers-reduced-motion:reduce){.rs-selector-btn.rs-food.is-active .rs-selector-icon svg,.rs-selector-btn.rs-health.is-active .rs-selector-icon svg{animation:none}}
+</style>
 </body>
 </html>
