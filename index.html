@@ -2040,7 +2040,7 @@ function toggleFaq(button) {
 </div>
 <div class="w-full max-w-lg" id="slide-text-container">
 <p class="text-gray-600 text-sm md:text-base font-medium leading-relaxed slide-text active transition-all duration-500" id="slide-text-content">Revise su negocio desde un panel intuitivo.</p>
-<button class="panel-register-cta" data-i18n="panelRegister" id="panel-register-cta" onclick="window.rsOpenAuth('register')" type="button">Registrarse</button></div>
+<button aria-label="Hablar sobre mi negocio por WhatsApp" class="panel-register-cta" data-i18n="panelRegister" id="panel-register-cta" onclick="window.open('https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio.','_blank','noopener')" type="button">Hablemos</button></div>
 </div>
 <div class="w-full order-2 flex justify-center lg:justify-end">
 <div class="phone-frame w-full max-w-[300px] md:max-w-[320px]">
@@ -2593,7 +2593,7 @@ function toggleFaq(button) {
                 case4Desc: "Red Sapien: we created a luxury catalog for Noir Elixir in Medellín: with a premium design optimized for sales.",
                 viewCaseBtn: "View case",
                 archBadge: "HOW IT WORKS",
-                panelRegister: "Sign up",
+                panelRegister: "Let's talk",
                 slotsBadge: "ONLY 4 SPOTS AVAILABLE",
                 pricingLabel: "Let’s start with your website",
                 ecosystemTotalLabel: "COMPLETE ECOSYSTEM",
@@ -2697,7 +2697,7 @@ function toggleFaq(button) {
                 case4Desc: "Red Sapien: criamos um catálogo de luxo para Noir Elixir em Medellín: com design premium otimizado para vendas.",
                 viewCaseBtn: "Ver caso",
                 archBadge: "COMO FUNCIONA",
-                panelRegister: "Cadastrar-se",
+                panelRegister: "Vamos conversar",
                 slotsBadge: "APENAS 4 VAGAS DISPONÍVEIS",
                 pricingLabel: "Comecemos com seu site",
                 ecosystemTotalLabel: "ECOSSISTEMA COMPLETO",
@@ -3154,6 +3154,12 @@ body[data-niche="health"] .rs-selector-btn.is-active{background:linear-gradient(
 body[data-niche="health"] #maquinaria-automatizada .phase-primary{border-color:rgba(57,198,162,.5)!important}
 body[data-niche="health"] #maquinaria-automatizada .phase-offer-callout{border-left-color:#39c6a2}
 .rs-machinery-intro{max-width:35rem}
+</style>
+
+<style id="rs-friction-reduction">
+/* CTA secundario: conversación antes que registro, para un visitante que aún está evaluando. */
+#panel-register-cta{border-radius:999px;padding:.78rem 1.15rem;font-size:.76rem;letter-spacing:.03em;background:rgba(255,60,0,.1);border:1px solid rgba(255,60,0,.32);color:#fff;transition:transform .25s ease,background .25s ease,border-color .25s ease}
+#panel-register-cta:hover{background:#ff3c00;border-color:#ff3c00;transform:translateY(-2px)}
 </style>
 </body>
 </html>
