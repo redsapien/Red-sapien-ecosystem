@@ -36,26 +36,7 @@
         fbq('init', '3070185119839151');
         fbq('track', 'PageView');
     </script>
-<script>
-window.rsOpenAuth=function(mode){
-  var modal=document.getElementById('register-modal');
-  if(!modal)return;
-  if(typeof window.openRegisterModal==='function' && window.openRegisterModal!==window.rsOpenAuth){ window.openRegisterModal(mode||'register'); return; }
-  modal.classList.remove('hidden','opacity-0');
-  document.body.style.overflow='hidden';
-  var title=document.getElementById('modal-title'), submit=document.getElementById('btn-submit'), toggle=document.getElementById('toggle-mode-btn');
-  var login=mode==='login';
-  if(title)title.textContent=login?'Inicie sesión':'Cree su cuenta';
-  if(submit)submit.textContent=login?'Iniciar ahora':'Registrarme';
-  if(toggle)toggle.textContent=login?'Regístrese':'Inicie sesión';
-};
-window.rsCloseAuth=function(){ var modal=document.getElementById('register-modal'); if(!modal)return; modal.classList.add('opacity-0'); setTimeout(function(){modal.classList.add('hidden');},300); document.body.style.overflow=''; };
-window.rsGoogleAuth=function(){
-  if(typeof window.handleGoogleSignIn==='function'){ window.handleGoogleSignIn(); return; }
-  var base='https://krygvuvvenizgebincle.supabase.co/auth/v1/authorize?provider=google&redirect_to='+encodeURIComponent(window.location.origin+'/dashboard/index.html')+'&apikey='+encodeURIComponent('sb_publishable_06DbVVwkvlDKQ-xYoTyRxg_o4rDpaUh');
-  window.location.assign(base);
-};
-</script>
+
 <noscript><img alt="" height="1" src="https://www.facebook.com/tr?id=3070185119839151&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml" sizes="any"/><link href="/favicon.svg" rel="shortcut icon" type="image/svg+xml"/><link href="/favicon.svg" rel="apple-touch-icon"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -897,7 +878,7 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 <option value="en">EN</option>
 <option value="pt">PT</option>
 </select>
-<button class="hidden md:inline-flex px-4 py-2 text-xs font-bold text-white rounded-lg transition bg-rs-gray/40 border border-rs-red/25 hover:border-rs-red/70 hover:bg-rs-gray/80 shadow-[0_0_15px_rgba(255,60,0,0.12)] whitespace-nowrap" data-i18n="registerBtn" id="scroll-register-btn" onclick="window.rsOpenAuth('register')" type="button">Comience</button></div>
+<a aria-label="Hablar con Red Sapien por WhatsApp" class="hidden md:inline-flex px-4 py-2 text-xs font-bold text-white rounded-lg transition bg-rs-red hover:bg-rs-red/80 shadow-[0_0_15px_rgba(255,60,0,0.18)] whitespace-nowrap" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20digital%20de%20Red%20Sapien." rel="noopener noreferrer" target="_blank">Hablemos</a></div>
 <div aria-live="polite" class="scroll-support-banner" id="scroll-support-banner" role="status">
 <span class="scroll-support-copy" id="scroll-support-copy">
 <span class="scroll-support-message is-active" data-banner-phase="0" data-i18n="scrollPhase0">Manizales, Pereira y Cali: Juntos logramos más...</span>
@@ -926,7 +907,7 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 <div class="fixed inset-0 z-[60] opacity-0 invisible flex flex-col items-center justify-center px-6" id="mobile-menu">
 <button class="absolute top-8 right-8 text-gray-400 hover:text-rs-red scale-125 transition-colors focus:outline-none" id="close-menu" type="button">✕
             Close</button>
-<div class="w-full max-w-sm space-y-4"><div class="matrix-link-box p-6 rounded-xl"><button class="cursor-pointer block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300 w-full text-left" data-i18n="mobilePlatform" onclick="window.rsOpenAuth('login')" type="button">Ingresar</button></div><div class="matrix-link-box p-6 rounded-xl"><button class="cursor-pointer block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300 w-full text-left" data-i18n="mobileRegister" onclick="window.rsOpenAuth('register')" type="button">Comience</button></div>
+<div class="w-full max-w-sm"><a class="matrix-link-box p-6 rounded-xl block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20digital%20de%20Red%20Sapien." rel="noopener noreferrer" target="_blank">Hablemos por WhatsApp</a></div>
 <div class="matrix-link-box p-6 rounded-xl">
 <a class="block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300" data-i18n="mobileContact" href="https://wa.me/573012800024?text=Hola%2C%20deseo%20saber%20m%C3%A1s%20de%20la%20web%20de%20ventas...%20%F0%9F%8C%90">Hablemos</a>
 </div>
@@ -1013,59 +994,7 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
     <div id="niche-result" class="rs-niche-result" role="tabpanel" aria-live="polite"><strong id="niche-result-title">Más pedidos.</strong><span id="niche-result-copy">Web, WhatsApp y campañas juntas.</span><a id="niche-result-cta" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20gastron%C3%B3mico." target="_blank" rel="noopener">Hablemos →</a></div>
   </div>
 </section>
-<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" id="register-modal" role="dialog">
-<div class="bg-[#171717] border border-white/10 w-full max-w-sm max-h-[90vh] overflow-y-auto p-6 sm:p-8 rounded-2xl relative shadow-2xl">
-<button aria-label="Cerrar ventana" class="absolute top-4 right-4 text-gray-400 hover:text-rs-red transition-colors focus:outline-none" onclick="window.rsCloseAuth()" type="button">✕</button>
-<h2 class="text-xl font-display font-bold mb-2 text-center modal-title-glow" id="modal-title">Cree su cuenta
-            </h2>
-<p class="text-xs text-gray-400 text-center mb-4" id="modal-subtitle">Únase al ecosistema de ventas</p>
-<div class="hidden text-center text-sm font-medium mb-3" id="auth-message"></div>
-<div class="relative my-6" id="google-separator">
-<div class="absolute inset-0 flex items-center">
-<div class="w-full border-t border-white/10"></div>
-</div>
-<div class="relative flex justify-center text-xs">
-<span class="bg-[#171717] px-3 text-gray-500">o continue con</span>
-</div>
-</div><button aria-label="Continuar con Google" class="w-full flex items-center justify-center gap-3 bg-[#0a0a0a] border border-white/10 hover:border-white/30 text-white font-semibold py-3 rounded-lg transition-all mb-6" id="google-btn" onclick="window.rsGoogleAuth()" type="button">
-<span class="google-g-icon">
-<svg class="google-g-svg" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
-<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
-<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
-<path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
-</svg>
-</span>
-<span>Continuar con Google</span>
-</button><form class="space-y-5 mt-6" id="email-form" onsubmit="event.preventDefault();">
-<div>
-<input autocomplete="email" class="w-full bg-[#0a0a0a] border border-white/10 p-3 rounded-lg text-white outline-none focus:border-rs-red transition-colors" id="email-input" placeholder="Correo electrónico" required="" type="email"/>
-</div>
-<div class="relative">
-<input autocomplete="current-password" class="w-full bg-[#0a0a0a] border border-white/10 p-3 pr-12 rounded-lg text-white outline-none focus:border-rs-red transition-colors" id="password-input" placeholder="Contraseña segura" required="" type="password"/>
-<button aria-label="Mostrar u ocultar contraseña" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors" onclick="togglePassword()" type="button">
-<svg fill="none" height="20" id="eye-icon" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
-<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
-</path>
-<line x1="1" x2="23" y1="1" y2="23"></line>
-</svg>
-</button>
-</div>
-<p class="text-xs text-gray-400 text-center opacity-70 flex items-center justify-center gap-1">
-<span>🔐</span> <span data-i18n="passwordHint">Guárdela bien, no la comparta</span>
-</p>
-<button class="w-full py-3 bg-rs-red rounded-lg font-bold text-white hover:bg-opacity-90 transition-all shadow-lg shadow-rs-red/20" id="btn-submit" type="submit">
-                    Conéctese ahora
-                </button>
-</form>
-<div class="mt-4 text-center text-xs text-gray-400">
-<span id="toggle-mode-text">¿Ya tiene cuenta?</span>
-<button class="text-rs-red font-bold hover:underline ml-1" id="toggle-mode-btn" onclick="window.rsOpenAuth('register')" type="button">
-                    Inicia sesión
-                </button>
-</div>
-</div>
-</div>
+
 <section class="relative w-full bg-[#050505] text-white py-28 md:py-36 overflow-hidden select-none section-transition" id="maquinaria-automatizada">
 <style>
             .premium-title-frame {
@@ -2035,28 +1964,28 @@ function toggleFaq(button) {
 </div>
 <div class="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 <div class="flex flex-col justify-center items-start w-full order-1">
-<span class="px-4 py-1.5 mb-6 text-xs md:text-xs font-mono font-bold tracking-[0.2em] uppercase text-[#FF3C00] bg-white border border-gray-200 shadow-sm rounded-full flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#FF3C00] animate-pulse"></span><span data-i18n="archBadge">ASÍ FUNCIONA</span></span>
+<span class="px-4 py-1.5 mb-6 text-xs md:text-xs font-mono font-bold tracking-[0.2em] uppercase text-[#FF3C00] bg-white border border-gray-200 shadow-sm rounded-full flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#FF3C00] animate-pulse"></span><span data-i18n="archBadge">NUESTRO TRABAJO</span></span>
 <div class="bg-white rounded-2xl p-6 md:p-8 mb-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 w-full relative overflow-hidden group">
 <div class="absolute top-0 left-0 w-1.5 h-full bg-[#FF3C00]"></div>
 <h2 class="text-3xl md:text-5xl font-black tracking-tight text-gray-900 h-[80px] md:h-[100px] flex items-center">
-<span id="typewriter-text">Monitoree su ecosistema 24/7</span><span class="inline-block w-[4px] h-[1em] bg-[#FF3C00] ml-2 animate-blink" id="typewriter-cursor"></span>
+<span id="typewriter-text">Vea nuestro trabajo</span><span class="inline-block w-[4px] h-[1em] bg-[#FF3C00] ml-2 animate-blink" id="typewriter-cursor"></span>
 </h2>
 </div>
 <div class="w-full max-w-lg" id="slide-text-container">
-<p class="text-gray-600 text-sm md:text-base font-medium leading-relaxed slide-text active transition-all duration-500" id="slide-text-content">Revise su negocio desde un panel intuitivo.</p>
-<button aria-label="Hablar sobre mi negocio por WhatsApp" class="panel-register-cta" data-i18n="panelRegister" id="panel-register-cta" onclick="window.open('https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio.','_blank','noopener')" type="button">Hablemos</button></div>
+<p class="text-gray-600 text-sm md:text-base font-medium leading-relaxed slide-text active transition-all duration-500" id="slide-text-content">Conozca algunos proyectos y recursos creados por Red Sapien.</p>
+<button aria-label="Hablar sobre mi negocio por WhatsApp" class="panel-register-cta" data-i18n="workCta" id="panel-register-cta" onclick="window.open('https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio.','_blank','noopener')" type="button">Ver proyectos</button></div>
 </div>
 <div class="w-full order-2 flex justify-center lg:justify-end">
 <div class="phone-frame w-full max-w-[300px] md:max-w-[320px]">
 <div class="phone-screen relative">
 <div aria-hidden="true" class="phone-notch"><span class="speaker"></span><span class="camera"></span></div>
 <div class="slide-container" id="smartphone-slider">
-<div class="slide-item"><img alt="Panel de control del ecosistema Red Sapien" decoding="async" loading="lazy" src="assets/Image/Panel-red-sapien.webp"/></div>
-<div class="slide-item"><img alt="Módulo de soporte Red Sapien" decoding="async" loading="lazy" src="assets/Image/Soporte-red-sapien.webp"/></div>
-<div class="slide-item"><img alt="Casos de éxito en el panel Red Sapien" decoding="async" loading="lazy" src="assets/Image/Casos-red-sapien.webp"/></div>
-<div class="slide-item"><img alt="Notificaciones del ecosistema Red Sapien" decoding="async" loading="lazy" src="assets/Image/Notificaciones-red-sapien.webp"/></div>
+<div class="slide-item"><img alt="Proyecto web del ecosistema Red Sapien" decoding="async" loading="lazy" src="assets/Image/Panel-red-sapien.webp"/></div>
+<div class="slide-item"><img alt="Trabajo de soporte y seguimiento Red Sapien" decoding="async" loading="lazy" src="assets/Image/Soporte-red-sapien.webp"/></div>
+<div class="slide-item"><img alt="Casos y resultados reportados de Red Sapien" decoding="async" loading="lazy" src="assets/Image/Casos-red-sapien.webp"/></div>
+<div class="slide-item"><img alt="Recursos visuales para negocios locales" decoding="async" loading="lazy" src="assets/Image/Notificaciones-red-sapien.webp"/></div>
 </div>
-<div aria-label="Navegación del panel" class="slide-dots">
+<div aria-label="Navegación de trabajos" class="slide-dots">
 <span class="active"></span>
 <span></span>
 <span></span>
@@ -2074,7 +2003,7 @@ function toggleFaq(button) {
  function go(i){ index=(i+total)%total; window._currentSlideIndex=index; slider.style.transform='translateX('+(-index*100)+'%)'; dots.forEach((d,n)=>d.classList.toggle('active',n===index)); const copy=(window._slideTexts||[])[index]; if(copy)text.textContent=copy; }
  window.goToSlide=go; window.nextSlide=()=>go(index+1); window._autoPlayInterval=setInterval(()=>go(index+1),3000);
  go(0);
- const type=document.getElementById('typewriter-text'), cursor=document.getElementById('typewriter-cursor'); if(type){ const value=(window.translations&&window.translations.es&&window.translations.es.typewriterText)||'Monitoree su negocio 24/7'; type.textContent=''; let n=0; const tick=()=>{ if(n<value.length){type.textContent=value.slice(0,++n);setTimeout(tick,38);}else if(cursor)cursor.style.display='none'; }; tick(); }
+ const type=document.getElementById('typewriter-text'), cursor=document.getElementById('typewriter-cursor'); if(type){ const value=(window.translations&&window.translations.es&&window.translations.es.typewriterText)||'Vea nuestro trabajo'; type.textContent=''; let n=0; const tick=()=>{ if(n<value.length){type.textContent=value.slice(0,++n);setTimeout(tick,38);}else if(cursor)cursor.style.display='none'; }; tick(); }
 })();
 </script>
 <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 transform rotate-180">
@@ -2195,255 +2124,12 @@ function toggleFaq(button) {
 </div>
 </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-        // ================================================================
-        // 1. CONFIGURACIÓN DE SUPABASE
-        // ================================================================
-        const SUPABASE_URL = 'https://krygvuvvenizgebincle.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_06DbVVwkvlDKQ-xYoTyRxg_o4rDpaUh';
-        const supabaseClient = (window.supabase && typeof window.supabase.createClient === 'function') ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
-        const DASHBOARD_PATH = '/dashboard/index.html';
-        const AUTH_REDIRECT_URL = window.location.origin + DASHBOARD_PATH;
-
-        // ================================================================
-        // 2. ESTADO DEL FORMULARIO (LOGIN / REGISTER)
-        // ================================================================
-        let authMode = 'register'; // 'register' | 'login'
-
-        // ================================================================
-        // 3. ELEMENTOS DEL DOM
-        // ================================================================
-        const modal = document.getElementById('register-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalSubtitle = document.getElementById('modal-subtitle');
-        const btnSubmit = document.getElementById('btn-submit');
-        const toggleBtn = document.getElementById('toggle-mode-btn');
-        const toggleText = document.getElementById('toggle-mode-text');
-        const authMsg = document.getElementById('auth-message');
-        const emailInput = document.getElementById('email-input');
-        const passwordInput = document.getElementById('password-input');
-        const googleBtn = document.getElementById('google-btn');
-        const googleSeparator = document.getElementById('google-separator');
-
-        // ================================================================
-        // 4. FUNCIONES DE UI DEL MODAL (CON VISIBILIDAD DE GOOGLE Y SEPARADOR)
-        // ================================================================
-        function setAuthMode(mode) {
-            authMode = mode;
-            if (mode === 'register') {
-                modalTitle.textContent = 'Cree su cuenta';
-                modalSubtitle.textContent = 'Dos datos y está dentro';
-                btnSubmit.textContent = 'Registrarme';
-                toggleText.textContent = '¿Ya tiene cuenta?';
-                toggleBtn.textContent = 'Inicie sesión';
-                // Google también es una opción directa para registrarse.
-                googleBtn.classList.remove('hidden');
-                googleSeparator.classList.remove('hidden');
-                // Limpiar mensaje
-                authMsg.classList.add('hidden');
-                authMsg.textContent = '';
-            } else {
-                modalTitle.textContent = 'Inicie sesión';
-                modalSubtitle.textContent = 'Acceda a su panel de control';
-                btnSubmit.textContent = 'Iniciar ahora';
-                toggleText.textContent = '¿No tiene cuenta?';
-                toggleBtn.textContent = 'Regístrese';
-                // Mostrar botón de Google y separador
-                googleBtn.classList.remove('hidden');
-                googleSeparator.classList.remove('hidden');
-                authMsg.classList.add('hidden');
-                authMsg.textContent = '';
-            }
-        }
-
-        function toggleAuthMode() {
-            const newMode = (authMode === 'register') ? 'login' : 'register';
-            setAuthMode(newMode);
-        }
-
-        // ================================================================
-        // 5. ABRIR / CERRAR MODAL
-        // ================================================================
-        function openRegisterModal(mode = 'register') {
-            setAuthMode(mode);
-            modal.classList.remove('hidden');
-            setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
-            document.body.style.overflow = 'hidden';
-            // Limpiar campos y mensajes
-            emailInput.value = '';
-            passwordInput.value = '';
-            authMsg.classList.add('hidden');
-            authMsg.textContent = '';
-        }
-
-        function closeRegisterModal() {
-            modal.classList.add('opacity-0');
-            setTimeout(() => { modal.classList.add('hidden'); }, 300);
-            document.body.style.overflow = 'auto';
-        }
-
-        // Cerrar modal al hacer clic fuera
-        modal.addEventListener('click', function (event) {
-            if (event.target === this) { closeRegisterModal(); }
-        });
-
-        // ================================================================
-        // 6. MOSTRAR/OCULTAR CONTRASEÑA
-        // ================================================================
-        function togglePassword() {
-            const passInput = document.getElementById('password-input');
-            const eyeIcon = document.getElementById('eye-icon');
-            if (passInput.type === 'password') {
-                passInput.type = 'text';
-                eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
-            } else {
-                passInput.type = 'password';
-                eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
-            }
-        }
-
-        // ================================================================
-        // 7. MOSTRAR MENSAJES DE ERROR EN EL MODAL
-        // ================================================================
-        function showAuthMessage(text, isError = true) {
-            authMsg.textContent = text;
-            authMsg.className = 'text-center text-sm font-medium mb-3';
-            if (isError) {
-                authMsg.classList.add('text-red-500');
-            } else {
-                authMsg.classList.add('text-green-500');
-            }
-            authMsg.classList.remove('hidden');
-        }
-
-        // ================================================================
-        // 8. MANEJO DEL FORMULARIO (REGISTRO / LOGIN)
-        // ================================================================
-        document.getElementById('email-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = emailInput.value.trim();
-            const password = passwordInput.value.trim();
-
-            if (!email || !password) {
-                showAuthMessage('Por favor, complete el correo y la contraseña.', true);
-                return;
-            }
-
-            if (!supabaseClient) {
-                showAuthMessage('El registro no está disponible en este momento. Puede escribirnos por WhatsApp y le ayudamos directamente.', true);
-                return;
-            }
-
-            if (password.length < 8) {
-                showAuthMessage('La contraseña debe tener al menos 8 caracteres.', true);
-                return;
-            }
-
-            // Deshabilitar botón durante la petición
-            btnSubmit.disabled = true;
-            const originalText = btnSubmit.textContent;
-            btnSubmit.textContent = 'Procesando...';
-
-            try {
-                let result;
-                if (authMode === 'register') {
-                    // REGISTRO
-                    result = await supabaseClient.auth.signUp({ email, password, options: { emailRedirectTo: AUTH_REDIRECT_URL } });
-                    if (result.error) throw result.error;
-                    if (result.data && result.data.session) {
-                        showAuthMessage('✅ Registro exitoso. Abriendo su panel...', false);
-                        setTimeout(() => window.location.replace(DASHBOARD_PATH), 900);
-                    } else {
-                        showAuthMessage('✅ Cuenta creada. Revise su correo para confirmar el acceso y luego inicie sesión.', false);
-                        btnSubmit.disabled = false;
-                        btnSubmit.textContent = originalText;
-                    }
-                } else {
-                    // LOGIN
-                    result = await supabaseClient.auth.signInWithPassword({ email, password });
-                    if (result.error) {
-                        // Manejo específico para credenciales inválidas
-                        if (result.error.message.includes('Invalid login credentials')) {
-                            showAuthMessage('❌ No encontramos una cuenta con este correo. Regístrese ahora.', true);
-                        } else {
-                            showAuthMessage('❌ Error: ' + result.error.message, true);
-                        }
-                        btnSubmit.disabled = false;
-                        btnSubmit.textContent = originalText;
-                        return;
-                    }
-                    showAuthMessage('✅ ¡Bienvenido de nuevo! Redirigiendo...', false);
-                    setTimeout(() => {
-                        window.location.replace(DASHBOARD_PATH);
-                    }, 1500);
-                }
-            } catch (error) {
-                console.error('Auth error:', error);
-                showAuthMessage('❌ Ocurrió un error inesperado. Intenta de nuevo.', true);
-                btnSubmit.disabled = false;
-                btnSubmit.textContent = originalText;
-            }
-        });
-
-        // ================================================================
-        // 9. INICIO DE SESIÓN CON GOOGLE
-        // ================================================================
-        window.handleGoogleSignIn = async () => {
-            const redirectTo = AUTH_REDIRECT_URL;
-            // Fallback directo: Google no depende de que la librería JS haya terminado de cargar.
-            if (!supabaseClient) {
-                const oauthUrl = SUPABASE_URL + '/auth/v1/authorize?provider=google&redirect_to=' + encodeURIComponent(redirectTo) + '&apikey=' + encodeURIComponent(SUPABASE_KEY);
-                window.location.assign(oauthUrl);
-                return;
-            }
-            try {
-                const { data, error } = await supabaseClient.auth.signInWithOAuth({
-                    provider: 'google',
-                    options: {
-                        redirectTo: redirectTo
-                    }
-                });
-                if (error) throw error;
-                // Redirección explícita para evitar que el navegador deje el flujo incompleto.
-                if (data && data.url) window.location.assign(data.url);
-            } catch (error) {
-                console.error('Error al iniciar con Google:', error.message);
-                showAuthMessage('❌ No se pudo conectar con Google: ' + error.message, true);
-            }
-        };
-
-        // ================================================================
-        // 10. LISTENER DE AUTENTICACIÓN (REDIRECCIÓN Y PREVENCIÓN DE PARPADEOS)
-        // ================================================================
-        if (supabaseClient) supabaseClient.auth.onAuthStateChange((event, session) => {
-            if (event === 'SIGNED_IN' && session) {
-                // Si hay sesión activa, redirigir al dashboard (replace evita bucle)
-                window.location.replace(DASHBOARD_PATH);
-            }
-            // Si SIGNED_OUT, nos quedamos en la landing (no hacemos nada)
-        });
-
-        // ================================================================
-        // 11. VERIFICACIÓN DE SESIÓN AL CARGAR (para evitar parpadeos)
-        // ================================================================
-        (async function checkInitialSession() {
-            if (!supabaseClient) return;
-            const { data: { session } } = await supabaseClient.auth.getSession();
-            if (session) {
-                // Ya hay sesión, redirigir inmediatamente
-                window.location.replace(DASHBOARD_PATH);
-            }
-        })();
-
         // ================================================================
         // 12. TRADUCCIONES (sincronizadas al 100% con el español)
         // ================================================================
         const translations = {
             es: {
-                registerBtn: "Comience gratis",
-                mobileRegister: "Comenzar",
-                mobilePlatform: "Ingresar",
                 mobileContact: "Hablemos",
                 heroTitle: "Haga crecer su negocio.",
                 heroDesc: "Creamos su ecosistema digital y llevamos mensajes de personas interesadas a WhatsApp. Usted solo atiende.",
@@ -2532,18 +2218,15 @@ function toggleFaq(button) {
                 easterDate: "07/06/2026 - Antonella,",
                 easterMessage: "mi bebesita hermosa, lucharé esta guerra por ti...",
                 copyright: "Red Sapien · Ecosistemas digitales para negocios locales.",
-                typewriterText: "Monitoree su ecosistema 24/7",
+                typewriterText: "Vea nuestro trabajo",
                 slideTexts: [
-                    "Revise su negocio desde un panel intuitivo.",
+                    "Conozca algunos proyectos y recursos creados por Red Sapien.",
                     "Solicite soporte cuando lo necesite.",
                     "Consulte sus casos y avances.",
                     "Reciba novedades importantes en un solo lugar."
                 ]
             },
             en: {
-                registerBtn: "Start Free",
-                mobileRegister: "Start",
-                mobilePlatform: "Sign In",
                 mobileContact: "Let's talk",
                 heroTitle: "Grow your business",
                 heroDesc: "We showcase what you offer and bring customers directly to your WhatsApp.",
@@ -2597,7 +2280,6 @@ function toggleFaq(button) {
                 case4Desc: "Red Sapien: we created a luxury catalog for Noir Elixir in Medellín: with a premium design optimized for sales.",
                 viewCaseBtn: "View case",
                 archBadge: "HOW IT WORKS",
-                panelRegister: "Let's talk",
                 slotsBadge: "ONLY 4 SPOTS AVAILABLE",
                 pricingLabel: "Let’s start with your website",
                 ecosystemTotalLabel: "COMPLETE ECOSYSTEM",
@@ -2639,9 +2321,6 @@ function toggleFaq(button) {
                 ]
             },
             pt: {
-                registerBtn: "Comece grátis",
-                mobileRegister: "Comece",
-                mobilePlatform: "Entrar",
                 mobileContact: "Vamos conversar",
                 heroTitle: "Mais vendas, mais presença",
                 heroDesc: "Posicionamos seu negócio e levamos clientes direto para o seu WhatsApp.",
@@ -2701,7 +2380,6 @@ function toggleFaq(button) {
                 case4Desc: "Red Sapien: criamos um catálogo de luxo para Noir Elixir em Medellín: com design premium otimizado para vendas.",
                 viewCaseBtn: "Ver caso",
                 archBadge: "COMO FUNCIONA",
-                panelRegister: "Vamos conversar",
                 slotsBadge: "APENAS 4 VAGAS DISPONÍVEIS",
                 pricingLabel: "Comecemos com seu site",
                 ecosystemTotalLabel: "ECOSSISTEMA COMPLETO",
@@ -2948,7 +2626,7 @@ function toggleFaq(button) {
             setTimeout(hidePreloader, 4000);
         })();
 
-        const mainNav = document.getElementById('main-nav'), langSelector = document.getElementById('lang-selector'), scrollBtn = document.getElementById('scroll-register-btn'), scrollSupportBanner = document.getElementById('scroll-support-banner'), scrollMenuTrigger = document.getElementById('menu-trigger');
+        const mainNav = document.getElementById('main-nav'), langSelector = document.getElementById('lang-selector'), scrollBtn = null, scrollSupportBanner = document.getElementById('scroll-support-banner'), scrollMenuTrigger = document.getElementById('menu-trigger');
         const updateScrolledNav = () => {
             const isScrolled = window.scrollY > 769;
             mainNav.classList.toggle('glass-nav-scrolled', isScrolled);
