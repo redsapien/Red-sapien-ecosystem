@@ -391,28 +391,6 @@
             }
         }
 
-        /* Botón Google */
-        .google-g-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-        }
-
-        .google-g-svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .modal-title-glow {
-            background: linear-gradient(135deg, #fff 0%, #FF3C00 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 15px rgba(255, 60, 0, 0.3);
-        }
 
         @keyframes scan {
             0% {
@@ -1042,9 +1020,9 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 
             .phase-card-label { display:inline-flex; align-items:center; gap:.5rem; margin-bottom:.9rem; padding:.42rem .7rem .42rem .45rem; border:1px solid rgba(255,112,71,.34); border-radius:999px; background:linear-gradient(90deg,rgba(255,60,0,.16),rgba(255,60,0,.035)); color:#ff9a7c; font:700 .62rem/1 'Space Grotesk',sans-serif; letter-spacing:.16em; text-transform:uppercase; box-shadow:inset 0 0 14px rgba(255,60,0,.04),0 5px 18px rgba(0,0,0,.16); }
             .phase-card-label::before { content:''; width:.42rem; height:.42rem; border-radius:50%; background:#ff7047; box-shadow:0 0 9px rgba(255,112,71,.9); }
-            .panel-register-cta { position:relative; overflow:hidden; box-shadow:0 8px 24px rgba(255,60,0,.12); }
-            .panel-register-cta::after { content:'→'; margin-left:.6rem; font-size:1rem; line-height:0; transition:transform .25s ease; }
-            .panel-register-cta:hover::after { transform:translateX(3px); }
+            .work-gallery-cta { position:relative; overflow:hidden; box-shadow:0 8px 24px rgba(255,60,0,.12); }
+            .work-gallery-cta::after { content:'→'; margin-left:.6rem; font-size:1rem; line-height:0; transition:transform .25s ease; }
+            .work-gallery-cta:hover::after { transform:translateX(3px); }
             .phase-support-note {
                 margin-top: 1rem;
                 color: rgba(255,255,255,.52);
@@ -1559,7 +1537,7 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 </div>
 </div>
 <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight" id="phase1-title" data-i18n="phase1Title">Sitio web que vende</h3>
-<p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl" id="phase1-desc" data-i18n="phase1Desc">Una web de 4 secciones, clara y hecha para vender.</p>
+<p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl" id="phase1-desc" data-i18n="phase1Desc">Una web de 4 secciones, clara y orientada a generar conversaciones.</p>
 <div aria-live="polite" class="phase1-benefit-line">
 <span class="phase1-benefit-label" data-i18n="phase1BenefitsLabel">INCLUYE</span>
 <span id="phase1-benefit-text">4 secciones personalizadas</span><span aria-hidden="true" class="phase1-caret">|</span>
@@ -1889,7 +1867,7 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 </div>
 <button type="button" class="w-full bg-white text-black hover:bg-[#FF3C00] hover:text-white font-bold text-sm uppercase tracking-widest py-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-[0_10px_30px_rgba(255,60,0,0.15)] hover:shadow-[0_10px_40px_rgba(255,60,0,0.4)] flex items-center justify-center gap-3" onclick="window.open('https://wa.me/573012800024?text=Hola%2C%20deseo%20saber%20m%C3%A1s%20de%20la%20web%20de%20ventas...%20%F0%9F%8C%90', '_blank')"><svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
 <path d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.457 3.422 1.257 4.877L2 22l5.292-1.389c1.4.762 2.99 1.186 4.712 1.186 5.51 0 9.993-4.483 9.993-9.994C21.997 6.483 17.514 2 12.004 2zm5.787 14.394c-.242.68-.1.173-1.42 1.507-.344.348-.795.534-1.285.534-.413 0-.877-.13-1.49-.408-2.612-1.183-4.32-3.82-4.452-4.004-.127-.174-1.092-1.455-1.092-2.776 0-1.32.693-1.966.942-2.233.243-.26.533-.327.712-.327.18 0 .36 0 .513.007.16.007.373-.06.586.447.213.513.733 1.787.794 1.913.067.127.113.273.027.447-.087.173-.16.287-.313.466-.154.18-.327.4-.467.54-.153.154-.313.32-.133.627.18.307.806 1.327 1.727 2.147.92.82 1.693 1.073 2.006 1.2.313.127.493.107.68-.107.187-.213.8-1.026.933-1.22.133-.193.28-.16.473-.086.193.073 1.22.573 1.48.7.26.127.433.193.493.3.06.107.06.62-.18 1.3z"></path>
-</svg><span data-i18n="whatsappCta">Iniciar ahora</span></button>
+</svg><span data-i18n="whatsappCta">Hablemos por WhatsApp</span></button>
 </div>
 </div>
 <div class="lg:col-span-6 w-full flex flex-col justify-center">
@@ -1911,7 +1889,7 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 <p class="p-5 text-sm text-gray-400 border-t border-white/5" data-i18n="faq2A">Sí. Puede solicitar un ajuste; el soporte adicional se cotiza según lo que necesite.</p>
 </div>
 </div>
-<div class="faq-item bg-[#111] border border-white/5 rounded-xl overflow-hidden transition-all duration-300"><button aria-controls="faq-answer-3" aria-expanded="false" class="w-full text-left p-5 flex justify-between items-center text-sm font-bold text-gray-200 hover:text-white focus:outline-none" onclick="toggleFaq(this)" type="button"><span data-i18n="faq3Q">¿Cuándo recibo mi web?</span><svg class="w-5 h-5 text-[#FF3C00] transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button><div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-black/50" id="faq-answer-3"><p class="p-5 text-sm text-gray-400 border-t border-white/5" data-i18n="faq3A">Entre 24 y 48 horas después de recibir todos los materiales.</p></div></div><div class="faq-item bg-[#111] border border-white/5 rounded-xl overflow-hidden transition-all duration-300"><button aria-controls="faq-answer-4" aria-expanded="false" class="w-full text-left p-5 flex justify-between items-center text-sm font-bold text-gray-200 hover:text-white focus:outline-none" onclick="toggleFaq(this)" type="button"><span data-i18n="faq4Q">¿Qué debo enviar?</span><svg class="w-5 h-5 text-[#FF3C00] transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button><div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-black/50" id="faq-answer-4"><p class="p-5 text-sm text-gray-400 border-t border-white/5" data-i18n="faq4A">Solo necesitamos su logo y 4 fotos de sus platos o combos.</p></div></div></div><script>
+<div class="faq-item bg-[#111] border border-white/5 rounded-xl overflow-hidden transition-all duration-300"><button aria-controls="faq-answer-3" aria-expanded="false" class="w-full text-left p-5 flex justify-between items-center text-sm font-bold text-gray-200 hover:text-white focus:outline-none" onclick="toggleFaq(this)" type="button"><span data-i18n="faq3Q">¿Cuándo recibo mi web?</span><svg class="w-5 h-5 text-[#FF3C00] transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button><div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-black/50" id="faq-answer-3"><p class="p-5 text-sm text-gray-400 border-t border-white/5" data-i18n="faq3A">Entre 24 y 48 horas después de recibir todos los materiales.</p></div></div><div class="faq-item bg-[#111] border border-white/5 rounded-xl overflow-hidden transition-all duration-300"><button aria-controls="faq-answer-4" aria-expanded="false" class="w-full text-left p-5 flex justify-between items-center text-sm font-bold text-gray-200 hover:text-white focus:outline-none" onclick="toggleFaq(this)" type="button"><span data-i18n="faq4Q">¿Qué debo enviar?</span><svg class="w-5 h-5 text-[#FF3C00] transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button><div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-black/50" id="faq-answer-4"><p class="p-5 text-sm text-gray-400 border-t border-white/5" data-i18n="faq4A">Solo necesitamos su logo, información y materiales visuales de su negocio.</p></div></div></div><script>
 function toggleFaq(button) {
     const content = document.getElementById(button.getAttribute('aria-controls'));
     const item = button.closest('.faq-item');
@@ -1973,7 +1951,7 @@ function toggleFaq(button) {
 </div>
 <div class="w-full max-w-lg" id="slide-text-container">
 <p class="text-gray-600 text-sm md:text-base font-medium leading-relaxed slide-text active transition-all duration-500" id="slide-text-content">Conozca algunos proyectos y recursos creados por Red Sapien.</p>
-<button aria-label="Hablar sobre mi negocio por WhatsApp" class="panel-register-cta" data-i18n="workCta" id="panel-register-cta" onclick="window.open('https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio.','_blank','noopener')" type="button">Ver proyectos</button></div>
+<button aria-label="Hablar sobre mi negocio por WhatsApp" class="work-gallery-cta" data-i18n="workCta" id="work-gallery-cta" onclick="window.open('https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio.','_blank','noopener')" type="button">Ver proyectos</button></div>
 </div>
 <div class="w-full order-2 flex justify-center lg:justify-end">
 <div class="phone-frame w-full max-w-[300px] md:max-w-[320px]">
@@ -2133,7 +2111,6 @@ function toggleFaq(button) {
                 mobileContact: "Hablemos",
                 heroTitle: "Haga crecer su negocio.",
                 heroDesc: "Creamos su ecosistema digital y llevamos mensajes de personas interesadas a WhatsApp. Usted solo atiende.",
-                googleBtnText: "Acceda con Google",
                 mainCta: "Hablemos de su negocio",
                 trustText: "Marcas reales ya dieron el paso.",
                 scrollPhase0: "Manizales, Pereira y Cali: Juntos logramos más...",
@@ -2147,7 +2124,7 @@ function toggleFaq(button) {
                 machineryTitle: "Su ecosistema digital",
                 machineryIntro: "Nosotros creamos su ecosistema digital y mostramos lo que usted vende. Usted atiende.",
                 phase1Title: "Sitio web que vende",
-                phase1Desc: "Una web de 4 secciones, clara y hecha para vender.",
+                phase1Desc: "Una web de 4 secciones, clara y orientada a generar conversaciones.",
                 phase1BenefitsLabel: "INCLUYE",
                 phase1Benefits: ["4 secciones personalizadas", "Adaptado a su marca", "Diseño responsive", "WhatsApp integrado", "Copy orientado a vender", "Pago único"],
                 phase1Stat1: "4 secciones",
@@ -2193,7 +2170,7 @@ function toggleFaq(button) {
                 ecosystemTotalNote: "LAS 3 FASES",
                 paymentNote: "PAGO ÚNICO · 3 FASES",
                 ecosystemPerPhase: "$109.000 por fase · Fases conectadas",
-                whatsappCta: "Iniciar ahora",
+                whatsappCta: "Hablemos por WhatsApp",
                 faqTitle: "Antes de empezar",
                 faq1Q: "¿Qué incluye?",
                 faq1A: "Sitio web profesional de 4 secciones, WhatsApp y configuración inicial de seguimiento.",
@@ -2230,7 +2207,6 @@ function toggleFaq(button) {
                 mobileContact: "Let's talk",
                 heroTitle: "Grow your business",
                 heroDesc: "We showcase what you offer and bring customers directly to your WhatsApp.",
-                googleBtnText: "Sign in with Google",
                 mainCta: "Talk now",
                 trustText: "Real brands have already taken the step.",
                 securityBadge: "Real Results: Pay on Delivery",
@@ -2312,9 +2288,9 @@ function toggleFaq(button) {
                 easterDate: "07/06/2026 - Antonella,",
                 easterMessage: "my beautiful baby, I will fight this war for you.",
                 copyright: "Red Sapien · Ecosistemas digitales para negocios locales.",
-                typewriterText: "Monitor your business 24/7",
+                typewriterText: "See our work",
                 slideTexts: [
-                    "See how your ecosystem works from an intuitive panel.",
+                    "See selected projects and resources created by Red Sapien.",
                     "Receive support and real-time monitoring in a module dedicated solely to support.",
                     "Learn about the most relevant success stories and their results.",
                     "We will keep you updated on the operation and new improvements available through push notifications."
@@ -2324,7 +2300,6 @@ function toggleFaq(button) {
                 mobileContact: "Vamos conversar",
                 heroTitle: "Mais vendas, mais presença",
                 heroDesc: "Posicionamos seu negócio e levamos clientes direto para o seu WhatsApp.",
-                googleBtnText: "Acesse com Google",
                 mainCta: "Quero meu site",
                 trustText: "Eles já estão em outro nível, e você?",
                 scrollPhase0: "Manizales, Pereira e Cali: Juntos conseguimos mais...",
@@ -2704,7 +2679,7 @@ function toggleFaq(button) {
 <script>
 (() => {
   const copy = {
-    food:{cta:'Hablemos de pedidos',hero:'Haga crecer su negocio.',desc:'Mostramos su oferta y llevamos personas interesadas a WhatsApp.',phase1:['Muestre su oferta.','Una web clara para vender.'],phase2:['Ordenamos el seguimiento.','Usted atiende las conversaciones.'],phase3:['Gane visibilidad.','Google, búsqueda local y reputación.'],benefits:['WhatsApp · Pedidos · Seguimiento','Google · SEO local · Reputación'],portfolio:['Casos reales','Marcas que convirtieron presencia en pedidos.'],result:['Más conversaciones.','Su oferta en WhatsApp, con seguimiento.','https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20gastron%C3%B3mico.']},
+    food:{cta:'Hablemos de pedidos',hero:'Haga crecer su negocio.',desc:'Mostramos su oferta y llevamos personas interesadas a WhatsApp.',phase1:['Muestre su oferta.','Una web clara para vender.'],phase2:['Ordenamos el seguimiento.','Usted atiende las conversaciones.'],phase3:['Gane visibilidad.','Google, búsqueda local y reputación.'],benefits:['WhatsApp · Pedidos · Seguimiento','Google · SEO local · Reputación'],portfolio:['Casos reales','Marcas con experiencias y resultados reportados.'],result:['Más conversaciones.','Su oferta en WhatsApp, con seguimiento.','https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20gastron%C3%B3mico.']},
     health:{cta:'Hablemos de citas',hero:'Haga crecer su negocio.',desc:'Mostramos su servicio y llevamos personas interesadas a WhatsApp.',intro:'Nosotros creamos su ecosistema digital y mostramos su servicio. Usted atiende.',phase1:['Creamos su ecosistema digital.','Mostramos lo que usted hace.'],phase2:['Nosotros ordenamos el seguimiento.','Usted atiende y cierra citas.'],phase3:['Nosotros trabajamos su visibilidad.','Google, búsqueda local y reputación.'],benefits:['Mensajes · WhatsApp · Seguimiento','Google · Búsqueda local · Reputación'],portfolio:['Casos reales','Experiencias de negocios con agenda.'],result:['Más conversaciones.','Nosotros armamos el sistema. Usted atiende y cierra.','https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20de%20salud%20o%20servicios.']}
   };
   const set=(id,text)=>{const el=document.getElementById(id);if(el)el.textContent=text};
@@ -2718,7 +2693,7 @@ function toggleFaq(button) {
 
   const setCase=(id,text)=>{const el=document.getElementById(id);if(el)el.textContent=text};
   const cases = {
-    food:{badge:'Casos gastronómicos',title:'Casos reales',intro:'Marcas que convirtieron presencia en pedidos.',cards:[['01','La Plancha · Arepas y Empanadas','Web + WhatsApp','Una web clara para mostrar su oferta y facilitar pedidos.','assets/Image/Dayro.webp','https://laplanchamanizales.redsapien.com/'],['02','La Papa Prohibida','Pedidos por WhatsApp','19 pedidos nuevos reportados en aproximadamente 30 horas.','assets/Image/Logo-papa.webp',null],['03','Salchipotato','Conversaciones por WhatsApp','Cerca de 4.000 conversaciones o conversiones reportadas en seis meses.','assets/Image/Salchipotato-manizales.webp',null]]},
+    food:{badge:'Casos gastronómicos',title:'Casos reales',intro:'Marcas con experiencias y resultados reportados.',cards:[['01','La Plancha · Arepas y Empanadas','Web + WhatsApp','Una web clara para mostrar su oferta y facilitar pedidos.','assets/Image/Dayro.webp','https://laplanchamanizales.redsapien.com/'],['02','La Papa Prohibida','Pedidos por WhatsApp','19 pedidos nuevos reportados en aproximadamente 30 horas.','assets/Image/Logo-papa.webp',null],['03','Salchipotato','Conversaciones por WhatsApp','Cerca de 4.000 conversaciones o conversiones reportadas en seis meses.','assets/Image/Salchipotato-manizales.webp',null]]},
     health:{badge:'Salud y servicios',title:'Casos reales',intro:'Experiencias digitales para negocios que trabajan con agenda.',cards:[['01','Carolina Ruiz Spa','Presencia + atención','Una experiencia cercana para presentar sus servicios.', 'assets/Image/Logo-Carolina-Ruiz-Psico-Spa.webp',null],['02','Noir Elixir','Catálogo + decisión','Una presencia premium para mostrar productos y facilitar la elección.', 'assets/Image/Noir-medellin.webp',null],['03','Adme Dental','Web + solicitudes','Un ecosistema para presentar servicios y recibir solicitudes.', null,'https://admedental.redsapien.com/']]}
   };
   const renderCases=(niche)=>{const d=cases[niche];const track=document.getElementById('ecosystem-slider');if(!track||!d)return;const accent=niche==='food'?'#ff3c00':'#39c6a2';track.dataset.niche=niche;track.innerHTML=d.cards.map(c=>{const media=c[4]?`<img src="${c[4]}" alt="Imagen del caso ${c[1]}" loading="lazy" decoding="async">`:'<span aria-hidden="true">Imagen en preparación</span>';const link=c[5]?`<a class="rs-case-link" href="${c[5]}" target="_blank" rel="noopener noreferrer" aria-label="Ver el sitio de ${c[1]}">Ver sitio <span aria-hidden="true">→</span></a>`:'<span class="rs-case-link is-disabled" aria-label="Enlace en preparación">Enlace en preparación</span>';return `<article class="rs-case-card" style="--case-accent:${accent}"><div class="rs-case-media ${c[4]?'':'is-empty'}">${media}<span class="rs-case-shine" aria-hidden="true"></span></div><div class="rs-case-body"><div class="rs-case-copy"><div class="rs-case-meta"><span class="rs-case-number">${c[0]}</span><span class="rs-case-type">${c[2]}</span></div><h3>${c[1]}</h3><p>${c[3]}</p></div>${link}</div></article>`}).join('');setCase('portfolio-badge',d.badge);setCase('portfolio-title',d.title);setCase('portfolio-intro',d.intro)};
@@ -2840,8 +2815,8 @@ body[data-niche="health"] #maquinaria-automatizada .phase-offer-callout{border-l
 
 <style id="rs-friction-reduction">
 /* CTA secundario: conversación antes que registro, para un visitante que aún está evaluando. */
-#panel-register-cta{border-radius:999px;padding:.78rem 1.15rem;font-size:.76rem;letter-spacing:.03em;background:rgba(255,60,0,.1);border:1px solid rgba(255,60,0,.32);color:#fff;transition:transform .25s ease,background .25s ease,border-color .25s ease}
-#panel-register-cta:hover{background:#ff3c00;border-color:#ff3c00;transform:translateY(-2px)}
+#work-gallery-cta{border-radius:999px;padding:.78rem 1.15rem;font-size:.76rem;letter-spacing:.03em;background:rgba(255,60,0,.1);border:1px solid rgba(255,60,0,.32);color:#fff;transition:transform .25s ease,background .25s ease,border-color .25s ease}
+#work-gallery-cta:hover{background:#ff3c00;border-color:#ff3c00;transform:translateY(-2px)}
 </style>
 
 <style id="rs-slider-footer-polish">
@@ -2904,7 +2879,7 @@ footer{overflow:hidden}footer a{min-width:0}footer .break-all{overflow-wrap:anyw
 .rs-selector-icon svg,.phase-entry-label svg,.phase-card-label svg{vector-effect:non-scaling-stroke}
 .rs-selector-icon{flex:0 0 auto;place-items:center}
 .rs-selector-icon svg{stroke-linecap:round;stroke-linejoin:round}
-#main-cta svg,.phase-offer-cta svg,.panel-register-cta svg{flex:0 0 auto}
+#main-cta svg,.phase-offer-cta svg,.work-gallery-cta svg{flex:0 0 auto}
 button:focus-visible,a:focus-visible{outline:2px solid color-mix(in srgb,var(--rs-accent,#ff3c00) 75%,white);outline-offset:3px}
 </style>
 
