@@ -849,6 +849,7 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 .rs-coming-soon-card{width:min(100%,28rem);border:1px solid rgba(255,255,255,.12);border-radius:1.5rem;background:linear-gradient(145deg,#171717,#090909);box-shadow:0 24px 80px rgba(0,0,0,.5);padding:2rem;color:#fff;text-align:center;transform:translateY(12px) scale(.98);transition:transform .25s ease;}
 .rs-coming-soon-modal.is-open .rs-coming-soon-card{transform:translateY(0) scale(1);}
 .rs-coming-soon-icon{width:3.5rem;height:3.5rem;margin:0 auto 1rem;display:grid;place-items:center;border-radius:1rem;background:rgba(255,60,0,.12);border:1px solid rgba(255,60,0,.3);color:#ff3c00;font-size:1.45rem;}
+.rs-panel-preview-card{text-align:left;max-width:31rem;padding:1.5rem}.rs-panel-preview-head{display:flex;align-items:center;gap:.8rem;margin-bottom:1.25rem}.rs-panel-preview-head .rs-coming-soon-icon{margin:0;width:2.75rem;height:2.75rem}.rs-panel-close{margin-left:auto;width:2rem;height:2rem;border-radius:.65rem;color:#9ca3af;font-size:1.5rem;line-height:1;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04)}.rs-panel-close:hover,.rs-panel-close:focus-visible{color:#fff;border-color:rgba(255,60,0,.65);outline:none}.rs-panel-tabs{display:grid;grid-template-columns:1fr 1fr;gap:.35rem;padding:.3rem;margin-bottom:1rem;border-radius:.8rem;background:#0a0a0a;border:1px solid rgba(255,255,255,.08)}.rs-panel-tab{border:0;border-radius:.55rem;padding:.65rem .5rem;background:transparent;color:#9ca3af;font-size:.78rem;font-weight:700}.rs-panel-tab.is-active{background:rgba(255,60,0,.15);color:#fff}.rs-panel-preview-body{display:grid;gap:.75rem}.rs-panel-status{width:max-content;border:1px solid rgba(255,60,0,.3);border-radius:999px;padding:.3rem .6rem;color:#ff7048;font-size:.68rem;font-weight:700}.rs-panel-field{display:grid;gap:.35rem;color:#9ca3af;font-size:.72rem;font-weight:700}.rs-panel-field input{width:100%;border:1px solid rgba(255,255,255,.1);border-radius:.75rem;background:#0a0a0a;padding:.75rem;color:#777}.rs-panel-field input:disabled{opacity:.75;cursor:not-allowed}.rs-panel-disabled-action{border:1px solid rgba(255,255,255,.1);border-radius:.75rem;background:#242424;padding:.78rem;color:#777;font-size:.8rem;font-weight:800;cursor:not-allowed}.rs-panel-benefits{display:flex;flex-wrap:wrap;gap:.6rem 1rem;margin:1rem 0;color:#9ca3af;font-size:.68rem}.rs-panel-whatsapp{display:flex;justify-content:center;border-radius:.75rem;background:#ff3c00;padding:.8rem;color:#fff;font-size:.8rem;font-weight:800}.rs-panel-whatsapp:hover{background:#e93600}@media(max-width:480px){.rs-panel-preview-card{padding:1.25rem}.rs-panel-benefits{display:grid;gap:.35rem}}
 @media (prefers-reduced-motion:reduce){.rs-coming-soon-btn,.rs-coming-soon-mobile,.rs-coming-soon-modal,.rs-coming-soon-card{transition:none}.rs-coming-soon-btn::before,.rs-coming-soon-mobile::before{display:none}}
 </style>
 </head>
@@ -2922,19 +2923,36 @@ button:focus-visible,a:focus-visible{outline:2px solid color-mix(in srgb,var(--r
 </style>
 
 <div aria-labelledby="coming-soon-title" aria-modal="true" class="rs-coming-soon-modal" id="coming-soon-modal" role="dialog">
-  <div class="rs-coming-soon-card">
-    <div aria-hidden="true" class="rs-coming-soon-icon">✦</div>
-    <p class="mb-2 text-[10px] font-bold uppercase tracking-[.22em] text-rs-red">Próximamente</p>
-    <h2 class="mb-3 text-2xl font-display font-bold" id="coming-soon-title">Estamos preparando su acceso</h2>
-    <p class="mb-6 text-sm leading-relaxed text-gray-300" id="coming-soon-copy">El registro y el inicio de sesión harán parte de una próxima versión del ecosistema. Por ahora, hablemos directamente por WhatsApp.</p>
-    <div class="flex flex-col gap-3">
-      <a class="inline-flex items-center justify-center rounded-xl bg-rs-red px-5 py-3 text-sm font-bold text-white transition hover:bg-orange-600" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20la%20pr%C3%B3xima%20versi%C3%B3n%20del%20ecosistema%20Red%20Sapien." rel="noopener noreferrer" target="_blank">Hablar por WhatsApp</a>
-      <button aria-label="Cerrar aviso de próximamente" class="rounded-xl border border-white/10 px-5 py-3 text-sm font-semibold text-gray-300 transition hover:border-white/30 hover:text-white" id="close-coming-soon" type="button">Cerrar</button>
+  <div class="rs-coming-soon-card rs-panel-preview-card">
+    <div class="rs-panel-preview-head">
+      <div class="rs-coming-soon-icon" aria-hidden="true">✦</div>
+      <div><p class="mb-1 text-[10px] font-bold uppercase tracking-[.22em] text-rs-red">Próximamente</p><p class="text-xs text-gray-400">Panel de operaciones Red Sapien</p></div>
+      <button aria-label="Cerrar panel" class="rs-panel-close" id="close-coming-soon" type="button">×</button>
     </div>
+    <h2 class="mb-2 text-2xl font-display font-bold text-left" id="coming-soon-title">Su panel, en preparación</h2>
+    <p class="mb-5 text-sm leading-relaxed text-left text-gray-300" id="coming-soon-copy">Estamos diseñando un acceso útil para revisar conversaciones, seguimiento y próximos pasos sin añadir complejidad.</p>
+    <div aria-label="Seleccione el acceso que estará disponible próximamente" class="rs-panel-tabs" role="tablist">
+      <button aria-selected="true" class="rs-panel-tab is-active" data-panel-tab="register" role="tab" type="button">Crear cuenta</button>
+      <button aria-selected="false" class="rs-panel-tab" data-panel-tab="login" role="tab" type="button">Iniciar sesión</button>
+    </div>
+    <div class="rs-panel-preview-body" id="panel-preview-register" role="tabpanel">
+      <span class="rs-panel-status">Disponible próximamente</span>
+      <label class="rs-panel-field"><span>Correo electrónico</span><input disabled placeholder="Su correo" type="email"></label>
+      <label class="rs-panel-field"><span>Contraseña</span><input disabled placeholder="Se habilitará en la próxima versión" type="password"></label>
+      <button class="rs-panel-disabled-action" disabled type="button">Crear mi cuenta · Próximamente</button>
+    </div>
+    <div class="rs-panel-preview-body" id="panel-preview-login" role="tabpanel" hidden>
+      <span class="rs-panel-status">Disponible próximamente</span>
+      <label class="rs-panel-field"><span>Correo electrónico</span><input disabled placeholder="Su correo" type="email"></label>
+      <label class="rs-panel-field"><span>Contraseña</span><input disabled placeholder="Se habilitará en la próxima versión" type="password"></label>
+      <button class="rs-panel-disabled-action" disabled type="button">Ingresar · Próximamente</button>
+    </div>
+    <div class="rs-panel-benefits"><span>✓ Acceso seguro</span><span>✓ Seguimiento claro</span><span>✓ Sin promesas falsas</span></div>
+    <a class="rs-panel-whatsapp" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20la%20pr%C3%B3xima%20versi%C3%B3n%20del%20panel%20Red%20Sapien." rel="noopener noreferrer" target="_blank">Hablar por WhatsApp</a>
   </div>
 </div>
 <script>
-(()=>{const modal=document.getElementById('coming-soon-modal'),close=document.getElementById('close-coming-soon');if(!modal||!close)return;const open=()=>{modal.classList.add('is-open');document.body.style.overflow='hidden';close.focus()};const shut=()=>{modal.classList.remove('is-open');document.body.style.overflow='';};document.querySelectorAll('[data-coming-soon]').forEach(btn=>{btn.addEventListener('click',open);btn.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});close.addEventListener('click',shut);modal.addEventListener('click',e=>{if(e.target===modal)shut()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))shut()});})();
+(()=>{const modal=document.getElementById('coming-soon-modal'),close=document.getElementById('close-coming-soon');if(!modal||!close)return;const open=()=>{modal.classList.add('is-open');document.body.style.overflow='hidden';close.focus()};const shut=()=>{modal.classList.remove('is-open');document.body.style.overflow='';};document.querySelectorAll('[data-coming-soon]').forEach(btn=>btn.addEventListener('click',open));close.addEventListener('click',shut);modal.addEventListener('click',e=>{if(e.target===modal)shut()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))shut()});document.querySelectorAll('[data-panel-tab]').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('[data-panel-tab]').forEach(x=>{x.classList.toggle('is-active',x===tab);x.setAttribute('aria-selected',x===tab?'true':'false')});document.querySelectorAll('.rs-panel-preview-body').forEach(panel=>panel.hidden=panel.id!=='panel-preview-'+tab.dataset.panelTab)}));})();
 </script>
 </body>
 </html>
