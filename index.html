@@ -838,6 +838,19 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 @media (max-width:380px){.rs-selector-btn{grid-template-columns:38px minmax(0,1fr);column-gap:11px;padding:17px 15px}.rs-selector-icon{width:36px;height:36px}.rs-selector-btn small{font-size:.65rem}.rs-selector-note{font-size:.6rem}}
 @media (prefers-reduced-motion:reduce){.rs-selector-btn,.rs-selector-icon{transition:none}.rs-selector-btn:hover,.rs-selector-btn.is-active{transform:none}}
 </style>
+
+<style id="coming-soon-styles">
+.rs-coming-soon-btn,.rs-coming-soon-mobile{position:relative;overflow:hidden;transition:transform .25s ease,border-color .25s ease,background .25s ease,color .25s ease;}
+.rs-coming-soon-btn::before,.rs-coming-soon-mobile::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,rgba(255,60,0,.14) 50%,transparent 80%);transform:translateX(-120%);transition:transform .6s ease;}
+.rs-coming-soon-btn:hover,.rs-coming-soon-mobile:hover,.rs-coming-soon-btn:focus-visible,.rs-coming-soon-mobile:focus-visible{transform:translateY(-2px);border-color:rgba(255,60,0,.6);background:rgba(255,60,0,.1);color:#fff;outline:none;}
+.rs-coming-soon-btn:hover::before,.rs-coming-soon-mobile:hover::before,.rs-coming-soon-btn:focus-visible::before,.rs-coming-soon-mobile:focus-visible::before{transform:translateX(120%);}
+.rs-coming-soon-modal{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:1.25rem;background:rgba(0,0,0,.78);backdrop-filter:blur(12px);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease;}
+.rs-coming-soon-modal.is-open{opacity:1;visibility:visible;}
+.rs-coming-soon-card{width:min(100%,28rem);border:1px solid rgba(255,255,255,.12);border-radius:1.5rem;background:linear-gradient(145deg,#171717,#090909);box-shadow:0 24px 80px rgba(0,0,0,.5);padding:2rem;color:#fff;text-align:center;transform:translateY(12px) scale(.98);transition:transform .25s ease;}
+.rs-coming-soon-modal.is-open .rs-coming-soon-card{transform:translateY(0) scale(1);}
+.rs-coming-soon-icon{width:3.5rem;height:3.5rem;margin:0 auto 1rem;display:grid;place-items:center;border-radius:1rem;background:rgba(255,60,0,.12);border:1px solid rgba(255,60,0,.3);color:#ff3c00;font-size:1.45rem;}
+@media (prefers-reduced-motion:reduce){.rs-coming-soon-btn,.rs-coming-soon-mobile,.rs-coming-soon-modal,.rs-coming-soon-card{transition:none}.rs-coming-soon-btn::before,.rs-coming-soon-mobile::before{display:none}}
+</style>
 </head>
 <body class="font-sans overflow-x-hidden">
 <div aria-label="Cargando Red Sapien" aria-live="polite" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center transition-opacity duration-500" id="preloader" role="status">
@@ -858,8 +871,8 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 </select>
 <div class="hidden md:flex items-center gap-2">
 <a aria-label="Hablar con Red Sapien por WhatsApp" class="inline-flex px-4 py-2 text-xs font-bold text-white rounded-lg transition bg-rs-red hover:bg-rs-red/80 shadow-[0_0_15px_rgba(255,60,0,0.18)] whitespace-nowrap" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20digital%20de%20Red%20Sapien." rel="noopener noreferrer" target="_blank">Hablemos</a>
-<button aria-disabled="true" class="inline-flex px-3 py-2 text-[10px] font-bold uppercase tracking-wide text-gray-400 rounded-lg border border-white/10 bg-white/5 cursor-not-allowed" disabled title="Registro próximamente" type="button">Registro · Próximamente</button>
-<button aria-disabled="true" class="inline-flex px-3 py-2 text-[10px] font-bold uppercase tracking-wide text-gray-400 rounded-lg border border-white/10 bg-white/5 cursor-not-allowed" disabled title="Inicio de sesión próximamente" type="button">Ingresar · Próximamente</button>
+<button aria-disabled="true" class="rs-coming-soon-btn inline-flex px-3 py-2 text-[10px] font-bold uppercase tracking-wide text-gray-300 rounded-lg border border-white/10 bg-white/5 cursor-pointer" data-coming-soon="register" title="Registro próximamente" type="button">Registro · Próximamente</button>
+<button aria-disabled="true" class="rs-coming-soon-btn inline-flex px-3 py-2 text-[10px] font-bold uppercase tracking-wide text-gray-300 rounded-lg border border-white/10 bg-white/5 cursor-pointer" data-coming-soon="login" title="Inicio de sesión próximamente" type="button">Ingresar · Próximamente</button>
 </div></div>
 <div aria-live="polite" class="scroll-support-banner" id="scroll-support-banner" role="status">
 <span class="scroll-support-copy" id="scroll-support-copy">
@@ -891,8 +904,8 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
             Close</button>
 <div class="w-full max-w-sm space-y-3">
 <a class="matrix-link-box p-5 rounded-xl block text-xl font-display font-bold text-white hover:text-rs-red transition duration-300" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20digital%20de%20Red%20Sapien." rel="noopener noreferrer" target="_blank">Hablemos por WhatsApp</a>
-<button aria-disabled="true" class="matrix-link-box p-5 rounded-xl block w-full text-left text-xl font-display font-bold text-gray-500 cursor-not-allowed" disabled title="Registro próximamente" type="button">Registro · Próximamente</button>
-<button aria-disabled="true" class="matrix-link-box p-5 rounded-xl block w-full text-left text-xl font-display font-bold text-gray-500 cursor-not-allowed" disabled title="Inicio de sesión próximamente" type="button">Ingresar · Próximamente</button>
+<button aria-disabled="true" class="rs-coming-soon-mobile matrix-link-box p-5 rounded-xl block w-full text-left text-xl font-display font-bold text-gray-300 cursor-pointer" data-coming-soon="register" title="Registro próximamente" type="button">Registro · Próximamente</button>
+<button aria-disabled="true" class="rs-coming-soon-mobile matrix-link-box p-5 rounded-xl block w-full text-left text-xl font-display font-bold text-gray-300 cursor-pointer" data-coming-soon="login" title="Inicio de sesión próximamente" type="button">Ingresar · Próximamente</button>
 </div>
 <div class="matrix-link-box p-6 rounded-xl">
 <a class="block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300" data-i18n="mobileContact" href="https://wa.me/573012800024?text=Hola%2C%20deseo%20saber%20m%C3%A1s%20de%20la%20web%20de%20ventas...%20%F0%9F%8C%90">Hablemos</a>
@@ -2907,5 +2920,21 @@ button:focus-visible,a:focus-visible{outline:2px solid color-mix(in srgb,var(--r
 .rs-selector-btn:not(.is-active) .rs-selector-icon svg{animation:none}
 @media(prefers-reduced-motion:reduce){.rs-selector-btn.rs-food.is-active .rs-selector-icon svg,.rs-selector-btn.rs-health.is-active .rs-selector-icon svg{animation:none}}
 </style>
+
+<div aria-labelledby="coming-soon-title" aria-modal="true" class="rs-coming-soon-modal" id="coming-soon-modal" role="dialog">
+  <div class="rs-coming-soon-card">
+    <div aria-hidden="true" class="rs-coming-soon-icon">✦</div>
+    <p class="mb-2 text-[10px] font-bold uppercase tracking-[.22em] text-rs-red">Próximamente</p>
+    <h2 class="mb-3 text-2xl font-display font-bold" id="coming-soon-title">Estamos preparando su acceso</h2>
+    <p class="mb-6 text-sm leading-relaxed text-gray-300" id="coming-soon-copy">El registro y el inicio de sesión harán parte de una próxima versión del ecosistema. Por ahora, hablemos directamente por WhatsApp.</p>
+    <div class="flex flex-col gap-3">
+      <a class="inline-flex items-center justify-center rounded-xl bg-rs-red px-5 py-3 text-sm font-bold text-white transition hover:bg-orange-600" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20la%20pr%C3%B3xima%20versi%C3%B3n%20del%20ecosistema%20Red%20Sapien." rel="noopener noreferrer" target="_blank">Hablar por WhatsApp</a>
+      <button aria-label="Cerrar aviso de próximamente" class="rounded-xl border border-white/10 px-5 py-3 text-sm font-semibold text-gray-300 transition hover:border-white/30 hover:text-white" id="close-coming-soon" type="button">Cerrar</button>
+    </div>
+  </div>
+</div>
+<script>
+(()=>{const modal=document.getElementById('coming-soon-modal'),close=document.getElementById('close-coming-soon');if(!modal||!close)return;const open=()=>{modal.classList.add('is-open');document.body.style.overflow='hidden';close.focus()};const shut=()=>{modal.classList.remove('is-open');document.body.style.overflow='';};document.querySelectorAll('[data-coming-soon]').forEach(btn=>{btn.addEventListener('click',open);btn.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});close.addEventListener('click',shut);modal.addEventListener('click',e=>{if(e.target===modal)shut()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))shut()});})();
+</script>
 </body>
 </html>
