@@ -24,3 +24,5 @@ Salchipotato
 🤝 Sé Parte del Proyecto
 
 Suma tu código, tu experiencia o tu inversión a un modelo transparente. Construyamos juntos en: https://redsapien.com
+
+Asset audit: unused image files removed; active routes remain referenced and verified.
