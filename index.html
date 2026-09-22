@@ -905,6 +905,29 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 .rs-case-modal-cta:hover{filter:brightness(1.12);background:var(--case-accent,#ff3c00)}
 @media(max-width:680px){.rs-case-modal-card{height:100dvh}.rs-case-modal-grid{min-height:100%;grid-template-rows:auto 1fr}.rs-case-modal-media{min-height:38dvh;height:38dvh}.rs-case-modal-content{overflow:auto}}
 @media(prefers-reduced-motion:reduce){.rs-case-modal-card{transition:none}}
+</style><style id="rs-responsive-modal-final">
+/* Modal final: el viewport contiene el caso y el contenido siempre puede desplazarse. */
+html:has(.rs-case-modal.is-open),body:has(.rs-case-modal.is-open){overflow:hidden}
+.rs-case-modal{padding:0;overflow-y:auto;overflow-x:hidden;align-items:start;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.rs-case-modal-backdrop{position:fixed}
+.rs-case-modal-card{width:100%;min-height:100dvh;height:auto;max-height:none;overflow:visible;border-radius:0;display:block}
+.rs-case-modal-grid{min-height:100dvh;height:auto;grid-template-columns:minmax(300px,.9fr) 1.1fr}
+.rs-case-modal-media{min-height:100dvh;height:auto;position:sticky;top:0;align-self:start}
+.rs-case-modal-content{min-width:0;padding:clamp(32px,6vw,92px);}
+.rs-case-modal-content p{max-width:60ch}
+.rs-case-modal-close{top:clamp(12px,2vw,24px);right:clamp(12px,2vw,24px);width:44px;height:44px;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+@media(max-width:760px){
+ .rs-case-modal{display:block}
+ .rs-case-modal-card{min-height:100dvh}
+ .rs-case-modal-grid{display:block;min-height:0}
+ .rs-case-modal-media{position:relative;top:auto;min-height:34dvh;height:34dvh;padding:20px}
+ .rs-case-modal-media img{height:100%;max-height:30dvh;width:min(58vw,220px);object-fit:cover}
+ .rs-case-modal-content{padding:28px 22px 42px}
+ .rs-case-modal-content h2{font-size:clamp(1.8rem,9vw,2.5rem);padding-right:38px}
+ .rs-case-modal-content p{font-size:.94rem;line-height:1.58}
+ .rs-case-modal-cta{width:100%;justify-content:center;text-align:center;padding:14px 18px}
+}
+@media(prefers-reduced-motion:reduce){.rs-case-modal,.rs-case-modal-card{transition:none}}
 </style></head>
 <body class="font-sans overflow-x-hidden">
 <div aria-label="Cargando Red Sapien" aria-live="polite" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center transition-opacity duration-500" id="preloader" role="status">
@@ -1612,7 +1635,7 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 </div>
 </div>
 <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight" id="phase1-title" data-i18n="phase1Title">Sitio web que vende</h3>
-<p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl" id="phase1-desc" data-i18n="phase1Desc">Una web de 4 secciones, clara y orientada a generar conversaciones.</p>
+<p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl" id="phase1-desc" data-i18n="phase1Desc">Una web clara que convierte interés en conversaciones.</p>
 <div aria-live="polite" class="phase1-benefit-line">
 <span class="phase1-benefit-label" data-i18n="phase1BenefitsLabel">INCLUYE</span>
 <span id="phase1-benefit-text">4 secciones personalizadas</span><span aria-hidden="true" class="phase1-caret">|</span>
@@ -1827,7 +1850,7 @@ body[data-niche="health"] .phase-offer-cta,body[data-niche="health"] .phase-tran
 <path d="M9 5l7 7-7 7"></path>
 </svg></button>
 <div class="rs-case-track" id="ecosystem-slider" aria-live="polite"></div>
-<div class="rs-case-modal" id="rs-case-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="rs-case-modal-title">
+<div class="rs-case-modal" id="rs-case-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="rs-case-modal-title" aria-describedby="rs-case-modal-summary" tabindex="-1">
   <div class="rs-case-modal-backdrop" data-case-close="true"></div>
   <article class="rs-case-modal-card">
     <button class="rs-case-modal-close" type="button" aria-label="Cerrar caso" data-case-close="true">×</button>
@@ -2216,7 +2239,7 @@ function toggleFaq(button) {
                 machineryTitle: "Su ecosistema digital",
                 machineryIntro: "Nosotros creamos su ecosistema digital y mostramos lo que usted vende. Usted atiende.",
                 phase1Title: "Sitio web que vende",
-                phase1Desc: "Una web de 4 secciones, clara y orientada a generar conversaciones.",
+                phase1Desc: "Una web clara que convierte interés en conversaciones.",
                 phase1BenefitsLabel: "INCLUYE",
                 phase1Benefits: ["4 secciones personalizadas", "Adaptado a su marca", "Diseño responsive", "WhatsApp integrado", "Copy orientado a vender", "Pago único"],
                 phase1Stat1: "4 secciones",
@@ -2310,7 +2333,7 @@ function toggleFaq(button) {
                 machineryTitle: "Your digital ecosystem",
                 machineryIntro: "Three connected steps to show your business, handle opportunities and gain visibility.",
                 phase1Title: "A website that sells",
-                phase1Desc: "A clear 4-section website made to help you sell.",
+                phase1Desc: "A clear website that turns interest into conversations.",
                 phase1BenefitsLabel: "INCLUDES",
                 phase1Benefits: ["4 custom sections", "Adapted to your brand", "Responsive design", "WhatsApp integrated", "Sales-focused copy", "One-time payment"],
                 phase1Stat1: "4 sections",
@@ -2410,7 +2433,7 @@ function toggleFaq(button) {
                 machineryTitle: "Seu ecossistema digital",
                 machineryIntro: "Três etapas conectadas para mostrar seu negócio, atender oportunidades e ganhar visibilidade.",
                 phase1Title: "Site que vende",
-                phase1Desc: "Um site claro de 4 seções, feito para vender.",
+                phase1Desc: "Um site claro que transforma interesse em conversas.",
                 phase1BenefitsLabel: "INCLUI",
                 phase1Benefits: ["4 seções personalizadas", "Adaptado à sua marca", "Design responsivo", "WhatsApp integrado", "Copy para vender", "Pagamento único"],
                 phase1Stat1: "4 seções",
