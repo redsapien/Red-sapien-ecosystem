@@ -137,6 +137,27 @@ body[data-niche="food"] .rs-selector-btn.is-active{background:linear-gradient(14
 img[loading="lazy"]{content-visibility:auto}
 @media (min-width:760px){#casos-exito-ecosistemas .rs-case-track{contain:layout paint}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}}
+
+/* RS visual system v2: contraste, profundidad y controles táctiles. */
+:root{--rs-radius:22px;--rs-line:rgba(255,255,255,.14);--rs-glass:rgba(255,255,255,.055)}
+#casos-exito-ecosistemas{isolation:isolate;scroll-margin-top:5rem}
+#casos-exito-ecosistemas .rs-case-track{scrollbar-gutter:stable;overscroll-behavior-inline:contain}
+#casos-exito-ecosistemas .rs-case-card{border:1px solid color-mix(in srgb,var(--case-accent,#ff3c00) 34%,var(--rs-line));border-radius:var(--rs-radius);background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.018) 48%,rgba(0,0,0,.28));box-shadow:0 18px 55px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);contain:layout paint}
+#casos-exito-ecosistemas .rs-case-media{background:radial-gradient(circle at 50% 15%,color-mix(in srgb,var(--case-accent,#ff3c00) 22%,#303030),#0b0b0b 78%);border-bottom-color:color-mix(in srgb,var(--case-accent,#ff3c00) 32%,transparent)}
+#casos-exito-ecosistemas .rs-case-media img{opacity:1!important;filter:brightness(1.16) saturate(1.16) contrast(1.05);mix-blend-mode:normal;box-shadow:0 16px 34px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);background:#121212}
+#casos-exito-ecosistemas .rs-case-card:hover .rs-case-media img{filter:brightness(1.24) saturate(1.22) contrast(1.06);transform:scale(1.045)}
+#casos-exito-ecosistemas .rs-case-body{background:linear-gradient(180deg,rgba(10,10,10,.08),rgba(0,0,0,.24));display:flex;flex-direction:column;justify-content:space-between}
+#casos-exito-ecosistemas .rs-case-card h3{color:#fff;text-wrap:balance}
+#casos-exito-ecosistemas .rs-case-card p{color:rgba(255,255,255,.78);text-wrap:pretty}
+#casos-exito-ecosistemas .rs-case-link{min-height:44px;padding-inline:1rem!important;color:#fff!important;box-shadow:0 8px 20px color-mix(in srgb,var(--case-accent,#ff3c00) 18%,transparent);font-weight:800}
+#casos-exito-ecosistemas .rs-case-link:focus-visible,.rs-case-modal-close:focus-visible,.rs-case-modal-cta:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.rs-case-modal-media{background:radial-gradient(circle at 50% 12%,color-mix(in srgb,var(--case-accent,#ff3c00) 34%,#303030),#050505 72%)}
+.rs-case-modal-media img{opacity:1!important;filter:brightness(1.1) saturate(1.12) contrast(1.04);box-shadow:0 24px 65px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.1)}
+.rs-case-modal-content{background:linear-gradient(135deg,rgba(255,255,255,.035),transparent 55%)}
+.rs-case-modal-cta{min-height:46px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 12px 30px color-mix(in srgb,var(--case-accent,#ff3c00) 24%,transparent)}
+button,a{ -webkit-tap-highlight-color:transparent}
+@media(max-width:760px){#casos-exito-ecosistemas .rs-case-media{aspect-ratio:9/12!important}#casos-exito-ecosistemas .rs-case-media img{padding:.35rem!important}#casos-exito-ecosistemas .rs-case-card{min-width:min(78vw,290px)!important}}
+@media(prefers-reduced-motion:reduce){#casos-exito-ecosistemas .rs-case-card:hover .rs-case-media img{filter:brightness(1.16) saturate(1.16) contrast(1.05);transform:none}}
 </style></head>
 <body class="font-sans overflow-x-hidden">
 <div aria-label="Cargando Red Sapien" aria-live="polite" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center transition-opacity duration-500" id="preloader" role="status">
@@ -1637,5 +1658,7 @@ function toggleFaq(button) {
   let index=0,timer;const paint=()=>{const d=data[document.body.dataset.niche]||data.food;els.name.textContent=d.name;els.letter.textContent=d.letter;els.role.textContent=d.role;els.review.textContent=d.review;els.opportunity.textContent=d.opportunity;els.report.textContent=d.report;els.note.textContent=d.note;els.log.textContent=d.logs[index%3];els.steps.forEach((x,i)=>x.classList.toggle('is-active',i===index%3));index++;};const run=()=>{clearInterval(timer);paint();timer=setInterval(paint,3200)};document.querySelectorAll('.rs-selector-btn').forEach(b=>b.addEventListener('click',()=>{index=0;run()}));run();})();
 </script><script>
 (()=>{const modal=document.getElementById('investor-modal');if(!modal)return;const open=()=>{modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';modal.querySelector('.rs-investor-close')?.focus()};const close=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''};document.querySelectorAll('[data-investor-open]').forEach(x=>x.addEventListener('click',open));modal.addEventListener('click',e=>{if(e.target.closest('[data-investor-close]'))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))close()});})();
+</script><script>
+(()=>{const warm=()=>{const urls=['assets/Image/Case-La-Plancha-mobile.webp','assets/Image/Case-La-Papa-Prohibida-mobile.webp','assets/Image/Salchipotato-manizales.webp'];urls.forEach(src=>{const i=new Image();i.decoding='async';i.src=src})};if('requestIdleCallback' in window){requestIdleCallback(warm,{timeout:1800})}else{window.setTimeout(warm,900)}})();
 </script></body>
 </html>
