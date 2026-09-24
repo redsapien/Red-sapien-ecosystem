@@ -121,7 +121,121 @@ img[loading="lazy"]{content-visibility:auto}
 button,a{ -webkit-tap-highlight-color:transparent}
 @media(max-width:760px){#casos-exito-ecosistemas .rs-case-media{aspect-ratio:9/12!important}#casos-exito-ecosistemas .rs-case-media img{padding:.35rem!important}#casos-exito-ecosistemas .rs-case-card{min-width:min(78vw,290px)!important}}
 @media(prefers-reduced-motion:reduce){#casos-exito-ecosistemas .rs-case-card:hover .rs-case-media img{filter:brightness(1.16) saturate(1.16) contrast(1.05);transform:none}}
-</style></head>
+</style><style id="rs-slider-image-clarity">
+/* Presentación nítida de los casos, sin velos encima de las capturas. */
+#casos-exito-ecosistemas .rs-case-card::after,
+#casos-exito-ecosistemas .rs-case-shine {
+  display: none !important;
+}
+
+#casos-exito-ecosistemas .rs-case-media {
+  position: relative !important;
+  display: grid !important;
+  place-items: center !important;
+  isolation: isolate;
+  width: 100%;
+  height: clamp(240px, 31vw, 350px) !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  padding: clamp(10px, 1.5vw, 14px) !important;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--case-accent, #ff3c00) 36%, #d8e0e9) !important;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #eef2f7 0%, #d8e0e9 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 14px 34px rgba(0,0,0,.28);
+}
+
+#casos-exito-ecosistemas .rs-case-media::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  z-index: 3;
+  border: 1px solid rgba(255,255,255,.62);
+  border-radius: 12px;
+  pointer-events: none;
+  background: none;
+}
+
+#casos-exito-ecosistemas .rs-case-media img {
+  position: relative !important;
+  z-index: 2 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  opacity: 1 !important;
+  filter: brightness(1.08) contrast(1.08) saturate(1.08) !important;
+  mix-blend-mode: normal !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  border: 1px solid rgba(15,23,42,.18);
+  border-radius: 12px;
+  background: #101318;
+  box-shadow: 0 16px 38px rgba(0,0,0,.42), 0 0 0 1px rgba(255,255,255,.16);
+  transition: transform .28s cubic-bezier(.2,.8,.2,1), filter .28s ease;
+}
+
+#casos-exito-ecosistemas .rs-case-card:hover .rs-case-media img {
+  transform: scale(1.025) !important;
+  filter: brightness(1.1) contrast(1.1) saturate(1.1) !important;
+}
+
+#casos-exito-ecosistemas .rs-case-modal-card {
+  border-color: color-mix(in srgb, var(--case-accent, #ff3c00) 32%, rgba(255,255,255,.18));
+  box-shadow: 0 32px 110px rgba(0,0,0,.72), 0 0 50px color-mix(in srgb, var(--case-accent, #ff3c00) 12%, transparent);
+}
+
+#casos-exito-ecosistemas .rs-case-modal-media {
+  display: grid !important;
+  place-items: center !important;
+  padding: clamp(20px, 4vw, 48px) !important;
+  background: radial-gradient(circle at 50% 18%, color-mix(in srgb, var(--case-accent, #ff3c00) 24%, #30343b), #080a0e 72%) !important;
+}
+
+#casos-exito-ecosistemas .rs-case-modal-media img {
+  display: block !important;
+  width: min(100%, 420px) !important;
+  height: auto !important;
+  max-width: min(100%, 420px) !important;
+  max-height: 78vh !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  padding: 8px !important;
+  opacity: 1 !important;
+  filter: brightness(1.06) contrast(1.08) saturate(1.08) !important;
+  mix-blend-mode: normal !important;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important;
+  box-shadow: 0 24px 74px rgba(0,0,0,.66), 0 0 0 1px rgba(255,255,255,.16), 0 18px 46px color-mix(in srgb, var(--case-accent, #ff3c00) 20%, transparent);
+}
+
+@media (max-width: 760px) {
+  #casos-exito-ecosistemas .rs-case-media {
+    height: clamp(220px, 68vw, 290px) !important;
+  }
+  #casos-exito-ecosistemas .rs-case-modal-media {
+    height: 46dvh !important;
+    min-height: 46dvh !important;
+    max-height: 52dvh !important;
+    padding: 16px !important;
+  }
+  #casos-exito-ecosistemas .rs-case-modal-media img {
+    width: auto !important;
+    max-width: min(82vw, 380px) !important;
+    max-height: 40dvh !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #casos-exito-ecosistemas .rs-case-media img {
+    transition: none !important;
+  }
+}
+</style>
+
+</head>
 <body class="font-sans overflow-x-hidden">
 <div aria-label="Cargando Red Sapien" aria-live="polite" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center transition-opacity duration-500" id="preloader" role="status">
 <div class="relative w-24 h-24 flex items-center justify-center mb-6">
@@ -1521,7 +1635,7 @@ function toggleFaq(button) {
     food:{badge:'Casos gastronómicos',title:'Casos reales',intro:'Resultados reportados en gastronomía.',cards:[['01','La Plancha · Arepas y Empanadas','Web + confianza','Oferta clara y acceso directo a pedidos por WhatsApp.','assets/Image/Case-La-Plancha-mobile.webp','https://laplanchamanizales.redsapien.com/','Web de pedidos para arepas y empanadas en Manizales. Se reportó un costo menor a $1.000 COP por mensaje, además de trabajo en posicionamiento local y atención con IA.','Costo < $1.000 COP por mensaje · cierre aprox. 30% reportado'],['02','La Papa Prohibida','Pedidos + WhatsApp','Menú, platos estrella y pedido directo por WhatsApp.','assets/Image/Case-La-Papa-Prohibida-mobile.webp','https://lapapa.redsapien.com/','Web con menú y pedido directo. Se reportaron 16 domicilios en 30 horas y CTR de 5,3% en video gastronómico orgánico.','16 domicilios · 30 h · CTR orgánico 5,3% · Villamaría'],['03','Salchipotato','Reservas + WhatsApp','Reservas para eventos; captación con +3.000 conversaciones reportadas.','assets/Image/Case-Salchipotato-Reservas.webp','https://reservaensalchipotato.redsapien.com/','La página facilita reservas para reuniones y eventos. En una estrategia de captación, Red Sapien reporta más de 3.000 conversaciones directas a WhatsApp.','Captación reportada: +3.000 conversaciones · CTR 6,9% · costo < $1.000 COP · cierre ~35%']]},
     health:{badge:'Servicios y marcas premium',title:'Casos reales',intro:'Servicios, agenda y productos premium.',cards:[['01','Carolina Ruiz Psico Spa','Psico Spa + agenda','Experiencias de Psico Spa y agenda en Manizales y Villamaría.','assets/Image/Case-Carolina-Ruiz-Psico-Spa.webp','https://carolinaruizspa.redsapien.com/','Agenda y paquetes de Psico Spa para Manizales y Villamaría; el sitio permite consultar disponibilidad y coordinar el servicio.','Manizales y Villamaría · agenda y disponibilidad'],['02','Noir Elixir','Perfumería premium','Fragancias premium, organizadas para explorar y elegir.','assets/Image/Case-Noir-Elixir.webp','https://noir.redsapien.com/','Catálogo de perfumería premium en Medellín, con productos para mujeres y hombres y una ruta clara de compra. Es una marca de fragancias, no un servicio clínico.','Fragancias premium · Medellín'],['03','Adme Dental','Odontología + citas','Nueve servicios odontológicos y un canal directo para solicitar cita.','assets/Image/Case-Adme-Dental.webp','https://admedental.redsapien.com/','Sitio de odontología general y estética en Manizales: presenta al profesional, organiza nueve servicios y permite consultar disponibilidad y solicitar cita.','9 servicios · Manizales · solicitud de cita']]}
   };
-  const renderCases=(niche)=>{const d=cases[niche];const track=document.getElementById('ecosystem-slider');if(!track||!d)return;const accent=niche==='food'?'#ff3c00':'#39c6a2';track.dataset.niche=niche;track.innerHTML=d.cards.map((c,i)=>{const media=c[4]?`<img src="${c[4]}" alt="Imagen del caso ${c[1]}" loading="lazy" decoding="async">`:'<span aria-hidden="true">Imagen en preparación</span>';const link=`<button class="rs-case-link rs-case-open" type="button" aria-label="Abrir el caso ${c[1]}">Ver caso <span aria-hidden="true">↗</span></button>`;return `<article class="rs-case-card" data-case-index="${i}" tabindex="0" role="button" aria-label="Abrir caso ${c[1]}" style="--case-accent:${accent}"><div class="rs-case-media ${c[4]?'':'is-empty'}">${media}<span class="rs-case-shine" aria-hidden="true"></span></div><div class="rs-case-body"><div class="rs-case-copy"><div class="rs-case-meta"><span class="rs-case-type">${c[2]}</span></div><h3>${c[1]}</h3><p>${c[3]}</p></div>${link}</div></article>`}).join('');setCase('portfolio-badge',d.badge);setCase('portfolio-title',d.title);setCase('portfolio-intro',d.intro)};
+  const renderCases=(niche)=>{const d=cases[niche];const track=document.getElementById('ecosystem-slider');if(!track||!d)return;const accent=niche==='food'?'#ff3c00':'#39c6a2';track.dataset.niche=niche;track.innerHTML=d.cards.map((c,i)=>{const media=c[4]?`<img src="${c[4]}" alt="Imagen del caso ${c[1]}" loading="eager" fetchpriority="high" decoding="async">`:'<span aria-hidden="true">Imagen en preparación</span>';const link=`<button class="rs-case-link rs-case-open" type="button" aria-label="Abrir el caso ${c[1]}">Ver caso <span aria-hidden="true">↗</span></button>`;return `<article class="rs-case-card" data-case-index="${i}" tabindex="0" role="button" aria-label="Abrir caso ${c[1]}" style="--case-accent:${accent}"><div class="rs-case-media ${c[4]?'':'is-empty'}">${media}<span class="rs-case-shine" aria-hidden="true"></span></div><div class="rs-case-body"><div class="rs-case-copy"><div class="rs-case-meta"><span class="rs-case-type">${c[2]}</span></div><h3>${c[1]}</h3><p>${c[3]}</p></div>${link}</div></article>`}).join('');setCase('portfolio-badge',d.badge);setCase('portfolio-title',d.title);setCase('portfolio-intro',d.intro)};
   document.documentElement.dataset.niche='food';document.body.dataset.niche='food';
   renderCases('food');
   document.querySelectorAll('.rs-selector-btn').forEach(btn=>btn.addEventListener('click',()=>renderCases(btn.dataset.niche)));
@@ -1617,7 +1731,7 @@ function toggleFaq(button) {
 (()=>{const modal=document.getElementById('coming-soon-modal'),close=document.getElementById('close-coming-soon');if(!modal||!close)return;const open=()=>{modal.classList.add('is-open');document.body.style.overflow='hidden';close.focus()};const shut=()=>{modal.classList.remove('is-open');document.body.style.overflow='';};document.querySelectorAll('[data-coming-soon]').forEach(btn=>btn.addEventListener('click',open));close.addEventListener('click',shut);modal.addEventListener('click',e=>{if(e.target===modal)shut()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))shut()});document.querySelectorAll('[data-panel-tab]').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('[data-panel-tab]').forEach(x=>{x.classList.toggle('is-active',x===tab);x.setAttribute('aria-selected',x===tab?'true':'false')});document.querySelectorAll('.rs-panel-preview-body').forEach(panel=>panel.hidden=panel.id!=='panel-preview-'+tab.dataset.panelTab)}));})();
 </script>
 <script>
-(()=>{const modal=document.getElementById('rs-case-modal');if(!modal)return;document.body.appendChild(modal);const open=(card)=>{const niche=card.closest('.rs-case-track')?.dataset.niche||'food',d=cases[niche]?.cards?.[Number(card.dataset.caseIndex)];if(!d)return;const accentMap={food:['#ff3c00','#f59e0b','#ef3340'],health:['#39c6a2','#b58cff','#4da3ff']};const accent=accentMap[niche]?.[Number(card.dataset.caseIndex)]|| (niche==='health'?'#39c6a2':'#ff3c00');modal.style.setProperty('--case-accent',accent);const img=document.getElementById('rs-case-modal-media');img.innerHTML=d[4]?`<img src="${d[4]}" alt="Imagen del caso ${d[1]}" loading="eager" decoding="async">`:'<span>Imagen en preparación</span>';document.getElementById('rs-case-modal-kicker').textContent=cases[niche].badge;document.getElementById('rs-case-modal-title').textContent=d[1];document.getElementById('rs-case-modal-type').textContent=d[2];document.getElementById('rs-case-modal-summary').textContent=d[6]||d[3];document.getElementById('rs-case-modal-metric').textContent=d[7]||'Resultado en preparación con información verificada.';const a=document.getElementById('rs-case-modal-link');a.href=d[5]||'#';a.style.display=d[5]?'inline-flex':'none';modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';document.querySelector('.rs-case-modal-close').focus()};const close=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''};document.getElementById('ecosystem-slider')?.addEventListener('click',e=>{if(e.target.closest('a'))return;const card=e.target.closest('.rs-case-card');if(card)open(card)});document.getElementById('ecosystem-slider')?.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('a')){e.preventDefault();open(e.target.closest('.rs-case-card'))}});modal.addEventListener('click',e=>{if(e.target.closest('[data-case-close]'))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))close()})})();
+(()=>{const modal=document.getElementById('rs-case-modal');if(!modal)return;document.body.appendChild(modal);const open=(card)=>{const niche=card.closest('.rs-case-track')?.dataset.niche||'food',d=cases[niche]?.cards?.[Number(card.dataset.caseIndex)];if(!d)return;const accentMap={food:['#ff3c00','#f59e0b','#ef3340'],health:['#39c6a2','#b58cff','#4da3ff']};const accent=accentMap[niche]?.[Number(card.dataset.caseIndex)]|| (niche==='health'?'#39c6a2':'#ff3c00');modal.style.setProperty('--case-accent',accent);const img=document.getElementById('rs-case-modal-media');img.innerHTML=d[4]?`<img src="${d[4]}" alt="Imagen del caso ${d[1]}" loading="eager" fetchpriority="high" decoding="async">`:'<span>Imagen en preparación</span>';document.getElementById('rs-case-modal-kicker').textContent=cases[niche].badge;document.getElementById('rs-case-modal-title').textContent=d[1];document.getElementById('rs-case-modal-type').textContent=d[2];document.getElementById('rs-case-modal-summary').textContent=d[6]||d[3];document.getElementById('rs-case-modal-metric').textContent=d[7]||'Resultado en preparación con información verificada.';const a=document.getElementById('rs-case-modal-link');a.href=d[5]||'#';a.style.display=d[5]?'inline-flex':'none';modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';document.querySelector('.rs-case-modal-close').focus()};const close=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''};document.getElementById('ecosystem-slider')?.addEventListener('click',e=>{if(e.target.closest('a'))return;const card=e.target.closest('.rs-case-card');if(card)open(card)});document.getElementById('ecosystem-slider')?.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('a')){e.preventDefault();open(e.target.closest('.rs-case-card'))}});modal.addEventListener('click',e=>{if(e.target.closest('[data-case-close]'))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))close()})})();
 </script><script>
 (() => {
   const data={food:{name:'Antonella',letter:'A',role:'Seguimiento para gastronomía',review:'WhatsApp y correo',opportunity:'Detecta mensajes sin responder',report:'Entrega el próximo paso',note:'Apoya pedidos y seguimiento sin reemplazar su criterio.',logs:['Antonella está revisando nuevas conversaciones…','Encontró una oportunidad pendiente de respuesta.','Preparó un reporte con el próximo paso.']},health:{name:'Dulce',letter:'D',role:'Recepción para servicios profesionales',review:'WhatsApp y correo',opportunity:'Detecta solicitudes fuera de horario',report:'Prepara el seguimiento de la cita',note:'Entrenada para apoyar consultas y agenda sin reemplazar su criterio.',logs:['Dulce está revisando WhatsApp y correo…','Detectó una solicitud fuera de horario.','Preparó un reporte para coordinar la atención.']}};
