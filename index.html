@@ -30,28 +30,7 @@
 
 
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        rs: { black: '#050505', dark: '#0a0a0a', gray: '#171717', red: '#FF3C00' }
-                    },
-                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Space Grotesk', 'sans-serif'] },
-                    animation: {
-                        'bullet-train': 'scroll 40s linear infinite',
-                        'fade-out': 'fadeOut 0.6s ease-out forwards',
-                        'spin-slow': 'spin 3s linear infinite',
-                    },
-                    keyframes: {
-                        scroll: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
-                        fadeOut: { '0%': { opacity: '1', visibility: 'visible' }, '100%': { opacity: '0', visibility: 'hidden' } }
-                    }
-                }
-            }
-        }
-    </script>
+<link rel="stylesheet" href="/assets/css/tailwind-v3.4.17.css">
 
 <link href="https://redsapien.com/" rel="canonical"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Red Sapien","url":"https://redsapien.com/","description":"Sitios web personalizados y ecosistemas digitales para negocios en Colombia.","telephone":"+573012800024","email":"redsapienc@proton.me","areaServed":{"@type":"Country","name":"Colombia"},"serviceType":["Desarrollo web","Marketing digital","SEO local","GEO","Inteligencia artificial"],"offers":{"@type":"Offer","price":"327000","priceCurrency":"COP","description":"Ecosistema digital de tres fases para negocios locales."},"sameAs":["https://github.com/redsapien/Red-sapien-ecosystem"],"address":{"@type":"PostalAddress","addressLocality":"Manizales","addressCountry":"CO"}}</script>
@@ -202,7 +181,6 @@ button,a{ -webkit-tap-highlight-color:transparent}
 <a class="block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300" data-i18n="mobileContact" href="https://wa.me/573012800024?text=Hola%2C%20deseo%20saber%20m%C3%A1s%20de%20la%20web%20de%20ventas...%20%F0%9F%8C%90">Hablemos</a>
 </div>
 </div>
-</div>
 <main class="bg-subtle-red relative min-h-screen flex flex-col items-center justify-center pt-32 md:pt-40 pb-12 text-center overflow-hidden">
 <div class="tech-mesh-layer"></div>
 <div class="absolute inset-0 w-full h-full pointer-events-none z-0 hero-background-svg">
@@ -296,7 +274,7 @@ button,a{ -webkit-tap-highlight-color:transparent}
 <div class="absolute inset-0 pointer-events-none z-0 cyber-grid-overlay-clean"></div>
 <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-neutral-900/30 rounded-full blur-[140px] pointer-events-none z-0">
 </div>
-<div class="absolute bottom-20 right-12 w-[400px] h-[400px] bg-[#FF3C00]/3 rounded-full blur-[120px] pointer-events-none z-0">
+<div class="absolute bottom-20 right-12 w-[400px] h-[400px] bg-[#FF3C00]/[0.03] rounded-full blur-[120px] pointer-events-none z-0">
 </div>
 <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 <div class="w-full mb-24 md:mb-32 text-left raw-reveal max-w-4xl">
@@ -574,6 +552,8 @@ button,a{ -webkit-tap-highlight-color:transparent}
 <path d="M9 5l7 7-7 7"></path>
 </svg></button>
 <div class="rs-case-track" id="ecosystem-slider" aria-live="polite"></div>
+</div>
+</div>
 <div class="rs-case-modal" id="rs-case-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="rs-case-modal-title" aria-describedby="rs-case-modal-summary" tabindex="-1">
   <div class="rs-case-modal-backdrop" data-case-close="true"></div>
   <article class="rs-case-modal-card">
@@ -586,7 +566,7 @@ button,a{ -webkit-tap-highlight-color:transparent}
         <p class="rs-case-modal-type" id="rs-case-modal-type"></p>
         <p id="rs-case-modal-summary"></p>
         <div class="rs-case-modal-metric" id="rs-case-modal-metric"></div>
-        <a class="rs-case-modal-cta" id="rs-case-modal-link" href="#" target="_blank" rel="noopener noreferrer">Ver sitio ↗</a>
+        <a class="rs-case-modal-cta" id="rs-case-modal-link" href="https://laplanchamanizales.redsapien.com/" target="_blank" rel="noopener noreferrer">Ver sitio ↗</a>
       </div>
     </div>
   </article>
