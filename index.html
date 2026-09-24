@@ -321,6 +321,14 @@ button,a{ -webkit-tap-highlight-color:transparent}
 #sectores .rs-selector-btn .rs-selector-icon{transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease!important}
 #sectores .rs-selector-btn:hover .rs-selector-icon,#sectores .rs-selector-btn:focus-visible .rs-selector-icon{transform:translateY(-3px) scale(1.04)!important}
 #sectores .rs-selector-btn.is-active .rs-selector-icon svg{animation:rs-niche-icon-breathe 2.5s ease-in-out infinite!important}
+#sectores .rs-selector-btn{background:linear-gradient(145deg,rgba(31,34,39,.98),rgba(9,11,14,.99))!important;border-color:rgba(255,255,255,.18)!important;box-shadow:0 18px 44px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.08)!important}
+#sectores .rs-selector-btn:hover{transform:translateY(-4px)!important;border-color:color-mix(in srgb,var(--rs-accent) 68%,white)!important;box-shadow:0 24px 52px color-mix(in srgb,var(--rs-accent) 16%,transparent),inset 0 1px 0 rgba(255,255,255,.1)!important}
+#sectores .rs-selector-btn.is-active{background:linear-gradient(145deg,color-mix(in srgb,var(--rs-accent) 14%,#1b1b1b),#0b0b0b 76%)!important;border-color:var(--rs-accent)!important;box-shadow:0 0 0 1px color-mix(in srgb,var(--rs-accent) 74%,white),0 20px 48px color-mix(in srgb,var(--rs-accent) 18%,transparent),inset 0 1px 0 rgba(255,255,255,.12)!important}
+#sectores .rs-selector-btn strong{line-height:1.14!important;text-wrap:balance}
+#sectores .rs-selector-btn small{color:rgba(255,255,255,.8)!important;text-wrap:pretty}
+#sectores .rs-niche-result{margin-top:24px!important;box-shadow:0 16px 38px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.055)!important}
+@media(max-width:760px){#sectores .rs-selector-btn:hover{transform:translateY(-2px)!important}#sectores .rs-niche-result{margin-top:20px!important}}
+@media(prefers-reduced-motion:reduce){#sectores .rs-selector-btn:hover,#sectores .rs-selector-btn.is-active{transform:none!important}}
 @media(max-width:760px){
  #sectores .rs-sectors-inner{margin-left:12px!important;margin-right:auto!important}
  #sectores .rs-selector{gap:14px!important;margin-top:24px!important}
@@ -427,7 +435,7 @@ button,a{ -webkit-tap-highlight-color:transparent}
                 Haga crecer su negocio.
             </h1>
 <p class="text-base md:text-lg text-gray-300 font-normal mb-12 max-w-sm mx-auto leading-relaxed" data-i18n="heroDesc" id="hero-desc">
-                Creamos un ecosistema digital para que sus clientes lleguen directo a su WhatsApp.
+                Creamos un ecosistema digital y le llevamos clientes directo a WhatsApp.
             </p>
 <div class="flex w-full max-w-[320px] md:max-w-md mb-20">
 <a class="w-full min-h-[56px] flex items-center justify-center gap-3 bg-white text-[#050505] border border-white py-4 px-5 sm:px-8 rounded-lg text-sm md:text-base font-bold text-center leading-tight shadow-[0_8px_25px_rgba(255,255,255,0.12)] transition-all duration-300 hover:bg-transparent hover:text-white hover:shadow-[0_10px_30px_rgba(255,255,255,0.18)] hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#050505]" href="https://wa.me/573012800024?text=Hola%2C%20me%20regalan%20m%C3%A1s%20informaci%C3%B3n%20porfa...%20%F0%9F%8C%90%20%F0%9F%A4%96" id="main-cta" rel="noopener noreferrer" target="_blank">
@@ -1149,7 +1157,7 @@ function toggleFaq(button) {
             es: {
                 mobileContact: "Hablemos",
                 heroTitle: "Haga crecer su negocio.",
-                heroDesc: "Creamos un ecosistema digital para que sus clientes lleguen directo a su WhatsApp.",
+                heroDesc: "Creamos un ecosistema digital y le llevamos clientes directo a WhatsApp.",
                 mainCta: "Hablemos",
                 trustText: "Marcas reales.",
                 scrollPhase0: "Manizales · Pereira · Cali. Juntos crecemos.",
@@ -1225,7 +1233,7 @@ function toggleFaq(button) {
             en: {
                 mobileContact: "Let's talk",
                 heroTitle: "Grow your business",
-                heroDesc: "We build a digital ecosystem to help customers find you and reach you on WhatsApp.",
+                heroDesc: "We build a digital ecosystem and bring customers straight to WhatsApp.",
                 mainCta: "Let's talk",
                 trustText: "Real brands have already taken the step.",
                 securityBadge: "Real Results: Pay on Delivery",
@@ -1298,7 +1306,7 @@ function toggleFaq(button) {
             pt: {
                 mobileContact: "Vamos conversar",
                 heroTitle: "Mais vendas, mais presença",
-                heroDesc: "Criamos um ecossistema digital para que seus clientes encontrem você e cheguem ao seu WhatsApp.",
+                heroDesc: "Criamos um ecossistema digital e levamos clientes direto ao WhatsApp.",
                 mainCta: "Vamos conversar",
                 trustText: "Eles já estão em outro nível, e você?",
                 scrollPhase0: "Manizales, Pereira e Cali: Juntos conseguimos mais...",
