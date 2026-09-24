@@ -235,6 +235,121 @@ button,a{ -webkit-tap-highlight-color:transparent}
 }
 </style>
 
+<style id="rs-slider-overlay-and-compact-copy">
+/* Capturas nítidas con un degradado discreto solo detrás del copy y la acción. */
+#casos-exito-ecosistemas .rs-case-card {
+  position: relative !important; isolation: isolate !important;
+  display: flex !important; flex-direction: column !important;
+  height: clamp(420px, 42vw, 500px) !important; min-height: 420px !important;
+  overflow: hidden !important; border-radius: 24px !important;
+  border: 1px solid color-mix(in srgb, var(--case-accent, #ff3c00) 48%, rgba(255,255,255,.22)) !important;
+  background: #090b0f !important;
+  box-shadow: 0 20px 52px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+#casos-exito-ecosistemas .rs-case-media {
+  position: absolute !important; inset: 0 !important; z-index: 0 !important;
+  width: 100% !important; height: 100% !important; min-height: 0 !important;
+  aspect-ratio: auto !important; padding: 0 !important; overflow: hidden !important;
+  border: 0 !important;
+  background: radial-gradient(ellipse at 50% 25%, color-mix(in srgb, var(--case-accent, #ff3c00) 13%, #282b30), #080a0e 76%) !important;
+}
+#casos-exito-ecosistemas .rs-case-media::before { content: none !important; }
+#casos-exito-ecosistemas .rs-case-media img {
+  position: relative !important; z-index: 0 !important; display: block !important;
+  width: 100% !important; height: 100% !important; padding: 10px !important;
+  opacity: 1 !important; filter: brightness(1.1) contrast(1.08) saturate(1.08) !important;
+  mix-blend-mode: normal !important; object-fit: contain !important; object-position: center top !important;
+  border: 1px solid rgba(255,255,255,.16) !important; border-radius: 16px !important;
+  background: transparent !important; box-shadow: 0 16px 38px rgba(0,0,0,.3) !important;
+  transition: filter .25s ease !important;
+}
+#casos-exito-ecosistemas .rs-case-card::after {
+  content: "" !important; display: block !important; position: absolute !important; inset: 0 !important;
+  z-index: 1 !important; border-radius: inherit !important; pointer-events: none !important;
+  opacity: 1 !important; transform: none !important;
+  background: linear-gradient(180deg, rgba(4,6,9,0) 36%, rgba(4,6,9,.04) 50%, rgba(4,6,9,.12) 68%, rgba(4,6,9,.22) 100%) !important;
+}
+#casos-exito-ecosistemas .rs-case-shine { display: none !important; }
+#casos-exito-ecosistemas .rs-case-body {
+  position: relative !important; z-index: 2 !important; width: 100% !important;
+  margin-top: auto !important; padding: 94px clamp(18px, 2.2vw, 26px) 22px !important;
+  display: flex !important; flex-direction: column !important; gap: 10px !important;
+  background: linear-gradient(180deg, transparent 0%, rgba(5,7,10,.08) 22%, rgba(5,7,10,.28) 100%) !important;
+}
+#casos-exito-ecosistemas .rs-case-copy { min-width: 0; text-shadow: 0 1px 16px rgba(0,0,0,.62); }
+#casos-exito-ecosistemas .rs-case-type {
+  margin: 0 !important; color: color-mix(in srgb, var(--case-accent, #ff3c00) 78%, white) !important;
+  font-size: .66rem !important; font-weight: 800 !important; letter-spacing: .12em !important; text-transform: uppercase;
+}
+#casos-exito-ecosistemas .rs-case-copy h3 {
+  margin: 8px 0 6px !important; color: #fff !important;
+  font-size: clamp(1.12rem, 1.7vw, 1.42rem) !important; line-height: 1.12 !important; text-wrap: balance;
+}
+#casos-exito-ecosistemas .rs-case-copy p {
+  display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  max-width: 36ch !important; color: rgba(255,255,255,.92) !important;
+  font-size: .8rem !important; line-height: 1.42 !important;
+}
+#casos-exito-ecosistemas .rs-case-link {
+  align-self: flex-start !important; display: inline-flex !important; align-items: center !important;
+  justify-content: center !important; gap: 8px !important; min-height: 46px !important;
+  margin-top: 2px !important; padding: 11px 17px !important;
+  border: 1px solid rgba(255,255,255,.44) !important; border-radius: 999px !important;
+  background: var(--case-accent, #ff3c00) !important; color: #080a0d !important;
+  font-size: .82rem !important; font-weight: 850 !important; letter-spacing: .01em !important;
+  text-shadow: none !important; box-shadow: 0 8px 22px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.25) !important;
+  cursor: pointer !important; transition: transform .2s ease, filter .2s ease, box-shadow .2s ease !important;
+}
+#casos-exito-ecosistemas .rs-case-link:hover { transform: translateY(-2px) !important; filter: brightness(1.08) !important; box-shadow: 0 12px 28px rgba(0,0,0,.42) !important; }
+#casos-exito-ecosistemas .rs-case-link:focus-visible,
+#maquinaria-automatizada .phase-offer-cta:focus-visible, #main-cta:focus-visible {
+  outline: 3px solid #fff !important; outline-offset: 3px !important;
+}
+#casos-exito-ecosistemas .rs-case-modal-card {
+  border-color: color-mix(in srgb, var(--case-accent, #ff3c00) 32%, rgba(255,255,255,.18));
+  box-shadow: 0 32px 110px rgba(0,0,0,.72), 0 0 50px color-mix(in srgb, var(--case-accent, #ff3c00) 12%, transparent);
+}
+#casos-exito-ecosistemas .rs-case-modal-media {
+  display: grid !important; place-items: center !important; padding: clamp(20px, 4vw, 48px) !important;
+  background: radial-gradient(circle at 50% 18%, color-mix(in srgb, var(--case-accent, #ff3c00) 24%, #30343b), #080a0e 72%) !important;
+}
+#casos-exito-ecosistemas .rs-case-modal-media img {
+  display: block !important; width: min(100%, 420px) !important; height: auto !important;
+  max-width: min(100%, 420px) !important; max-height: 78vh !important; aspect-ratio: auto !important;
+  object-fit: contain !important; object-position: center !important; padding: 8px !important;
+  opacity: 1 !important; filter: brightness(1.06) contrast(1.08) saturate(1.08) !important; mix-blend-mode: normal !important;
+  border: 1px solid rgba(255,255,255,.72); border-radius: 20px;
+  background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important;
+  box-shadow: 0 24px 74px rgba(0,0,0,.66), 0 0 0 1px rgba(255,255,255,.16), 0 18px 46px color-mix(in srgb, var(--case-accent, #ff3c00) 20%, transparent);
+}
+#main-cta { min-height: 52px !important; border-radius: 999px !important; font-weight: 800 !important; letter-spacing: .01em !important; }
+#maquinaria-automatizada .phase-offer-cta {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important;
+  min-height: 48px !important; padding: 12px 20px !important; border: 1px solid rgba(255,255,255,.3) !important;
+  border-radius: 999px !important; background: linear-gradient(135deg, #ff4a1c, #e83000) !important;
+  color: #fff !important; font-weight: 800 !important; letter-spacing: .01em !important; text-decoration: none !important;
+  box-shadow: 0 12px 28px rgba(255,60,0,.22) !important; transition: transform .2s ease, box-shadow .2s ease, filter .2s ease !important;
+}
+#maquinaria-automatizada .phase-offer-cta:hover { transform: translateY(-2px) !important; filter: brightness(1.08) !important; box-shadow: 0 16px 34px rgba(255,60,0,.3) !important; }
+#agente-seguimiento .rs-agent-demo-head p { max-width: 30ch; }
+#agente-seguimiento .rs-agent-step {
+  min-height: 64px; border: 1px solid rgba(255,255,255,.08); border-radius: 14px;
+  background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
+}
+#agente-seguimiento .rs-agent-step small { color: rgba(255,255,255,.72) !important; font-size: .68rem !important; }
+@media (max-width: 760px) {
+  #casos-exito-ecosistemas .rs-case-card { height: clamp(410px, 116vw, 470px) !important; min-height: 410px !important; }
+  #casos-exito-ecosistemas .rs-case-body { padding: 90px 18px 18px !important; }
+  #casos-exito-ecosistemas .rs-case-modal-media { height: 46dvh !important; min-height: 46dvh !important; max-height: 52dvh !important; padding: 16px !important; }
+  #casos-exito-ecosistemas .rs-case-modal-media img { width: auto !important; max-width: min(82vw, 380px) !important; max-height: 40dvh !important; }
+  #agente-seguimiento .rs-agent-flow { gap: 8px !important; }
+  #maquinaria-automatizada .phase-offer-cta { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #casos-exito-ecosistemas .rs-case-card, #casos-exito-ecosistemas .rs-case-media img,
+  #casos-exito-ecosistemas .rs-case-link, #maquinaria-automatizada .phase-offer-cta { transition: none !important; }
+}
+</style>
 </head>
 <body class="font-sans overflow-x-hidden">
 <div aria-label="Cargando Red Sapien" aria-live="polite" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center transition-opacity duration-500" id="preloader" role="status">
@@ -319,14 +434,14 @@ button,a{ -webkit-tap-highlight-color:transparent}
                 Haga crecer su negocio.
             </h1>
 <p class="text-base md:text-lg text-gray-300 font-normal mb-12 max-w-sm mx-auto leading-relaxed" data-i18n="heroDesc" id="hero-desc">
-                Web, SEO e IA para llevar interés a WhatsApp.
+                Creamos su ecosistema digital y llevamos personas interesadas al WhatsApp de su negocio.
             </p>
 <div class="flex w-full max-w-[320px] md:max-w-md mb-20">
-<a aria-label="Hablar ahora por WhatsApp" class="w-full min-h-[56px] flex items-center justify-center gap-3 bg-white text-[#050505] border border-white py-4 px-5 sm:px-8 rounded-lg text-sm md:text-base font-bold text-center leading-tight shadow-[0_8px_25px_rgba(255,255,255,0.12)] transition-all duration-300 hover:bg-transparent hover:text-white hover:shadow-[0_10px_30px_rgba(255,255,255,0.18)] hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#050505]" href="https://wa.me/573012800024?text=Hola%2C%20me%20regalan%20m%C3%A1s%20informaci%C3%B3n%20porfa...%20%F0%9F%8C%90%20%F0%9F%A4%96" id="main-cta" rel="noopener noreferrer" target="_blank">
+<a class="w-full min-h-[56px] flex items-center justify-center gap-3 bg-white text-[#050505] border border-white py-4 px-5 sm:px-8 rounded-lg text-sm md:text-base font-bold text-center leading-tight shadow-[0_8px_25px_rgba(255,255,255,0.12)] transition-all duration-300 hover:bg-transparent hover:text-white hover:shadow-[0_10px_30px_rgba(255,255,255,0.18)] hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#050505]" href="https://wa.me/573012800024?text=Hola%2C%20me%20regalan%20m%C3%A1s%20informaci%C3%B3n%20porfa...%20%F0%9F%8C%90%20%F0%9F%A4%96" id="main-cta" rel="noopener noreferrer" target="_blank">
 <svg aria-hidden="true" class="w-6 h-6 fill-current shrink-0" viewbox="0 0 24 24">
 <path d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.457 3.422 1.257 4.877L2 22l5.292-1.389c1.4.762 2.99 1.186 4.712 1.186 5.51 0 9.993-4.483 9.993-9.994C21.997 6.483 17.514 2 12.004 2zm5.787 14.394c-.242.68-.1.173-1.42 1.507-.344.348-.795.534-1.285.534-.413 0-.877-.13-1.49-.408-2.612-1.183-4.32-3.82-4.452-4.004-.127-.174-1.092-1.455-1.092-2.776 0-1.32.693-1.966.942-2.233.243-.26.533-.327.712-.327.18 0 .36 0 .513.007.16.007.373-.06.586.447.213.513.733 1.787.794 1.913.067.127.113.273.027.447-.087.173-.16.287-.313.466-.154.18-.327.4-.467.54-.153.154-.313.32-.133.627.18.307.806 1.327 1.727 2.147.92.82 1.693 1.073 2.006 1.2.313.127.493.107.68-.107.187-.213.8-1.026.933-1.22.133-.193.28-.16.473-.086.193.073 1.22.573 1.48.7.26.127.433.193.493.3.06.107.06.62-.18 1.3z"></path>
 </svg>
-<span data-i18n="mainCta" id="main-cta-label">Quiero crecer</span>
+<span data-i18n="mainCta" id="main-cta-label">Hablemos</span>
 </a>
 </div>
 </div>
@@ -393,7 +508,7 @@ button,a{ -webkit-tap-highlight-color:transparent}
 <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 <div class="w-full mb-24 md:mb-32 text-left raw-reveal max-w-4xl">
 <div class="premium-title-frame p-6 md:p-8 rounded-2xl shadow-[0_24px_60px_rgba(0,0,0,0.7)] pl-6 md:pl-10">
-<span class="text-xs font-mono tracking-[0.4em] text-[#FF3C00] uppercase block mb-3 font-bold" data-i18n="infraTag">DESARROLLAMOS Y CREAMOS</span>
+<span class="text-xs font-mono tracking-[0.4em] text-[#FF3C00] uppercase block mb-3 font-bold" data-i18n="infraTag">3 FASES</span>
 <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-white leading-snug max-w-3xl" data-i18n="machineryTitle">Su ecosistema digital</h2>
 <p class="rs-machinery-intro" data-i18n="machineryIntro" id="machinery-intro">Creamos. Usted atiende.</p>
 </div>
@@ -428,11 +543,11 @@ button,a{ -webkit-tap-highlight-color:transparent}
 </svg>
 </div>
 </div>
-<h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight" id="phase1-title" data-i18n="phase1Title">Sitio web que vende</h3>
-<p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl" id="phase1-desc" data-i18n="phase1Desc">Convierte interés en conversaciones.</p>
+<h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight" id="phase1-title" data-i18n="phase1Title">Web que convierte</h3>
+<p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl" id="phase1-desc" data-i18n="phase1Desc">Conecta visitas con WhatsApp.</p>
 <div aria-live="polite" class="phase1-benefit-line">
-<span class="phase1-benefit-label" data-i18n="phase1BenefitsLabel">INCLUYE</span>
-<span id="phase1-benefit-text">4 secciones personalizadas</span><span aria-hidden="true" class="phase1-caret">|</span>
+
+<span id="phase1-benefit-text">4 secciones</span><span aria-hidden="true" class="phase1-caret">|</span>
 </div>
 </div>
 </div>
@@ -440,7 +555,7 @@ button,a{ -webkit-tap-highlight-color:transparent}
 </div>
 <div aria-label="Continuación hacia ventas" class="phase-transition phase-transition-primary" role="separator">
 <span class="phase-transition-line"></span>
-<span class="phase-transition-label" data-i18n="phaseTransition">SIGUIENTE FASE · CAPTACIÓN</span>
+<span class="phase-transition-label" data-i18n="phaseTransition">FASE 2</span>
 <span class="phase-transition-line"></span>
 </div>
 <div class="stacking-card mt-16 sticky top-56 w-full rounded-2xl overflow-hidden p-8 md:p-10" id="card-phase-2">
@@ -462,35 +577,33 @@ button,a{ -webkit-tap-highlight-color:transparent}
 </div>
 </div>
 <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight" id="phase2-title" data-i18n="phase2Title">Conversaciones por WhatsApp</h3>
-<p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl" id="phase2-desc" data-i18n="phase2Desc">Interés a WhatsApp. Seguimiento claro.</p><p class="phase-support-note" id="phase2-benefits" data-i18n="phase2Benefits">WhatsApp · Seguimiento</p>
+<p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl" id="phase2-desc" data-i18n="phase2Desc">Seguimiento claro.</p>
 </div>
 </div>
 </div>
 </div>
 <section class="rs-agent-demo" id="agente-seguimiento" aria-labelledby="agent-demo-title">
   <div class="rs-agent-demo-head">
-    <span class="rs-agent-eyebrow">FASE 2 · ASISTENCIA OPERATIVA</span>
+    <span class="rs-agent-eyebrow">ASISTENCIA</span>
     <h3 id="agent-demo-title">Seguimiento de oportunidades.</h3>
-    <p>Revisa y prepara el próximo paso.</p>
+    <p>Próximo paso claro.</p>
   </div>
   <div class="rs-agent-console" aria-live="polite">
     <div class="rs-agent-profile">
       <div class="rs-agent-avatar" aria-hidden="true"><span id="agent-avatar-letter">A</span><svg class="rs-agent-wa-icon" viewBox="0 0 24 24"><path d="M12 2.5a9.4 9.4 0 0 0-8.1 14.2L2.5 21.5l4.9-1.3A9.5 9.5 0 1 0 12 2.5Zm0 2a7.4 7.4 0 0 1 6.4 11.1l-.3.5.7 2.5-2.5-.7-.5.3A7.4 7.4 0 1 1 12 4.5Zm-3 3.1c-.2 0-.5.1-.7.3-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.9 4.4 4 .6.3 1.1.4 1.5.5.6.1 1.1.1 1.5-.1.5-.2 1.4-.7 1.6-1.3.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.6-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.7.9c-.1.1-.3.2-.5.1-.3-.1-1.1-.4-1.8-1.1-.6-.5-1-1.2-1.1-1.4-.1-.2 0-.3.1-.4l.4-.5c.1-.2.2-.3.1-.5l-.6-1.6c-.1-.3-.3-.4-.5-.4Z"/></svg></div>
-      <div><strong id="agent-name">Antonella</strong><span id="agent-role">Seguimiento para gastronomía</span></div>
+      <div><strong id="agent-name">Antonella</strong><span id="agent-role">Gastronomía</span></div>
       <span class="rs-agent-online"><i></i> Activa</span>
     </div>
     <div class="rs-agent-flow">
-      <div class="rs-agent-step is-active"><span class="rs-agent-icon" aria-hidden="true">⌁</span><div><b>Revisión</b><small id="agent-step-review">WhatsApp y correo</small></div></div>
-      <div class="rs-agent-step"><span class="rs-agent-icon" aria-hidden="true">✦</span><div><b>Oportunidad</b><small id="agent-step-opportunity">Detecta mensajes sin responder</small></div></div>
-      <div class="rs-agent-step"><span class="rs-agent-icon" aria-hidden="true">↗</span><div><b>Reporte</b><small id="agent-step-report">Entrega el próximo paso</small></div></div>
+      <div class="rs-agent-step is-active"><span class="rs-agent-icon" aria-hidden="true">⌁</span><div><b>Revisión</b><small id="agent-step-review">WhatsApp + correo</small></div></div>
+      <div class="rs-agent-step"><span class="rs-agent-icon" aria-hidden="true">↗</span><div><b>Seguimiento</b><small id="agent-step-report">Pendientes y citas</small></div></div>
     </div>
-    <div class="rs-agent-log"><span class="rs-agent-log-dot"></span><span id="agent-log">Antonella está revisando nuevas conversaciones…</span></div>
   </div>
-  <div class="rs-agent-note"><span aria-hidden="true">◉</span><span id="agent-note">Apoya sin reemplazar su criterio.</span></div>
+  <div class="rs-agent-note"><span aria-hidden="true">◉</span><span id="agent-note">La IA apoya; usted decide.</span></div>
 </section>
 <div aria-label="Continuación hacia posicionamiento y reputación" class="phase-transition" role="separator">
 <span class="phase-transition-line"></span>
-<span class="phase-transition-label" data-i18n="phaseFinalTransition">FASE FINAL · POSICIONAMIENTO</span>
+<span class="phase-transition-label" data-i18n="phaseFinalTransition">FASE 3</span>
 <span class="phase-transition-line"></span>
 </div>
 <div class="stacking-card mt-16 sticky top-56 w-full rounded-2xl overflow-hidden p-8 md:p-10" id="card-phase-3">
@@ -511,8 +624,8 @@ button,a{ -webkit-tap-highlight-color:transparent}
 </svg>
 </div>
 </div>
-<h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight" id="phase3-title" data-i18n="phase3Title">Más visibilidad local</h3>
-<p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl" id="phase3-desc" data-i18n="phase3Desc">Aparezca cuando sus clientes buscan.</p><p class="phase-support-note" id="phase3-benefits" data-i18n="phase3Benefits">Google · SEO local</p>
+<h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight" id="phase3-title" data-i18n="phase3Title">Visibilidad local</h3>
+<p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed max-w-xl" id="phase3-desc" data-i18n="phase3Desc">Aparezca en búsquedas locales.</p><p class="phase-support-note" id="phase3-benefits" data-i18n="phase3Benefits">Google · SEO local</p>
 </div>
 </div>
 </div>
@@ -1046,8 +1159,8 @@ function toggleFaq(button) {
             es: {
                 mobileContact: "Hablemos",
                 heroTitle: "Haga crecer su negocio.",
-                heroDesc: "Web, SEO e IA para llevar interesados a WhatsApp. Usted atiende.",
-                mainCta: "Hablemos de su negocio",
+                heroDesc: "Creamos su ecosistema digital y llevamos personas interesadas al WhatsApp de su negocio.",
+                mainCta: "Hablemos",
                 trustText: "Marcas reales.",
                 scrollPhase0: "Manizales · Pereira · Cali. Juntos crecemos.",
                 scrollPhase1: "Crecemos con el mercado local.",
@@ -1056,24 +1169,24 @@ function toggleFaq(button) {
                 modalTitle: "Dos datos y está dentro",
                 modalBtn: "Conéctese ahora",
                 passwordHint: "Guárdela bien, no la comparta",
-                infraTag: "DESARROLLAMOS Y CREAMOS",
+                infraTag: "3 FASES",
                 machineryTitle: "Su ecosistema digital",
                 machineryIntro: "Creamos. Usted atiende.",
-                phase1Title: "Sitio web que vende",
-                phase1Desc: "Convierte interés en conversaciones.",
+                phase1Title: "Web que convierte",
+                phase1Desc: "Conecta visitas con WhatsApp.",
                 phase1BenefitsLabel: "INCLUYE",
-                phase1Benefits: ["4 secciones", "Diseño responsive", "WhatsApp integrado", "Copy para vender"],
+                phase1Benefits: ["4 secciones", "Móvil + WhatsApp", "Copy para convertir"],
                 phase1Stat1: "4 secciones",
                 phase1Stat2: "Pago único",
                 phase2Label: "FASE 2",
                 phase2Title: "Conversaciones por WhatsApp",
-                phase2Desc: "Interés a WhatsApp. Seguimiento claro.",
+                phase2Desc: "Seguimiento claro.",
                 phase2Stat1: "WhatsApp",
-                phase2Stat2: "Acompanhamento",
+                phase2Stat2: "Seguimiento",
                 phase3Label: "FASE 3",
-                phase3Title: "Más visibilidad local",
-                phase3Desc: "Aparezca cuando sus clientes buscan.",
-                phase2Benefits: "WhatsApp · Seguimiento",
+                phase3Title: "Visibilidad local",
+                phase3Desc: "Aparezca en búsquedas locales.",
+                phase2Benefits: "Mensajes organizados",
                 phase3Benefits: "Google · SEO local",
                 phase3Stat1: "Google",
                 phase3Stat2: "SEO local",
@@ -1083,8 +1196,8 @@ function toggleFaq(button) {
                 phaseOfferNote: "Pago único",
                 phaseOfferCta: "Hablar por WhatsApp",
                 phaseEntryLabel: "FASE PRINCIPAL",
-                phaseTransition: "SIGUIENTE FASE · CAPTACIÓN",
-                phaseFinalTransition: "FASE FINAL · POSICIONAMIENTO",
+                phaseTransition: "FASE 2",
+                phaseFinalTransition: "FASE 3",
                 whatsappTooltip: "Hablemos",
                 portfolioBadge: "Experiencias reales",
                 portfolioTitle: "Casos reales",
@@ -1143,31 +1256,31 @@ function toggleFaq(button) {
             en: {
                 mobileContact: "Let's talk",
                 heroTitle: "Grow your business",
-                heroDesc: "We show your offer and bring interest to WhatsApp.",
-                mainCta: "Talk now",
+                heroDesc: "We build your digital ecosystem and guide interested people to your business WhatsApp.",
+                mainCta: "Let's talk",
                 trustText: "Real brands have already taken the step.",
                 securityBadge: "Real Results: Pay on Delivery",
                 modalTitle: "Two data points and you're in",
                 modalBtn: "Connect Now",
                 passwordHint: "Keep it safe, don't share it",
-                infraTag: "WE BUILD IT PHASE BY PHASE",
+                infraTag: "3 STEPS",
                 machineryTitle: "Your digital ecosystem",
                 machineryIntro: "Three steps to show, handle and grow.",
                 phase1Title: "A website that sells",
-                phase1Desc: "Turns interest into conversations.",
+                phase1Desc: "Connect visits with WhatsApp.",
                 phase1BenefitsLabel: "INCLUDES",
-                phase1Benefits: ["4 sections", "Responsive design", "WhatsApp integrated", "Sales-focused copy"],
+                phase1Benefits: ["4 sections", "Mobile + WhatsApp", "Sales copy"],
                 phase1Stat1: "4 sections",
                 phase1Stat2: "One-time payment",
                 phase2Label: "PHASE 2",
                 phase2Title: "Customers via WhatsApp",
-                phase2Desc: "We attract and follow up on opportunities.",
+                phase2Desc: "WhatsApp follow-up.",
                 phase2Stat1: "WhatsApp",
                 phase2Stat2: "Follow-up",
                 phase3Label: "PHASE 3",
                 phase3Title: "SEO, GEO & reputation",
-                phase3Desc: "Appear when customers search.",
-                phase2Benefits: "WhatsApp · Follow-up",
+                phase3Desc: "Show up in local search.",
+                phase2Benefits: "Organized messages",
                 phase3Benefits: "Google · Local SEO · Reputation",
                 phase3Stat1: "Google",
                 phase3Stat2: "Local SEO",
@@ -1177,8 +1290,8 @@ function toggleFaq(button) {
                 phaseOfferNote: "One payment",
                 phaseOfferCta: "Talk on WhatsApp",
                 phaseEntryLabel: "MAIN PHASE",
-                phaseTransition: "NEXT PHASE · CUSTOMER ACQUISITION",
-                phaseFinalTransition: "FINAL PHASE · POSITIONING",
+                phaseTransition: "PHASE 2",
+                phaseFinalTransition: "PHASE 3",
                 whatsappTooltip: "Let's talk",
                 portfolioBadge: "Websites that build trust",
                 portfolioTitle: "Real examples",
@@ -1237,8 +1350,8 @@ function toggleFaq(button) {
             pt: {
                 mobileContact: "Vamos conversar",
                 heroTitle: "Mais vendas, mais presença",
-                heroDesc: "Posicionamos seu negócio e levamos clientes direto para o seu WhatsApp.",
-                mainCta: "Quero meu site",
+                heroDesc: "Criamos seu ecossistema digital e levamos pessoas interessadas ao WhatsApp do seu negócio.",
+                mainCta: "Vamos conversar",
                 trustText: "Eles já estão em outro nível, e você?",
                 scrollPhase0: "Manizales, Pereira e Cali: Juntos conseguimos mais...",
                 scrollPhase1: "Ajudamos a estabilizar mercados após o sismo",
@@ -1250,24 +1363,24 @@ function toggleFaq(button) {
                 modalTitle: "Dois dados e você já está dentro",
                 modalBtn: "Conecte-se agora",
                 passwordHint: "Guarde bem, não a compartilhe",
-                infraTag: "TRÊS FASES, UM PROPÓSITO",
+                infraTag: "3 FASES",
                 machineryTitle: "Seu ecossistema digital",
                 machineryIntro: "Três etapas para mostrar, atender e crescer.",
                 phase1Title: "Site que vende",
-                phase1Desc: "Transforma interesse em conversas.",
+                phase1Desc: "Leve visitas ao WhatsApp.",
                 phase1BenefitsLabel: "INCLUI",
-                phase1Benefits: ["4 seções", "Design responsivo", "WhatsApp integrado", "Copy para vender"],
+                phase1Benefits: ["4 seções", "Mobile + WhatsApp", "Copy para vender"],
                 phase1Stat1: "4 seções",
                 phase1Stat2: "Pagamento único",
                 phase2Label: "FASE 2",
                 phase2Title: "Clientes pelo WhatsApp",
-                phase2Desc: "Atraímos e acompanhamos oportunidades.",
+                phase2Desc: "WhatsApp com acompanhamento.",
                 phase2Stat1: "WhatsApp",
                 phase2Stat2: "Acompanhamento",
                 phase3Label: "FASE 3",
                 phase3Title: "Mais visibilidade local",
-                phase3Desc: "Apareça quando seus clientes procuram.",
-                phase2Benefits: "WhatsApp · Acompanhamento",
+                phase3Desc: "Apareça nas buscas locais.",
+                phase2Benefits: "Mensagens organizadas",
                 phase3Benefits: "Google · SEO local",
                 phase3Stat1: "Google",
                 phase3Stat2: "SEO local",
@@ -1277,8 +1390,8 @@ function toggleFaq(button) {
                 phaseOfferNote: "Pagamento único",
                 phaseOfferCta: "Falar pelo WhatsApp",
                 phaseEntryLabel: "FASE PRINCIPAL",
-                phaseTransition: "PRÓXIMA FASE · CAPTAÇÃO",
-                phaseFinalTransition: "FASE FINAL · POSICIONAMENTO",
+                phaseTransition: "FASE 2",
+                phaseFinalTransition: "FASE 3",
                 whatsappTooltip: "Vamos conversar",
                 portfolioBadge: "Sites que geram confiança",
                 portfolioTitle: "Casos reais",
@@ -1582,9 +1695,9 @@ function toggleFaq(button) {
             const benefitText = document.getElementById('phase1-benefit-text');
             if (!benefitText) return;
             const lists = {
-                es: ["4 secciones personalizadas", "Adaptado a su marca", "Diseño responsive", "WhatsApp integrado", "Código optimizado", "Pago único"],
-                en: ["4 custom sections", "Adapted to your brand", "Responsive design", "WhatsApp integrated", "Optimized code", "One-time payment"],
-                pt: ["4 seções personalizadas", "Adaptado à sua marca", "Design responsivo", "WhatsApp integrado", "Código otimizado", "Pagamento único"]
+                es: ["4 secciones", "Móvil + WhatsApp", "Copy para convertir"],
+                en: ["4 sections", "Mobile + WhatsApp", "Sales copy"],
+                pt: ["4 seções", "Mobile + WhatsApp", "Copy para converter"]
             };
             let index = 0;
             let timer;
@@ -1734,9 +1847,9 @@ function toggleFaq(button) {
 (()=>{const modal=document.getElementById('rs-case-modal');if(!modal)return;document.body.appendChild(modal);const open=(card)=>{const niche=card.closest('.rs-case-track')?.dataset.niche||'food',d=cases[niche]?.cards?.[Number(card.dataset.caseIndex)];if(!d)return;const accentMap={food:['#ff3c00','#f59e0b','#ef3340'],health:['#39c6a2','#b58cff','#4da3ff']};const accent=accentMap[niche]?.[Number(card.dataset.caseIndex)]|| (niche==='health'?'#39c6a2':'#ff3c00');modal.style.setProperty('--case-accent',accent);const img=document.getElementById('rs-case-modal-media');img.innerHTML=d[4]?`<img src="${d[4]}" alt="Imagen del caso ${d[1]}" loading="eager" fetchpriority="high" decoding="async">`:'<span>Imagen en preparación</span>';document.getElementById('rs-case-modal-kicker').textContent=cases[niche].badge;document.getElementById('rs-case-modal-title').textContent=d[1];document.getElementById('rs-case-modal-type').textContent=d[2];document.getElementById('rs-case-modal-summary').textContent=d[6]||d[3];document.getElementById('rs-case-modal-metric').textContent=d[7]||'Resultado en preparación con información verificada.';const a=document.getElementById('rs-case-modal-link');a.href=d[5]||'#';a.style.display=d[5]?'inline-flex':'none';modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';document.querySelector('.rs-case-modal-close').focus()};const close=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''};document.getElementById('ecosystem-slider')?.addEventListener('click',e=>{if(e.target.closest('a'))return;const card=e.target.closest('.rs-case-card');if(card)open(card)});document.getElementById('ecosystem-slider')?.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('a')){e.preventDefault();open(e.target.closest('.rs-case-card'))}});modal.addEventListener('click',e=>{if(e.target.closest('[data-case-close]'))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))close()})})();
 </script><script>
 (() => {
-  const data={food:{name:'Antonella',letter:'A',role:'Seguimiento para gastronomía',review:'WhatsApp y correo',opportunity:'Detecta mensajes sin responder',report:'Entrega el próximo paso',note:'Apoya pedidos y seguimiento sin reemplazar su criterio.',logs:['Antonella está revisando nuevas conversaciones…','Encontró una oportunidad pendiente de respuesta.','Preparó un reporte con el próximo paso.']},health:{name:'Dulce',letter:'D',role:'Recepción para servicios profesionales',review:'WhatsApp y correo',opportunity:'Detecta solicitudes fuera de horario',report:'Prepara el seguimiento de la cita',note:'Entrenada para apoyar consultas y agenda sin reemplazar su criterio.',logs:['Dulce está revisando WhatsApp y correo…','Detectó una solicitud fuera de horario.','Preparó un reporte para coordinar la atención.']}};
-  const els={name:document.getElementById('agent-name'),letter:document.getElementById('agent-avatar-letter'),role:document.getElementById('agent-role'),review:document.getElementById('agent-step-review'),opportunity:document.getElementById('agent-step-opportunity'),report:document.getElementById('agent-step-report'),note:document.getElementById('agent-note'),log:document.getElementById('agent-log'),steps:[...document.querySelectorAll('.rs-agent-step')]}; if(!els.name)return;
-  let index=0,timer;const paint=()=>{const d=data[document.body.dataset.niche]||data.food;els.name.textContent=d.name;els.letter.textContent=d.letter;els.role.textContent=d.role;els.review.textContent=d.review;els.opportunity.textContent=d.opportunity;els.report.textContent=d.report;els.note.textContent=d.note;els.log.textContent=d.logs[index%3];els.steps.forEach((x,i)=>x.classList.toggle('is-active',i===index%3));index++;};const run=()=>{clearInterval(timer);paint();timer=setInterval(paint,3200)};document.querySelectorAll('.rs-selector-btn').forEach(b=>b.addEventListener('click',()=>{index=0;run()}));run();})();
+  const data={food:{name:'Antonella',letter:'A',role:'Gastronomía',review:'WhatsApp + correo',report:'Pendientes y citas',note:'La IA apoya; usted decide.'},health:{name:'Dulce',letter:'D',role:'Servicios profesionales',review:'WhatsApp + correo',report:'Solicitudes y citas',note:'La IA apoya; usted decide.'}};
+  const els={name:document.getElementById('agent-name'),letter:document.getElementById('agent-avatar-letter'),role:document.getElementById('agent-role'),review:document.getElementById('agent-step-review'),report:document.getElementById('agent-step-report'),note:document.getElementById('agent-note'),steps:[...document.querySelectorAll('.rs-agent-step')]}; if(!els.name||!els.report)return;
+  let index=0,timer;const paint=()=>{const d=data[document.body.dataset.niche]||data.food;els.name.textContent=d.name;els.letter.textContent=d.letter;els.role.textContent=d.role;els.review.textContent=d.review;els.report.textContent=d.report;els.note.textContent=d.note;els.steps.forEach((x,i)=>x.classList.toggle('is-active',i===index%els.steps.length));index++;};const run=()=>{clearInterval(timer);paint();timer=setInterval(paint,3200)};document.querySelectorAll('.rs-selector-btn').forEach(b=>b.addEventListener('click',()=>{index=0;run()}));run();})();
 </script><script>
 (()=>{const modal=document.getElementById('investor-modal');if(!modal)return;const open=()=>{modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';modal.querySelector('.rs-investor-close')?.focus()};const close=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''};document.querySelectorAll('[data-investor-open]').forEach(x=>x.addEventListener('click',open));modal.addEventListener('click',e=>{if(e.target.closest('[data-investor-close]'))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))close()});})();
 </script><script>
