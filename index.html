@@ -354,7 +354,7 @@ button,a{ -webkit-tap-highlight-color:transparent}
 .rs-investor-os p{font-size:1.05rem!important;line-height:1.55!important}
 .rs-investor-footer>p{font-size:1.01rem!important;line-height:1.55!important}
 .rs-investor-impact{font-size:1.01rem!important;line-height:1.55!important}
-#coming-soon-copy{font-size:1.18rem!important;line-height:1.6!important}
+#coming-soon-modal #coming-soon-copy{font-size:.92rem!important;line-height:1.55!important}
 /* Consistent CTA typography, tap targets, focus states, and spacing; retain each button's brand color. */
 #main-cta{font-family:var(--rs-control-font)!important;font-size:1.05rem!important;font-weight:700!important;min-height:56px!important;border-radius:999px!important}
 #niche-result-cta,.rs-investor-cta,.phase-offer-cta,.rs-case-link,.rs-case-modal-cta,.work-gallery-cta,.rs-panel-whatsapp,#seccion-5-pricing button:not([aria-controls]){display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:.55rem!important;box-sizing:border-box!important;min-height:48px!important;padding:12px 18px!important;border-radius:999px!important;font-family:var(--rs-control-font)!important;font-size:1rem!important;font-weight:700!important;line-height:1.2!important;letter-spacing:.01em!important}
@@ -439,7 +439,25 @@ footer>.max-w-7xl>.grid{gap:2.5rem!important;margin-bottom:3rem!important}
 @keyframes rs-preloader-neon{from{opacity:.58;transform:scale(.94)}to{opacity:.95;transform:scale(1.06)}}
 #preloader .rs-preloader-copy{margin:0;min-height:1rem;padding-inline:1rem;color:rgba(245,245,245,.86);font:600 clamp(.84rem,1.2vw,.95rem)/1.35 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.02em;text-align:center}
 @media(prefers-reduced-motion:reduce){#preloader{transition:none!important}#preloader .animate-spin-slow,#preloader .rs-preloader-mark::after{animation:none!important}#preloader .rs-preloader-mark::after{opacity:.72!important}}
-</style><noscript><style>#preloader{display:none!important}</style></noscript></head>
+</style><noscript><style>#preloader{display:none!important}</style></noscript><style id="rs-navigation-restoration">
+#mobile-menu{isolation:isolate;background:radial-gradient(ellipse 34rem 24rem at 50% 44%,rgba(255,60,0,.085),transparent 76%),linear-gradient(180deg,rgba(5,5,5,.985),#050505)}
+#mobile-menu::before{content:"0101101011001011010010110101100101011010010110101100101011010010110101100101011010\A1010010110100101101011001010110100101101011001010110100101101011001010110100101101\A0110100101101011001010110100101101011001010110100101101011001010110100101101011001\A1100101011010010110101100101011010010110101100101011010010110101100101011010010110\A0010110101100101011010010110101100101011010010110101100101011010010110101100101011\A1011010010110101100101011010010110101100101011010010110101100101011010010110101100\A0101011010010110101100101011010010110101100101011010010110101100101011010010110101\A1110100101101011001010110100101101011001010110100101101011001010110100101101011001\A0011010110010101101001011010110010101101001011010110010101101001011010110010101101\A1001011010110010101101001011010110010101101001011010110010101101001011010110010101\A0111101011001010110100101101011001010110100101101011001010110100101101011001010110\A1010100101101011001010110100101101011001010110100101101011001010110100101101011001";position:absolute;inset:6% -12%;z-index:-1;overflow:hidden;pointer-events:none;white-space:pre;text-align:center;font:500 .62rem/2.25 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.16em;color:rgba(255,60,0,.065);mask-image:radial-gradient(ellipse at center,#000 12%,transparent 78%);user-select:none}
+#mobile-menu .rs-menu-options{width:min(100%,28rem);display:grid;gap:1rem;max-height:calc(100vh - 7rem);max-height:calc(100dvh - 7rem);overflow-y:auto;padding:.25rem}
+#mobile-menu .rs-menu-option{min-height:5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;color:#f5f5f5;font:700 clamp(1.05rem,2.3vw,1.35rem)/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;text-decoration:none;letter-spacing:-.02em;background:linear-gradient(135deg,rgba(18,18,18,.82),rgba(7,7,7,.62))}
+#mobile-menu button.rs-menu-option{width:100%;text-align:left;cursor:pointer}
+#mobile-menu .rs-menu-option span:first-child{position:relative;z-index:1}
+#mobile-menu .rs-menu-option-mark{position:relative;z-index:1;color:#ff7048;font:600 1.1rem/1 ui-monospace,monospace}
+#mobile-menu .rs-menu-option:focus-visible{outline:2px solid #ff7048;outline-offset:3px}
+#mobile-menu .rs-menu-option:hover{transform:translateY(-2px);border-color:rgba(255,112,71,.5);color:#fff}
+#coming-soon-modal .rs-coming-soon-card{max-width:26rem;padding:1.5rem}
+#coming-soon-modal .rs-panel-preview-head{margin-bottom:1rem}
+#coming-soon-modal .rs-coming-soon-icon{box-shadow:0 0 22px rgba(255,60,0,.18)}
+#coming-soon-modal h2{margin:0 0 .55rem;font-size:clamp(1.25rem,4vw,1.65rem);line-height:1.15;letter-spacing:-.03em}
+#coming-soon-modal #coming-soon-copy{margin:0;color:#bfc0c3;font-size:.92rem!important;line-height:1.55!important}
+@media(max-width:480px){#mobile-menu .rs-menu-options{width:100%;gap:.8rem}#mobile-menu .rs-menu-option{min-height:4.5rem;padding:1.15rem}}
+@media(prefers-reduced-motion:reduce){#mobile-menu .rs-menu-option{transition:none!important}#mobile-menu .rs-menu-option:hover{transform:none}}
+</style>
+</head>
 <body class="font-sans overflow-x-hidden"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
 <script>window.__rsPreloaderStartedAt=performance.now();</script>
 <div aria-label="Cargando Red Sapien" aria-live="polite" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center" id="preloader" role="status">
@@ -459,9 +477,7 @@ footer>.max-w-7xl>.grid{gap:2.5rem!important;margin-bottom:3rem!important}
 <option value="pt">PT</option>
 </select>
 <div class="hidden md:flex items-center gap-2">
-<a aria-label="Hablar con Red Sapien por WhatsApp" class="inline-flex px-4 py-2 text-xs font-bold text-white rounded-lg transition bg-rs-red hover:bg-rs-red/80 shadow-[0_0_15px_rgba(255,60,0,0.18)] whitespace-nowrap" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20digital%20de%20Red%20Sapien." rel="noopener noreferrer" target="_blank">Hablemos</a><button class="rs-investor-trigger" data-investor-open type="button">Startup · aliados</button>
-<button aria-disabled="false" class="rs-coming-soon-btn inline-flex px-3 py-2 text-[10px] font-bold uppercase tracking-wide text-gray-300 rounded-lg border border-white/10 bg-white/5 cursor-pointer" data-coming-soon="register" title="Registro próximamente" type="button">Registro · Próximamente</button>
-<button aria-disabled="false" class="rs-coming-soon-btn inline-flex px-3 py-2 text-[10px] font-bold uppercase tracking-wide text-gray-300 rounded-lg border border-white/10 bg-white/5 cursor-pointer" data-coming-soon="login" title="Inicio de sesión próximamente" type="button">Ingresar · Próximamente</button>
+<a aria-label="Hablar con Red Sapien por WhatsApp" class="inline-flex px-4 py-2 text-xs font-bold text-white rounded-lg transition bg-rs-red hover:bg-rs-red/80 shadow-[0_0_15px_rgba(255,60,0,0.18)] whitespace-nowrap" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20digital%20de%20Red%20Sapien." rel="noopener noreferrer" target="_blank">Hablemos</a>
 </div></div>
 <div aria-live="polite" class="scroll-support-banner" id="scroll-support-banner" role="status">
 <span class="scroll-support-copy" id="scroll-support-copy">
@@ -478,7 +494,7 @@ footer>.max-w-7xl>.grid{gap:2.5rem!important;margin-bottom:3rem!important}
 <path class="heart-scan" d="M15.2 23.3h4.4l1.5-2.1 2.1 4.2 2-5.1 1.6 3h5.8"></path>
 </svg>
 </div>
-<button aria-label="Abrir menú" class="p-2 hover:bg-white/5 rounded-lg transition-all text-white focus:outline-none border border-white/5" id="menu-trigger" type="button">
+<button aria-label="Abrir menú" aria-controls="mobile-menu" aria-expanded="false" class="p-2 hover:bg-white/5 rounded-lg transition-all text-white focus:outline-none border border-white/5" data-rs-aria="menuOpen" id="menu-trigger" type="button">
 <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20">
 <rect height="7" width="7" x="3" y="3"></rect>
 <rect height="7" width="7" x="14" y="3"></rect>
@@ -488,16 +504,12 @@ footer>.max-w-7xl>.grid{gap:2.5rem!important;margin-bottom:3rem!important}
 </button>
 </nav>
 </header>
-<div class="fixed inset-0 z-[60] opacity-0 invisible flex flex-col items-center justify-center px-6" id="mobile-menu">
-<button class="absolute top-8 right-8 text-gray-400 hover:text-rs-red scale-125 transition-colors focus:outline-none" id="close-menu" type="button">✕
-            <span data-rs-copy="mobileClose">Cerrar</span></button>
-<div class="w-full max-w-sm space-y-3">
-<a class="matrix-link-box p-5 rounded-xl block text-xl font-display font-bold text-white hover:text-rs-red transition duration-300" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20digital%20de%20Red%20Sapien." rel="noopener noreferrer" target="_blank">Hablemos por WhatsApp</a>
-<button aria-disabled="false" class="rs-coming-soon-mobile matrix-link-box p-5 rounded-xl block w-full text-left text-xl font-display font-bold text-gray-300 cursor-pointer" data-coming-soon="register" title="Registro próximamente" type="button">Registro · Próximamente</button>
-<button aria-disabled="false" class="rs-coming-soon-mobile matrix-link-box p-5 rounded-xl block w-full text-left text-xl font-display font-bold text-gray-300 cursor-pointer" data-coming-soon="login" title="Inicio de sesión próximamente" type="button">Ingresar · Próximamente</button>
-</div>
-<div class="matrix-link-box p-6 rounded-xl">
-<a class="block text-2xl font-display font-bold text-white hover:text-rs-red transition duration-300" data-i18n="mobileContact" href="https://wa.me/573012800024?text=Hola%2C%20deseo%20saber%20m%C3%A1s%20de%20la%20web%20de%20ventas...%20%F0%9F%8C%90">Hablemos</a>
+<div aria-hidden="true" aria-label="Menú principal" aria-modal="true" class="fixed inset-0 z-[60] opacity-0 invisible flex flex-col items-center justify-center px-6" data-rs-aria="menuLabel" id="mobile-menu" role="dialog">
+<button aria-label="Cerrar menú" class="absolute top-8 right-8 text-gray-400 hover:text-rs-red scale-125 transition-colors focus:outline-none" data-rs-aria="menuClose" id="close-menu" type="button"><span aria-hidden="true">×</span></button>
+<div class="rs-menu-options">
+<a class="matrix-link-box p-6 rounded-xl rs-menu-option" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20digital%20de%20Red%20Sapien." rel="noopener noreferrer" target="_blank"><span data-rs-copy="menuContact">Hablemos</span><span aria-hidden="true" class="rs-menu-option-mark">↗</span></a>
+<button aria-controls="investor-modal" aria-haspopup="dialog" class="matrix-link-box p-6 rounded-xl rs-menu-option" data-investor-open type="button"><span data-rs-copy="menuStartup">Startup · aliados</span><span aria-hidden="true" class="rs-menu-option-mark">↗</span></button>
+<button aria-controls="coming-soon-modal" aria-haspopup="dialog" class="matrix-link-box p-6 rounded-xl rs-menu-option" data-coming-soon="panel" type="button"><span data-rs-copy="menuUpcoming">Próximamente</span><span aria-hidden="true" class="rs-menu-option-mark">✦</span></button>
 </div>
 </div>
 <main id="main-content" tabindex="-1" class="bg-subtle-red relative min-h-screen flex flex-col items-center justify-center pt-32 md:pt-40 pb-12 text-center overflow-hidden">
@@ -1724,16 +1736,26 @@ function toggleFaq(button) {
         window.addEventListener('scroll', updateScrolledNav, { passive: true });
         updateScrolledNav();
         const menuTrigger = document.getElementById('menu-trigger'), mobileMenu = document.getElementById('mobile-menu'), closeMenu = document.getElementById('close-menu');
-        if (menuTrigger && mobileMenu && closeMenu) menuTrigger.addEventListener('click', () => {
-            mobileMenu.classList.remove('opacity-0', 'invisible');
-            mobileMenu.classList.add('opacity-100', 'visible');
-            document.body.style.overflow = 'hidden';
-        });
-        if (closeMenu && mobileMenu) closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.remove('opacity-100', 'visible');
-            mobileMenu.classList.add('opacity-0', 'invisible');
-            document.body.style.overflow = 'auto';
-        });
+        if (menuTrigger && mobileMenu && closeMenu) {
+            const setMenuOpen = (open, restoreFocus = true) => {
+                mobileMenu.classList.toggle('opacity-0', !open);
+                mobileMenu.classList.toggle('invisible', !open);
+                mobileMenu.classList.toggle('opacity-100', open);
+                mobileMenu.classList.toggle('visible', open);
+                mobileMenu.setAttribute('aria-hidden', String(!open));
+                menuTrigger.setAttribute('aria-expanded', String(open));
+                document.body.style.overflow = open ? 'hidden' : '';
+                if (open) closeMenu.focus();
+                else if (restoreFocus) menuTrigger.focus({ preventScroll: true });
+            };
+            menuTrigger.addEventListener('click', () => setMenuOpen(true));
+            closeMenu.addEventListener('click', () => setMenuOpen(false));
+            mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenuOpen(false, false)));
+            window._closeMobileMenu = (restoreFocus = true) => setMenuOpen(false, restoreFocus);
+            document.addEventListener('keydown', event => {
+                if (event.key === 'Escape' && mobileMenu.classList.contains('visible')) setMenuOpen(false);
+            });
+        }
     </script>
 <script>
         (() => {
@@ -1834,7 +1856,7 @@ function toggleFaq(button) {
     }).join('');
   };
   window._renderCases=renderCases;
-  const rsExtraCopy = {"es":{"aiDisclaimer":"La IA sugiere; usted decide.","agentDemoTitle":"Panel IA","simulation":"SIMULACIÓN","agentConversation":"Ejemplo de conversación por WhatsApp","agentClientMessage":"Mensaje del cliente","agentSuggestedReply":"Respuesta sugerida","agentInsight":"Lectura y siguiente paso","agentFlow":"Flujo: leer, entender y sugerir","agentStageRead":"Etapa 1: leer","agentStageUnderstand":"Etapa 2: entender","agentStageSuggest":"Etapa 3: sugerir","agentNext":"Ver siguiente ejemplo","agentRoleFood":"Gastronomía","agentRoleHealth":"Servicios profesionales","agentPause":"Pausar demostración","agentResume":"Reanudar demostración","agentExample":"Ejemplo","agentOf":"de","investorClose":"Cerrar oportunidad","investorTitle":"Software abierto. Oportunidades reales.","investorTagline":"Presencia que genera conversaciones.","tractionLabel":"Tracción reportada","brandCount":"39 marcas","brandNote":"Reportadas en el último año.","learningLabel":"Aprendizaje comercial","closeRate":"1,9%","closeDesc":"Cierre reportado sobre 29.000 empresas.","modelLabel":"Modelo operativo","hourlyValue":"$69.000 COP / hora","hourlyDesc":"Valor por hora reportado.","openSourceTitle":"Open Source como cultura.","openSourceDesc":"Código abierto para aprender y construir.","socialPactTitle":"Pacto social","socialPactDesc":"Crecer con software simple.","investorFooter":"Buscamos aliados tecnológicos; participación por acordar.","investorEmailCta":"Escribir por correo","investorWhatsAppCta":"Hablar por WhatsApp ↗","comingSoonBadge":"Próximamente","panelName":"Panel Red Sapien","panelClose":"Cerrar panel","panelTitle":"Panel en preparación","panelCopy":"Revise próximos pasos.","panelTabs":"Seleccione un acceso futuro","registerTab":"Crear cuenta","loginTab":"Iniciar sesión","panelStatus":"Próximamente","emailField":"Correo electrónico","passwordField":"Contraseña","emailPlaceholder":"Su correo","passwordPlaceholder":"Se habilitará próximamente","createAccount":"Crear cuenta · Próximamente","signIn":"Ingresar · Próximamente","secureBenefit":"✓ Acceso seguro","followBenefit":"✓ Seguimiento claro","noGuaranteeBenefit":"✓ Sin promesas falsas","panelWhatsApp":"Hablar por WhatsApp","mobileClose":"Cerrar"},"en":{"aiDisclaimer":"AI suggests; you decide.","agentDemoTitle":"AI panel","simulation":"SIMULATION","agentConversation":"WhatsApp conversation example","agentClientMessage":"Customer message","agentSuggestedReply":"Suggested reply","agentInsight":"Intent and next step","agentFlow":"Flow: read, understand, suggest","agentStageRead":"Step 1: read","agentStageUnderstand":"Step 2: understand","agentStageSuggest":"Step 3: suggest","agentNext":"Next example","agentRoleFood":"Gastronomy","agentRoleHealth":"Professional services","agentPause":"Pause demo","agentResume":"Resume demo","agentExample":"Example","agentOf":"of","investorClose":"Close opportunity","investorTitle":"Open software. Real opportunities.","investorTagline":"A presence that starts conversations.","tractionLabel":"Reported traction","brandCount":"39 brands","brandNote":"Reported over the last year.","learningLabel":"Commercial learning","closeRate":"1.9%","closeDesc":"Reported close rate across 29,000 businesses.","modelLabel":"Operating model","hourlyValue":"$69,000 COP / hour","hourlyDesc":"Reported value per hour.","openSourceTitle":"Open Source as a culture.","openSourceDesc":"Open code to learn and build.","socialPactTitle":"Social pact","socialPactDesc":"Grow with simple software.","investorFooter":"Seeking technology partners; participation to discuss.","investorEmailCta":"Email us","investorWhatsAppCta":"Chat on WhatsApp ↗","comingSoonBadge":"Coming soon","panelName":"Red Sapien panel","panelClose":"Close panel","panelTitle":"Panel in preparation","panelCopy":"Review next steps.","panelTabs":"Choose an upcoming access","registerTab":"Create account","loginTab":"Sign in","panelStatus":"Available soon","emailField":"Email","passwordField":"Password","emailPlaceholder":"Your email","passwordPlaceholder":"Available in a future version","createAccount":"Create account · Coming soon","signIn":"Sign in · Coming soon","secureBenefit":"✓ Secure access","followBenefit":"✓ Clear follow-up","noGuaranteeBenefit":"✓ No guaranteed results","panelWhatsApp":"Chat on WhatsApp","mobileClose":"Close"},"pt":{"aiDisclaimer":"A IA sugere; você decide.","agentDemoTitle":"Painel de IA","simulation":"SIMULAÇÃO","agentConversation":"Exemplo de conversa no WhatsApp","agentClientMessage":"Mensagem do cliente","agentSuggestedReply":"Resposta sugerida","agentInsight":"Intenção e próximo passo","agentFlow":"Fluxo: ler, entender e sugerir","agentStageRead":"Etapa 1: ler","agentStageUnderstand":"Etapa 2: entender","agentStageSuggest":"Etapa 3: sugerir","agentNext":"Próximo exemplo","agentRoleFood":"Gastronomia","agentRoleHealth":"Serviços profissionais","agentPause":"Pausar demonstração","agentResume":"Retomar demonstração","agentExample":"Exemplo","agentOf":"de","investorClose":"Fechar oportunidade","investorTitle":"Software aberto. Novas oportunidades.","investorTagline":"Presença que gera conversas.","tractionLabel":"Tração reportada","brandCount":"39 marcas","brandNote":"Reportadas no último ano.","learningLabel":"Aprendizado comercial","closeRate":"1,9%","closeDesc":"Fechamento reportado em 29.000 empresas.","modelLabel":"Modelo operacional","hourlyValue":"$69.000 COP / hora","hourlyDesc":"Valor por hora reportado.","openSourceTitle":"Open Source como cultura.","openSourceDesc":"Código aberto para aprender e construir.","socialPactTitle":"Pacto social","socialPactDesc":"Crescer com software simples.","investorFooter":"Buscamos parceiros tecnológicos; participação a combinar.","investorEmailCta":"Escrever por e-mail","investorWhatsAppCta":"Falar pelo WhatsApp ↗","comingSoonBadge":"Em breve","panelName":"Painel Red Sapien","panelClose":"Fechar painel","panelTitle":"Painel em preparação","panelCopy":"Consulte os próximos passos.","panelTabs":"Escolha um acesso futuro","registerTab":"Criar conta","loginTab":"Entrar","panelStatus":"Disponível em breve","emailField":"E-mail","passwordField":"Senha","emailPlaceholder":"Seu e-mail","passwordPlaceholder":"Disponível em uma próxima versão","createAccount":"Criar conta · Em breve","signIn":"Entrar · Em breve","secureBenefit":"✓ Acesso seguro","followBenefit":"✓ Acompanhamento claro","noGuaranteeBenefit":"✓ Sem promessa de resultados","panelWhatsApp":"Falar pelo WhatsApp","mobileClose":"Fechar"}};
+  const rsExtraCopy = {"es":{"aiDisclaimer":"La IA sugiere; usted decide.","agentDemoTitle":"Panel IA","simulation":"SIMULACIÓN","agentConversation":"Ejemplo de conversación por WhatsApp","agentClientMessage":"Mensaje del cliente","agentSuggestedReply":"Respuesta sugerida","agentInsight":"Lectura y siguiente paso","agentFlow":"Flujo: leer, entender y sugerir","agentStageRead":"Etapa 1: leer","agentStageUnderstand":"Etapa 2: entender","agentStageSuggest":"Etapa 3: sugerir","agentNext":"Ver siguiente ejemplo","agentRoleFood":"Gastronomía","agentRoleHealth":"Servicios profesionales","agentPause":"Pausar demostración","agentResume":"Reanudar demostración","agentExample":"Ejemplo","agentOf":"de","investorClose":"Cerrar oportunidad","investorTitle":"Software abierto. Oportunidades reales.","investorTagline":"Presencia que genera conversaciones.","tractionLabel":"Tracción reportada","brandCount":"39 marcas","brandNote":"Reportadas en el último año.","learningLabel":"Aprendizaje comercial","closeRate":"1,9%","closeDesc":"Cierre reportado sobre 29.000 empresas.","modelLabel":"Modelo operativo","hourlyValue":"$69.000 COP / hora","hourlyDesc":"Valor por hora reportado.","openSourceTitle":"Open Source como cultura.","openSourceDesc":"Código abierto para aprender y construir.","socialPactTitle":"Pacto social","socialPactDesc":"Crecer con software simple.","investorFooter":"Buscamos aliados tecnológicos; participación por acordar.","investorEmailCta":"Escribir por correo","investorWhatsAppCta":"Hablar por WhatsApp ↗","comingSoonBadge":"Próximamente","panelClose":"Cerrar panel","panelTitle":"Panel Red Sapien","panelCopy":"Estamos preparando un panel para consultar conversaciones, oportunidades y próximos pasos.","mobileClose":"Cerrar","menuLabel":"Menú principal","menuOpen":"Abrir menú","menuClose":"Cerrar menú","menuContact":"Hablemos","menuStartup":"Startup · aliados","menuUpcoming":"Próximamente"},"en":{"aiDisclaimer":"AI suggests; you decide.","agentDemoTitle":"AI panel","simulation":"SIMULATION","agentConversation":"WhatsApp conversation example","agentClientMessage":"Customer message","agentSuggestedReply":"Suggested reply","agentInsight":"Intent and next step","agentFlow":"Flow: read, understand, suggest","agentStageRead":"Step 1: read","agentStageUnderstand":"Step 2: understand","agentStageSuggest":"Step 3: suggest","agentNext":"Next example","agentRoleFood":"Gastronomy","agentRoleHealth":"Professional services","agentPause":"Pause demo","agentResume":"Resume demo","agentExample":"Example","agentOf":"of","investorClose":"Close opportunity","investorTitle":"Open software. Real opportunities.","investorTagline":"A presence that starts conversations.","tractionLabel":"Reported traction","brandCount":"39 brands","brandNote":"Reported over the last year.","learningLabel":"Commercial learning","closeRate":"1.9%","closeDesc":"Reported close rate across 29,000 businesses.","modelLabel":"Operating model","hourlyValue":"$69,000 COP / hour","hourlyDesc":"Reported value per hour.","openSourceTitle":"Open Source as a culture.","openSourceDesc":"Open code to learn and build.","socialPactTitle":"Social pact","socialPactDesc":"Grow with simple software.","investorFooter":"Seeking technology partners; participation to discuss.","investorEmailCta":"Email us","investorWhatsAppCta":"Chat on WhatsApp ↗","comingSoonBadge":"Coming soon","panelClose":"Close panel","panelTitle":"Red Sapien panel","panelCopy":"We are preparing a panel for conversations, opportunities, and next steps.","mobileClose":"Close","menuLabel":"Main menu","menuOpen":"Open menu","menuClose":"Close menu","menuContact":"Let's talk","menuStartup":"Startup · partners","menuUpcoming":"Coming soon"},"pt":{"aiDisclaimer":"A IA sugere; você decide.","agentDemoTitle":"Painel de IA","simulation":"SIMULAÇÃO","agentConversation":"Exemplo de conversa no WhatsApp","agentClientMessage":"Mensagem do cliente","agentSuggestedReply":"Resposta sugerida","agentInsight":"Intenção e próximo passo","agentFlow":"Fluxo: ler, entender e sugerir","agentStageRead":"Etapa 1: ler","agentStageUnderstand":"Etapa 2: entender","agentStageSuggest":"Etapa 3: sugerir","agentNext":"Próximo exemplo","agentRoleFood":"Gastronomia","agentRoleHealth":"Serviços profissionais","agentPause":"Pausar demonstração","agentResume":"Retomar demonstração","agentExample":"Exemplo","agentOf":"de","investorClose":"Fechar oportunidade","investorTitle":"Software aberto. Novas oportunidades.","investorTagline":"Presença que gera conversas.","tractionLabel":"Tração reportada","brandCount":"39 marcas","brandNote":"Reportadas no último ano.","learningLabel":"Aprendizado comercial","closeRate":"1,9%","closeDesc":"Fechamento reportado em 29.000 empresas.","modelLabel":"Modelo operacional","hourlyValue":"$69.000 COP / hora","hourlyDesc":"Valor por hora reportado.","openSourceTitle":"Open Source como cultura.","openSourceDesc":"Código aberto para aprender e construir.","socialPactTitle":"Pacto social","socialPactDesc":"Crescer com software simples.","investorFooter":"Buscamos parceiros tecnológicos; participação a combinar.","investorEmailCta":"Escrever por e-mail","investorWhatsAppCta":"Falar pelo WhatsApp ↗","comingSoonBadge":"Em breve","panelClose":"Fechar painel","panelTitle":"Painel Red Sapien","panelCopy":"Estamos preparando um painel para conversas, oportunidades e próximos passos.","mobileClose":"Fechar","menuLabel":"Menu principal","menuOpen":"Abrir menu","menuClose":"Fechar menu","menuContact":"Vamos conversar","menuStartup":"Startup · parceiros","menuUpcoming":"Em breve"}};
   const renderExtraCopy=(lang)=>{
     const copy=rsExtraCopy[lang]||rsExtraCopy.es;
     document.querySelectorAll('[data-rs-copy]').forEach(el=>{const value=copy[el.dataset.rsCopy];if(value)el.textContent=value});
@@ -1905,37 +1927,29 @@ function toggleFaq(button) {
   <div class="rs-investor-impact"><strong data-rs-copy="socialPactTitle">Pacto social</strong><span data-rs-copy="socialPactDesc">Crecer con software simple.</span></div>
   <div class="rs-investor-footer"><p data-rs-copy="investorFooter">Buscamos aliados tecnológicos; participación por acordar.</p><div class="rs-investor-actions"><a href="/cdn-cgi/l/email-protection#720017160113021b171c113202001d061d1c5c1f174d010710181711064f23071b17001d574042111d1c1d1117005740421e135740421d021d0006071c1b16131657404216175740422017165740422113021b171c" data-rs-copy="investorEmailCta">Escribir por correo</a><a href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20la%20oportunidad%20de%20Red%20Sapien." target="_blank" rel="noopener noreferrer" data-rs-copy="investorWhatsAppCta">Hablar por WhatsApp ↗</a></div></div>
  </article></div>
-<div aria-labelledby="coming-soon-title" aria-modal="true" class="rs-coming-soon-modal" id="coming-soon-modal" role="dialog">
+<div aria-hidden="true" aria-labelledby="coming-soon-title" aria-modal="true" class="rs-coming-soon-modal" id="coming-soon-modal" role="dialog">
   <div class="rs-coming-soon-card rs-panel-preview-card">
     <div class="rs-panel-preview-head">
       <div class="rs-coming-soon-icon" aria-hidden="true">✦</div>
-      <div><p class="mb-1 text-[10px] font-bold uppercase tracking-[.22em] text-rs-red" data-rs-copy="comingSoonBadge">Próximamente</p><p class="text-xs text-gray-400" data-rs-copy="panelName">Panel Red Sapien</p></div>
+      <p class="mb-1 text-[10px] font-bold uppercase tracking-[.22em] text-rs-red" data-rs-copy="comingSoonBadge">Próximamente</p>
       <button aria-label="Cerrar panel" data-rs-aria="panelClose" class="rs-panel-close" id="close-coming-soon" type="button">×</button>
     </div>
-    <h2 class="mb-2 text-2xl font-display font-bold text-left" id="coming-soon-title" data-rs-copy="panelTitle">Panel en preparación</h2>
-    <p class="mb-5 text-sm leading-relaxed text-left text-gray-300" id="coming-soon-copy" data-rs-copy="panelCopy">Revise próximos pasos.</p>
-    <div aria-label="Seleccione un acceso futuro" data-rs-aria="panelTabs" class="rs-panel-tabs" role="tablist">
-      <button aria-selected="true" class="rs-panel-tab is-active" data-panel-tab="register" role="tab" type="button" data-rs-copy="registerTab">Crear cuenta</button>
-      <button aria-selected="false" class="rs-panel-tab" data-panel-tab="login" role="tab" type="button" data-rs-copy="loginTab">Iniciar sesión</button>
-    </div>
-    <div class="rs-panel-preview-body" id="panel-preview-register" role="tabpanel">
-      <span class="rs-panel-status" data-rs-copy="panelStatus">Disponible próximamente</span>
-      <label class="rs-panel-field"><span data-rs-copy="emailField">Correo electrónico</span><input disabled placeholder="Su correo" data-rs-placeholder="emailPlaceholder" type="email"></label>
-      <label class="rs-panel-field"><span data-rs-copy="passwordField">Contraseña</span><input disabled placeholder="Se habilitará próximamente" data-rs-placeholder="passwordPlaceholder" type="password"></label>
-      <button class="rs-panel-disabled-action" disabled type="button" data-rs-copy="createAccount">Crear cuenta · Próximamente</button>
-    </div>
-    <div class="rs-panel-preview-body" id="panel-preview-login" role="tabpanel" hidden>
-      <span class="rs-panel-status" data-rs-copy="panelStatus">Disponible próximamente</span>
-      <label class="rs-panel-field"><span data-rs-copy="emailField">Correo electrónico</span><input disabled placeholder="Su correo" data-rs-placeholder="emailPlaceholder" type="email"></label>
-      <label class="rs-panel-field"><span data-rs-copy="passwordField">Contraseña</span><input disabled placeholder="Se habilitará próximamente" data-rs-placeholder="passwordPlaceholder" type="password"></label>
-      <button class="rs-panel-disabled-action" disabled type="button" data-rs-copy="signIn">Ingresar · Próximamente</button>
-    </div>
-    <div class="rs-panel-benefits"><span data-rs-copy="secureBenefit">✓ Acceso seguro</span><span data-rs-copy="followBenefit">✓ Seguimiento claro</span><span data-rs-copy="noGuaranteeBenefit">✓ Sin promesas falsas</span></div>
-    <a class="rs-panel-whatsapp" data-rs-copy="panelWhatsApp" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20la%20pr%C3%B3xima%20versi%C3%B3n%20del%20panel%20Red%20Sapien." rel="noopener noreferrer" target="_blank">Hablar por WhatsApp</a>
+    <h2 class="text-2xl font-display font-bold text-left" id="coming-soon-title" data-rs-copy="panelTitle">Panel Red Sapien</h2>
+    <p class="text-sm leading-relaxed text-left text-gray-300" id="coming-soon-copy" data-rs-copy="panelCopy">Estamos preparando un panel para consultar conversaciones, oportunidades y próximos pasos.</p>
   </div>
 </div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-(()=>{const modal=document.getElementById('coming-soon-modal'),close=document.getElementById('close-coming-soon');if(!modal||!close)return;const open=()=>{modal.classList.add('is-open');document.body.style.overflow='hidden';close.focus()};const shut=()=>{modal.classList.remove('is-open');document.body.style.overflow='';};document.querySelectorAll('[data-coming-soon]').forEach(btn=>btn.addEventListener('click',open));close.addEventListener('click',shut);modal.addEventListener('click',e=>{if(e.target===modal)shut()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))shut()});document.querySelectorAll('[data-panel-tab]').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('[data-panel-tab]').forEach(x=>{x.classList.toggle('is-active',x===tab);x.setAttribute('aria-selected',x===tab?'true':'false')});document.querySelectorAll('.rs-panel-preview-body').forEach(panel=>panel.hidden=panel.id!=='panel-preview-'+tab.dataset.panelTab)}));})();
+(()=>{
+ const modal=document.getElementById('coming-soon-modal'),close=document.getElementById('close-coming-soon');
+ if(!modal||!close)return;
+ let lastTrigger=null;
+ const open=event=>{lastTrigger=event.currentTarget;window._closeMobileMenu?.(false);modal.setAttribute('aria-hidden','false');modal.classList.add('is-open');document.body.style.overflow='hidden';close.focus()};
+ const shut=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';const target=lastTrigger?.closest('#mobile-menu')?document.getElementById('menu-trigger'):lastTrigger;target?.focus({preventScroll:true})};
+ document.querySelectorAll('[data-coming-soon="panel"]').forEach(btn=>btn.addEventListener('click',open));
+ close.addEventListener('click',shut);
+ modal.addEventListener('click',event=>{if(event.target===modal)shut()});
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&modal.classList.contains('is-open'))shut()});
+})();
 </script>
 <script>
 (()=>{
@@ -2027,7 +2041,7 @@ function toggleFaq(button) {
   syncToggle();render(false);
 })();
 </script><script>
-(()=>{const modal=document.getElementById('investor-modal');if(!modal)return;const open=()=>{modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';modal.querySelector('.rs-investor-close')?.focus()};const close=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''};document.querySelectorAll('[data-investor-open]').forEach(x=>x.addEventListener('click',open));modal.addEventListener('click',e=>{if(e.target.closest('[data-investor-close]'))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))close()});})();
+(()=>{const modal=document.getElementById('investor-modal');if(!modal)return;let lastTrigger=null;const open=event=>{lastTrigger=event.currentTarget;window._closeMobileMenu?.(false);modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';modal.querySelector('.rs-investor-close')?.focus()};const close=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';const target=lastTrigger?.closest('#mobile-menu')?document.getElementById('menu-trigger'):lastTrigger;target?.focus({preventScroll:true})};document.querySelectorAll('[data-investor-open]').forEach(x=>x.addEventListener('click',open));modal.addEventListener('click',event=>{if(event.target.closest('[data-investor-close]'))close()});document.addEventListener('keydown',event=>{if(event.key==='Escape'&&modal.classList.contains('is-open'))close()});})();
 </script><script>
 (()=>{const warm=()=>{const urls=['assets/Image/Case-La-Plancha-mobile.webp','assets/Image/Case-La-Papa-Prohibida-mobile.webp','assets/Image/Salchipotato-manizales.webp'];urls.forEach(src=>{const i=new Image();i.decoding='async';i.src=src})};if('requestIdleCallback' in window){requestIdleCallback(warm,{timeout:1800})}else{window.setTimeout(warm,900)}})();
 </script></body>
