@@ -430,14 +430,21 @@ footer>.max-w-7xl>.grid{gap:2.5rem!important;margin-bottom:3rem!important}
 .rs-skip-link:focus{transform:translateY(0);outline:3px solid #fff;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){.rs-skip-link{transition:none}}
 </style>
-</head>
+<style id="rs-preloader-refinement">
+#preloader{background:radial-gradient(ellipse at 50% 42%,rgba(255,60,0,.055),transparent 25rem),#050505;transition:opacity .18s ease}
+#preloader.rs-preloader-hiding{opacity:0;pointer-events:none}
+#preloader .rs-preloader-mark{isolation:isolate}
+#preloader .rs-preloader-mark::before{content:"";position:absolute;inset:-.65rem;border:1px solid rgba(255,255,255,.055);border-radius:50%;pointer-events:none}
+#preloader .rs-preloader-copy{margin:0;min-height:1rem;padding-inline:1rem;color:rgba(245,245,245,.86);font:600 clamp(.84rem,1.2vw,.95rem)/1.35 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.02em;text-align:center}
+@media(prefers-reduced-motion:reduce){#preloader{transition:none!important}#preloader .animate-spin-slow{animation:none!important}}
+</style><noscript><style>#preloader{display:none!important}</style></noscript></head>
 <body class="font-sans overflow-x-hidden"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
 <div aria-label="Cargando Red Sapien" aria-live="polite" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center transition-opacity duration-500" id="preloader" role="status">
-<div class="relative w-24 h-24 flex items-center justify-center mb-6">
-<div class="absolute w-full h-full border-t-4 border-rs-red rounded-full animate-spin-slow"></div>
-<img alt="Red Sapien Logo" class="w-12 h-12 object-contain" decoding="async" fetchpriority="high" loading="eager" src="assets/Image/Logo-Red-Sapien.webp" width="500" height="500" />
+<div class="relative w-24 h-24 flex items-center justify-center mb-6 rs-preloader-mark">
+<div aria-hidden="true" class="absolute w-full h-full border-t-4 border-rs-red rounded-full animate-spin-slow"></div>
+<img alt="" aria-hidden="true" class="w-12 h-12 object-contain" decoding="async" fetchpriority="high" loading="eager" src="assets/Image/Logo-Red-Sapien.webp" width="500" height="500" />
 </div>
-<div class="text-[10px] uppercase tracking-[0.3em] text-gray-500">Conectando...</div>
+<p aria-hidden="true" class="rs-preloader-copy" data-i18n="preloaderTagline" id="preloader-copy">Preparando…</p>
 </div>
 <header class="fixed top-0 w-full z-50">
 <div class="h-1.5 w-full" id="colombia-stripe" style="background: linear-gradient(to right, #FCD116 50%, #003893 50% 75%, #CE1126 75%);"></div>
@@ -1239,6 +1246,7 @@ function toggleFaq(button) {
         // ================================================================
         const translations = {
             es: {
+                preloaderTagline: "Preparando…",
                 mobileContact: "Hablemos",
                 heroTitle: "Haga crecer su negocio.",
                 heroDesc: "Creamos un ecosistema digital y le llevamos clientes directo a WhatsApp.",
@@ -1309,6 +1317,7 @@ function toggleFaq(button) {
                 ]
             },
             en: {
+                preloaderTagline: "Preparing…",
                 mobileContact: "Let's talk",
                 heroTitle: "Grow your business",
                 heroDesc: "We build a digital ecosystem and bring customers straight to WhatsApp.",
@@ -1379,6 +1388,7 @@ function toggleFaq(button) {
                 ]
             },
             pt: {
+                preloaderTagline: "Preparando…",
                 mobileContact: "Vamos conversar",
                 heroTitle: "Mais vendas, mais presença",
                 heroDesc: "Criamos um ecossistema digital e levamos clientes direto ao WhatsApp.",
@@ -1455,6 +1465,11 @@ function toggleFaq(button) {
 
         function changeLanguage(lang) {
             document.documentElement.lang = lang;
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                const loadingLabels = { es: 'Cargando Red Sapien', en: 'Loading Red Sapien', pt: 'Carregando Red Sapien' };
+                preloader.setAttribute('aria-label', loadingLabels[lang] || loadingLabels.es);
+            }
             if (window._updateGalleryDotLabels) window._updateGalleryDotLabels(lang);
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
@@ -1646,21 +1661,21 @@ function toggleFaq(button) {
         (() => {
             const preloader = document.getElementById('preloader');
             if (!preloader) return;
-            const startedAt = performance.now();
-            const minimumVisible = 900;
             let hidden = false;
             const hidePreloader = () => {
                 if (hidden) return;
                 hidden = true;
-                const wait = Math.max(0, minimumVisible - (performance.now() - startedAt));
-                setTimeout(() => {
-                    preloader.classList.add('animate-fade-out');
-                    preloader.setAttribute('aria-hidden', 'true');
-                    setTimeout(() => preloader.remove(), 600);
-                }, wait);
+                preloader.setAttribute('aria-hidden', 'true');
+                preloader.style.pointerEvents = 'none';
+                preloader.classList.add('rs-preloader-hiding');
+                window.setTimeout(() => preloader.remove(), 180);
             };
-            document.addEventListener('DOMContentLoaded', hidePreloader, { once: true });
-            setTimeout(hidePreloader, 4000);
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', hidePreloader, { once: true });
+            } else {
+                hidePreloader();
+            }
+            window.setTimeout(hidePreloader, 1800);
         })();
 
         const mainNav = document.getElementById('main-nav'), langSelector = document.getElementById('lang-selector'), scrollBtn = null, scrollSupportBanner = document.getElementById('scroll-support-banner'), scrollMenuTrigger = document.getElementById('menu-trigger');
