@@ -431,15 +431,18 @@ footer>.max-w-7xl>.grid{gap:2.5rem!important;margin-bottom:3rem!important}
 @media(prefers-reduced-motion:reduce){.rs-skip-link{transition:none}}
 </style>
 <style id="rs-preloader-refinement">
-#preloader{background:radial-gradient(ellipse at 50% 42%,rgba(255,60,0,.055),transparent 25rem),#050505;transition:opacity .18s ease}
+#preloader{background:radial-gradient(ellipse 28rem 22rem at 50% 46%,rgba(255,68,23,.13) 0%,rgba(255,59,20,.055) 38%,transparent 76%),radial-gradient(ellipse at 50% 100%,rgba(255,49,0,.025),transparent 40%),#050505;transition:opacity .18s ease}
 #preloader.rs-preloader-hiding{opacity:0;pointer-events:none}
 #preloader .rs-preloader-mark{isolation:isolate}
 #preloader .rs-preloader-mark::before{content:"";position:absolute;inset:-.65rem;border:1px solid rgba(255,255,255,.055);border-radius:50%;pointer-events:none}
+#preloader .rs-preloader-mark::after{content:"";position:absolute;inset:-2.8rem;z-index:-1;border-radius:50%;background:radial-gradient(circle,rgba(255,63,24,.28) 0%,rgba(255,53,11,.13) 38%,transparent 73%);filter:blur(15px);opacity:.8;animation:rs-preloader-neon 2.8s ease-in-out infinite alternate;pointer-events:none}
+@keyframes rs-preloader-neon{from{opacity:.58;transform:scale(.94)}to{opacity:.95;transform:scale(1.06)}}
 #preloader .rs-preloader-copy{margin:0;min-height:1rem;padding-inline:1rem;color:rgba(245,245,245,.86);font:600 clamp(.84rem,1.2vw,.95rem)/1.35 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.02em;text-align:center}
-@media(prefers-reduced-motion:reduce){#preloader{transition:none!important}#preloader .animate-spin-slow{animation:none!important}}
+@media(prefers-reduced-motion:reduce){#preloader{transition:none!important}#preloader .animate-spin-slow,#preloader .rs-preloader-mark::after{animation:none!important}#preloader .rs-preloader-mark::after{opacity:.72!important}}
 </style><noscript><style>#preloader{display:none!important}</style></noscript></head>
 <body class="font-sans overflow-x-hidden"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
-<div aria-label="Cargando Red Sapien" aria-live="polite" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center transition-opacity duration-500" id="preloader" role="status">
+<script>window.__rsPreloaderStartedAt=performance.now();</script>
+<div aria-label="Cargando Red Sapien" aria-live="polite" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center" id="preloader" role="status">
 <div class="relative w-24 h-24 flex items-center justify-center mb-6 rs-preloader-mark">
 <div aria-hidden="true" class="absolute w-full h-full border-t-4 border-rs-red rounded-full animate-spin-slow"></div>
 <img alt="" aria-hidden="true" class="w-12 h-12 object-contain" decoding="async" fetchpriority="high" loading="eager" src="assets/Image/Logo-Red-Sapien.webp" width="500" height="500" />
@@ -1661,21 +1664,38 @@ function toggleFaq(button) {
         (() => {
             const preloader = document.getElementById('preloader');
             if (!preloader) return;
-            let hidden = false;
+            const startedAt = Number.isFinite(window.__rsPreloaderStartedAt) ? window.__rsPreloaderStartedAt : performance.now();
+            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const fadeDuration = reduceMotion ? 0 : 180;
+            const minimumVisible = 1000;
+            let domReady = document.readyState !== 'loading';
+            let hideScheduled = false;
             const hidePreloader = () => {
-                if (hidden) return;
-                hidden = true;
-                preloader.setAttribute('aria-hidden', 'true');
-                preloader.style.pointerEvents = 'none';
-                preloader.classList.add('rs-preloader-hiding');
-                window.setTimeout(() => preloader.remove(), 180);
+                if (!domReady || hideScheduled) return;
+                hideScheduled = true;
+                const delay = Math.max(0, startedAt + minimumVisible - fadeDuration - performance.now());
+                window.setTimeout(() => {
+                    preloader.setAttribute('aria-hidden', 'true');
+                    preloader.style.pointerEvents = 'none';
+                    preloader.classList.add('rs-preloader-hiding');
+                    if (fadeDuration === 0) preloader.remove();
+                    else window.setTimeout(() => preloader.remove(), fadeDuration);
+                }, delay);
             };
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', hidePreloader, { once: true });
+            if (!domReady) {
+                document.addEventListener('DOMContentLoaded', () => {
+                    domReady = true;
+                    hidePreloader();
+                }, { once: true });
             } else {
                 hidePreloader();
             }
-            window.setTimeout(hidePreloader, 1800);
+            window.setTimeout(() => {
+                if (!domReady) {
+                    domReady = true;
+                    hidePreloader();
+                }
+            }, 10000);
         })();
 
         const mainNav = document.getElementById('main-nav'), langSelector = document.getElementById('lang-selector'), scrollBtn = null, scrollSupportBanner = document.getElementById('scroll-support-banner'), scrollMenuTrigger = document.getElementById('menu-trigger');
