@@ -515,6 +515,13 @@ button#work-gallery-cta.work-gallery-cta:hover{transform:translateY(-2px);box-sh
 #rs-case-modal[data-case-id="hijole"] .rs-case-stat{padding:12px 10px}
 @media(max-width:760px){.rs-investor-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:420px){.rs-investor-grid{grid-template-columns:1fr!important}#rs-case-modal[data-case-id="hijole"] .rs-case-modal-stats{grid-template-columns:1fr!important}}
+</style><style id="rs-viewport-fix-final">
+/* Keep modal controls visible and show both Híjole captures together. */
+.rs-investor-card{box-sizing:border-box;max-height:calc(100dvh - 28px)!important;overflow:auto}
+#rs-case-modal[data-case-id="hijole"] .rs-case-modal-media{overflow:hidden!important;align-content:center}
+#rs-case-modal[data-case-id="hijole"] .rs-case-media-stack{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:center;gap:clamp(12px,2vw,22px)}
+#rs-case-modal[data-case-id="hijole"] .rs-case-media-stack img{max-height:58vh!important}
+@media(max-width:680px){.rs-investor-card{max-height:calc(100dvh - 20px)!important;padding:24px 18px!important}#rs-case-modal[data-case-id="hijole"] .rs-case-modal-media{overflow:visible!important}#rs-case-modal[data-case-id="hijole"] .rs-case-media-stack{grid-template-columns:1fr!important}#rs-case-modal[data-case-id="hijole"] .rs-case-media-stack img{max-height:36vh!important}}
 </style></head>
 <body class="font-sans overflow-x-hidden"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
 <script>window.__rsPreloaderStartedAt=performance.now();</script>
