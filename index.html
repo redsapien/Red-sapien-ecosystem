@@ -522,6 +522,40 @@ button#work-gallery-cta.work-gallery-cta:hover{transform:translateY(-2px);box-sh
 #rs-case-modal[data-case-id="hijole"] .rs-case-media-stack{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:center;gap:clamp(12px,2vw,22px)}
 #rs-case-modal[data-case-id="hijole"] .rs-case-media-stack img{max-height:58vh!important}
 @media(max-width:680px){.rs-investor-card{max-height:calc(100dvh - 20px)!important;padding:24px 18px!important}#rs-case-modal[data-case-id="hijole"] .rs-case-modal-media{overflow:visible!important}#rs-case-modal[data-case-id="hijole"] .rs-case-media-stack{grid-template-columns:1fr!important}#rs-case-modal[data-case-id="hijole"] .rs-case-media-stack img{max-height:36vh!important}}
+</style><style id="rs-ai-mobile-layout-20261001">
+/* Align the AI demonstration with the phase cards and prevent viewport overflow. */
+#agente-seguimiento.rs-agent-demo{box-sizing:border-box!important;width:min(calc(100% - 32px),1160px)!important;max-width:1160px!important;margin:clamp(40px,5vw,72px) auto!important;padding:clamp(16px,2.4vw,28px)!important}
+#agent-dashboard{box-sizing:border-box;width:100%;max-width:100%;min-width:0}
+#card-phase-2,#card-phase-3,#card-phase-2>.grid,#card-phase-3>.grid,#agent-dashboard,.rs-agent-topbar,.rs-agent-brand,.rs-agent-controls,.rs-agent-workspace,.rs-agent-conversation,.rs-agent-insight,.rs-agent-footer{min-width:0}
+.rs-agent-brand{flex:1 1 auto}.rs-agent-controls{flex:0 1 auto}
+@media(max-width:860px) and (min-width:681px){.rs-agent-workspace{grid-template-columns:minmax(0,1.2fr) minmax(210px,.8fr)}}
+@media(max-width:680px){
+ #agente-seguimiento.rs-agent-demo{width:calc(100% - 24px)!important;margin:32px auto 40px!important;padding:12px!important;border-radius:22px}
+ #card-phase-2,#card-phase-3{position:relative!important;top:auto!important;padding:clamp(16px,5vw,24px)!important}
+ #card-phase-2>.grid>div:nth-child(2),#card-phase-3>.grid>div:nth-child(2){padding:clamp(16px,4.8vw,24px)!important}
+ .rs-agent-topbar{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;padding:14px}
+ .rs-agent-brand{width:100%;align-items:flex-start;gap:10px}
+ .rs-agent-controls{width:100%;justify-content:flex-end;gap:8px}
+ .rs-agent-live{white-space:normal!important;max-width:calc(100% - 48px);overflow-wrap:anywhere;text-align:center;line-height:1.2!important}
+ .rs-agent-workspace{grid-template-columns:minmax(0,1fr);gap:10px;padding:10px}
+ .rs-agent-conversation,.rs-agent-insight{width:100%;min-width:0;max-width:100%}
+ .rs-agent-message{max-width:100%;overflow-wrap:anywhere}
+ .rs-agent-message-out{padding-right:12px}
+ .rs-agent-insight{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .rs-agent-footer{padding-inline:12px;gap:8px}
+ #maquinaria-automatizada,#casos-exito-ecosistemas,#seccion-5-pricing,#manifiesto-maquinaria{min-width:0;max-width:100%}
+}
+@media(max-width:380px){
+ #agente-seguimiento.rs-agent-demo{width:calc(100% - 20px)!important;margin:28px auto 34px!important;padding:10px!important}
+ .rs-agent-topbar{padding:12px}
+ .rs-agent-workspace{padding:8px}
+ .rs-agent-conversation{padding:10px}
+ .rs-agent-insight{padding:8px;gap:7px}
+ .rs-agent-stage{gap:4px;padding:5px 3px}
+ .rs-agent-stage-label{font-size:.54rem}
+ .rs-agent-live{font-size:.52rem;padding:6px 7px}
+}
+@media(prefers-reduced-motion:reduce){.rs-agent-dashboard:before{animation:none}}
 </style></head>
 <body class="font-sans overflow-x-hidden"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
 <script>window.__rsPreloaderStartedAt=performance.now();</script>
