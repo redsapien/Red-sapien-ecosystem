@@ -1136,14 +1136,16 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                 const rightIndicator = document.getElementById('rightIndicator');
                 if (!slider) return;
 
+                const carouselFrame = slider.parentElement;
                 let autoPlayInterval = null;
                 let isMobile = window.innerWidth < 768;
                 let isVisible = false;
 
                 function startAutoplay() {
                     if (autoPlayInterval) return;
-                    if (!isVisible || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-                    autoPlayInterval = setInterval(triggerAutoplay, 4000);
+                    if (isMobile || !isVisible || document.hidden || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                    if (carouselFrame?.matches(':hover') || carouselFrame?.contains(document.activeElement)) return;
+                    autoPlayInterval = setInterval(triggerAutoplay, 6000);
                 }
 
                 function stopAutoplay() {
@@ -1186,6 +1188,12 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                 slider.addEventListener('mouseleave', startAutoplay);
                 slider.addEventListener('focusin', stopAutoplay);
                 slider.addEventListener('focusout', startAutoplay);
+                carouselFrame?.addEventListener('mouseenter', stopAutoplay);
+                carouselFrame?.addEventListener('mouseleave', startAutoplay);
+                carouselFrame?.addEventListener('focusin', stopAutoplay);
+                carouselFrame?.addEventListener('focusout', () => setTimeout(startAutoplay, 120));
+                carouselFrame?.addEventListener('pointerdown', stopAutoplay, {passive:true});
+                carouselFrame?.addEventListener('pointerup', () => setTimeout(startAutoplay, 1400), {passive:true});
 
                 const visibilityObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -1201,11 +1209,8 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 
                 const resizeHandler = () => {
                     isMobile = window.innerWidth < 768;
-                    if (isVisible) {
-                        startAutoplay();
-                    } else {
-                        stopAutoplay();
-                    }
+                    if (isMobile || !isVisible) stopAutoplay();
+                    else startAutoplay();
                 };
                 window.addEventListener('resize', resizeHandler);
 
