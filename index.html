@@ -860,8 +860,8 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 #rs-case-modal[data-case-id="hijole"] .rs-campaign-panel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 #rs-case-modal[data-case-id="hijole"] .rs-campaign-panel-tile{min-width:0;padding:9px;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.035)}
 /* Native-scroll proof logos: first group starts at zero; restrained pause-on-interaction autoplay. */
-#trust-text+div{position:relative!important;box-sizing:border-box;width:100%;max-width:100%;overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;scrollbar-width:thin!important;scrollbar-color:rgba(180,190,201,.7) rgba(255,255,255,.07);cursor:grab}
-#trust-text+div:active{cursor:grabbing}#trust-text+div::-webkit-scrollbar{height:6px}#trust-text+div::-webkit-scrollbar-track{background:rgba(255,255,255,.06);border-radius:99px}#trust-text+div::-webkit-scrollbar-thumb{background:rgba(180,190,201,.7);border-radius:99px}
+#trust-text+div{position:relative!important;box-sizing:border-box;width:100%;max-width:100%;overflow:hidden!important;overflow-x:hidden!important;overflow-y:hidden!important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y!important;scrollbar-width:none!important;-ms-overflow-style:none!important;scrollbar-color:transparent transparent!important;cursor:grab}
+#trust-text+div:active{cursor:grabbing}#trust-text+div::-webkit-scrollbar,#trust-text+div::-webkit-scrollbar-track,#trust-text+div::-webkit-scrollbar-thumb{display:none!important;width:0!important;height:0!important;background:transparent!important}
 #trust-text+div .logo-track{display:flex!important;flex-wrap:nowrap!important;width:max-content!important;min-width:max-content!important;animation:none!important;transform:none!important;will-change:auto!important}
 #trust-text+div .logo-slider-gradient{display:none!important}#trust-text+div .logo-track>div{flex:0 0 auto!important}#trust-text+div .logo-item{flex:0 0 116px!important;width:116px!important;height:68px!important}#trust-text+div .logo-item img{object-fit:contain!important}#trust-text+div .logo-slider-gradient{pointer-events:none}
 /* Compact green chat: remove side panel, stages and dots; keep accessible manual next and pause. */
@@ -952,6 +952,27 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 #casos-exito-ecosistemas .rs-case-media{aspect-ratio:16/9!important;min-height:0!important;height:auto!important;padding:8px!important}
 #casos-exito-ecosistemas .rs-case-media img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important}
 @media(max-width:680px){#casos-exito-ecosistemas .rs-case-card{flex-basis:min(86vw,380px)!important}#casos-exito-ecosistemas .rs-case-media{aspect-ratio:16/9!important}}
+
+/* Override legacy #trust-text+div rules: hide the native progress/scroll indicator completely. */
+#trust-text + #logo-viewport{overflow:hidden!important;overflow-x:hidden!important;overflow-y:hidden!important;scrollbar-width:none!important;-ms-overflow-style:none!important;scrollbar-color:transparent transparent!important;touch-action:pan-y!important}
+#trust-text + #logo-viewport::-webkit-scrollbar,#trust-text + #logo-viewport::-webkit-scrollbar-track,#trust-text + #logo-viewport::-webkit-scrollbar-thumb{display:none!important;width:0!important;height:0!important;background:transparent!important}
+#trust-text + #logo-viewport::-webkit-scrollbar-corner{display:none!important}
+/* Smaller, cleaner internal agent; chat steps advance automatically. */
+#agente-seguimiento{width:min(calc(100% - 24px),560px)!important;max-width:560px!important;margin:20px auto!important;border-radius:17px!important}
+#agente-seguimiento:before{display:none!important;content:none!important}
+#agent-dashboard .rs-agent-topbar{padding:9px 12px!important}
+#agent-dashboard .rs-agent-topbar h3{font-size:.97rem!important}
+#agent-dashboard .rs-agent-workspace{padding:8px 11px 10px!important}
+#agent-dashboard .rs-agent-conversation{gap:6px!important;padding:0!important;border:0!important;background:transparent!important}
+#agent-dashboard .rs-agent-message{padding:7px 9px!important}
+#agent-dashboard .rs-agent-message p{font-size:.72rem!important;line-height:1.35!important}
+#agent-dashboard .rs-agent-value{margin-top:9px!important;padding-top:8px!important;border-top:1px solid rgba(255,255,255,.07)!important}
+#agent-dashboard .rs-agent-value p{margin:0 0 4px!important;color:#edf7f0!important;font:600 .69rem/1.35 'Inter',sans-serif!important}
+#agent-dashboard .rs-agent-value small{display:block!important;color:#9eb6a7!important;font:500 .59rem/1.4 'Inter',sans-serif!important}
+#agent-dashboard .rs-agent-footer{min-height:0!important;padding:0 11px 9px!important;justify-content:flex-start!important}
+#agent-dashboard .rs-agent-human-note{font-size:.56rem!important;color:#9ba7a4!important}
+#agent-dashboard .rs-agent-compose,#agent-dashboard .rs-agent-next{display:none!important}
+@media(max-width:420px){#agente-seguimiento{width:calc(100% - 18px)!important;margin:18px auto!important}#agent-dashboard .rs-agent-live{display:none!important}#agent-dashboard .rs-agent-value small{font-size:.56rem!important}}
 </style>
 </head>
 <body class="font-sans overflow-x-hidden"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
@@ -1186,7 +1207,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 <div class="stacking-card phase-primary w-full rounded-2xl overflow-hidden p-8 md:p-10 ring-1 ring-[#FF3C00]/40 shadow-[0_0_55px_rgba(255,60,0,0.09)]" data-phase="primary" id="card-phase-1">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
 <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 overflow-hidden rounded-l-2xl video-container phase-video-frame">
-<video aria-label="Video de la fase sitio web" class="absolute inset-0 w-full h-full object-contain object-center" loop="" muted="" playsinline="" preload="auto">
+<video autoplay="" aria-label="Video de la fase sitio web" class="absolute inset-0 w-full h-full object-contain object-center" loop="" muted="" playsinline="" preload="auto">
 <source src="assets/Video/Video-Sitio-web-IA.mp4" type="video/mp4"/>
 </video>
 </div>
@@ -1222,7 +1243,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 <div class="stacking-card mt-16 sticky top-56 w-full rounded-2xl overflow-hidden p-8 md:p-10" id="card-phase-2">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
 <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 overflow-hidden rounded-l-2xl video-container">
-<video class="absolute inset-0 w-full h-full object-contain object-center" loop="" muted="" playsinline="" preload="auto">
+<video autoplay="" class="absolute inset-0 w-full h-full object-contain object-center" loop="" muted="" playsinline="" preload="auto" aria-label="Video de la fase WhatsApp y seguimiento">
 <source src="assets/Video/Video-campaña-ventas-4-a-8-final.mp4" type="video/mp4"/>
 </video>
 </div>
@@ -1245,20 +1266,21 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 </div>
 </div>
 <section class="rs-agent-demo" id="agente-seguimiento" aria-labelledby="agent-demo-title">
-  <article class="rs-agent-dashboard rs-agent-chat-app" id="agent-dashboard" role="group" aria-label="Demostración de Zapia para tareas internas">
+  <article class="rs-agent-dashboard rs-agent-chat-app" id="agent-dashboard" role="group" aria-label="Demostración del agente de apoyo interno Zapia">
     <header class="rs-agent-topbar">
-      <div class="rs-agent-brand"><span class="rs-agent-mark" aria-hidden="true">Z</span><div><span class="rs-agent-eyebrow" data-rs-copy="simulation">AGENTE DE APOYO · DEMO</span><h3 id="agent-demo-title" data-rs-copy="agentDemoTitle">Zapia · agente interno</h3><small class="rs-agent-scope" data-rs-copy="agentRole">Reportes · correos · proveedores · recordatorios</small><p class="rs-agent-disclaimer" data-rs-copy="aiDisclaimer">Solo apoyo interno; no conversa con clientes ni cierra ventas.</p></div></div>
-      <div class="rs-agent-controls"><span class="rs-agent-live" data-rs-copy="demoStatus">EJEMPLO</span><button class="rs-agent-control" id="agent-toggle" type="button" aria-label="Pausar ejemplos" aria-pressed="false" title="Pausar ejemplos" data-rs-aria="agentPause"><svg class="agent-icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><svg class="agent-icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></button></div>
+      <div class="rs-agent-brand"><span class="rs-agent-mark" aria-hidden="true">Z</span><div><span class="rs-agent-eyebrow" data-rs-copy="simulation">DEMO INTERNA</span><h3 id="agent-demo-title" data-rs-copy="agentDemoTitle">Zapia · agente de apoyo</h3></div></div>
+      <div class="rs-agent-controls"><span class="rs-agent-live" data-rs-copy="demoStatus">DEMO</span><button class="rs-agent-control" id="agent-toggle" type="button" aria-label="Pausar demostración" aria-pressed="false" title="Pausar demostración" data-rs-aria="agentPause"><svg class="agent-icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><svg class="agent-icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></button></div>
     </header>
     <div class="rs-agent-workspace">
-      <section class="rs-agent-conversation" aria-label="Ejemplo de tareas internas" data-rs-aria="agentConversation" aria-live="polite">
-        <div class="rs-agent-message rs-agent-message-in"><span class="rs-agent-sender" data-rs-copy="agentUserLabel">Tarea</span><p id="agent-case-message">Prepara el reporte de chats.</p></div>
+      <section class="rs-agent-conversation" aria-label="Demostración automática" data-rs-aria="agentConversation">
+        <div class="rs-agent-message rs-agent-message-in"><span class="rs-agent-sender" data-rs-copy="agentUserLabel">Tarea</span><p id="agent-case-message">Revisa los chats asignados.</p></div>
         <div class="rs-agent-typing" id="agent-typing" aria-hidden="true" hidden><i></i><i></i><i></i></div>
-        <div class="rs-agent-message rs-agent-message-out" id="agent-reply-wrap"><span class="rs-agent-sender">Zapia</span><p id="agent-case-reply">Estados y pendientes listos para revisar.</p></div>
+        <div class="rs-agent-message rs-agent-message-out" id="agent-reply-wrap"><span class="rs-agent-sender">Zapia</span><p id="agent-case-reply" aria-live="polite">Pendientes organizados para revisar.</p></div>
+        <span class="sr-only" id="agent-case-counter" aria-live="polite">Ejemplo 1 de 3</span>
       </section>
+      <div class="rs-agent-value"><p data-rs-copy="agentPitch">La integramos al ecosistema y la entregamos entrenada para sus procesos.</p><small data-rs-copy="agentTasks">Reportes · chats asignados · correos · automatizaciones</small></div>
     </div>
-    <div class="rs-agent-compose"><input type="text" disabled aria-label="Campo de demostración desactivado" data-rs-aria="agentInput" data-rs-placeholder="agentInputPlaceholder" placeholder="Pida un reporte o una tarea"><button class="rs-agent-send" type="button" disabled aria-label="Envío desactivado en la demostración">↑</button><span class="sr-only" id="agent-case-counter" aria-live="polite">Ejemplo 1 de 3</span></div>
-    <footer class="rs-agent-footer"><span class="rs-agent-human-note" data-rs-copy="agentHumanNote">Atención y cierre comercial: una persona.</span><button class="rs-agent-next" id="agent-next" type="button" aria-label="Siguiente ejemplo" data-rs-aria="agentNext"><span data-rs-copy="agentNext">Siguiente ejemplo</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button></footer>
+    <footer class="rs-agent-footer"><span class="rs-agent-human-note" data-rs-copy="agentHumanNote">Atención al cliente: humana.</span></footer>
   </article>
 </section>
 <div aria-label="Continuación hacia posicionamiento y reputación" class="phase-transition" role="separator">
@@ -1269,7 +1291,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 <div class="stacking-card mt-16 sticky top-56 w-full rounded-2xl overflow-hidden p-8 md:p-10" id="card-phase-3">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
 <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 overflow-hidden rounded-l-2xl video-container">
-<video class="absolute inset-0 w-full h-full object-contain object-center" loop="" muted="" playsinline="" preload="auto">
+<video autoplay="" class="absolute inset-0 w-full h-full object-contain object-center" loop="" muted="" playsinline="" preload="auto" aria-label="Video de la fase SEO local">
 <source src="assets/Video/Video-Posicionamiento-SEO.mp4" type="video/mp4"/>
 </video>
 </div>
@@ -1300,17 +1322,18 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                         const videoMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
                         const setupVideo = (video) => {
                             video.muted = true;
+                            video.defaultMuted = true;
                             video.playsInline = true;
+                            video.loop = true;
                             video.preload = 'auto';
                             if (!video.dataset.rsLoaded) { video.dataset.rsLoaded = '1'; video.load(); }
                             if (video.readyState >= 2) video.classList.add('rs-video-ready');
                             else video.addEventListener('loadeddata', () => video.classList.add('rs-video-ready'), { once: true });
-                            if (!videoMotion.matches) {
-                                const playAttempt = video.play();
-                                if (playAttempt && playAttempt.catch) playAttempt.catch(() => {});
-                            } else {
-                                video.pause();
-                                if (video.readyState >= 2) video.classList.add('rs-video-ready');
+                            if (videoMotion.matches) { video.pause(); video.controls = true; return; }
+                            video.controls = false;
+                            const playAttempt = video.play();
+                            if (playAttempt && typeof playAttempt.catch === 'function') {
+                                playAttempt.catch(() => { video.controls = true; });
                             }
                         };
                         if ('IntersectionObserver' in window) {
@@ -1320,14 +1343,14 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                                     if (entry.isIntersecting) setupVideo(video);
                                     else video.pause();
                                 });
-                            }, { threshold: 0.1, rootMargin: '120px 0px' });
+                            }, { threshold: 0.08, rootMargin: '180px 0px' });
                             document.querySelectorAll('video').forEach(video => videoObserver.observe(video));
                         } else {
                             document.querySelectorAll('video').forEach(setupVideo);
                         }
-                        videoMotion.addEventListener?.('change', () => {
+                        if (videoMotion.addEventListener) videoMotion.addEventListener('change', () => {
                             document.querySelectorAll('video').forEach(video => {
-                                if (videoMotion.matches) video.pause();
+                                if (videoMotion.matches) { video.pause(); video.controls = true; }
                                 else if (video.getBoundingClientRect().bottom > 0 && video.getBoundingClientRect().top < innerHeight) setupVideo(video);
                             });
                         });
@@ -1572,7 +1595,7 @@ function toggleFaq(button) {
  const updateDotLabels=lang=>{const label={es:'Muestra',en:'Sample',pt:'Amostra'}[lang]||'Muestra';dots.forEach((dot,n)=>dot.setAttribute('aria-label',label+' '+(n+1)))};window._updateGalleryDotLabels=updateDotLabels;updateDotLabels(document.getElementById('lang-selector')?.value||'es');
  details.addEventListener('toggle',start);document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
  slider.addEventListener('mouseenter',stop);slider.addEventListener('mouseleave',start);slider.addEventListener('focusin',stop);slider.addEventListener('focusout',start);slider.addEventListener('pointerdown',stop);slider.addEventListener('pointerup',()=>setTimeout(start,1400));
- if('IntersectionObserver'in window){const observer=new IntersectionObserver(([entry])=>{visible=Boolean(entry?.isIntersecting);visible?start():stop()},{threshold:.2});observer.observe(details)}else{visible=true}
+ if('IntersectionObserver'in window){const observer=new IntersectionObserver(([entry])=>{visible=Boolean(entry&&entry.isIntersecting);visible?start():stop()},{threshold:.2});observer.observe(details)}else{visible=true}
  reduced?.addEventListener?.('change',start);go(0);start();
  const type=document.getElementById('typewriter-text'),cursor=document.getElementById('typewriter-cursor');if(type){const value=(window.translations&&window.translations.es&&window.translations.es.typewriterText)||'Proyectos';type.textContent='';let n=0;const tick=()=>{if(n<value.length){type.textContent=value.slice(0,++n);setTimeout(tick,38)}else if(cursor)cursor.style.display='none'};tick()}
 })();
@@ -2319,7 +2342,7 @@ function toggleFaq(button) {
     track.scrollLeft=0;
   };
   window._renderCases=renderCases;
-  const rsExtraCopy = {"es":{"aiDisclaimer":"Solo apoyo interno; no conversa con clientes ni cierra ventas.","agentDemoTitle":"Zapia · agente interno","simulation":"AGENTE DE APOYO · DEMO","agentConversation":"Ejemplo de tareas internas de Zapia","agentClientMessage":"Solicitud interna","agentSuggestedReply":"Borrador interno","agentInsight":"Revisión humana","agentFlow":"Etapas internas","agentStageRead":"Etapa de lectura","agentStageUnderstand":"Etapa de comprensión","agentStageSuggest":"Etapa de sugerencia","agentNext":"Siguiente ejemplo","agentRoleFood":"Operaciones","agentRoleHealth":"Operaciones","agentPause":"Pausar ejemplos","agentResume":"Reanudar ejemplos","agentExample":"Ejemplo","agentOf":"de","investorClose":"Cerrar oportunidad","investorTitle":"Red Sapien · oportunidad","investorTagline":"Socio tecnológico u operador para crecer.","tractionLabel":"Tracción reportada","brandCount":"69 clientes","brandNote":"Cifra reportada en 2026.","learningLabel":"Efectividad reportada","closeRate":"1,9%","closeDesc":"Prospección y pauta; no garantiza cierres.","modelLabel":"Valor operativo por hora","hourlyValue":"$69.000 COP/h","hourlyDesc":"Valor operativo; no es utilidad neta.","openSourceTitle":"Open Source y operación ligera.","openSourceDesc":"Código y procesos propios; rentabilidad por validar.","socialPactTitle":"","socialPactDesc":"","investorFooter":"Participación por acordar. Métricas reportadas, sin garantía de retorno.","investorEmailCta":"Escribir","investorWhatsAppCta":"Hablar de alianza ↗","comingSoonBadge":"Próximamente","panelClose":"Cerrar panel","panelTitle":"Panel Red Sapien","panelCopy":"Estamos preparando un panel para consultar conversaciones, oportunidades y próximos pasos.","mobileClose":"Cerrar","menuLabel":"Menú principal","menuOpen":"Abrir menú","menuClose":"Cerrar menú","menuContact":"Hablemos","menuStartup":"Startup · aliados","menuUpcoming":"Próximamente","demoStatus":"EJEMPLO","agentDraftLabel":"Ejemplo interno","agentIntentLabel":"Intención","agentNextActionLabel":"Siguiente paso","agentStageReadLabel":"Revisar","agentStageUnderstandLabel":"Preparar","agentStageSuggestLabel":"Aprobar","agentCampaignResults":"Resultados de campaña","databaseLabel":"Base B2B","databaseValue":"30.715 registros","databaseDesc":"En depuración; validar antes de contactar.","messageLabel":"Mensaje calificado","messageValue":"$3.000 COP","messageDesc":"Referencia por dueño de negocio calificado.","agentHumanNote":"Atención y cierre comercial: una persona.","agentRole":"Reportes · correos · proveedores · recordatorios","agentUserLabel":"Tarea","agentInput":"Campo de demostración desactivado","agentInputPlaceholder":"Pida un reporte o una tarea","logoSlider":"Marcas de clientes; deslice para ver más"},"en":{"aiDisclaimer":"Internal support only; no customer chats or sales closing.","agentDemoTitle":"Zapia · internal agent","simulation":"SUPPORT AGENT · DEMO","agentConversation":"Zapia internal-task example","agentClientMessage":"Internal request","agentSuggestedReply":"Internal draft","agentInsight":"Human review","agentFlow":"Internal stages","agentStageRead":"Reading stage","agentStageUnderstand":"Understanding stage","agentStageSuggest":"Suggestion stage","agentNext":"Next example","agentRoleFood":"Operations","agentRoleHealth":"Operations","agentPause":"Pause examples","agentResume":"Resume examples","agentExample":"Example","agentOf":"of","investorClose":"Close opportunity","investorTitle":"Red Sapien · opportunity","investorTagline":"Technology or operating partner to grow.","tractionLabel":"Reported traction","brandCount":"69 clients","brandNote":"Reported for 2026.","learningLabel":"Reported effectiveness","closeRate":"1.9%","closeDesc":"Outreach and ads; no close guarantee.","modelLabel":"Reported value per hour","hourlyValue":"COP $69,000/h","hourlyDesc":"Operating value, not net profit.","openSourceTitle":"Open Source, lean operations.","openSourceDesc":"Own code and processes; profitability remains to be validated.","socialPactTitle":"","socialPactDesc":"","investorFooter":"Participation to be agreed. Reported metrics; no return guarantee.","investorEmailCta":"Email","investorWhatsAppCta":"Discuss partnership ↗","comingSoonBadge":"Coming soon","panelClose":"Close panel","panelTitle":"Red Sapien panel","panelCopy":"We are preparing a panel for conversations, opportunities, and next steps.","mobileClose":"Close","menuLabel":"Main menu","menuOpen":"Open menu","menuClose":"Close menu","menuContact":"Let's talk","menuStartup":"Startup · partners","menuUpcoming":"Coming soon","demoStatus":"EXAMPLE","agentDraftLabel":"Internal example","agentIntentLabel":"Intent","agentNextActionLabel":"Next step","agentStageReadLabel":"Review","agentStageUnderstandLabel":"Prepare","agentStageSuggestLabel":"Approve","agentCampaignResults":"Campaign results","databaseLabel":"B2B base","databaseValue":"30,715 records","databaseDesc":"Being cleaned; validate before contacting.","messageLabel":"Qualified message","messageValue":"COP $3,000","messageDesc":"Reference for a qualified business owner.","agentHumanNote":"Customer care and sales closing stay human.","agentRole":"Reports · email · suppliers · reminders","agentUserLabel":"Task","agentInput":"Disabled demo input","agentInputPlaceholder":"Ask for a report or task","logoSlider":"Client brands; swipe to see more"},"pt":{"aiDisclaimer":"Apenas apoio interno; não conversa com clientes nem fecha vendas.","agentDemoTitle":"Zapia · agente interno","simulation":"AGENTE DE APOIO · DEMO","agentConversation":"Exemplo de tarefas internas da Zapia","agentClientMessage":"Solicitação interna","agentSuggestedReply":"Rascunho interno","agentInsight":"Revisão humana","agentFlow":"Etapas internas","agentStageRead":"Etapa de leitura","agentStageUnderstand":"Etapa de compreensão","agentStageSuggest":"Etapa de sugestão","agentNext":"Próximo exemplo","agentRoleFood":"Operações","agentRoleHealth":"Operações","agentPause":"Pausar exemplos","agentResume":"Retomar exemplos","agentExample":"Exemplo","agentOf":"de","investorClose":"Fechar oportunidade","investorTitle":"Red Sapien · oportunidade","investorTagline":"Parceiro tecnológico ou operador para crescer.","tractionLabel":"Tração reportada","brandCount":"69 clientes","brandNote":"Dado reportado em 2026.","learningLabel":"Efetividade reportada","closeRate":"1,9%","closeDesc":"Prospecção e anúncios; sem garantia de fechamento.","modelLabel":"Valor operacional por hora","hourlyValue":"COP $69.000/h","hourlyDesc":"Valor operacional; não é lucro líquido.","openSourceTitle":"Open Source e operação enxuta.","openSourceDesc":"Código e processos próprios; rentabilidade a validar.","socialPactTitle":"","socialPactDesc":"","investorFooter":"Participação a combinar. Métricas reportadas, sem garantia de retorno.","investorEmailCta":"Escrever","investorWhatsAppCta":"Falar da parceria ↗","comingSoonBadge":"Em breve","panelClose":"Fechar painel","panelTitle":"Painel Red Sapien","panelCopy":"Estamos preparando um painel para conversas, oportunidades e próximos passos.","mobileClose":"Fechar","menuLabel":"Menu principal","menuOpen":"Abrir menu","menuClose":"Fechar menu","menuContact":"Vamos conversar","menuStartup":"Startup · parceiros","menuUpcoming":"Em breve","demoStatus":"EXEMPLO","agentDraftLabel":"Exemplo interno","agentIntentLabel":"Intenção","agentNextActionLabel":"Próximo passo","agentStageReadLabel":"Revisar","agentStageUnderstandLabel":"Preparar","agentStageSuggestLabel":"Aprovar","agentCampaignResults":"Resultados da campanha","databaseLabel":"Base B2B","databaseValue":"30.715 registros","databaseDesc":"Em depuração; validar antes de contatar.","messageLabel":"Mensagem qualificada","messageValue":"COP $3.000","messageDesc":"Referência por dono de negócio qualificado.","agentHumanNote":"Atendimento e fechamento comercial: uma pessoa.","agentRole":"Relatórios · e-mail · fornecedores · lembretes","agentUserLabel":"Tarefa","agentInput":"Campo de demonstração desativado","agentInputPlaceholder":"Peça um relatório ou uma tarefa","logoSlider":"Marcas de clientes; deslize para ver mais"}};
+  const rsExtraCopy = {"es":{"aiDisclaimer":"Solo apoyo interno; no conversa con clientes ni cierra ventas.","agentDemoTitle":"Zapia · agente de apoyo","simulation":"DEMO INTERNA","agentConversation":"Demostración automática de apoyo interno","agentClientMessage":"Solicitud interna","agentSuggestedReply":"Borrador interno","agentInsight":"Revisión humana","agentFlow":"Etapas internas","agentStageRead":"Etapa de lectura","agentStageUnderstand":"Etapa de comprensión","agentStageSuggest":"Etapa de sugerencia","agentNext":"Siguiente ejemplo","agentRoleFood":"Operaciones","agentRoleHealth":"Operaciones","agentPause":"Pausar demo","agentResume":"Reanudar demo","agentExample":"Ejemplo","agentOf":"de","investorClose":"Cerrar oportunidad","investorTitle":"Red Sapien · oportunidad","investorTagline":"Socio tecnológico u operador para crecer.","tractionLabel":"Tracción reportada","brandCount":"69 clientes","brandNote":"Cifra reportada en 2026.","learningLabel":"Efectividad reportada","closeRate":"1,9%","closeDesc":"Prospección y pauta; no garantiza cierres.","modelLabel":"Valor operativo por hora","hourlyValue":"$69.000 COP/h","hourlyDesc":"Valor operativo; no es utilidad neta.","openSourceTitle":"Open Source y operación ligera.","openSourceDesc":"Código y procesos propios; rentabilidad por validar.","socialPactTitle":"","socialPactDesc":"","investorFooter":"Participación por acordar. Métricas reportadas, sin garantía de retorno.","investorEmailCta":"Escribir","investorWhatsAppCta":"Hablar de alianza ↗","comingSoonBadge":"Próximamente","panelClose":"Cerrar panel","panelTitle":"Panel Red Sapien","panelCopy":"Estamos preparando un panel para consultar conversaciones, oportunidades y próximos pasos.","mobileClose":"Cerrar","menuLabel":"Menú principal","menuOpen":"Abrir menú","menuClose":"Cerrar menú","menuContact":"Hablemos","menuStartup":"Startup · aliados","menuUpcoming":"Próximamente","demoStatus":"DEMO","agentDraftLabel":"Ejemplo interno","agentIntentLabel":"Intención","agentNextActionLabel":"Siguiente paso","agentStageReadLabel":"Revisar","agentStageUnderstandLabel":"Preparar","agentStageSuggestLabel":"Aprobar","agentCampaignResults":"Resultados de campaña","databaseLabel":"Base B2B","databaseValue":"30.715 registros","databaseDesc":"En depuración; validar antes de contactar.","messageLabel":"Mensaje calificado","messageValue":"$3.000 COP","messageDesc":"Referencia por dueño de negocio calificado.","agentHumanNote":"Atención al cliente: humana.","agentRole":"Reportes · correos · proveedores · recordatorios","agentUserLabel":"Tarea","agentInput":"Campo de demostración desactivado","agentInputPlaceholder":"Pida un reporte o una tarea","logoSlider":"Marcas de clientes; deslice para ver más","agentPitch":"La integramos al ecosistema y la entregamos entrenada para sus procesos.","agentTasks":"Reportes · chats asignados · correos · automatizaciones"},"en":{"aiDisclaimer":"Internal support only; no customer chats or sales closing.","agentDemoTitle":"Zapia · support agent","simulation":"INTERNAL DEMO","agentConversation":"Automatic internal-support demo","agentClientMessage":"Internal request","agentSuggestedReply":"Internal draft","agentInsight":"Human review","agentFlow":"Internal stages","agentStageRead":"Reading stage","agentStageUnderstand":"Understanding stage","agentStageSuggest":"Suggestion stage","agentNext":"Next example","agentRoleFood":"Operations","agentRoleHealth":"Operations","agentPause":"Pause demo","agentResume":"Resume demo","agentExample":"Example","agentOf":"of","investorClose":"Close opportunity","investorTitle":"Red Sapien · opportunity","investorTagline":"Technology or operating partner to grow.","tractionLabel":"Reported traction","brandCount":"69 clients","brandNote":"Reported for 2026.","learningLabel":"Reported effectiveness","closeRate":"1.9%","closeDesc":"Outreach and ads; no close guarantee.","modelLabel":"Reported value per hour","hourlyValue":"COP $69,000/h","hourlyDesc":"Operating value, not net profit.","openSourceTitle":"Open Source, lean operations.","openSourceDesc":"Own code and processes; profitability remains to be validated.","socialPactTitle":"","socialPactDesc":"","investorFooter":"Participation to be agreed. Reported metrics; no return guarantee.","investorEmailCta":"Email","investorWhatsAppCta":"Discuss partnership ↗","comingSoonBadge":"Coming soon","panelClose":"Close panel","panelTitle":"Red Sapien panel","panelCopy":"We are preparing a panel for conversations, opportunities, and next steps.","mobileClose":"Close","menuLabel":"Main menu","menuOpen":"Open menu","menuClose":"Close menu","menuContact":"Let's talk","menuStartup":"Startup · partners","menuUpcoming":"Coming soon","demoStatus":"DEMO","agentDraftLabel":"Internal example","agentIntentLabel":"Intent","agentNextActionLabel":"Next step","agentStageReadLabel":"Review","agentStageUnderstandLabel":"Prepare","agentStageSuggestLabel":"Approve","agentCampaignResults":"Campaign results","databaseLabel":"B2B base","databaseValue":"30,715 records","databaseDesc":"Being cleaned; validate before contacting.","messageLabel":"Qualified message","messageValue":"COP $3,000","messageDesc":"Reference for a qualified business owner.","agentHumanNote":"Customer support stays human.","agentRole":"Reports · email · suppliers · reminders","agentUserLabel":"Task","agentInput":"Disabled demo input","agentInputPlaceholder":"Ask for a report or task","logoSlider":"Client brands; swipe to see more","agentPitch":"Integrated into the ecosystem and trained for your processes.","agentTasks":"Reports · assigned chats · email · automations"},"pt":{"aiDisclaimer":"Apenas apoio interno; não conversa com clientes nem fecha vendas.","agentDemoTitle":"Zapia · agente de apoio","simulation":"DEMO INTERNA","agentConversation":"Demonstração automática de apoio interno","agentClientMessage":"Solicitação interna","agentSuggestedReply":"Rascunho interno","agentInsight":"Revisão humana","agentFlow":"Etapas internas","agentStageRead":"Etapa de leitura","agentStageUnderstand":"Etapa de compreensão","agentStageSuggest":"Etapa de sugestão","agentNext":"Próximo exemplo","agentRoleFood":"Operações","agentRoleHealth":"Operações","agentPause":"Pausar demo","agentResume":"Retomar demo","agentExample":"Exemplo","agentOf":"de","investorClose":"Fechar oportunidade","investorTitle":"Red Sapien · oportunidade","investorTagline":"Parceiro tecnológico ou operador para crescer.","tractionLabel":"Tração reportada","brandCount":"69 clientes","brandNote":"Dado reportado em 2026.","learningLabel":"Efetividade reportada","closeRate":"1,9%","closeDesc":"Prospecção e anúncios; sem garantia de fechamento.","modelLabel":"Valor operacional por hora","hourlyValue":"COP $69.000/h","hourlyDesc":"Valor operacional; não é lucro líquido.","openSourceTitle":"Open Source e operação enxuta.","openSourceDesc":"Código e processos próprios; rentabilidade a validar.","socialPactTitle":"","socialPactDesc":"","investorFooter":"Participação a combinar. Métricas reportadas, sem garantia de retorno.","investorEmailCta":"Escrever","investorWhatsAppCta":"Falar da parceria ↗","comingSoonBadge":"Em breve","panelClose":"Fechar painel","panelTitle":"Painel Red Sapien","panelCopy":"Estamos preparando um painel para conversas, oportunidades e próximos passos.","mobileClose":"Fechar","menuLabel":"Menu principal","menuOpen":"Abrir menu","menuClose":"Fechar menu","menuContact":"Vamos conversar","menuStartup":"Startup · parceiros","menuUpcoming":"Em breve","demoStatus":"DEMO","agentDraftLabel":"Exemplo interno","agentIntentLabel":"Intenção","agentNextActionLabel":"Próximo passo","agentStageReadLabel":"Revisar","agentStageUnderstandLabel":"Preparar","agentStageSuggestLabel":"Aprovar","agentCampaignResults":"Resultados da campanha","databaseLabel":"Base B2B","databaseValue":"30.715 registros","databaseDesc":"Em depuração; validar antes de contatar.","messageLabel":"Mensagem qualificada","messageValue":"COP $3.000","messageDesc":"Referência por dono de negócio qualificado.","agentHumanNote":"Atendimento ao cliente: humano.","agentRole":"Relatórios · e-mail · fornecedores · lembretes","agentUserLabel":"Tarefa","agentInput":"Campo de demonstração desativado","agentInputPlaceholder":"Peça um relatório ou uma tarefa","logoSlider":"Marcas de clientes; deslize para ver mais","agentPitch":"Integrada ao ecossistema e treinada para seus processos.","agentTasks":"Relatórios · conversas atribuídas · e-mails · automações"}};
   const renderExtraCopy=(lang)=>{
     const copy=rsExtraCopy[lang]||rsExtraCopy.es;
     document.querySelectorAll('[data-rs-copy]').forEach(el=>{const value=copy[el.dataset.rsCopy];if(value)el.textContent=value});
@@ -2449,50 +2472,55 @@ function toggleFaq(button) {
 })();
 </script><script id="rs-zapia-internal-demo-20261005">
 (()=>{
- const root=document.getElementById('agent-dashboard');if(!root)return;
- const q=id=>root.querySelector('#'+id);
- const user=q('agent-case-message'),reply=q('agent-case-reply'),replyWrap=q('agent-reply-wrap'),typing=q('agent-typing'),counter=q('agent-case-counter'),next=q('agent-next'),toggle=q('agent-toggle');
- if(!user||!reply||!replyWrap||!typing||!counter||!next||!toggle)return;
+ const root=document.getElementById('agent-dashboard');
+ if(!root)return;
+ const user=document.getElementById('agent-case-message');
+ const reply=document.getElementById('agent-case-reply');
+ const replyWrap=document.getElementById('agent-reply-wrap');
+ const typing=document.getElementById('agent-typing');
+ const counter=document.getElementById('agent-case-counter');
+ const toggle=document.getElementById('agent-toggle');
+ if(!user||!reply||!replyWrap||!typing||!counter||!toggle)return;
  const examples={
   es:[
-   {ask:'Prepara el reporte de chats.',answer:'Estados y pendientes listos para revisar.'},
-   {ask:'Valida el correo y déjalo listo.',answer:'Datos revisados. El envío queda pendiente de aprobación.'},
-   {ask:'Ayúdame con el proveedor y recuérdamelo.',answer:'Seguimiento y recordatorio preparados para revisión.'}
+   {ask:'Revisa los chats asignados.',answer:'Pendientes organizados para revisar.'},
+   {ask:'Prepara el reporte y el correo.',answer:'Reporte listo; correo en borrador.'},
+   {ask:'Activa la automatización.',answer:'Proceso listo para supervisar.'}
   ],
   en:[
-   {ask:'Prepare the chat report.',answer:'Statuses and pending replies are ready to review.'},
-   {ask:'Validate this email and prepare it.',answer:'Details checked. Sending waits for human approval.'},
-   {ask:'Follow up with the supplier and remind me.',answer:'Follow-up and reminder are ready for review.'}
+   {ask:'Review the assigned chats.',answer:'Pending items organized for review.'},
+   {ask:'Prepare the report and email.',answer:'Report ready; email saved as a draft.'},
+   {ask:'Start the automation.',answer:'Process ready for supervision.'}
   ],
   pt:[
-   {ask:'Prepare o relatório das conversas.',answer:'Status e respostas pendentes prontos para revisar.'},
-   {ask:'Valide o e-mail e deixe pronto.',answer:'Dados revisados. O envio aguarda aprovação humana.'},
-   {ask:'Acompanhe o fornecedor e me lembre.',answer:'Acompanhamento e lembrete preparados para revisão.'}
+   {ask:'Revise as conversas atribuídas.',answer:'Pendências organizadas para revisar.'},
+   {ask:'Prepare o relatório e o e-mail.',answer:'Relatório pronto; e-mail em rascunho.'},
+   {ask:'Ative a automação.',answer:'Processo pronto para supervisão.'}
   ]
  };
- const labels={es:{example:'Ejemplo',of:'de',pause:'Pausar ejemplos',resume:'Reanudar ejemplos'},en:{example:'Example',of:'of',pause:'Pause examples',resume:'Resume examples'},pt:{example:'Exemplo',of:'de',pause:'Pausar exemplos',resume:'Retomar exemplos'}};
- const lang=()=>{const l=(document.documentElement.lang||'es').slice(0,2);return examples[l]?l:'es'};
- const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)')||{matches:false};
- let index=0,timer=0,typeTimer=0,visible=false,manualPause=Boolean(reduce.matches),hovered=false,focused=false;
- const items=()=>examples[lang()];
+ const labels={es:{example:'Ejemplo',of:'de',pause:'Pausar demo',resume:'Reanudar demo'},en:{example:'Example',of:'of',pause:'Pause demo',resume:'Resume demo'},pt:{example:'Exemplo',of:'de',pause:'Pausar demo',resume:'Retomar demo'}};
+ const motion=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
+ let index=0,timer=0,typingTimer=0,visible=false,paused=Boolean(motion.matches),forcedLang='';
+ const lang=()=>{const code=(forcedLang||document.documentElement.lang||'es').slice(0,2);return examples[code]?code:'es'};
+ const list=()=>examples[lang()];
  const stop=()=>{if(timer){clearInterval(timer);timer=0}};
- const start=()=>{stop();if(manualPause||hovered||focused||!visible||document.hidden||reduce.matches)return;timer=setInterval(()=>{index=(index+1)%items().length;render(true)},7800)};
- const syncToggle=()=>{root.classList.toggle('is-paused',manualPause);toggle.setAttribute('aria-pressed',String(manualPause));const label=labels[lang()],text=manualPause?label.resume:label.pause;toggle.setAttribute('aria-label',text);toggle.title=text};
- const render=(animate=true)=>{
-  clearTimeout(typeTimer);const list=items();index=index%list.length;const item=list[index];
-  user.textContent=item.ask;reply.textContent=item.answer;counter.textContent=`${labels[lang()].example} ${index+1} ${labels[lang()].of} ${list.length}`;
-  if(animate&&!reduce.matches){replyWrap.hidden=true;typing.hidden=false;root.classList.add('is-typing');typeTimer=setTimeout(()=>{typing.hidden=true;replyWrap.hidden=false;root.classList.remove('is-typing')},620)}else{typing.hidden=true;replyWrap.hidden=false;root.classList.remove('is-typing')}
-  syncToggle();
+ const setButton=()=>{const label=paused?labels[lang()].resume:labels[lang()].pause;toggle.setAttribute('aria-label',label);toggle.title=label;toggle.setAttribute('aria-pressed',String(paused));root.classList.toggle('is-paused',paused)};
+ const show=(animate)=>{
+  if(typingTimer){clearTimeout(typingTimer);typingTimer=0}
+  const items=list();index=index%items.length;const item=items[index];
+  user.textContent=item.ask;reply.textContent=item.answer;
+  counter.textContent=`${labels[lang()].example} ${index+1} ${labels[lang()].of} ${items.length}`;
+  if(animate&&!motion.matches){replyWrap.hidden=true;typing.hidden=false;typingTimer=setTimeout(()=>{typing.hidden=true;replyWrap.hidden=false;typingTimer=0},520)}
+  else{typing.hidden=true;replyWrap.hidden=false}
+  setButton();
  };
- next.addEventListener('click',()=>{index=(index+1)%items().length;render(true);start()});
- toggle.addEventListener('click',()=>{manualPause=!manualPause;syncToggle();manualPause?stop():start()});
- root.addEventListener('mouseenter',()=>{hovered=true;stop()});root.addEventListener('mouseleave',()=>{hovered=false;start()});
- root.addEventListener('focusin',()=>{focused=true;stop()});root.addEventListener('focusout',()=>setTimeout(()=>{focused=root.contains(document.activeElement);start()},0));
+ const start=()=>{stop();if(paused||!visible||document.hidden)return;timer=setInterval(()=>{index=(index+1)%list().length;show(true)},7200)};
+ toggle.addEventListener('click',()=>{paused=!paused;setButton();if(paused)stop();else start()});
  document.addEventListener('visibilitychange',start);
- if('IntersectionObserver'in window){new IntersectionObserver(([entry])=>{visible=Boolean(entry?.isIntersecting);start()},{threshold:.15}).observe(root)}else{visible=true}
- const motionChange=()=>{if(reduce.matches){manualPause=true;stop()}syncToggle();start()};reduce.addEventListener?.('change',motionChange);
- window._renderAgent=(language)=>{if(language&&examples[String(language).slice(0,2)])document.documentElement.lang=String(language).slice(0,2);render(false);start()};
- render(false);start();
+ if(motion.addEventListener)motion.addEventListener('change',()=>{if(motion.matches){paused=true;stop();show(false)}setButton();start()});
+ if('IntersectionObserver'in window){new IntersectionObserver(entries=>{visible=Boolean(entries[0]&&entries[0].isIntersecting);start()},{threshold:.1}).observe(root)}else{visible=true}
+ window._renderAgent=language=>{if(language)forcedLang=String(language).slice(0,2);show(false);start()};
+ show(false);start();
 })();
 </script><script>
 (()=>{const modal=document.getElementById('investor-modal');if(!modal)return;let lastTrigger=null;const open=event=>{lastTrigger=event.currentTarget;window._closeMobileMenu?.(false);modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';modal.querySelector('.rs-investor-close')?.focus()};const close=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';const target=lastTrigger?.closest('#mobile-menu')?document.getElementById('menu-trigger'):lastTrigger;target?.focus({preventScroll:true})};document.querySelectorAll('[data-investor-open]').forEach(x=>x.addEventListener('click',open));modal.addEventListener('click',event=>{if(event.target.closest('[data-investor-close]'))close()});document.addEventListener('keydown',event=>{if(event.key==='Escape'&&modal.classList.contains('is-open'))close()});})();
@@ -2509,24 +2537,24 @@ function toggleFaq(button) {
 })();
 </script><script id="rs-logo-infinite-loop-20261005">
 (()=>{
- const viewport=document.getElementById('logo-viewport'),track=document.getElementById('logo-track'),original=track?.querySelector('[data-logo-set="original"]');
+ const viewport=document.getElementById('logo-viewport'),track=document.getElementById('logo-track'),original=track?track.querySelector('[data-logo-set="original"]'):null;
  if(!viewport||!track||!original)return;
  const clone=original.cloneNode(true);clone.dataset.logoSet='clone';clone.setAttribute('aria-hidden','true');clone.inert=true;clone.querySelectorAll('img').forEach(img=>{img.alt='';img.draggable=false;img.setAttribute('aria-hidden','true')});track.appendChild(clone);
- const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)')||{matches:false};
+ const reduce=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
  let loopWidth=0,last=0,frame=0,dragging=false,hovered=false,focused=false,visible=true,startX=0,startScroll=0;
  const measure=()=>{const minWidth=(viewport.clientWidth+1)+'px';[original,clone].forEach(set=>{set.style.boxSizing='border-box';set.style.minWidth=minWidth;set.style.justifyContent='space-around'});loopWidth=original.getBoundingClientRect().width;normalize()};
  const normalize=()=>{if(loopWidth<=0)return;while(viewport.scrollLeft>=loopWidth)viewport.scrollLeft-=loopWidth;while(viewport.scrollLeft<0)viewport.scrollLeft+=loopWidth};
  const held=()=>dragging||hovered||focused||document.hidden||!visible||reduce.matches;
  const tick=now=>{if(last&&!held()&&loopWidth>0){const dt=Math.min(now-last,50);viewport.scrollLeft+=dt*.014;normalize()}last=now;frame=requestAnimationFrame(tick)};
- const startDrag=e=>{if(e.pointerType==='mouse'&&e.button!==0)return;dragging=true;startX=e.clientX;startScroll=viewport.scrollLeft;viewport.classList.add('is-dragging');viewport.setPointerCapture?.(e.pointerId);last=performance.now()};
+ const startDrag=e=>{if(e.pointerType==='mouse'&&e.button!==0)return;dragging=true;startX=e.clientX;startScroll=viewport.scrollLeft;viewport.classList.add('is-dragging');if(typeof viewport.setPointerCapture==='function')viewport.setPointerCapture(e.pointerId);last=performance.now()};
  const moveDrag=e=>{if(!dragging)return;viewport.scrollLeft=startScroll-(e.clientX-startX);normalize();e.preventDefault()};
  const endDrag=()=>{if(!dragging)return;dragging=false;viewport.classList.remove('is-dragging');last=performance.now()};
  viewport.addEventListener('pointerdown',startDrag);viewport.addEventListener('pointermove',moveDrag,{passive:false});viewport.addEventListener('pointerup',endDrag);viewport.addEventListener('pointercancel',endDrag);viewport.addEventListener('lostpointercapture',endDrag);
  viewport.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hovered=true});viewport.addEventListener('pointerleave',()=>{hovered=false});
  viewport.addEventListener('focusin',()=>{focused=true});viewport.addEventListener('focusout',()=>setTimeout(()=>{focused=viewport.contains(document.activeElement)},0));
  viewport.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();viewport.scrollLeft+=(e.key==='ArrowRight'?100:-100);normalize()}});
- document.addEventListener('visibilitychange',()=>{last=performance.now()});reduce.addEventListener?.('change',()=>{last=performance.now()});
- if('IntersectionObserver'in window)new IntersectionObserver(([entry])=>{visible=Boolean(entry?.isIntersecting);last=performance.now()},{threshold:.05}).observe(viewport);
+ document.addEventListener('visibilitychange',()=>{last=performance.now()});if(reduce.addEventListener)reduce.addEventListener('change',()=>{last=performance.now()});
+ if('IntersectionObserver'in window)new IntersectionObserver(([entry])=>{visible=Boolean(entry&&entry.isIntersecting);last=performance.now()},{threshold:.05}).observe(viewport);
  if('ResizeObserver'in window)new ResizeObserver(measure).observe(original);window.addEventListener('resize',measure,{passive:true});original.querySelectorAll('img').forEach(img=>{img.draggable=false;img.addEventListener('load',measure,{once:true})});
  measure();frame=requestAnimationFrame(tick);window.addEventListener('pagehide',()=>cancelAnimationFrame(frame),{once:true});
 })();
