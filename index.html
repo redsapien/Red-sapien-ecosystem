@@ -753,6 +753,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 .rs-case-modal-media.rs-case-media-stack .rs-case-media-figure figcaption{color:#aeb7c1;font:700 .56rem/1.2 'Inter',system-ui,sans-serif}
 .rs-case-modal-media.rs-case-media-stack .rs-case-media-figure img{width:100%;height:min(38vh,390px);max-height:38vh;object-fit:contain;object-position:center;border-radius:7px}
 .rs-case-modal-media.rs-case-media-stack .rs-campaign-panel{height:auto;min-height:120px}
+#agent-dashboard .rs-agent-dashboard:before{animation-duration:4s}
 #agent-dashboard .rs-agent-topbar{padding:13px clamp(12px,2vw,20px);gap:10px}
 #agent-dashboard .rs-agent-disclaimer{margin-top:3px!important;color:#aeb7c1;font-size:.66rem!important;line-height:1.25}
 #agent-dashboard .rs-agent-eyebrow{margin-bottom:3px;font-size:.51rem;letter-spacing:.12em}
@@ -2352,7 +2353,7 @@ function toggleFaq(button) {
     if(animate&&!reduce?.matches){root.classList.remove('is-updating');requestAnimationFrame(()=>root.classList.add('is-updating'))}
   };
   const stop=()=>{if(timer){clearInterval(timer);timer=null}};
-  const start=()=>{stop();if(paused||!visible||document.hidden||reduce?.matches)return;timer=setInterval(()=>{if(stageIndex<2){stageIndex++;paintStage()}else{stageIndex=0;caseIndex=(caseIndex+1)%current().items.length;render()}},1900)};
+  const start=()=>{stop();if(paused||!visible||document.hidden||reduce?.matches)return;timer=setInterval(()=>{if(stageIndex<2){stageIndex++;paintStage()}else{stageIndex=0;caseIndex=(caseIndex+1)%current().items.length;render()}},1200)};
   const syncToggle=()=>{root.classList.toggle('is-paused',paused);el.toggle.setAttribute('aria-pressed',String(paused));const labels=locale(),label=paused?labels.resume:labels.pause;el.toggle.setAttribute('aria-label',label);el.toggle.title=label};
   el.toggle.addEventListener('click',()=>{paused=!paused;syncToggle();paused?stop():start()});
   el.next.addEventListener('click',()=>{caseIndex=(caseIndex+1)%current().items.length;stageIndex=0;render();start()});
