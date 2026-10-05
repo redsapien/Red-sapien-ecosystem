@@ -903,6 +903,14 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 @media(max-width:400px){#trust-text+div .logo-item{flex-basis:100px!important;width:100px!important;height:60px!important}#agent-dashboard .rs-agent-footer{padding-inline:12px!important}}
 @media(prefers-reduced-motion:reduce){#casos-exito-ecosistemas .rs-case-card,#rs-case-modal .rs-case-modal-card,#agent-dashboard *{transition:none!important;animation:none!important}#casos-exito-ecosistemas .rs-case-card:hover{transform:none!important}}
 </style>
+
+<style id="rs-final-modal-layout-20261005">
+#rs-case-modal[data-case-id="hijole"] .rs-case-modal-media.rs-case-media-stack{display:flex!important;flex-direction:column!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto auto!important;align-items:center!important;align-content:center!important;justify-content:center!important;gap:14px!important;width:auto!important;height:100dvh!important;min-height:100dvh!important;max-height:100dvh!important;overflow-y:auto!important;overflow-x:hidden!important;padding:clamp(16px,2vw,28px)!important}
+#rs-case-modal[data-case-id="hijole"] .rs-case-modal-media.rs-case-media-stack .rs-case-media-figure{display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto auto!important;width:100%!important;max-width:1200px!important;max-height:none!important;padding:8px!important;gap:6px!important}
+#rs-case-modal[data-case-id="hijole"] .rs-case-modal-media.rs-case-media-stack .rs-case-media-figure img{width:100%!important;height:auto!important;max-width:1200px!important;max-height:58vh!important;aspect-ratio:16/9!important;object-fit:contain!important}
+#rs-case-modal[data-case-id="hijole"] .rs-case-modal-media.rs-case-media-stack .rs-campaign-panel{width:100%!important;max-width:760px!important;max-height:none!important;overflow:visible!important}
+@media(max-width:760px){#rs-case-modal[data-case-id="hijole"] .rs-case-modal-media.rs-case-media-stack{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;padding:54px 12px 14px!important}#rs-case-modal[data-case-id="hijole"] .rs-case-modal-media.rs-case-media-stack .rs-case-media-figure img{max-height:56vw!important}#rs-case-modal[data-case-id="hijole"] .rs-case-modal-media.rs-case-media-stack .rs-campaign-panel-grid{grid-template-columns:1fr!important}}
+</style>
 </head>
 <body class="font-sans overflow-x-hidden"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
 <script>window.__rsPreloaderStartedAt=performance.now();</script>
@@ -2222,7 +2230,7 @@ function toggleFaq(button) {
     return {title:item.title||base[1],type:panel?.type||item.type||base[2],caption:panel?.caption||item.caption||base[3],summary:panel?'':(item.summary??base[6]??base[3]),metric:panel?'':(item.metric??base[7]??'Resultado en preparación con información verificada.'),stats:panel?null:(Object.prototype.hasOwnProperty.call(item,'stats')?item.stats:(base[8]?.stats||null)),campaignImage:panel?null:(base[8]?.campaignImage||null),campaignPanel:panel,siteImageLabel:({es:'Captura real del sitio · PC',en:'Authentic PC website capture',pt:'Captura real do site · PC'})[lang]||'Vista del sitio web',campaignImageLabel:({es:'Resultados reportados de campaña',en:'Reported campaign results',pt:'Resultados reportados da campanha'})[lang]||'Resultados reportados de campaña',badge:locale.badges?.[niche]||cases[niche].badge,view:locale.viewCase||(lang==='en'?'View case':'Ver caso'),imageAlt:locale.imageAlt||(lang==='en'?'website screenshot':lang==='pt'?'captura do site':'captura del sitio web')};
   };
   const casePresentation=(niche,index,lang)=>{
-    if(niche==='food'&&index===0){const panelLabels={es:'Panel de campaña',en:'Campaign panel',pt:'Painel da campanha'};return [panelLabels[lang]||panelLabels.es,[]]}
+    if(niche==='food'&&index===0){const labels={es:'Sitio web · resultados reportados',en:'Website · reported results',pt:'Site · resultados reportados'};return [labels[lang]||labels.es,[]]}
     const labels={
       es:{food:[['Panel de campaña',[]],['Implementación',[['Web','mobile-first'],['WhatsApp','pedidos directos']]],['Resultados reportados',[['19','pedidos nuevos · ~30 h']]],['Resultados reportados',[['+3.000','conversaciones'],['6,9%','CTR']]]],health:[['Implementación',[['Agenda','digital'],['Manizales','y Villamaría']]],['Marca premium',[['Fragancias','premium'],['Medellín','ubicación']]],['Implementación',[['9','servicios'],['Manizales','solicitud de cita']]]]},
       en:{food:[['Campaign panel',[]],['Implementation',[['Website','mobile-first'],['WhatsApp','direct orders']]],['Reported results',[['19','new orders · ~30 h']]],['Reported results',[['+3,000','conversations'],['6.9%','CTR']]]],health:[['Implementation',[['Scheduling','digital'],['Manizales','& Villamaría']]],['Premium brand',[['Fragrances','premium'],['Medellín','location']]],['Implementation',[['9','services'],['Manizales','appointment request']]]]},
@@ -2390,6 +2398,7 @@ function toggleFaq(button) {
     ]}
   };
   const agentLocales={
+    es:{roles:{food:'Operaciones internas',health:'Operaciones internas'},items:{},example:'Ejemplo',of:'de',pause:'Pausar demostración',resume:'Reanudar demostración'},
     en:{roles:{food:'Operations',health:'Operations'},items:{food:[
       {message:'Prepare the chat-status and pending-task report.',reply:'Chat-status summary and pending tasks. A person handles customer conversations.',intent:'Internal report',action:'Human review'},
       {message:'Validate these email addresses.',reply:'I check details and permissions; email stays in draft until a person approves sending.',intent:'Email validation',action:'Approve before sending'},
