@@ -1048,6 +1048,18 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 @media(max-width:640px){#logo-viewport .logo-item.is-touch-active{transform:scale(1.11) translateY(-1px)!important}}
 @media(prefers-reduced-motion:reduce){#logo-viewport .logo-item,#logo-viewport .logo-item img{transition:none!important;will-change:auto!important}#logo-viewport .logo-item:hover,#logo-viewport .logo-item.is-touch-active{transform:none!important}}
 </style>
+<style id="rs-logo-native-touch-scroll-20261007">
+#logo-viewport{overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain!important;overscroll-behavior-y:auto!important;touch-action:pan-x pan-y!important;-webkit-overflow-scrolling:touch;scroll-behavior:auto!important;scrollbar-width:none!important;-ms-overflow-style:none!important;cursor:grab}
+#trust-text + #logo-viewport{overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain!important;overscroll-behavior-y:auto!important;touch-action:pan-x pan-y!important;-webkit-overflow-scrolling:touch}
+#logo-viewport::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
+#logo-viewport.is-dragging{cursor:grabbing}
+#logo-viewport .logo-item{transform-origin:center;transition:transform .28s cubic-bezier(.2,.8,.2,1),filter .28s ease}
+@media(hover:hover) and (pointer:fine){#logo-viewport .logo-item:hover{z-index:5!important;transform:scale(1.14) translateY(-3px)!important;filter:drop-shadow(0 8px 16px rgba(255,60,0,.28))!important}#logo-viewport .logo-item:hover img{filter:grayscale(0) saturate(1.18) brightness(1.06) drop-shadow(0 0 7px rgba(255,105,66,.42))!important;opacity:1!important}}
+#logo-viewport .logo-item.is-touch-active{z-index:5!important;transform:scale(1.13) translateY(-2px)!important;filter:drop-shadow(0 7px 14px rgba(255,60,0,.25))!important}
+#logo-viewport .logo-item.is-touch-active img{filter:grayscale(0) saturate(1.16) brightness(1.05) drop-shadow(0 0 6px rgba(255,105,66,.38))!important;opacity:1!important}
+@media(max-width:640px){#logo-viewport .logo-item.is-touch-active{transform:scale(1.11) translateY(-1px)!important}}
+@media(prefers-reduced-motion:reduce){#logo-viewport .logo-item,#logo-viewport .logo-item img{transition:none!important}#logo-viewport .logo-item:hover,#logo-viewport .logo-item.is-touch-active{transform:none!important}}
+</style>
 </head>
 <body class="font-sans overflow-x-hidden"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
 <script>window.__rsPreloaderStartedAt=performance.now();</script>
@@ -1068,7 +1080,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 <option value="pt">PT</option>
 </select>
 <div class="hidden md:flex items-center gap-2">
-<a aria-label="Hablar con Red Sapien por WhatsApp" class="inline-flex px-4 py-2 text-xs font-bold text-white rounded-lg transition bg-rs-red hover:bg-rs-red/80 shadow-[0_0_15px_rgba(255,60,0,0.18)] whitespace-nowrap" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20digital%20de%20Red%20Sapien." rel="noopener noreferrer" target="_blank">Hablemos</a>
+<a aria-label="Hablar con Red Sapien por WhatsApp" class="inline-flex px-4 py-2 text-xs font-bold text-white rounded-lg transition bg-rs-red hover:bg-rs-red/80 shadow-[0_0_15px_rgba(255,60,0,0.18)] whitespace-nowrap" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20digital%20de%20Red%20Sapien." data-rs-wa-key="general" rel="noopener noreferrer" target="_blank">Hablemos</a>
 </div></div>
 <div aria-live="polite" class="scroll-support-banner" id="scroll-support-banner" role="status">
 <span class="scroll-support-copy" id="scroll-support-copy">
@@ -1098,7 +1110,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 <div aria-hidden="true" aria-label="Menú principal" aria-modal="true" class="fixed inset-0 z-[60] opacity-0 invisible flex flex-col items-center justify-center px-6" data-rs-aria="menuLabel" id="mobile-menu" role="dialog">
 <button aria-label="Cerrar menú" class="absolute top-8 right-8 text-gray-400 hover:text-rs-red scale-125 transition-colors focus:outline-none" data-rs-aria="menuClose" id="close-menu" type="button"><span aria-hidden="true">×</span></button>
 <div class="rs-menu-options">
-<a class="matrix-link-box p-6 rounded-xl rs-menu-option" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20digital%20de%20Red%20Sapien." rel="noopener noreferrer" target="_blank"><span data-rs-copy="menuContact">Hablemos</span><span aria-hidden="true" class="rs-menu-option-mark">↗</span></a>
+<a class="matrix-link-box p-6 rounded-xl rs-menu-option" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20digital%20de%20Red%20Sapien." data-rs-wa-key="general" rel="noopener noreferrer" target="_blank"><span data-rs-copy="menuContact">Hablemos</span><span aria-hidden="true" class="rs-menu-option-mark">↗</span></a>
 <button aria-controls="investor-modal" aria-haspopup="dialog" class="matrix-link-box p-6 rounded-xl rs-menu-option" data-investor-open type="button"><span data-rs-copy="menuStartup">Startup · aliados</span><span aria-hidden="true" class="rs-menu-option-mark">↗</span></button>
 <button aria-controls="coming-soon-modal" aria-haspopup="dialog" class="matrix-link-box p-6 rounded-xl rs-menu-option" data-coming-soon="panel" type="button"><span data-rs-copy="menuUpcoming">Próximamente</span><span aria-hidden="true" class="rs-menu-option-mark">✦</span></button>
 </div>
@@ -1130,7 +1142,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                 Creamos un ecosistema digital y le llevamos clientes directo a WhatsApp.
             </p>
 <div class="flex w-full max-w-[320px] md:max-w-md mb-20">
-<a class="w-full min-h-[56px] flex items-center justify-center gap-3 bg-white text-[#050505] border border-white py-4 px-5 sm:px-8 rounded-lg text-sm md:text-base font-bold text-center leading-tight shadow-[0_8px_25px_rgba(255,255,255,0.12)] transition-all duration-300 hover:bg-transparent hover:text-white hover:shadow-[0_10px_30px_rgba(255,255,255,0.18)] hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#050505]" href="https://wa.me/573012800024?text=Hola%2C%20me%20regalan%20m%C3%A1s%20informaci%C3%B3n%20porfa...%20%F0%9F%8C%90%20%F0%9F%A4%96" id="main-cta" rel="noopener noreferrer" target="_blank">
+<a class="w-full min-h-[56px] flex items-center justify-center gap-3 bg-white text-[#050505] border border-white py-4 px-5 sm:px-8 rounded-lg text-sm md:text-base font-bold text-center leading-tight shadow-[0_8px_25px_rgba(255,255,255,0.12)] transition-all duration-300 hover:bg-transparent hover:text-white hover:shadow-[0_10px_30px_rgba(255,255,255,0.18)] hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#050505]" href="https://wa.me/573012800024?text=Hola%2C%20me%20regalan%20m%C3%A1s%20informaci%C3%B3n%20porfa...%20%F0%9F%8C%90%20%F0%9F%A4%96" data-rs-wa-key="main" id="main-cta" rel="noopener noreferrer" target="_blank">
 <svg aria-hidden="true" class="w-6 h-6 fill-current shrink-0" viewbox="0 0 24 24">
 <path d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.457 3.422 1.257 4.877L2 22l5.292-1.389c1.4.762 2.99 1.186 4.712 1.186 5.51 0 9.993-4.483 9.993-9.994C21.997 6.483 17.514 2 12.004 2zm5.787 14.394c-.242.68-.1.173-1.42 1.507-.344.348-.795.534-1.285.534-.413 0-.877-.13-1.49-.408-2.612-1.183-4.32-3.82-4.452-4.004-.127-.174-1.092-1.455-1.092-2.776 0-1.32.693-1.966.942-2.233.243-.26.533-.327.712-.327.18 0 .36 0 .513.007.16.007.373-.06.586.447.213.513.733 1.787.794 1.913.067.127.113.273.027.447-.087.173-.16.287-.313.466-.154.18-.327.4-.467.54-.153.154-.313.32-.133.627.18.307.806 1.327 1.727 2.147.92.82 1.693 1.073 2.006 1.2.313.127.493.107.68-.107.187-.213.8-1.026.933-1.22.133-.193.28-.16.473-.086.193.073 1.22.573 1.48.7.26.127.433.193.493.3.06.107.06.62-.18 1.3z"></path>
 </svg>
@@ -1158,7 +1170,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
       <button class="rs-selector-btn is-active rs-food" data-niche="food" role="tab" aria-selected="true" aria-controls="niche-result" tabindex="0" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10h16M6 10l1 9h10l1-9M8 10V7a4 4 0 018 0v3M9 19v2m6-2v2"/></svg></span><span class="rs-selector-kicker">Gastronomía</span><strong>Más pedidos</strong><small>Rápida · asados · alta cocina</small></button>
       <button class="rs-selector-btn rs-health" data-niche="health" role="tab" aria-selected="false" aria-controls="niche-result" tabindex="-1" type="button"><span class="rs-selector-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg></span><span class="rs-selector-kicker">Servicios profesionales</span><strong>Más citas</strong><small>Odontología · spa · óptica/optometría</small></button>
     </div>
-    <div id="niche-result" class="rs-niche-result" role="tabpanel" aria-live="polite"><span id="niche-result-copy">Menú por WhatsApp.</span><a id="niche-result-cta" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20gastron%C3%B3mico." target="_blank" rel="noopener">Ver opciones →</a></div>
+    <div id="niche-result" class="rs-niche-result" role="tabpanel" aria-live="polite"><span id="niche-result-copy">Menú por WhatsApp.</span><a id="niche-result-cta" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio%20gastron%C3%B3mico." data-rs-wa-key="food" target="_blank" rel="noopener">Ver opciones →</a></div>
   </div>
 </section>
 
@@ -1282,7 +1294,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
 <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 overflow-hidden rounded-l-2xl video-container phase-video-frame">
 <video aria-label="Video de la fase sitio web" class="absolute inset-0 w-full h-full object-contain object-center" loop="" muted="" playsinline="" preload="none" data-rs-phase-video="">
-<source src="assets/Video/Video-Sitio-web-IA.mp4" type="video/mp4"/>
+<source data-src="assets/Video/Video-Sitio-web-IA.mp4" type="video/mp4"/>
 </video>
 </div>
 <div class="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
@@ -1314,7 +1326,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
 <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 overflow-hidden rounded-l-2xl video-container">
 <video class="absolute inset-0 w-full h-full object-contain object-center" loop="" muted="" playsinline="" preload="none" aria-label="Video de la fase WhatsApp y seguimiento" data-rs-phase-video="">
-<source src="assets/Video/Video-campaña-ventas-4-a-8-final.mp4" type="video/mp4"/>
+<source data-src="assets/Video/Video-campaña-ventas-4-a-8-final.mp4" type="video/mp4"/>
 </video>
 </div>
 <div class="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
@@ -1361,7 +1373,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
 <div class="lg:col-span-5 relative w-full h-56 sm:h-64 lg:h-full min-h-[260px] bg-neutral-900/10 overflow-hidden rounded-l-2xl video-container">
 <video class="absolute inset-0 w-full h-full object-contain object-center" loop="" muted="" playsinline="" preload="none" aria-label="Video de la fase SEO local" data-rs-phase-video="">
-<source src="assets/Video/Video-Posicionamiento-SEO.mp4" type="video/mp4"/>
+<source data-src="assets/Video/Video-Posicionamiento-SEO.mp4" type="video/mp4"/>
 </video>
 </div>
 <div class="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
@@ -1389,42 +1401,72 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                     document.addEventListener('DOMContentLoaded', () => {
                         const videoMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
                         const phaseVideos = Array.from(document.querySelectorAll('video[data-rs-phase-video]'));
-                        const setupVideo = (video) => {
-                            video.muted = true;
-                            video.defaultMuted = true;
-                            video.playsInline = true;
-                            video.loop = true;
-                            video.controls = false;
-                            video.preload = 'auto';
-                            if (!video.dataset.rsLoaded) { video.dataset.rsLoaded = '1'; video.load(); }
+                        const nearViewport = (video) => {
+                            const rect = video.getBoundingClientRect();
+                            return rect.bottom >= -220 && rect.top <= window.innerHeight + 220;
+                        };
+                        const markVideoReady = (video) => {
                             if (video.readyState >= 2) video.classList.add('rs-video-ready');
                             else video.addEventListener('loadeddata', () => video.classList.add('rs-video-ready'), { once: true });
-                            if (videoMotion.matches) { video.pause(); video.controls = true; return; }
-                            if (!video.paused) return;
-                            const playAttempt = video.play();
-                            if (playAttempt && typeof playAttempt.catch === 'function') playAttempt.catch(() => { video.controls = true; });
                         };
-                        const distanceToViewport = (video) => {
-                            const rect = video.getBoundingClientRect();
-                            if (rect.bottom < -120 || rect.top > innerHeight + 120) return Infinity;
-                            return Math.abs((rect.top + rect.bottom) / 2 - innerHeight / 2);
+                        const attemptVideoPlay = (video) => {
+                            if (document.hidden || videoMotion.matches || !nearViewport(video) || video.readyState < 2) return;
+                            const attempt = video.play();
+                            if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {
+                                video.dataset.rsPlayBlocked = '1';
+                                video.controls = true;
+                            });
+                        };
+                        const setupVideo = (video) => {
+                            if (document.hidden) return;
+                            video.muted = true;
+                            video.defaultMuted = true;
+                            video.setAttribute('muted', '');
+                            video.playsInline = true;
+                            video.setAttribute('playsinline', '');
+                            video.loop = true;
+                            video.setAttribute('loop', '');
+                            video.autoplay = !videoMotion.matches;
+                            if (videoMotion.matches) video.removeAttribute('autoplay');
+                            else video.setAttribute('autoplay', '');
+                            video.preload = videoMotion.matches ? 'metadata' : 'auto';
+                            video.controls = videoMotion.matches || video.dataset.rsPlayBlocked === '1';
+                            if (!video.dataset.rsLoaded) {
+                                video.querySelectorAll('source[data-src]').forEach(source => {
+                                    source.src = source.dataset.src;
+                                    source.removeAttribute('data-src');
+                                });
+                                video.dataset.rsLoaded = '1';
+                                video.load();
+                            }
+                            markVideoReady(video);
+                            if (!videoMotion.matches) {
+                                if (video.readyState >= 2) attemptVideoPlay(video);
+                                else video.addEventListener('canplay', () => attemptVideoPlay(video), { once: true });
+                            }
+                        };
+                        const pauseVideo = (video) => {
+                            video.pause();
+                            video.autoplay = false;
+                            video.removeAttribute('autoplay');
                         };
                         const syncPhaseVideos = () => {
-                            if (document.hidden || videoMotion.matches) {
-                                phaseVideos.forEach(video => { video.pause(); if (videoMotion.matches) video.controls = true; });
-                                return;
-                            }
-                            let activeVideo = null, nearest = Infinity;
-                            phaseVideos.forEach(video => { const distance = distanceToViewport(video); if (distance < nearest) { nearest = distance; activeVideo = video; } });
-                            phaseVideos.forEach(video => { if (video !== activeVideo) video.pause(); });
-                            if (activeVideo) setupVideo(activeVideo);
+                            if (document.hidden) { phaseVideos.forEach(pauseVideo); return; }
+                            phaseVideos.forEach(video => {
+                                if (nearViewport(video)) setupVideo(video);
+                                else { pauseVideo(video); if (videoMotion.matches) video.controls = true; }
+                            });
                         };
                         if ('IntersectionObserver' in window) {
-                            const videoObserver = new IntersectionObserver(() => syncPhaseVideos(), { threshold: 0.01, rootMargin: '120px 0px' });
+                            const videoObserver = new IntersectionObserver(() => syncPhaseVideos(), { threshold: 0.01, rootMargin: '220px 0px' });
                             phaseVideos.forEach(video => videoObserver.observe(video));
                         } else {
                             let videoSyncPending = false;
-                            const scheduleVideoSync = () => { if (videoSyncPending) return; videoSyncPending = true; requestAnimationFrame(() => { videoSyncPending = false; syncPhaseVideos(); }); };
+                            const scheduleVideoSync = () => {
+                                if (videoSyncPending) return;
+                                videoSyncPending = true;
+                                requestAnimationFrame(() => { videoSyncPending = false; syncPhaseVideos(); });
+                            };
                             window.addEventListener('scroll', scheduleVideoSync, { passive: true });
                             window.addEventListener('resize', scheduleVideoSync, { passive: true });
                             syncPhaseVideos();
@@ -1496,7 +1538,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 
                         profileBubble.style.display = 'none';
 
-                        const openCristian = () => window.open('https://wa.me/573012800024?text=Cristian%20como%20vamos%20cuenteme%20mas%20porfa%20🌐', '_blank');
+                        const openCristian = () => window.open(window._rsWhatsAppUrl?window._rsWhatsAppUrl('profile'):'https://wa.me/573012800024', '_blank', 'noopener');
                         profileBubble.addEventListener('click', openCristian);
                         profileBubble.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openCristian(); } });
 
@@ -1513,7 +1555,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 <div class="bg-neutral-950/95 backdrop-blur-md border border-white/10 py-2 px-3.5 rounded-xl opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-2xl pointer-events-auto">
 <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span><span class="text-[9px] font-mono tracking-wider text-white uppercase font-bold" data-i18n="whatsappTooltip">Hablemos</span></div>
 </div>
-<a class="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-[0_8px_25px_rgba(37,211,102,0.35)] pointer-events-auto wa-premium-glow-button" aria-label="Hablemos por WhatsApp" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20c%C3%B3mo%20pueden%20llevar%20m%C3%A1s%20clientes%20directamente%20a%20mi%20WhatsApp." rel="noopener noreferrer" target="_blank">
+<a class="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-[0_8px_25px_rgba(37,211,102,0.35)] pointer-events-auto wa-premium-glow-button" aria-label="Hablemos por WhatsApp" href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20c%C3%B3mo%20pueden%20llevar%20m%C3%A1s%20clientes%20directamente%20a%20mi%20WhatsApp." data-rs-wa-key="general" rel="noopener noreferrer" target="_blank">
 <svg class="w-7 h-7 fill-current" viewbox="0 0 24 24">
 <path d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.457 3.422 1.257 4.877L2 22l5.292-1.389c1.4.762 2.99 1.186 4.712 1.186 5.51 0 9.993-4.483 9.993-9.994C21.997 6.483 17.514 2 12.004 2zm5.787 14.394c-.242.68-.1.173-1.42 1.507-.344.348-.795.534-1.285.534-.413 0-.877-.13-1.49-.408-2.612-1.183-4.32-3.82-4.452-4.004-.127-.174-1.092-1.455-1.092-2.776 0-1.32.693-1.966.942-2.233.243-.26.533-.327.712-.327.18 0 .36 0 .513.007.16.007.373-.06.586.447.213.513.733 1.787.794 1.913.067.127.113.273.027.447-.087.173-.16.287-.313.466-.154.18-.327.4-.467.54-.153.154-.313.32-.133.627.18.307.806 1.327 1.727 2.147.92.82 1.693 1.073 2.006 1.2.313.127.493.107.68-.107.187-.213.8-1.026.933-1.22.133-.193.28-.16.473-.086.193.073 1.22.573 1.48.7.26.127.433.193.493.3.06.107.06.62-.18 1.3z"></path>
 </svg>
@@ -1548,7 +1590,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 <span class="block text-white font-bold text-sm mt-2 uppercase tracking-widest border border-[#FF3C00]/20 bg-[#FF3C00]/5 py-1 px-3 rounded-md inline-block" data-i18n="paymentNote">PAGO ÚNICO · 3 FASES</span>
 <p class="mt-3 text-xs text-gray-400" data-i18n="ecosystemPerPhase">COP $109.000/fase</p><p class="mt-2 text-xs md:text-sm leading-relaxed text-gray-400" data-i18n="priceScopeNote">Dominio y pauta, aparte.</p>
 </div>
-<button type="button" class="w-full bg-white text-black hover:bg-[#FF3C00] hover:text-white font-bold text-sm uppercase tracking-widest py-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-[0_10px_30px_rgba(255,60,0,0.15)] hover:shadow-[0_10px_40px_rgba(255,60,0,0.4)] flex items-center justify-center gap-3" onclick="window.open('https://wa.me/573012800024?text=Hola%2C%20deseo%20saber%20m%C3%A1s%20de%20la%20web%20de%20ventas...%20%F0%9F%8C%90', '_blank')"><svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+<button type="button" class="w-full bg-white text-black hover:bg-[#FF3C00] hover:text-white font-bold text-sm uppercase tracking-widest py-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-[0_10px_30px_rgba(255,60,0,0.15)] hover:shadow-[0_10px_40px_rgba(255,60,0,0.4)] flex items-center justify-center gap-3" onclick="window.open(window._rsWhatsAppUrl?window._rsWhatsAppUrl('pricing'):'https://wa.me/573012800024', '_blank', 'noopener')"><svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
 <path d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.457 3.422 1.257 4.877L2 22l5.292-1.389c1.4.762 2.99 1.186 4.712 1.186 5.51 0 9.993-4.483 9.993-9.994C21.997 6.483 17.514 2 12.004 2zm5.787 14.394c-.242.68-.1.173-1.42 1.507-.344.348-.795.534-1.285.534-.413 0-.877-.13-1.49-.408-2.612-1.183-4.32-3.82-4.452-4.004-.127-.174-1.092-1.455-1.092-2.776 0-1.32.693-1.966.942-2.233.243-.26.533-.327.712-.327.18 0 .36 0 .513.007.16.007.373-.06.586.447.213.513.733 1.787.794 1.913.067.127.113.273.027.447-.087.173-.16.287-.313.466-.154.18-.327.4-.467.54-.153.154-.313.32-.133.627.18.307.806 1.327 1.727 2.147.92.82 1.693 1.073 2.006 1.2.313.127.493.107.68-.107.187-.213.8-1.026.933-1.22.133-.193.28-.16.473-.086.193.073 1.22.573 1.48.7.26.127.433.193.493.3.06.107.06.62-.18 1.3z"></path>
 </svg><span data-i18n="whatsappCta">Hablemos por WhatsApp</span></button>
 </div>
@@ -1634,7 +1676,7 @@ function toggleFaq(button) {
 </div>
 <div class="w-full max-w-lg" id="slide-text-container">
 <p class="text-gray-600 text-sm md:text-base font-medium leading-relaxed slide-text active transition-all duration-500" id="slide-text-content">Ecosistema digital.</p>
-<button aria-label="Consultar proyectos de Red Sapien por WhatsApp" class="work-gallery-cta" data-i18n="workCta" id="work-gallery-cta" onclick="window.open('https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20el%20ecosistema%20para%20mi%20negocio.','_blank','noopener')" type="button">Hablemos</button></div>
+<button aria-label="Consultar proyectos de Red Sapien por WhatsApp" class="work-gallery-cta" data-i18n="workCta" id="work-gallery-cta" onclick="window.open(window._rsWhatsAppUrl?window._rsWhatsAppUrl('portfolio'):'https://wa.me/573012800024','_blank','noopener')" type="button">Hablemos</button></div>
 </div>
 <div class="w-full order-2 flex justify-center lg:justify-end">
 <div class="phone-frame w-full max-w-[300px] md:max-w-[320px]">
@@ -2323,7 +2365,7 @@ function toggleFaq(button) {
     const niche=document.body.dataset.niche||'food',d=copy[niche]||copy.food,words=d[lang]||d.es;
     const text=document.getElementById('niche-result-copy'),cta=document.getElementById('niche-result-cta');
     if(text)text.textContent=words.result;
-    if(cta){cta.href=d.url;cta.textContent=words.cta;}
+    if(cta){cta.dataset.rsWaKey=niche;cta.href=window._rsWhatsAppUrl?window._rsWhatsAppUrl(niche,lang):d.url;cta.textContent=words.cta;}
   };
   window._renderNicheCopy=render;
   document.querySelectorAll('.rs-selector-btn').forEach(btn=>btn.addEventListener('click',()=>{
@@ -2453,7 +2495,7 @@ function toggleFaq(button) {
    <div class="rs-investor-block"><span data-rs-copy="modelLabel">Valor operativo reportado</span><strong data-rs-copy="hourlyValue">$69.000 COP/h</strong><p data-rs-copy="hourlyDesc">No es utilidad neta.</p></div>
   </div>
   <p class="rs-investor-data-note" data-rs-copy="investorDataNote">Base B2B: 30.715 por validar · COP $3.000/mensaje a dueño calificado.</p>
-  <div class="rs-investor-footer"><p data-rs-copy="investorFooter">Socio u operador; términos por acordar. Sin garantía de resultados ni retorno.</p><div class="rs-investor-actions"><a href="mailto:redsapienc@proton.me?subject=Alianza%20Red%20Sapien" data-rs-copy="investorEmailCta">Correo</a><a href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20la%20oportunidad%20de%20Red%20Sapien." target="_blank" rel="noopener noreferrer" data-rs-copy="investorWhatsAppCta">Alianza ↗</a></div></div>
+  <div class="rs-investor-footer"><p data-rs-copy="investorFooter">Socio u operador; términos por acordar. Sin garantía de resultados ni retorno.</p><div class="rs-investor-actions"><a href="mailto:redsapienc@proton.me?subject=Alianza%20Red%20Sapien" data-rs-mail-key="investor" data-rs-copy="investorEmailCta">Correo</a><a href="https://wa.me/573012800024?text=Hola%2C%20quiero%20conocer%20la%20oportunidad%20de%20Red%20Sapien." data-rs-wa-key="investor" target="_blank" rel="noopener noreferrer" data-rs-copy="investorWhatsAppCta">Alianza ↗</a></div></div>
  </article></div>
 <div aria-hidden="true" aria-labelledby="coming-soon-title" aria-modal="true" class="rs-coming-soon-modal" id="coming-soon-modal" role="dialog">
   <div class="rs-coming-soon-card rs-panel-preview-card">
@@ -2584,47 +2626,174 @@ function toggleFaq(button) {
  if(!viewport||!track||!original)return;
  const clone=original.cloneNode(true);clone.dataset.logoSet='clone';clone.setAttribute('aria-hidden','true');clone.inert=true;clone.querySelectorAll('img').forEach(img=>{img.alt='';img.draggable=false;img.setAttribute('aria-hidden','true')});track.appendChild(clone);
  const reduce=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
- let loopWidth=0,last=0,frame=0,pointerDown=false,dragging=false,gestureAxis=null,hovered=false,focused=false,visible=true,startX=0,startY=0,startScroll=0,activeLogo=null,touchSelected=false,capturedPointerId=null;
+ let loopWidth=0,last=0,frame=0,dragging=false,pointerDown=false,touchActive=false,hovered=false,focused=false,visible=true,startX=0,startY=0,startScroll=0,activeLogo=null,touchSelected=false,capturedPointerId=null,touchClearTimer=0;
  const measure=()=>{const minWidth=(viewport.clientWidth+1)+'px';[original,clone].forEach(set=>{set.style.boxSizing='border-box';set.style.minWidth=minWidth;set.style.justifyContent='space-around'});loopWidth=original.getBoundingClientRect().width;normalize()};
  const normalize=()=>{if(loopWidth<=0)return;while(viewport.scrollLeft>=loopWidth)viewport.scrollLeft-=loopWidth;while(viewport.scrollLeft<0)viewport.scrollLeft+=loopWidth};
- const held=()=>pointerDown||dragging||hovered||focused||touchSelected||document.hidden||!visible||reduce.matches;
+ const held=()=>pointerDown||dragging||touchActive||hovered||focused||touchSelected||document.hidden||!visible||reduce.matches;
  const tick=now=>{if(last&&!held()&&loopWidth>0){const dt=Math.min(now-last,50);viewport.scrollLeft+=dt*.014;normalize()}last=now;frame=requestAnimationFrame(tick)};
  const setActiveLogo=node=>{const item=node&&node.closest?node.closest('.logo-item'):null;if(activeLogo&&activeLogo!==item)activeLogo.classList.remove('is-touch-active');activeLogo=item;if(activeLogo)activeLogo.classList.add('is-touch-active')};
  const clearActiveLogo=()=>{if(activeLogo)activeLogo.classList.remove('is-touch-active');activeLogo=null;touchSelected=false};
- const releaseCapture=pointerId=>{if(capturedPointerId!==null&&typeof viewport.releasePointerCapture==='function'){try{if(!viewport.hasPointerCapture||viewport.hasPointerCapture(capturedPointerId))viewport.releasePointerCapture(capturedPointerId)}catch(_){}}capturedPointerId=null};
- const startGesture=e=>{if(e.pointerType==='mouse'&&e.button!==0)return;pointerDown=true;dragging=false;gestureAxis=null;startX=e.clientX;startY=e.clientY;startScroll=viewport.scrollLeft;setActiveLogo(e.target);last=performance.now()};
+ const releaseCapture=()=>{if(capturedPointerId!==null&&typeof viewport.releasePointerCapture==='function'){try{if(!viewport.hasPointerCapture||viewport.hasPointerCapture(capturedPointerId))viewport.releasePointerCapture(capturedPointerId)}catch(_){}}capturedPointerId=null};
+ const startGesture=e=>{
+  if(e.pointerType==='touch'){pointerDown=true;touchActive=true;setActiveLogo(e.target);last=performance.now();return}
+  if(e.pointerType!=='mouse'||e.button!==0)return;
+  pointerDown=true;dragging=false;startX=e.clientX;startY=e.clientY;startScroll=viewport.scrollLeft;setActiveLogo(e.target);last=performance.now();
+ };
  const moveGesture=e=>{
-  if(!pointerDown&&!dragging)return;
+  if(e.pointerType!=='mouse'||!pointerDown)return;
   const dx=e.clientX-startX,dy=e.clientY-startY;
-  if(!gestureAxis&&(Math.abs(dx)>8||Math.abs(dy)>8)){
-   if(Math.abs(dy)>Math.abs(dx)*1.15){gestureAxis='vertical';clearActiveLogo();return}
-   if(Math.abs(dx)>Math.abs(dy)*1.15){gestureAxis='horizontal';dragging=true;viewport.classList.add('is-dragging');if(typeof viewport.setPointerCapture==='function'){try{viewport.setPointerCapture(e.pointerId);capturedPointerId=e.pointerId}catch(_){}}}
-   else return;
-  }
-  if(gestureAxis!=='horizontal')return;
-  viewport.scrollLeft=startScroll-dx;normalize();if(document.elementFromPoint)setActiveLogo(document.elementFromPoint(e.clientX,e.clientY));
-  if(e.pointerType==='mouse')e.preventDefault();
+  if(!dragging){if(Math.abs(dx)<7&&Math.abs(dy)<7)return;if(Math.abs(dx)<=Math.abs(dy)*1.12){clearActiveLogo();return}dragging=true;viewport.classList.add('is-dragging');if(typeof viewport.setPointerCapture==='function'){try{viewport.setPointerCapture(e.pointerId);capturedPointerId=e.pointerId}catch(_){}}}
+  viewport.scrollLeft=startScroll-dx;normalize();if(document.elementFromPoint)setActiveLogo(document.elementFromPoint(e.clientX,e.clientY));e.preventDefault();
  };
  const endGesture=e=>{
-  const wasTouch=(e&&e.pointerType==='touch')||(!e&&false);
-  pointerDown=false;dragging=false;gestureAxis=null;viewport.classList.remove('is-dragging');releaseCapture(e&&e.pointerId);
-  touchSelected=Boolean(wasTouch&&activeLogo);if(!wasTouch)clearActiveLogo();last=performance.now();
+  const wasTouch=Boolean(e&&e.pointerType==='touch');pointerDown=false;dragging=false;viewport.classList.remove('is-dragging');releaseCapture();
+  if(wasTouch)touchSelected=Boolean(activeLogo);else clearActiveLogo();last=performance.now();
  };
- const cancelGesture=()=>{pointerDown=false;dragging=false;gestureAxis=null;viewport.classList.remove('is-dragging');releaseCapture();clearActiveLogo();last=performance.now()};
+ const cancelGesture=e=>{if(e&&e.pointerType==='touch'){pointerDown=false;dragging=false;viewport.classList.remove('is-dragging');releaseCapture();clearActiveLogo();last=performance.now();return}pointerDown=false;dragging=false;viewport.classList.remove('is-dragging');releaseCapture();clearActiveLogo();last=performance.now()};
+ const finishTouch=()=>{clearTimeout(touchClearTimer);touchClearTimer=setTimeout(()=>{touchActive=false;last=performance.now()},180)};
  viewport.addEventListener('pointerdown',startGesture);
  viewport.addEventListener('pointermove',moveGesture,{passive:false});
  viewport.addEventListener('pointerup',endGesture);
  viewport.addEventListener('pointercancel',cancelGesture);
- viewport.addEventListener('lostpointercapture',()=>{if(dragging){pointerDown=false;dragging=false;gestureAxis=null;viewport.classList.remove('is-dragging');last=performance.now()}});
+ viewport.addEventListener('lostpointercapture',()=>{if(dragging){pointerDown=false;dragging=false;viewport.classList.remove('is-dragging');last=performance.now()}});
+ viewport.addEventListener('touchstart',()=>{touchActive=true;clearTimeout(touchClearTimer);last=performance.now()},{passive:true});
+ viewport.addEventListener('touchend',finishTouch,{passive:true});viewport.addEventListener('touchcancel',finishTouch,{passive:true});
+ viewport.addEventListener('scroll',normalize,{passive:true});
  viewport.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hovered=true});
  viewport.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){hovered=false;if(!pointerDown&&!dragging)clearActiveLogo()}});
  document.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'&&!viewport.contains(e.target)){clearActiveLogo();last=performance.now()}},{passive:true});
  viewport.addEventListener('focusin',()=>{focused=true});viewport.addEventListener('focusout',()=>setTimeout(()=>{focused=viewport.contains(document.activeElement)},0));
- viewport.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();viewport.scrollLeft+=(e.key==='ArrowRight'?100:-100);normalize()}});
+ viewport.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();viewport.scrollLeft+=(e.key==='ArrowRight'?120:-120);normalize()}});
  document.addEventListener('visibilitychange',()=>{last=performance.now()});if(reduce.addEventListener)reduce.addEventListener('change',()=>{last=performance.now()});
  if('IntersectionObserver'in window)new IntersectionObserver(([entry])=>{visible=Boolean(entry&&entry.isIntersecting);last=performance.now()},{threshold:.05}).observe(viewport);
  if('ResizeObserver'in window)new ResizeObserver(measure).observe(original);window.addEventListener('resize',measure,{passive:true});original.querySelectorAll('img').forEach(img=>{img.draggable=false;img.addEventListener('load',measure,{once:true})});
  measure();frame=requestAnimationFrame(tick);window.addEventListener('pagehide',()=>cancelAnimationFrame(frame),{once:true});
+})();
+</script>
+<script id="rs-full-site-localization-20261007">
+(()=>{
+ const copy={
+  en:{
+   'Red Sapien | Web, WhatsApp y SEO local en Colombia':'Red Sapien | Websites, WhatsApp & Local SEO in Colombia',
+   'Saltar al contenido principal':'Skip to main content',
+   'Hablemos':"Let's talk",
+   '¿Qué busca?':'What are you looking for?',
+   'Gastronomía':'Food & dining',
+   'Más pedidos':'More orders',
+   'Rápida · asados · alta cocina':'Fast food · grilled dishes · fine dining',
+   'Servicios profesionales':'Professional services',
+   'Más citas':'More appointments',
+   'Odontología · spa · óptica/optometría':'Dentistry · spa · optics/optometry',
+   'Ver sitio ↗':'View website ↗',
+   'Ecosistema Open Source.':'Open-source ecosystem.',
+   'Conocer la oportunidad':'Explore the opportunity',
+   'Proyecto web del ecosistema Red Sapien':'Red Sapien digital ecosystem website project',
+   'Trabajo de soporte y seguimiento Red Sapien':'Red Sapien support and follow-up project',
+   'Casos y resultados reportados de Red Sapien':'Red Sapien cases and reported results',
+   'Recursos visuales para negocios locales':'Visual resources for local businesses'
+  },
+  pt:{
+   'Red Sapien | Web, WhatsApp y SEO local en Colombia':'Red Sapien | Sites, WhatsApp e SEO local na Colômbia',
+   'Saltar al contenido principal':'Pular para o conteúdo principal',
+   'Hablemos':'Vamos conversar',
+   '¿Qué busca?':'O que você procura?',
+   'Gastronomía':'Gastronomia',
+   'Más pedidos':'Mais pedidos',
+   'Rápida · asados · alta cocina':'Fast food · grelhados · alta gastronomia',
+   'Servicios profesionales':'Serviços profissionais',
+   'Más citas':'Mais agendamentos',
+   'Odontología · spa · óptica/optometría':'Odontologia · spa · óptica/optometria',
+   'Ver sitio ↗':'Ver site ↗',
+   'Ecosistema Open Source.':'Ecossistema Open Source.',
+   'Conocer la oportunidad':'Conheça a oportunidade',
+   'Proyecto web del ecosistema Red Sapien':'Projeto web do ecossistema Red Sapien',
+   'Trabajo de soporte y seguimiento Red Sapien':'Projeto de suporte e acompanhamento da Red Sapien',
+   'Casos y resultados reportados de Red Sapien':'Casos e resultados reportados da Red Sapien',
+   'Recursos visuales para negocios locales':'Recursos visuais para negócios locais'
+  }
+ };
+ const attrCopy={
+  en:{
+   'Hablar con Red Sapien por WhatsApp':'Chat with Red Sapien on WhatsApp',
+   'Seleccione gastronomía o servicios profesionales':'Choose food or professional services',
+   'Casos de éxito':'Success stories','Navegación de casos':'Case navigation','Caso anterior':'Previous case','Siguiente caso':'Next case','Cerrar caso':'Close case',
+   'Oferta de la fase uno':'Phase 1 offer','Video de la fase sitio web':'Website phase video','Continuación hacia ventas':'Continue to sales',
+   'Video de la fase WhatsApp y seguimiento':'WhatsApp and follow-up phase video','Demostración del agente de apoyo interno Zapia':'Zapia internal-support agent demo',
+   'Demostración automática':'Automatic demo','Continuación hacia posicionamiento y reputación':'Continue to local visibility and reputation','Video de la fase SEO local':'Local SEO phase video',
+   'Hablemos por WhatsApp':"Let's talk on WhatsApp",'Escribir a Cristian por WhatsApp':'Message Cristian on WhatsApp',
+   'Consultar proyectos de Red Sapien por WhatsApp':'Ask about Red Sapien projects on WhatsApp','Navegación de trabajos':'Project navigation',
+   'Repositorio de Red Sapien en GitHub':'Red Sapien GitHub repository','Pausar demostración':'Pause demo','Cerrar oportunidad':'Close opportunity','Cerrar panel':'Close panel',
+   'Muestra 1':'Slide 1','Muestra 2':'Slide 2','Muestra 3':'Slide 3','Muestra 4':'Slide 4'
+  },
+  pt:{
+   'Hablar con Red Sapien por WhatsApp':'Falar com a Red Sapien pelo WhatsApp',
+   'Seleccione gastronomía o servicios profesionales':'Selecione gastronomia ou serviços profissionais',
+   'Casos de éxito':'Casos de sucesso','Navegación de casos':'Navegação dos cases','Caso anterior':'Case anterior','Siguiente caso':'Próximo case','Cerrar caso':'Fechar case',
+   'Oferta de la fase uno':'Oferta da fase 1','Video de la fase sitio web':'Vídeo da fase do site','Continuación hacia ventas':'Continuar para vendas',
+   'Video de la fase WhatsApp y seguimiento':'Vídeo da fase de WhatsApp e acompanhamento','Demostración del agente de apoyo interno Zapia':'Demonstração do agente de apoio interno Zapia',
+   'Demostración automática':'Demonstração automática','Continuación hacia posicionamiento y reputación':'Continuar para visibilidade local e reputação','Video de la fase SEO local':'Vídeo da fase de SEO local',
+   'Hablemos por WhatsApp':'Vamos conversar pelo WhatsApp','Escribir a Cristian por WhatsApp':'Escrever para Cristian pelo WhatsApp',
+   'Consultar proyectos de Red Sapien por WhatsApp':'Consultar projetos da Red Sapien pelo WhatsApp','Navegación de trabajos':'Navegação dos projetos',
+   'Repositorio de Red Sapien en GitHub':'Repositório da Red Sapien no GitHub','Pausar demostración':'Pausar demonstração','Cerrar oportunidad':'Fechar oportunidade','Cerrar panel':'Fechar painel',
+   'Muestra 1':'Slide 1','Muestra 2':'Slide 2','Muestra 3':'Slide 3','Muestra 4':'Slide 4'
+  }
+ };
+ const meta={
+  es:{title:'Red Sapien | Web, WhatsApp y SEO local en Colombia',description:'Red Sapien crea sitios web mobile-first, WhatsApp y SEO local para negocios en Colombia. Fases desde COP $109.000; dominio y pauta aparte.'},
+  en:{title:'Red Sapien | Websites, WhatsApp & Local SEO in Colombia',description:'Red Sapien builds mobile-first websites, WhatsApp follow-up and local SEO for Colombian businesses. Phases from COP $109,000; domain and ad spend are separate.'},
+  pt:{title:'Red Sapien | Sites, WhatsApp e SEO local na Colômbia',description:'A Red Sapien cria sites mobile-first, acompanhamento pelo WhatsApp e SEO local para negócios na Colômbia. Fases a partir de COP $109.000; domínio e anúncios à parte.'}
+ };
+ const waMessages={
+  general:{es:'Hola, quiero conocer el ecosistema digital de Red Sapien.',en:'Hello, I would like to learn about Red Sapien’s digital ecosystem.',pt:'Olá, quero conhecer o ecossistema digital da Red Sapien.'},
+  main:{es:'Hola, me regalan más información por favor. 🌐 🤖',en:'Hello, could you share more information, please? 🌐 🤖',pt:'Olá, poderia me enviar mais informações, por favor? 🌐 🤖'},
+  food:{es:'Hola, quiero conocer el ecosistema para mi negocio gastronómico.',en:'Hello, I would like to learn how the ecosystem can support my food business.',pt:'Olá, quero conhecer o ecossistema para meu negócio de alimentação.'},
+  health:{es:'Hola, quiero conocer el ecosistema para mi negocio de salud o servicios.',en:'Hello, I would like to learn how the ecosystem can support my health or service business.',pt:'Olá, quero conhecer o ecossistema para meu negócio de saúde ou serviços.'},
+  pricing:{es:'Hola, deseo saber más sobre el sitio web de ventas.',en:'Hello, I would like to learn more about the sales website.',pt:'Olá, quero saber mais sobre o site de vendas.'},
+  portfolio:{es:'Hola, quiero conocer el ecosistema digital de Red Sapien para mi negocio.',en:'Hello, I would like to learn about Red Sapien’s digital ecosystem for my business.',pt:'Olá, quero conhecer o ecossistema digital da Red Sapien para meu negócio.'},
+  profile:{es:'Hola, quiero hablar con Cristian sobre Red Sapien.',en:'Hello, I would like to speak with Cristian about Red Sapien.',pt:'Olá, quero falar com Cristian sobre a Red Sapien.'},
+  investor:{es:'Hola, quiero conocer la oportunidad de Red Sapien.',en:'Hello, I would like to learn about the Red Sapien opportunity.',pt:'Olá, quero conhecer a oportunidade da Red Sapien.'}
+ };
+ const mailSubjects={es:'Alianza Red Sapien',en:'Red Sapien partnership',pt:'Parceria Red Sapien'};
+ const textOriginals=new WeakMap(),attrOriginals=new WeakMap();
+ const excluded=el=>Boolean(el.closest('[data-i18n],[data-rs-copy],[data-rs-aria],[data-rs-placeholder],#ecosystem-slider,#agent-dashboard,#smartphone-slider,#typewriter-text,#slide-text-content,#niche-result'));
+ const apply=language=>{
+  const lang=copy[language]?language:'es';
+  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+  let node;
+  while((node=walker.nextNode())){
+   if(!node.nodeValue.trim()||excluded(node.parentElement))continue;
+   if(!textOriginals.has(node))textOriginals.set(node,node.nodeValue);
+   const original=textOriginals.get(node),trimmed=original.trim();
+   const translated=(copy[lang]&&copy[lang][trimmed])||trimmed;
+   const leadMatch=original.match(/^\s*/),trailMatch=original.match(/\s*$/);const leading=leadMatch?leadMatch[0]:'',trailing=trailMatch?trailMatch[0]:'';
+   node.nodeValue=leading+translated+trailing;
+  }
+  const attrNames=['aria-label','title','placeholder','alt'];
+  document.querySelectorAll('[aria-label],[title],[placeholder],[alt]').forEach(el=>{
+   if(excluded(el))return;
+   attrNames.forEach(name=>{
+    if(!el.hasAttribute(name))return;
+    if(!attrOriginals.has(el))attrOriginals.set(el,{});
+    const saved=attrOriginals.get(el);if(!(name in saved))saved[name]=el.getAttribute(name);
+    const source=saved[name];el.setAttribute(name,(attrCopy[lang]&&attrCopy[lang][source])||source);
+   });
+  });
+  const m=meta[lang]||meta.es;document.title=m.title;
+  document.querySelectorAll('meta[name="description"],meta[property="og:description"],meta[name="twitter:description"]').forEach(el=>el.setAttribute('content',m.description));
+  document.querySelectorAll('meta[property="og:title"],meta[name="twitter:title"]').forEach(el=>el.setAttribute('content',m.title));
+  document.querySelectorAll('[data-rs-wa-key]').forEach(el=>{el.href=window._rsWhatsAppUrl(el.dataset.rsWaKey,lang)});
+  document.querySelectorAll('[data-rs-mail-key="investor"]').forEach(el=>{el.href='mailto:redsapienc@proton.me?subject='+encodeURIComponent(mailSubjects[lang]||mailSubjects.es)});
+ };
+ window._rsWhatsAppUrl=(key,language=document.documentElement.lang||'es')=>{
+  const options=waMessages[key]||waMessages.general;const lang=options[language]?language:'es';const message=options[lang]||waMessages.general[lang];
+  return 'https://wa.me/573012800024?text='+encodeURIComponent(message);
+ };
+ window._rsApplyFullSiteLocale=apply;
+ if(typeof window.changeLanguage==='function'){
+  const originalChange=window.changeLanguage;
+  window.changeLanguage=function(lang){originalChange.call(this,lang);apply(lang)};
+ }
+ apply(document.documentElement.lang||'es');
 })();
 </script>
 </body>
