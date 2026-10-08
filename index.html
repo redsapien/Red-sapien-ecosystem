@@ -1062,7 +1062,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 </style>
 <style id="rs-personalized-interaction-polish-20261007">
 /* Logo slider: preserve the desktop scale; +19% on mobile, with a translucent swipe cue. */
-#logo-track .logo-item{flex-basis:188px!important;width:188px!important;height:98px!important}
+#logo-track .logo-item{flex-basis:226px!important;width:226px!important;height:118px!important}
 #logo-viewport::before{content:"";position:absolute;z-index:8;inset:0 0 0 auto;width:clamp(48px,9vw,74px);pointer-events:none;opacity:0;background:linear-gradient(90deg,transparent,rgba(5,5,5,.42));transition:opacity .35s ease}
 #logo-viewport::after{content:none!important;display:none!important}
 #logo-viewport[data-rs-has-overflow="true"]:not([data-rs-hint-dismissed="true"])::before{opacity:1}
@@ -1075,7 +1075,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
 @keyframes rs-swipe-cue-breathe{0%,100%{opacity:.72}50%{opacity:.95}}
 @keyframes rs-swipe-arrow-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(2px)}}
 @keyframes rs-swipe-finger-tap{0%,100%{transform:translateY(0)}50%{transform:translateY(-1px)}}
-@media(max-width:640px){#logo-track .logo-item{flex-basis:155px!important;width:155px!important;height:93px!important}.rs-logo-swipe-cue{right:6px;padding:5px 7px}.rs-logo-swipe-cue svg{width:36px;height:19px}.rs-logo-swipe-cue span{font-size:.48rem}}
+@media(max-width:640px){#logo-track .logo-item{flex-basis:186px!important;width:186px!important;height:112px!important}.rs-logo-swipe-cue{right:6px;padding:5px 7px}.rs-logo-swipe-cue svg{width:36px;height:19px}.rs-logo-swipe-cue span{font-size:.48rem}}
 
 /* One small down cue at the end of the hero, hidden after scrolling away. */
 #main-content{position:relative}
@@ -1854,7 +1854,7 @@ function toggleFaq(button) {
                 ecosystemTotalNote: "LAS 3 FASES",
                 paymentNote: "PAGO ÚNICO",
                 ecosystemPerPhase: "3 fases · $109.000 cada una",
-                priceScopeNote: "Dominio y hosting incluidos al lanzamiento.",
+                priceScopeNote: "Incluye dominio + hosting al lanzar.",
                 adsBudgetNote: "Pauta aparte: desde $13.000 COP/día. Pague a Meta desde su cuenta; Nequi si está habilitado.",
                 whatsappCta: "Hablemos",
                 faqTitle: "Antes de empezar",
@@ -1931,7 +1931,7 @@ function toggleFaq(button) {
                 ecosystemTotalNote: "3 PHASES",
                 paymentNote: "ONE-TIME PAYMENT",
                 ecosystemPerPhase: "3 phases · COP $109,000 each",
-                priceScopeNote: "Domain and hosting included at launch.",
+                priceScopeNote: "Domain + hosting included at launch.",
                 adsBudgetNote: "Ads extra: from COP $13,000/day. Pay Meta through your account; Nequi if enabled.",
                 whatsappCta: "Start now",
                 faqTitle: "Before you start",
@@ -2011,7 +2011,7 @@ function toggleFaq(button) {
                 ecosystemTotalNote: "3 FASES",
                 paymentNote: "PAGAMENTO ÚNICO",
                 ecosystemPerPhase: "3 fases · COP $109.000 cada",
-                priceScopeNote: "Domínio e hospedagem incluídos no lançamento.",
+                priceScopeNote: "Inclui domínio + hospedagem no lançamento.",
                 adsBudgetNote: "Anúncios à parte: desde COP $13.000/dia. Pague à Meta pela sua conta; Nequi, se disponível.",
                 whatsappCta: "Começar agora",
                 faqTitle: "Antes de começar",
@@ -3115,6 +3115,67 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#39c6a2;--rs-them
  #rs-case-modal .rs-case-stat{min-height:0;padding:9px 10px}
 }
 @media(prefers-reduced-motion:reduce){#maquinaria-automatizada .stacking-card,#agent-dashboard .rs-agent-steps li{transition:none!important}}
+</style>
+<style id="rs-final-polish-20261008-0128">
+/* Requested logo-only scale increase: +20%, with a proportional mobile size. */
+#logo-track .logo-item{box-sizing:border-box}
+
+/* Clear, centered video invitation; video bytes remain click-to-load. */
+#maquinaria-automatizada .rs-video-play-prompt{
+  top:50%!important;left:50%!important;right:auto!important;
+  transform:translate(-50%,-50%)!important;
+  display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  min-height:52px;padding:14px 20px;
+  border:1px solid rgba(255,255,255,.24);
+  background:rgba(8,10,13,.82);
+  box-shadow:0 0 0 1px rgba(255,255,255,.04),0 10px 28px rgba(0,0,0,.32);
+  font-size:.9rem;letter-spacing:.01em;
+}
+#maquinaria-automatizada .rs-video-play-prompt svg{width:20px;height:20px}
+#maquinaria-automatizada .rs-video-play-prompt::before{
+  inset:-6px;border-color:color-mix(in srgb,var(--rs-theme,#ff3c00) 28%,transparent);
+  animation-duration:3.6s;
+}
+#maquinaria-automatizada .rs-video-play-prompt:hover,
+#maquinaria-automatizada .rs-video-play-prompt:focus-visible{
+  transform:translate(-50%,-50%) scale(1.035)!important;
+}
+#maquinaria-automatizada .video-container.is-playing .rs-video-play-prompt{
+  opacity:0!important;pointer-events:none!important;
+  transform:translate(-50%,-54%) scale(.96)!important;
+}
+
+/* Phase brand marks +30%, with restrained brand-tinted glass details. */
+#maquinaria-automatizada .rs-phase-title-row{gap:12px}
+#maquinaria-automatizada .rs-phase-icon{
+  flex:0 0 52px;width:52px;height:52px;padding:10px!important;
+  border-radius:15px!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 7px 18px rgba(0,0,0,.18);
+}
+#maquinaria-automatizada .rs-phase-icon svg{width:30px;height:30px}
+#maquinaria-automatizada .rs-phase-icon-google svg{width:33px;height:33px}
+#maquinaria-automatizada .rs-phase-icon-web{border-color:color-mix(in srgb,var(--rs-theme,#ff3c00) 30%,rgba(255,255,255,.12))!important}
+#maquinaria-automatizada .rs-phase-icon-facebook{border-color:rgba(24,119,242,.28)!important;background:linear-gradient(145deg,rgba(24,119,242,.12),rgba(24,119,242,.035))!important}
+#maquinaria-automatizada .rs-phase-icon-google{border-color:rgba(255,255,255,.18)!important;background:linear-gradient(145deg,rgba(66,133,244,.075),rgba(52,168,83,.035))!important}
+
+/* Keep the domain/hosting detail easy to read at body-text size. */
+#seccion-5-pricing [data-i18n="priceScopeNote"]{
+  font-size:clamp(18px,1.4vw,21px)!important;
+  line-height:1.45!important;font-weight:600!important;
+  margin-top:12px!important;color:rgba(255,255,255,.88)!important;
+}
+@media(max-width:640px){
+  #maquinaria-automatizada .rs-video-play-prompt{min-height:46px;padding:11px 16px;gap:9px;font-size:.82rem}
+  #maquinaria-automatizada .rs-video-play-prompt svg{width:18px;height:18px}
+  #maquinaria-automatizada .rs-phase-title-row{gap:9px}
+  #maquinaria-automatizada .rs-phase-icon{flex-basis:47px;width:47px;height:47px;padding:8px!important;border-radius:14px!important}
+  #maquinaria-automatizada .rs-phase-icon svg{width:27px;height:27px}
+  #maquinaria-automatizada .rs-phase-icon-google svg{width:29px;height:29px}
+}
+@media(prefers-reduced-motion:reduce){
+  #maquinaria-automatizada .rs-video-play-prompt::before{animation:none!important}
+}
 </style>
 </body>
 </html>
