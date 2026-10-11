@@ -1311,7 +1311,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
             </p>
 </div>
 <div class="rs-hero-conversion">
-<p id="hero-offer" class="max-w-2xl mx-auto mt-0 mb-6 rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-4 text-base font-semibold leading-relaxed text-gray-100 sm:px-6 sm:text-lg" data-i18n="heroOffer">Inicie hoy: Fase 1 por $109.000 pesos, pago contra entrega.</p>
+<p id="hero-offer" class="max-w-2xl mx-auto mt-0 mb-6 rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-4 text-base font-semibold leading-relaxed text-gray-100 sm:px-6 sm:text-lg"><span class="rs-hero-offer-price"><span data-i18n="heroOfferStage">Fase 1:</span> <strong data-i18n="heroOfferPrice">$109.000 pesos</strong></span><span class="rs-hero-offer-action" data-i18n="heroOfferAction">Iniciemos su web hoy · pago contra entrega.</span></p>
 <div id="main-cta-wrap" class="flex w-full max-w-none m-0">
 <a class="w-full min-h-[56px] flex items-center justify-center gap-3 bg-white text-[#050505] border border-white py-4 px-5 sm:px-8 rounded-xl text-sm md:text-base font-bold text-center leading-tight shadow-[0_8px_25px_rgba(255,255,255,0.12)] transition-all duration-300 hover:bg-transparent hover:text-white hover:shadow-[0_10px_30px_rgba(255,255,255,0.18)] hover:scale-[1.01] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#050505]" href="https://wa.me/573045625920?text=Hola%2C%20vi%20la%20web%20de%20Red%20Sapien.%20Quiero%20iniciar%20la%20Fase%201%20por%20%24109.000%20pesos%2C%20pago%20contra%20entrega." data-rs-wa-key="main" id="main-cta" rel="noopener noreferrer" target="_blank">
 <svg aria-hidden="true" class="w-6 h-6 fill-current shrink-0" viewbox="0 0 24 24">
@@ -1844,7 +1844,9 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                 mobileContact: "Hablemos",
                 heroTitle: "Haga crecer su negocio.",
                 heroDesc: "Creamos un ecosistema digital y llevamos clientes directamente a su WhatsApp.",
-                heroOffer: "Inicie hoy: Fase 1 por $109.000 pesos, pago contra entrega.",
+                heroOfferStage: "Fase 1:",
+                heroOfferPrice: "$109.000 pesos",
+                heroOfferAction: "Iniciemos su web hoy · pago contra entrega.",
                 mainCta: "Hablemos por WhatsApp",
                 trustText: "Marcas reales.",
                 scrollPhase0: "Manizales · Pereira · Cali.",
@@ -1931,7 +1933,9 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                 mobileContact: "Let's talk",
                 heroTitle: "Grow your business",
                 heroDesc: "We create a digital ecosystem that brings customers straight to your WhatsApp.",
-                heroOffer: "Start today: Phase 1 for 109,000 pesos, paid on delivery.",
+                heroOfferStage: "Phase 1:",
+                heroOfferPrice: "109,000 pesos",
+                heroOfferAction: "Let's start your website today · pay on delivery.",
                 scrollPhase0: "Manizales · Pereira · Cali.",
                 scrollPhase1: "Local businesses, growing together.",
                 scrollPhase2: "Activate your ecosystem.",
@@ -2018,7 +2022,9 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                 mobileContact: "Vamos conversar",
                 heroTitle: "Mais vendas, mais presença",
                 heroDesc: "Criamos um ecossistema digital e levamos clientes direto para o seu WhatsApp.",
-                heroOffer: "Comece hoje: Fase 1 por 109.000 pesos, pagamento na entrega.",
+                heroOfferStage: "Fase 1:",
+                heroOfferPrice: "109.000 pesos",
+                heroOfferAction: "Vamos começar hoje · pagamento na entrega.",
                 mainCta: "Fale pelo WhatsApp",
                 trustText: "Eles já estão em outro nível, e você?",
                 scrollPhase0: "Manizales · Pereira · Cali.",
@@ -4154,6 +4160,12 @@ html,body{max-width:100%;overflow-x:hidden!important}
  #coming-soon-modal .rs-coming-soon-card.rs-panel-preview-card,#investor-modal .rs-investor-card{transition:none!important}
 }
 @media(prefers-reduced-motion:reduce){#rs-case-modal .rs-case-modal-nav-button,#mobile-menu #close-menu,.rs-case-modal-close,.rs-investor-close,#coming-soon-modal .rs-panel-close{transition:none!important}}
+/* Keep the phase-one amount and currency together on the first offer row. */
+#hero-offer{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+#hero-offer .rs-hero-offer-price{display:block;white-space:nowrap;font-weight:700;letter-spacing:-.015em}
+#hero-offer .rs-hero-offer-price strong{font-weight:800;color:#fff}
+#hero-offer .rs-hero-offer-action{display:block;font-size:.92em;font-weight:500;line-height:1.42;color:rgba(243,244,246,.86)}
+@media(max-width:360px){#hero-offer{padding:12px!important;font-size:.95rem!important}}
 </style>
 </body>
 </html>
