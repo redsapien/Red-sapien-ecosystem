@@ -2423,11 +2423,11 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
   };
   const caseLocales = {"en":{"badges":{"food":"Gastronomy","health":"Services & premium brands"},"viewCase":"View case","imageAlt":"website screenshot captured on PC","food":[{"title":"Híjole Comidas Rápidas","type":"Meta Ads","caption":"1,003 reported conversations.","summary":"","metric":""},{"title":"La Plancha · Arepas y Empanadas","type":"Website + WhatsApp","caption":"WhatsApp orders.","summary":"","metric":"Manizales."},{"title":"La Papa Prohibida","type":"WhatsApp orders","caption":"WhatsApp orders.","summary":"","metric":"Villamaría.","stats":[["19","reported · ~30 h"]]},{"title":"Salchipotato","type":"Reported results","caption":"","summary":"","metric":"Not sales.","stats":[["+3,000","conversations · Red Sapien"],["6.9%","CTR"]]}],"health":[{"title":"Carolina Ruiz Psico Spa","type":"Psico Spa","caption":"Psico Spa appointments.","summary":"","metric":"","stats":[["Appointments","digital"],["Manizales","& Villamaría"]]},{"title":"Noir Elixir","type":"Premium perfumery","caption":"Premium fragrances.","summary":"Medellín · not clinical care.","metric":""},{"title":"Adme Dental","type":"Dentistry","caption":"9 services · Manizales.","summary":"General and cosmetic.","metric":"","stats":[["9","services"],["Manizales","location"]]}]},"pt":{"badges":{"food":"Gastronomia","health":"Serviços e marcas premium"},"viewCase":"Ver caso","imageAlt":"captura do site feita no PC","food":[{"title":"Híjole Comidas Rápidas","type":"Meta Ads","caption":"1.003 conversas reportadas.","summary":"","metric":""},{"title":"La Plancha · Arepas y Empanadas","type":"Site + WhatsApp","caption":"Pedidos pelo WhatsApp.","summary":"","metric":"Manizales."},{"title":"La Papa Prohibida","type":"Pedidos pelo WhatsApp","caption":"Pedidos pelo WhatsApp.","summary":"","metric":"Villamaría.","stats":[["19","reportados · ~30 h"]]},{"title":"Salchipotato","type":"Resultados","caption":"","summary":"","metric":"Não são vendas.","stats":[["+3.000","conversas · Red Sapien"],["6,9%","CTR"]]}],"health":[{"title":"Carolina Ruiz Psico Spa","type":"Psico Spa","caption":"Agenda para Psico Spa.","summary":"","metric":"","stats":[["Agenda","digital"],["Manizales","e Villamaría"]]},{"title":"Noir Elixir","type":"Perfumaria premium","caption":"Fragrâncias premium.","summary":"Medellín · não é atendimento clínico.","metric":""},{"title":"Adme Dental","type":"Odontologia","caption":"9 serviços · Manizales.","summary":"Geral e estética.","metric":"","stats":[["9","serviços"],["Manizales","localização"]]}]},"es":{"food":[{"type":"Meta Ads","summary":"","metric":"","caption":"1.003 conversaciones."},{"type":"Web + WhatsApp","metric":"Manizales.","summary":""},{"summary":"","metric":"Villamaría.","stats":[["19","reportados · ~30 h"]]},{"type":"Resultados","summary":"","metric":"No son ventas.","stats":[["+3.000","conversaciones · Red Sapien"],["6,9%","CTR"]],"caption":""}],"health":[{"type":"Psico Spa","metric":"","stats":[["Agenda","digital"],["Manizales","y Villamaría"]],"summary":""},{"type":"Perfumería premium","summary":"Medellín · no es atención clínica.","metric":""},{"type":"Odontología","summary":"General y estética.","metric":"","stats":[["9","servicios"],["Manizales","ubicación"]]}]}};
   const campaignPanelCopy={
-    es:{type:'Meta Ads',caption:'Meta Ads · 1.003 conversaciones.',platform:'Meta Ads',status:'Resultados reportados',aria:'Resultados reportados de Híjole: conversaciones, no ventas.',metrics:[['Conversaciones','1.003'],['Costo/conversación','$782,34 pesos']],note:'No son ventas.'},
-    en:{type:'Campaign panel',caption:'Meta Ads · 1,003 conversations.',platform:'Meta Ads',status:'Reported results',aria:'Reported Híjole results: conversations, not sales.',metrics:[['Conversations','1,003'],['Cost/conversation','$782.34 pesos']],note:'Not sales.'},
-    pt:{type:'Painel da campanha',caption:'Meta Ads · 1.003 conversas.',platform:'Meta Ads',status:'Resultados reportados',aria:'Resultados reportados de Híjole: conversas, não vendas.',metrics:[['Conversas','1.003'],['Custo/conversa','$782,34 pesos']],note:'Não são vendas.'}
+    es:{type:'Meta Ads',caption:'1.003 conversaciones.',aria:'Híjole: 1.003 conversaciones reportadas; no son ventas.',metrics:[['Conversaciones (no ventas)','1.003'],['Costo/conversación','$782,34 pesos']]},
+    en:{type:'Meta Ads',caption:'1,003 conversations.',aria:'Híjole: 1,003 reported conversations; not sales.',metrics:[['Conversations, not sales','1,003'],['Cost/conversation','$782.34 pesos']]},
+    pt:{type:'Meta Ads',caption:'1.003 conversas.',aria:'Híjole: 1.003 conversas reportadas; não são vendas.',metrics:[['Conversas, não vendas','1.003'],['Custo/conversa','$782,34 pesos']]}
   };
-  const campaignPanelMarkup=panel=>`<div class="rs-campaign-panel" role="group" aria-label="${panel.aria}"><div class="rs-campaign-panel-head"><div><span>${panel.platform}</span><strong>Híjole</strong></div><span class="rs-campaign-panel-status"><i aria-hidden="true"></i>${panel.status}</span></div><div class="rs-campaign-panel-grid">${panel.metrics.map(([label,value])=>`<div class="rs-campaign-panel-tile"><span>${label}</span><strong>${value}</strong></div>`).join('')}</div><p class="rs-campaign-panel-note">${panel.note||panel.caption}</p></div>`;
+  const campaignPanelMarkup=panel=>`<div class="rs-campaign-panel" role="group" aria-label="${panel.aria}"><div class="rs-campaign-panel-grid">${panel.metrics.map(([label,value])=>`<div class="rs-campaign-panel-tile"><span>${label}</span><strong>${value}</strong></div>`).join('')}</div></div>`;
   const caseCopy=(niche,index,lang=document.documentElement.lang||'es')=>{
     const base=cases[niche]?.cards?.[index];if(!base)return null;
     const locale=caseLocales[lang]||{},item=locale[niche]?.[index]||{},isHijole=niche==='food'&&index===0,panel=isHijole?(campaignPanelCopy[lang]||campaignPanelCopy.es):null;const imageAlt=niche==='food'&&index===1?({es:'fotograma de la web con Dayro Moreno en primer plano',en:'website video still showing Dayro Moreno in close-up',pt:'fotograma do site com Dayro Moreno em destaque'}[lang]||'La Plancha website video still'): (locale.imageAlt||(lang==='en'?'website screenshot':lang==='pt'?'captura do site':'captura del sitio web'));
@@ -2438,7 +2438,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
     const accent=niche==='food'?'#ff3c00':'#39c6a2';track.dataset.niche=niche;
     track.innerHTML=data.cards.map((c,i)=>{
       const copy=caseCopy(niche,i,lang),image=c[4]||null,alt=`${copy.title} · ${copy.imageAlt}`;
-      const media=image?`<img src="${image}" alt="${alt}" width="1366" height="768" loading="${i===0?'eager':'lazy'}" fetchpriority="${i===0?'high':'auto'}" decoding="async">`:(copy.campaignPanel?campaignPanelMarkup(copy.campaignPanel):'<span aria-hidden="true">Imagen en preparación</span>');
+      const media=image?`<img src="${image}" alt="${alt}" width="1366" height="768" loading="lazy" fetchpriority="auto" decoding="async">`:(copy.campaignPanel?campaignPanelMarkup(copy.campaignPanel):'<span aria-hidden="true">Imagen en preparación</span>');
       return `<article class="rs-case-card" data-rs-reveal data-case-index="${i}" style="--case-accent:${accent}"><div class="rs-case-media ${image?'':'is-empty'}">${media}</div><div class="rs-case-body"><h3>${copy.title}</h3><button class="rs-case-link rs-case-open" type="button" aria-label="${copy.view}: ${copy.title}">${copy.view}<span aria-hidden="true">↗</span></button></div></article>`;
     }).join('');
     track.scrollLeft=0;
@@ -3966,7 +3966,7 @@ html,body{max-width:100%;overflow-x:hidden!important}
 #seccion-5-pricing #rs-faq-title{width:100%!important;margin-inline:auto!important;margin-bottom:20px!important;text-align:center!important}
 #startup-strip-title{margin-inline-start:auto!important;text-align:right!important}
 @media(min-width:761px){
- #sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing,#manifiesto-maquinaria{padding-block:clamp(144px,10vw,160px)!important}
+ #sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing,#manifiesto-maquinaria{padding-block:clamp(136px,9.5vw,152px)!important}
  #sectores .rs-selector{gap:clamp(22px,2vw,30px)!important}
  #ecosystem-slider{gap:clamp(22px,2vw,30px)!important}
  #maquinaria-automatizada .stacking-card>.grid{gap:clamp(30px,3vw,46px)!important}
@@ -3975,8 +3975,8 @@ html,body{max-width:100%;overflow-x:hidden!important}
  .rs-startup-strip{padding-block:clamp(36px,4vw,52px)!important}
 }
 @media(max-width:760px){
- #sectores,#casos-exito-ecosistemas,#maquinaria-automatizada{padding-block:76px!important;margin-bottom:22px!important}
- #seccion-5-pricing{padding-block:72px!important;margin-bottom:22px!important}
+ #sectores,#casos-exito-ecosistemas,#maquinaria-automatizada{padding-block:72px!important;margin-bottom:20px!important}
+ #seccion-5-pricing{padding-block:72px!important;margin-bottom:20px!important}
  #manifiesto-maquinaria{padding-block:72px!important}
  #sectores #sectores-title,#casos-exito-ecosistemas #portfolio-title{margin-bottom:24px!important}
  #maquinaria-automatizada .premium-title-frame h2{margin-bottom:20px!important}
@@ -3985,11 +3985,22 @@ html,body{max-width:100%;overflow-x:hidden!important}
  #agente-seguimiento.rs-agent-demo{margin-block:34px!important}
 }
 @media(max-width:380px){
- #sectores,#casos-exito-ecosistemas,#maquinaria-automatizada{padding-block:66px!important;margin-bottom:18px!important}
- #seccion-5-pricing{padding-block:62px!important;margin-bottom:18px!important}
- #manifiesto-maquinaria{padding-block:60px!important}
+ #sectores,#casos-exito-ecosistemas,#maquinaria-automatizada{padding-block:64px!important;margin-bottom:16px!important}
+ #seccion-5-pricing{padding-block:64px!important;margin-bottom:16px!important}
+ #manifiesto-maquinaria{padding-block:64px!important}
  #agente-seguimiento.rs-agent-demo{margin-block:28px!important}
  #sectores #sectores-title,#casos-exito-ecosistemas #portfolio-title{margin-bottom:20px!important}
+}
+/* Híjole's campaign panel now matches the two-stat layout used by other cases. */
+#rs-case-modal[data-case-id="hijole"] .rs-campaign-panel{min-height:0!important;gap:0!important;padding:10px!important}
+#rs-case-modal[data-case-id="hijole"] .rs-campaign-panel-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+#rs-case-modal[data-case-id="hijole"] .rs-campaign-panel-tile{gap:6px!important;padding:9px 10px!important}
+#rs-case-modal[data-case-id="hijole"] .rs-campaign-panel-tile>span{font-size:clamp(.66rem,.9vw,.78rem)!important;line-height:1.25!important}
+#rs-case-modal[data-case-id="hijole"] .rs-campaign-panel-tile>strong{font-size:clamp(.9rem,1.2vw,1.08rem)!important}
+@media(max-width:760px){
+ #rs-case-modal[data-case-id="hijole"] .rs-case-modal-media.rs-case-media-stack{padding:14px 12px!important;gap:10px!important}
+ #rs-case-modal[data-case-id="hijole"] .rs-campaign-panel-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #rs-case-modal[data-case-id="hijole"] .rs-campaign-panel-tile{min-height:64px!important}
 }
 @media(prefers-reduced-motion:reduce){#rs-case-modal .rs-case-modal-nav-button,#mobile-menu #close-menu,.rs-case-modal-close,.rs-investor-close,#coming-soon-modal .rs-panel-close{transition:none!important}}
 </style>
