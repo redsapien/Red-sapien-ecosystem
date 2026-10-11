@@ -319,7 +319,7 @@ button,a{ -webkit-tap-highlight-color:transparent}
 #manifiesto-maquinaria .max-w-7xl>div:first-child{align-items:flex-end!important;text-align:right!important}
 #manifiesto-maquinaria #slide-text-container{text-align:right!important}
 #manifiesto-maquinaria #work-gallery-cta{align-self:flex-end!important}
-/* Body copy and supporting text: approximately 35% larger; headings remain unchanged. */
+/* Responsive body-copy baseline; final size adjustments are in the last style layer. */
 #hero-desc{font-size:clamp(1.24rem,1.96vw,1.49rem)!important;line-height:1.55!important}
 #sectores .rs-selector{gap:clamp(18px,2.2vw,28px)!important;margin-top:30px!important}
 #sectores .rs-selector-btn{min-height:216px!important;padding:30px!important;grid-template-columns:68px minmax(0,1fr)!important;column-gap:18px!important;row-gap:9px!important;border-radius:24px!important}
@@ -3833,33 +3833,35 @@ html,body{max-width:100%;overflow-x:hidden!important}
  #logo-viewport .logo-item,#logo-viewport .logo-item img{transition:none!important}
  #logo-viewport .logo-item:hover,#logo-viewport .logo-item.is-touch-active{transform:none!important}
 }
-/* Copy typography +20% (headings stay unchanged); alternate section-title alignment. */
-#hero-desc{font-size:clamp(1.49rem,2.35vw,1.79rem)!important;line-height:1.55!important}
-#hero-offer{font-size:clamp(1.2rem,1.77vw,1.35rem)!important;line-height:1.55!important}
-#casos-exito-ecosistemas .rs-case-card p{font-size:clamp(.98rem,1.1vw,1.05rem)!important;line-height:1.6!important}
-#maquinaria-automatizada .rs-phase-promise{font-size:clamp(1.15rem,1.44vw,1.3rem)!important;line-height:1.55!important}
-#maquinaria-automatizada .rs-phase-summary{font-size:clamp(1.13rem,1.26vw,1.25rem)!important;line-height:1.58!important}
-#phase3-desc{font-size:clamp(1.14rem,1.26vw,1.26rem)!important;line-height:1.6!important}
-#seccion-5-pricing .rs-price-installment{font-size:1.03rem!important;line-height:1.55!important}
-#seccion-5-pricing .rs-offer-detail{font-size:1.05rem!important;line-height:1.55!important}
-#seccion-5-pricing .rs-faq-item p{font-size:1.1rem!important;line-height:1.6!important}
-#manifiesto-maquinaria p{font-size:1.2rem!important;line-height:1.6!important}
-#agente-seguimiento .rs-agent-conversation p{font-size:.92rem!important;line-height:1.5!important}
+/* Paragraph copy: 10% below the previous final size; headings keep their size. */
+#main-content #hero-desc{font-size:clamp(1.34rem,2.115vw,1.61rem)!important;line-height:1.55!important}
+#hero-offer{font-size:clamp(1.08rem,1.593vw,1.215rem)!important;line-height:1.55!important}
+#casos-exito-ecosistemas .rs-case-card p{font-size:clamp(.882rem,.99vw,.945rem)!important;line-height:1.6!important}
+#maquinaria-automatizada .rs-phase-promise{font-size:clamp(1.035rem,1.296vw,1.17rem)!important;line-height:1.55!important}
+#maquinaria-automatizada .rs-phase-summary{font-size:clamp(1.017rem,1.134vw,1.125rem)!important;line-height:1.58!important}
+#phase3-desc{font-size:clamp(1.026rem,1.134vw,1.134rem)!important;line-height:1.6!important}
+#seccion-5-pricing .rs-price-installment{font-size:.927rem!important;line-height:1.55!important}
+#seccion-5-pricing .rs-offer-detail{font-size:.945rem!important;line-height:1.55!important}
+#seccion-5-pricing .rs-faq-item p{font-size:.99rem!important;line-height:1.6!important}
+#manifiesto-maquinaria p{font-size:1.08rem!important;line-height:1.6!important}
+#agente-seguimiento .rs-agent-conversation p{font-size:.828rem!important;line-height:1.5!important}
 #sectores #sectores-title,#casos-exito-ecosistemas #portfolio-title,#seccion-5-pricing #rs-faq-title{width:100%!important;margin-inline-start:auto!important;text-align:right!important}
 @media(max-width:760px){
- #hero-desc{font-size:clamp(1.2rem,calc(1rem + 1.5vw),1.3rem)!important;line-height:1.55!important}
- #hero-offer{font-size:1.2rem!important;line-height:1.55!important}
- #casos-exito-ecosistemas .rs-case-card p{font-size:.98rem!important;line-height:1.6!important}
- #maquinaria-automatizada .rs-phase-promise{font-size:1.2rem!important;line-height:1.55!important}
- #maquinaria-automatizada .rs-phase-summary{font-size:1.2rem!important;line-height:1.58!important}
- #phase3-desc{font-size:1.2rem!important;line-height:1.6!important}
- #seccion-5-pricing .rs-price-installment{font-size:1.1rem!important;line-height:1.55!important}
- #seccion-5-pricing .rs-offer-detail{font-size:1.01rem!important;line-height:1.55!important}
- #seccion-5-pricing .rs-faq-item p{font-size:1.1rem!important;line-height:1.55!important}
- #manifiesto-maquinaria p{font-size:1.05rem!important;line-height:1.6!important}
- #agente-seguimiento .rs-agent-conversation p{font-size:.92rem!important;line-height:1.5!important}
+ #main-content #hero-desc{font-size:clamp(1.08rem,calc(.9rem + 1.35vw),1.17rem)!important;line-height:1.5!important;text-wrap:balance}
+ .rs-hero-copy #hero-desc{width:min(100%,40ch)!important;max-width:40ch!important;margin-inline:auto!important}
+ #hero-offer{font-size:1.08rem!important;line-height:1.55!important}
+ #casos-exito-ecosistemas .rs-case-card p{font-size:.882rem!important;line-height:1.6!important}
+ #maquinaria-automatizada .rs-phase-promise{font-size:1.08rem!important;line-height:1.55!important}
+ #maquinaria-automatizada .rs-phase-summary{font-size:1.08rem!important;line-height:1.58!important}
+ #phase3-desc{font-size:1.08rem!important;line-height:1.6!important}
+ #seccion-5-pricing .rs-price-installment{font-size:.99rem!important;line-height:1.55!important}
+ #seccion-5-pricing .rs-offer-detail{font-size:.909rem!important;line-height:1.55!important}
+ #seccion-5-pricing .rs-faq-item p{font-size:.99rem!important;line-height:1.55!important}
+ #manifiesto-maquinaria p{font-size:.945rem!important;line-height:1.6!important}
+ #agente-seguimiento .rs-agent-conversation p{font-size:.828rem!important;line-height:1.5!important}
  #sectores #sectores-title,#casos-exito-ecosistemas #portfolio-title,#seccion-5-pricing #rs-faq-title{text-align:right!important}
 }
+@media(max-width:360px){#main-content #hero-desc{font-size:1rem!important}.rs-hero-copy #hero-desc{width:calc(100% + 8px)!important;max-width:calc(100% + 8px)!important;margin-inline:-4px!important}}
 </style>
 </body>
 </html>
