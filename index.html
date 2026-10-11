@@ -3895,6 +3895,59 @@ html,body{max-width:100%;overflow-x:hidden!important}
 #rs-case-modal .rs-case-modal-nav-button:hover{background:rgba(255,60,0,.88)!important;border-color:rgba(255,255,255,.75)!important;transform:translateY(-50%) scale(1.04)!important}
 #rs-case-modal .rs-case-modal-nav-button:focus-visible{outline:3px solid #fff!important;outline-offset:3px!important}
 @media(prefers-reduced-motion:reduce){#rs-case-modal .rs-case-modal-nav-button{transition:none!important}}
+/* Softer 19% visual weight on prominent surfaces; keep all copy and controls. */
+#sectores .rs-selector-btn{border-color:rgba(255,255,255,.061)!important;box-shadow:0 10px 26px rgba(0,0,0,.097),inset 0 1px 0 rgba(255,255,255,.016)!important}
+#sectores .rs-selector-btn.is-active{border-color:color-mix(in srgb,var(--rs-accent) 34%,transparent)!important;box-shadow:0 0 0 1px color-mix(in srgb,var(--rs-accent) 34%,transparent),0 11px 31px color-mix(in srgb,var(--rs-accent) 7.3%,transparent),inset 0 1px 0 rgba(255,255,255,.032)!important}
+#sectores .rs-selector-btn.is-active::before,#sectores .rs-selector-btn.is-active::after{opacity:.81!important}
+#casos-exito-ecosistemas .rs-case-card{border-color:rgba(255,255,255,.053)!important;background:linear-gradient(150deg,rgba(255,255,255,.028),rgba(255,255,255,.010))!important;box-shadow:0 9px 25px rgba(0,0,0,.122)!important}
+#maquinaria-automatizada .stacking-card{border-color:rgba(255,255,255,.049)!important;background:linear-gradient(145deg,rgba(255,255,255,.028),rgba(255,255,255,.010) 72%)!important;box-shadow:0 10px 28px rgba(0,0,0,.13),inset 0 1px 0 rgba(255,255,255,.023)!important}
+#seccion-5-pricing .rs-offer-glow{opacity:.203!important}
+#seccion-5-pricing .rs-offer-card{border-color:rgba(255,255,255,.053)!important;background:linear-gradient(145deg,rgba(255,255,255,.032),rgba(255,255,255,.010))!important;box-shadow:0 10px 29px rgba(0,0,0,.13)!important}
+#seccion-5-pricing .rs-offer-card:before{opacity:.567!important}
+#seccion-5-pricing .rs-faq-item{border-top-color:rgba(255,255,255,.097)!important}
+#seccion-5-pricing .rs-faq-item:last-of-type{border-bottom-color:rgba(255,255,255,.097)!important}
+.rs-startup-strip{border-block-color:rgba(255,255,255,.073)!important;background:radial-gradient(ellipse at 20% 50%,rgba(255,60,0,.065),transparent 48%),linear-gradient(110deg,#090b0e,#060709)!important}
+/* Zapia sits in the page as subtle, borderless glass rather than a framed card. */
+#agente-seguimiento.rs-agent-demo{border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;overflow:visible!important}
+#agent-dashboard.rs-agent-dashboard{border:0!important;border-radius:24px!important;background:radial-gradient(circle at 100% 0,rgba(37,211,102,.022),transparent 42%),linear-gradient(145deg,rgba(255,255,255,.024),rgba(255,255,255,.006) 72%)!important;box-shadow:0 12px 30px rgba(0,0,0,.105)!important;backdrop-filter:blur(16px) saturate(108%)!important;-webkit-backdrop-filter:blur(16px) saturate(108%)!important}
+#agent-dashboard.rs-agent-dashboard:before{display:none!important;content:none!important}
+#agent-dashboard .rs-agent-topbar{border:0!important;background:linear-gradient(120deg,rgba(37,211,102,.06),rgba(255,255,255,.008))!important}
+#agent-dashboard .rs-agent-workspace,#agent-dashboard .rs-agent-footer{background:transparent!important}
+#agent-dashboard .rs-agent-conversation{border:0!important;background:transparent!important;box-shadow:none!important}
+#agent-dashboard .rs-agent-message{border:0!important;border-radius:14px!important;box-shadow:none!important}
+#agent-dashboard .rs-agent-message-in{background:rgba(255,255,255,.045)!important}
+#agent-dashboard .rs-agent-message-out{border:0!important;background:rgba(37,211,102,.055)!important}
+#agent-dashboard .rs-agent-steps li{border:0!important;border-radius:999px!important;background:rgba(255,255,255,.018)!important}
+#agent-dashboard .rs-agent-steps li.is-active{border:0!important;background:rgba(37,211,102,.055)!important}
+#agent-dashboard .rs-agent-control,#agent-dashboard .rs-agent-next{border:0!important;background:rgba(255,255,255,.04)!important}
+@media(max-width:760px){
+ #sectores,#casos-exito-ecosistemas,#maquinaria-automatizada{padding-block:68px!important;margin-bottom:18px!important}
+ #seccion-5-pricing{padding-block:64px!important;margin-bottom:18px!important}
+ #manifiesto-maquinaria{padding-block:64px!important}
+ #sectores .rs-selector{gap:20px!important}
+ #sectores .rs-selector-btn{padding:18px!important}
+ #ecosystem-slider{gap:20px!important}
+ #maquinaria-automatizada .grid{row-gap:22px!important}
+ #maquinaria-automatizada .stacking-card>.grid{row-gap:22px!important}
+ #maquinaria-automatizada .stacking-card>.grid>div:last-child{padding:14px 8px!important}
+ #seccion-5-pricing>.max-w-7xl{gap:24px!important}
+ #seccion-5-pricing .rs-offer-details{gap:10px!important}
+ #agente-seguimiento.rs-agent-demo{width:calc(100% - 32px)!important;margin-block:28px!important;padding:0!important}
+ #agente-seguimiento .rs-agent-heading{margin-bottom:16px!important}
+ #agent-dashboard .rs-agent-workspace{gap:10px!important;padding:10px!important}
+ #agent-dashboard .rs-agent-conversation{gap:10px!important}
+ #agent-dashboard .rs-agent-steps{gap:8px!important}
+}
+@media(max-width:380px){
+ #sectores,#casos-exito-ecosistemas,#maquinaria-automatizada{padding-block:60px!important;margin-bottom:14px!important}
+ #seccion-5-pricing{padding-block:56px!important;margin-bottom:14px!important}
+ #manifiesto-maquinaria{padding-block:56px!important}
+ #agente-seguimiento.rs-agent-demo{width:calc(100% - 28px)!important;margin-block:22px!important}
+ #sectores .rs-selector{gap:16px!important}
+ #ecosystem-slider{gap:16px!important}
+ #maquinaria-automatizada .stacking-card>.grid{row-gap:18px!important}
+ #seccion-5-pricing>.max-w-7xl{gap:18px!important}
+}
 </style>
 </body>
 </html>
