@@ -2695,14 +2695,19 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
     {ask:'Valor da consulta?',answer:'Confirmamos o valor.'},
     {ask:'Posso remarcar?',answer:'Vamos verificar.'}
    ]
+  },
+  other:{
+   es:[{ask:'¿Puede apoyar a mi negocio?',answer:'Revisamos su sector y definimos el siguiente paso.'}],
+   en:[{ask:'Can it support my business?',answer:'We review your sector and define the next step.'}],
+   pt:[{ask:'Pode apoiar meu negócio?',answer:'Analisamos seu setor e definimos o próximo passo.'}]
   }
  };
  const labels={es:{example:'Caso',of:'de',pause:'Pausar',resume:'Reanudar'},en:{example:'Example',of:'of',pause:'Pause',resume:'Resume'},pt:{example:'Caso',of:'de',pause:'Pausar',resume:'Retomar'}};
  const motion=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
  let index=0,timer=0,typingTimer=0,visible=false,paused=false,forcedLang='';
- const lang=()=>{const code=(forcedLang||document.documentElement.lang||'es').slice(0,2);return examples[code]?code:'es'};
- const niche=()=>document.body.dataset.niche==='health'?'health':'food';
- const list=()=>examples[niche()][lang()];
+ const lang=()=>{const code=(forcedLang||document.documentElement.lang||'es').slice(0,2);return examples.food?.[code]?code:'es'};
+ const niche=()=>['health','other'].includes(document.body.dataset.niche)?document.body.dataset.niche:'food';
+ const list=()=>examples[niche()]?.[lang()]||examples.food[lang()]||examples.food.es;
  const stop=()=>{if(timer){clearInterval(timer);timer=0}};
  const setButton=()=>{const label=paused?labels[lang()].resume:labels[lang()].pause;toggle.setAttribute('aria-label',label);toggle.title=label;toggle.setAttribute('aria-pressed',String(paused));root.classList.toggle('is-paused',paused)};
  const show=(animate)=>{
@@ -4367,7 +4372,7 @@ body[data-niche="other"] #maquinaria-automatizada .phase-primary{border-color:rg
  window._renderCases=(n,l)=>{if(n==='other'){if(track){track.dataset.niche='other';track.innerHTML='<div class="rs-other-placeholder" role="status"></div>';track.querySelector('.rs-other-placeholder').textContent=lang().soon}return}if(origRenderCases)origRenderCases(n,l);if(track){const proofs={food:{es:['1.003 conversaciones · no son ventas.','Web + WhatsApp · Manizales.','19 pedidos · ~30 h (reportados).','Red Sapien: +3.000 conversaciones · no son ventas.'],en:['1,003 conversations · not sales.','Website + WhatsApp · Manizales.','19 reported orders · ~30 h.','Red Sapien: +3,000 conversations · not sales.'],pt:['1.003 conversas · não são vendas.','Site + WhatsApp · Manizales.','19 pedidos · ~30 h (reportados).','Red Sapien: +3.000 conversas · não são vendas.']},health:{es:['Agenda digital.','Perfumería premium.','9 servicios.'],en:['Digital appointments.','Premium perfumery.','9 services.'],pt:['Agenda digital.','Perfumaria premium.','9 serviços.']}};const p=(proofs[n]?.[document.documentElement.lang]||proofs[n]?.es||[]);track.querySelectorAll('.rs-case-card .rs-case-proof').forEach((el,i)=>{if(p[i])el.textContent=p[i]});}};
  const origWa=window._rsWhatsAppUrl;
  window._rsWhatsAppUrl=(key,l)=>{let href=origWa?origWa(key,l):'https://wa.me/573045625920';if(document.body.dataset.niche!=='other')return href;try{const u=new URL(href);const t=u.searchParams.get('text')||'';const label=({es:'Origen campaña',en:'Campaign source',pt:'Origem da campanha'}[l]||'Origen campaña');u.searchParams.set('text',t+'\n\n'+label+': segment=otro');return u.toString()}catch(_){return href}};
- const activate=btn=>{document.querySelectorAll('.rs-selector-btn').forEach(b=>{const active=b===btn;b.classList.toggle('is-active',active);b.setAttribute('aria-selected',active?'true':'false');b.tabIndex=active?0:-1});const n=btn.dataset.niche;document.body.dataset.niche=n;document.documentElement.dataset.niche=n;const l=document.getElementById('lang-selector')?.value||document.documentElement.lang||'es';window._renderNicheCopy?.(l);window._renderCases?.(n,l);document.querySelectorAll('[data-rs-wa-key]').forEach(el=>{el.href=window._rsWhatsAppUrl(el.dataset.rsWaKey,l)})};
+ const activate=btn=>{document.querySelectorAll('.rs-selector-btn').forEach(b=>{const active=b===btn;b.classList.toggle('is-active',active);b.setAttribute('aria-selected',active?'true':'false');b.tabIndex=active?0:-1});const n=btn.dataset.niche;document.body.dataset.niche=n;document.documentElement.dataset.niche=n;const l=document.getElementById('lang-selector')?.value||document.documentElement.lang||'es';window._renderNicheCopy?.(l);window._renderCases?.(n,l);document.querySelectorAll('[data-rs-wa-key]').forEach(el=>{el.href=window._rsWhatsAppUrl(el.dataset.rsWaKey,l)});window._renderAgent?.(l)};
  sector?.addEventListener('click',e=>{const b=e.target.closest('.rs-selector-btn');if(!b)return;if(b.dataset.niche==='other')e.preventDefault();activate(b)});
  sector?.addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const tabs=[...sector.querySelectorAll('[role="tab"]')];let i=tabs.indexOf(document.activeElement);if(e.key==='Home')i=0;else if(e.key==='End')i=tabs.length-1;else i=(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;e.preventDefault();tabs[i].focus();activate(tabs[i])});
  const footer=document.getElementById('footer-red-sapien');if(footer){footer.parentNode.insertBefore(foodClass,footer);footer.parentNode.insertBefore(openSource,footer)}
