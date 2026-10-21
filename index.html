@@ -4921,5 +4921,34 @@ body[data-niche="other"] #maquinaria-automatizada .phase-primary{border-color:rg
  #footer-red-sapien .rs-footer-feature-grid{gap:18px!important;margin-bottom:30px!important}
 }
 </style>
+
+<style id="rs-mobile-final-spacing-20261021">
+@media(max-width:760px){
+ /* Mobile-only: move the hero group 10px farther down than the previous pass. */
+ #hero-content.rs-hero-layout{margin-top:calc(clamp(26px,4vh,34px) + 17px)!important;gap:26px!important}
+ #hero-offer{margin-bottom:20px!important;padding:12px!important}
+ #hero-offer .rs-hero-price-grid{gap:12px!important}
+ #hero-offer .rs-hero-price-card{padding:12px!important}
+ /* Larger, uncropped logo cards: exactly 25% above the current 88x53 mobile size. */
+ #logo-track .logo-set{gap:6px!important}
+ #logo-track .logo-item{box-sizing:border-box!important;flex:0 0 110px!important;flex-basis:110px!important;width:110px!important;height:66.25px!important}
+ #logo-track .logo-item img{width:100%!important;height:100%!important;object-fit:contain!important}
+ #logo-viewport{min-height:83px!important}
+ #logo-viewport-shell{padding-top:12px!important;padding-bottom:8px!important}
+ /* Comfortable touch target with balanced width and safe wrapping on small phones. */
+ #main-cta-wrap{width:100%!important;justify-content:center!important;margin-top:12px!important;padding-inline:4px!important}
+ #main-cta{box-sizing:border-box!important;width:min(100%,360px)!important;min-height:64px!important;margin-inline:auto!important;padding:16px 18px!important;gap:12px!important;border-radius:16px!important;font-size:16px!important;line-height:1.3!important}
+ #main-cta svg{width:24px!important;height:24px!important;flex:0 0 24px!important}
+ #main-cta-label{line-height:1.3!important;white-space:normal!important;text-wrap:balance}
+ /* Unstack phase cards on phones and give each card clear outer and inner breathing room. */
+ #maquinaria-automatizada .stacking-card{position:relative!important;top:auto!important;padding:14px!important;border-radius:18px!important}
+ #card-phase-1{margin-top:24px!important}
+ #maquinaria-automatizada #card-phase-2,#maquinaria-automatizada #card-phase-3{margin-top:clamp(30px,7.5vw,38px)!important}
+ #maquinaria-automatizada .stacking-card>.grid{row-gap:26px!important}
+ #maquinaria-automatizada .stacking-card>.grid>div:nth-child(2){padding:14px!important}
+ #maquinaria-automatizada .stacking-card .rs-phase-title-row{min-height:48px!important;margin-bottom:12px!important}
+ #maquinaria-automatizada .stacking-card .rs-phase-summary{margin-top:12px!important}
+}
+</style>
 </body>
 </html>
