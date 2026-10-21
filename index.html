@@ -4717,7 +4717,7 @@ body[data-niche="other"] #maquinaria-automatizada .phase-primary{border-color:rg
  if(sector&&!sector.querySelector('[data-niche="other"]'))sector.appendChild(other);
  const foodClass=document.createElement('section');foodClass.className='rs-late-section rs-footer-feature rs-food-class';foodClass.id='rs-food-class-cta';foodClass.innerHTML='<span class="rs-footer-feature-kicker"></span><h2></h2><p></p><div class="rs-footer-feature-pills"><span></span><span></span></div><a href="https://gastronomia.redsapien.com/" target="_blank" rel="noopener noreferrer"></a>';
  const openSource=document.createElement('section');openSource.className='rs-late-section rs-footer-feature rs-footer-open-source';openSource.id='rs-open-source-note';openSource.innerHTML='<span class="rs-footer-feature-kicker"></span><h2></h2><p></p><a href="https://github.com/redsapien/Red-sapien-ecosystem" target="_blank" rel="noopener noreferrer"></a>';
- const footerFeatures=document.createElement('div');footerFeatures.id='rs-footer-feature-grid';footerFeatures.className='rs-footer-feature-grid';footerFeatures.append(foodClass,openSource);
+ const footerFeatures=document.createElement('div');footerFeatures.id='rs-footer-feature-grid';footerFeatures.className='rs-footer-feature-grid';footerFeatures.append(openSource,foodClass);
  const translate=()=>{
   const d=lang();other.querySelector('.rs-selector-kicker').textContent=d.kicker;other.querySelector('strong').textContent=d.other;other.querySelector('small').textContent=d.result;syncAgent();
   foodClass.querySelector('.rs-footer-feature-kicker').textContent=d.classEyebrow;foodClass.querySelector('h2').textContent=d.classTitle;foodClass.querySelector('p').textContent=d.classCopy;foodClass.querySelectorAll('.rs-footer-feature-pills span')[0].textContent=d.classPillOne;foodClass.querySelectorAll('.rs-footer-feature-pills span')[1].textContent=d.classPillTwo;foodClass.querySelector('a').textContent=d.classLink;
@@ -4747,5 +4747,68 @@ body[data-niche="other"] #maquinaria-automatizada .phase-primary{border-color:rg
  new MutationObserver(()=>{translate();if(document.body.dataset.niche==='other'){window._renderNicheCopy?.(document.documentElement.lang);window._renderCases?.('other',document.documentElement.lang)}}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
 </script>
+
+<style id="rs-refinements-20261020">
+/* Readable spacing and stronger left/right price alignment. */
+#hero-offer .rs-hero-price-grid{gap:12px!important}
+#hero-offer .rs-hero-price-card{box-sizing:border-box!important;width:76%!important;min-height:48px!important;justify-self:start!important;padding:10px 14px!important}
+#hero-offer .rs-hero-price-total{width:82%!important;justify-self:end!important}
+#hero-offer .rs-hero-price-label{min-width:0!important;overflow-wrap:anywhere!important}
+#hero-offer .rs-hero-price-card strong{white-space:nowrap!important}
+#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{padding-block:clamp(88px,8.5vw,124px)!important}
+#sectores .rs-selector{row-gap:clamp(20px,2.4vw,30px)!important}
+#ecosystem-slider{gap:clamp(18px,2vw,26px)!important}
+#maquinaria-automatizada .stacking-card>.grid{row-gap:clamp(22px,2.7vw,36px)!important}
+#seccion-5-pricing>.max-w-7xl{row-gap:clamp(24px,2.8vw,36px)!important}
+/* Logo assets remain authentic and interactive; rendered cards are 40% of the prior dimensions. */
+#logo-track .logo-set{gap:8px!important}
+#logo-track .logo-item{box-sizing:border-box!important;flex:0 0 153px!important;flex-basis:153px!important;width:153px!important;height:80px!important}
+#logo-track .logo-item img{width:100%!important;height:100%!important;object-fit:contain!important}
+/* Stack the community features in the approved order on every viewport. */
+#footer-red-sapien .rs-footer-feature-grid{grid-template-columns:minmax(0,1fr)!important;gap:16px!important}
+/* Compact dialogs without removing case facts, safeguards, or keyboard-accessible controls. */
+#rs-case-modal .rs-case-modal-card{width:min(calc(100vw - 32px),1000px)!important;max-height:calc(100dvh - 24px)!important;border-radius:20px!important}
+#rs-case-modal .rs-case-modal-content{padding:clamp(16px,2.2vw,28px)!important}
+#rs-case-modal .rs-case-modal-grid{gap:clamp(12px,1.8vw,20px)!important}
+#rs-case-modal .rs-case-modal-content h2{margin:6px 0 4px!important}
+#rs-case-modal .rs-case-modal-content p{margin:5px 0!important;line-height:1.42!important}
+#coming-soon-modal .rs-coming-soon-card.rs-panel-preview-card{width:min(calc(100vw - 28px),860px)!important;max-height:calc(100dvh - 24px)!important;padding:clamp(14px,2vw,22px)!important}
+#coming-soon-modal #rs-panel-mini-preview{margin-top:10px!important}
+#coming-soon-modal #rs-panel-mini-preview .rs-panel-mini-nav{display:none!important}
+#coming-soon-modal #rs-panel-mini-preview .rs-panel-mini-task-status{display:none!important}
+#coming-soon-modal #rs-panel-mini-preview .rs-panel-mini-main{padding:clamp(10px,1.5vw,16px)!important}
+#coming-soon-modal #rs-panel-mini-preview .rs-panel-mini-overview{gap:8px!important;margin-bottom:10px!important}
+#coming-soon-modal #rs-panel-mini-preview .rs-dashboard-module{min-height:56px!important;padding:9px 10px!important}
+#coming-soon-modal #rs-panel-mini-preview .rs-panel-mini-task{margin-top:10px!important;padding:10px!important}
+#investor-modal .rs-investor-card{width:min(calc(100vw - 32px),820px)!important;max-height:calc(100dvh - 24px)!important;padding:clamp(16px,2.5vw,28px)!important;border-radius:20px!important}
+#investor-modal .rs-investor-purpose{margin:10px auto 0!important;padding:10px 12px!important;line-height:1.42!important}
+#investor-modal .rs-investor-grid{gap:8px!important;margin:12px 0!important}
+#investor-modal .rs-investor-block{min-height:0!important;padding:11px!important}
+#investor-modal .rs-investor-block strong{margin:5px 0 3px!important}
+#investor-modal .rs-investor-footer{gap:10px!important;margin-top:12px!important}
+.rs-case-modal-close,.rs-case-modal-nav-button,.rs-investor-close,#coming-soon-modal .rs-panel-close{min-width:44px!important;min-height:44px!important}
+@media(max-width:760px){
+ #hero-offer .rs-hero-price-card{width:84%!important;min-height:46px!important;padding:9px 11px!important}
+ #hero-offer .rs-hero-price-total{width:88%!important;justify-self:end!important}
+ #sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{padding-block:clamp(68px,10vw,84px)!important}
+ #logo-track .logo-item{flex:0 0 126px!important;flex-basis:126px!important;width:126px!important;height:76px!important}
+ #footer-red-sapien .rs-footer-feature-grid{gap:14px!important}
+ #rs-case-modal .rs-case-modal-card{width:100%!important;max-height:calc(100dvh - 16px)!important}
+ #rs-case-modal .rs-case-modal-content{padding:16px 14px 20px!important}
+ #coming-soon-modal .rs-coming-soon-card.rs-panel-preview-card{width:100%!important;max-height:calc(100dvh - 16px)!important;padding:14px 12px!important}
+ #investor-modal .rs-investor-card{width:100%!important;max-height:calc(100dvh - 16px)!important;padding:56px 14px 18px!important}
+ #investor-modal .rs-investor-card-head h2{font-size:clamp(1.5rem,6vw,2rem)!important}
+ #investor-modal .rs-investor-purpose{font-size:.86rem!important}
+}
+@media(max-width:420px){
+ #hero-offer .rs-hero-price-card{width:86%!important;grid-template-columns:minmax(0,1fr)!important;justify-items:start!important;gap:3px!important;border-radius:14px!important;padding:9px 10px!important}
+ #hero-offer .rs-hero-price-total{width:90%!important;justify-self:end!important}
+ #hero-offer .rs-hero-price-label{font-size:.72rem!important;line-height:1.25!important}
+ #hero-offer .rs-hero-price-card strong{font-size:.91rem!important}
+}
+@media(max-width:360px){#logo-track .logo-item{flex-basis:126px!important;width:126px!important}}
+@media(prefers-reduced-motion:reduce){#logo-viewport .logo-item,#logo-viewport .logo-item img{transition:none!important}}
+</style>
+
 </body>
 </html>
