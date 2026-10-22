@@ -5016,10 +5016,10 @@ body[data-niche="other"] #maquinaria-automatizada .phase-primary{border-color:rg
 #coming-soon-modal.rs-coming-soon-modal{padding:16px!important;overflow-y:auto!important}
 #coming-soon-modal .rs-coming-soon-card.rs-panel-preview-card{box-sizing:border-box!important;width:min(calc(100vw - 32px),880px)!important;max-height:min(86dvh,720px)!important;overflow:auto!important;margin:auto!important;overscroll-behavior:contain!important}
 /* The dashboard preview hid its left nav but retained a two-column grid, squeezing all copy. */
-#coming-soon-modal .rs-panel-mini-preview,#coming-soon-modal .rs-panel-mini-layout{box-sizing:border-box!important;width:100%!important;min-width:0!important}
-#coming-soon-modal .rs-panel-mini-layout{display:grid!important;grid-template-columns:minmax(0,1fr)!important}
+#coming-soon-modal .rs-panel-mini-preview,#coming-soon-modal .rs-panel-mini-layout{box-sizing:border-box!important;width:100%!important;min-width:0!important;height:auto!important;min-height:0!important}
+#coming-soon-modal .rs-panel-mini-layout{display:grid!important;grid-template-columns:minmax(0,1fr)!important;height:auto!important;min-height:0!important;flex:0 0 auto!important}
 #coming-soon-modal .rs-panel-mini-nav{display:none!important}
-#coming-soon-modal .rs-panel-mini-main{display:flex!important;grid-column:1/-1!important;flex-direction:column!important;width:100%!important;min-width:0!important;padding:clamp(14px,2vw,22px)!important}
+#coming-soon-modal .rs-panel-mini-main{display:flex!important;grid-column:1/-1!important;flex-direction:column!important;justify-content:flex-start!important;align-self:start!important;flex:0 0 auto!important;width:100%!important;min-width:0!important;padding:clamp(14px,2vw,22px)!important}
 #coming-soon-modal .rs-dashboard-modules{display:grid!important;width:100%!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important;margin:0!important;padding:0!important}
 #coming-soon-modal .rs-dashboard-module{box-sizing:border-box!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;min-width:0!important;min-height:100px!important;padding:14px!important;gap:10px!important;overflow-wrap:anywhere!important}
 #coming-soon-modal .rs-dashboard-module-copy{display:grid!important;gap:6px!important;width:100%!important;min-width:0!important;overflow-wrap:anywhere!important}
