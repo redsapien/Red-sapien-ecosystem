@@ -5102,6 +5102,10 @@ body[data-niche="other"] #maquinaria-automatizada .phase-primary{border-color:rg
 #sectores .rs-selector-btn.rs-other-sector{border-color:rgba(57,198,162,.42)!important;background:radial-gradient(ellipse at 14% 10%,rgba(57,198,162,.12),transparent 54%),linear-gradient(145deg,rgba(13,37,33,.96),rgba(10,14,14,.99))!important}
 body[data-niche="other"] #sectores .rs-selector-btn.rs-other-sector.is-active{border-color:rgba(57,198,162,.82)!important;background:radial-gradient(ellipse at 14% 10%,rgba(57,198,162,.19),transparent 54%),linear-gradient(145deg,rgba(12,55,46,.98),rgba(9,18,16,.99))!important}
 body[data-niche="other"] #sectores .rs-selector-btn.rs-other-sector.is-active .rs-selector-kicker,body[data-niche="other"] #sectores .rs-selector-btn.rs-other-sector.is-active strong{color:#a4f5dc!important}
+body[data-niche="other"] #sectores .rs-selector-btn.rs-other-sector.is-active .rs-selector-kicker,body[data-niche="other"] #sectores .rs-selector-btn.rs-other-sector.is-active strong{color:#a4f5dc!important;text-shadow:0 0 12px rgba(57,198,162,.14)!important}
+body[data-niche="other"] #sectores .rs-selector-btn.rs-other-sector.is-active .rs-selector-icon{color:#79e4c5!important}
+body[data-niche="other"] #sectores .rs-niche-result{border-left-color:#39c6a2!important}
+body[data-niche="other"] #sectores #niche-result-cta{border-color:rgba(57,198,162,.7)!important;background:linear-gradient(135deg,rgba(57,198,162,.18),rgba(57,198,162,.07))!important;color:#baffea!important}
 body[data-niche="other"] #sectores #niche-result{border-left-color:#39c6a2!important}
 body[data-niche="other"] #sectores #niche-result-cta{border-color:rgba(57,198,162,.55)!important;background:linear-gradient(135deg,rgba(57,198,162,.18),rgba(57,198,162,.07))!important;color:#baffea!important}
 body[data-niche="other"] #maquinaria-automatizada .premium-title-frame{border-left-color:#39c6a2!important}
@@ -5130,14 +5134,14 @@ body[data-niche="other"] #maquinaria-automatizada .phase-primary{border-color:rg
  const dict=()=>words[locale()];
  const selector=document.querySelector('#sectores .rs-selector');
  const msg={es:'Hola, mi negocio pertenece a otro sector. Quisiera contarle brevemente a qué me dedico y revisar qué fase de Red Sapien podría servirme.',en:'Hello, my business is in another sector. I would like to briefly explain what I do and discuss which Red Sapien phase might be useful.',pt:'Olá, meu negócio é de outro setor. Quero contar brevemente com o que trabalho e conversar sobre qual fase da Red Sapien pode ser útil.'};
- const otherUrl=()=>{let href=window._rsWhatsAppUrl?window._rsWhatsAppUrl('general',locale()):'https://wa.me/573045625920';try{let u=new URL(href);let text=msg[locale()];const old=u.searchParams.get('text')||'';const tag=old.split('\n\n').slice(1).join('\n\n');u.searchParams.set('text',text+(tag?'\n\n'+tag:''));return u.href}catch(e){return href}};
+ const otherUrl=()=>{try{const p=new URLSearchParams(location.search),safe=v=>/^[a-z][a-z0-9_-]{0,39}$/i.test(v||'')&&!/[0-9]{7,}/.test(v||'')?v:'',tags=[];const src=(p.get('utm_source')||'').toLowerCase(),med=(p.get('utm_medium')||'').toLowerCase();if(['brevo','emailoctopus','meta','facebook','instagram','fb','ig','google','youtube','tiktok','linkedin','whatsapp'].includes(src))tags.push('source='+src);if(['email','paid_social','paid-social','social','cpc','paid_search','paid-search','organic','referral','display','video'].includes(med))tags.push('medium='+med);const camp=safe(p.get('utm_campaign')||'');if(camp)tags.push('campaign='+camp);const content=(p.get('utm_content')||'').toLowerCase();if(['a','b','v1','v2'].includes(content))tags.push('content='+content);tags.push('segment=otro');const u=new URL('https://wa.me/573045625920');u.searchParams.set('text',msg[locale()]+'\n\n'+({es:'Origen campaña',en:'Campaign source',pt:'Origem da campanha'}[locale()])+': '+tags.join(' · '));return u.href}catch(e){return 'https://wa.me/573045625920'}};
  const rewriteOtherCases=(lang)=>{
   const panel=document.querySelector('#ecosystem-slider[data-niche="other"] .rs-other-placeholder-copy');if(!panel)return;
   const d=words[lang]||words.es;
   const h=panel.querySelector('h3');if(h)h.textContent=d.caseTitle;
   const ps=panel.querySelectorAll(':scope > p');if(ps[0])ps[0].textContent=d.caseCopy;
   const analysis=panel.querySelector('.rs-other-analysis');if(analysis)analysis.remove();
-  const note=panel.querySelector('small');if(note)note.textContent=d.caseNote;
+  const note=panel.querySelector('small');if(note)note.textContent=d.caseNote;const sr=panel.querySelector('.sr-only');if(sr)sr.textContent=d.caseNote;
   const old=panel.querySelector('button.rs-other-upcoming-button, a.rs-other-contact');
   if(old){let a=old.tagName==='A'?old:document.createElement('a');a.className='rs-other-contact';a.href=otherUrl();a.target='_blank';a.rel='noopener noreferrer';a.setAttribute('aria-label',d.caseCta.replace('↗',''));a.textContent=d.caseCta;a.dataset.rsWaKey='general';if(old!==a)old.replaceWith(a)}
  };
