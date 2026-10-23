@@ -1941,14 +1941,14 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                 heroTitle: "Haga crecer su negocio.",
                 heroDesc: "Creamos un ecosistema digital y llevamos clientes directo a su WhatsApp.",
                 heroOfferStage: "Su sitio web",
-                heroOfferPrice: "$109.000 COP",
+                heroOfferPrice: "$109.000 pesos",
                 heroOfferTotalLabel: "Ecosistema completo",
-                heroPaymentNote: "Fase 1: pago único al entregar. Ecosistema: 3 pagos de $109.000, uno al entregar cada fase.",
+                heroPaymentNote: "Ecosistema completo: 3 fases de $109.000 pesos, cada una contra entrega.",
                 originLine: "Red Sapien · De Colombia para el mundo",
                 heroPaymentTotal: "$109.000/fase · al entregar",
-                heroOfferTotalPrice: "$327.000 COP",
-                heroOfferPriceMobile: "$109.000 COP",
-                heroOfferTotalPriceMobile: "$327.000 COP",
+                heroOfferTotalPrice: "$327.000 pesos",
+                heroOfferPriceMobile: "$109.000 pesos",
+                heroOfferTotalPriceMobile: "$327.000 pesos",
                 faqTitle: "Dudas frecuentes",
                 faq1Q: "¿Qué incluye?",
                 faq1A: "Web, campañas, SEO local.",
@@ -2031,7 +2031,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                 heroOfferStage: "Your website",
                 heroOfferPrice: "COP $109,000",
                 heroOfferTotalLabel: "Complete ecosystem",
-                heroPaymentNote: "Phase 1: one payment on delivery. Ecosystem: 3 payments of COP $109,000, one on delivery of each phase.",
+                heroPaymentNote: "Full ecosystem: 3 phases at COP $109,000 each, payable on delivery.",
                 originLine: "Red Sapien · From Colombia to the world",
                 heroPaymentTotal: "$109,000/phase · on delivery",
                 heroOfferTotalPrice: "COP $327,000",
@@ -2119,7 +2119,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                 heroOfferStage: "Seu site",
                 heroOfferPrice: "COP $109.000",
                 heroOfferTotalLabel: "Ecossistema completo",
-                heroPaymentNote: "Fase 1: pagamento único na entrega. Ecossistema: 3 pagamentos de COP $109.000, um na entrega de cada fase.",
+                heroPaymentNote: "Ecossistema completo: 3 fases de COP $109.000, cada uma paga na entrega.",
                 originLine: "Red Sapien · Da Colômbia para o mundo",
                 heroPaymentTotal: "$109.000/fase · na entrega",
                 heroOfferTotalPrice: "COP $327.000",
@@ -5378,5 +5378,28 @@ body[data-niche="other"] #maquinaria-automatizada .premium-title-frame{border-le
 body[data-niche="other"] #maquinaria-automatizada .phase-primary{border-color:rgba(246,207,74,.42)!important}
 </style>
 
+<style id="rs-refinement-prices-spacing-20261023">
+/* Price alignment: left offer sits inward from the left; ecosystem balances it on the right. */
+#hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{width:94%!important;min-height:64px!important;padding:12px clamp(12px,1.7vw,18px)!important;border-radius:13px!important}
+#hero-offer .rs-hero-price-card{justify-self:start!important;margin-left:2px!important}
+#hero-offer .rs-hero-price-total{justify-self:end!important;margin-left:auto!important}
+#hero-offer .rs-hero-price-card strong{font-size:clamp(1.34rem,2.05vw,1.72rem)!important;white-space:nowrap!important}
+#hero-offer .rs-hero-payment-note{max-width:58ch!important;margin:10px auto 0!important;font-size:clamp(.76rem,.95vw,.86rem)!important;line-height:1.4!important;text-align:center!important}
+/* Shorter selector buttons; preserve touch-friendly width and readable text. */
+#sectores .rs-selector-btn{min-height:124px!important;padding-block:clamp(14px,1.7vw,20px)!important;row-gap:8px!important}
+#sectores .rs-selector-btn .rs-selector-icon{width:64px!important;height:64px!important}
+@media(max-width:760px){#sectores .rs-selector-btn{min-height:106px!important;padding-block:12px!important;row-gap:6px!important}#sectores .rs-selector-btn .rs-selector-icon{width:54px!important;height:54px!important}#hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{width:96%!important;min-height:62px!important;padding:11px 12px!important}#hero-offer .rs-hero-price-card strong{font-size:clamp(1.2rem,5vw,1.5rem)!important}}
+/* Maintain a predictable vertical flow between campaign, internal demo and local Google phase. */
+#maquinaria-automatizada .stacking-card{position:relative!important;top:auto!important}
+#maquinaria-automatizada #card-phase-2{margin-bottom:0!important}
+#agente-seguimiento.rs-agent-demo{position:relative!important;margin:clamp(42px,5vw,58px) 0 clamp(46px,5.2vw,62px)!important}
+#maquinaria-automatizada #card-phase-3{margin-top:0!important}
+/* Compact vertical rhythm modestly while preserving readable section separation. */
+#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{padding-block:clamp(78px,7.6vw,112px)!important}
+@media(max-width:760px){#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{padding-block:clamp(58px,8.6vw,74px)!important}}
+@keyframes rs-niche-cinematic-in{0%{opacity:.78;transform:translateY(5px) scale(.995);filter:brightness(.9)}100%{opacity:1;transform:translateY(0) scale(1);filter:brightness(1)}}
+body.rs-niche-transition #niche-result,body.rs-niche-transition #casos-exito-ecosistemas .rs-case-track,body.rs-niche-transition #ecosystem-slider{animation:rs-niche-cinematic-in .55s cubic-bezier(.2,.72,.24,1) both}
+@media(prefers-reduced-motion:reduce){body.rs-niche-transition #niche-result,body.rs-niche-transition #casos-exito-ecosistemas .rs-case-track,body.rs-niche-transition #ecosystem-slider{animation:none!important}#sectores .rs-selector-btn,#sectores .rs-selector-icon{transition:none!important}}
+</style>
 </body>
 </html>
