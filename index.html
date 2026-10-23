@@ -1975,7 +1975,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                 phase2Stat1: "WhatsApp",
                 phase2Stat2: "IA interna",
                 phase3Title: "Google local",
-                phase3Desc: "Perfil y reseñas locales para que le encuentren en Google.",
+                phase3Desc: "Perfil y reseñas para mejorar su presencia local.",
                 phase2Benefits: "Borradores · revise y apruebe",
                 phase3Stat1: "Google",
                 phase3Stat2: "Reseñas",
@@ -2063,7 +2063,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                 phase2Stat1: "WhatsApp",
                 phase2Stat2: "Internal AI",
                 phase3Title: "Local Google",
-                phase3Desc: "A local profile and reviews to help people find you on Google.",
+                phase3Desc: "A profile and reviews to improve your local visibility.",
                 phase2Benefits: "Drafts · review + approve",
                 phase3Stat1: "Google",
                 phase3Stat2: "Reviews",
@@ -2151,7 +2151,7 @@ body[data-niche="health"] #sectores{background:radial-gradient(ellipse at 50% 0,
                 phase2Stat1: "WhatsApp",
                 phase2Stat2: "IA interna",
                 phase3Title: "Google local",
-                phase3Desc: "Perfil e avaliações locais para ajudar clientes a encontrar você no Google.",
+                phase3Desc: "Perfil e avaliações para melhorar sua presença local.",
                 phase2Benefits: "Rascunhos · revise e aprove",
                 phase3Stat1: "Google",
                 phase3Stat2: "Avaliações",
@@ -5400,6 +5400,14 @@ body[data-niche="other"] #maquinaria-automatizada .phase-primary{border-color:rg
 @keyframes rs-niche-cinematic-in{0%{opacity:.78;transform:translateY(5px) scale(.995);filter:brightness(.9)}100%{opacity:1;transform:translateY(0) scale(1);filter:brightness(1)}}
 body.rs-niche-transition #niche-result,body.rs-niche-transition #casos-exito-ecosistemas .rs-case-track,body.rs-niche-transition #ecosystem-slider{animation:rs-niche-cinematic-in .55s cubic-bezier(.2,.72,.24,1) both}
 @media(prefers-reduced-motion:reduce){body.rs-niche-transition #niche-result,body.rs-niche-transition #casos-exito-ecosistemas .rs-case-track,body.rs-niche-transition #ecosystem-slider{animation:none!important}#sectores .rs-selector-btn,#sectores .rs-selector-icon{transition:none!important}}
+
+/* The “×” separator completes the clear offer × price reading requested in the hero. */
+#hero-offer .rs-hero-price-label:after{content:" ×";padding-inline:.28em;color:#f1f2f3;font-weight:500;opacity:.8}
+@media(max-width:390px){#hero-offer .rs-hero-price-label:after{padding-inline:.16em}}
 </style>
+
+<script id="rs-niche-transition-trigger-20261023">
+(()=>{const b=document.body;if(!b)return;let last=b.getAttribute('data-niche');const run=()=>{const now=b.getAttribute('data-niche');if(now===last)return;last=now;b.classList.remove('rs-niche-transition');void b.offsetWidth;b.classList.add('rs-niche-transition');clearTimeout(window.__rsNicheMotionTimer);window.__rsNicheMotionTimer=setTimeout(()=>b.classList.remove('rs-niche-transition'),650)};new MutationObserver(run).observe(b,{attributes:true,attributeFilter:['data-niche']})})();
+</script>
 </body>
 </html>
