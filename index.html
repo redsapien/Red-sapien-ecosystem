@@ -5294,32 +5294,33 @@ body[data-niche="other"] #maquinaria-automatizada .phase-primary{border-color:rg
 
 
 <style id="rs-price-one-line-and-scaled-logos-20261023">
-/* Larger, clearer price figures; compact single-line cards staggered in opposite directions. */
+/* Compact one-line price cards: concept, amount and payment remain in separate columns. */
 #hero-offer.rs-hero-offer{box-sizing:border-box!important;width:100%!important;max-width:560px!important;padding:0!important;border:0!important;border-radius:0!important;background:none!important;background-image:none!important;box-shadow:none!important}
 #hero-offer .rs-hero-price-grid{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:12px!important;width:100%!important}
-#hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{box-sizing:border-box!important;display:flex!important;flex-flow:row nowrap!important;align-items:center!important;justify-content:flex-start!important;gap:clamp(7px,1vw,13px)!important;width:95%!important;min-width:0!important;min-height:0!important;margin:0!important;padding:11px 14px!important;border:1px solid rgba(255,255,255,.10)!important;border-radius:10px!important;background:#171819!important;background-image:none!important;box-shadow:none!important;text-align:left!important;white-space:nowrap!important;overflow:visible!important}
+#hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{box-sizing:border-box!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important;grid-template-rows:1fr!important;align-items:center!important;column-gap:clamp(5px,.8vw,11px)!important;width:96%!important;min-width:0!important;min-height:0!important;margin:0!important;padding:11px clamp(8px,1.2vw,15px)!important;border:1px solid rgba(255,255,255,.1)!important;border-radius:10px!important;background:#171819!important;background-image:none!important;box-shadow:none!important;text-align:left!important;white-space:nowrap!important;overflow:hidden!important}
 #hero-offer .rs-hero-price-card{align-self:flex-start!important}
 #hero-offer .rs-hero-price-total{align-self:flex-end!important;margin-left:auto!important;background:#191716!important;border-color:rgba(255,112,72,.25)!important}
-#hero-offer .rs-hero-price-label{flex:0 1 auto!important;min-width:0!important;margin:0!important;color:#e8ebef!important;font-size:clamp(.76rem,.95vw,.9rem)!important;font-weight:700!important;line-height:1!important;letter-spacing:0!important;white-space:nowrap!important}
-#hero-offer .rs-hero-price-card strong{flex:0 0 auto!important;min-width:0!important;margin:0!important;color:#fff!important;font-size:clamp(1.28rem,1.7vw,1.55rem)!important;line-height:1!important;letter-spacing:-.035em!important;white-space:nowrap!important}
+#hero-offer .rs-hero-price-label{grid-column:1!important;grid-row:1!important;justify-self:start!important;min-width:0!important;margin:0!important;color:#e8ebef!important;font-size:clamp(.72rem,.91vw,.86rem)!important;font-weight:700!important;line-height:1!important;letter-spacing:0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+#hero-offer .rs-hero-price-card strong{grid-column:2!important;grid-row:1!important;justify-self:center!important;min-width:0!important;margin:0!important;color:#fff!important;font-size:clamp(1.18rem,1.65vw,1.5rem)!important;line-height:1!important;letter-spacing:-.035em!important;white-space:nowrap!important}
 #hero-offer .rs-hero-price-card strong:before{content:none!important}
-#hero-offer .rs-hero-payment{flex:1 1 auto!important;min-width:0!important;max-width:none!important;margin:0!important;color:#f1f2f4!important;font-size:clamp(.68rem,.82vw,.78rem)!important;font-weight:700!important;line-height:1!important;letter-spacing:0!important;text-align:left!important;white-space:nowrap!important;overflow:visible!important}
+#hero-offer .rs-hero-payment{grid-column:3!important;grid-row:1!important;justify-self:end!important;min-width:0!important;max-width:none!important;margin:0!important;color:#f1f2f4!important;font-size:clamp(.65rem,.79vw,.76rem)!important;font-weight:700!important;line-height:1!important;letter-spacing:0!important;text-align:right!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:clip!important}
 #hero-offer .rs-hero-price-total .rs-hero-payment{color:#ffe2da!important}
 @media(max-width:760px){
  #hero-offer.rs-hero-offer{max-width:100%!important}
  #hero-offer .rs-hero-price-grid{gap:10px!important}
- #hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{width:97%!important;gap:clamp(4px,1vw,7px)!important;padding:9px clamp(6px,1.6vw,10px)!important;border-radius:9px!important}
- #hero-offer .rs-hero-price-label{font-size:clamp(.62rem,2.75vw,.76rem)!important;letter-spacing:-.025em!important}
- #hero-offer .rs-hero-price-card strong{font-size:clamp(1.05rem,4.4vw,1.28rem)!important;letter-spacing:-.04em!important}
- #hero-offer .rs-hero-payment{font-size:clamp(.52rem,2.15vw,.64rem)!important;letter-spacing:-.04em!important}
+ #hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{width:98%!important;column-gap:clamp(3px,1vw,6px)!important;padding:9px clamp(5px,1.6vw,9px)!important;border-radius:9px!important}
+ #hero-offer .rs-hero-price-label{font-size:clamp(.59rem,2.45vw,.72rem)!important;letter-spacing:-.025em!important}
+ #hero-offer .rs-hero-price-card strong{font-size:clamp(.96rem,4.05vw,1.18rem)!important;letter-spacing:-.04em!important}
+ #hero-offer .rs-hero-payment{font-size:clamp(.50rem,2.05vw,.61rem)!important;letter-spacing:-.035em!important}
 }
-@media(max-width:380px){
- #hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{width:99%!important;gap:3px!important;padding:8px 5px!important}
- #hero-offer .rs-hero-price-label{font-size:clamp(.54rem,2.45vw,.62rem)!important;letter-spacing:-.04em!important}
- #hero-offer .rs-hero-price-card strong{font-size:clamp(.91rem,4.1vw,1.05rem)!important;letter-spacing:-.045em!important}
- #hero-offer .rs-hero-payment{font-size:clamp(.46rem,1.95vw,.53rem)!important;letter-spacing:-.055em!important}
+@media(max-width:360px){
+ #hero-offer .rs-hero-price-grid{gap:8px!important}
+ #hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{width:100%!important;column-gap:3px!important;padding:8px 4px!important}
+ #hero-offer .rs-hero-price-label{font-size:.52rem!important;letter-spacing:-.045em!important}
+ #hero-offer .rs-hero-price-card strong{font-size:.88rem!important;letter-spacing:-.05em!important}
+ #hero-offer .rs-hero-payment{font-size:.44rem!important;letter-spacing:-.06em!important}
 }
-/* Slightly smaller logo cards; preserve original files, complete artwork and swipe behavior. */
+/* Slightly smaller logo cards; retain original art, uncropped contain fit and swipe. */
 #logo-track .logo-item{flex:0 0 76px!important;flex-basis:76px!important;width:76px!important;height:41px!important}
 #logo-track .logo-item img{width:100%!important;height:100%!important;object-fit:contain!important}
 @media(max-width:760px){#logo-track .logo-item{flex:0 0 86px!important;flex-basis:86px!important;width:86px!important;height:51.8px!important}}
