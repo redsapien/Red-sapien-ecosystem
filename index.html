@@ -5168,5 +5168,35 @@ body[data-niche="other"] #maquinaria-automatizada .phase-primary{border-color:rg
 })();
 </script>
 
+
+<style id="rs-price-cards-left-stagger-20261023">
+/* Hero price cards: wider, lower, left-aligned and separated. */
+#hero-offer .rs-hero-price-grid{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:16px!important;width:100%!important}
+#hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{box-sizing:border-box!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;column-gap:clamp(12px,2vw,22px)!important;row-gap:4px!important;width:min(94%,600px)!important;min-height:78px!important;margin:0!important;padding:13px clamp(14px,2vw,22px)!important;border-radius:17px!important;text-align:left!important}
+#hero-offer .rs-hero-price-card{align-self:flex-start!important}
+#hero-offer .rs-hero-price-total{align-self:flex-start!important;margin-left:clamp(18px,4.5vw,58px)!important}
+#hero-offer .rs-hero-price-label{grid-column:1;grid-row:1;align-self:end!important;min-width:0!important;margin:0!important;font-size:clamp(.79rem,1vw,.9rem)!important;line-height:1.2!important}
+#hero-offer .rs-hero-price-card strong{grid-column:2;grid-row:1 / span 2;justify-self:end!important;align-self:center!important;font-size:clamp(1.24rem,1.8vw,1.52rem)!important;line-height:1.05!important;white-space:nowrap!important}
+#hero-offer .rs-hero-price-card strong:before{content:none!important}
+#hero-offer .rs-hero-payment{grid-column:1;grid-row:2;align-self:start!important;justify-self:start!important;max-width:none!important;margin:0!important;color:#e1e6ec!important;font-size:clamp(.79rem,.98vw,.88rem)!important;font-weight:700!important;line-height:1.25!important;letter-spacing:0!important;text-align:left!important;text-wrap:balance;overflow-wrap:anywhere}
+#hero-offer .rs-hero-price-total .rs-hero-payment{color:#ffe1d8!important}
+@media(max-width:760px){
+ #hero-offer .rs-hero-price-grid{gap:14px!important}
+ #hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{width:calc(100% - 8px)!important;min-height:76px!important;padding:12px 14px!important;column-gap:10px!important}
+ #hero-offer .rs-hero-price-total{margin-left:8px!important}
+ #hero-offer .rs-hero-price-label{font-size:clamp(.76rem,3.6vw,.9rem)!important}
+ #hero-offer .rs-hero-price-card strong{font-size:clamp(1.15rem,5.5vw,1.42rem)!important}
+ #hero-offer .rs-hero-payment{font-size:clamp(.75rem,3.35vw,.86rem)!important;line-height:1.23!important}
+}
+@media(max-width:370px){
+ #hero-offer .rs-hero-price-grid{gap:12px!important}
+ #hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{width:100%!important;min-height:74px!important;padding:11px 12px!important;column-gap:8px!important}
+ #hero-offer .rs-hero-price-total{margin-left:0!important}
+ #hero-offer .rs-hero-price-label{font-size:.75rem!important}
+ #hero-offer .rs-hero-price-card strong{font-size:1.12rem!important}
+ #hero-offer .rs-hero-payment{font-size:.74rem!important}
+}
+</style>
+
 </body>
 </html>
