@@ -5656,5 +5656,14 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
  setTitle();document.getElementById('lang-selector')?.addEventListener('change',setTitle);
 })();
 </script>
+<script id="rs-final-brands-heading-20261026">
+(()=>{
+ const title=document.getElementById('portfolio-title');if(!title)return;
+ const value=()=>({es:'Marcas reales',en:'Real brands',pt:'Marcas reais'}[(document.documentElement.lang||'es').slice(0,2)]||'Marcas reales');
+ let busy=false;const enforce=()=>{if(busy)return;if(title.textContent.trim()!==value()){busy=true;title.textContent=value();busy=false}};
+ enforce();new MutationObserver(enforce).observe(title,{childList:true,characterData:true,subtree:true});
+ document.getElementById('lang-selector')?.addEventListener('change',enforce);document.addEventListener('click',e=>{if(e.target.closest('#sectores .rs-selector-btn'))queueMicrotask(enforce)});
+})();
+</script>
 </body>
 </html>
