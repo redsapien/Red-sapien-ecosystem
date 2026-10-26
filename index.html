@@ -1431,6 +1431,22 @@ body[data-niche="food"] #sectores .rs-selector-btn.is-active{border-color:#f6cf4
 #casos-exito-ecosistemas .rs-case-nav{font-size:28px!important;line-height:1!important}
 </style>
 
+<style id="rs-final-subtle-motion-static-logos-20261026">
+/* La franja de marcas queda fija y ordenada en filas, también en pantallas pequeñas. */
+#logo-viewport{overflow:hidden!important;overflow-x:hidden!important;overflow-y:hidden!important;touch-action:pan-y!important;cursor:default!important;scroll-behavior:auto!important}
+#logo-track{display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;transform:none!important;animation:none!important;will-change:auto!important}
+#logo-track .logo-set{display:flex!important;flex-flow:row wrap!important;justify-content:center!important;align-items:center!important;width:100%!important;min-width:0!important;max-width:100%!important;gap:clamp(12px,2vw,22px)!important;padding:8px 12px!important;box-sizing:border-box!important}
+#logo-track .logo-set[data-logo-set="clone"],#logo-viewport .rs-logo-swipe-cue,#logo-viewport::before{display:none!important}
+#logo-track .logo-item{box-sizing:border-box!important;flex:0 1 clamp(58px,8vw,98px)!important;width:clamp(58px,8vw,98px)!important;min-width:0!important;height:52px!important;max-width:98px!important}
+#logo-track .logo-item img{width:100%!important;height:100%!important;object-fit:contain!important}
+@media(max-width:760px){#logo-track .logo-set{gap:10px!important;padding:8px 10px!important}#logo-track .logo-item{flex:0 1 64px!important;width:64px!important;height:44px!important;max-width:64px!important}}
+@media(max-width:360px){#logo-track .logo-item{flex-basis:56px!important;width:56px!important;height:40px!important;max-width:56px!important}}
+/* Apariciones discretas en tres títulos y unas pocas tarjetas, sin efectos en toda la página. */
+html.rs-gentle-motion .rs-gentle-target{opacity:0;transform:translateY(7px);transition:opacity .48s ease,transform .48s cubic-bezier(.2,.7,.25,1)}
+html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:translateY(0)}
+@media(max-width:760px){html.rs-gentle-motion .rs-gentle-target{transform:translateY(5px);transition-duration:.4s}}
+@media(prefers-reduced-motion:reduce){html.rs-gentle-motion .rs-gentle-target,html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1!important;transform:none!important;transition:none!important}}
+</style>
 </head>
 <body class="font-sans overflow-x-hidden" data-niche="health"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
 <script>window.__rsPreloaderStartedAt=performance.now();</script>
@@ -5774,5 +5790,20 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
 })();
 </script>
 
+<script id="rs-gentle-appearances-20261026">
+(()=>{
+ const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(reduce||!('IntersectionObserver'in window))return;
+ const selectors=['#sectores-title','#portfolio-title','#rs-faq-title','#card-phase-1','#rs-offer-card','#ecosystem-slider .rs-case-card:nth-child(1)','#ecosystem-slider .rs-case-card:nth-child(3)'];
+ const select=()=>selectors.flatMap(q=>[...document.querySelectorAll(q)]);
+ let observer;
+ const watch=node=>{if(!(node instanceof Element)||!node.matches(selectors.join(',')))return;node.classList.add('rs-gentle-target');observer.observe(node)};
+ observer=new IntersectionObserver(entries=>entries.forEach(({target,isIntersecting})=>{if(isIntersecting){target.classList.add('rs-gentle-visible');observer.unobserve(target)}}),{threshold:.08,rootMargin:'0px 0px -4% 0px'});
+ select().forEach(watch);
+ const slider=document.getElementById('ecosystem-slider');
+ if(slider)new MutationObserver(records=>records.forEach(r=>r.addedNodes.forEach(n=>{if(n instanceof Element){watch(n);n.querySelectorAll('.rs-case-card:nth-child(1),.rs-case-card:nth-child(3)').forEach(watch)}}))).observe(slider,{childList:true,subtree:true});
+ if(select().length)document.documentElement.classList.add('rs-gentle-motion');
+})();
+</script>
 </body>
 </html>
