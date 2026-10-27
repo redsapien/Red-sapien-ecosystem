@@ -5901,3 +5901,22 @@ body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body
 </style>
 </body>
 </html>
+<style id="rs-arrow-under-logos-20261027">
+/* Compact translucent down-arrow follows the client logos inside the opening viewport. */
+#main-content .rs-hero-scroll-cue{position:relative!important;inset:auto!important;left:auto!important;bottom:auto!important;z-index:15;display:flex!important;align-items:center!important;justify-content:center!important;width:34px!important;height:34px!important;min-width:34px!important;padding:0!important;margin:0 auto 12px!important;border:1px solid rgba(255,255,255,.13)!important;border-radius:50%!important;color:rgba(255,255,255,.68)!important;background:rgba(255,255,255,.045)!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:.78!important;transform:none!important;transition:background .2s ease,border-color .2s ease,opacity .2s ease!important}
+#main-content .rs-hero-scroll-cue span{display:none!important}
+#main-content .rs-hero-scroll-cue svg{width:17px!important;height:17px!important;opacity:.82!important;animation:none!important}
+#main-content .rs-hero-scroll-cue:hover,#main-content .rs-hero-scroll-cue:focus-visible{opacity:1!important;background:rgba(255,255,255,.09)!important;border-color:rgba(255,255,255,.25)!important}
+#main-content .rs-hero-scroll-cue.is-scrolled{opacity:.78!important;transform:none!important;pointer-events:auto!important}
+#logo-viewport-shell{margin-bottom:0!important;padding-bottom:0!important}
+/* Reduce visual bulk without changing offer, price, or CTA behavior. */
+.rs-hero-conversion{padding:clamp(12px,2.2vw,18px)!important;border-radius:19px!important;background:rgba(255,255,255,.025)!important;border-color:rgba(255,255,255,.065)!important;box-shadow:0 12px 34px rgba(0,0,0,.22)!important}
+#hero-offer.rs-hero-offer{padding:10px!important;border-radius:14px!important;background:rgba(255,255,255,.025)!important}
+#main-cta{width:min(100%,340px)!important;min-height:56px!important;padding:13px 18px!important;border-radius:14px!important;font-size:15px!important}
+#main-cta svg{width:22px!important;height:22px!important;flex-basis:22px!important}
+@media(max-width:760px){#main-content .rs-hero-scroll-cue{margin:0 auto 10px!important}#main-content{padding-bottom:10px!important}.rs-hero-conversion{padding:13px!important}#main-cta{min-height:54px!important}}
+@media(prefers-reduced-motion:reduce){#main-content .rs-hero-scroll-cue{transition:none!important}}
+</style>
+<script id="rs-arrow-under-logos-move-20261027">
+(()=>{const move=()=>{const cue=document.querySelector('#main-content>.rs-hero-scroll-cue'),logos=document.getElementById('logo-viewport-shell');if(cue&&logos&&cue.previousElementSibling!==logos)logos.insertAdjacentElement('afterend',cue)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',move,{once:true});else move()})();
+</script>
