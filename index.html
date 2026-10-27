@@ -1460,6 +1460,14 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 @media(prefers-reduced-motion:reduce){#mobile-menu .rs-menu-options,#mobile-menu::before{transition:none!important}#mobile-menu.rs-menu-background-scan::before{animation:none!important;opacity:.24}}
 </style>
 
+
+<style id="rs-mobile-scroll-cue-19px-20261026">
+/* Mobile cue is in document flow below the logo rail: neutralize legacy bottom offsets and raise only this cue by 19px. */
+@media(max-width:760px){
+ #main-content .rs-hero-scroll-cue{position:relative!important;left:auto!important;bottom:auto!important;margin:13px auto 0!important;transform:translateY(-19px)!important}
+}
+</style>
+
 </head>
 <body class="font-sans overflow-x-hidden" data-niche="health"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
 <script>window.__rsPreloaderStartedAt=performance.now();</script>
