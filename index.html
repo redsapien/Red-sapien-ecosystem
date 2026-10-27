@@ -5909,6 +5909,16 @@ body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body
 @media(prefers-reduced-motion:reduce){#main-content .rs-hero-scroll-cue{transition:none!important}}
 </style>
 
+
+<style id="rs-arrow-additional-20px-20261027">
+/* Move the existing translucent arrow an additional 20 px downward. */
+#main-content .rs-hero-scroll-cue,#main-content .rs-hero-scroll-cue:hover,#main-content .rs-hero-scroll-cue:focus-visible,#main-content .rs-hero-scroll-cue.is-scrolled{transform:translateY(29px)!important}
+@media(max-width:760px){#main-content .rs-hero-scroll-cue,#main-content .rs-hero-scroll-cue:hover,#main-content .rs-hero-scroll-cue:focus-visible,#main-content .rs-hero-scroll-cue.is-scrolled{transform:translateY(20px)!important}}
+</style>
+<script id="rs-arrow-additional-20px-mobile-runtime-20261027">
+(()=>{const apply=()=>{const cue=document.querySelector('#main-content>.rs-hero-scroll-cue');if(!cue)return;cue.style.setProperty('transform',matchMedia('(max-width:760px)').matches?'translateY(20px)':'translateY(29px)','important')};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();window.addEventListener('resize',apply,{passive:true});})();
+</script>
+
 </body>
 </html>
 <style id="rs-arrow-under-logos-20261027">
