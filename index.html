@@ -1539,6 +1539,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 </nav>
 </header>
 <div aria-hidden="true" aria-label="Menú principal de Red Sapien" aria-modal="true" class="fixed inset-0 z-[60] opacity-0 invisible flex flex-col items-center justify-center px-6" data-rs-aria="menuLabel" id="mobile-menu" role="dialog">
+<div aria-hidden="true" class="rs-menu-binary-backdrop"><span>01010010 01000101 01000100 00100000 01010011 01000001 01010000 01001001 01000101 01001110</span><span>01000011 01010010 01000101 01000001 01010010 00100000 01000011 01001111 01001110 01000101 01000011 01010100 01000001 01010010</span><span>01000101 01010011 01010100 01010010 01000001 01010100 01000101 01000111 01001001 01000001 00100000 01000100 01001001 01000111 01001001 01010100 01000001 01001100</span></div>
 <button aria-label="Cerrar menú" class="absolute top-8 right-8 text-gray-400 hover:text-rs-red scale-125 transition-colors focus:outline-none" data-rs-aria="menuClose" id="close-menu" type="button"><span aria-hidden="true">×</span></button>
 <div class="rs-menu-options">
 <a class="matrix-link-box p-6 rounded-xl rs-menu-option" data-rs-wa-key="general" href="https://wa.me/573045625920?text=Hola%2C%20quiero%20conocer%20las%20tres%20fases%20del%20ecosistema%20digital%20de%20Red%20Sapien%20para%20mi%20negocio." rel="noopener noreferrer" target="_blank"><span data-rs-copy="menuContact">Hablemos</span><span aria-hidden="true" class="rs-menu-option-mark">↗</span></a>
@@ -1586,6 +1587,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 </a>
 </div>
 </div></div>
+<a aria-label="Ver más secciones" class="rs-hero-scroll-cue" data-rs-aria="heroScrollCueAria" href="#sectores"><span data-i18n="heroScrollCue">Ver más</span><svg aria-hidden="true" focusable="false" viewbox="0 0 24 24"><path d="M12 4v15m-6-6 6 6 6-6"></path></svg></a>
 <div class="w-full mt-auto mb-4 bg-gradient-to-t from-[#050505]/50 to-transparent py-6" id="logo-viewport-shell">
 <div aria-label="Logos de clientes; desliza para ver más" class="logo-viewport relative py-2" data-rs-aria="logoSlider" id="logo-viewport" role="region" tabindex="0">
 <div class="absolute inset-0 logo-slider-gradient pointer-events-none"></div>
@@ -1593,7 +1595,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 <div aria-hidden="true" class="rs-logo-swipe-cue"><svg focusable="false" viewbox="0 0 24 24"><path class="rs-swipe-arrow" d="M3 12h18m-6-6 6 6-6 6"></path></svg></div>
 </div>
 </div>
-<a aria-label="Ver más secciones" class="rs-hero-scroll-cue" data-rs-aria="heroScrollCueAria" href="#sectores"><span data-i18n="heroScrollCue">Ver más</span><svg aria-hidden="true" focusable="false" viewbox="0 0 24 24"><path d="M12 4v15m-6-6 6 6 6-6"></path></svg></a>
+
 </main>
 <section aria-labelledby="sectores-title" class="rs-sectors-section" data-rs-reveal="" id="sectores">
 <div class="rs-sectors-inner">
@@ -5784,9 +5786,9 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
 <script id="rs-copy-refine-runtime-20261027">
 (()=>{
  const copy={
-  es:{health:'Web y seguimiento para convertir visitas en citas.',ecommerce:'Web, marketing y automatización para vender más.'},
-  en:{health:'Website and follow-up to turn visits into appointments.',ecommerce:'Website, marketing and automation to sell more.'},
-  pt:{health:'Site e acompanhamento para transformar visitas em consultas.',ecommerce:'Site, marketing e automação para vender mais.'}
+  es:{health:'Web y seguimiento para convertir visitas en clientes.',ecommerce:'Web, marketing y automatización para vender más.'},
+  en:{health:'Website and follow-up to turn visits into customers.',ecommerce:'Website, marketing and automation to sell more.'},
+  pt:{health:'Site e acompanhamento para transformar visitas em clientes.',ecommerce:'Site, marketing e automação para vender mais.'}
  };
  const colors={health:'#ff3c00',ecommerce:'#58a6ff',food:'#f6cf4a'};
  const body=document.body,root=document.documentElement,selector=document.querySelector('#sectores .rs-selector');
@@ -5837,7 +5839,44 @@ body.rs-niche-interacted #sectores .rs-selector-btn.is-active .rs-selector-icon{
 @media(prefers-reduced-motion:reduce){#sectores .rs-selector-btn{transition:none!important}}
 </style>
 <script id="rs-niche-activation-listener-20261027">
-(()=>{const s=document.querySelector('#sectores .rs-selector');if(!s)return;s.addEventListener('click',e=>{if(e.target.closest('.rs-selector-btn'))document.body.classList.add('rs-niche-interacted')});})();
+(()=>{
+ const s=document.querySelector('#sectores .rs-selector'),body=document.body;if(!s)return;
+ let selectedBefore='';
+ s.addEventListener('click',e=>{const b=e.target.closest('.rs-selector-btn');if(!b)return;
+  if(selectedBefore===b.dataset.niche&&body.classList.contains('rs-niche-interacted')){
+   body.classList.remove('rs-niche-interacted');
+   s.querySelectorAll('.rs-selector-btn').forEach(x=>{x.style.removeProperty('background');x.style.removeProperty('border-color');x.style.removeProperty('box-shadow')});
+  }else body.classList.add('rs-niche-interacted');
+  selectedBefore=b.dataset.niche;
+ },true);
+})();
+</script>
+
+
+<style id="rs-cue-menu-touch-final-20261027">
+/* Ver más now follows the hero offer, ahead of the logo rail, so it is not stranded at the bottom. */
+#main-content>.rs-hero-scroll-cue{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;bottom:auto!important;display:flex!important;align-self:center!important;width:max-content!important;max-width:calc(100% - 32px)!important;margin:clamp(8px,1.5vh,16px) auto 0!important;padding:8px 12px!important;transform:none!important;opacity:.86!important}
+#main-content>.rs-hero-scroll-cue.is-scrolled{opacity:.86!important;transform:none!important;pointer-events:auto!important}
+#main-content>.rs-hero-scroll-cue span{white-space:nowrap!important;font-size:.68rem!important;letter-spacing:.09em!important}
+#main-content>.rs-hero-scroll-cue svg{width:16px!important;height:16px!important}
+/* Full-bleed dark menu with subtle red binary texture. Menu labels/actions remain unchanged. */
+#mobile-menu{isolation:isolate!important;background:radial-gradient(ellipse at center,rgba(30,8,7,.96),rgba(5,5,6,.99) 72%)!important;overflow:hidden!important}
+#mobile-menu .rs-menu-binary-backdrop{display:flex!important;position:absolute!important;inset:0!important;z-index:0!important;flex-direction:column!important;justify-content:space-evenly!important;gap:5vh!important;overflow:hidden!important;pointer-events:none!important;user-select:none!important;transform:rotate(-7deg) scale(1.08)!important;opacity:.35!important;mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent)!important}
+#mobile-menu .rs-menu-binary-backdrop span{display:block!important;width:max-content!important;white-space:nowrap!important;color:rgba(255,67,53,.25)!important;font:600 clamp(10px,1vw,14px)/1.7 ui-monospace,SFMono-Regular,Menlo,monospace!important;letter-spacing:.13em!important;animation:rs-binary-drift 24s ease-in-out infinite alternate!important}
+#mobile-menu .rs-menu-binary-backdrop span:nth-child(2){margin-left:18%!important;animation-delay:-7s!important}#mobile-menu .rs-menu-binary-backdrop span:nth-child(3){margin-left:4%!important;animation-delay:-13s!important}
+#mobile-menu .rs-menu-options{position:relative!important;z-index:2!important;width:min(100%,1040px)!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:clamp(12px,1.8vw,20px)!important}
+#mobile-menu .rs-menu-option{position:relative!important;isolation:isolate!important;overflow:hidden!important;min-height:clamp(132px,15vh,176px)!important;padding:clamp(22px,3vw,34px)!important;border:1px solid rgba(255,255,255,.13)!important;border-radius:22px!important;background:linear-gradient(145deg,rgba(15,16,18,.92),rgba(7,8,10,.96))!important;color:#f5f5f6!important;box-shadow:0 18px 42px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.045)!important;transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease!important}
+#mobile-menu .rs-menu-option::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 19px,rgba(255,58,49,.07) 20px,transparent 21px 38px);opacity:.14;transition:opacity .22s ease!important}
+#mobile-menu .rs-menu-option>[data-rs-copy]{font-size:clamp(1.08rem,2vw,1.35rem)!important;color:#fff!important}
+#mobile-menu .rs-menu-option:hover,#mobile-menu .rs-menu-option:focus-visible,#mobile-menu .rs-menu-option:active{transform:translateY(-3px)!important;border-color:rgba(255,69,56,.68)!important;background:linear-gradient(145deg,rgba(45,14,14,.96),rgba(12,8,10,.98))!important;box-shadow:0 0 0 1px rgba(255,69,56,.18),0 20px 46px rgba(0,0,0,.42),0 0 32px rgba(255,49,40,.1)!important}
+#mobile-menu .rs-menu-option:hover::after,#mobile-menu .rs-menu-option:focus-visible::after,#mobile-menu .rs-menu-option:active::after{opacity:.75!important}
+#mobile-menu .rs-menu-option-mark{color:#ff6558!important;border-color:rgba(255,70,58,.45)!important;background:rgba(255,55,47,.1)!important}
+@media(max-width:760px){#main-content>.rs-hero-scroll-cue{margin:7px auto 0!important;padding:8px 12px!important}#mobile-menu{justify-content:center!important;padding:calc(env(safe-area-inset-top) + 76px) 18px calc(env(safe-area-inset-bottom) + 24px)!important}#mobile-menu .rs-menu-options{width:min(100%,540px)!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important}#mobile-menu .rs-menu-option{min-height:clamp(94px,13vh,120px)!important;padding:20px 22px!important;border-radius:20px!important}}
+@media(max-height:500px) and (max-width:760px){#mobile-menu{justify-content:flex-start!important;overflow-y:auto!important;padding-top:68px!important;padding-bottom:24px!important}#mobile-menu .rs-menu-options{margin-top:12px!important}#mobile-menu .rs-menu-option{min-height:82px!important}}
+@media(prefers-reduced-motion:reduce){#mobile-menu .rs-menu-binary-backdrop span{animation:none!important}#mobile-menu .rs-menu-option{transition:none!important}}
+</style>
+<script id="rs-menu-card-touch-pulse-20261027">
+(()=>{const menu=document.getElementById('mobile-menu');if(!menu)return;menu.addEventListener('pointerdown',e=>{if(!e.target.closest('.rs-menu-option'))return;menu.classList.remove('rs-menu-background-scan');void menu.offsetWidth;menu.classList.add('rs-menu-background-scan');setTimeout(()=>menu.classList.remove('rs-menu-background-scan'),1600)});})();
 </script>
 
 </body>
