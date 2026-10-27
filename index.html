@@ -1461,12 +1461,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 </style>
 
 
-<style id="rs-mobile-scroll-cue-19px-20261026">
-/* Mobile cue is in document flow below the logo rail: neutralize legacy bottom offsets and raise only this cue by 19px. */
-@media(max-width:760px){
- #main-content .rs-hero-scroll-cue{position:relative!important;left:auto!important;bottom:auto!important;margin:13px auto 0!important;transform:translateY(-19px)!important}
-}
-</style>
+
 
 </head>
 <body class="font-sans overflow-x-hidden" data-niche="health"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
@@ -5724,6 +5719,12 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
  menu.addEventListener('pointerleave',()=>{if(!menu.classList.contains('visible'))menu.classList.remove('rs-menu-background-scan')});
 })();
 </script>
+
+
+<style id="rs-mobile-scroll-cue-position-final-20261026">
+/* Final mobile cascade: cue stays in flow after the logos; move it up by 19px by reducing the gap. */
+@media(max-width:760px){#main-content>.rs-hero-scroll-cue{position:relative!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;display:flex!important;align-self:center!important;width:max-content!important;margin:-19px auto 0!important;transform:none!important}}
+</style>
 
 </body>
 </html>
