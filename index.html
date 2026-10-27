@@ -5818,6 +5818,11 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
 
 <style id="rs-niche-activation-and-payment-note-20261027">
 /* Neutral graphite cards at first load; color is shown only after a visitor selects a niche. */
+/* Strong initial-state override: legacy niche accent selectors must not tint the preselected tab or its icon. */
+body:not(.rs-niche-interacted) #sectores .rs-selector-btn,body:not(.rs-niche-interacted) #sectores .rs-selector-btn.is-active,body:not(.rs-niche-interacted) #sectores .rs-selector-btn.rs-other-sector{background:#111214!important;border-color:rgba(255,255,255,.13)!important;box-shadow:0 12px 30px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.035)!important}
+body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-kicker,body:not(.rs-niche-interacted) #sectores .rs-selector-btn.is-active .rs-selector-kicker,body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body:not(.rs-niche-interacted) #sectores .rs-selector-btn.is-active .rs-selector-icon{color:#d7d9dc!important}
+body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body:not(.rs-niche-interacted) #sectores .rs-selector-btn.is-active .rs-selector-icon{background:rgba(255,255,255,.035)!important;border-color:rgba(255,255,255,.15)!important;box-shadow:none!important}
+
 #sectores .rs-selector-btn,#sectores .rs-selector-btn.rs-other-sector{background:#111214!important;border:1px solid rgba(255,255,255,.13)!important;box-shadow:0 12px 30px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.035)!important;color:#f4f5f6!important;transition:background .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease!important}
 #sectores .rs-selector-btn strong{color:#f7f8fa!important}
 #sectores .rs-selector-btn small{color:#c9cdd2!important}
