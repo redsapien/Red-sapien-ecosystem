@@ -5919,6 +5919,27 @@ body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body
 (()=>{const apply=()=>{const cue=document.querySelector('#main-content>.rs-hero-scroll-cue');if(!cue)return;cue.style.setProperty('transform',matchMedia('(max-width:760px)').matches?'translateY(20px)':'translateY(29px)','important')};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();window.addEventListener('resize',apply,{passive:true});})();
 </script>
 
+
+<style id="rs-mobile-hero-arrow-fix-20261027">
+/* On phones, keep the hero background covering the full first screen and place the cue just under the logo rail. */
+@media(max-width:760px){
+ #main-content{min-height:100svh!important;min-height:100dvh!important;padding-top:78px!important;padding-bottom:12px!important;box-sizing:border-box!important;justify-content:flex-start!important}
+ #main-content #hero-content{flex:0 0 auto!important}
+ #main-content #logo-viewport-shell{flex:0 0 auto!important;margin-top:auto!important;margin-bottom:0!important;padding-bottom:0!important}
+ #main-content>.rs-hero-scroll-cue,#main-content>.rs-hero-scroll-cue:hover,#main-content>.rs-hero-scroll-cue:focus-visible,#main-content>.rs-hero-scroll-cue.is-scrolled{transform:translateY(12px)!important;margin:0 auto 0!important;width:30px!important;height:30px!important;min-width:30px!important;background:transparent!important;background-color:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;color:rgba(255,255,255,.38)!important;opacity:.38!important}
+ #main-content>.rs-hero-scroll-cue svg{opacity:.40!important;width:16px!important;height:16px!important}
+}
+/* Neither navigation cue needs a circular badge. Keep only a faint arrow mark. */
+#main-content .rs-hero-scroll-cue{border-color:transparent!important;background:transparent!important;background-color:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#logo-viewport .rs-logo-swipe-cue{border-color:transparent!important;background:transparent!important;background-color:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#logo-viewport[data-rs-has-overflow="true"]:not([data-rs-hint-dismissed="true"]) .rs-logo-swipe-cue{opacity:.11!important}
+#logo-viewport .rs-logo-swipe-cue svg{opacity:.4!important}
+@media(prefers-reduced-motion:reduce){#main-content .rs-hero-scroll-cue{transition:none!important}}
+</style>
+<script id="rs-mobile-hero-arrow-fix-runtime-20261027">
+(()=>{const mq=matchMedia('(max-width:760px)');const apply=()=>{const cue=document.querySelector('#main-content>.rs-hero-scroll-cue');if(!cue)return;if(mq.matches){cue.style.setProperty('transform','translateY(12px)','important');cue.style.setProperty('margin','0 auto 0','important')}else{cue.style.setProperty('transform','translateY(29px)','important')}};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();window.addEventListener('resize',apply,{passive:true});if(mq.addEventListener)mq.addEventListener('change',apply);else mq.addListener(apply)})();
+</script>
+
 </body>
 </html>
 <style id="rs-arrow-under-logos-20261027">
