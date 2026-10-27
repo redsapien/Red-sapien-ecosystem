@@ -5573,7 +5573,7 @@ const setCTA=()=>{const d=lang(),n=activeNiche(),copyEl=document.getElementById(
 const setModal=(i,focus=false)=>{if(!modal||!curList[i])return;curIndex=(i+curList.length)%curList.length;const c=curList[curIndex],d=lang(),n=activeNiche(),m=d.type[n][curIndex],p=d.proof[n][curIndex];modal.style.setProperty('--case-accent',n==='ecommerce'?'#58a6ff':n==='food'?'#f6cf4a':'#ff3c00');const im=document.getElementById('rs-case-modal-media');im.innerHTML=`<figure class="rs-case-media-figure"><figcaption>${d.imageLabel[n][curIndex]}</figcaption><img src="${c.img}" alt="${d.alt[n][curIndex]}" class="${c.logo?'rs-case-logo':''}" width="${c.w}" height="${c.h}" loading="eager" decoding="async"></figure>`;document.getElementById('rs-case-modal-kicker').textContent=({es:'Marcas reales',en:'Real brands',pt:'Marcas reais'}[document.documentElement.lang]||'Marcas reales');document.getElementById('rs-case-modal-title').textContent=c.name;document.getElementById('rs-case-modal-type').textContent=m;const sm=document.getElementById('rs-case-modal-summary');sm.textContent=p;sm.hidden=false;const isHijole=n==='food'&&curIndex===5,metricEl=document.getElementById('rs-case-modal-metric'),statsEl=document.getElementById('rs-case-modal-stats'),campaignEl=document.getElementById('rs-case-modal-campaign-panel');metricEl.hidden=isHijole;metricEl.textContent=isHijole?({es:'Cifras reportadas · no son ventas.',en:'Reported figures · not sales.',pt:'Dados reportados · não são vendas.'}[document.documentElement.lang]||'Cifras reportadas · no son ventas.'):'';statsEl.hidden=!isHijole;if(isHijole){const rows=({es:[['Conversaciones iniciadas','1.003'],['Costo por conversación','COP $782,34']],en:[['Conversations initiated','1,003'],['Cost per conversation','COP $782.34']],pt:[['Conversas iniciadas','1.003'],['Custo por conversa','COP $782,34']]}[document.documentElement.lang]||[['Conversaciones iniciadas','1.003'],['Costo por conversación','COP $782,34']]);for(let k=0;k<4;k++){const tile=statsEl.children[k],value=document.getElementById(`rs-case-stat-value-${k+1}`),label=document.getElementById(`rs-case-stat-label-${k+1}`),row=rows[k];tile.hidden=!row;if(value)value.textContent=row?.[1]||'';if(label)label.textContent=row?.[0]||''}}campaignEl.hidden=true;const a=document.getElementById('rs-case-modal-link');a.href=c.url||'#';a.target=c.url?'_blank':'_self';a.rel='noopener noreferrer';a.textContent=d.cta[n][curIndex];a.style.display=c.url?'inline-flex':'none';a.hidden=!c.url;modal.querySelectorAll('[data-case-nav]').forEach(x=>x.hidden=curList.length<2);modal.querySelector('[data-case-nav="-1"]')?.setAttribute('aria-label',d.previous);modal.querySelector('[data-case-nav="1"]')?.setAttribute('aria-label',d.next);modal.setAttribute('aria-hidden','false');modal.classList.add('is-open');document.body.style.overflow='hidden';if(focus)modal.querySelector('.rs-case-modal-close')?.focus();};
 const open=(i,trigger)=>{lastTrigger=trigger;curList=sites[activeNiche()]||sites.health;setModal(i,true)};
 const close=()=>{if(!modal||!modal.classList.contains('is-open'))return;modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';if(lastTrigger?.isConnected)lastTrigger.focus();};
-const paintTabs=()=>{for(const [key,color,bg] of [['health','#ff3c00','linear-gradient(145deg,rgba(54,24,17,.98),rgba(10,12,14,.99))'],['ecommerce','#58a6ff','linear-gradient(145deg,rgba(16,36,58,.98),rgba(10,12,14,.99))'],['food','#f6cf4a','linear-gradient(145deg,rgba(44,38,16,.98),rgba(10,12,14,.99))']]){const b=selector.querySelector(`[data-niche=\"${key}\"]`);if(!b)continue;b.style.setProperty('--rs-accent',color,'important');if(b.getAttribute('aria-selected')==='true'){b.style.setProperty('border-color',color,'important');b.style.setProperty('background',bg,'important');b.style.setProperty('box-shadow',`0 0 0 1px ${color},0 0 26px ${color}33`,'important');b.querySelector('.rs-selector-kicker')?.style.setProperty('color',color,'important');b.querySelector('.rs-selector-icon')?.style.setProperty('color',color,'important')}}};
+const paintTabs=()=>{for(const [key,color] of [['health','#ff3c00'],['ecommerce','#58a6ff'],['food','#f6cf4a']]){const b=selector.querySelector(`[data-niche=\"${key}\"]`);if(!b)continue;b.style.setProperty('--rs-accent',color);['background','border-color','box-shadow'].forEach(p=>b.style.removeProperty(p));}};
 const render=()=>{labelTabs();const d=lang(),n=activeNiche();paintTabs();setCTA();const track=document.getElementById('ecosystem-slider');if(!track)return;track.dataset.niche=n;track.setAttribute('aria-label',d.cases);track.innerHTML=sites[n].map((c,i)=>`<article class="rs-case-card" data-case-index="${i}" style="--case-accent:${n==='ecommerce'?'#58a6ff':n==='food'?'#f6cf4a':'#ff3c00'}"><div class="rs-case-media"><img src="${c.img}" alt="${d.alt[n][i]}" class="${c.logo?'rs-case-logo':''}" width="${c.w}" height="${c.h}" loading="lazy" decoding="async"></div><div class="rs-case-body"><h3>${c.name}</h3><p class="rs-case-proof">${d.proof[n][i]}</p><button class="rs-case-link rs-case-open" type="button" aria-label="${d.view}: ${c.name}">${d.view} <span aria-hidden="true">↗</span></button></div></article>`).join('');track.scrollLeft=0;};
 window._renderCases=render;window._renderNicheCopy=render;window._renderExtraCopy=render;
 selector.addEventListener('click',e=>{const b=e.target.closest('[role="tab"]');if(!b||!selector.contains(b))return;const n=b.dataset.niche;if(!['health','food','ecommerce'].includes(n))return;document.body.dataset.niche=n;document.documentElement.dataset.niche=n;selector.querySelectorAll('[role="tab"]').forEach(x=>{const active=x===b;x.classList.toggle('is-active',active);x.setAttribute('aria-selected',String(active));x.tabIndex=active?0:-1});queueMicrotask(render);});
@@ -5784,23 +5784,48 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
 <script id="rs-copy-refine-runtime-20261027">
 (()=>{
  const copy={
-  es:{health:'Ayude a captar nuevas oportunidades, dar seguimiento a cada contacto y hacer crecer su negocio con herramientas digitales de alto valor.',ecommerce:'Potencie su marca, atraiga compradores y facilite cada paso de la venta con soluciones digitales innovadoras.'},
-  en:{health:'Capture new opportunities, follow up with every inquiry and grow your business with high-value digital tools.',ecommerce:'Strengthen your brand, attract buyers and make each step toward a sale easier with tailored digital solutions.'},
-  pt:{health:'Capte novas oportunidades, acompanhe cada contato e faça seu negócio crescer com ferramentas digitais de alto valor.',ecommerce:'Fortaleça sua marca, atraia compradores e facilite cada etapa da venda com soluções digitais inovadoras.'}
+  es:{health:'Creamos su web para atraer consultas y organizar citas.',ecommerce:'Creamos su tienda para mostrar productos y facilitar ventas.'},
+  en:{health:'We build your website to attract inquiries and organize appointments.',ecommerce:'We build your store to showcase products and make selling easier.'},
+  pt:{health:'Criamos seu site para atrair consultas e organizar agendamentos.',ecommerce:'Criamos sua loja para apresentar produtos e facilitar as vendas.'}
  };
- const nicheNode=document.body,section=document.querySelector('#sectores .rs-selector'),langNode=document.documentElement;
- let frame=0;
- const apply=()=>{frame=0;const niche=nicheNode?.dataset.niche||'health';if(!['health','ecommerce'].includes(niche))return;const lang=(langNode.lang||'es').slice(0,2),text=copy[lang]?.[niche]||copy.es[niche],el=document.getElementById('niche-result-copy');if(el&&el.textContent!==text)el.textContent=text;
-  section?.querySelectorAll('.rs-selector-btn').forEach(btn=>{btn.style.setProperty('--rs-accent','#e7a18b','important');btn.style.setProperty('background',btn.classList.contains('is-active')?'linear-gradient(145deg,rgba(37,30,28,.98),rgba(12,13,15,.99))':'linear-gradient(145deg,rgba(24,27,30,.98),rgba(10,12,14,.99))','important');btn.style.setProperty('border-color',btn.classList.contains('is-active')?'rgba(255,112,72,.58)':'rgba(255,255,255,.12)','important');btn.style.setProperty('box-shadow',btn.classList.contains('is-active')?'0 0 0 1px rgba(255,112,72,.18),0 18px 42px rgba(0,0,0,.29)':'0 14px 34px rgba(0,0,0,.24)','important');const kicker=btn.querySelector('.rs-selector-kicker'),icon=btn.querySelector('.rs-selector-icon');if(kicker)kicker.style.setProperty('color','#e7a18b','important');if(icon)icon.style.setProperty('color','#e7a18b','important')});
+ const colors={health:'#ff3c00',ecommerce:'#58a6ff',food:'#f6cf4a'};
+ const body=document.body,root=document.documentElement,selector=document.querySelector('#sectores .rs-selector');
+ let timer=0;
+ const apply=()=>{
+  timer=0;
+  selector?.querySelectorAll('.rs-selector-btn').forEach(btn=>{
+   const n=btn.dataset.niche||'health';
+   btn.style.setProperty('--rs-accent',colors[n]||colors.health);
+   ['background','border-color','box-shadow'].forEach(p=>btn.style.removeProperty(p));
+  });
+  const n=body?.dataset.niche||'health';
+  if(!['health','ecommerce'].includes(n))return;
+  const lang=(root.lang||'es').slice(0,2),text=copy[lang]?.[n]||copy.es[n];
+  const el=document.getElementById('niche-result-copy');if(el&&el.textContent!==text)el.textContent=text;
  };
- const schedule=()=>{if(!frame)frame=requestAnimationFrame(apply)};
- apply();
- section?.addEventListener('click',schedule);
- document.getElementById('lang-selector')?.addEventListener('change',()=>setTimeout(schedule,0));
- new MutationObserver(schedule).observe(nicheNode,{attributes:true,attributeFilter:['data-niche']});
- new MutationObserver(schedule).observe(langNode,{attributes:true,attributeFilter:['lang']});
+ const schedule=()=>{if(timer)clearTimeout(timer);timer=setTimeout(apply,0)};
+ apply();selector?.addEventListener('click',schedule);
+ document.getElementById('lang-selector')?.addEventListener('change',schedule);
+ new MutationObserver(schedule).observe(body,{attributes:true,attributeFilter:['data-niche']});
+ new MutationObserver(schedule).observe(root,{attributes:true,attributeFilter:['lang']});
+ selector&&new MutationObserver(schedule).observe(selector,{subtree:true,attributes:true,attributeFilter:['aria-selected']});
 })();
 </script>
+
+
+<style id="rs-niche-black-cards-final-20261027">
+/* One uniform deep-black card surface; the individual brand accent appears only on focus, hover or selection. */
+#sectores .rs-selector-btn,#sectores .rs-selector-btn.rs-other-sector{background:#08090b!important;border:1px solid rgba(255,255,255,.13)!important;box-shadow:0 14px 34px rgba(0,0,0,.27),inset 0 1px 0 rgba(255,255,255,.045)!important;color:#f5f6f7!important;transition:background .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease!important}
+#sectores .rs-selector-btn strong{color:#f7f8fa!important}
+#sectores .rs-selector-btn small{color:#c9cdd2!important}
+#sectores .rs-selector-btn .rs-selector-kicker,#sectores .rs-selector-btn .rs-selector-icon{color:var(--rs-accent,#ff3c00)!important}
+#sectores .rs-selector-btn .rs-selector-icon{background:color-mix(in srgb,var(--rs-accent,#ff3c00) 9%,#08090b)!important;border:1px solid color-mix(in srgb,var(--rs-accent,#ff3c00) 42%,transparent)!important;box-shadow:none!important}
+#sectores .rs-selector-btn:hover,#sectores .rs-selector-btn:focus-visible,#sectores .rs-selector-btn.is-active,#sectores .rs-selector-btn.rs-other-sector:hover,#sectores .rs-selector-btn.rs-other-sector:focus-visible,#sectores .rs-selector-btn.rs-other-sector.is-active{background:linear-gradient(145deg,color-mix(in srgb,var(--rs-accent,#ff3c00) 12%,#0a0b0d),#08090b 78%)!important;border-color:color-mix(in srgb,var(--rs-accent,#ff3c00) 76%,white 8%)!important;box-shadow:0 0 0 1px color-mix(in srgb,var(--rs-accent,#ff3c00) 28%,transparent),0 16px 38px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.06)!important}
+#sectores .rs-selector-btn:hover strong,#sectores .rs-selector-btn:focus-visible strong,#sectores .rs-selector-btn.is-active strong{color:#fff!important}
+#sectores .rs-selector-btn:hover .rs-selector-kicker,#sectores .rs-selector-btn:focus-visible .rs-selector-kicker,#sectores .rs-selector-btn.is-active .rs-selector-kicker{color:var(--rs-accent,#ff3c00)!important}
+#sectores .rs-selector-btn:hover .rs-selector-icon,#sectores .rs-selector-btn:focus-visible .rs-selector-icon,#sectores .rs-selector-btn.is-active .rs-selector-icon{color:var(--rs-accent,#ff3c00)!important;background:color-mix(in srgb,var(--rs-accent,#ff3c00) 16%,#08090b)!important;border-color:color-mix(in srgb,var(--rs-accent,#ff3c00) 72%,transparent)!important}
+@media(prefers-reduced-motion:reduce){#sectores .rs-selector-btn{transition:none!important}}
+</style>
 
 </body>
 </html>
