@@ -1463,6 +1463,20 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 
 
 
+
+<style id="rs-hero-mobile-final-cleanup-20261026">
+@media(max-width:760px){
+ /* Keep the hero cue in document flow under the logo rail, not fixed to the screen edge. */
+ #main-content>.rs-hero-scroll-cue{position:relative!important;inset:auto!important;bottom:auto!important;left:auto!important;right:auto!important;display:flex!important;align-self:center!important;margin:-6px auto 0!important;transform:none!important}
+ /* Remove the redundant inner price frame; keep both prices and their labels. */
+ #hero-offer{border-color:transparent!important;background:transparent!important;box-shadow:none!important;padding:3px 0!important;margin-bottom:10px!important}
+ #hero-offer .rs-hero-price-grid{gap:8px!important}
+ #hero-offer .rs-hero-price-card{min-height:42px!important;padding:8px 11px!important;background:rgba(255,255,255,.035)!important;border-color:rgba(255,255,255,.075)!important;box-shadow:none!important}
+ #hero-offer .rs-hero-price-total{background:rgba(255,112,72,.055)!important;border-color:rgba(255,112,72,.18)!important}
+}
+@media(max-width:360px){#hero-offer .rs-hero-price-card{min-height:40px!important;padding:7px 9px!important}}
+</style>
+
 </head>
 <body class="font-sans overflow-x-hidden" data-niche="health"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
 <script>window.__rsPreloaderStartedAt=performance.now();</script>
@@ -5721,10 +5735,36 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
 </script>
 
 
-<style id="rs-mobile-scroll-cue-position-final-20261026">
-/* Final mobile cascade: cue stays in flow after the logos; move it up by 19px by reducing the gap. */
-@media(max-width:760px){#main-content>.rs-hero-scroll-cue{position:relative!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;display:flex!important;align-self:center!important;width:max-content!important;margin:-19px auto 0!important;transform:none!important}}
-</style>
+
+
+<script id="rs-mobile-hero-flow-fix-20261026">
+(()=>{
+ const cue=document.querySelector('#main-content>.rs-hero-scroll-cue');
+ const offer=document.getElementById('hero-offer');
+ if(!cue)return;
+ const mobile=window.matchMedia('(max-width: 760px)');
+ const apply=()=>{
+  if(mobile.matches){
+   cue.style.setProperty('position','relative','important');
+   cue.style.setProperty('inset','auto','important');
+   cue.style.setProperty('bottom','auto','important');
+   cue.style.setProperty('left','auto','important');
+   cue.style.setProperty('right','auto','important');
+   cue.style.setProperty('display','flex','important');
+   cue.style.setProperty('align-self','center','important');
+   cue.style.setProperty('margin','-6px auto 0','important');
+   cue.style.setProperty('transform','none','important');
+   if(offer){offer.style.setProperty('border-color','transparent','important');offer.style.setProperty('background','transparent','important');offer.style.setProperty('box-shadow','none','important');offer.style.setProperty('padding','3px 0','important');offer.style.setProperty('margin-bottom','10px','important');}
+  }else{
+   for(const property of ['position','inset','bottom','left','right','display','align-self','margin','transform'])cue.style.removeProperty(property);
+   if(offer)for(const property of ['border-color','background','box-shadow','padding','margin-bottom'])offer.style.removeProperty(property);
+  }
+ };
+ apply();
+ if(mobile.addEventListener)mobile.addEventListener('change',apply);else mobile.addListener(apply);
+ window.addEventListener('resize',apply,{passive:true});
+})();
+</script>
 
 </body>
 </html>
