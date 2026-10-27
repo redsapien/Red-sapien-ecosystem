@@ -5784,9 +5784,9 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
 <script id="rs-copy-refine-runtime-20261027">
 (()=>{
  const copy={
-  es:{health:'Creamos su web para atraer consultas y organizar citas.',ecommerce:'Creamos su tienda para mostrar productos y facilitar ventas.'},
-  en:{health:'We build your website to attract inquiries and organize appointments.',ecommerce:'We build your store to showcase products and make selling easier.'},
-  pt:{health:'Criamos seu site para atrair consultas e organizar agendamentos.',ecommerce:'Criamos sua loja para apresentar produtos e facilitar as vendas.'}
+  es:{health:'Web y seguimiento para convertir visitas en citas.',ecommerce:'Web, marketing y automatización para vender más.'},
+  en:{health:'Website and follow-up to turn visits into appointments.',ecommerce:'Website, marketing and automation to sell more.'},
+  pt:{health:'Site e acompanhamento para transformar visitas em consultas.',ecommerce:'Site, marketing e automação para vender mais.'}
  };
  const colors={health:'#ff3c00',ecommerce:'#58a6ff',food:'#f6cf4a'};
  const body=document.body,root=document.documentElement,selector=document.querySelector('#sectores .rs-selector');
@@ -5813,19 +5813,27 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
 </script>
 
 
-<style id="rs-niche-black-cards-final-20261027">
-/* One uniform deep-black card surface; the individual brand accent appears only on focus, hover or selection. */
-#sectores .rs-selector-btn,#sectores .rs-selector-btn.rs-other-sector{background:#08090b!important;border:1px solid rgba(255,255,255,.13)!important;box-shadow:0 14px 34px rgba(0,0,0,.27),inset 0 1px 0 rgba(255,255,255,.045)!important;color:#f5f6f7!important;transition:background .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease!important}
+
+
+
+<style id="rs-niche-activation-and-payment-note-20261027">
+/* Neutral graphite cards at first load; color is shown only after a visitor selects a niche. */
+#sectores .rs-selector-btn,#sectores .rs-selector-btn.rs-other-sector{background:#111214!important;border:1px solid rgba(255,255,255,.13)!important;box-shadow:0 12px 30px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.035)!important;color:#f4f5f6!important;transition:background .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease!important}
 #sectores .rs-selector-btn strong{color:#f7f8fa!important}
 #sectores .rs-selector-btn small{color:#c9cdd2!important}
-#sectores .rs-selector-btn .rs-selector-kicker,#sectores .rs-selector-btn .rs-selector-icon{color:var(--rs-accent,#ff3c00)!important}
-#sectores .rs-selector-btn .rs-selector-icon{background:color-mix(in srgb,var(--rs-accent,#ff3c00) 9%,#08090b)!important;border:1px solid color-mix(in srgb,var(--rs-accent,#ff3c00) 42%,transparent)!important;box-shadow:none!important}
-#sectores .rs-selector-btn:hover,#sectores .rs-selector-btn:focus-visible,#sectores .rs-selector-btn.is-active,#sectores .rs-selector-btn.rs-other-sector:hover,#sectores .rs-selector-btn.rs-other-sector:focus-visible,#sectores .rs-selector-btn.rs-other-sector.is-active{background:linear-gradient(145deg,color-mix(in srgb,var(--rs-accent,#ff3c00) 12%,#0a0b0d),#08090b 78%)!important;border-color:color-mix(in srgb,var(--rs-accent,#ff3c00) 76%,white 8%)!important;box-shadow:0 0 0 1px color-mix(in srgb,var(--rs-accent,#ff3c00) 28%,transparent),0 16px 38px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.06)!important}
-#sectores .rs-selector-btn:hover strong,#sectores .rs-selector-btn:focus-visible strong,#sectores .rs-selector-btn.is-active strong{color:#fff!important}
-#sectores .rs-selector-btn:hover .rs-selector-kicker,#sectores .rs-selector-btn:focus-visible .rs-selector-kicker,#sectores .rs-selector-btn.is-active .rs-selector-kicker{color:var(--rs-accent,#ff3c00)!important}
-#sectores .rs-selector-btn:hover .rs-selector-icon,#sectores .rs-selector-btn:focus-visible .rs-selector-icon,#sectores .rs-selector-btn.is-active .rs-selector-icon{color:var(--rs-accent,#ff3c00)!important;background:color-mix(in srgb,var(--rs-accent,#ff3c00) 16%,#08090b)!important;border-color:color-mix(in srgb,var(--rs-accent,#ff3c00) 72%,transparent)!important}
+#sectores .rs-selector-btn .rs-selector-kicker,#sectores .rs-selector-btn .rs-selector-icon{color:#d7d9dc!important}
+#sectores .rs-selector-btn .rs-selector-icon{background:rgba(255,255,255,.035)!important;border-color:rgba(255,255,255,.15)!important;box-shadow:none!important}
+#sectores .rs-selector-btn:hover,#sectores .rs-selector-btn:focus-visible,#sectores .rs-selector-btn.rs-other-sector:hover,#sectores .rs-selector-btn.rs-other-sector:focus-visible{background:#111214!important;border-color:rgba(255,255,255,.2)!important;box-shadow:0 14px 32px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.04)!important}
+body.rs-niche-interacted #sectores .rs-selector-btn.is-active{background:linear-gradient(145deg,color-mix(in srgb,var(--rs-accent,#ff3c00) 12%,#111214),#111214 80%)!important;border-color:color-mix(in srgb,var(--rs-accent,#ff3c00) 78%,white 5%)!important;box-shadow:0 0 0 1px color-mix(in srgb,var(--rs-accent,#ff3c00) 25%,transparent),0 16px 36px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.05)!important}
+body.rs-niche-interacted #sectores .rs-selector-btn.is-active .rs-selector-kicker,body.rs-niche-interacted #sectores .rs-selector-btn.is-active .rs-selector-icon{color:var(--rs-accent,#ff3c00)!important}
+body.rs-niche-interacted #sectores .rs-selector-btn.is-active .rs-selector-icon{background:color-mix(in srgb,var(--rs-accent,#ff3c00) 13%,#111214)!important;border-color:color-mix(in srgb,var(--rs-accent,#ff3c00) 55%,transparent)!important}
+#hero-offer .rs-hero-payment-note{font-size:clamp(.836rem,1.045vw,.946rem)!important;line-height:1.45!important}
+@media(max-width:760px){#hero-offer .rs-hero-payment-note{font-size:.869rem!important;line-height:1.45!important}}
 @media(prefers-reduced-motion:reduce){#sectores .rs-selector-btn{transition:none!important}}
 </style>
+<script id="rs-niche-activation-listener-20261027">
+(()=>{const s=document.querySelector('#sectores .rs-selector');if(!s)return;s.addEventListener('click',e=>{if(e.target.closest('.rs-selector-btn'))document.body.classList.add('rs-niche-interacted')});})();
+</script>
 
 </body>
 </html>
