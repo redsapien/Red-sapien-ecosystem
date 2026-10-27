@@ -1444,9 +1444,9 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 </style>
 
 <style id="rs-hero-menu-responsive-refinement-20261026">
-/* Raise the scroll cue by one full cue-height so it clears the first-fold edge. */
-#main-content>.rs-hero-scroll-cue{bottom:calc(max(12px,env(safe-area-inset-bottom)) + 40px)!important}
-@media(max-width:760px){#main-content>.rs-hero-scroll-cue{bottom:calc(max(12px,env(safe-area-inset-bottom)) + 36px)!important}}
+/* Raise the scroll cue exactly 19px from the previous placement on desktop and mobile. */
+#main-content>.rs-hero-scroll-cue{bottom:calc(max(12px,env(safe-area-inset-bottom)) + 59px)!important}
+@media(max-width:760px){#main-content>.rs-hero-scroll-cue{bottom:calc(max(12px,env(safe-area-inset-bottom)) + 55px)!important}}
 /* Drop the menu choice cards slightly below the overlay's optical centre. */
 #mobile-menu .rs-menu-options{transform:translateY(clamp(18px,3.2vh,30px));transition:transform .36s cubic-bezier(.2,.7,.2,1)}
 #mobile-menu .rs-menu-option{border-color:rgba(255,255,255,.12)!important;background:linear-gradient(145deg,rgba(18,20,23,.92),rgba(8,10,12,.78))!important;box-shadow:0 14px 34px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.045)!important}
