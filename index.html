@@ -1477,6 +1477,20 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 @media(max-width:360px){#hero-offer .rs-hero-price-card{min-height:40px!important;padding:7px 9px!important}}
 </style>
 
+
+<style id="rs-copy-and-visual-refine-20261027">
+/* One calm graphite surface for all niche cards; the selected state shares one restrained brand accent. */
+#sectores .rs-selector-btn{background:linear-gradient(145deg,rgba(24,27,30,.98),rgba(10,12,14,.99))!important;border:1px solid rgba(255,255,255,.12)!important;box-shadow:0 14px 34px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.055)!important}
+#sectores .rs-selector-btn:hover,#sectores .rs-selector-btn:focus-visible{background:linear-gradient(145deg,rgba(29,32,35,.98),rgba(12,14,16,.99))!important;border-color:rgba(255,112,72,.36)!important;box-shadow:0 18px 38px rgba(0,0,0,.29),inset 0 1px 0 rgba(255,255,255,.07)!important}
+#sectores .rs-selector-btn.is-active{background:linear-gradient(145deg,rgba(37,30,28,.98),rgba(12,13,15,.99))!important;border-color:rgba(255,112,72,.58)!important;box-shadow:0 0 0 1px rgba(255,112,72,.18),0 18px 42px rgba(0,0,0,.29),inset 0 1px 0 rgba(255,255,255,.08)!important}
+#sectores .rs-selector-btn .rs-selector-kicker,#sectores .rs-selector-btn.is-active .rs-selector-kicker{color:#e7a18b!important}
+#sectores .rs-selector-btn .rs-selector-icon,#sectores .rs-selector-btn.is-active .rs-selector-icon{color:#e7a18b!important}
+/* The hero keeps a faint translucent frame, not a heavy box. */
+#hero-content .rs-hero-conversion{border-color:rgba(255,255,255,.075)!important;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012) 66%,rgba(0,0,0,.08))!important;box-shadow:0 14px 34px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.035)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+@media(max-width:760px){#hero-content .rs-hero-conversion{border-color:rgba(255,255,255,.055)!important;background:rgba(255,255,255,.012)!important;box-shadow:none!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}}
+@media(prefers-reduced-motion:reduce){#sectores .rs-selector-btn{transition:none!important}}
+</style>
+
 </head>
 <body class="font-sans overflow-x-hidden" data-niche="health"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
 <script>window.__rsPreloaderStartedAt=performance.now();</script>
@@ -5763,6 +5777,28 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
  apply();
  if(mobile.addEventListener)mobile.addEventListener('change',apply);else mobile.addListener(apply);
  window.addEventListener('resize',apply,{passive:true});
+})();
+</script>
+
+
+<script id="rs-copy-refine-runtime-20261027">
+(()=>{
+ const copy={
+  es:{health:'Ayude a captar nuevas oportunidades, dar seguimiento a cada contacto y hacer crecer su negocio con herramientas digitales de alto valor.',ecommerce:'Potencie su marca, atraiga compradores y facilite cada paso de la venta con soluciones digitales innovadoras.'},
+  en:{health:'Capture new opportunities, follow up with every inquiry and grow your business with high-value digital tools.',ecommerce:'Strengthen your brand, attract buyers and make each step toward a sale easier with tailored digital solutions.'},
+  pt:{health:'Capte novas oportunidades, acompanhe cada contato e faça seu negócio crescer com ferramentas digitais de alto valor.',ecommerce:'Fortaleça sua marca, atraia compradores e facilite cada etapa da venda com soluções digitais inovadoras.'}
+ };
+ const nicheNode=document.body,section=document.querySelector('#sectores .rs-selector'),langNode=document.documentElement;
+ let frame=0;
+ const apply=()=>{frame=0;const niche=nicheNode?.dataset.niche||'health';if(!['health','ecommerce'].includes(niche))return;const lang=(langNode.lang||'es').slice(0,2),text=copy[lang]?.[niche]||copy.es[niche],el=document.getElementById('niche-result-copy');if(el&&el.textContent!==text)el.textContent=text;
+  section?.querySelectorAll('.rs-selector-btn').forEach(btn=>{btn.style.setProperty('--rs-accent','#e7a18b','important');btn.style.setProperty('background',btn.classList.contains('is-active')?'linear-gradient(145deg,rgba(37,30,28,.98),rgba(12,13,15,.99))':'linear-gradient(145deg,rgba(24,27,30,.98),rgba(10,12,14,.99))','important');btn.style.setProperty('border-color',btn.classList.contains('is-active')?'rgba(255,112,72,.58)':'rgba(255,255,255,.12)','important');btn.style.setProperty('box-shadow',btn.classList.contains('is-active')?'0 0 0 1px rgba(255,112,72,.18),0 18px 42px rgba(0,0,0,.29)':'0 14px 34px rgba(0,0,0,.24)','important');const kicker=btn.querySelector('.rs-selector-kicker'),icon=btn.querySelector('.rs-selector-icon');if(kicker)kicker.style.setProperty('color','#e7a18b','important');if(icon)icon.style.setProperty('color','#e7a18b','important')});
+ };
+ const schedule=()=>{if(!frame)frame=requestAnimationFrame(apply)};
+ apply();
+ section?.addEventListener('click',schedule);
+ document.getElementById('lang-selector')?.addEventListener('change',()=>setTimeout(schedule,0));
+ new MutationObserver(schedule).observe(nicheNode,{attributes:true,attributeFilter:['data-niche']});
+ new MutationObserver(schedule).observe(langNode,{attributes:true,attributeFilter:['lang']});
 })();
 </script>
 
