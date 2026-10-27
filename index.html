@@ -3078,9 +3078,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
  viewport.addEventListener('pointerdown',dismiss,{once:true});viewport.addEventListener('touchstart',dismiss,{once:true,passive:true});viewport.addEventListener('keydown',dismiss,{once:true});
 })();
 (()=>{
- const cue=document.querySelector('.rs-hero-scroll-cue');if(!cue)return;let frame=0;
- const update=()=>{if(frame)return;frame=requestAnimationFrame(()=>{frame=0;const r=cue.getBoundingClientRect();cue.classList.toggle('is-scrolled',r.bottom<4)})};
- window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update,{passive:true});update();
+ // Keep the cue in stable document flow: no scroll-triggered hide/show or transform.
 })();
 
 </script>
@@ -5939,6 +5937,25 @@ body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body
 <script id="rs-mobile-hero-arrow-fix-runtime-20261027">
 (()=>{const mq=matchMedia('(max-width:760px)');const apply=()=>{const cue=document.querySelector('#main-content>.rs-hero-scroll-cue');if(!cue)return;if(mq.matches){cue.style.setProperty('transform','translateY(12px)','important');cue.style.setProperty('margin','0 auto 0','important')}else{cue.style.setProperty('transform','translateY(29px)','important')}};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();window.addEventListener('resize',apply,{passive:true});if(mq.addEventListener)mq.addEventListener('change',apply);else mq.addListener(apply)})();
 </script>
+
+
+<style id="rs-stable-scroll-and-arrow-only-20261027">
+/* Avoid a scroll-triggered jump: the cue stays in normal flow and does not transform/fade as the page scrolls. */
+#main-content .rs-hero-scroll-cue,#main-content .rs-hero-scroll-cue:hover,#main-content .rs-hero-scroll-cue:focus-visible,#main-content .rs-hero-scroll-cue.is-scrolled{border:0!important;border-color:transparent!important;border-radius:0!important;background:transparent!important;background-color:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;transition:color .18s ease!important;pointer-events:auto!important}
+#main-content .rs-hero-scroll-cue:hover,#main-content .rs-hero-scroll-cue:focus-visible{opacity:.42!important;color:rgba(255,255,255,.48)!important;outline:none!important}
+#main-content .rs-hero-scroll-cue.is-scrolled{opacity:.38!important}
+#logo-viewport .rs-logo-swipe-cue,#logo-viewport .rs-logo-swipe-cue:hover{border:0!important;border-color:transparent!important;border-radius:0!important;background:transparent!important;background-color:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#logo-viewport[data-rs-has-overflow="true"]:not([data-rs-hint-dismissed="true"]) .rs-logo-swipe-cue{opacity:.11!important}
+#logo-viewport .rs-logo-swipe-cue svg{opacity:.4!important}
+@media(max-width:760px){
+ /* svh stays stable when mobile browser chrome expands/collapses; avoid a viewport-height jump while scrolling. */
+ #main-content{min-height:100svh!important;height:auto!important}
+ #main-content .rs-hero-scroll-cue,#main-content .rs-hero-scroll-cue:hover,#main-content .rs-hero-scroll-cue:focus-visible,#main-content .rs-hero-scroll-cue.is-scrolled{transform:translateY(12px)!important;opacity:.38!important}
+ #main-content .rs-hero-scroll-cue svg{opacity:.40!important}
+}
+@media(min-width:761px){#main-content .rs-hero-scroll-cue,#main-content .rs-hero-scroll-cue:hover,#main-content .rs-hero-scroll-cue:focus-visible,#main-content .rs-hero-scroll-cue.is-scrolled{transform:translateY(29px)!important}}
+@media(prefers-reduced-motion:reduce){#main-content .rs-hero-scroll-cue,#logo-viewport .rs-logo-swipe-cue{transition:none!important}}
+</style>
 
 </body>
 </html>
