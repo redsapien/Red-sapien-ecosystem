@@ -5970,6 +5970,17 @@ body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body
 (()=>{const strip=()=>{const a=document.querySelector('#main-content>.rs-hero-scroll-cue');if(!a)return;for(const p of ['width','height','min-width','min-height','padding','border','border-radius','background','background-color','background-image','box-shadow','outline','backdrop-filter','filter'])a.style.setProperty(p,p==='width'||p==='height'?'16px':p==='min-width'||p==='min-height'?'0':'none','important');a.style.setProperty('margin','0 auto 0','important');const svg=a.querySelector('svg');if(svg){svg.style.setProperty('width','16px','important');svg.style.setProperty('height','16px','important');svg.style.setProperty('opacity','.40','important')}};strip();document.addEventListener('DOMContentLoaded',strip,{once:true});window.addEventListener('load',strip,{once:true});window.addEventListener('resize',strip,{passive:true});})();
 </script>
 
+<style id="rs-funnel-clarity-20261030">
+/* A restrained, visible selection in every niche while preserving its brand accent. */
+#sectores .rs-selector [role="tab"][aria-selected="false"]{background:#111214!important;border-color:rgba(255,255,255,.16)!important;box-shadow:0 8px 24px rgba(0,0,0,.22)!important}
+#sectores .rs-selector [role="tab"][aria-selected="false"] .rs-selector-kicker,#sectores .rs-selector [role="tab"][aria-selected="false"] .rs-selector-icon{color:#c4c9ce!important}
+#sectores .rs-selector [role="tab"][aria-selected="false"] .rs-selector-icon{background:rgba(255,255,255,.035)!important;border-color:rgba(255,255,255,.16)!important;box-shadow:none!important}
+#sectores .rs-selector [role="tab"][aria-selected="true"]{border-color:var(--rs-accent,#ff3c00)!important;box-shadow:0 0 0 1px color-mix(in srgb,var(--rs-accent,#ff3c00) 40%,transparent),0 10px 25px rgba(0,0,0,.22)!important}
+#sectores .rs-selector [role="tab"]:focus-visible{outline:3px solid #fff!important;outline-offset:3px!important}
+#sectores #niche-result-cta{white-space:normal!important;text-align:center;min-height:44px}
+@media(max-width:380px){#sectores #niche-result-cta{max-width:100%}}
+@media(prefers-reduced-motion:reduce){#sectores .rs-selector [role="tab"]{transition:none!important}}
+</style>
 </body>
 </html>
 <style id="rs-arrow-under-logos-20261027">
