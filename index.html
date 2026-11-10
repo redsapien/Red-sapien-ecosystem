@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" name="viewport"/>
-<meta content="Desarrollo web, marketing digital y ecosistemas de ventas con inteligencia artificial en Manizales y Colombia. Fase 1 desde $109.000 COP." name="description"/>
+<meta content="Desarrollo web, marketing digital y automatización con inteligencia artificial para negocios y profesionales en Manizales y Colombia." name="description"/>
 <meta content="#050505" name="theme-color"/>
 <meta content="es_CO" property="og:locale"/>
 <meta content="Red Sapien" name="author"/>
@@ -13,7 +13,7 @@
 <meta content="website" property="og:type"/>
 <meta content="https://redsapien.com/" property="og:url"/>
 <meta content="Red Sapien | Desarrollo web y marketing digital en Manizales" property="og:title"/>
-<meta content="Desarrollo web, marketing digital y ecosistemas de ventas con inteligencia artificial en Manizales y Colombia. Fase 1 desde $109.000 COP." property="og:description"/>
+<meta content="Desarrollo web, marketing digital y automatización con inteligencia artificial para negocios y profesionales en Manizales y Colombia." property="og:description"/>
 <meta content="https://redsapien.com/assets/Image/Imagen-Open-Red-Sapien.webp" property="og:image"/>
 <meta content="https://redsapien.com/assets/Image/Imagen-Open-Red-Sapien.webp" property="og:image:secure_url"/>
 <meta content="1200" property="og:image:width"/>
@@ -22,7 +22,7 @@
 <meta content="image/webp" property="og:image:type"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Red Sapien | Desarrollo web y marketing digital en Manizales" name="twitter:title"/>
-<meta content="Desarrollo web, marketing digital y ecosistemas de ventas con inteligencia artificial en Manizales y Colombia. Fase 1 desde $109.000 COP." name="twitter:description"/>
+<meta content="Desarrollo web, marketing digital y automatización con inteligencia artificial para negocios y profesionales en Manizales y Colombia." name="twitter:description"/>
 <meta content="https://redsapien.com/assets/Image/Imagen-Open-Red-Sapien.webp" name="twitter:image"/>
 <!-- Analítica externa retirada: evitamos dependencias de terceros que bloqueaban recursos. -->
 <link href="favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/><link href="favicon.svg" rel="shortcut icon" type="image/svg+xml"/><link href="favicon.svg" rel="apple-touch-icon"/>
@@ -1870,7 +1870,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 <div aria-hidden="true" class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end profile-bubble-wrapper rs-hero-hidden" id="profile-bubble-wrapper">
 <div aria-hidden="true" aria-live="polite" class="rs-profile-greeting" id="rs-profile-greeting"><span data-i18n="profileGreeting">Hola, soy Cristian. ¿Hablamos por WhatsApp?</span></div>
 <a aria-label="Escribir a Cristian por WhatsApp" class="profile-bubble visible relative cursor-pointer" data-rs-wa-key="profile" href="https://wa.me/573045625920" id="profile-bubble" rel="noopener noreferrer" tabindex="-1" target="_blank">
-<span class="rs-avatar-image-frame"><img alt="Cristian" decoding="async" fetchpriority="high" height="419" loading="eager" src="assets/Image/Avatar-Cristian.webp" width="465"/></span>
+<span class="rs-avatar-image-frame"><img alt="Cristian, fundador de Red Sapien" decoding="async" fetchpriority="high" height="419" loading="eager" src="assets/Image/Avatar-Cristian.webp" width="465"/></span>
 <span aria-hidden="true" class="rs-profile-cta-label" data-i18n="profileCtaLabel">Hablemos</span>
 <span aria-hidden="true" class="rs-avatar-status-dot"></span>
 </a>
@@ -3046,7 +3046,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
   }
  };
  const meta={
-  es:{title:'Red Sapien | Desarrollo web y marketing digital en Manizales',description:'Desarrollo web, marketing digital y ecosistemas de ventas con inteligencia artificial en Manizales y Colombia. Fase 1 desde $109.000 COP.',locale:'es_CO',imageAlt:'Servicios digitales de Red Sapien para negocios locales'},
+  es:{title:'Red Sapien | Desarrollo web y marketing digital en Manizales',description:'Desarrollo web, marketing digital y automatización con inteligencia artificial para negocios y profesionales en Manizales y Colombia.',locale:'es_CO',imageAlt:'Servicios digitales de Red Sapien para negocios locales'},
   en:{title:'Red Sapien | Websites, sales and Google in Manizales',description:'Websites, sales campaigns and Google visibility for businesses in Manizales. Phase 1: 109,000 pesos, paid on delivery.',locale:'en_US',imageAlt:'Red Sapien digital services for local businesses'},
   pt:{title:'Red Sapien | Sites, vendas e Google em Manizales',description:'Sites, campanhas e posicionamento no Google para negócios de Manizales. Fase 1: 109.000 pesos, pagamento na entrega.',locale:'pt_BR',imageAlt:'Serviços digitais da Red Sapien para negócios locais'}
  };;;
@@ -5641,7 +5641,7 @@ const labelTabs=()=>{ensureTab();const d=lang();for(const key of ['health','ecom
 let lastTrigger=null,curList=[],curIndex=0;
 const modal=document.getElementById('rs-case-modal');
 const setCTA=()=>{const d=lang(),n=activeNiche(),copyEl=document.getElementById('niche-result-copy'),cta=document.getElementById('niche-result-cta');if(copyEl)copyEl.textContent=d.desc[n]||d.desc.health;if(cta){cta.hidden=false;cta.href=`https://wa.me/573045625920?text=${encodeURIComponent('Hola, vi la web de Red Sapien. Quiero conocer la oferta para '+(n==='health'?'servicios profesionales':n==='realestate'?'inmobiliarias':n==='food'?'gastronomía':n==='other'?'otros sectores, como inmobiliarias o detailing':'e-commerce y soluciones a medida')+'.')}`;cta.textContent=n==='health'?'Consultar servicios →':n==='realestate'?'Consultar inmobiliarias →':n==='food'?'Consultar gastronomía →':n==='other'?({es:'Consultar otros sectores →',en:'Explore other sectors →',pt:'Consultar outros setores →'}[(document.documentElement.lang||'es').slice(0,2)]||'Consultar otros sectores →'):'Consultar soluciones →';cta.target='_blank';cta.rel='noopener noreferrer';}const caseSection=document.getElementById('casos-exito-ecosistemas');if(caseSection){const hide=n==='other'||n==='realestate';caseSection.hidden=hide;caseSection.setAttribute('aria-hidden',String(hide));}const title=document.getElementById('portfolio-title');if(title)title.textContent=d.cases;const region=document.querySelector('#casos-exito-ecosistemas h2');if(region)region.textContent=d.cases;const sub=document.querySelector('#casos-exito-ecosistemas p');if(sub)sub.textContent=d.sub;};
-const setModal=(i,focus=false)=>{if(!modal||!curList[i])return;curIndex=(i+curList.length)%curList.length;const c=curList[curIndex],d=lang(),n=activeNiche(),m=d.type[n][curIndex],p=d.proof[n][curIndex];modal.style.setProperty('--case-accent',n==='ecommerce'?'#58a6ff':n==='food'?'#f6cf4a':'#ff3c00');const im=document.getElementById('rs-case-modal-media');im.innerHTML=`<figure class="rs-case-media-figure"><figcaption>${d.imageLabel[n][curIndex]}</figcaption><img src="${c.img}" alt="${d.alt[n][curIndex]}" class="${c.logo?'rs-case-logo':''}" width="${c.w}" height="${c.h}" loading="eager" decoding="async"></figure>`;document.getElementById('rs-case-modal-kicker').textContent=({es:'Marcas reales',en:'Real brands',pt:'Marcas reais'}[document.documentElement.lang]||'Marcas reales');document.getElementById('rs-case-modal-title').textContent=c.name;document.getElementById('rs-case-modal-type').textContent=m;const sm=document.getElementById('rs-case-modal-summary');sm.textContent=p;sm.hidden=false;const isHijole=n==='food'&&curIndex===5,metricEl=document.getElementById('rs-case-modal-metric'),statsEl=document.getElementById('rs-case-modal-stats'),campaignEl=document.getElementById('rs-case-modal-campaign-panel');metricEl.hidden=isHijole;metricEl.textContent=isHijole?({es:'Cifras reportadas · no son ventas.',en:'Reported figures · not sales.',pt:'Dados reportados · não são vendas.'}[document.documentElement.lang]||'Cifras reportadas · no son ventas.'):'';statsEl.hidden=!isHijole;if(isHijole){const rows=({es:[['Conversaciones iniciadas','1.003'],['Costo por conversación','COP $782,34']],en:[['Conversations initiated','1,003'],['Cost per conversation','COP $782.34']],pt:[['Conversas iniciadas','1.003'],['Custo por conversa','COP $782,34']]}[document.documentElement.lang]||[['Conversaciones iniciadas','1.003'],['Costo por conversación','COP $782,34']]);for(let k=0;k<4;k++){const tile=statsEl.children[k],value=document.getElementById(`rs-case-stat-value-${k+1}`),label=document.getElementById(`rs-case-stat-label-${k+1}`),row=rows[k];tile.hidden=!row;if(value)value.textContent=row?.[1]||'';if(label)label.textContent=row?.[0]||''}}campaignEl.hidden=true;const a=document.getElementById('rs-case-modal-link');a.href=c.url||'#';a.target=c.url?'_blank':'_self';a.rel='noopener noreferrer';a.textContent=d.cta[n][curIndex];a.style.display=c.url?'inline-flex':'none';a.hidden=!c.url;modal.querySelectorAll('[data-case-nav]').forEach(x=>x.hidden=curList.length<2);modal.querySelector('[data-case-nav="-1"]')?.setAttribute('aria-label',d.previous);modal.querySelector('[data-case-nav="1"]')?.setAttribute('aria-label',d.next);modal.setAttribute('aria-hidden','false');modal.classList.add('is-open');document.body.style.overflow='hidden';if(focus)modal.querySelector('.rs-case-modal-close')?.focus();};
+const setModal=(i,focus=false)=>{if(!modal||!curList.length)return;curIndex=((i%curList.length)+curList.length)%curList.length;const c=curList[curIndex],d=lang(),n=activeNiche(),m=d.type[n][curIndex],p=d.proof[n][curIndex];modal.style.setProperty('--case-accent',n==='ecommerce'?'#58a6ff':n==='food'?'#f6cf4a':'#ff3c00');const im=document.getElementById('rs-case-modal-media');im.innerHTML=`<figure class="rs-case-media-figure"><figcaption>${d.imageLabel[n][curIndex]}</figcaption><img src="${c.img}" alt="${d.alt[n][curIndex]}" class="${c.logo?'rs-case-logo':''}" width="${c.w}" height="${c.h}" loading="eager" decoding="async"></figure>`;document.getElementById('rs-case-modal-kicker').textContent=({es:'Marcas reales',en:'Real brands',pt:'Marcas reais'}[document.documentElement.lang]||'Marcas reales');document.getElementById('rs-case-modal-title').textContent=c.name;document.getElementById('rs-case-modal-type').textContent=m;const sm=document.getElementById('rs-case-modal-summary');sm.textContent=p;sm.hidden=false;const isHijole=n==='food'&&curIndex===5,metricEl=document.getElementById('rs-case-modal-metric'),statsEl=document.getElementById('rs-case-modal-stats'),campaignEl=document.getElementById('rs-case-modal-campaign-panel');metricEl.hidden=isHijole;metricEl.textContent=isHijole?({es:'Cifras reportadas · no son ventas.',en:'Reported figures · not sales.',pt:'Dados reportados · não são vendas.'}[document.documentElement.lang]||'Cifras reportadas · no son ventas.'):'';statsEl.hidden=!isHijole;if(isHijole){const rows=({es:[['Conversaciones iniciadas','1.003'],['Costo por conversación','COP $782,34']],en:[['Conversations initiated','1,003'],['Cost per conversation','COP $782.34']],pt:[['Conversas iniciadas','1.003'],['Custo por conversa','COP $782,34']]}[document.documentElement.lang]||[['Conversaciones iniciadas','1.003'],['Costo por conversación','COP $782,34']]);for(let k=0;k<4;k++){const tile=statsEl.children[k],value=document.getElementById(`rs-case-stat-value-${k+1}`),label=document.getElementById(`rs-case-stat-label-${k+1}`),row=rows[k];tile.hidden=!row;if(value)value.textContent=row?.[1]||'';if(label)label.textContent=row?.[0]||''}}campaignEl.hidden=true;const a=document.getElementById('rs-case-modal-link');a.href=c.url||'#';a.target=c.url?'_blank':'_self';a.rel='noopener noreferrer';a.textContent=d.cta[n][curIndex];a.style.display=c.url?'inline-flex':'none';a.hidden=!c.url;modal.querySelectorAll('[data-case-nav]').forEach(x=>x.hidden=curList.length<2);modal.querySelector('[data-case-nav="-1"]')?.setAttribute('aria-label',d.previous);modal.querySelector('[data-case-nav="1"]')?.setAttribute('aria-label',d.next);modal.setAttribute('aria-hidden','false');modal.classList.add('is-open');document.body.style.overflow='hidden';if(focus)modal.querySelector('.rs-case-modal-close')?.focus();};
 const open=(i,trigger)=>{lastTrigger=trigger;curList=sites[activeNiche()]||sites.health;setModal(i,true)};
 const close=()=>{if(!modal||!modal.classList.contains('is-open'))return;modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';if(lastTrigger?.isConnected)lastTrigger.focus();};
 const paintTabs=()=>{for(const [key,color] of [['health','#ff3c00'],['ecommerce','#58a6ff'],['food','#f6cf4a'],['other','#ff7048']]){const b=selector.querySelector(`[data-niche=\"${key}\"]`);if(!b)continue;b.style.setProperty('--rs-accent',color);['background','border-color','box-shadow'].forEach(p=>b.style.removeProperty(p));}};
@@ -6142,4 +6142,43 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
 </style>
 <script id="rs-arrow-under-logos-move-20261027">
 (()=>{const move=()=>{const cue=document.querySelector('#main-content>.rs-hero-scroll-cue'),logos=document.getElementById('logo-viewport-shell');if(cue&&logos&&cue.previousElementSibling!==logos)logos.insertAdjacentElement('afterend',cue)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',move,{once:true});else move()})();
+</script>
+
+<style id="rs-senior-audit-draft-20261110">
+/* Demo de IA: unifica acentos de marca; conserva colores de otros sectores. */
+#agente-seguimiento.rs-agent-demo,body[data-niche] #agente-seguimiento.rs-agent-demo{--rs-agent-accent:#ff7048!important;--rs-selected-color:#ff3c00!important}
+#agente-seguimiento .rs-agent-heading-niche span{color:#ffad98!important;border-color:rgba(255,112,72,.38)!important;background:rgba(255,60,0,.09)!important}
+#agente-seguimiento .rs-agent-details-summary{border-color:rgba(255,112,72,.28)!important;background:linear-gradient(110deg,rgba(255,60,0,.055),rgba(255,255,255,.018))!important}
+#agente-seguimiento .rs-agent-details-summary:hover{border-color:rgba(255,112,72,.55)!important}
+#agente-seguimiento .rs-agent-details-summary:focus-visible{outline:3px solid #ffad98!important;outline-offset:3px}
+#agente-seguimiento .rs-agent-details-plus{border-color:rgba(255,112,72,.35)!important;color:#ffad98!important;background:rgba(255,60,0,.09)!important}
+/* Aire moderado entre secciones, sin cambiar contenido. */
+#sectores{padding-block:clamp(86px,8vw,118px)!important}
+#casos-exito-ecosistemas{padding-block:clamp(76px,7.5vw,112px)!important}
+#maquinaria-automatizada{padding-block:clamp(80px,8vw,120px)!important}
+#seccion-5-pricing{padding-block:clamp(76px,7vw,104px)!important}
+@media(max-width:680px){#sectores{padding-block:76px 62px!important}#casos-exito-ecosistemas{padding-block:68px!important}#maquinaria-automatizada{padding-block:70px!important}#seccion-5-pricing{padding-block:66px!important}}
+</style>
+
+<style id="rs-mobile-contact-safe-20261110">
+@media(max-width:760px){
+ #floating-whatsapp-container,#profile-bubble-wrapper{right:max(14px,env(safe-area-inset-right))!important;bottom:var(--rs-mobile-contact-bottom,clamp(76px,14vh,108px))!important}
+}
+</style>
+<script id="rs-logo-clearance-20261110">
+(()=>{
+ const rail=document.getElementById('logo-viewport-shell'), wa=document.getElementById('floating-whatsapp-container'), profile=document.getElementById('profile-bubble-wrapper');
+ if(!rail||!wa||!profile)return;
+ let queued=false;
+ const place=()=>{queued=false; if(!matchMedia('(max-width:760px)').matches){wa.style.removeProperty('--rs-mobile-contact-bottom');profile.style.removeProperty('--rs-mobile-contact-bottom');return}
+  const h=window.innerHeight, base=Math.max(76,Math.min(108,h*.14)), r=rail.getBoundingClientRect(), active=wa.classList.contains('is-visible')?wa:profile, rect=active.getBoundingClientRect(), size=Math.max(58,Math.min(80,rect.height||58));
+  let bottom=base, y=h-bottom-size;
+  if(r.bottom>0&&r.top<h&&y<r.bottom+8&&y+size>r.top-8){const below=h-r.bottom-size-8, above=h-r.top+8; if(below>=16)bottom=Math.min(base,below);else if(above+size<=h-8)bottom=Math.max(base,above)}
+  for(const el of [wa,profile])el.style.setProperty('--rs-mobile-contact-bottom',`${Math.max(16,bottom)}px`);
+ };
+ const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(place)}};
+ addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});addEventListener('load',schedule,{once:true});
+ if('ResizeObserver'in window){const ro=new ResizeObserver(schedule);ro.observe(rail)}
+ new MutationObserver(schedule).observe(wa,{attributes:true,attributeFilter:['class']});schedule();
+})();
 </script>
