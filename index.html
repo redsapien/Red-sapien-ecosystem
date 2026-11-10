@@ -1499,7 +1499,17 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 #footer-red-sapien .rs-independent-notice a:focus-visible{outline:2px solid #fff;outline-offset:3px}
 @media(max-width:480px){#footer-red-sapien .rs-independent-notice{padding:.85rem .8rem;font-size:.68rem}}
 @media(prefers-reduced-motion:reduce){#footer-red-sapien .rs-independent-notice a{transition:none}}
-</style></head>
+</style><style id="rs-payment-label-20261110">
+#seccion-5-pricing .rs-payment-single{width:max-content;max-width:100%;margin:10px auto 0;padding:7px 12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:#f5f5f5;font:700 .83rem/1.2 Inter,system-ui,sans-serif;letter-spacing:.015em;text-align:center;background:rgba(255,255,255,.045)}
+@media(max-width:480px){#seccion-5-pricing .rs-payment-single{font-size:.78rem;padding:7px 10px}}
+</style>
+<style id="rs-wa-early-wave-20261110">
+#floating-whatsapp-container.is-visible .wa-premium-glow-button{position:relative}
+#floating-whatsapp-container.is-visible .wa-premium-glow-button::before{animation:rsWaSignalWave 2.8s ease-out infinite!important}
+@keyframes rsWaSignalWave{0%{box-shadow:0 0 0 0 rgba(37,211,102,.38)}65%,100%{box-shadow:0 0 0 13px rgba(37,211,102,0)}}
+@media(prefers-reduced-motion:reduce){#floating-whatsapp-container.is-visible .wa-premium-glow-button::before{animation:none!important}}
+</style>
+</head>
 <body class="font-sans overflow-x-hidden" data-niche="health"><a class="rs-skip-link" href="#main-content">Saltar al contenido principal</a>
 <script>window.__rsPreloaderStartedAt=performance.now();</script>
 <div aria-label="Cargando Red Sapien" aria-live="polite" class="fixed inset-0 z-[9999] bg-rs-black flex flex-col justify-center items-center" id="preloader" role="status">
@@ -1847,7 +1857,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 })();
 </script>
 </section>
-<div aria-hidden="true" class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-2 group opacity-0 translate-y-10 pointer-events-none transition-all duration-500 ease-out" id="floating-whatsapp-container">
+<div aria-hidden="false" class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-2 group opacity-0 translate-y-10 pointer-events-none transition-all duration-500 ease-out is-visible" id="floating-whatsapp-container">
 <div class="rs-floating-wa-label bg-neutral-950/95 backdrop-blur-md border border-white/10 py-2 px-3.5 rounded-xl opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-2xl pointer-events-auto">
 <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span><span class="text-[9px] font-mono tracking-wider text-white uppercase font-bold" data-i18n="whatsappTooltip">Hablemos</span></div>
 </div>
@@ -1857,9 +1867,9 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 </svg>
 </a>
 </div>
-<div aria-hidden="false" class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end profile-bubble-wrapper rs-hero-hidden" id="profile-bubble-wrapper">
+<div aria-hidden="true" class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end profile-bubble-wrapper rs-hero-hidden" id="profile-bubble-wrapper">
 <div aria-hidden="true" aria-live="polite" class="rs-profile-greeting" id="rs-profile-greeting"><span data-i18n="profileGreeting">Hola, soy Cristian. ¿Hablamos por WhatsApp?</span></div>
-<a aria-label="Escribir a Cristian por WhatsApp" class="profile-bubble visible relative cursor-pointer" data-rs-wa-key="profile" href="https://wa.me/573045625920" id="profile-bubble" rel="noopener noreferrer" tabindex="0" target="_blank">
+<a aria-label="Escribir a Cristian por WhatsApp" class="profile-bubble visible relative cursor-pointer" data-rs-wa-key="profile" href="https://wa.me/573045625920" id="profile-bubble" rel="noopener noreferrer" tabindex="-1" target="_blank">
 <span class="rs-avatar-image-frame"><img alt="Cristian" decoding="async" fetchpriority="high" height="419" loading="eager" src="assets/Image/Avatar-Cristian.webp" width="465"/></span>
 <span aria-hidden="true" class="rs-profile-cta-label" data-i18n="profileCtaLabel">Hablemos</span>
 <span aria-hidden="true" class="rs-avatar-status-dot"></span>
@@ -1871,6 +1881,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 <article class="rs-offer-card" data-rs-reveal="" id="rs-offer-card">
 <h2 class="rs-offer-title" data-i18n="offerHeading" id="rs-offer-heading">Ecosistema completo</h2>
 <div class="rs-price-main" data-rs-reveal=""><strong data-i18n="priceTotalAmount">$327.000</strong><span data-i18n="priceCurrency">COP</span></div>
+<p class="rs-payment-single" data-i18n="pricePaymentLabel" data-rs-reveal="">Pago único contra entrega</p>
 <p class="rs-price-installment" data-i18n="priceInstallment" data-rs-reveal="">Ecosistema completo: $327.000 COP en 3 fases de $109.000 cada una. Pago contra entrega por fase.</p>
 </article>
 <div aria-labelledby="rs-faq-title" class="rs-faq-wrap" role="group">
@@ -2139,6 +2150,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
                 priceTotalAmount: "$327.000",
                 priceCurrency: "pesos",
                 priceInstallment: "3 fases de $109.000 pesos cada una. Cada fase se paga contra entrega.",
+                pricePaymentLabel: "Pago único contra entrega",
                 priceHosting: "Hosting y dominio incluidos.",
                 profileCtaLabel: "Hablemos",
                 profileGreeting: "¿Hablamos?", 
@@ -2230,6 +2242,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
                 priceTotalAmount: "$327,000",
                 priceCurrency: "COP",
                 priceInstallment: "3 phases at COP $109,000 each. Each phase is paid on delivery.",
+                pricePaymentLabel: "One-time payment on delivery",
                 priceHosting: "Hosting and domain included.",
                 profileCtaLabel: "Let’s talk",
                 profileGreeting: "Shall we talk?",
@@ -2321,6 +2334,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
                 priceTotalAmount: "$327.000",
                 priceCurrency: "COP",
                 priceInstallment: "3 fases de COP $109.000 cada uma. Cada fase é paga na entrega.",
+                pricePaymentLabel: "Pagamento único na entrega",
                 priceHosting: "Hospedagem e domínio incluídos.",
                 profileCtaLabel: "Vamos conversar",
                 profileGreeting: "Vamos conversar?",
@@ -5731,22 +5745,22 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
  if(select().length)document.documentElement.classList.add('rs-gentle-motion');
 })();
 </script>
-<script id="rs-final-section-bubble-20261026">
+<script id="rs-final-section-bubble-20261110">
 (()=>{
- const wrap=document.getElementById('profile-bubble-wrapper'),bubble=document.getElementById('profile-bubble'),greeting=document.getElementById('rs-profile-greeting'),bubbleCta=wrap?.querySelector('.rs-profile-cta-label'),waWrap=document.getElementById('floating-whatsapp-container'),waLink=waWrap?.querySelector('a'),section2=document.getElementById('sectores'),phase2=document.getElementById('card-phase-2');
- if(!wrap||!bubble||!greeting||!waWrap||!waLink||!section2||!phase2)return;
+ const wrap=document.getElementById('profile-bubble-wrapper'),bubble=document.getElementById('profile-bubble'),greeting=document.getElementById('rs-profile-greeting'),bubbleCta=wrap?.querySelector('.rs-profile-cta-label'),waWrap=document.getElementById('floating-whatsapp-container'),waLink=waWrap?.querySelector('a'),section3=document.getElementById('casos-exito-ecosistemas');
+ if(!wrap||!bubble||!greeting||!waWrap||!waLink||!section3)return;
  const originalGreeting=greeting.textContent.trim(),originalCta=bubbleCta?.textContent.trim()||'';
- let frame=0,greetingTimer=0,lastShown=false,lastHandOff=false;
+ let frame=0,greetingTimer=0,lastShown=false;
  const hideGreeting=()=>{if(greetingTimer){clearTimeout(greetingTimer);greetingTimer=0}greeting.classList.remove('is-visible');greeting.setAttribute('aria-hidden','true');wrap.classList.remove('rs-greeting-pop');if(bubbleCta&&originalCta)bubbleCta.textContent=originalCta;greeting.textContent=originalGreeting};
  const showGreeting=()=>{hideGreeting();wrap.classList.add('rs-greeting-pop');if(bubbleCta)bubbleCta.textContent='Hablemos';greeting.textContent='Hola, soy Cristian. ¿Hablamos?';greeting.classList.add('is-visible');greeting.setAttribute('aria-hidden','false');greetingTimer=setTimeout(hideGreeting,4000)};
- const update=()=>{frame=0;const y=window.scrollY||window.pageYOffset||0;const sectionTop=section2.getBoundingClientRect().top+y;const phaseTop=phase2.getBoundingClientRect().top+y;const showBubble=y+window.innerHeight*.42>=sectionTop;const handoff=y>=Math.max(0,phaseTop-window.innerHeight*.28);
-  wrap.classList.toggle('rs-hero-hidden',!showBubble||handoff);wrap.classList.toggle('is-visible',showBubble&&!handoff);bubble.classList.toggle('visible',showBubble&&!handoff);wrap.setAttribute('aria-hidden',String(!showBubble||handoff));bubble.tabIndex=showBubble&&!handoff?0:-1;
-  waWrap.classList.toggle('is-visible',handoff);waWrap.setAttribute('aria-hidden',String(!handoff));waLink.tabIndex=handoff?0:-1;
-  if(showBubble&&!lastShown&&!handoff)showGreeting();if(!showBubble||handoff)hideGreeting();lastShown=showBubble&&!handoff;lastHandOff=handoff;
+ const update=()=>{frame=0;const showBubble=section3.getBoundingClientRect().top<=window.innerHeight*.5;
+  wrap.classList.toggle('rs-hero-hidden',!showBubble);wrap.classList.toggle('is-visible',showBubble);bubble.classList.toggle('visible',showBubble);wrap.setAttribute('aria-hidden',String(!showBubble));bubble.tabIndex=showBubble?0:-1;
+  waWrap.classList.toggle('is-visible',!showBubble);waWrap.setAttribute('aria-hidden',String(showBubble));waLink.tabIndex=showBubble?-1:0;
+  if(showBubble&&!lastShown)showGreeting();if(!showBubble&&lastShown)hideGreeting();lastShown=showBubble;
  };
  const schedule=()=>{if(!frame)frame=requestAnimationFrame(update)};
  window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule,{passive:true});window.addEventListener('pageshow',schedule);window.addEventListener('load',schedule,{once:true});
- if('ResizeObserver'in window){const ro=new ResizeObserver(schedule);ro.observe(section2);ro.observe(phase2)}
+ if('ResizeObserver'in window){const ro=new ResizeObserver(schedule);ro.observe(section3)}
  bubble.addEventListener('click',hideGreeting);update();
 })();
 </script>
