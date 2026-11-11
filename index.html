@@ -6134,6 +6134,7 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
  #hero-content .rs-hero-copy{display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important}
  #hero-content #hero-title,#hero-content #hero-desc{width:100%!important;max-width:100%!important;margin-inline:auto!important;text-align:center!important}
  #hero-content>*{min-width:0!important;max-width:100%!important}
+ #hero-content #main-cta-wrap{padding-top:82px!important;box-sizing:border-box!important}
  #hero-title{max-width:100%!important;text-wrap:balance!important;overflow-wrap:anywhere!important}
  #main-content .rs-hero-desc{max-width:100%!important;text-wrap:balance!important;overflow-wrap:anywhere!important}
  #hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{min-width:0!important;max-width:100%!important}
@@ -6154,10 +6155,11 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
  if(!wa||!profile)return;
  const mobile=matchMedia('(max-width:760px)');let pending=false;
  const place=()=>{pending=false;if(!mobile.matches){wa.style.removeProperty('--rs-mobile-cta-bottom');profile.style.removeProperty('--rs-mobile-cta-bottom');return}
-  const h=window.innerHeight,active=wa.classList.contains('is-visible')?wa:profile,size=64,cta=document.getElementById('main-cta-wrap'),logos=document.getElementById('logo-viewport-shell');
-  const cr=cta?.getBoundingClientRect(),lr=logos?.getBoundingClientRect(),minY=16,maxY=h-size-14;let y=h-Math.max(132,Math.min(176,h*.18))-size;
+  const h=window.innerHeight,active=wa.classList.contains('is-visible')?wa:profile,size=64,cta=document.getElementById('main-cta'),offer=document.getElementById('hero-offer'),logos=document.getElementById('logo-viewport-shell');
+  const cr=cta?.getBoundingClientRect(),or=offer?.getBoundingClientRect(),lr=logos?.getBoundingClientRect(),minY=16,maxY=h-size-14;let y=h-Math.max(132,Math.min(176,h*.18))-size;
+  if(or&&cr&&or.bottom>0&&or.bottom<h&&cr.top-or.bottom>=size+8)y=Math.min(maxY,or.bottom+8);
   // Keep the button within thumb reach, below the main CTA whenever the visible gap allows it.
-  if(cr&&cr.bottom>0&&cr.bottom<h&&y<cr.bottom+14)y=Math.min(maxY,cr.bottom+16);
+  if(cr&&cr.bottom>0&&cr.bottom<h&&y<cr.bottom+14&&y+size>cr.top-8)y=Math.min(maxY,cr.bottom+16);
   // If that gap is too tight, move just above the CTA instead of covering it.
   if(cr&&cr.bottom>0&&cr.bottom<h&&y<cr.bottom&&y+size>cr.top-8)y=Math.max(16,cr.top-size-12);
   // If the logo rail is in view, move to the nearest clear zone without covering the hero CTA.
