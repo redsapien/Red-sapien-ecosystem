@@ -14,8 +14,8 @@
 <meta content="https://redsapien.com/" property="og:url"/>
 <meta content="Red Sapien | Desarrollo web y marketing digital en Manizales" property="og:title"/>
 <meta content="Desarrollo web, marketing digital y automatización con inteligencia artificial para negocios y profesionales en Manizales y Colombia." property="og:description"/>
-<meta content="https://redsapien.com/assets/Image/Imagen-Open-Red-Sapien.webp" property="og:image"/>
-<meta content="https://redsapien.com/assets/Image/Imagen-Open-Red-Sapien.webp" property="og:image:secure_url"/>
+<meta content="https://redsapien.com/assets/Image/Imagen-Open-Red-Sapien-20261111.webp" property="og:image"/>
+<meta content="https://redsapien.com/assets/Image/Imagen-Open-Red-Sapien-20261111.webp" property="og:image:secure_url"/>
 <meta content="1729" property="og:image:width"/>
 <meta content="910" property="og:image:height"/>
 <meta content="Servicios digitales de Red Sapien para negocios locales" property="og:image:alt"/>
@@ -23,7 +23,7 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Red Sapien | Desarrollo web y marketing digital en Manizales" name="twitter:title"/>
 <meta content="Desarrollo web, marketing digital y automatización con inteligencia artificial para negocios y profesionales en Manizales y Colombia." name="twitter:description"/>
-<meta content="https://redsapien.com/assets/Image/Imagen-Open-Red-Sapien.webp" name="twitter:image"/>
+<meta content="https://redsapien.com/assets/Image/Imagen-Open-Red-Sapien-20261111.webp" name="twitter:image"/>
 <!-- Analítica externa retirada: evitamos dependencias de terceros que bloqueaban recursos. -->
 <link href="favicon.svg" rel="icon" sizes="any" type="image/svg+xml"/><link href="favicon.svg" rel="shortcut icon" type="image/svg+xml"/><link href="favicon.svg" rel="apple-touch-icon"/>
 <link href="assets/css/tailwind-v3.4.17.css" rel="stylesheet"/>
@@ -6151,7 +6151,7 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
  #hero-content .rs-hero-copy{display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important}
  #hero-content #hero-title,#hero-content #hero-desc{width:100%!important;max-width:100%!important;margin-inline:auto!important;text-align:center!important}
  #hero-content>*{min-width:0!important;max-width:100%!important}
- #hero-content #main-cta-wrap{padding-top:82px!important;box-sizing:border-box!important}
+ #hero-content #main-cta-wrap{padding-top:57px!important;box-sizing:border-box!important}
  #hero-title{max-width:100%!important;text-wrap:balance!important;overflow-wrap:anywhere!important}
  #main-content .rs-hero-desc{max-width:100%!important;text-wrap:balance!important;overflow-wrap:anywhere!important}
  #hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{min-width:0!important;max-width:100%!important}
@@ -6258,26 +6258,35 @@ html:lang(es) .rs-preloader-human-ai [lang]:not([lang=es]),html:lang(en) .rs-pre
 @media(prefers-reduced-motion:reduce){#main-nav .rs-ai-signal__label{border-right:0!important}}
 </style>
 <script id="rs-nav-typing-1408-js">
-(()=>{
- const label=document.querySelector('#main-nav .rs-ai-signal__label');if(!label||!window.matchMedia)return;
- const media=matchMedia('(prefers-reduced-motion: reduce)'), copy={es:['Hecho por humanos','Impulsado por IA'],en:['Made by people','Powered by AI'],pt:['Feito por pessoas','Impulsionado por IA']};let timer=0,index=0,pos=0,step='hold',active='';
- function pick(){const lang=(document.documentElement.lang||'es').slice(0,2);return label.querySelector('[lang="'+(copy[lang]?lang:'es')+'"]')}
- function stop(){clearTimeout(timer);timer=0;label.classList.remove('is-typing')}
- function reset(){stop();const el=pick();if(!el)return;const lang=el.lang,words=copy[lang];active=lang;index=0;pos=words[0].length;step='hold';el.textContent=words[0];if(!media.matches&&!document.hidden)timer=setTimeout(tick,2400)}
- function tick(){const el=pick();if(!el||document.hidden||media.matches){stop();return}if(el.lang!==active){reset();return}const words=copy[active];
-  if(step==='hold'){step='erase';label.classList.add('is-typing')}
-  if(step==='erase'){pos--;el.textContent=words[index].slice(0,Math.max(0,pos));if(pos<=0){index=(index+1)%words.length;step='write'}timer=setTimeout(tick,38);return}
-  if(step==='write'){pos++;el.textContent=words[index].slice(0,pos);if(pos>=words[index].length){step='hold';label.classList.remove('is-typing');timer=setTimeout(tick,2400)}else timer=setTimeout(tick,65)}
+(function(){
+ var label=document.querySelector('#main-nav .rs-ai-signal__label');
+ if(!label)return;
+ var dictionary={es:['Hecho por humanos','Impulsado por IA'],en:['Made by people','Powered by AI'],pt:['Feito por pessoas','Impulsionado por IA']};
+ var timer=null,index=0,pos=0,stage='pause',active='es',reduce=false;
+ try{reduce=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)}catch(e){}
+ function lang(){var v=(document.documentElement.lang||'es').slice(0,2);return dictionary[v]?v:'es'}
+ function current(){return label.querySelector('[lang="'+lang()+'"]')||label.querySelector('[lang="es"]')}
+ function clear(){if(timer!==null){window.clearTimeout(timer);timer=null}label.classList.remove('is-typing')}
+ function schedule(fn,delay){timer=window.setTimeout(fn,delay)}
+ function reset(){clear();var el=current();if(!el)return;active=lang();index=0;var words=dictionary[active];pos=words[0].length;stage='pause';el.textContent=words[0];schedule(tick,2600)}
+ function tick(){timer=null;var el=current();if(!el)return;if(lang()!==active){reset();return}var words=dictionary[active];
+  if(reduce){index=(index+1)%words.length;el.textContent=words[index];schedule(tick,3600);return}
+  if(stage==='pause'){stage='erase';pos=words[index].length;label.classList.add('is-typing')}
+  if(stage==='erase'){pos--;el.textContent=words[index].slice(0,Math.max(0,pos));if(pos<=0){index=(index+1)%words.length;stage='write';pos=0}schedule(tick,42);return}
+  if(stage==='write'){pos++;el.textContent=words[index].slice(0,pos);if(pos>=words[index].length){stage='pause';label.classList.remove('is-typing');schedule(tick,2800)}else schedule(tick,62)}
  }
- new MutationObserver(reset).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});document.addEventListener('visibilitychange',reset);if(media.addEventListener)media.addEventListener('change',reset);else if(media.addListener)media.addListener(reset);reset();
+ reset();
+ var selector=document.getElementById('lang-selector');if(selector&&selector.addEventListener)selector.addEventListener('change',reset);
+ if(window.MutationObserver){try{new MutationObserver(reset).observe(document.documentElement,{attributes:true,attributeFilter:['lang']})}catch(e){}}
+ if(document.addEventListener)document.addEventListener('visibilitychange',function(){if(document.hidden)clear();else reset()});
 })();
 </script>
 <style id="rs-nav-preloader-refine-1444">
 #main-nav .rs-ai-signal--nav{border-color:rgba(255,118,110,.08);background:linear-gradient(90deg,rgba(45,11,14,.10),rgba(80,18,18,.17),rgba(45,11,14,.10));box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
 #main-nav .rs-ai-signal__wave i{background:#ff615a;box-shadow:0 0 6px rgba(255,68,60,.35)}
 #main-nav .rs-ai-signal__label{min-width:118px} @media(max-width:380px){#main-nav .rs-ai-signal__label{min-width:106px}}
-#preloader{isolation:isolate;overflow:hidden}#preloader .rs-preloader-network{position:absolute;z-index:0;inset:50% auto auto 50%;width:min(600px,100vw);height:auto;transform:translate(-50%,-50%);opacity:.65;pointer-events:none}#preloader .rs-preloader-mark,#preloader .rs-preloader-copy{position:relative;z-index:1}
-@media(prefers-reduced-motion:no-preference){#preloader .rs-preloader-network__nodes{animation:rs-loader-nodes-1444 2.6s ease-in-out infinite alternate}#preloader .rs-preloader-network__lines{stroke-dasharray:6 12;animation:rs-loader-flow-1444 6s linear infinite}@keyframes rs-loader-nodes-1444{from{opacity:.28}to{opacity:.9}}@keyframes rs-loader-flow-1444{to{stroke-dashoffset:-36}}}
+#preloader{position:fixed!important;isolation:isolate;overflow:hidden}#preloader .rs-preloader-network{position:absolute;z-index:0;top:50%;left:50%;right:auto;bottom:auto;width:100vw;max-width:600px;width:min(600px,100vw);height:auto;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);opacity:.65;pointer-events:none}#preloader .rs-preloader-mark,#preloader .rs-preloader-copy{position:relative;z-index:1}
+#preloader .rs-preloader-network__nodes{animation:rs-loader-nodes-1444 2.6s ease-in-out infinite alternate}#preloader .rs-preloader-network__lines{stroke-dasharray:6 12;animation:rs-loader-flow-1444 6s linear infinite}@keyframes rs-loader-nodes-1444{from{opacity:.28}to{opacity:.9}}@keyframes rs-loader-flow-1444{to{stroke-dashoffset:-36}}
 @media(prefers-reduced-motion:reduce){#preloader .rs-preloader-network__nodes,#preloader .rs-preloader-network__lines{animation:none!important}}
 </style>
 </body>
