@@ -1720,9 +1720,9 @@ su negocio.</h1>
 </div>
 </div>
 <figure class="rs-ecosystem-visual" aria-label="Sitio web, campañas de ventas y Google local conectados con apoyo de inteligencia artificial">
-  <div class="rs-ecosystem-visual__head"><span class="rs-eco-eyebrow"><span lang="es">UN ECOSISTEMA CONECTADO</span><span lang="en">A CONNECTED ECOSYSTEM</span><span lang="pt">UM ECOSSISTEMA CONECTADO</span></span><figcaption><span lang="es">Su negocio, en movimiento.</span><span lang="en">Your business, in motion.</span><span lang="pt">Seu negócio em movimento.</span></figcaption></div>
+  <div class="rs-ecosystem-visual__head"><span class="rs-eco-eyebrow"><span lang="es">TRES FASES DIGITALES</span><span lang="en">THREE DIGITAL PHASES</span><span lang="pt">TRÊS FASES DIGITAIS</span></span><figcaption><span lang="es">Todo conectado.</span><span lang="en">Everything connected.</span><span lang="pt">Tudo conectado.</span></figcaption></div>
   <div class="rs-ecosystem-visual__stage" aria-hidden="true">
-<svg class="rs-eco-wires" viewBox="0 0 760 270" preserveAspectRatio="none"><defs><linearGradient id="rs-eco-gradient-20261111" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#ff6868" stop-opacity=".28"/><stop offset=".5" stop-color="#ff2424" stop-opacity=".9"/><stop offset="1" stop-color="#ff6868" stop-opacity=".28"/></linearGradient></defs><path class="rs-eco-lines" d="M142 64 C244 64 270 126 380 126 M618 64 C516 64 490 126 380 126 M380 126 L380 218" fill="none" stroke="url(#rs-eco-gradient-20261111)" stroke-width="2"/><path class="rs-eco-flow" d="M142 64 C244 64 270 126 380 126 M618 64 C516 64 490 126 380 126 M380 126 L380 218" fill="none" stroke="#ffb4b4" stroke-width="2" stroke-dasharray="5 24"/><ellipse cx="380" cy="126" rx="194" ry="95" fill="none" stroke="#e51e26" stroke-opacity=".14" stroke-width="1"/></svg>
+<svg class="rs-eco-wires" viewBox="0 0 760 270" preserveAspectRatio="none"><defs><linearGradient id="rs-eco-gradient-20261111" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#ff6868" stop-opacity=".28"/><stop offset=".5" stop-color="#ff2424" stop-opacity=".9"/><stop offset="1" stop-color="#ff6868" stop-opacity=".28"/></linearGradient></defs><path class="rs-eco-lines" d="M142 64 C244 64 270 126 380 126 M618 64 C516 64 490 126 380 126 M380 126 L380 218" fill="none" stroke="url(#rs-eco-gradient-20261111)" stroke-width="2"/><path class="rs-eco-flow" d="M142 64 C244 64 270 126 380 126 M618 64 C516 64 490 126 380 126 M380 126 L380 218" fill="none" stroke="#ffd4d4" stroke-width="3" stroke-dasharray="8 22"/><ellipse cx="380" cy="126" rx="194" ry="95" fill="none" stroke="#e51e26" stroke-opacity=".14" stroke-width="1"/></svg>
 <div class="rs-eco-node rs-eco-web"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M7 6.5h.1M10 6.5h.1"/></svg><span><span lang="es">Sitio web</span><span lang="en">Website</span><span lang="pt">Site</span></span></div>
 <div class="rs-eco-node rs-eco-ads"><svg viewBox="0 0 24 24"><path d="M4 11v3h4l9 4V6l-9 4H4zM8 14l1 5h3l-1-4M20 9v6"/></svg><span><span lang="es">Campaña de ventas</span><span lang="en">Sales campaign</span><span lang="pt">Campanha de vendas</span></span></div>
 <div class="rs-eco-node rs-eco-seo"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4 4M8 10h5M10.5 7.5v5"/></svg><span><span lang="es">Google local</span><span lang="en">Local Google</span><span lang="pt">Google local</span></span></div>
@@ -6171,7 +6171,9 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
   const graphic=document.querySelector('.rs-ecosystem-visual__stage'),gr=graphic?.getBoundingClientRect();
   profile.classList.toggle('rs-eco-in-view',!!(gr&&gr.bottom>0&&gr.top<h));
   const ecoNodes=[...document.querySelectorAll('.rs-eco-ads,.rs-eco-seo')].map(el=>el.getBoundingClientRect());
-  const boxes=[lr,cr,...ecoNodes].filter(r=>r&&r.bottom>0&&r.top<h);
+  // Only move for elements that actually overlap the floating button horizontally.
+  const control=(profile.getAttribute('aria-hidden')==='false'?profile.querySelector('a'):wa.querySelector('a')).getBoundingClientRect();
+  const boxes=[lr,cr,...ecoNodes].filter(r=>r&&r.bottom>0&&r.top<h&&r.right>control.left&&r.left<control.right);
   for(let pass=0;pass<2;pass++)for(const r of boxes){
    if(y<r.bottom&&y+size>r.top){const below=r.bottom,above=r.top-size;if(below+size<=h)y=below;else if(above>=16)y=above;}
   }
@@ -6216,12 +6218,12 @@ html:lang(es) .rs-ecosystem-visual [lang]:not([lang=es]),html:lang(en) .rs-ecosy
 .rs-ecosystem-visual .rs-eco-ads{right:3%;top:12%;bottom:auto;max-width:43%}
 .rs-ecosystem-visual .rs-eco-seo{left:50%;right:auto;top:auto;bottom:2%;transform:translateX(-50%)}
 .rs-ecosystem-visual .rs-eco-core{top:46%}
-.rs-ecosystem-visual .rs-eco-flow{opacity:.75}
+.rs-ecosystem-visual .rs-eco-flow{opacity:.95}
 @media(max-width:480px){.rs-ecosystem-visual__stage{height:245px}.rs-ecosystem-visual .rs-eco-web{left:0;top:8%}.rs-ecosystem-visual .rs-eco-ads{right:0;top:8%;max-width:46%;white-space:normal;line-height:1.15}.rs-ecosystem-visual .rs-eco-seo{bottom:0}.rs-ecosystem-visual .rs-eco-core{top:43%}}
 @media(min-width:761px){#hero-content.rs-hero-layout{grid-template-columns:minmax(0,1fr) minmax(340px,.88fr)!important;gap:clamp(42px,6vw,88px)!important;align-items:center!important}#hero-content .rs-hero-conversion{max-width:480px;width:100%;justify-self:end}}
 #footer-red-sapien .rs-social-links a[href*="linkedin.com"]{width:48px;height:48px;border-color:rgba(100,166,255,.38);color:#b9d9ff;background:rgba(34,98,169,.12)}
 #footer-red-sapien .rs-social-links a[href*="linkedin.com"] svg{width:23px;height:23px}
-@media(prefers-reduced-motion:no-preference){.rs-ecosystem-visual .rs-eco-flow{animation:rs-eco-flow-0222 3s linear infinite}@keyframes rs-eco-flow-0222{to{stroke-dashoffset:-58}}.rs-ecosystem-visual .rs-eco-node{animation:rs-eco-node-0222 4.5s ease-in-out infinite}.rs-ecosystem-visual .rs-eco-ads{animation-delay:-1.5s}.rs-ecosystem-visual .rs-eco-seo{animation-name:rs-eco-node-center-0222;animation-delay:-3s}@keyframes rs-eco-node-0222{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}@keyframes rs-eco-node-center-0222{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-3px)}}}
+@media(prefers-reduced-motion:no-preference){.rs-ecosystem-visual .rs-eco-flow{animation:rs-eco-flow-0222 2.2s linear infinite}@keyframes rs-eco-flow-0222{to{stroke-dashoffset:-60}}.rs-ecosystem-visual .rs-eco-node{animation:rs-eco-node-0222 4.5s ease-in-out infinite}.rs-ecosystem-visual .rs-eco-ads{animation-delay:-1.5s}.rs-ecosystem-visual .rs-eco-seo{animation-name:rs-eco-node-center-0222;animation-delay:-3s}@keyframes rs-eco-node-0222{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}@keyframes rs-eco-node-center-0222{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-3px)}}}
 @media(prefers-reduced-motion:reduce){.rs-ecosystem-visual .rs-eco-flow,.rs-ecosystem-visual .rs-eco-node{animation:none!important}}
 </style>
 </body>
