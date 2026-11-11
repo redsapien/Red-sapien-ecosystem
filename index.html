@@ -6144,7 +6144,7 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
  #sectores .rs-selector{row-gap:16px!important}
  #ecosystem-slider{gap:16px!important}
  #maquinaria-automatizada #card-phase-2,#maquinaria-automatizada #card-phase-3{margin-top:24px!important}
- #floating-whatsapp-container,#profile-bubble-wrapper{right:max(14px,env(safe-area-inset-right))!important;bottom:calc(var(--rs-mobile-cta-bottom,35px) + env(safe-area-inset-bottom))!important}
+ #floating-whatsapp-container,#profile-bubble-wrapper{right:max(14px,env(safe-area-inset-right))!important;bottom:calc(var(--rs-mobile-cta-bottom,0px) + env(safe-area-inset-bottom))!important}
  #floating-whatsapp-container>a,#profile-bubble{width:64px!important;height:64px!important;min-width:64px!important;min-height:64px!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 }
 @media(max-width:380px){#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{padding-block:66px!important}}
@@ -6155,13 +6155,13 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
  const mobile=matchMedia('(max-width:760px)');let pending=false;
  const place=()=>{pending=false;if(!mobile.matches){wa.style.removeProperty('--rs-mobile-cta-bottom');profile.style.removeProperty('--rs-mobile-cta-bottom');return}
   const h=window.innerHeight,size=64,logos=document.getElementById('logo-viewport-shell'),cta=document.getElementById('main-cta');
-  const lr=logos?.getBoundingClientRect(),cr=cta?.getBoundingClientRect();let bottom=35,y=h-bottom-size;
-  // Preserve the requested 30px offset unless the control intersects visible logos or the main CTA.
+  const lr=logos?.getBoundingClientRect(),cr=cta?.getBoundingClientRect();let bottom=0,y=h-bottom-size;
+  // Keep the control above the safe area unless the control intersects visible logos or the main CTA.
   const boxes=[lr,cr].filter(r=>r&&r.bottom>0&&r.top<h);
   for(let pass=0;pass<2;pass++)for(const r of boxes){
-   if(y<r.bottom+8&&y+size>r.top-8){const below=r.bottom+8,above=r.top-size-8;if(below+size<=h-14)y=below;else if(above>=16)y=above;}
+   if(y<r.bottom+8&&y+size>r.top-8){const below=r.bottom+8,above=r.top-size-8;if(below+size<=h)y=below;else if(above>=16)y=above;}
   }
-  y=Math.max(16,Math.min(h-size-14,y));bottom=Math.round(h-y-size);
+  y=Math.max(16,Math.min(h-size,y));bottom=Math.round(h-y-size);
   wa.style.setProperty('--rs-mobile-cta-bottom',bottom+'px');profile.style.setProperty('--rs-mobile-cta-bottom',bottom+'px');
  };
  const schedule=()=>{if(!pending){pending=true;requestAnimationFrame(place)}};
