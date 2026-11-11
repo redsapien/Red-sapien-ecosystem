@@ -1509,6 +1509,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 <img alt="" aria-hidden="true" class="w-12 h-12 object-contain" decoding="async" fetchpriority="high" height="500" loading="eager" src="assets/Image/Logo-Red-Sapien.webp" width="500"/>
 </div>
 <p aria-label="Ingresando a Red Sapien" class="rs-preloader-copy">Ingresando<span aria-hidden="true" class="rs-preloader-dots"><i></i><i></i><i></i></span></p>
+<p class="rs-preloader-human-ai"><span lang="es">Pensado por humanos. Impulsado por IA.</span><span lang="en">Human-led. Powered by AI.</span><span lang="pt">Pensado por pessoas. Impulsionado por IA.</span></p>
 </div>
 <header class="fixed top-0 w-full z-50">
 <div class="h-1.5 w-full" id="colombia-stripe" style="background: linear-gradient(to right, #FCD116 50%, #003893 50% 75%, #CE1126 75%);"></div>
@@ -1522,6 +1523,10 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 <div class="hidden md:flex items-center gap-2">
 <a aria-label="Hablar con Red Sapien por WhatsApp" class="inline-flex px-4 py-2 text-xs font-bold text-white rounded-lg transition bg-rs-red hover:bg-rs-red/80 shadow-[0_0_15px_rgba(255,60,0,0.18)] whitespace-nowrap" data-rs-wa-key="general" href="https://wa.me/573045625920?text=Hola%2C%20quiero%20conocer%20las%20tres%20fases%20del%20ecosistema%20digital%20de%20Red%20Sapien%20para%20mi%20negocio." rel="noopener noreferrer" tabindex="-1" target="_blank">Hablemos</a>
 </div></div>
+<div class="rs-ai-signal rs-ai-signal--nav" aria-label="Impulsado por inteligencia artificial">
+ <span class="rs-ai-signal__wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+ <span class="rs-ai-signal__label"><span lang="es">Impulsado por IA</span><span lang="en">Powered by AI</span><span lang="pt">Impulsionado por IA</span></span>
+</div>
 <div aria-live="polite" class="scroll-support-banner" id="scroll-support-banner" role="status">
 <span class="scroll-support-copy" id="scroll-support-copy">
 <span class="scroll-support-message is-active" data-banner-phase="0" data-i18n="scrollPhase0">Manizales · Pereira · Cali.</span>
@@ -1584,10 +1589,7 @@ su negocio.</h1>
 <p class="text-base md:text-lg text-gray-300 font-normal mb-5 max-w-sm mx-auto leading-relaxed" data-i18n="heroDesc" id="hero-desc">
                 Creamos un ecosistema digital y llevamos clientes directo a su WhatsApp.
             </p>
-<div class="rs-ai-signal" aria-label="Ecosistema con apoyo de inteligencia artificial">
- <span class="rs-ai-signal__wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
- <span class="rs-ai-signal__label"><span lang="es">Ecosistema con apoyo de IA</span><span lang="en">AI-supported ecosystem</span><span lang="pt">Ecossistema com apoio de IA</span></span>
-</div>
+
 </div>
 <div class="rs-hero-conversion">
 <div aria-label="Oferta y precios" class="rs-hero-offer" id="hero-offer"><div class="rs-hero-price-grid"><div class="rs-hero-price-card"><span class="rs-hero-price-label" data-i18n="heroOfferStage">Su sitio web</span><strong><span class="rs-price-desktop" data-i18n="heroOfferPrice">$109.000 COP</span><span class="rs-price-mobile" data-i18n="heroOfferPriceMobile">$109.000 COP</span></strong></div><div class="rs-hero-price-card rs-hero-price-total"><span class="rs-hero-price-label" data-i18n="heroOfferTotalLabel">Ecosistema completo</span><strong><span class="rs-price-desktop" data-i18n="heroOfferTotalPrice">$327.000 COP</span><span class="rs-price-mobile" data-i18n="heroOfferTotalPriceMobile">$327.000 COP</span></strong></div></div><p class="rs-hero-payment-note" data-i18n="heroPaymentNote">Su marca a otro nivel en 3 fases...</p></div>
@@ -6237,6 +6239,15 @@ html:lang(es) .rs-ai-signal [lang]:not([lang=es]),html:lang(en) .rs-ai-signal [l
 @media (prefers-reduced-motion:no-preference){.rs-ai-signal__wave i{animation:rs-ai-wave-20261111 1.3s ease-in-out infinite alternate}.rs-ai-signal__wave i:nth-child(2){animation-delay:-.4s}.rs-ai-signal__wave i:nth-child(3){animation-delay:-.8s}.rs-ai-signal__wave i:nth-child(4){animation-delay:-.2s}.rs-ai-signal__wave i:nth-child(5){animation-delay:-.6s}@keyframes rs-ai-wave-20261111{from{transform:scaleY(.45);opacity:.7}to{transform:scaleY(1);opacity:1}}}
 @media (prefers-reduced-motion:reduce){.rs-ai-signal__wave i{animation:none!important;transform:none!important}}
 @media(max-width:380px){.rs-ai-signal{font-size:.72rem;padding:6px 10px}}
+</style>
+<style id="rs-nav-ai-polish-1355">
+#main-nav .rs-ai-signal--nav{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;white-space:nowrap;gap:8px;padding:5px 11px;background:rgba(40,14,14,.45);border-color:rgba(255,107,95,.26);font-size:.72rem;pointer-events:none}
+header.nav-scrolled #main-nav .rs-ai-signal--nav{opacity:0;visibility:hidden}
+#preloader .rs-preloader-human-ai{margin:12px 18px 0;color:#c3b8b6;text-align:center;font-size:clamp(.72rem,2.8vw,.85rem);line-height:1.4;letter-spacing:.02em}
+html:lang(es) .rs-preloader-human-ai [lang]:not([lang=es]),html:lang(en) .rs-preloader-human-ai [lang]:not([lang=en]),html:lang(pt) .rs-preloader-human-ai [lang]:not([lang=pt]){display:none}
+@media(min-width:761px){#logo-track .logo-item{flex:0 0 100px!important;flex-basis:100px!important;width:100px!important;min-width:100px!important;height:54px!important}#logo-track .logo-item.logo-bogotaco{flex:0 0 125px!important;flex-basis:125px!important;width:125px!important;min-width:125px!important;height:60px!important}#logo-track .logo-item img{opacity:.86!important}}
+@media(max-width:380px){#main-nav .rs-ai-signal--nav{font-size:.65rem;gap:5px;padding:4px 7px}#main-nav .rs-ai-signal__wave{min-width:25px;gap:2px}}
+@media(prefers-reduced-motion:reduce){#main-nav .rs-ai-signal--nav{transition:none!important}}
 </style>
 </body>
 </html>
