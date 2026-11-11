@@ -6168,6 +6168,8 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
   const h=window.innerHeight,size=64,logos=document.getElementById('logo-viewport-shell'),cta=document.getElementById('main-cta');
   const lr=logos?.getBoundingClientRect(),cr=cta?.getBoundingClientRect();let bottom=0,y=h-bottom-size;
   // Keep the control above the safe area unless the control intersects visible logos or the main CTA.
+  const graphic=document.querySelector('.rs-ecosystem-visual__stage'),gr=graphic?.getBoundingClientRect();
+  profile.classList.toggle('rs-eco-in-view',!!(gr&&gr.bottom>0&&gr.top<h));
   const ecoNodes=[...document.querySelectorAll('.rs-eco-ads,.rs-eco-seo')].map(el=>el.getBoundingClientRect());
   const boxes=[lr,cr,...ecoNodes].filter(r=>r&&r.bottom>0&&r.top<h);
   for(let pass=0;pass<2;pass++)for(const r of boxes){
@@ -6209,6 +6211,7 @@ html:lang(es) .rs-ecosystem-visual [lang]:not([lang=es]),html:lang(en) .rs-ecosy
 
 <style id="rs-polish-0222-20261111">
 /* Three clearly labelled phases around the existing AI support illustration. */
+@media(max-width:760px){#profile-bubble-wrapper.rs-eco-in-view .rs-profile-greeting{visibility:hidden!important;pointer-events:none!important}}
 .rs-ecosystem-visual .rs-eco-web{left:3%;top:12%;bottom:auto}
 .rs-ecosystem-visual .rs-eco-ads{right:3%;top:12%;bottom:auto;max-width:43%}
 .rs-ecosystem-visual .rs-eco-seo{left:50%;right:auto;top:auto;bottom:2%;transform:translateX(-50%)}
