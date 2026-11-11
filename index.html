@@ -6144,7 +6144,7 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
  #sectores .rs-selector{row-gap:16px!important}
  #ecosystem-slider{gap:16px!important}
  #maquinaria-automatizada #card-phase-2,#maquinaria-automatizada #card-phase-3{margin-top:24px!important}
- #floating-whatsapp-container,#profile-bubble-wrapper{right:max(14px,env(safe-area-inset-right))!important;bottom:calc(var(--rs-mobile-cta-bottom,30px) + env(safe-area-inset-bottom))!important}
+ #floating-whatsapp-container,#profile-bubble-wrapper{right:max(14px,env(safe-area-inset-right))!important;bottom:calc(var(--rs-mobile-cta-bottom,15px) + env(safe-area-inset-bottom))!important}
  #floating-whatsapp-container>a,#profile-bubble{width:64px!important;height:64px!important;min-width:64px!important;min-height:64px!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 }
 @media(max-width:380px){#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{padding-block:66px!important}}
@@ -6155,7 +6155,7 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
  const mobile=matchMedia('(max-width:760px)');let pending=false;
  const place=()=>{pending=false;if(!mobile.matches){wa.style.removeProperty('--rs-mobile-cta-bottom');profile.style.removeProperty('--rs-mobile-cta-bottom');return}
   const h=window.innerHeight,size=64,logos=document.getElementById('logo-viewport-shell'),cta=document.getElementById('main-cta');
-  const lr=logos?.getBoundingClientRect(),cr=cta?.getBoundingClientRect();let bottom=30,y=h-bottom-size;
+  const lr=logos?.getBoundingClientRect(),cr=cta?.getBoundingClientRect();let bottom=15,y=h-bottom-size;
   // Preserve the requested 30px offset unless the control intersects visible logos or the main CTA.
   const boxes=[lr,cr].filter(r=>r&&r.bottom>0&&r.top<h);
   for(let pass=0;pass<2;pass++)for(const r of boxes){
@@ -6173,4 +6173,9 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
 })();</script>
 <style id="rs-title-two-lines-20261110">
 html[lang^="es"] #hero-content #hero-title{white-space:pre-line!important;text-wrap:balance!important}
+</style>
+
+<style id="rs-mobile-viewport-safety-20261110">
+@media(max-width:760px){#main-content,#hero-content,.rs-hero-layout,#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{box-sizing:border-box!important;max-width:100%!important;min-width:0!important}#hero-content.rs-hero-layout{grid-template-columns:minmax(0,1fr)!important}#ecosystem-slider,.rs-case-card,#agent-dashboard{min-width:0!important;max-width:100%!important}.rs-case-card img{max-width:100%;height:auto}}
+@media(min-width:761px){#main-content,#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{max-width:100vw!important;overflow-x:clip!important}}
 </style>
