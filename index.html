@@ -6129,6 +6129,10 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
 @media(max-width:760px){
  html,body{max-width:100%;overflow-x:clip!important}
  #main-content,#hero-content{box-sizing:border-box!important;width:100%!important;max-width:100%!important;min-width:0!important;overflow-x:clip!important}
+ #hero-content.rs-hero-layout{display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-auto-flow:row!important;align-items:start!important;gap:22px!important}
+ #hero-content .rs-hero-copy,#hero-content .rs-hero-conversion{grid-column:1!important;justify-self:stretch!important;width:100%!important;max-width:100%!important;min-width:0!important}
+ #hero-content .rs-hero-copy{display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important}
+ #hero-content #hero-title,#hero-content #hero-desc{width:100%!important;max-width:100%!important;margin-inline:auto!important;text-align:center!important}
  #hero-content>*{min-width:0!important;max-width:100%!important}
  #hero-title{max-width:100%!important;text-wrap:balance!important;overflow-wrap:anywhere!important}
  #main-content .rs-hero-desc{max-width:100%!important;text-wrap:balance!important;overflow-wrap:anywhere!important}
