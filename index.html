@@ -1442,7 +1442,6 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 #rs-case-modal .rs-case-modal-nav-button{width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;font-size:2.25rem!important}
 @media(max-width:760px){#rs-case-modal .rs-case-modal-nav-button{width:54px!important;height:54px!important;min-width:54px!important;min-height:54px!important;font-size:2.35rem!important}}
 </style>
-
 <style id="rs-hero-menu-responsive-refinement-20261026">
 /* Raise the scroll cue exactly 19px from the previous placement on desktop and mobile. */
 #main-content>.rs-hero-scroll-cue{bottom:calc(max(12px,env(safe-area-inset-bottom)) + 59px)!important}
@@ -1459,11 +1458,6 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 @media(max-height:560px){#mobile-menu .rs-menu-options{transform:translateY(10px)}}
 @media(prefers-reduced-motion:reduce){#mobile-menu .rs-menu-options,#mobile-menu::before{transition:none!important}#mobile-menu.rs-menu-background-scan::before{animation:none!important;opacity:.24}}
 </style>
-
-
-
-
-
 <style id="rs-hero-mobile-final-cleanup-20261026">
 @media(max-width:760px){
  /* Keep the hero cue in document flow under the logo rail, not fixed to the screen edge. */
@@ -1476,8 +1470,6 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 }
 @media(max-width:360px){#hero-offer .rs-hero-price-card{min-height:40px!important;padding:7px 9px!important}}
 </style>
-
-
 <style id="rs-copy-and-visual-refine-20261027">
 /* One calm graphite surface for all niche cards; the selected state shares one restrained brand accent. */
 #sectores .rs-selector-btn{background:linear-gradient(145deg,rgba(24,27,30,.98),rgba(10,12,14,.99))!important;border:1px solid rgba(255,255,255,.12)!important;box-shadow:0 14px 34px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.055)!important}
@@ -1490,7 +1482,6 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 @media(max-width:760px){#hero-content .rs-hero-conversion{border-color:rgba(255,255,255,.055)!important;background:rgba(255,255,255,.012)!important;box-shadow:none!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}}
 @media(prefers-reduced-motion:reduce){#sectores .rs-selector-btn{transition:none!important}}
 </style>
-
 <style id="rs-independent-brand-note">
 #footer-red-sapien .rs-independent-notice{width:min(100%,62rem);margin:1rem auto 0;padding:1rem 1.1rem;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,.012));color:#aeb5bf;text-align:center;font:500 .72rem/1.6 Inter,system-ui,sans-serif}
 #footer-red-sapien .rs-independent-notice p{margin:.2rem 0}
@@ -1606,7 +1597,6 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 </a>
 </div>
 </div></div>
-
 <a aria-label="Ver más secciones" class="rs-hero-scroll-cue" data-rs-aria="heroScrollCueAria" href="#sectores"><span data-i18n="heroScrollCue">Ver más</span><svg aria-hidden="true" focusable="false" viewbox="0 0 24 24"><path d="M12 4v15m-6-6 6 6 6-6"></path></svg></a>
 <div class="w-full mt-auto mb-4 bg-gradient-to-t from-[#050505]/50 to-transparent py-6" id="logo-viewport-shell">
 <div aria-label="Logos de clientes; desliza para ver más" class="logo-viewport relative py-2" data-rs-aria="logoSlider" id="logo-viewport" role="region" tabindex="0">
@@ -1615,7 +1605,6 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 <div aria-hidden="true" class="rs-logo-swipe-cue"><svg focusable="false" viewbox="0 0 24 24"><path class="rs-swipe-arrow" d="M3 12h18m-6-6 6 6-6 6"></path></svg></div>
 </div>
 </div>
-
 </main>
 <section aria-labelledby="sectores-title" class="rs-sectors-section" data-rs-reveal="" id="sectores">
 <div class="rs-sectors-inner">
@@ -2075,10 +2064,10 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 <div class="relative w-full border-t border-white/5 bg-black pt-12 pb-8 px-4 z-20">
 <div class="flex flex-col items-center justify-center gap-3 text-center border-t border-white/10 pt-8">
 <p class="rs-origin-line" data-i18n="originLine">Red Sapien · De Colombia para el mundo</p>
-<div class="rs-independent-notice" aria-label="Open Source e independencia de marcas">
+<div aria-label="Open Source e independencia de marcas" class="rs-independent-notice">
 <p data-i18n="openSourceFooter">Visión Open Source: el código está en repositorios públicos; aún no hay licencia declarada. El acceso público no implica permiso de reutilización.</p>
 <p data-i18n="noAffiliationFooter">Red Sapien y Zapia son marcas independientes, sin afiliación, sociedad ni patrocinio. Red Sapien utiliza Zapia como asistente en su operación, sujeta a sus términos de uso. Zapia pertenece a BrainLogic AI SAS.</p>
-<a data-i18n="zapiaOfficialFooter" href="https://zapia.com/?lang=es" target="_blank" rel="noopener noreferrer">Visitar el sitio oficial de Zapia</a>
+<a data-i18n="zapiaOfficialFooter" href="https://zapia.com/?lang=es" rel="noopener noreferrer" target="_blank">Visitar el sitio oficial de Zapia</a>
 </div>
 </div>
 </div>
@@ -5800,7 +5789,6 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
  document.getElementById('lang-selector')?.addEventListener('change',enforce);document.addEventListener('click',e=>{if(e.target.closest('#sectores .rs-selector-btn'))queueMicrotask(enforce)});
 })();
 </script>
-
 <script id="rs-menu-background-tap-20261026">
 (()=>{
  const menu=document.getElementById('mobile-menu');if(!menu)return;
@@ -5818,10 +5806,6 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
  menu.addEventListener('pointerleave',()=>{if(!menu.classList.contains('visible'))menu.classList.remove('rs-menu-background-scan')});
 })();
 </script>
-
-
-
-
 <script id="rs-mobile-hero-flow-fix-20261026">
 (()=>{
  const cue=document.querySelector('#main-content>.rs-hero-scroll-cue');
@@ -5850,8 +5834,6 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
  window.addEventListener('resize',apply,{passive:true});
 })();
 </script>
-
-
 <script id="rs-copy-refine-runtime-20261027">
 (()=>{
  const copy={
@@ -5882,11 +5864,6 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
  selector&&new MutationObserver(schedule).observe(selector,{subtree:true,attributes:true,attributeFilter:['aria-selected']});
 })();
 </script>
-
-
-
-
-
 <style id="rs-niche-activation-and-payment-note-20261027">
 /* Neutral graphite cards at first load; color is shown only after a visitor selects a niche. */
 /* Strong initial-state override: legacy niche accent selectors must not tint the preselected tab or its icon. */
@@ -5914,8 +5891,6 @@ body.rs-niche-interacted #sectores .rs-selector-btn.is-active .rs-selector-icon{
  s.addEventListener('click',e=>{const b=e.target.closest('.rs-selector-btn');if(!b)return;const n=b.dataset.niche,repeat=b.classList.contains('is-active')&&lastClicked===n&&body.classList.contains('rs-niche-interacted');lastClicked=n;if(repeat){body.classList.remove('rs-niche-interacted');requestAnimationFrame(()=>requestAnimationFrame(neutralize));setTimeout(neutralize,100)}else body.classList.add('rs-niche-interacted')},true);
 })();
 </script>
-
-
 <style id="rs-cue-menu-touch-final-20261027">
 /* Ver más now follows the hero offer, ahead of the logo rail, so it is not stranded at the bottom. */
 #main-content>.rs-hero-scroll-cue{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;bottom:auto!important;display:flex!important;align-self:center!important;width:max-content!important;max-width:calc(100% - 32px)!important;margin:clamp(8px,1.5vh,16px) auto 0!important;padding:8px 12px!important;transform:none!important;opacity:.86!important}
@@ -5941,8 +5916,6 @@ body.rs-niche-interacted #sectores .rs-selector-btn.is-active .rs-selector-icon{
 <script id="rs-menu-card-touch-pulse-20261027">
 (()=>{const menu=document.getElementById('mobile-menu');if(!menu)return;let timer=0;menu.addEventListener('pointerdown',e=>{const card=e.target.closest('.rs-menu-option');if(!card)return;card.classList.remove('is-tapped');void card.offsetWidth;card.classList.add('is-tapped');menu.classList.add('rs-menu-background-scan');clearTimeout(timer);timer=setTimeout(()=>{card.classList.remove('is-tapped');menu.classList.remove('rs-menu-background-scan')},900)});})();
 </script>
-
-
 <style id="rs-last-click-and-hero-polish-20261027">
 body:not(.rs-niche-interacted) #sectores .rs-selector-btn,body:not(.rs-niche-interacted) #sectores .rs-selector-btn.is-active{background:#111214!important;border-color:rgba(255,255,255,.13)!important;box-shadow:0 12px 30px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.035)!important}
 body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-kicker,body:not(.rs-niche-interacted) #sectores .rs-selector-btn.is-active .rs-selector-kicker,body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body:not(.rs-niche-interacted) #sectores .rs-selector-btn.is-active .rs-selector-icon{color:#d7d9dc!important}
@@ -5966,7 +5939,6 @@ body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body
 @media(max-height:500px) and (max-width:760px){#mobile-menu{justify-content:flex-start!important;overflow-y:auto!important;padding-top:68px!important;padding-bottom:24px!important}#mobile-menu .rs-menu-options{margin-top:12px!important}#mobile-menu .rs-menu-option{min-height:82px!important}}
 @media(prefers-reduced-motion:reduce){#mobile-menu .rs-menu-binary-backdrop span,#mobile-menu .rs-menu-option{animation:none!important;transition:none!important}}
 </style>
-
 <style id="rs-arrow-opacity-and-offset-20261027">
 /* Lower the existing under-logo arrow 9 px; reduce both arrow cues' visible opacity by 30%. */
 #main-content .rs-hero-scroll-cue{margin-top:9px!important;transform:translateY(9px)!important;opacity:.546!important}
@@ -5975,8 +5947,6 @@ body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body
 #logo-viewport[data-rs-has-overflow="true"]:not([data-rs-hint-dismissed="true"]) .rs-logo-swipe-cue{opacity:.154!important}
 @media(prefers-reduced-motion:reduce){#main-content .rs-hero-scroll-cue{transition:none!important}}
 </style>
-
-
 <style id="rs-arrow-additional-20px-20261027">
 /* Move the existing translucent arrow an additional 20 px downward. */
 #main-content .rs-hero-scroll-cue,#main-content .rs-hero-scroll-cue:hover,#main-content .rs-hero-scroll-cue:focus-visible,#main-content .rs-hero-scroll-cue.is-scrolled{transform:translateY(29px)!important}
@@ -5985,8 +5955,6 @@ body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body
 <script id="rs-arrow-additional-20px-mobile-runtime-20261027">
 (()=>{const apply=()=>{const cue=document.querySelector('#main-content>.rs-hero-scroll-cue');if(!cue)return;cue.style.setProperty('transform',matchMedia('(max-width:760px)').matches?'translateY(20px)':'translateY(29px)','important')};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();window.addEventListener('resize',apply,{passive:true});})();
 </script>
-
-
 <style id="rs-mobile-hero-arrow-fix-20261027">
 /* On phones, keep the hero background covering the full first screen and place the cue just under the logo rail. */
 @media(max-width:760px){
@@ -6006,8 +5974,6 @@ body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body
 <script id="rs-mobile-hero-arrow-fix-runtime-20261027">
 (()=>{const mq=matchMedia('(max-width:760px)');const apply=()=>{const cue=document.querySelector('#main-content>.rs-hero-scroll-cue');if(!cue)return;if(mq.matches){cue.style.setProperty('transform','translateY(12px)','important');cue.style.setProperty('margin','0 auto 0','important')}else{cue.style.setProperty('transform','translateY(29px)','important')}};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();window.addEventListener('resize',apply,{passive:true});if(mq.addEventListener)mq.addEventListener('change',apply);else mq.addListener(apply)})();
 </script>
-
-
 <style id="rs-stable-scroll-and-arrow-only-20261027">
 /* Avoid a scroll-triggered jump: the cue stays in normal flow and does not transform/fade as the page scrolls. */
 #main-content .rs-hero-scroll-cue,#main-content .rs-hero-scroll-cue:hover,#main-content .rs-hero-scroll-cue:focus-visible,#main-content .rs-hero-scroll-cue.is-scrolled{border:0!important;border-color:transparent!important;border-radius:0!important;background:transparent!important;background-color:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;transition:color .18s ease!important;pointer-events:auto!important}
@@ -6025,8 +5991,6 @@ body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body
 @media(min-width:761px){#main-content .rs-hero-scroll-cue,#main-content .rs-hero-scroll-cue:hover,#main-content .rs-hero-scroll-cue:focus-visible,#main-content .rs-hero-scroll-cue.is-scrolled{transform:translateY(29px)!important}}
 @media(prefers-reduced-motion:reduce){#main-content .rs-hero-scroll-cue,#logo-viewport .rs-logo-swipe-cue{transition:none!important}}
 </style>
-
-
 <style id="rs-bare-down-arrow-final-20261027">
 /* The first-section cue is only the arrow glyph: no ring, button face, halo, outline, or pseudo-element. */
 #main-content a.rs-hero-scroll-cue,#main-content a.rs-hero-scroll-cue:hover,#main-content a.rs-hero-scroll-cue:focus,#main-content a.rs-hero-scroll-cue:focus-visible,#main-content a.rs-hero-scroll-cue.is-scrolled{
@@ -6038,7 +6002,6 @@ body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body
 <script id="rs-bare-down-arrow-runtime-20261027">
 (()=>{const strip=()=>{const a=document.querySelector('#main-content>.rs-hero-scroll-cue');if(!a)return;for(const p of ['width','height','min-width','min-height','padding','border','border-radius','background','background-color','background-image','box-shadow','outline','backdrop-filter','filter'])a.style.setProperty(p,p==='width'||p==='height'?'16px':p==='min-width'||p==='min-height'?'0':'none','important');a.style.setProperty('margin','0 auto 0','important');const svg=a.querySelector('svg');if(svg){svg.style.setProperty('width','16px','important');svg.style.setProperty('height','16px','important');svg.style.setProperty('opacity','.40','important')}};strip();document.addEventListener('DOMContentLoaded',strip,{once:true});window.addEventListener('load',strip,{once:true});window.addEventListener('resize',strip,{passive:true});})();
 </script>
-
 <style id="rs-funnel-clarity-20261030">
 /* A restrained, visible selection in every niche while preserving its brand accent. */
 #sectores .rs-selector [role="tab"][aria-selected="false"]{background:#111214!important;border-color:rgba(255,255,255,.16)!important;box-shadow:0 8px 24px rgba(0,0,0,.22)!important}
@@ -6050,16 +6013,12 @@ body:not(.rs-niche-interacted) #sectores .rs-selector-btn .rs-selector-icon,body
 @media(max-width:380px){#sectores #niche-result-cta{max-width:100%}}
 @media(prefers-reduced-motion:reduce){#sectores .rs-selector [role="tab"]{transition:none!important}}
 </style>
-
 <style id="rs-realestate-selector-20261104">
 #sectores .rs-selector-btn.rs-realestate{--rs-accent:#a78bfa;color:#fff}
 #sectores .rs-selector-btn.rs-realestate .rs-selector-icon{color:#a78bfa;border-color:rgba(167,139,250,.62)}
 body[data-niche="realestate"]{--rs-theme:#a78bfa;--rs-accent:#a78bfa;--rs-theme-soft:rgba(167,139,250,.14)}
 #casos-exito-ecosistemas[hidden]{display:none!important}
 </style>
-
-
-
 <style id="rs-responsive-polish-20261106">
 /* Flag colors follow the existing yellow, blue, red scroll phases. */
 #scroll-support-banner[data-phase="0"] .scroll-ecosystem-mark{filter:drop-shadow(0 0 8px rgba(252,209,22,.62))!important}
@@ -6143,7 +6102,6 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
 <script id="rs-arrow-under-logos-move-20261027">
 (()=>{const move=()=>{const cue=document.querySelector('#main-content>.rs-hero-scroll-cue'),logos=document.getElementById('logo-viewport-shell');if(cue&&logos&&cue.previousElementSibling!==logos)logos.insertAdjacentElement('afterend',cue)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',move,{once:true});else move()})();
 </script>
-
 <style id="rs-senior-audit-draft-20261110">
 /* Demo de IA: unifica acentos de marca; conserva colores de otros sectores. */
 #agente-seguimiento.rs-agent-demo,body[data-niche] #agente-seguimiento.rs-agent-demo{--rs-agent-accent:#ff7048!important;--rs-selected-color:#ff3c00!important}
@@ -6160,25 +6118,53 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
 @media(max-width:680px){#sectores{padding-block:76px 62px!important}#casos-exito-ecosistemas{padding-block:68px!important}#maquinaria-automatizada{padding-block:70px!important}#seccion-5-pricing{padding-block:66px!important}}
 </style>
 
-<style id="rs-mobile-contact-safe-20261110">
+
+<style id="rs-mobile-cta-and-spacing-final-20261110">
+/* Final mobile safe-area, thumb reach, and predictable section rhythm. */
+#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{padding-block:clamp(78px,7.2vw,104px)!important}
+#agente-seguimiento.rs-agent-demo{margin-block:clamp(38px,4.8vw,62px)!important}
+#sectores .rs-selector{row-gap:clamp(16px,1.8vw,22px)!important}
+#ecosystem-slider{gap:clamp(16px,1.8vw,22px)!important}
+#maquinaria-automatizada #card-phase-2,#maquinaria-automatizada #card-phase-3{margin-top:clamp(22px,2.4vw,32px)!important}
 @media(max-width:760px){
- #floating-whatsapp-container,#profile-bubble-wrapper{right:max(14px,env(safe-area-inset-right))!important;bottom:var(--rs-mobile-contact-bottom,clamp(76px,14vh,108px))!important}
+ html,body{max-width:100%;overflow-x:clip!important}
+ #main-content,#hero-content{box-sizing:border-box!important;width:100%!important;max-width:100%!important;min-width:0!important;overflow-x:clip!important}
+ #hero-content>*{min-width:0!important;max-width:100%!important}
+ #hero-title{max-width:100%!important;text-wrap:balance!important;overflow-wrap:anywhere!important}
+ #main-content .rs-hero-desc{max-width:100%!important;text-wrap:balance!important;overflow-wrap:anywhere!important}
+ #hero-offer .rs-hero-price-card,#hero-offer .rs-hero-price-total{min-width:0!important;max-width:100%!important}
+ #hero-offer .rs-hero-price-label{min-width:0!important;white-space:normal!important;overflow-wrap:anywhere!important}
+ #hero-offer .rs-hero-price-card strong{min-width:0!important;max-width:100%!important;white-space:nowrap!important;font-size:clamp(1rem,5vw,1.34rem)!important}
+ #sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{padding-block:72px!important}
+ #agente-seguimiento.rs-agent-demo{margin-block:36px!important}
+ #sectores .rs-selector{row-gap:16px!important}
+ #ecosystem-slider{gap:16px!important}
+ #maquinaria-automatizada #card-phase-2,#maquinaria-automatizada #card-phase-3{margin-top:24px!important}
+ #floating-whatsapp-container,#profile-bubble-wrapper{right:max(14px,env(safe-area-inset-right))!important;bottom:calc(var(--rs-mobile-cta-bottom,148px) + env(safe-area-inset-bottom))!important}
+ #floating-whatsapp-container>a,#profile-bubble{width:64px!important;height:64px!important;min-width:64px!important;min-height:64px!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 }
-</style>
-<script id="rs-logo-clearance-20261110">
-(()=>{
- const rail=document.getElementById('logo-viewport-shell'), wa=document.getElementById('floating-whatsapp-container'), profile=document.getElementById('profile-bubble-wrapper');
- if(!rail||!wa||!profile)return;
- let queued=false;
- const place=()=>{queued=false; if(!matchMedia('(max-width:760px)').matches){wa.style.removeProperty('--rs-mobile-contact-bottom');profile.style.removeProperty('--rs-mobile-contact-bottom');return}
-  const h=window.innerHeight, base=Math.max(76,Math.min(108,h*.14)), r=rail.getBoundingClientRect(), active=wa.classList.contains('is-visible')?wa:profile, rect=active.getBoundingClientRect(), size=Math.max(58,Math.min(80,rect.height||58));
-  let bottom=base, y=h-bottom-size;
-  if(r.bottom>0&&r.top<h&&y<r.bottom+8&&y+size>r.top-8){const below=h-r.bottom-size-8, above=h-r.top+8; if(below>=16)bottom=Math.min(base,below);else if(above+size<=h-8)bottom=Math.max(base,above)}
-  for(const el of [wa,profile])el.style.setProperty('--rs-mobile-contact-bottom',`${Math.max(16,bottom)}px`);
+@media(max-width:380px){#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{padding-block:66px!important}}
+@media(prefers-reduced-motion:reduce){#floating-whatsapp-container,#profile-bubble-wrapper{scroll-behavior:auto!important}}
+</style><script id="rs-mobile-cta-position-final-20261110">(()=>{
+ const wa=document.getElementById('floating-whatsapp-container'),profile=document.getElementById('profile-bubble-wrapper');
+ if(!wa||!profile)return;
+ const mobile=matchMedia('(max-width:760px)');let pending=false;
+ const place=()=>{pending=false;if(!mobile.matches){wa.style.removeProperty('--rs-mobile-cta-bottom');profile.style.removeProperty('--rs-mobile-cta-bottom');return}
+  const h=window.innerHeight,active=wa.classList.contains('is-visible')?wa:profile,size=64,cta=document.getElementById('main-cta-wrap'),logos=document.getElementById('logo-viewport-shell');
+  const cr=cta?.getBoundingClientRect(),lr=logos?.getBoundingClientRect(),minY=16,maxY=h-size-14;let y=h-Math.max(132,Math.min(176,h*.18))-size;
+  // Keep the button within thumb reach, below the main CTA whenever the visible gap allows it.
+  if(cr&&cr.bottom>0&&cr.bottom<h&&y<cr.bottom+14)y=Math.min(maxY,cr.bottom+16);
+  // If that gap is too tight, move just above the CTA instead of covering it.
+  if(cr&&cr.bottom>0&&cr.bottom<h&&y<cr.bottom&&y+size>cr.top-8)y=Math.max(16,cr.top-size-12);
+  // If the logo rail is in view, move to the nearest clear zone without covering the hero CTA.
+  if(lr&&lr.bottom>0&&lr.top<h){const collision=y<lr.bottom+10&&y+size>lr.top-10;if(collision){const floor=(cr&&cr.bottom>0&&cr.bottom<h)?Math.min(maxY,cr.bottom+14):16,above=lr.top-size-12,below=lr.bottom+12,candidates=[above,below].filter(v=>v>=floor&&v>=16&&v+size<=h-14);if(candidates.length)y=candidates.sort((a,b)=>Math.abs(a-y)-Math.abs(b-y))[0];}}
+  y=Math.max(16,Math.min(maxY,y));const bottom=Math.round(h-y-size);
+  wa.style.setProperty('--rs-mobile-cta-bottom',bottom+'px');profile.style.setProperty('--rs-mobile-cta-bottom',bottom+'px');
  };
- const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(place)}};
- addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});addEventListener('load',schedule,{once:true});
- if('ResizeObserver'in window){const ro=new ResizeObserver(schedule);ro.observe(rail)}
- new MutationObserver(schedule).observe(wa,{attributes:true,attributeFilter:['class']});schedule();
-})();
-</script>
+ const schedule=()=>{if(!pending){pending=true;requestAnimationFrame(place)}};
+ addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});addEventListener('orientationchange',schedule,{passive:true});addEventListener('load',schedule,{once:true});
+ if(mobile.addEventListener)mobile.addEventListener('change',schedule);else mobile.addListener(schedule);
+ for(const el of [wa,profile])new MutationObserver(schedule).observe(el,{attributes:true,attributeFilter:['class']});
+ if('ResizeObserver'in window){const ro=new ResizeObserver(schedule);for(const id of ['main-cta-wrap','logo-viewport-shell']){const el=document.getElementById(id);if(el)ro.observe(el)}}
+ place();
+})();</script>
