@@ -1579,9 +1579,8 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
 </div>
 <div class="rs-hero-layout w-full max-w-7xl mx-auto mt-10 md:mt-14 relative z-10 px-4" id="hero-content">
 <div class="rs-hero-copy">
-<h1 class="font-display text-4xl md:text-7xl font-bold tracking-tight text-white mb-8 leading-snug max-w-4xl" data-i18n="heroTitle" id="hero-title">
-                Haga crecer su negocio.
-            </h1>
+<h1 class="font-display text-4xl md:text-7xl font-bold tracking-tight text-white mb-8 leading-snug max-w-4xl" data-i18n="heroTitle" id="hero-title">Haga crecer
+su negocio.</h1>
 <p class="text-base md:text-lg text-gray-300 font-normal mb-5 max-w-sm mx-auto leading-relaxed" data-i18n="heroDesc" id="hero-desc">
                 Creamos un ecosistema digital y llevamos clientes directo a su WhatsApp.
             </p>
@@ -2080,7 +2079,7 @@ html.rs-gentle-motion .rs-gentle-target.rs-gentle-visible{opacity:1;transform:tr
             es: {
                 preloaderTagline: "Ingresando…",
                 mobileContact: "Hablemos",
-                heroTitle: "Haga crecer su negocio.",
+                heroTitle: "Haga crecer\nsu negocio.",
                 heroDesc: "Creamos un ecosistema digital y llevamos clientes directo a su WhatsApp.",
                 heroOfferStage: "Su sitio web",
                 heroOfferPrice: "$109.000 pesos",
@@ -6145,7 +6144,7 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
  #sectores .rs-selector{row-gap:16px!important}
  #ecosystem-slider{gap:16px!important}
  #maquinaria-automatizada #card-phase-2,#maquinaria-automatizada #card-phase-3{margin-top:24px!important}
- #floating-whatsapp-container,#profile-bubble-wrapper{right:max(14px,env(safe-area-inset-right))!important;bottom:calc(var(--rs-mobile-cta-bottom,148px) + env(safe-area-inset-bottom))!important}
+ #floating-whatsapp-container,#profile-bubble-wrapper{right:max(14px,env(safe-area-inset-right))!important;bottom:calc(var(--rs-mobile-cta-bottom,30px) + env(safe-area-inset-bottom))!important}
  #floating-whatsapp-container>a,#profile-bubble{width:64px!important;height:64px!important;min-width:64px!important;min-height:64px!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 }
 @media(max-width:380px){#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{padding-block:66px!important}}
@@ -6155,16 +6154,14 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
  if(!wa||!profile)return;
  const mobile=matchMedia('(max-width:760px)');let pending=false;
  const place=()=>{pending=false;if(!mobile.matches){wa.style.removeProperty('--rs-mobile-cta-bottom');profile.style.removeProperty('--rs-mobile-cta-bottom');return}
-  const h=window.innerHeight,active=wa.classList.contains('is-visible')?wa:profile,size=64,cta=document.getElementById('main-cta'),offer=document.getElementById('hero-offer'),logos=document.getElementById('logo-viewport-shell');
-  const cr=cta?.getBoundingClientRect(),or=offer?.getBoundingClientRect(),lr=logos?.getBoundingClientRect(),minY=16,maxY=h-size-14;let y=h-Math.max(132,Math.min(176,h*.18))-size;
-  if(or&&cr&&or.bottom>0&&or.bottom<h&&cr.top-or.bottom>=size+8)y=Math.min(maxY,or.bottom+8);
-  // Keep the button within thumb reach, below the main CTA whenever the visible gap allows it.
-  if(cr&&cr.bottom>0&&cr.bottom<h&&y<cr.bottom+14&&y+size>cr.top-8)y=Math.min(maxY,cr.bottom+16);
-  // If that gap is too tight, move just above the CTA instead of covering it.
-  if(cr&&cr.bottom>0&&cr.bottom<h&&y<cr.bottom&&y+size>cr.top-8)y=Math.max(16,cr.top-size-12);
-  // If the logo rail is in view, move to the nearest clear zone without covering the hero CTA.
-  if(lr&&lr.bottom>0&&lr.top<h){const collision=y<lr.bottom+10&&y+size>lr.top-10;if(collision){const floor=(cr&&cr.bottom>0&&cr.bottom<h)?Math.min(maxY,cr.bottom+14):16,above=lr.top-size-12,below=lr.bottom+12,candidates=[above,below].filter(v=>v>=floor&&v>=16&&v+size<=h-14);if(candidates.length)y=candidates.sort((a,b)=>Math.abs(a-y)-Math.abs(b-y))[0];}}
-  y=Math.max(16,Math.min(maxY,y));const bottom=Math.round(h-y-size);
+  const h=window.innerHeight,size=64,logos=document.getElementById('logo-viewport-shell'),cta=document.getElementById('main-cta');
+  const lr=logos?.getBoundingClientRect(),cr=cta?.getBoundingClientRect();let bottom=30,y=h-bottom-size;
+  // Preserve the requested 30px offset unless the control intersects visible logos or the main CTA.
+  const boxes=[lr,cr].filter(r=>r&&r.bottom>0&&r.top<h);
+  for(let pass=0;pass<2;pass++)for(const r of boxes){
+   if(y<r.bottom+8&&y+size>r.top-8){const below=r.bottom+8,above=r.top-size-8;if(below+size<=h-14)y=below;else if(above>=16)y=above;}
+  }
+  y=Math.max(16,Math.min(h-size-14,y));bottom=Math.round(h-y-size);
   wa.style.setProperty('--rs-mobile-cta-bottom',bottom+'px');profile.style.setProperty('--rs-mobile-cta-bottom',bottom+'px');
  };
  const schedule=()=>{if(!pending){pending=true;requestAnimationFrame(place)}};
@@ -6174,3 +6171,6 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
  if('ResizeObserver'in window){const ro=new ResizeObserver(schedule);for(const id of ['main-cta-wrap','logo-viewport-shell']){const el=document.getElementById(id);if(el)ro.observe(el)}}
  place();
 })();</script>
+<style id="rs-title-two-lines-20261110">
+html[lang^="es"] #hero-content #hero-title{white-space:pre-line!important;text-wrap:balance!important}
+</style>
