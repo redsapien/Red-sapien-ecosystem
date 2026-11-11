@@ -6169,7 +6169,8 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
   const h=window.innerHeight,size=64,logos=document.getElementById('logo-viewport-shell'),cta=document.getElementById('main-cta');
   const lr=logos?.getBoundingClientRect(),cr=cta?.getBoundingClientRect();let bottom=0,y=h-bottom-size;
   // Keep the control above the safe area unless the control intersects visible logos or the main CTA.
-  const boxes=[lr,cr].filter(r=>r&&r.bottom>0&&r.top<h);
+  const ecoNodes=[...document.querySelectorAll('.rs-eco-ads,.rs-eco-seo')].map(el=>el.getBoundingClientRect());
+  const boxes=[lr,cr,...ecoNodes].filter(r=>r&&r.bottom>0&&r.top<h);
   for(let pass=0;pass<2;pass++)for(const r of boxes){
    if(y<r.bottom+8&&y+size>r.top-8){const below=r.bottom+8,above=r.top-size-8;if(below+size<=h)y=below;else if(above>=16)y=above;}
   }
