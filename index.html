@@ -1781,11 +1781,11 @@ su marca.</h1>
 </div>
 <section aria-labelledby="agent-section-title" class="rs-agent-demo" data-rs-reveal="" id="agente-seguimiento">
 <header class="rs-agent-heading">
-<h2 data-rs-copy="agentSectionTitle" id="agent-section-title">Respuestas más claras, con su equipo al mando</h2>
+<h2 data-rs-copy="agentSectionTitle" id="agent-section-title">Un asistente que ayuda a responder por WhatsApp</h2>
 <p class="rs-agent-heading-copy" data-rs-copy="agentSectionCopy">Prepara respuestas con el tono de su marca. Su equipo las revisa y decide qué enviar.</p>
 <p aria-live="polite" class="rs-agent-heading-niche"><span data-rs-copy="agentNicheFood" id="agent-niche-food">RESTAURANTE</span><span data-rs-copy="agentNicheHealth" hidden="" id="agent-niche-health">PROFESIONALES · AGENCIAS · NEGOCIOS</span></p>
 </header>
-<details class="rs-agent-details"><summary aria-controls="agent-dashboard" class="rs-agent-details-summary"><span data-rs-copy="agentDemoReveal">Ver una respuesta</span><span aria-hidden="true" class="rs-agent-details-plus">+</span></summary>
+<details class="rs-agent-details"><summary aria-controls="agent-dashboard" class="rs-agent-details-summary"><span data-rs-copy="agentDemoReveal">Ver cómo ayuda</span><span aria-hidden="true" class="rs-agent-details-plus">+</span></summary>
 <article aria-label="Asistente para preparar respuestas de WhatsApp" class="rs-agent-dashboard rs-agent-chat-app" data-rs-aria="agentPanelLabel" data-rs-reveal="" id="agent-dashboard" role="group">
 <header class="rs-agent-topbar">
 <div class="rs-agent-brand"><span aria-hidden="true" class="rs-agent-mark">IA</span><div><span class="rs-agent-eyebrow" data-rs-copy="simulation">RESPUESTA PARA WHATSAPP</span><h3 data-rs-copy="agentDemoTitle" id="agent-demo-title">Respuesta sugerida</h3></div></div>
@@ -6857,5 +6857,25 @@ html:lang(es) #main-nav .rs-ai-signal__label [lang=es],html:lang(en) #main-nav .
 #agent-dashboard .rs-agent-message-out{background:rgba(255,255,255,.045)!important;border-color:rgba(255,255,255,.08)!important}
 @media(max-width:760px){#maquinaria-automatizada #agente-seguimiento.rs-agent-demo{width:calc(100% - 28px)!important;margin:31px auto!important;padding:16px!important}#agente-seguimiento .rs-agent-heading{margin-bottom:14px!important}#agente-seguimiento .rs-agent-heading h2{font-size:1.35rem!important}#agente-seguimiento .rs-agent-heading-copy{font-size:.9rem!important;line-height:1.5!important}#agent-dashboard.rs-agent-chat-app{width:100%!important;margin-top:12px!important;border-radius:17px!important}}
 </style>
+
+<script id="rs-commercial-copy-sync-20261112">
+(()=>{
+ const copy={es:{title:'Un asistente que ayuda a responder por WhatsApp',copy:'Prepara respuestas con el tono de su marca. Su equipo las revisa y decide qué enviar.',eyebrow:'ASISTENTE PARA WHATSAPP',open:'Ver cómo ayuda',agentTitle:'Respuesta sugerida',conversation:'Conversación con su cliente',client:'Cliente',reply:'Respuesta sugerida',stepList:'Así se prepara cada respuesta',steps:['Leer consulta','Preparar respuesta','Su equipo decide'],pause:'Pausar respuestas',resume:'Reanudar respuestas',panelKicker:'SU MARCA, EN UN SOLO LUGAR',panelTitle:'Su marca, en un solo lugar',panelCopy:'Su sitio, sus campañas y su presencia local, reunidos en un mismo espacio.',panelOverview:'Todo lo que impulsa su marca',panelModules:['SU SITIO WEB','SUS CAMPAÑAS','SU PRESENCIA LOCAL'],panelNote:'Un solo lugar para dar el siguiente paso en el crecimiento de su marca.',panelAria:'Áreas de trabajo para el crecimiento de su marca.'},en:{title:'An assistant to help reply on WhatsApp',copy:'It prepares replies in your brand’s voice. Your team reviews them and decides what to send.',eyebrow:'WHATSAPP ASSISTANT',open:'See how it helps',agentTitle:'Suggested reply',conversation:'Conversation with your customer',client:'Customer',reply:'Suggested reply',stepList:'How each reply is prepared',steps:['Read inquiry','Prepare reply','Your team decides'],pause:'Pause replies',resume:'Resume replies',panelKicker:'YOUR BRAND, ALL IN ONE PLACE',panelTitle:'Your brand, all in one place',panelCopy:'Your website, campaigns and local presence, together in one place.',panelOverview:'Everything that moves your brand forward',panelModules:['YOUR WEBSITE','YOUR CAMPAIGNS','YOUR LOCAL PRESENCE'],panelNote:'One place to take the next step in growing your brand.',panelAria:'Workspace areas to help your brand grow.'},pt:{title:'Um assistente para ajudar a responder pelo WhatsApp',copy:'Prepara respostas com o tom da sua marca. Sua equipe revisa e decide o que enviar.',eyebrow:'ASSISTENTE PARA WHATSAPP',open:'Veja como ajuda',agentTitle:'Resposta sugerida',conversation:'Conversa com seu cliente',client:'Cliente',reply:'Resposta sugerida',stepList:'Como cada resposta é preparada',steps:['Ler consulta','Preparar resposta','Sua equipe decide'],pause:'Pausar respostas',resume:'Retomar respostas',panelKicker:'SUA MARCA, EM UM SÓ LUGAR',panelTitle:'Sua marca, em um só lugar',panelCopy:'Seu site, suas campanhas e sua presença local, reunidos em um só lugar.',panelOverview:'Tudo que impulsiona sua marca',panelModules:['SEU SITE','SUAS CAMPANHAS','SUA PRESENÇA LOCAL'],panelNote:'Um só lugar para dar o próximo passo no crescimento da sua marca.',panelAria:'Áreas de trabalho para o crescimento da sua marca.'}};
+ const locale=()=>copy[(document.documentElement.lang||'es').slice(0,2)]||copy.es;
+ const set=(sel,v)=>{const e=document.querySelector(sel);if(e&&v)e.textContent=v};
+ const apply=()=>{const d=locale();
+  set('#agent-section-eyebrow',d.eyebrow);set('#agent-section-title',d.title);set('#agente-seguimiento .rs-agent-heading-copy',d.copy);set('#agente-seguimiento .rs-agent-details-summary [data-rs-copy]',d.open);set('#agent-demo-title',d.agentTitle);
+  const dash=document.getElementById('agent-dashboard');if(dash)dash.setAttribute('aria-label',d.agentAria);const conv=document.querySelector('#agent-dashboard .rs-agent-conversation');if(conv)conv.setAttribute('aria-label',d.conversation);const list=document.querySelector('#agent-dashboard .rs-agent-steps');if(list)list.setAttribute('aria-label',d.stepList);
+  set('#agent-dashboard .rs-agent-message-in .rs-agent-message-label',d.client);set('#agent-dashboard .rs-agent-message-out .rs-agent-message-label',d.reply);
+  document.querySelectorAll('#agent-dashboard [data-agent-step] span[data-rs-copy]').forEach((e,i)=>{if(d.steps[i])e.textContent=d.steps[i]});
+  const btn=document.getElementById('agent-toggle');if(btn){btn.setAttribute('aria-label',d.pause);btn.title=d.pause}
+  set('#coming-soon-modal [data-rs-copy="comingSoonBadge"]',d.panelKicker);set('#coming-soon-title',d.panelTitle);set('#coming-soon-copy',d.panelCopy);set('#rs-panel-mini-preview .rs-panel-mini-overview h3',d.panelOverview);
+  document.querySelectorAll('#rs-panel-mini-preview .rs-dashboard-module strong').forEach((e,i)=>{if(d.panelModules[i])e.textContent=d.panelModules[i]});set('#rs-panel-mini-preview .rs-panel-mini-task',d.panelNote);
+  const panel=document.getElementById('rs-panel-mini-preview');if(panel)panel.setAttribute('aria-label',d.panelAria);const modules=panel?.querySelector('.rs-dashboard-modules');if(modules)modules.setAttribute('aria-label',d.panelOverview);
+ };
+ document.addEventListener('DOMContentLoaded',apply,{once:true});document.getElementById('lang-selector')?.addEventListener('change',()=>setTimeout(apply,0));new MutationObserver(apply).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});setTimeout(apply,30);
+})();
+</script>
+
 </body>
 </html>
