@@ -5772,9 +5772,9 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
  let frame=0,greetingTimer=0,lastShown=false;
  const hideGreeting=()=>{if(greetingTimer){clearTimeout(greetingTimer);greetingTimer=0}greeting.classList.remove('is-visible');greeting.setAttribute('aria-hidden','true');wrap.classList.remove('rs-greeting-pop');if(bubbleCta&&originalCta)bubbleCta.textContent=originalCta;greeting.textContent=originalGreeting};
  const showGreeting=()=>{hideGreeting();wrap.classList.add('rs-greeting-pop');if(bubbleCta)bubbleCta.textContent='Hablemos';greeting.textContent='Hola, soy Cristian. ¿Hablamos?';greeting.classList.add('is-visible');greeting.setAttribute('aria-hidden','false');greetingTimer=setTimeout(hideGreeting,4000)};
- const update=()=>{frame=0;const showBubble=section3.getBoundingClientRect().top<=window.innerHeight*.5;
+ const update=()=>{frame=0;const showBubble=true;
   wrap.classList.toggle('rs-hero-hidden',!showBubble);wrap.classList.toggle('is-visible',showBubble);bubble.classList.toggle('visible',showBubble);wrap.setAttribute('aria-hidden',String(!showBubble));bubble.tabIndex=showBubble?0:-1;
-  waWrap.classList.toggle('is-visible',!showBubble);waWrap.setAttribute('aria-hidden',String(showBubble));waLink.tabIndex=showBubble?-1:0;
+  waWrap.classList.add('is-visible');waWrap.setAttribute('aria-hidden','false');waLink.tabIndex=0;
   if(showBubble&&!lastShown)showGreeting();if(!showBubble&&lastShown)hideGreeting();lastShown=showBubble;
  };
  const schedule=()=>{if(!frame)frame=requestAnimationFrame(update)};
@@ -6127,8 +6127,8 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
 @media(max-width:760px){#main-content .rs-hero-scroll-cue{margin:0 auto 10px!important}#main-content{padding-bottom:10px!important}.rs-hero-conversion{padding:13px!important}#main-cta{min-height:54px!important}}
 @media(prefers-reduced-motion:reduce){#main-content .rs-hero-scroll-cue{transition:none!important}}
 </style>
-<script id="rs-arrow-under-logos-move-20261027">
-(()=>{const move=()=>{const cue=document.querySelector('#main-content>.rs-hero-scroll-cue'),logos=document.getElementById('logo-viewport-shell');if(cue&&logos&&cue.previousElementSibling!==logos)logos.insertAdjacentElement('afterend',cue)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',move,{once:true});else move()})();
+<script id="rs-arrow-under-cta-20261112">
+(()=>{const move=()=>{const cue=document.querySelector('#main-content>.rs-hero-scroll-cue'),cta=document.getElementById('main-cta-wrap');if(cue&&cta&&cue.previousElementSibling!==cta)cta.insertAdjacentElement('afterend',cue)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',move,{once:true});else move()})();
 </script>
 <style id="rs-senior-audit-draft-20261110">
 /* Demo de IA: unifica acentos de marca; conserva colores de otros sectores. */
@@ -6537,5 +6537,43 @@ html body[data-niche] #sectores .rs-selector .rs-selector-btn .rs-selector-icon,
  reduce?.addEventListener?.('change',event=>{if(event.matches)observer.disconnect()});
 })();
 </script>
+<style id="rs-human-contact-hero-20261112-0120">
+/* Keep first-screen hierarchy; no extra frontend library or scroll animation loop. */
+@media(max-width:760px){
+ #hero-content.rs-hero-layout{gap:12px!important}
+ #hero-content #main-cta-wrap{padding-top:8px!important}
+ #main-content .rs-hero-scroll-cue,#main-content a.rs-hero-scroll-cue{position:relative!important;inset:auto!important;display:flex!important;width:30px!important;height:24px!important;min-width:30px!important;min-height:24px!important;margin:2px auto 0!important;padding:0!important;transform:none!important;opacity:.62!important}
+ #main-content .rs-hero-scroll-cue svg,#main-content a.rs-hero-scroll-cue svg{width:18px!important;height:18px!important;opacity:.7!important}
+ #main-content #logo-viewport-shell{margin-top:12px!important;margin-bottom:0!important;padding:8px 0 0!important}
+ #main-content #logo-viewport{padding-block:3px!important}
+ #main-content #logo-track .logo-set{gap:14px!important}
+ #profile-bubble-wrapper{position:fixed!important;right:max(14px,env(safe-area-inset-right))!important;bottom:calc(env(safe-area-inset-bottom) + 82px)!important;z-index:80!important}
+ #floating-whatsapp-container{position:fixed!important;right:max(14px,env(safe-area-inset-right))!important;bottom:calc(env(safe-area-inset-bottom) + 14px)!important;z-index:79!important}
+ #profile-bubble{width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important;padding:2px!important;box-shadow:0 3px 16px rgba(0,0,0,.28)!important}
+ #profile-bubble .rs-profile-cta-label{display:none!important}
+ #floating-whatsapp-container>a{width:56px!important;height:56px!important;min-width:56px!important;min-height:56px!important}
+ #rs-profile-greeting{right:56px!important;bottom:3px!important;max-width:calc(100vw - 104px)!important}
+}
+@media(min-width:761px){
+ #main-content .rs-hero-scroll-cue,#main-content a.rs-hero-scroll-cue{margin:4px auto 0!important;transform:none!important}
+ #main-content #logo-viewport-shell{margin-top:clamp(10px,1.5vh,20px)!important;padding-block:7px!important}
+ #profile-bubble-wrapper{position:fixed!important;right:24px!important;bottom:96px!important;z-index:80!important}
+ #floating-whatsapp-container{position:fixed!important;right:24px!important;bottom:24px!important;z-index:79!important}
+ #profile-bubble{width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important}
+ #floating-whatsapp-container>a{width:58px!important;height:58px!important;min-width:58px!important;min-height:58px!important}
+}
+#profile-bubble-wrapper .rs-profile-greeting{background:rgba(8,10,12,.72)!important;border-color:rgba(255,255,255,.08)!important;box-shadow:0 8px 24px rgba(0,0,0,.18)!important;backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important}
+#main-nav .rs-ai-signal--nav{background:rgba(15,16,18,.28)!important;border-color:rgba(255,255,255,.045)!important;box-shadow:none!important}
+#main-nav .rs-ai-signal__label{opacity:.78!important}
+#maquinaria-automatizada .rs-journey-scene{height:clamp(218px,27vw,286px)!important}
+#maquinaria-automatizada .rs-journey-0053{margin-bottom:10px!important}
+#maquinaria-automatizada .rs-journey-caption{margin-top:9px!important}
+#maquinaria-automatizada #cards-stack-wrapper{gap:12px!important}
+#maquinaria-automatizada .stacking-card,#seccion-5-pricing .rs-offer-card,#casos-exito-ecosistemas .rs-case-card{box-shadow:0 8px 22px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.025)!important}
+#casos-exito-ecosistemas .rs-case-card,#maquinaria-automatizada .stacking-card,#seccion-5-pricing .rs-offer-card{border-color:rgba(255,255,255,.075)!important}
+#main-content::before{opacity:.55!important}
+@media(max-width:760px){#maquinaria-automatizada .rs-journey-scene{height:225px!important}#maquinaria-automatizada #cards-stack-wrapper{gap:10px!important}}
+@media(prefers-reduced-motion:reduce){#main-content .rs-hero-scroll-cue,#profile-bubble-wrapper .rs-profile-greeting{transition:none!important}}
+</style>
 </body>
 </html>
