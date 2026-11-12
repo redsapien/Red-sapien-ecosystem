@@ -13,7 +13,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800%26family=Space+Grotesk:wght@600;700;800;900%26display=swap" rel="stylesheet">
 
     <!-- Leaflet CSS y JS para el mapa de telemetría -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -726,46 +726,27 @@
                 <h2 class="onboarding-title">Selecciona tu nicho</h2>
                 <p class="onboarding-sub">Elige la categoría que mejor represente tu actividad.</p>
                 <div class="grid grid-cols-2 gap-3" id="niche-grid">
-                    <div class="niche-card" data-niche="Gastronomía">
-                        <span class="emoji">🍔</span>
-                        <span class="label">Gastronomía</span>
-                    </div>
-                    <div class="niche-card" data-niche="Automotriz">
-                        <span class="emoji">🚗</span>
-                        <span class="label">Automotriz</span>
-                    </div>
-                    <div class="niche-card" data-niche="Servicios Profesionales">
-                        <span class="emoji">👔</span>
-                        <span class="label">Servicios Prof.</span>
-                    </div>
-                    <div class="niche-card" data-niche="E-commerce">
-                        <span class="emoji">🛒</span>
-                        <span class="label">E-commerce</span>
-                    </div>
+                    <div class="niche-card" data-niche="Servicios profesionales"><span class="emoji">✳</span><span class="label">Servicios profesionales</span></div>
+                    <div class="niche-card" data-niche="Gastronomía"><span class="emoji">◈</span><span class="label">Gastronomía</span></div>
+                    <div class="niche-card" data-niche="E-commerce y marcas"><span class="emoji">▣</span><span class="label">E-commerce y marcas</span></div>
+                    <div class="niche-card" data-niche="Otros sectores"><span class="emoji">＋</span><span class="label">Otros sectores</span></div>
                 </div>
                 <div id="niche-error" class="text-red-500 text-xs mt-2 hidden">Selecciona un nicho para continuar.</div>
             </div>
 
-            <!-- PASO 3: Ciudad con buscador filtrable -->
+            <!-- PASO 3: Ciudad opcional -->
             <div id="step-3" class="onboarding-step">
-                <h2 class="onboarding-title">¿En qué ciudad operas?</h2>
-                <p class="onboarding-sub">Selecciona tu ciudad principal para activar la ubicación.</p>
-                <input id="city-search-input" type="text" placeholder="Buscar..." class="city-search-input">
-                <div id="city-options-container" class="city-options">
-                    <!-- Opciones inyectadas por JS -->
-                </div>
+                <h2 class="onboarding-title">Ciudad (opcional)</h2>
+                <p class="onboarding-sub">Ayuda a preparar una propuesta local. Puede dejarlo en blanco.</p>
+                <input id="city-search-input" type="text" placeholder="Opcional · buscar ciudad" class="city-search-input">
+                <div id="city-options-container" class="city-options"><!-- Ciudades sugeridas por el usuario --></div>
                 <div id="city-error" class="text-red-500 text-xs mt-2 hidden">Selecciona una ciudad de la lista.</div>
             </div>
 
-            <!-- PASO 4: WhatsApp con prefijo +57 -->
+            <!-- PASO 4: Opcional de contacto; sin recopilar teléfono en el alta inicial -->
             <div id="step-4" class="onboarding-step">
-                <h2 class="onboarding-title">Número de WhatsApp</h2>
-                <p class="onboarding-sub">Ingresa el número de contacto de tu negocio.</p>
-                <div class="phone-input-wrapper">
-                    <span class="country-code">+57</span>
-                    <input id="input-phone" type="tel" placeholder="Tu número" pattern="[0-9]{10}">
-                </div>
-                <div id="phone-error" class="text-red-500 text-xs mt-2 hidden">Ingresa un número válido de 10 dígitos.</div>
+                <h2 class="onboarding-title">Todo listo para empezar</h2>
+                <p class="onboarding-sub">Puede dejar ciudad en blanco. Después podrá completar la configuración y conectar herramientas con permiso.</p>
             </div>
 
             <!-- Navegación del wizard -->
@@ -805,6 +786,7 @@
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="group-hover:scale-110 transition-transform"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
                 <span class="sidebar-text" data-i18n="nav_panel">Panel</span>
             </button>
+            <button onclick="switchWorkspaceView('rs-agent-workspace-prototype')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-gray-500 hover:text-white hover:bg-white/5 border border-transparent group" data-mod="rs-agent-workspace-prototype" title="Abrir asistente de Red Sapien (concepto)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 14.6 9.4 21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z"/></svg><span class="sidebar-text">Asistente · concepto</span></button>
             <button onclick="switchWorkspaceView('clientes')" class="sidebar-tab-link w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-gray-500 hover:text-white hover:bg-white/5 border border-transparent group" data-mod="clientes" title="Ir a Soporte">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform">
                     <path d="M12 2a10 10 0 0 0-10 10v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H4c0-4.42 3.58-8 8-8s8 3.58 8 8h-2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a10 10 0 0 0-10-10z"/>
@@ -824,8 +806,7 @@
         </nav>
 
         <div class="p-5 border-t border-white/5 text-[10px] font-mono tracking-[0.2em] text-gray-600 text-center w-64">
-            <span data-i18n="footer_sys">Sistema en línea</span>
-        </div>
+            <span data-i18n="footer_sys">Panel en preparación · conexiones pendientes</span><div class="mt-3 text-[9px] tracking-normal leading-relaxed text-gray-500">Panel en preparación; sin conexión a campañas ni métricas en vivo. Red Sapien no está afiliada a Zapia o BrainLogic AI SAS y no ofrece cuentas ni acceso a Zapia. <a class="underline" href="https://zapia.com/terminos?lang=es" target="_blank" rel="noopener noreferrer">Condiciones de Zapia</a> · <a class="underline" href="https://zapia.com/privacidad?lang=es" target="_blank" rel="noopener noreferrer">Privacidad</a>. No suba información clínica, sensible o financiera; no agregue contactos sin permiso.</div></div>
     </aside>
 
     <main class="flex-1 flex flex-col h-full relative z-10 overflow-hidden max-w-full text-sm">
@@ -858,7 +839,7 @@
                         </div>
                         <button id="activate-btn-pc" onclick="activateEcosystem()" class="flex items-center gap-2.5 px-6 py-3.5 bg-white text-black text-sm font-black uppercase tracking-widest rounded-full hover:bg-gray-200 transition-all active:scale-95 animate-pulse-activate border border-white/50">
                             <span class="w-2 h-2 rounded-full bg-green-500 led-green"></span>
-                            <span data-i18n="btn_activate">Solicitar activación ahora</span>
+                            <span data-i18n="btn_activate">Coordinar activación</span>
                         </button>
                     </div>
                 </div>
@@ -886,7 +867,7 @@
                                 <span id="dropdown-logo-text" data-i18n="upload_logo">Subir logo</span>
                             </button>
                         </div>
-                        <div class="px-2 py-1 mb-1"><span class="text-xs uppercase font-bold text-gray-300 tracking-wider font-mono" data-i18n="panel_global">Panel</span></div>
+                        <div class="px-2 py-1 mb-1"><span class="text-xs uppercase font-bold text-gray-300 tracking-wider font-mono" data-i18n="panel_global">Panel</span></div><p class="mt-3 text-[10px] leading-relaxed text-gray-500">Estado de ejemplo. No hay integraciones en vivo ni métricas conectadas.</p>
                         <div class="p-2 hover:bg-white/5 rounded-xl transition-colors">
                             <div class="text-sm font-bold text-gray-300 mb-2 tracking-wider flex items-center gap-1.5" data-i18n="accent_color">🎨 Color</div>
                             <div class="flex items-center gap-3 px-1">
@@ -904,10 +885,10 @@
                             </select>
                         </div>
                         <button onclick="toggleTermsModal(true)" class="w-full text-left px-3 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:bg-white/5 flex items-center gap-2 mt-2 transition-colors">
-                            📄 <span data-i18n="terms">Términos</span>
+                            📄 <span data-i18n="terms">Condiciones del panel</span>
                         </button>
                         <div class="border-t border-white/5 mt-3 pt-2">
-                            <button onclick="executeDataPurge()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm font-bold text-red-500 hover:bg-red-500/10 flex items-center gap-2 transition-colors">
+                            <button type="button" hidden aria-hidden="true" onclick="executeDataPurge()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm font-bold text-red-500 hover:bg-red-500/10 flex items-center gap-2 transition-colors">
                                 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0 1 16.138 21H7.862a2 2 0 0 1-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v3M4 7h16"/></svg> <span data-i18n="delete_account">Eliminar cuenta</span>
                             </button>
                         </div>
@@ -942,23 +923,23 @@
                                     <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[var(--accent-color)]">
                                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12h18M12 3v18M5.636 5.636l12.728 12.728M5.636 18.364L18.364 5.636" stroke="currentColor"/><circle cx="12" cy="12" r="3" stroke="currentColor"/><path d="M12 9a3 3 0 0 1 3 3" stroke="currentColor"/><path d="M12 15a3 3 0 0 1-3-3" stroke="currentColor"/></svg>
                                     </div>
-                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card1_title">PÁGINA WEB + IA</h3>
+                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card1_title">SITIO WEB · CONCEPTO</h3>
                                 </div>
                                 <div class="space-y-4">
                                     <div>
                                         <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="hosting_label">Tu Dominio</span>
-                                        <div class="bg-black border border-white/20 p-2.5 rounded-lg text-green-400 font-mono tracking-widest w-full mt-1 text-sm truncate" id="dynamic-domain">redsapien.com</div>
+                                        <div class="bg-black border border-white/20 p-2.5 rounded-lg text-green-400 font-mono tracking-widest w-full mt-1 text-sm truncate" id="dynamic-domain">Aún sin dominio asignado</div>
                                     </div>
                                     <div class="pt-2">
                                         <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="status_label">Estado</span>
                                         <div class="flex items-center gap-2 mt-1">
                                             <span class="relative flex h-3 w-3"><span class="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75 led-pulse"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span></span>
-                                            <span class="text-amber-400 text-xs font-mono font-bold tracking-wide" data-i18n="status_pending_deploy">Esperando conexión</span>
+                                            <span class="text-amber-400 text-xs font-mono font-bold tracking-wide" data-i18n="status_pending_deploy">Sitio pendiente de iniciar</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Clic para ver proyecciones</div>
+                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Ejemplo · datos en espera</div>
                         </div>
 
                         <!-- Tarjeta 2: REDES Y CAMPAÑA -->
@@ -970,7 +951,7 @@
                                     <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[#1877F2]">
                                         <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                                     </div>
-                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card2_title">CAMPAÑA + REDES</h3>
+                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card2_title">CAMPAÑA · PENDIENTE</h3>
                                 </div>
                                 <div class="grid grid-cols-2 gap-3 mb-4">
                                     <div class="bg-black/40 rounded-lg p-3 text-center border border-white/5 w-full">
@@ -999,19 +980,19 @@
                                 <div class="space-y-2 text-xs font-mono">
                                     <div class="flex justify-between items-center bg-black/30 px-2 py-1 rounded">
                                         <span class="text-gray-300 font-medium" data-i18n="budget_label">Presupuesto</span>
-                                        <span class="text-[var(--accent-color)] font-bold" data-i18n="budget_value">$13.000/día</span>
+                                        <span class="text-[var(--accent-color)] font-bold" data-i18n="budget_value">Desde $13.000 COP/día</span>
                                     </div>
                                     <div class="flex justify-between items-center bg-black/30 px-2 py-1 rounded">
-                                        <span class="text-gray-300 font-medium" data-i18n="flow_label">Flujo</span>
-                                        <span class="text-green-400 font-bold" data-i18n="flow_value">11 a 20 prospectos nuevos</span>
+                                        <span class="text-gray-300 font-medium" data-i18n="flow_label">Estado</span>
+                                        <span class="text-green-400 font-bold" data-i18n="flow_value">No conectado</span>
                                     </div>
                                     <div class="flex justify-between items-center bg-black/30 px-2 py-1 rounded mt-2">
-                                        <span class="text-gray-300 font-medium" data-i18n="pixel_status_label">Pixel</span>
-                                        <span class="inline-flex items-center gap-1"><span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 led-pulse"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span></span><span class="text-red-400 font-bold" data-i18n="pixel_disconnected">Desconectado</span></span>
+                                        <span class="text-gray-300 font-medium" data-i18n="pixel_status_label">Mensajes</span>
+                                        <span class="inline-flex items-center gap-1"><span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 led-pulse"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span></span><span class="text-red-400 font-bold" data-i18n="pixel_disconnected">Sin fuente conectada</span></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Clic para ver proyecciones</div>
+                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Ejemplo · datos en espera</div>
                         </div>
 
                         <!-- Tarjeta 3: SEO Y REPUTACIÓN -->
@@ -1025,11 +1006,11 @@
                                     <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
                                         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="3"/></svg>
                                     </div>
-                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card3_title">SEO + REPUTACIÓN</h3>
+                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card3_title">SEO / GEO · PENDIENTE</h3>
                                 </div>
                                 <div class="space-y-4">
                                     <div>
-                                        <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="rating_label">Calificación</span>
+                                        <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="rating_label">Reseñas</span>
                                         <div class="flex gap-1 mt-1 stars-bg p-1" id="rating-stars-container">
                                             <span class="rating-star cursor-default">☆</span><span class="rating-star cursor-default">☆</span><span class="rating-star cursor-default">☆</span><span class="rating-star cursor-default">☆</span><span class="rating-star cursor-default">☆</span>
                                         </div>
@@ -1043,7 +1024,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Clic para ver proyecciones</div>
+                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Ejemplo · datos en espera</div>
                         </div>
                     </div>
                 </div>
@@ -1088,7 +1069,7 @@
 
                     <div class="relative z-10 flex flex-col items-center w-full max-w-sm md:max-w-2xl mx-auto gap-4 md:gap-8 mt-auto">
 
-                        <!-- Antonella IA -->
+                        <!-- Vista ilustrativa de estado -->
                         <div class="w-full bg-white/[0.02] border border-white/5 hover:border-[var(--accent-color)]/30 rounded-xl p-3 md:p-5 flex flex-row items-center gap-4 transition-all shadow-md relative overflow-hidden">
                             <div class="absolute right-2 top-1/2 transform -translate-y-1/2 w-12 h-12 pointer-events-none z-0">
                                 <div class="relative w-full h-full">
@@ -1101,27 +1082,27 @@
                                 <img src="Image/Antonella-IA.webp" alt="Antonella IA" class="w-full h-full object-cover">
                             </div>
                             <div class="flex flex-col text-left z-10">
-                                <h3 class="text-base md:text-lg font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="soporte_monitoreo_titulo">Antonella IA</h3>
-                                <p class="text-sm text-gray-300 font-mono font-medium" data-i18n="soporte_monitoreo_estado">Monitoreando...</p>
+                                <h3 class="text-base md:text-lg font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="soporte_monitoreo_titulo">Vista de ejemplo</h3>
+                                <p class="text-sm text-gray-300 font-mono font-medium" data-i18n="soporte_monitoreo_estado">Demo · conexiones no activadas</p>
                                 <div class="mt-1 text-xs font-mono text-cyan-400 flex items-center gap-1">
                                     <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
-                                    <span id="scan-percent">94</span>
+                                    <span id="scan-percent">—</span>
                                     <span data-i18n="scan_percent_label">% escaneo</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Cristian - CTO Red Sapien -->
+                        <!-- Equipo Red Sapien · revisión humana -->
                         <div class="w-full bg-white/[0.02] border border-white/5 hover:border-[var(--accent-color)]/30 rounded-xl p-3 md:p-5 flex flex-row items-center gap-4 transition-all shadow-md relative">
                             <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0 bg-[#0a0a0a] flex items-center justify-center">
                                 <img src="Image/Foto-Sapien.webp" alt="Cristian" class="w-full h-full object-cover">
                             </div>
                             <div class="flex flex-col text-left">
                                 <h3 class="text-base md:text-lg font-display font-bold text-white uppercase tracking-tight leading-snug">Cristian López</h3>
-                                <p class="text-sm text-gray-300 font-mono font-medium" data-i18n="soporte_asesoria_estado">Optimizando...</p>
+                                <p class="text-sm text-gray-300 font-mono font-medium" data-i18n="soporte_asesoria_estado">Solicitud de revisión</p>
                                 <div class="mt-1 text-xs text-green-400 flex items-center gap-1">
                                     <span class="inline-block w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
-                                    <span id="cmd-counter">127</span>
+                                    <span id="cmd-counter">—</span>
                                     <span data-i18n="cmd_counter_label">comandos</span>
                                 </div>
                             </div>
@@ -1136,13 +1117,23 @@
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                             </svg>
-                            <span data-i18n="btn_solicitar_soporte">Pedir soporte</span>
+                            <span data-i18n="btn_solicitar_soporte">Solicitar revisión humana</span>
                         </button>
                     </div>
                 </div>
             </div>
 
             <!-- MÓDULO 3: CASOS DE ÉXITO -->
+            <section id="rs-agent-workspace-prototype" class="workspace-pane h-full hidden overflow-y-auto p-5 md:p-8" aria-labelledby="rs-workspace-agent-title">
+             <div class="max-w-3xl mx-auto rounded-2xl border border-white/10 bg-white/[.02] p-5 md:p-8">
+              <span class="text-[10px] font-bold tracking-[.16em] text-gray-400">CONCEPTO · NO CONECTADO</span>
+              <h2 id="rs-workspace-agent-title" class="mt-2 text-2xl font-bold text-white">Asistente de Red Sapien</h2>
+              <p class="mt-2 text-sm leading-relaxed text-gray-300">Propuesta para más adelante: consultar el estado de los activos de su marca y preparar solicitudes para el equipo. No ejecuta cambios, envíos, campañas ni publicaciones.</p>
+              <div class="mt-6 rounded-xl border border-white/5 bg-black/30 p-4" role="status"><p class="text-sm text-gray-400">Cuando el chat y sus permisos estén implementados, aparecerán aquí. Por ahora, pida una revisión humana desde Soporte.</p></div>
+              <button type="button" onclick="switchWorkspaceView('clientes')" class="mt-5 min-h-[46px] rounded-xl border border-white/10 px-4 text-sm font-bold text-white hover:bg-white/5">Ir a Soporte</button>
+             </div>
+            </section>
+
             <div id="pane-view-casos" class="workspace-pane h-full hidden transition-opacity duration-200 relative">
                 <div id="casos-overlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/70 backdrop-blur-sm rounded-2xl border border-white/10 cursor-not-allowed" style="pointer-events: auto;">
                     <div id="casos-lock-container" class="flex flex-col items-center justify-center select-none">
@@ -1347,15 +1338,12 @@
                     <label class="block text-sm font-mono text-gray-300 tracking-wider mb-2" data-i18n="matrix_asset_label">Activo</label>
                     <select id="activo-select" class="cyber-select">
                         <option value="" disabled selected data-i18n="matrix_select_asset">[ Elige activo ]</option>
-                        <option value="Web + IA" data-i18n="matrix_asset_web">Web + IA</option>
-                        <option value="Redes y Campaña" data-i18n="matrix_asset_social">Redes</option>
-                        <option value="SEO y Reputación" data-i18n="matrix_asset_seo">SEO</option>
+                        <option value="Sitio web inicial" data-i18n="matrix_asset_web">Sitio web inicial</option>
+                        <option value="Campaña de Meta" data-i18n="matrix_asset_social">Campaña de Meta</option>
+                        <option value="SEO/GEO y reputación" data-i18n="matrix_asset_seo">SEO/GEO y reputación</option>
                     </select>
                 </div>
-                <div>
-                    <label class="block text-sm font-mono text-gray-300 tracking-wider mb-2" data-i18n="matrix_datetime_label">Fecha y hora</label>
-                    <input type="datetime-local" id="datetime-input" class="cyber-select">
-                </div>
+                <p class="text-xs text-gray-400 leading-relaxed" data-rs-support-note>La solicitud no reserva una cita ni activa integraciones. El equipo de Red Sapien coordinará el siguiente paso por el canal indicado.</p>
                 <button id="send-whatsapp-btn" class="w-full bg-[#25D366] hover:bg-[#20b859] text-black font-black uppercase tracking-wider text-sm py-4 rounded-xl transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl active:scale-95 mt-4">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
@@ -1374,30 +1362,30 @@
             </div>
             <button id="activate-btn-mob" onclick="activateEcosystem()" class="w-full bg-white text-black py-4 px-6 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 cursor-pointer active:scale-95 transition-transform animate-pulse-activate border border-white/50">
                 <span class="w-2.5 h-2.5 rounded-full bg-green-500 led-green"></span>
-                <span class="text-sm font-black uppercase tracking-wider leading-none mt-0.5" data-i18n="btn_activate">Solicitar activación ahora</span>
+                <span class="text-sm font-black uppercase tracking-wider leading-none mt-0.5" data-i18n="btn_activate">Coordinar activación</span>
             </button>
         </div>
     </div>
 
     <!-- NAV MÓVIL -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-rs-dark/95 border-t border-white/5 backdrop-blur-2xl z-50 flex items-center justify-between px-2 pb-safe shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
-        <button onclick="switchWorkspaceView('panel')" class="mobile-nav-btn flex flex-col items-center justify-center text-white w-1/4" data-mod="panel"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_panel">Panel</span></button>
-        <button onclick="switchWorkspaceView('clientes')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/4" data-mod="clientes">
+        <button onclick="switchWorkspaceView('panel')" class="mobile-nav-btn flex flex-col items-center justify-center text-white w-1/5" data-mod="panel"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_panel">Panel</span></button>
+        <button onclick="switchWorkspaceView('rs-agent-workspace-prototype')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/5" data-mod="rs-agent-workspace-prototype"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 14.6 9.4 21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z"/></svg><span class="text-[8px] font-bold mt-1 uppercase">IA · demo</span></button>
+        <button onclick="switchWorkspaceView('clientes')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/5" data-mod="clientes">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2a10 10 0 0 0-10 10v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H4c0-4.42 3.58-8 8-8s8 3.58 8 8h-2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a10 10 0 0 0-10-10z"/>
                 <path d="M12 22v-2"/>
             </svg>
             <span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_clientes">Soporte</span>
         </button>
-        <button onclick="switchWorkspaceView('casos')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/4" data-mod="casos"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_casos">Casos</span></button>
-        <button onclick="switchWorkspaceView('notificaciones')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/4 relative" data-mod="notificaciones"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_notificaciones">Alertas</span>
-            <span class="absolute top-1.5 right-6 w-1.5 h-1.5 rounded-full bg-green-500 led-green"></span>
+        <button onclick="switchWorkspaceView('casos')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/5" data-mod="casos"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_casos">Casos</span></button>
+        <button onclick="switchWorkspaceView('notificaciones')" class="mobile-nav-btn flex flex-col items-center justify-center text-gray-500 w-1/5 relative" data-mod="notificaciones"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="text-[8px] font-bold mt-1 uppercase" data-i18n="nav_notificaciones">Alertas</span>
         </button>
     </div>
 
     <!-- MODALES EXISTENTES -->
-    <div id="terms-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-white mb-2 leading-snug" data-i18n="terms_title">Términos</h3><p class="text-sm text-gray-300 leading-relaxed mb-6 font-mono" data-i18n="terms_text">Al usar esta plataforma, aceptas nuestros términos.</p><div class="flex justify-end"><button onclick="toggleTermsModal(false)" class="px-5 py-2.5 bg-white text-black text-sm font-black uppercase tracking-wider rounded-xl hover:bg-gray-200 transition-colors" data-i18n="understand">Entendido</button></div></div></div>
-    <div id="support-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-white mb-2 leading-snug" data-i18n="support_title">Soporte</h3><p class="text-sm text-gray-300 leading-relaxed mb-4 font-mono" data-i18n="support_text">Contáctanos: soporte@redsapien.com o +57 300 000 0000.</p><div class="flex justify-end gap-3"><button onclick="toggleSupportModal(false)" class="px-5 py-2.5 bg-white/10 text-white text-sm font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-colors" data-i18n="close">Cerrar</button><a href="mailto:soporte@redsapien.com" class="px-5 py-2.5 bg-[var(--accent-color)] text-black text-sm font-black uppercase tracking-wider rounded-xl hover:opacity-90 transition-colors" data-i18n="contact">Contactar</a></div></div></div>
+    <div id="terms-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-white mb-2 leading-snug" data-i18n="terms_title">Condiciones del panel</h3><p class="text-sm text-gray-300 leading-relaxed mb-6 font-mono" data-i18n="terms_text">Panel en desarrollo. Las conexiones se habilitan de forma explícita y se rigen por las condiciones de cada servicio externo.</p><div class="flex justify-end"><button onclick="toggleTermsModal(false)" class="px-5 py-2.5 bg-white text-black text-sm font-black uppercase tracking-wider rounded-xl hover:bg-gray-200 transition-colors" data-i18n="understand">Entendido</button></div></div></div>
+    <div id="support-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-white/10 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-white mb-2 leading-snug" data-i18n="support_title">Soporte</h3><p class="text-sm text-gray-300 leading-relaxed mb-4 font-mono" data-i18n="support_text">Contáctenos desde el panel de soporte.</p><div class="flex justify-end gap-3"><button onclick="toggleSupportModal(false)" class="px-5 py-2.5 bg-white/10 text-white text-sm font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-colors" data-i18n="close">Cerrar</button><a href="mailto:soporte@redsapien.com" class="px-5 py-2.5 bg-[var(--accent-color)] text-black text-sm font-black uppercase tracking-wider rounded-xl hover:opacity-90 transition-colors" data-i18n="contact">Contactar</a></div></div></div>
     <div id="purge-modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center min-h-[100dvh] px-4 bg-black/85 backdrop-blur-md hidden"><div class="w-full max-w-sm bg-rs-dark border border-rs-red/30 rounded-2xl p-6 shadow-2xl"><h3 class="font-display font-bold text-lg text-red-500 mb-2 leading-snug" data-i18n="purge_title">🚨 Confirmar</h3><p class="text-sm text-gray-300 leading-relaxed mb-4 font-mono" data-i18n="purge_text">¿Eliminar todo? Esta acción no se puede deshacer.</p><input type="text" id="purge-confirm-input" placeholder="Escribe ELIMINAR" data-i18n="purge_placeholder" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-[var(--accent-color)] mb-4"><div class="flex justify-end gap-3"><button onclick="closePurgeModal()" class="px-5 py-2.5 bg-white/10 text-white text-sm font-black uppercase tracking-wider rounded-xl hover:bg-white/20 transition-colors" data-i18n="cancel">Cancelar</button><button id="confirm-purge-btn" disabled class="px-5 py-2.5 bg-red-500/30 text-gray-400 text-sm font-black uppercase tracking-wider rounded-xl cursor-not-allowed transition-colors" data-i18n="confirm_purge">Confirmar</button></div></div></div>
 
     <!-- Modal de Caso de Éxito -->
@@ -1452,82 +1440,82 @@
                 nav_casos: "Casos",
                 nav_notificaciones: "Alertas",
                 welcome_subtitle: "Bienvenid@",
-                btn_activate: "Solicitar activación ahora",
+                btn_activate: "Coordinar activación",
                 btn_support: "Soporte",
-                tooltip_activate: "Haznos saber para iniciar",
-                tooltip_activate_mobile: "Haznos saber para iniciar",
-                footer_sys: "Sistema en línea",
+                tooltip_activate: "Solicita el siguiente paso",
+                tooltip_activate_mobile: "Solicita el siguiente paso",
+                footer_sys: "Panel en preparación · conexiones pendientes",
                 upload_logo: "Subir logo",
                 change_logo: "Cambiar logo",
                 panel_global: "Panel",
                 accent_color: "🎨 Color",
                 language: "🌐 Idioma",
-                terms: "Términos",
+                terms: "Condiciones del panel",
                 delete_account: "Eliminar cuenta",
-                terms_title: "Términos",
-                terms_text: "Al usar esta plataforma, aceptas nuestros términos.",
+                terms_title: "Condiciones del panel",
+                terms_text: "Panel en desarrollo. Las conexiones se habilitan de forma explícita y se rigen por las condiciones de cada servicio externo.",
                 understand: "Entendido",
                 support_title: "Soporte",
-                support_text: "Contáctanos: soporte@redsapien.com o +57 300 000 0000.",
+                support_text: "Contáctenos desde el panel de soporte.",
                 close: "Cerrar",
                 contact: "Contactar",
                 proud_manizales: "Orgullosamente de Manizales",
-                card1_title: "PÁGINA WEB + IA",
-                card2_title: "CAMPAÑA + REDES",
-                card3_title: "SEO + REPUTACIÓN",
+                card1_title: "SITE",
+                card2_title: "CAMPAÑA · PENDIENTE",
+                card3_title: "SEO / GEO · PENDIENTE",
                 hosting_label: "Tu Dominio",
                 status_label: "Estado",
-                status_pending_deploy: "Esperando conexión",
-                click_telemetry: "Clic para ver proyecciones",
+                status_pending_deploy: "No desplegado",
+                click_telemetry: "Ver campos de demostración · sin datos en vivo",
                 whatsapp_msgs: "Mensajes",
                 money_spent: "Inversión",
                 budget_label: "Presupuesto",
-                budget_value: "$13.000/día",
-                flow_label: "Flujo",
-                flow_value: "11 a 20 prospectos nuevos",
+                budget_value: "Desde $13.000/día · a Meta",
+                flow_label: "Mensajes",
+                flow_value: "No conectado",
                 pixel_status_label: "Pixel",
-                pixel_disconnected: "Desconectado",
+                pixel_disconnected: "No instalado",
                 rating_label: "Calificación",
-                status_waiting_connection: "Esperando conexión",
+                status_waiting_connection: "Demo · por conectar",
                 modal_prev: "← Atrás",
                 modal_next: "Siguiente →",
                 modal_gotit: "Entendido",
                 modal_active_of: "{current} de {total}",
-                modal1_title: "WEB + IA",
-                modal1_sub: "Rendimiento alto",
-                modal1_ai: "🤖 IA 24/7",
-                modal1_visits: "120+",
-                modal1_conversion: "15%",
-                modal1_traffic: "150/mes",
-                modal1_visits_label: "visitas esperadas",
-                modal1_conversion_label: "conversión estimada",
-                modal2_title: "Ventas",
-                modal2_sub: "Métricas reales",
-                modal2_impressions: "Impresiones",
+                modal1_title: "SITE · IMPLEMENTAÇÃO",
+                modal1_sub: "Vista de demostración",
+                modal1_ai: "Ejemplo · apoyo con IA",
+                modal1_visits: "—",
+                modal1_conversion: "—",
+                modal1_traffic: "Pendiente de conexión",
+                modal1_visits_label: "datos no conectados",
+                modal1_conversion_label: "sin medición",
+                modal2_title: "Campaña · resumen",
+                modal2_sub: "Panel en preparación",
+                modal2_impressions: "Sin campaña conectada",
                 modal2_clicks: "Clics",
                 modal2_high_value: "Alto valor",
-                modal2_messages: "320+",
-                modal2_conversions: "29%",
-                modal2_messages_label: "prospectos nuevos",
-                modal2_conversions_label: "conversiones",
-                modal3_title: "Local",
-                modal3_sub: "Cobertura",
-                modal3_visibility: "+600",
-                modal3_calls: "35/mes",
-                modal3_visibility_label: "visibilidad",
-                modal3_calls_label: "llamadas directas",
+                modal2_messages: "—",
+                modal2_conversions: "—",
+                modal2_messages_label: "no conectado",
+                modal2_conversions_label: "sin medición",
+                modal3_title: "SEO / GEO · reseñas",
+                modal3_sub: "Perfil y reputación",
+                modal3_visibility: "Pendiente",
+                modal3_calls: "Pendiente",
+                modal3_visibility_label: "estado de conexión",
+                modal3_calls_label: "no conectado",
                 purge_title: "🚨 Confirmar",
                 purge_text: "¿Eliminar todo? Esta acción no se puede deshacer.",
                 cancel: "Cancelar",
                 confirm_purge: "Confirmar",
                 purge_placeholder: "Escribe ELIMINAR",
-                soporte_monitoreo_titulo: "Antonella IA",
-                soporte_monitoreo_estado: "Monitoreando...",
-                soporte_asesoria_titulo: "Cristian - CTO Red Sapien",
-                soporte_asesoria_estado: "Optimizando...",
-                btn_solicitar_soporte: "Pedir soporte",
-                scan_percent_label: "% escaneo",
-                cmd_counter_label: "comandos",
+                soporte_monitoreo_titulo: "Vista de ejemplo",
+                soporte_monitoreo_estado: "Demo · sin conexión",
+                soporte_asesoria_titulo: "Equipo Red Sapien",
+                soporte_asesoria_estado: "Solicitud de revisión",
+                btn_solicitar_soporte: "Solicitar ayuda al equipo",
+                scan_percent_label: "· demo",
+                cmd_counter_label: "· demo",
                 matrix_title: "🛰️ Soporte",
                 matrix_request_label: "¿Qué necesitas?",
                 matrix_select_option: "[ Elige ]",
@@ -1538,7 +1526,7 @@
                 matrix_asset_web: "Web + IA",
                 matrix_asset_social: "Redes",
                 matrix_asset_seo: "SEO",
-                matrix_datetime_label: "Fecha y hora",
+                matrix_datetime_label: "Fecha y hora (opcional)",
                 matrix_btn_send: "Enviar",
                 toast_title: "¡En breve te contactamos!",
                 toast_body: "Te escribiremos pronto.",
@@ -1549,7 +1537,7 @@
                 btn_view_case: "Ver caso",
                 caso1_name: "La Papa Prohibida",
                 caso1_location: "Villamaría y Manizales",
-                caso1_stat: "16 pedidos en 30h · 49 conversiones · $19.000 COP",
+                caso1_stat: "Resultados reportados en el caso; consulte la ficha para el contexto.",
                 caso2_name: "Bogotaco",
                 caso2_location: "Bogotá, Fontibón (3 sedes)",
                 caso2_stat: "SEO local · 3 GMB · Web Élite",
@@ -1568,11 +1556,11 @@
                 nav_casos: "Cases",
                 nav_notificaciones: "Alerts",
                 welcome_subtitle: "Welcome",
-                btn_activate: "Request activation now",
+                btn_activate: "Coordinate activation",
                 btn_support: "Support",
-                tooltip_activate: "Let us know to start",
-                tooltip_activate_mobile: "Let us know to start",
-                footer_sys: "System online",
+                tooltip_activate: "Request the next step",
+                tooltip_activate_mobile: "Request the next step",
+                footer_sys: "Panel in preparation · integrations pending",
                 upload_logo: "Upload logo",
                 change_logo: "Change logo",
                 panel_global: "Panel",
@@ -1581,69 +1569,69 @@
                 terms: "Terms",
                 delete_account: "Delete account",
                 terms_title: "Terms",
-                terms_text: "By using this platform, you accept our terms.",
+                terms_text: "Panel in development. Integrations are enabled explicitly and are subject to each third-party service’s terms.",
                 understand: "Understood",
                 support_title: "Support",
-                support_text: "Contact us: support@redsapien.com or +57 300 000 0000.",
+                support_text: "Contact us through the panel support request.",
                 close: "Close",
                 contact: "Contact",
                 proud_manizales: "Proudly from Manizales",
-                card1_title: "WEBSITE + AI",
-                card2_title: "CAMPAIGN + SOCIAL",
-                card3_title: "SEO + REPUTATION",
+                card1_title: "WEBSITE",
+                card2_title: "CAMPAIGN · PENDING",
+                card3_title: "SEO / GEO · PENDING",
                 hosting_label: "Your Domain",
                 status_label: "Status",
-                status_pending_deploy: "Awaiting connection",
-                click_telemetry: "Click to see projections",
+                status_pending_deploy: "Demo · connect during setup",
+                click_telemetry: "View sample fields · no live data",
                 whatsapp_msgs: "Messages",
                 money_spent: "Investment",
                 budget_label: "Budget",
-                budget_value: "$13,000/day",
-                flow_label: "Flow",
-                flow_value: "11 to 20 new prospects",
+                budget_value: "From $13,000/day · paid to Meta",
+                flow_label: "Leads",
+                flow_value: "Not connected",
                 pixel_status_label: "Pixel",
-                pixel_disconnected: "Disconnected",
+                pixel_disconnected: "Not installed",
                 rating_label: "Rating",
-                status_waiting_connection: "Awaiting connection",
+                status_waiting_connection: "Demo · connect later",
                 modal_prev: "← Back",
                 modal_next: "Next →",
                 modal_gotit: "Understood",
                 modal_active_of: "{current} of {total}",
-                modal1_title: "WEB + AI",
-                modal1_sub: "High performance",
-                modal1_ai: "🤖 AI 24/7",
-                modal1_visits: "120+",
-                modal1_conversion: "15%",
-                modal1_traffic: "150/month",
-                modal1_visits_label: "expected visits",
-                modal1_conversion_label: "estimated conversion",
+                modal1_title: "WEBSITE · SETUP",
+                modal1_sub: "Illustrative view",
+                modal1_ai: "Example · AI support",
+                modal1_visits: "—",
+                modal1_conversion: "—",
+                modal1_traffic: "Connection pending",
+                modal1_visits_label: "not connected",
+                modal1_conversion_label: "not measured",
                 modal2_title: "Sales",
-                modal2_sub: "Real metrics",
-                modal2_impressions: "Impressions",
+                modal2_sub: "Panel in development",
+                modal2_impressions: "No campaign connected",
                 modal2_clicks: "Clicks",
                 modal2_high_value: "High value",
-                modal2_messages: "320+",
-                modal2_conversions: "29%",
-                modal2_messages_label: "new prospects",
-                modal2_conversions_label: "conversions",
-                modal3_title: "Local",
-                modal3_sub: "Coverage",
-                modal3_visibility: "+600",
-                modal3_calls: "35/month",
-                modal3_visibility_label: "visibility",
-                modal3_calls_label: "direct calls",
+                modal2_messages: "—",
+                modal2_conversions: "—",
+                modal2_messages_label: "not connected",
+                modal2_conversions_label: "not measured",
+                modal3_title: "SEO / GEO · reseñas",
+                modal3_sub: "Profile and reputation",
+                modal3_visibility: "Pendiente",
+                modal3_calls: "Pending",
+                modal3_visibility_label: "connection status",
+                modal3_calls_label: "not connected",
                 purge_title: "🚨 Confirm",
                 purge_text: "Delete everything? This action cannot be undone.",
                 cancel: "Cancel",
                 confirm_purge: "Confirm",
                 purge_placeholder: "Type DELETE",
-                soporte_monitoreo_titulo: "Antonella AI",
-                soporte_monitoreo_estado: "Monitoring...",
-                soporte_asesoria_titulo: "Cristian - CTO Red Sapien",
-                soporte_asesoria_estado: "Optimizing...",
-                btn_solicitar_soporte: "Request support",
-                scan_percent_label: "% scan",
-                cmd_counter_label: "commands",
+                soporte_monitoreo_titulo: "Sample view",
+                soporte_monitoreo_estado: "Demo · not connected",
+                soporte_asesoria_titulo: "Equipo Red Sapien",
+                soporte_asesoria_estado: "Review request",
+                btn_solicitar_soporte: "Ask the team for help",
+                scan_percent_label: "· demo",
+                cmd_counter_label: "· demo",
                 matrix_title: "🛰️ Support",
                 matrix_request_label: "What do you need?",
                 matrix_select_option: "[ Choose ]",
@@ -1684,11 +1672,11 @@
                 nav_casos: "Casos",
                 nav_notificacoes: "Alertas",
                 welcome_subtitle: "Bem-vind@",
-                btn_activate: "Solicitar ativação agora",
+                btn_activate: "Coordenar ativação",
                 btn_support: "Suporte",
                 tooltip_activate: "Avise-nos para iniciar",
                 tooltip_activate_mobile: "Avise-nos para iniciar",
-                footer_sys: "Sistema online",
+                footer_sys: "Painel em preparação · conexões pendentes",
                 upload_logo: "Enviar logo",
                 change_logo: "Alterar logo",
                 panel_global: "Painel",
@@ -1697,69 +1685,69 @@
                 terms: "Termos",
                 delete_account: "Excluir conta",
                 terms_title: "Termos",
-                terms_text: "Ao usar esta plataforma, você aceita nossos termos.",
+                terms_text: "Painel em desenvolvimento. As integrações são habilitadas explicitamente e seguem os termos de cada serviço externo.",
                 understand: "Entendido",
                 support_title: "Suporte",
-                support_text: "Contate-nos: suporte@redsapien.com ou +57 300 000 0000.",
+                support_text: "Fale conosco pelo pedido de suporte do painel.",
                 close: "Fechar",
                 contact: "Contato",
                 proud_manizales: "Orgulhosamente de Manizales",
-                card1_title: "SITE + IA",
+                card1_title: "SITE + APOIO DE IA",
                 card2_title: "CAMPANHA + REDES",
-                card3_title: "SEO + REPUTAÇÃO",
+                card3_title: "SEO / GEO · PENDENTE",
                 hosting_label: "Seu Domínio",
                 status_label: "Estado",
-                status_pending_deploy: "Aguardando conexão",
+                status_pending_deploy: "Demo · conexão pendente",
                 click_telemetry: "Clique para ver projeções",
                 whatsapp_msgs: "Mensagens",
                 money_spent: "Investimento",
                 budget_label: "Orçamento",
-                budget_value: "$13.000/dia",
+                budget_value: "Desde $13.000/dia",
                 flow_label: "Fluxo",
-                flow_value: "11 a 20 novos prospects",
+                flow_value: "Não conectado",
                 pixel_status_label: "Pixel",
-                pixel_disconnected: "Desconectado",
+                pixel_disconnected: "No instalado",
                 rating_label: "Classificação",
-                status_waiting_connection: "Aguardando conexão",
+                status_waiting_connection: "Demo · conexão pendente",
                 modal_prev: "← Voltar",
                 modal_next: "Próximo →",
                 modal_gotit: "Entendido",
                 modal_active_of: "{current} de {total}",
-                modal1_title: "WEB + IA",
-                modal1_sub: "Alto desempenho",
-                modal1_ai: "🤖 IA 24/7",
-                modal1_visits: "120+",
-                modal1_conversion: "15%",
-                modal1_traffic: "150/mês",
-                modal1_visits_label: "visitas esperadas",
-                modal1_conversion_label: "conversão estimada",
+                modal1_title: "SITE · IMPLEMENTAÇÃO",
+                modal1_sub: "Visualização ilustrativa",
+                modal1_ai: "Ejemplo · apoyo con IA",
+                modal1_visits: "—",
+                modal1_conversion: "—",
+                modal1_traffic: "Conexão pendente",
+                modal1_visits_label: "datos no conectados",
+                modal1_conversion_label: "sem medição",
                 modal2_title: "Vendas",
-                modal2_sub: "Métricas reais",
-                modal2_impressions: "Impressões",
+                modal2_sub: "Painel em preparação",
+                modal2_impressions: "Sem campanha conectada",
                 modal2_clicks: "Cliques",
                 modal2_high_value: "Alto valor",
-                modal2_messages: "320+",
-                modal2_conversions: "29%",
-                modal2_messages_label: "novos prospects",
-                modal2_conversions_label: "conversões",
-                modal3_title: "Local",
-                modal3_sub: "Cobertura",
-                modal3_visibility: "+600",
-                modal3_calls: "35/mês",
-                modal3_visibility_label: "visibilidade",
-                modal3_calls_label: "chamadas diretas",
+                modal2_messages: "—",
+                modal2_conversions: "—",
+                modal2_messages_label: "não conectado",
+                modal2_conversions_label: "sem medição",
+                modal3_title: "SEO / GEO · reseñas",
+                modal3_sub: "Perfil y reputación",
+                modal3_visibility: "Pendiente",
+                modal3_calls: "Pendente",
+                modal3_visibility_label: "status da conexão",
+                modal3_calls_label: "não conectado",
                 purge_title: "🚨 Confirmar",
                 purge_text: "Excluir tudo? Esta ação não pode ser desfeita.",
                 cancel: "Cancelar",
                 confirm_purge: "Confirmar",
                 purge_placeholder: "Digite ELIMINAR",
-                soporte_monitoreo_titulo: "Antonella IA",
-                soporte_monitoreo_estado: "Monitorando...",
-                soporte_asesoria_titulo: "Cristian - CTO Red Sapien",
-                soporte_asesoria_estado: "Otimizando...",
-                btn_solicitar_soporte: "Pedir suporte",
-                scan_percent_label: "% escaneo",
-                cmd_counter_label: "comandos",
+                soporte_monitoreo_titulo: "Vista de ejemplo",
+                soporte_monitoreo_estado: "Demo · sem conexão",
+                soporte_asesoria_titulo: "Equipo Red Sapien",
+                soporte_asesoria_estado: "Pedido de revisão",
+                btn_solicitar_soporte: "Pedir ajuda à equipe",
+                scan_percent_label: "· demo",
+                cmd_counter_label: "· demo",
                 matrix_title: "🛰️ Suporte",
                 matrix_request_label: "O que você precisa?",
                 matrix_select_option: "[ Escolha ]",
@@ -1839,141 +1827,29 @@
         }
 
         function openTelemetryModal(panelId) {
-            currentTelemetryIndex = panelId;
-            const overlay = document.getElementById('telemetry-modal-overlay');
-            const body = document.getElementById('telemetry-modal-body');
-            const t = translations[currentLang];
-
-            let htmlContent = '';
-            if (panelId === 1) {
-                htmlContent = `
-                        <div class="space-y-5">
-                            <div class="border-b border-[var(--accent-color)]/30 pb-2">
-                                <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight leading-snug">${t.modal1_title}</h3>
-                                <p class="text-sm text-gray-300 font-mono">${t.modal1_sub}</p>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
-                                    <div class="text-green-400 text-sm font-mono mb-2">${t.modal1_ai}</div>
-                                    <div class="text-3xl font-mono font-black text-white">${t.modal1_visits}</div>
-                                    <div class="text-sm text-gray-300">${t.modal1_visits_label}</div>
-                                </div>
-                                <div class="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
-                                    <div class="text-[var(--accent-color)] text-sm font-mono mb-2">${t.modal1_conversion}</div>
-                                    <div class="text-3xl font-mono font-black text-white">${t.modal1_conversion}</div>
-                                    <div class="text-sm text-gray-300">${t.modal1_conversion_label}</div>
-                                </div>
-                            </div>
-                            <div class="bg-black/40 border border-white/10 rounded-xl p-4">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm font-mono text-gray-300">${t.modal1_traffic}</span>
-                                    <span class="text-xl font-bold text-white">${t.modal1_traffic}</span>
-                                </div>
-                                <div class="w-full bg-white/10 h-1.5 rounded-full mt-2"><div class="bg-[var(--accent-color)] h-1.5 rounded-full w-3/4"></div></div>
-                            </div>
-                        </div>
-                    `;
-            } else if (panelId === 2) {
-                htmlContent = `
-                        <div class="space-y-4">
-                            <div class="border-b border-[var(--accent-color)]/30 pb-2">
-                                <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight leading-snug">${t.modal2_title}</h3>
-                                <p class="text-sm text-gray-300 font-mono">${t.modal2_sub}</p>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
-                                    <div class="text-4xl font-mono font-black text-white">MILES</div>
-                                    <div class="text-sm text-gray-300">${t.modal2_impressions}</div>
-                                </div>
-                                <div class="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
-                                    <div class="text-4xl font-mono font-black text-white">CLICS</div>
-                                    <div class="text-sm text-gray-300">${t.modal2_high_value}</div>
-                                </div>
-                            </div>
-                            <div class="bg-black/40 border border-white/10 rounded-xl p-4">
-                                <div class="flex justify-between items-center border-b border-white/10 pb-2 mb-2">
-                                    <span class="text-sm font-mono text-gray-300">${t.modal2_messages_label}</span>
-                                    <span class="text-2xl font-bold text-white">${t.modal2_messages}</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm font-mono text-gray-300">${t.modal2_conversions_label}</span>
-                                    <span class="text-2xl font-bold text-[var(--accent-color)]">${t.modal2_conversions}</span>
-                                </div>
-                            </div>
-                            <div class="mt-1">
-                                <svg width="100%" height="60" viewBox="0 0 400 60" preserveAspectRatio="none" class="rounded-lg">
-                                    <polyline points="0,45 60,34 120,38 180,23 240,15 300,26 360,8 400,11" fill="none" stroke="var(--accent-color)" stroke-width="2" class="chart-line" stroke-dasharray="400" stroke-dashoffset="400"/>
-                                    <defs><linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="var(--accent-color)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--accent-color)" stop-opacity="0"/></linearGradient></defs>
-                                    <polygon points="0,45 60,34 120,38 180,23 240,15 300,26 360,8 400,11 400,60 0,60" fill="url(#grad)" opacity="0.5"/>
-                                </svg>
-                            </div>
-                        </div>
-                    `;
-            } else if (panelId === 3) {
-                htmlContent = `
-                        <div class="space-y-4">
-                            <div class="border-b border-[var(--accent-color)]/30 pb-2">
-                                <h3 class="text-2xl font-display font-black text-white uppercase tracking-tight leading-snug">${t.modal3_title}</h3>
-                                <p class="text-sm text-gray-300 font-mono">${t.modal3_sub}</p>
-                            </div>
-                            <div class="bg-black/40 border border-white/10 rounded-xl p-4">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm font-mono text-gray-300">${t.modal3_visibility_label}</span>
-                                    <span class="text-2xl font-bold text-white">${t.modal3_visibility}</span>
-                                </div>
-                                <div class="flex justify-between items-center mt-2">
-                                    <span class="text-sm font-mono text-gray-300">${t.modal3_calls_label}</span>
-                                    <span class="text-2xl font-bold text-[var(--accent-color)]">${t.modal3_calls}</span>
-                                </div>
-                            </div>
-                            <div id="seo-map" class="w-full h-40 rounded-xl border border-white/20 mt-2 z-0 overflow-hidden"></div>
-                        </div>
-                    `;
-                body.innerHTML = htmlContent;
-                // Inicializar mapa con la ciudad guardada
-                const savedCity = localStorage.getItem('user_city') || 'Manizales';
-                const coords = cityCoords[savedCity] || cityCoords['Manizales'];
-                setTimeout(() => {
-                    if (globalMap) globalMap.remove();
-                    const mapDiv = document.getElementById('seo-map');
-                    if (mapDiv) {
-                        globalMap = L.map(mapDiv).setView([coords.lat, coords.lng], 13);
-                        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> & CartoDB',
-                            subdomains: 'abcd',
-                            maxZoom: 19,
-                            minZoom: 3
-                        }).addTo(globalMap);
-                        L.circle([coords.lat, coords.lng], {
-                            color: 'var(--accent-color)',
-                            fillColor: '#FF3C00',
-                            fillOpacity: 0.2,
-                            radius: 2000,
-                            weight: 2,
-                            className: 'radar-pulse'
-                        }).addTo(globalMap);
-                        const style = document.createElement('style');
-                        style.textContent =
-                            `.radar-pulse { animation: radarPulse 2s infinite ease-out; } @keyframes radarPulse { 0% { stroke-width: 2; opacity: 0.8; r: 2000; } 50% { stroke-width: 1; opacity: 0.4; r: 2500; } 100% { stroke-width: 0.5; opacity: 0; r: 3000; } }`;
-                        document.head.appendChild(style);
-                    }
-                }, 150);
-                updateTelemetryDots(panelId);
-                document.getElementById('telemetry-prev-btn').disabled = (panelId === 1);
-                const nextBtn = document.getElementById('telemetry-next-btn');
-                nextBtn.innerHTML = (panelId === 3) ? t.modal_gotit : t.modal_next;
-                overlay.classList.remove('hidden');
-                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
-                return;
-            }
-
-            body.innerHTML = htmlContent;
-            updateTelemetryDots(panelId);
-            document.getElementById('telemetry-prev-btn').disabled = (panelId === 1);
-            const nextBtn = document.getElementById('telemetry-next-btn');
-            nextBtn.innerHTML = (panelId === 3) ? t.modal_gotit : t.modal_next;
-            overlay.classList.remove('hidden');
-            setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            const t = translations[currentLang] || translations.es;
+            const titles = {
+                1: { title: currentLang === 'en' ? 'Website · setup' : currentLang === 'pt' ? 'Site · configuração' : 'Sitio web · configuración', items: [
+                    [currentLang === 'en' ? 'Status' : 'Estado', currentLang === 'en' ? 'Not deployed yet' : currentLang === 'pt' ? 'Ainda não publicado' : 'Aún no publicado'],
+                    [currentLang === 'en' ? 'Domain & hosting' : currentLang === 'pt' ? 'Domínio e hospedagem' : 'Dominio y hosting', currentLang === 'en' ? 'Confirm in the proposal' : currentLang === 'pt' ? 'Confirmar na proposta' : 'Confirmar en la propuesta']
+                ]},
+                2: { title: currentLang === 'en' ? 'Campaign · setup' : currentLang === 'pt' ? 'Campanha · configuração' : 'Campaña · configuración', items: [
+                    [currentLang === 'en' ? 'Campaign' : currentLang === 'pt' ? 'Campanha' : 'Campaña', currentLang === 'en' ? 'Not connected' : currentLang === 'pt' ? 'Não conectada' : 'No conectada'],
+                    [currentLang === 'en' ? 'Messages & impressions' : currentLang === 'pt' ? 'Mensagens e impressões' : 'Mensajes e impresiones', currentLang === 'en' ? 'Awaiting integration' : currentLang === 'pt' ? 'Aguardando integração' : 'Pendiente de conexión'],
+                    [currentLang === 'en' ? 'Ad spend' : currentLang === 'pt' ? 'Verba' : 'Pauta', currentLang === 'en' ? 'From COP $13,000/day, paid to Meta' : currentLang === 'pt' ? 'Desde COP $13.000/dia, pago à Meta' : 'Desde $13.000 COP/día, pagada a Meta']
+                ]},
+                3: { title: currentLang === 'en' ? 'Local SEO / GEO · setup' : currentLang === 'pt' ? 'SEO / GEO local · configuração' : 'SEO / GEO local · configuración', items: [
+                    [currentLang === 'en' ? 'Google profile' : currentLang === 'pt' ? 'Perfil do Google' : 'Perfil de Google', currentLang === 'en' ? 'Setup to be confirmed' : currentLang === 'pt' ? 'Configuração pendente' : 'Configuración pendiente'],
+                    [currentLang === 'en' ? 'Reviews & visibility' : currentLang === 'pt' ? 'Avaliações e visibilidade' : 'Reseñas y visibilidad', currentLang === 'en' ? 'No live connection or data' : currentLang === 'pt' ? 'Sem conexão ou dados ao vivo' : 'Sin conexión ni datos en vivo']
+                ]}
+            };
+            const model = titles[panelId]; if (!model) return;
+            const overlay=document.getElementById('telemetry-modal-overlay'),body=document.getElementById('telemetry-modal-body');
+            body.innerHTML = `<div class="space-y-4"><div class="border-b border-[var(--accent-color)]/20 pb-3"><h3 class="text-xl font-display font-bold text-white">${model.title}</h3><p class="mt-2 text-sm text-gray-400">${currentLang==='en'?'This is a setup preview; no live account data is connected.':'Vista de configuración; aún no hay datos de cuentas conectadas.'}</p></div>${model.items.map(([k,v])=>`<div class="flex flex-col gap-1 rounded-xl border border-white/5 bg-white/[.025] p-4"><span class="text-xs text-gray-400">${k}</span><strong class="text-sm text-gray-100">${v}</strong></div>`).join('')}</div>`;
+            currentTelemetryIndex=panelId; document.querySelectorAll('#telemetry-dots .nav-dot').forEach((dot,i)=>dot.classList.toggle('active',i===panelId-1));
+            document.getElementById('telemetry-prev-btn').disabled=panelId===1;
+            const next=document.getElementById('telemetry-next-btn');next.textContent=panelId===3?(translations[currentLang]?.modal_gotit||'Entendido'):(translations[currentLang]?.modal_next||'Siguiente');
+            overlay.classList.remove('hidden');setTimeout(()=>overlay.classList.remove('opacity-0'),10);
         }
 
         function closeTelemetryModal() {
@@ -1994,32 +1870,8 @@
         }
 
         function activateEcosystem() {
-            const t = translations[currentLang];
-            const toast = document.createElement('div');
-            toast.className = 'fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[200] bg-[#25D366] border border-white/20 backdrop-blur-md rounded-2xl p-4 shadow-2xl max-w-xs w-full text-center transition-all duration-300 whatsapp-toast text-white';
-            toast.innerHTML = `
-                    <div class="flex items-center gap-3 justify-center">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                        </svg>
-                        <span class="text-base font-black uppercase tracking-wider">Ok ✅ En breve te escribiremos...</span>
-                    </div>
-                `;
-            document.body.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
-
-            const pcWrapper = document.getElementById('cta-btn-wrapper-pc');
-            const mobWrapper = document.getElementById('cta-btn-wrapper-mob');
-            if (pcWrapper) pcWrapper.style.display = 'none';
-            if (mobWrapper) mobWrapper.style.display = 'none';
-
-            localStorage.setItem('ecosystem_activated', 'true');
-            updateSupportButtonVisibility();
-
-            if (window.onActivationCallback) window.onActivationCallback();
+            const message = 'Hola. Quiero coordinar con Red Sapien la siguiente etapa de mi ecosistema digital. El panel muestra datos de ejemplo hasta que conectemos las cuentas y los servicios.';
+            window.open('https://wa.me/573045625920?text=' + encodeURIComponent(message), '_blank', 'noopener,noreferrer');
         }
 
         function updateDynamicDomain() {
@@ -2033,62 +1885,17 @@
             if (slug.length > 30) slug = slug.substring(0, 30);
             if (!slug) slug = 'redsapien';
             const domainSpan = document.getElementById('dynamic-domain');
-            if (domainSpan) domainSpan.innerText = `${slug}.redsapien.com`;
+            if (domainSpan) domainSpan.innerText = `Pendiente de asignar · ${slug}.redsapien.com`;
         }
 
         function startTelemetrySimulation() {
-            let scanValue = parseFloat(localStorage.getItem('scan_percent')) || 94;
-            let cmdCount = parseInt(localStorage.getItem('cmd_count')) || 127;
-
+            // No live campaign/site integrations yet: never animate invented metrics.
             const percentSpan = document.getElementById('scan-percent');
             const cmdSpan = document.getElementById('cmd-counter');
-
-            if (percentSpan) percentSpan.innerText = Math.floor(scanValue);
-            if (cmdSpan) cmdSpan.innerText = cmdCount;
-
-            let lastScanUpdate = Date.now();
-            let lastCmdUpdate = Date.now();
-
-            function updateScan() {
-                const now = Date.now();
-                const interval = 2800 + (Math.random() * 1500);
-                if (now - lastScanUpdate >= interval) {
-                    let delta = (Math.random() - 0.5) * 3.5;
-                    scanValue = Math.min(99.9, Math.max(85, scanValue + delta));
-                    if (percentSpan) percentSpan.innerText = Math.floor(scanValue);
-                    localStorage.setItem('scan_percent', scanValue);
-                    lastScanUpdate = now;
-                }
-                requestAnimationFrame(updateScan);
-            }
-
-            function updateCmd() {
-                const now = Date.now();
-                const interval = 3500 + (Math.random() * 2000);
-                if (now - lastCmdUpdate >= interval) {
-                    let increment = Math.floor(Math.random() * 3) + 1;
-                    cmdCount += increment;
-                    if (cmdSpan) cmdSpan.innerText = cmdCount;
-                    localStorage.setItem('cmd_count', cmdCount);
-                    lastCmdUpdate = now;
-                }
-                requestAnimationFrame(updateCmd);
-            }
-
-            updateScan();
-            updateCmd();
-
             const terminalDiv = document.getElementById('mini-terminal-logs');
-            if (terminalDiv) {
-                const logs = ['CF_PROXY::OK', 'GH_COMMIT::v2.4', 'SYS_SECURE', 'CACHE_FLUSH', 'ROUTE_OPTIMIZE',
-                    'EDGE_DEPLOY'
-                ];
-                let logIndex = 0;
-                setInterval(() => {
-                    terminalDiv.innerText = logs[logIndex % logs.length];
-                    logIndex++;
-                }, 1800);
-            }
+            if (percentSpan) percentSpan.textContent = '—';
+            if (cmdSpan) cmdSpan.textContent = '—';
+            if (terminalDiv) terminalDiv.textContent = 'CONEXIONES_PENDIENTES';
         }
 
         // Soporte modal (matrix)
@@ -2118,16 +1925,15 @@
             sendSupportBtn.addEventListener('click', () => {
                 const solicitud = document.getElementById('solicitud-select').value;
                 const activo = document.getElementById('activo-select').value;
-                const datetime = document.getElementById('datetime-input').value;
-                if (!solicitud || !activo || !datetime) {
+                const datetime = '';
+                if (!solicitud || !activo) {
                     alert(translations[currentLang]?.matrix_alert || 'Por favor completa todos los campos.');
                     return;
                 }
-                const formattedDateTime = new Date(datetime).toLocaleString(currentLang === 'es' ? 'es-ES' : (currentLang ===
-                    'pt' ? 'pt-BR' : 'en-US'), { dateStyle: 'full', timeStyle: 'short' });
+                const formattedDateTime = ''; 
                 const mensaje =
-                    `🛰️ ENLACE DE SOPORTE RED SAPIEN ACTIVO\n\n• Solicitud: ${solicitud}\n• Activo Digital: ${activo}\n• Fecha y Hora: ${formattedDateTime}\n> Esperando conexión segura con la central operativa...`;
-                const url = `https://wa.me/573012800024?text=${encodeURIComponent(mensaje)}`;
+                    `Hola, deseo solicitar una revisión humana sobre ${solicitud} para ${activo}. Entiendo que es una consulta y no una reserva ni una activación confirmada.`;
+                const url = `https://wa.me/573045625920?text=${encodeURIComponent(mensaje)}`;
                 window.open(url, '_blank');
                 supportModal.classList.add('hidden');
                 supportModal.classList.remove('flex');
@@ -2304,7 +2110,11 @@
         });
         if (confirmPurgeBtn) confirmPurgeBtn.addEventListener('click', () => {
             if (!confirmPurgeBtn.disabled) {
-                localStorage.clear();
+                localStorage.removeItem("rs_notifications");
+                localStorage.removeItem("rs_lang");
+                localStorage.removeItem("rs_dash_color");
+                localStorage.removeItem("rs_dash_glow");
+                localStorage.removeItem("rs_dash_neon");
                 window.location.reload();
             }
         });
@@ -2312,48 +2122,8 @@
         // --------------------------------------------------------------
         // 3. CASOS DE ÉXITO (sin cambios)
         // --------------------------------------------------------------
-        const successCases = {
-            1: {
-                name: "La Papa Prohibida",
-                title: "Ecosistema de Ventas para La Papa Prohibida",
-                location: "Villamaría y Manizales, Caldas",
-                niche: "Comidas Rápidas",
-                stat: "16 pedidos en 30h · 49 conversiones · $19.000 COP",
-                description: "Campaña de Facebook Ads que generó tráfico y conversiones récord.",
-                img: "https://placehold.co/800x500/0a0a0a/F59E0B?text=Facebook+Ads+-+La+Papa+Prohibida",
-                url: "https://lapapa.redsapien.com/"
-            },
-            2: {
-                name: "Bogotaco",
-                title: "Dominio SEO Local para Bogotaco",
-                location: "Bogotá, Fontibón (3 sedes)",
-                niche: "Comidas Rápidas",
-                stat: "SEO optimizado, 3 perfiles GMB y Web Élite",
-                description: "Optimización de fichas GMB y gestión de reseñas.",
-                img: "https://placehold.co/800x500/0a0a0a/10B981?text=Google+My+Business+-+Bogotaco",
-                url: "https://bogotaco.redsapien.com/"
-            },
-            3: {
-                name: "Señor Medrano",
-                title: "Ecosistema Web de Alta Velocidad",
-                location: "Manizales y Villamaría, Caldas",
-                niche: "Comidas Rápidas",
-                stat: "Perfil Google optimizado + Web limpia y veloz",
-                description: "Rediseño web y optimización del perfil de Google.",
-                img: "https://placehold.co/800x500/0a0a0a/EF4444?text=Perfil+Google+Optimizado+-+Se%C3%B1or+Medrano",
-                url: "https://srmedrano.co/"
-            },
-            4: {
-                name: "Noir Elixir",
-                title: "Rebranding Premium y Catálogo Virtual",
-                location: "Medellín, Antioquia",
-                niche: "Ecommerce / Belleza",
-                stat: "Rebranding Premium + Catálogo virtual 1s",
-                description: "Rebranding en Facebook con fan page y catálogo virtual.",
-                img: "https://placehold.co/800x500/0a0a0a/FFFFFF?text=Fan+Page+Facebook+-+Noir+Elixir",
-                url: "https://noir.redsapien.com/"
-            }
-        };
+        const successCases = {};
+
 
         let currentCaseIndex = 1;
         const totalCases = 4;
@@ -2449,32 +2219,8 @@
         }
 
         function getDefaultNotifications() {
-            const bizName = getBusinessName();
-            return [{
-                id: 'notif-welcome',
-                type: 'system',
-                title: 'Bienvenido al Ecosistema Digital',
-                message: `Hola, es un gusto tenerte con nosotros ${bizName || 'Red Sapien'}.`,
-                signature: 'Cristian - CTO Red Sapien',
-                icon: '🚀',
-                color: '#FF3C00'
-            }, {
-                id: 'notif-price',
-                type: 'system',
-                title: 'Inversión Única',
-                message: 'Recuerda que tu ecosistema completo solo vale 396.000 pesos, pago contra entrega.',
-                signature: 'Cristian - CTO Red Sapien',
-                icon: '💰',
-                color: '#FF3C00'
-            }, {
-                id: 'notif-action',
-                type: 'system',
-                title: 'Activación Pendiente',
-                message: 'Estamos a la espera de que pidas activar tu máquina de ventas.',
-                signature: 'Antonella IA - Red Sapien',
-                icon: '⚡',
-                color: '#7B2CBF'
-            }];
+            // Notifications are populated only by verified, server-provided events after push and data sources are configured.
+            return [];
         }
 
         function initNotifications() {
@@ -2491,7 +2237,6 @@
             }
             renderNotifications();
             updateNotificationLED();
-            requestPushPermission();
             notificationsInitialized = true;
         }
 
@@ -2547,25 +2292,20 @@
             card.className =
                 `notification-card flex flex-col md:flex-row items-start md:items-center gap-4 p-4 rounded-xl border ${borderColor} ${bgGradient} backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-[${accentColor}]/5`;
 
-            card.innerHTML = `
-                    <div class="flex items-center gap-3 w-full md:w-auto">
-                        <div class="w-10 h-10 rounded-full ${iconBg} flex items-center justify-center text-lg flex-shrink-0">
-                            ${notif.icon || (isSystem ? '🔴' : '🧠')}
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <h4 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug">${notif.title}</h4>
-                            <p class="text-sm text-gray-300 font-mono line-clamp-2">${notif.message}</p>
-                            <div class="mt-1 flex items-center gap-2">
-                                <span class="text-[8px] font-mono text-gray-500 uppercase tracking-wider">${notif.signature}</span>
-                                <span class="w-1 h-1 rounded-full ${isSystem ? 'bg-[#FF3C00]' : 'bg-[#7B2CBF]'} opacity-50"></span>
-                                <span class="text-[8px] font-mono ${isSystem ? 'text-[#FF3C00]' : 'text-[#7B2CBF]'}">●</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button onclick="dismissNotification('${notif.id}')" class="ml-auto flex-shrink-0 px-4 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-xs font-black uppercase tracking-wider text-gray-300 hover:text-white transition-all border border-white/10 hover:border-white/20">
-                        Listo
-                    </button>
-                `;
+            const row = document.createElement('div');
+            row.className = 'flex items-center gap-3 w-full md:w-auto';
+            const iconBox = document.createElement('div');
+            iconBox.className = `w-10 h-10 rounded-full ${iconBg} flex items-center justify-center text-lg flex-shrink-0`;
+            iconBox.textContent = String(notif.icon || (isSystem ? '🔴' : '🧠')).slice(0,8);
+            const body = document.createElement('div'); body.className = 'flex-1 min-w-0';
+            const title = document.createElement('h4'); title.className = 'text-base font-display font-bold text-white uppercase tracking-tight leading-snug'; title.textContent = String(notif.title || '').slice(0,160);
+            const message = document.createElement('p'); message.className = 'text-sm text-gray-300 font-mono line-clamp-2'; message.textContent = String(notif.message || '').slice(0,1000);
+            const meta = document.createElement('div'); meta.className = 'mt-1 flex items-center gap-2';
+            const signature = document.createElement('span'); signature.className = 'text-[8px] font-mono text-gray-500 uppercase tracking-wider'; signature.textContent = String(notif.signature || 'Red Sapien · aviso').slice(0,100);
+            const dot = document.createElement('span'); dot.className = `w-1 h-1 rounded-full ${isSystem ? 'bg-[#FF3C00]' : 'bg-[#7B2CBF]'} opacity-50`;
+            meta.append(signature,dot); body.append(title,message,meta); row.append(iconBox,body);
+            const dismiss = document.createElement('button'); dismiss.type = 'button'; dismiss.className = 'ml-auto flex-shrink-0 px-4 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-xs font-black uppercase tracking-wider text-gray-300 hover:text-white transition-all border border-white/10 hover:border-white/20'; dismiss.textContent = translations[currentLang]?.understand || 'Listo'; dismiss.addEventListener('click',()=>dismissNotification(notif.id));
+            card.append(row,dismiss);
 
             card.style.opacity = '0';
             card.style.transform = 'translateY(12px)';
@@ -2619,24 +2359,19 @@
         }
 
         function requestPushPermission() {
-            if (!('Notification' in window)) return;
-            if (Notification.permission === 'granted' || Notification.permission === 'denied') return;
-            Notification.requestPermission().then(permission => {
-                if (permission === 'granted') {
-                    console.log('Permiso de notificaciones concedido.');
-                }
-            });
+            // Intentionally does not request notification permission until a future explicit opt-in control and server push are implemented.
+            return false;
         }
 
         function addNotification(title, message, type = 'system', icon = '🔔') {
             const newNotif = {
-                id: 'notif-' + Date.now(),
+                id: 'notif-' + Date.now() + '-' + Math.random().toString(36).slice(2,8),
                 type: type,
                 title: title,
                 message: message,
                 signature: type === 'system' ?
-                    'Cristian - CTO Red Sapien' :
-                    'Antonella IA - Red Sapien',
+                    'Equipo Red Sapien · revisión humana' :
+                    'Red Sapien - revisión humana',
                 icon: icon,
                 color: type === 'system' ? '#FF3C00' : '#7B2CBF'
             };
@@ -2644,15 +2379,7 @@
             localStorage.setItem('rs_notifications', JSON.stringify(activeNotifications));
             renderNotifications();
             updateNotificationLED();
-            if (Notification.permission === 'granted') {
-                try {
-                    const notification = new Notification('Red Sapien', {
-                        body: message,
-                        icon: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="45" fill="%23050505" stroke="%23FF3C00" stroke-width="4"/%3E%3Ctext x="50%25" y="55%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="40" fill="%23FF3C00"%3ERS%3C/text%3E%3C/svg%3E'
-                    });
-                    setTimeout(() => notification.close(), 5000);
-                } catch (e) {}
-            }
+            // In-panel notice only. Server-backed push requires a subscription flow and backend, not present yet.
         }
 
         function ensureNotificationsInitialized() {
@@ -2664,8 +2391,7 @@
         function updateSupportButtonVisibility() {
             const supportBtn = document.getElementById('open-support-modal-btn');
             if (!supportBtn) return;
-            const isActivated = localStorage.getItem('ecosystem_activated') === 'true';
-            supportBtn.style.display = isActivated ? 'flex' : 'none';
+            supportBtn.style.display = 'flex';
         }
 
         // --------------------------------------------------------------
@@ -2687,12 +2413,13 @@
 
         // Variables de estado del wizard
         let wizardStep = 1; // 1..4
-        let wizardData = {
-            business_name: '',
-            niche: '',
-            city: '',
-            phone: ''
-        };
+        let wizardData = { business_name: '', niche: '', city: '', phone: '' }; // Minimal first-run fields only.
+        const savedSignupNiche = localStorage.getItem('rs_initial_niche') || ''; // set only after user confirms the launch request
+        const initialNicheMap = {health:'Servicios profesionales', food:'Gastronomía', ecommerce:'E-commerce y marcas', other:'Otros sectores'};
+        const authSignupNiche = initialNicheMap[savedSignupNiche] || ''; // overwritten with Supabase user metadata after auth
+        if (!wizardData.city) wizardData.city='';
+        if (authSignupNiche) wizardData.niche = authSignupNiche;
+        if (authSignupNiche) localStorage.removeItem('rs_initial_niche');
 
         // DOM references
         const overlay = document.getElementById('onboarding-overlay');
@@ -2755,10 +2482,9 @@
                 case 2:
                     return wizardData.niche !== '';
                 case 3:
-                    return wizardData.city !== '';
+                    return true;
                 case 4:
-                    const phone = inputPhone.value.replace(/\s/g, '');
-                    return /^[0-9]{10}$/.test(phone);
+                    return true;
                 default:
                     return false;
             }
@@ -2827,24 +2553,12 @@
         });
 
         citySearch.addEventListener('input', (e) => {
-            const val = e.target.value;
+            const val = e.target.value.trim();
             renderCityOptions(val);
             const exact = Object.keys(cityCoords).find(c => c.toLowerCase() === val.toLowerCase());
-            if (exact) {
-                wizardData.city = exact;
-                cityError.classList.add('hidden');
-                renderCityOptions(val);
-                nextBtn.disabled = !validateStep(3);
-            } else {
-                if (wizardData.city) {
-                    wizardData.city = '';
-                    renderCityOptions(val);
-                    nextBtn.disabled = true;
-                }
-                if (!wizardData.city) {
-                    nextBtn.disabled = true;
-                }
-            }
+            wizardData.city = exact || '';
+            cityError.classList.add('hidden');
+            nextBtn.disabled = !validateStep(3);
         });
 
         citySearch.addEventListener('change', () => {
@@ -2859,21 +2573,15 @@
                 if (wizardData.city) {
                     wizardData.city = '';
                     renderCityOptions(val);
-                    nextBtn.disabled = true;
                 }
+                nextBtn.disabled = !validateStep(3);
             }
         });
 
-        inputPhone.addEventListener('input', () => {
-            const raw = inputPhone.value.replace(/\D/g, '');
-            if (raw.length > 10) {
-                inputPhone.value = raw.slice(0, 10);
-            } else {
-                inputPhone.value = raw;
-            }
-            wizardData.phone = raw;
-            phoneError.classList.add('hidden');
-            nextBtn.disabled = !validateStep(4);
+        if (inputPhone) inputPhone.addEventListener('input', () => {
+            const raw = inputPhone.value.replace(/\D/g, '').slice(0, 10);
+            inputPhone.value = raw; wizardData.phone = raw;
+            phoneError?.classList.add('hidden'); nextBtn.disabled = !validateStep(4);
         });
 
         prevBtn.addEventListener('click', prevStep);
@@ -2882,9 +2590,9 @@
         // --- Finalizar onboarding: upsert a Supabase con updated_at ---
         async function finishOnboarding() {
             wizardData.business_name = wizardData.business_name || inputBusiness.value.trim();
-            wizardData.phone = wizardData.phone || inputPhone.value.replace(/\D/g, '');
+            // Contact details are optional and collected only after explaining the integration purpose.
 
-            if (!wizardData.business_name || !wizardData.niche || !wizardData.city || !wizardData.phone) {
+            if (!wizardData.business_name || !wizardData.niche || (wizardData.phone && !/^[0-9]{10}$/.test(wizardData.phone))) {
                 alert('Por favor completa todos los pasos correctamente.');
                 return;
             }
@@ -2896,12 +2604,13 @@
                 return;
             }
 
+            // Security dependency: Supabase RLS must restrict profiles writes to auth.uid() = id before signup is enabled.
+            // This browser uses only the public anon/publishable key; never embed service_role in this repository.
             const profileData = {
                 id: user.id,
                 business_name: wizardData.business_name,
                 niche: wizardData.niche,
                 city: wizardData.city,
-                phone: wizardData.phone,
                 onboarding_completed: true,
                 updated_at: new Date().toISOString()
             };
@@ -2926,23 +2635,14 @@
                 const headline = document.getElementById('brand-headline-name');
                 if (headline) headline.textContent = wizardData.business_name.toUpperCase();
 
-                updateDynamicDomain();
-
-                localStorage.setItem('user_city', wizardData.city);
-
-                initNotifications();
-
-                const slug = wizardData.business_name.toLowerCase()
-                    .replace(/\s+/g, '')
-                    .replace(/[^a-z0-9]/g, '');
-                const domain = `${slug}.redsapien.com`;
+                if (wizardData.city) localStorage.setItem('user_city', wizardData.city); else localStorage.removeItem('user_city');
 
                 const toast = document.createElement('div');
                 toast.className =
                     'fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[300] bg-[var(--accent-color)] border border-white/20 backdrop-blur-md rounded-2xl p-4 shadow-2xl max-w-xs w-full text-center transition-all duration-300 whatsapp-toast text-white';
                 toast.innerHTML = `
-                        <span class="text-base font-black uppercase tracking-wider">✅ ¡Ecosistema activado con éxito!</span>
-                        <br><span class="text-xs font-mono opacity-80">${domain}</span>
+                        <span class="text-base font-black uppercase tracking-wider">✅ Datos iniciales guardados</span>
+                        <br><span class="text-xs font-mono opacity-80">El sitio y las conexiones se coordinarán después con el equipo.</span>
                     `;
                 document.body.appendChild(toast);
                 setTimeout(() => {
@@ -2950,19 +2650,7 @@
                     setTimeout(() => toast.remove(), 300);
                 }, 4500);
 
-                // --- NUEVO: Mostrar CTA después de 12 segundos ---
-                setTimeout(() => {
-                    const desktopCta = document.getElementById('desktop-cta-container');
-                    const mobileCta = document.getElementById('mobile-cta-container');
-                    if (desktopCta) {
-                        desktopCta.style.display = ''; // asegurar visible
-                        desktopCta.classList.remove('opacity-0');
-                    }
-                    if (mobileCta) {
-                        mobileCta.style.display = '';
-                        mobileCta.classList.remove('opacity-0');
-                    }
-                }, 12000);
+
 
             } catch (err) {
                 alert('Ocurrió un error inesperado. Revisa la consola.');
@@ -2974,6 +2662,8 @@
         async function checkOnboardingStatus() {
             try {
                 const { data: { user }, error: userError } = await supabase.auth.getUser();
+                const savedNiche = localStorage.getItem('rs_initial_niche') || user?.user_metadata?.initial_niche || '';
+                if (savedNiche && initialNicheMap[savedNiche]) wizardData.niche = initialNicheMap[savedNiche];
 
                 if (userError || !user) {
                     console.warn('No hay usuario autenticado. El onboarding no se mostrará.');
@@ -2983,7 +2673,7 @@
 
                 const { data: profile, error: profileError } = await supabase
                     .from('profiles')
-                    .select('onboarding_completed, business_name, city, niche, phone')
+                    .select('onboarding_completed, business_name, city, niche')
                     .eq('id', user.id)
                     .maybeSingle();
 
@@ -2994,6 +2684,10 @@
                 }
 
                 if (!profile || profile.onboarding_completed === false) {
+                    if (!profile && authSignupNiche) {
+                        const chosen = nicheGrid.querySelector(`[data-niche="${CSS.escape(authSignupNiche)}"]`);
+                        chosen?.classList.add('selected');
+                    }
                     if (profile) {
                         if (profile.business_name) {
                             wizardData.business_name = profile.business_name;
@@ -3011,7 +2705,7 @@
                         }
                         if (profile.phone) {
                             wizardData.phone = profile.phone;
-                            inputPhone.value = profile.phone;
+                            if (inputPhone) inputPhone.value = profile.phone;
                         }
                     }
                     overlay.style.display = 'flex';
@@ -3034,22 +2728,9 @@
 
                     initNotifications();
 
-                    // Si ya estaba completado, mostrar CTA después de 12s (simulando el cierre)
-                    const isActivated = localStorage.getItem('ecosystem_activated');
-                    if (!isActivated) {
-                        setTimeout(() => {
-                            const desktopCta = document.getElementById('desktop-cta-container');
-                            const mobileCta = document.getElementById('mobile-cta-container');
-                            if (desktopCta) {
-                                desktopCta.style.display = '';
-                                desktopCta.classList.remove('opacity-0');
-                            }
-                            if (mobileCta) {
-                                mobileCta.style.display = '';
-                                mobileCta.classList.remove('opacity-0');
-                            }
-                        }, 12000);
-                    }
+                    // Offer a user-initiated request; this does not activate integrations or campaigns.
+                    document.getElementById('desktop-cta-container')?.classList.remove('opacity-0');
+                    document.getElementById('mobile-cta-container')?.classList.remove('opacity-0');
                 }
             } catch (err) {
                 console.error('Error en checkOnboardingStatus:', err);
