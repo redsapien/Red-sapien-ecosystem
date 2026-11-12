@@ -5738,12 +5738,12 @@ html[data-niche="health"],body[data-niche="health"]{--rs-theme:#ff3c00!important
  const move=delta=>{const list=cards();if(list.length<2)return;const i=nearest(),target=(i+delta+list.length)%list.length;track.scrollTo({left:track.scrollLeft+list[target].getBoundingClientRect().left-track.getBoundingClientRect().left,behavior:reduced.matches?'auto':'smooth'})};
  const stop=()=>{if(timer){clearInterval(timer);timer=0}};
  const scheduleResume=()=>{stop();if(resumeTimer)clearTimeout(resumeTimer);if(media.matches&&!document.hidden){resumeTimer=setTimeout(start,4500)}};
- const start=()=>{stop();if(!media.matches||document.hidden||cards().length<2)return;timer=setInterval(()=>move(1),3000)};
+ const start=()=>{stop();if(!media.matches||reduced.matches||document.hidden||cards().length<2)return;timer=setInterval(()=>move(1),3000)};
  prev?.addEventListener('click',()=>scheduleResume());next?.addEventListener('click',()=>scheduleResume());
  ['touchstart','pointerdown','wheel','focusin'].forEach(ev=>track.addEventListener(ev,scheduleResume,{passive:ev!=='focusin'}));
  track.addEventListener('mouseenter',stop);track.addEventListener('mouseleave',start);
  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
- media.addEventListener?.('change',start);
+ media.addEventListener?.('change',start);reduced.addEventListener?.('change',start);
  const observer=new MutationObserver(()=>{stop();requestAnimationFrame(start)});observer.observe(track,{childList:true});
  start();
 })();
@@ -6428,6 +6428,44 @@ html body[data-niche] #sectores .rs-selector .rs-selector-btn.is-active{border-c
 #rs-case-modal .rs-case-modal-card,#coming-soon-modal .rs-coming-soon-card{background:#111315!important;border-color:rgba(255,255,255,.13)!important}
 @media(max-width:760px){#sectores{padding-top:82px!important;padding-bottom:58px!important}#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{padding-block:58px!important}#main-content #hero-title{font-size:clamp(2.45rem,10vw,3.7rem)!important}#sectores .rs-selector-btn{min-height:84px!important}#maquinaria-automatizada .stacking-card{border-radius:16px!important;padding:15px!important}#maquinaria-automatizada .rs-eco-node{padding:10px 8px!important;font-size:.73rem!important}#maquinaria-automatizada .rs-eco-node svg{width:18px!important;height:18px!important}#seccion-5-pricing .rs-offer-card{border-radius:17px!important}}
 @media(prefers-reduced-motion:reduce){#sectores .rs-selector-btn,#casos-exito-ecosistemas .rs-case-card{transition:none!important}}
+</style>
+<style id="rs-mobile-desktop-refine-20261112-0032">
+/* Review: consistent responsive spacing, unobtrusive motion, readable controls. */
+html,body{background:#08090a!important}
+#main-content,#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing,#manifiesto-maquinaria,#footer-red-sapien{background:#08090a!important;background-image:none!important}
+html body[data-niche] #sectores{background:#08090a!important;background-image:none!important}
+#sectores .rs-selector::before{display:none!important}
+#main-content #hero-offer .rs-hero-price-card{background:#151719!important;border-color:rgba(255,255,255,.13)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)!important}
+#casos-exito-ecosistemas .rs-case-card,#maquinaria-automatizada .stacking-card,#agente-seguimiento.rs-agent-demo,#seccion-5-pricing .rs-offer-card{border-color:rgba(255,255,255,.13)!important;box-shadow:0 10px 26px rgba(0,0,0,.17),inset 0 1px 0 rgba(255,255,255,.035)!important}
+#main-content #hero-desc,#sectores #niche-result-copy,#casos-exito-ecosistemas .rs-case-proof,#maquinaria-automatizada .rs-phase-summary,#maquinaria-automatizada #phase3-desc{line-height:1.55!important}
+#sectores [role=tab],#ecosystem-slider .rs-case-open,#seccion-5-pricing summary,#main-cta{touch-action:manipulation}
+@media(max-width:760px){
+ #sectores{padding-top:clamp(76px,19vw,88px)!important;padding-bottom:56px!important}
+ #sectores .rs-sectors-inner{width:min(100%,600px)!important}
+ #sectores .rs-selector{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ #sectores .rs-selector-btn{min-width:0!important;min-height:86px!important;padding:14px!important;border-radius:14px!important}
+ #sectores .rs-selector-btn strong{font-size:clamp(.92rem,3.7vw,1rem)!important;line-height:1.25!important;overflow-wrap:anywhere!important}
+ #sectores .rs-selector-btn .rs-selector-kicker{font-size:.75rem!important;line-height:1.3!important}
+ #sectores #niche-result{padding-top:15px!important;gap:6px!important}
+ #casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{padding-block:clamp(54px,15vw,64px)!important}
+ #casos-exito-ecosistemas .rs-case-card{border-radius:15px!important}
+ #maquinaria-automatizada .stacking-card,#agente-seguimiento.rs-agent-demo{border-radius:16px!important}
+ #maquinaria-automatizada .rs-ecosystem-visual__stage{gap:8px!important}
+ #maquinaria-automatizada .rs-eco-node{min-width:0!important;padding:11px 8px!important;font-size:clamp(.68rem,2.8vw,.78rem)!important;line-height:1.3!important;overflow-wrap:anywhere!important}
+ #maquinaria-automatizada .rs-phase-summary,#maquinaria-automatizada #phase3-desc{font-size:1rem!important;line-height:1.55!important}
+ #seccion-5-pricing .rs-price-installment{font-size:.94rem!important;line-height:1.5!important}
+ #floating-whatsapp-container>a,#profile-bubble{min-width:56px!important;min-height:56px!important}
+}
+@media(prefers-reduced-motion:no-preference){
+ /* These animate only after the existing observer marks them visible; no hidden content on failure. */
+ #sectores h2.rs-gentle-visible,#casos-exito-ecosistemas h2.rs-gentle-visible,#rs-faq-title.rs-gentle-visible{animation:rs-soft-arrive-0032 .55s cubic-bezier(.2,.7,.25,1) both!important}
+ #card-phase-1.rs-gentle-visible,#rs-offer-card.rs-gentle-visible{animation:rs-soft-card-0032 .6s cubic-bezier(.2,.7,.25,1) both!important}
+ @keyframes rs-soft-arrive-0032{from{opacity:.72;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+ @keyframes rs-soft-card-0032{from{opacity:.84;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+}
+@media(prefers-reduced-motion:reduce){
+ #sectores h2.rs-gentle-visible,#casos-exito-ecosistemas h2.rs-gentle-visible,#rs-faq-title.rs-gentle-visible,#card-phase-1.rs-gentle-visible,#rs-offer-card.rs-gentle-visible{animation:none!important;opacity:1!important;transform:none!important}
+}
 </style>
 </body>
 </html>
