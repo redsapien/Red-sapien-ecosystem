@@ -6709,6 +6709,11 @@ html:lang(es) .rs-brand-update-0156 [lang]:not([lang=es]),html:lang(en) .rs-bran
  #rs-case-modal .rs-case-modal-card,#coming-soon-modal .rs-coming-soon-card,#investor-modal .rs-investor-card{max-height:calc(100dvh - 24px)!important;overflow-y:auto!important;border-radius:16px!important}
 }
 @media(max-width:360px){.rs-nav-brand-0156 span{font-size:.75rem}#main-nav .rs-ai-signal--nav{max-width:120px!important}#hero-content.rs-hero-layout{padding-inline:15px!important}#hero-content #hero-title{font-size:2.12rem!important}}
+/* Override older price-card rules with a single quiet, readable row. */
+html body #main-content #hero-content #hero-offer .rs-hero-price-card,
+html body #main-content #hero-content #hero-offer .rs-hero-price-total{display:flex!important;align-items:center!important;justify-content:space-between!important;width:100%!important;min-height:52px!important;margin:0!important;padding:10px 0!important;border:0!important;border-bottom:1px solid rgba(255,255,255,.10)!important;border-radius:0!important;background:none!important;box-shadow:none!important}
+html body #main-content #hero-content #hero-offer .rs-hero-price-card .rs-hero-price-label,
+html body #main-content #hero-content #hero-offer .rs-hero-price-card strong{align-self:center!important;margin:0!important;line-height:1.3!important}
 @media(prefers-reduced-motion:reduce){#menu-trigger,#mobile-menu .rs-menu-option,#sectores .rs-selector-btn{transition:none!important}}
 </style>
 </body>
