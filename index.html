@@ -6511,5 +6511,31 @@ html body[data-niche] #sectores .rs-selector .rs-selector-btn.is-active{border-c
 @media(prefers-reduced-motion:no-preference){#sectores .rs-selector-btn.is-active .rs-selector-icon svg{animation:rs-icon-glow-0104 4s ease-in-out infinite}@keyframes rs-icon-glow-0104{0%,100%{filter:drop-shadow(0 0 3px rgba(255,73,61,.35))}50%{filter:drop-shadow(0 0 7px rgba(255,73,61,.65))}}}
 @media(prefers-reduced-motion:reduce){#sectores .rs-selector-btn,#sectores .rs-selector-icon svg{animation:none!important;transition:none!important}}
 </style>
+<style id="rs-natural-motion-20261112-0112">
+/* Red Sapien's own identity: dark surface, red light and restrained depth. */
+#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing{position:relative;isolation:isolate}
+#sectores::after,#maquinaria-automatizada::after{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(ellipse 46% 30% at 83% 32%,rgba(133,21,30,.075),transparent 75%)}
+#casos-exito-ecosistemas::after{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(ellipse 40% 26% at 13% 37%,rgba(148,25,33,.055),transparent 75%)}
+#sectores .rs-selector-btn .rs-selector-icon,#sectores .rs-selector .rs-selector-btn.rs-other-sector .rs-selector-icon{width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important;border-radius:11px!important;color:#fff1ee!important;background:linear-gradient(145deg,#e35148,#8f1822 75%,#53121a)!important;box-shadow:inset 0 1px 1px rgba(255,255,255,.33),inset 0 -3px 7px rgba(50,0,0,.26),0 5px 14px rgba(176,27,35,.2)!important;text-shadow:0 1px 4px rgba(0,0,0,.5)!important}
+#sectores .rs-selector-btn .rs-selector-icon svg{width:19px!important;height:19px!important;stroke:#fff8f6!important;stroke-width:1.8!important;filter:none!important}
+#sectores .rs-selector-btn{gap:8px!important;min-height:128px!important}
+#sectores .rs-selector-btn strong,#sectores .rs-selector-kicker{position:relative;z-index:1}
+#casos-exito-ecosistemas .rs-case-card,#maquinaria-automatizada .stacking-card,#seccion-5-pricing .rs-offer-card{border-color:rgba(255,255,255,.105)!important}
+#sectores h2,#casos-exito-ecosistemas h2,#maquinaria-automatizada h2,#seccion-5-pricing h2{letter-spacing:-.035em!important;line-height:1.12!important}
+#hero-desc,.rs-story-intro,#niche-result-copy,.rs-case-proof{letter-spacing:0!important}
+@media(max-width:760px){#sectores .rs-selector-btn{min-height:120px!important;padding:12px!important}#sectores .rs-selector-btn .rs-selector-icon,#sectores .rs-selector .rs-selector-btn.rs-other-sector .rs-selector-icon{width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important}#sectores::after,#maquinaria-automatizada::after{background:radial-gradient(ellipse 90% 24% at 92% 24%,rgba(133,21,30,.065),transparent 75%)}}
+@media(prefers-reduced-motion:no-preference){.rs-natural-enter-0112{animation:rs-natural-enter-0112 .6s cubic-bezier(.2,.7,.2,1) both!important}@keyframes rs-natural-enter-0112{from{opacity:.74;transform:translateY(11px)}to{opacity:1;transform:translateY(0)}}}
+@media(prefers-reduced-motion:reduce){.rs-natural-enter-0112{animation:none!important;opacity:1!important;transform:none!important}}
+</style>
+<script id="rs-natural-motion-20261112-0112-script">
+(()=>{
+ const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)');
+ if(reduce?.matches||!('IntersectionObserver'in window))return;
+ const selector='#sectores .rs-story-intro,#casos-exito-ecosistemas .rs-story-intro,#maquinaria-automatizada .rs-journey-0053,#maquinaria-automatizada #card-phase-2,#maquinaria-automatizada #card-phase-3,#agente-seguimiento,#seccion-5-pricing .rs-faq-wrap';
+ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.classList.add('rs-natural-enter-0112');observer.unobserve(entry.target)}),{threshold:.08,rootMargin:'0px 0px -3% 0px'});
+ document.querySelectorAll(selector).forEach(el=>observer.observe(el));
+ reduce?.addEventListener?.('change',event=>{if(event.matches)observer.disconnect()});
+})();
+</script>
 </body>
 </html>
