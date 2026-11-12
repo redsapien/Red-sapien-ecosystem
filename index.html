@@ -6193,7 +6193,7 @@ body[data-niche="health"] #agente-seguimiento{--rs-selected-color:#ff3c00!import
    if(y<r.bottom&&y+size>r.top){const below=r.bottom,above=r.top-size;if(below+size<=h)y=below;else if(above>=16)y=above;}
   }
   y=Math.max(16,Math.min(h-size,y));
-  const lowerY=Math.min(h-size,y+20);
+  const lowerY=Math.min(h-size-10,y+20);
   if(!boxes.some(r=>lowerY<r.bottom&&lowerY+size>r.top))y=lowerY;
   bottom=Math.round(h-y-size);
   wa.style.setProperty('--rs-mobile-cta-bottom',bottom+'px');profile.style.setProperty('--rs-mobile-cta-bottom',bottom+'px');
@@ -6396,6 +6396,7 @@ html body[data-niche] #sectores .rs-selector .rs-selector-btn.is-active{border-c
 :root{--rs-premium-bg:#08090a;--rs-premium-card:#111315;--rs-premium-border:rgba(255,255,255,.105);--rs-premium-soft:#bfc2c5;--rs-premium-accent:#f05a4e}
 html,body{background:#08090a!important}
 #main-content,#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing,#manifiesto-maquinaria,#footer-red-sapien{background:#08090a!important;background-image:none!important}
+html body[data-niche] #sectores{background:#08090a!important;background-image:none!important}#main-content,#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing,#manifiesto-maquinaria{margin-block:0!important}#footer-red-sapien>div.bg-black{background:#08090a!important}
 #main-content,#sectores,#casos-exito-ecosistemas,#maquinaria-automatizada,#seccion-5-pricing,#manifiesto-maquinaria{border-top:0!important;box-shadow:none!important}
 #footer-red-sapien>div.absolute:not(:last-child){display:none!important}
 #main-content #hero-title{font-size:clamp(2.6rem,6.2vw,5.1rem)!important;letter-spacing:-.055em!important;line-height:1.04!important;text-wrap:balance!important}
