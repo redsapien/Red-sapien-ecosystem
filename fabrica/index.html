@@ -37,7 +37,7 @@
  const SUPABASE_KEY='sb_publishable_06DbVVwkvlDKQ-xYoTyRxg_o4rDpaUh';
  const supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
  const button=document.getElementById('google-sign-in'),message=document.getElementById('auth-message');
- const dashboardUrl=new URL('./dashboard/?previewOnboarding=1',window.location.href).toString();
+ const dashboardUrl=new URL('./dashboard-preview.html?previewOnboarding=1',window.location.href).toString();
  const showError=txt=>{message.textContent=txt;button.disabled=false};
  const errorParams=new URLSearchParams(window.location.hash.slice(1));
  if(errorParams.has('error_description'))showError('No se pudo completar el acceso con Google. Revise la configuración del inicio de sesión o inténtelo nuevamente.');
