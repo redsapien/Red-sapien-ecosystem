@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta id="meta-theme" name="theme-color" content="#050505">
-    <title>Red Sapien | Panel de Control</title>
+    <title>Mi ecosistema | Red Sapien</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon-s.svg"><link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-s-32.png"><link rel="apple-touch-icon" href="../assets/apple-touch-icon-s.png"><meta name="theme-color" content="#050505"><link rel="manifest" href="../manifest.webmanifest">
 
     <!-- Favicon dinámico SVG -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23050505' stroke='%23FF3C00' stroke-width='4'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='40' fill='%23FF3C00'%3ERS%3C/text%3E%3C/svg%3E">
@@ -731,6 +732,20 @@
 
         @media(max-width:600px){.onboarding-modal.onboarding-three-step{justify-content:flex-start!important}.onboarding-three-step .onboarding-step{scroll-margin-block:18px}.onboarding-three-step .onboarding-text-input{font-size:16px!important}body:has(#onboarding-overlay.active){overflow:hidden!important}}
 </style>
+
+<style id="fabrica-brand-refresh">
+:root{--accent-color:#FF3C00;--accent-glow:rgba(255,60,0,.12);--neon-border:rgba(255,60,0,.18)}
+body{background:#050505!important}.ambient-glow-bg{opacity:.3!important}.tech-grid-bg{opacity:.16!important}
+#sidebar-panel,#trigger-reopen-sidebar,.mobile-nav-btn,#mobile-cta-container,#desktop-cta-container{display:none!important}
+#workspace-shell{width:100%!important}#workspace-header{height:76px!important;padding-inline:clamp(16px,4vw,48px)!important;border-bottom-color:rgba(255,60,0,.28)!important}
+#rs-ecosystem-workspace{border-color:rgba(255,60,0,.22)!important;background:linear-gradient(140deg,rgba(255,60,0,.045),rgba(255,255,255,.018) 58%,rgba(0,0,0,.2))!important}
+.rs-service-card{position:relative;overflow:hidden;min-height:186px;border:1px solid rgba(255,255,255,.11);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(9,10,12,.94) 62%);padding:20px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .22s ease,transform .22s ease,box-shadow .22s ease}
+.rs-service-card:hover{border-color:rgba(255,60,0,.45);transform:translateY(-2px);box-shadow:0 18px 50px rgba(0,0,0,.28)}.rs-service-card h3{color:white;font-weight:800;font-size:1rem}.rs-service-card p{color:#a8adb5;font-size:.82rem;line-height:1.45}.rs-service-icon{display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,60,0,.25);border-radius:13px;background:rgba(255,60,0,.075);color:#ff7047;font-size:1.2rem}.rs-led{width:8px;height:8px;border-radius:99px;background:#8b929a;display:inline-block}.rs-led.available{background:#26d97b;box-shadow:0 0 12px rgba(38,217,123,.55)}.rs-led.pending{background:#ffb547;box-shadow:0 0 10px rgba(255,181,71,.45)}.rs-service-cta{min-height:42px;padding:10px 15px;border:1px solid rgba(255,60,0,.35);border-radius:999px;background:linear-gradient(100deg,#ff3c00,#c8102e);color:#fff;font-size:.75rem;font-weight:800;letter-spacing:.04em}.rs-service-cta:disabled{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);color:#7e838a;cursor:not-allowed}
+.rs-top-menu{display:none;gap:8px;position:absolute;left:clamp(14px,3vw,38px);top:calc(100% + 8px);z-index:95;flex-direction:column;min-width:220px;padding:9px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:#111318;box-shadow:0 20px 60px #000}.rs-top-menu.open{display:flex}.rs-header-brand{display:flex;align-items:center;gap:9px;color:#fff;font-size:.7rem;font-weight:900;letter-spacing:.14em;white-space:nowrap}.rs-header-brand img{border-radius:10px;border:1px solid rgba(255,60,0,.28)}.rs-top-menu button{border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:9px 13px;background:rgba(255,255,255,.035);color:#ddd;font-size:.72rem;font-weight:700}.rs-top-menu button:hover,.rs-top-menu button[aria-current=true]{border-color:rgba(255,60,0,.4);color:#fff;background:rgba(255,60,0,.09)}
+.rs-module{scroll-margin-top:92px}.rs-mini-section{padding:20px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(255,255,255,.018)}
+@media(max-width:640px){#workspace-header{height:64px!important;padding-inline:14px!important}.rs-top-menu{position:fixed;z-index:90;top:69px;left:12px;right:12px;min-width:0}.rs-top-menu button{text-align:left;padding:12px 14px}.rs-header-brand span{display:none}.rs-service-card{min-height:160px;padding:16px}.rs-module{scroll-margin-top:76px}}
+</style>
+
 </head>
 
 <body class="font-sans h-[100dvh] flex bg-rs-black overflow-hidden select-none">
@@ -743,7 +758,7 @@
     <div id="onboarding-overlay" class="onboarding-modal-overlay" aria-label="Crea tu perfil de negocio">
         <div class="onboarding-modal onboarding-three-step" role="dialog" aria-modal="true" aria-labelledby="onboarding-title" aria-describedby="onboarding-progress-label">
             <div class="onboarding-progress-head">
-                <span class="onboarding-brand-mark" aria-hidden="true">S</span>
+                <img class="onboarding-brand-mark" src="../assets/favicon-s.svg" alt="Red Sapien" width="34" height="34">
                 <span id="onboarding-progress-label" class="onboarding-progress-label" aria-live="polite">Paso 1 de 3</span>
             </div>
             <div class="progress-bar-track" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" aria-label="Progreso de tu perfil">
@@ -753,7 +768,7 @@
             <div id="step-1" class="onboarding-step active" aria-hidden="false">
                 <span class="onboarding-step-kicker">PASO 1 · SUS DATOS</span>
                 <h2 class="onboarding-title" id="onboarding-title">¿Cómo le llamamos?</h2>
-                <p class="onboarding-sub">Con su nombre empezamos a preparar su espacio.</p>
+                <p class="onboarding-sub">Su espacio empieza con su nombre.</p>
                 <label class="onboarding-field-label" for="input-person-name">Su nombre</label>
                 <input id="input-person-name" type="text" autocomplete="given-name" maxlength="80" placeholder="Ej.: Ana" class="onboarding-text-input">
                 <p id="person-name-error" class="onboarding-error" aria-live="polite" hidden>Escriba su nombre para continuar.</p>
@@ -762,7 +777,7 @@
             <div id="step-2" class="onboarding-step" aria-hidden="true" inert>
                 <span class="onboarding-step-kicker">PASO 2 · SU NEGOCIO</span>
                 <h2 class="onboarding-title">¿A qué se dedica su negocio?</h2>
-                <p class="onboarding-sub">Elija el sector que mejor lo describe.</p>
+                <p class="onboarding-sub">Elija su sector.</p>
                 <div class="niche-grid-compact" id="niche-grid" role="radiogroup" aria-label="Sector de su negocio">
                     <button class="niche-card" type="button" role="radio" aria-checked="false" data-niche="Servicios profesionales y consultoría"><span class="niche-card-icon" aria-hidden="true">✳</span><span class="label">Servicios profesionales</span></button>
                     <button class="niche-card" type="button" role="radio" aria-checked="false" data-niche="Gastronomía y restaurantes"><span class="niche-card-icon" aria-hidden="true">◈</span><span class="label">Gastronomía</span></button>
@@ -778,18 +793,18 @@
             <div id="step-3" class="onboarding-step" aria-hidden="true" inert>
                 <span class="onboarding-step-kicker">PASO 3 · SU MARCA</span>
                 <h2 class="onboarding-title">¿Cómo se llama su negocio o marca?</h2>
-                <p class="onboarding-sub">Escríbalo tal como aparece públicamente, por ejemplo, en sus redes.</p>
+                <p class="onboarding-sub">Escríbalo tal como aparece en sus redes o públicamente.</p>
                 <label class="onboarding-field-label" for="input-business-name">Nombre público de su negocio</label>
                 <input id="input-business-name" type="text" autocomplete="organization" maxlength="120" placeholder="Ej.: Café Central" class="onboarding-text-input">
                 <p id="business-name-error" class="onboarding-error" aria-live="polite" hidden>Escriba el nombre de su negocio para crear su perfil.</p>
-                <p class="onboarding-last-step">Último paso: escriba el nombre que reconocen sus clientes.</p>
+                <p class="onboarding-last-step">Así lo verán sus clientes.</p>
             </div>
 
             <div class="onboarding-nav">
                 <button id="onboarding-prev" class="btn" type="button" disabled>Volver</button>
                 <button id="onboarding-next" class="btn btn-primary" type="button" disabled>Continuar</button>
             </div>
-            <p class="onboarding-privacy-note">Usaremos estos datos para personalizar su espacio de trabajo.</p>
+            <p class="onboarding-privacy-note">Usaremos estos datos para personalizar su panel.</p>
         </div>
     </div>
 
@@ -848,7 +863,8 @@
 
         <header id="workspace-header" class="h-24 px-6 md:px-10 flex items-center justify-between bg-rs-black/30 backdrop-blur-xl shrink-0 transition-all duration-300 z-20" style="border-bottom: 1px solid rgba(255,255,255,0.04);">
 
-            <div class="flex items-center gap-6">
+            <div class="rs-header-brand"><img src="../assets/favicon-s.svg" alt="" width="34" height="34"><span>RED SAPIEN</span></div><button id="rs-menu-toggle" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[.035] text-white" aria-label="Abrir menú" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><nav id="rs-top-menu" class="rs-top-menu" aria-label="Módulos"><button type="button" data-target="module-1">Mi ecosistema</button><button type="button" data-target="module-2">Muro</button><button type="button" data-target="module-3">Noticias y avisos</button></nav>
+                <div class="flex items-center gap-6">
                 <div id="header-title-container" class="flex flex-col justify-center mt-1 transition-all duration-300 origin-left">
                     <span class="text-xs md:text-sm font-semibold text-gray-300 tracking-wider font-sans" data-i18n="welcome_subtitle">Bienvenid@</span>
                     <h2 id="brand-headline-name" class="text-2xl md:text-4xl font-display font-black tracking-tighter text-white uppercase mt-0.5 leading-snug" style="text-shadow: 0 0 20px rgba(255,255,255,0.05);">
@@ -946,128 +962,24 @@
                     </div>
 
                     <section id="rs-ecosystem-workspace" class="mb-7 rounded-2xl border border-white/10 bg-white/[.025] p-4 md:p-6" aria-labelledby="rs-ecosystem-heading">
-                        <div class="flex flex-wrap items-start justify-between gap-3 mb-4"><div><p class="text-[10px] uppercase tracking-[.18em] text-gray-400 font-bold">MI ECOSISTEMA</p><h2 id="rs-ecosystem-heading" class="text-xl md:text-2xl text-white font-black">Servicios para su marca</h2><p id="rs-business-summary" class="mt-1 text-sm text-gray-400">Complete su perfil para preparar su espacio.</p></div><span id="rs-business-status" class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-gray-300">Preparación inicial</span></div>
-                        <div id="rs-ecosystem-catalog" class="grid grid-cols-1 md:grid-cols-2 gap-3" aria-live="polite"><article class="rounded-xl border border-white/10 bg-black/30 p-4"><h3 class="font-bold text-white">Web para su marca · $50.000 COP</h3><p class="text-sm text-gray-400 mt-2">Una web profesional para presentar su marca y facilitar el contacto.</p><p class="text-xs text-gray-500 mt-2">Pago contra entrega · alcance confirmado antes de iniciar.</p></article><article class="rounded-xl border border-white/10 bg-black/30 p-4"><h3 class="font-bold text-white">Ecosistema · hasta 3 herramientas · $130.000 COP</h3><p class="text-sm text-gray-400 mt-2">Una web y hasta tres herramientas elegidas para las necesidades de su marca.</p><p class="text-xs text-gray-500 mt-2">Pago contra entrega · alcance confirmado antes de iniciar.</p></article></div>
-                        <div class="mt-5 pt-4 border-t border-white/10"><h3 class="text-sm font-bold text-white">Solicitudes de su marca</h3><div id="rs-requests-list" class="mt-2 text-sm text-gray-400">Todavía no hay solicitudes.</div></div>
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-4"><div><p class="text-[10px] uppercase tracking-[.18em] text-gray-400 font-bold">SU ESPACIO</p><h2 id="rs-ecosystem-heading" class="text-xl md:text-2xl text-white font-black">Su marca</h2></div></div>
+                        <div class="mt-3 flex flex-wrap items-center gap-2"><span class="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-xs text-gray-300"><i class="rs-led pending"></i><span id="rs-business-status">Preparación inicial</span></span><span id="rs-business-summary" class="text-sm text-gray-400">Complete su perfil para preparar su espacio.</span></div>
                     </section>
-                    <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch px-2 md:px-0">
-                        <div class="hidden lg:block absolute top-1/2 left-[calc(33.33%-1rem)] right-[calc(66.66%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-10 -translate-y-1/2"></div>
-                        <div class="hidden lg:block absolute top-1/2 left-[calc(66.66%-1rem)] right-[calc(33.33%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-10 -translate-y-1/2"></div>
-
-                        <!-- Tarjeta 1: WEB + IA -->
-                        <div onclick="openTelemetryModal(1)" class="group relative bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-6 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_15px_rgba(255,60,0,0.06)] z-10 overflow-hidden h-full">
-                            <div class="absolute bottom-3 right-3 text-6xl font-black text-white/[0.015] pointer-events-none select-none">www</div>
-                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/4 to-transparent rounded-bl-full pointer-events-none"></div>
-                            <div>
-                                <div class="flex items-center gap-3 mb-4 border-b border-white/10 pb-2">
-                                    <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[var(--accent-color)]">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12h18M12 3v18M5.636 5.636l12.728 12.728M5.636 18.364L18.364 5.636" stroke="currentColor"/><circle cx="12" cy="12" r="3" stroke="currentColor"/><path d="M12 9a3 3 0 0 1 3 3" stroke="currentColor"/><path d="M12 15a3 3 0 0 1-3-3" stroke="currentColor"/></svg>
+                    <section id="module-1" class="rs-module mb-7" aria-labelledby="rs-services-title">
+                      <div class="mb-4 flex flex-wrap items-end justify-between gap-3"><div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-gray-400">MÓDULO 1</p><h2 id="rs-services-title" class="text-xl md:text-2xl font-black text-white">Su ecosistema</h2><p class="mt-1 text-sm text-gray-400">Solicite lo que necesita. Confirmamos alcance y fecha con usted.</p></div><span class="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-xs text-gray-300"><i class="rs-led pending"></i> Servicios disponibles y en preparación</span></div>
+                      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3" id="rs-six-service-cards">
+                        <article class="rs-service-card"><div><div class="flex items-center justify-between"><span class="rs-service-icon">⌘</span><span class="inline-flex items-center gap-2 text-[11px] text-green-300"><i class="rs-led available"></i> Disponible</span></div><h3 class="mt-4">Sitio web</h3><p class="mt-1">Una página profesional para su marca, lista para presentar su oferta.</p></div><div class="mt-4 flex items-center justify-between gap-2"><strong class="text-sm text-white">$50.000 COP</strong><button class="rs-service-cta" data-package="web_basic">Solicitar</button></div></article>
+                        <article class="rs-service-card"><div><div class="flex items-center justify-between"><span class="rs-service-icon">◈</span><span class="inline-flex items-center gap-2 text-[11px] text-green-300"><i class="rs-led available"></i> Disponible</span></div><h3 class="mt-4">Ecosistema · hasta 3 herramientas</h3><p class="mt-1">Web y herramientas definidas con usted según su negocio.</p></div><div class="mt-4 flex items-center justify-between gap-2"><strong class="text-sm text-white">$130.000 COP</strong><button class="rs-service-cta" data-package="ecosystem_3">Solicitar</button></div></article>
+                        <article class="rs-service-card"><div><div class="flex items-center justify-between"><span class="rs-service-icon">◎</span><span class="inline-flex items-center gap-2 text-[11px] text-amber-300"><i class="rs-led pending"></i> Por definir</span></div><h3 class="mt-4">Presencia en Google</h3><p class="mt-1">Un espacio para presentar su negocio en búsquedas locales.</p></div><button class="rs-service-cta" disabled>Próximamente</button></article>
+                        <article class="rs-service-card"><div><div class="flex items-center justify-between"><span class="rs-service-icon">▤</span><span class="inline-flex items-center gap-2 text-[11px] text-amber-300"><i class="rs-led pending"></i> Por definir</span></div><h3 class="mt-4">CRM y seguimiento</h3><p class="mt-1">Organización de consultas y próximos pasos de su negocio.</p></div><button class="rs-service-cta" disabled>Próximamente</button></article>
+                        <article class="rs-service-card"><div><div class="flex items-center justify-between"><span class="rs-service-icon">✳</span><span class="inline-flex items-center gap-2 text-[11px] text-amber-300"><i class="rs-led pending"></i> Por definir</span></div><h3 class="mt-4">Asistente de WhatsApp</h3><p class="mt-1">Una opción de apoyo para responder y ordenar consultas; alcance por definir.</p></div><button class="rs-service-cta" disabled>Próximamente</button></article>
+                        <article class="rs-service-card"><div><div class="flex items-center justify-between"><span class="rs-service-icon">↗</span><span class="inline-flex items-center gap-2 text-[11px] text-amber-300"><i class="rs-led pending"></i> Por definir</span></div><h3 class="mt-4">Campañas digitales</h3><p class="mt-1">Planificación y conexión de campañas, con inversión publicitaria aparte.</p></div><button class="rs-service-cta" disabled>Próximamente</button></article>
+                      </div>
+                      <div class="mt-4 rounded-xl border border-white/8 bg-white/[.018] p-4"><h3 class="text-sm font-bold text-white">Sus solicitudes</h3><div id="rs-requests-list" class="mt-2 text-sm text-gray-400">Todavía no hay solicitudes.</div></div>
+                    </section>
+                    <section id="module-2" class="rs-module rs-mini-section mb-4" aria-labelledby="rs-showcase-title"><p class="text-[10px] font-bold uppercase tracking-[.18em] text-gray-400">MÓDULO 2</p><h2 id="rs-showcase-title" class="mt-1 text-lg font-black text-white">Muro de ecosistemas</h2><p class="mt-1 text-sm text-gray-400">Proyectos y ejemplos se incorporarán aquí con sus datos verificados.</p><span class="mt-3 inline-flex items-center gap-2 text-xs text-gray-400"><i class="rs-led pending"></i> En preparación</span></section>
+                    <section id="module-3" class="rs-module rs-mini-section" aria-labelledby="rs-alerts-title"><p class="text-[10px] font-bold uppercase tracking-[.18em] text-gray-400">MÓDULO 3</p><h2 id="rs-alerts-title" class="mt-1 text-lg font-black text-white">Noticias y notificaciones</h2><p class="mt-1 text-sm text-gray-400">Avisos de su proyecto y contenido de interés para su sector.</p><div class="mt-4 flex flex-wrap items-center gap-3"><button id="notification-consent-btn" class="rs-service-cta">Activar avisos</button><span class="text-xs text-gray-500">Usted elige. Puede cambiarlo después desde su navegador.</span></div><div id="notification-consent-state" class="mt-2 text-xs text-gray-400" aria-live="polite"></div></section>
                                     </div>
-                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card1_title">SITIO WEB · CONCEPTO</h3>
-                                </div>
-                                <div class="space-y-4">
-                                    <div>
-                                        <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="hosting_label">Tu Dominio</span>
-                                        <div class="bg-black border border-white/20 p-2.5 rounded-lg text-green-400 font-mono tracking-widest w-full mt-1 text-sm truncate" id="dynamic-domain">Aún sin dominio asignado</div>
-                                    </div>
-                                    <div class="pt-2">
-                                        <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="status_label">Estado</span>
-                                        <div class="flex items-center gap-2 mt-1">
-                                            <span class="relative flex h-3 w-3"><span class="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75 led-pulse"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span></span>
-                                            <span class="text-amber-400 text-xs font-mono font-bold tracking-wide" data-i18n="status_pending_deploy">Sitio pendiente de iniciar</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Ejemplo · datos en espera</div>
-                        </div>
-
-                        <!-- Tarjeta 2: REDES Y CAMPAÑA -->
-                        <div onclick="openTelemetryModal(2)" class="group relative bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-6 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_15px_rgba(255,60,0,0.06)] z-10 overflow-hidden h-full">
-                            <div class="absolute bottom-3 right-3 text-5xl font-black text-white/[0.015] pointer-events-none">📱💸</div>
-                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/4 to-transparent rounded-bl-full pointer-events-none"></div>
-                            <div>
-                                <div class="flex items-center gap-3 mb-4 border-b border-white/10 pb-2">
-                                    <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 text-[#1877F2]">
-                                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                                    </div>
-                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card2_title">CAMPAÑA · PENDIENTE</h3>
-                                </div>
-                                <div class="grid grid-cols-2 gap-3 mb-4">
-                                    <div class="bg-black/40 rounded-lg p-3 text-center border border-white/5 w-full">
-                                        <div class="text-[11px] md:text-xs text-gray-300 uppercase text-center leading-tight font-medium" data-i18n="whatsapp_msgs">Mensajes</div>
-                                        <div class="text-2xl md:text-3xl font-mono font-black text-white flex items-center justify-center gap-1">
-                                            <span>0</span>
-                                            <span class="inline-flex ml-1">
-                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/20">
-                                                    <path d="M7 17L17 7M7 7h10v10"/>
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="bg-black/40 rounded-lg p-3 text-center border border-white/5 w-full">
-                                        <div class="text-[11px] md:text-xs text-gray-300 uppercase text-center leading-tight font-medium" data-i18n="money_spent">Inversión</div>
-                                        <div class="text-2xl md:text-3xl font-mono font-black text-white flex items-center justify-center gap-1">
-                                            <span>0</span>
-                                            <span class="inline-flex ml-1">
-                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/20">
-                                                    <path d="M7 17L17 7M7 7h10v10"/>
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="space-y-2 text-xs font-mono">
-                                    <div class="flex justify-between items-center bg-black/30 px-2 py-1 rounded">
-                                        <span class="text-gray-300 font-medium" data-i18n="budget_label">Presupuesto</span>
-                                        <span class="text-[var(--accent-color)] font-bold" data-i18n="budget_value">Desde $13.000 COP/día</span>
-                                    </div>
-                                    <div class="flex justify-between items-center bg-black/30 px-2 py-1 rounded">
-                                        <span class="text-gray-300 font-medium" data-i18n="flow_label">Estado</span>
-                                        <span class="text-green-400 font-bold" data-i18n="flow_value">No conectado</span>
-                                    </div>
-                                    <div class="flex justify-between items-center bg-black/30 px-2 py-1 rounded mt-2">
-                                        <span class="text-gray-300 font-medium" data-i18n="pixel_status_label">Mensajes</span>
-                                        <span class="inline-flex items-center gap-1"><span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 led-pulse"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span></span><span class="text-red-400 font-bold" data-i18n="pixel_disconnected">Sin fuente conectada</span></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Ejemplo · datos en espera</div>
-                        </div>
-
-                        <!-- Tarjeta 3: SEO Y REPUTACIÓN -->
-                        <div onclick="openTelemetryModal(3)" class="group relative bg-[#0a0a0a] border border-white/10 hover:border-[var(--accent-color)]/20 rounded-xl p-6 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-lg hover:shadow-[0_0_15px_rgba(255,60,0,0.06)] z-10 overflow-hidden h-full">
-                            <div class="absolute bottom-2 right-2 w-16 h-16 text-white/5 pointer-events-none select-none">
-                                <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full opacity-[0.025]"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                            </div>
-                            <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[var(--accent-color)]/4 to-transparent rounded-bl-full pointer-events-none"></div>
-                            <div>
-                                <div class="flex items-center gap-3 mb-4 border-b border-white/10 pb-2">
-                                    <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
-                                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="3"/></svg>
-                                    </div>
-                                    <h3 class="text-base font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="card3_title">SEO / GEO · PENDIENTE</h3>
-                                </div>
-                                <div class="space-y-4">
-                                    <div>
-                                        <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="rating_label">Reseñas</span>
-                                        <div class="flex gap-1 mt-1 stars-bg p-1" id="rating-stars-container">
-                                            <span class="rating-star cursor-default">☆</span><span class="rating-star cursor-default">☆</span><span class="rating-star cursor-default">☆</span><span class="rating-star cursor-default">☆</span><span class="rating-star cursor-default">☆</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <span class="text-xs text-gray-300 tracking-wider font-sans font-medium" data-i18n="status_label">Estado</span>
-                                        <div class="flex items-center gap-2 mt-1">
-                                            <span class="relative flex h-3 w-3"><span class="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75 led-pulse"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span></span>
-                                            <span class="text-amber-400 text-xs font-mono font-bold tracking-wide" data-i18n="status_waiting_connection">Esperando conexión</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-6 text-right text-xs font-mono text-gray-300 border-t border-white/10 pt-3" data-i18n="click_telemetry">Ejemplo · datos en espera</div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div id="telemetry-modal-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
@@ -1355,6 +1267,9 @@
             </div>
         </div>
     </main>
+
+
+<div id="rs-request-dialog" class="fixed inset-0 z-[260] hidden items-center justify-center bg-black/85 backdrop-blur-md p-4" role="dialog" aria-modal="true" aria-labelledby="rs-request-title"><div class="w-full max-w-md rounded-2xl border border-white/10 bg-[#101114] p-5 shadow-2xl"><div class="flex items-start justify-between gap-4"><div><p class="text-[10px] uppercase tracking-[.16em] text-gray-400">SOLICITUD DE SERVICIO</p><h2 id="rs-request-title" class="mt-1 text-xl font-black text-white">Un dato para coordinar</h2></div><button id="rs-request-close" class="rounded-full border border-white/10 p-2 text-gray-300" aria-label="Cerrar">×</button></div><p id="rs-request-description" class="mt-2 text-sm text-gray-400"></p><label class="mt-4 block text-xs font-bold text-gray-300" for="rs-request-phone">Su número de teléfono</label><input id="rs-request-phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Ej.: 304 562 5920" class="mt-1 min-h-12 w-full rounded-xl border border-white/10 bg-black/40 px-3 text-white outline-none focus:border-[#ff3c00]"><label class="mt-4 block text-xs font-bold text-gray-300" for="rs-request-window">¿Cuándo le gustaría coordinar?</label><select id="rs-request-window" class="mt-1 min-h-12 w-full rounded-xl border border-white/10 bg-[#101114] px-3 text-white"><option value="24h">En las próximas 24 horas</option><option value="48h">En las próximas 48 horas</option></select><label class="mt-4 block text-xs font-bold text-gray-300" for="rs-request-logo">Logo de su marca (opcional)</label><input id="rs-request-logo" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" class="mt-1 block w-full text-xs text-gray-300"><p class="mt-2 text-[11px] leading-relaxed text-gray-500">Enviar la solicitud no confirma una cita ni activa un plazo de entrega. El equipo confirmará disponibilidad y alcance antes de iniciar. El logo se mostrará solo en esta vista previa; todavía no se sube a almacenamiento.</p><div id="rs-request-state" class="mt-3 text-xs text-gray-300" aria-live="polite"></div><div class="mt-5 flex gap-2"><button id="rs-request-cancel" class="min-h-11 flex-1 rounded-xl border border-white/10 px-3 text-sm font-bold text-gray-200">Cancelar</button><button id="rs-request-submit" class="rs-service-cta flex-1">Enviar solicitud</button></div></div></div>
 
     <!-- MODAL MATRIX DE SOPORTE -->
     <div id="matrix-modal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-500 p-4">
@@ -1921,7 +1836,11 @@
         ];
         const rsEsc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
         async function loadEcosystemWorkspace(profile){
-          const host=document.getElementById('rs-ecosystem-catalog');if(!host)return;
+          const host=document.getElementById('rs-ecosystem-catalog');
+          const brand=document.getElementById('brand-headline-name');if(brand&&profile?.business_name)brand.textContent=profile.business_name.toUpperCase();
+          const summary=document.getElementById('rs-business-summary');if(summary)summary.textContent=[profile?.nombre,profile?.niche].filter(Boolean).join(' · ');
+          const status=document.getElementById('rs-business-status');if(status)status.textContent='Perfil preparado';
+          if(!host){updateDynamicDomain();return;}
           let business=null;
           if(window.__RS_FACTORY_PREVIEW__){business={id:'preview',business_name:profile?.business_name||wizardData.business_name,contact_name:profile?.nombre||wizardData.person_name,sector:profile?.niche||wizardData.niche,candidate_slug:'vista-previa'};rsPackageCatalog=rsPackageFallback;}
           else{
@@ -1932,9 +1851,9 @@
             rsPackageCatalog=result.error?rsPackageFallback:(result.data||[]);
           }
           rsCurrentBusinessId=business.id||business.business_id;
-          const brand=document.getElementById('brand-headline-name');if(brand)brand.textContent=business.business_name||'SU MARCA';
-          const sum=document.getElementById('rs-business-summary');if(sum)sum.textContent=`${business.contact_name||''}${business.sector?' · '+business.sector:''}`.trim();
-          const status=document.getElementById('rs-business-status');if(status)status.textContent='Perfil listo';
+          if(brand)brand.textContent=business.business_name||'SU MARCA';
+          if(summary)summary.textContent=`${business.contact_name||''}${business.sector?' · '+business.sector:''}`.trim();
+          if(status)status.textContent='Perfil listo';
           const domain=document.getElementById('dynamic-domain');if(domain)domain.textContent=`Subdominio sugerido: ${business.candidate_slug||'pendiente'}.redsapien.co · se activa tras despliegue verificado`;
           host.innerHTML='';
           rsPackageCatalog.forEach(pkg=>{const card=document.createElement('article');card.className='rounded-xl border border-white/10 bg-black/30 p-4 flex flex-col gap-2';const price=new Intl.NumberFormat('es-CO').format(pkg.price_cop);card.innerHTML=`<div class="flex items-start justify-between gap-3"><div><h3 class="font-bold text-white">${rsEsc(pkg.name)}</h3><p class="text-sm text-gray-400 mt-1">${rsEsc(pkg.description)}</p></div><strong class="whitespace-nowrap text-white">$${price} COP</strong></div><p class="text-xs text-gray-500">${rsEsc((pkg.included_scope||[]).join(' · '))}</p><p class="text-xs text-gray-500">${rsEsc(pkg.delivery_window||'Plazo a acordar.')}</p><button type="button" class="rs-request-package mt-2 min-h-11 rounded-xl bg-white px-4 py-2 text-sm font-bold text-black hover:bg-gray-200">Solicitar este servicio</button>`;card.querySelector('button').addEventListener('click',e=>requestEcosystemPackage(pkg,e));host.appendChild(card);});
@@ -2752,7 +2671,7 @@
         // Vista de inspección exclusiva del preview: permite revisar el dashboard detrás del modal sin guardar datos.
         // Isolated preview host: all QA data stays in memory/local rendering and is never persisted.
         const previewParams = new URLSearchParams(window.location.search);
-        const isFabricaPreviewHost = location.hostname.includes('fabrica-qa-preview') || location.hostname.includes('fabrica-onboarding-preview-2') || location.hostname.includes('b2dbad44.redsapien-web.pages.dev');
+        const isFabricaPreviewHost = location.hostname.includes('fabrica-qa-preview') || location.hostname.includes('fabrica-onboarding-preview-2') || location.hostname.includes('fabrica-redesign-preview') || location.hostname.includes('b2dbad44.redsapien-web.pages.dev');
         const previewOnboarding = previewParams.get('previewOnboarding') === '1' || (isFabricaPreviewHost && previewParams.get('previewPanel') !== '1');
         const previewPanelOnly = previewParams.get('previewPanel') === '1';
         window.__RS_FACTORY_PREVIEW__ = Boolean(isFabricaPreviewHost);
@@ -2849,6 +2768,20 @@
 
         console.log('🟢 Red Sapien | Panel de Control con Onboarding integrado');
     </script>
+
+
+<script id="fabrica-three-modules">
+(()=>{
+ const menu=document.getElementById('rs-top-menu'),toggle=document.getElementById('rs-menu-toggle');
+ toggle?.addEventListener('click',()=>{const open=menu.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú')});
+ menu?.querySelectorAll('[data-target]').forEach(b=>b.addEventListener('click',()=>{document.getElementById(b.dataset.target)?.scrollIntoView({behavior:'smooth',block:'start'});menu.classList.remove('open');toggle?.setAttribute('aria-expanded','false')}));
+ const dialog=document.getElementById('rs-request-dialog'),desc=document.getElementById('rs-request-description'),state=document.getElementById('rs-request-state'),phone=document.getElementById('rs-request-phone'),windowSelect=document.getElementById('rs-request-window'),logo=document.getElementById('rs-request-logo');let chosenPkg='';
+ const close=()=>{dialog.classList.add('hidden');dialog.classList.remove('flex');state.textContent='';logo.value=''};document.getElementById('rs-request-close')?.addEventListener('click',close);document.getElementById('rs-request-cancel')?.addEventListener('click',close);dialog?.addEventListener('click',e=>{if(e.target===dialog)close()});
+ document.querySelectorAll('.rs-service-cta[data-package]').forEach(b=>b.addEventListener('click',()=>{chosenPkg=b.dataset.package;desc.textContent=chosenPkg==='web_basic'?'Sitio web · $50.000 COP':'Ecosistema · hasta 3 herramientas · $130.000 COP';phone.value='';state.textContent='';dialog.classList.remove('hidden');dialog.classList.add('flex');setTimeout(()=>phone.focus(),80)}));
+ document.getElementById('rs-request-submit')?.addEventListener('click',()=>{const p=phone.value.trim();if(p.replace(/\D/g,'').length<7){state.textContent='Escriba un número válido para coordinar.';phone.focus();return}const pref=windowSelect.value==='24h'?'24 horas':'48 horas';if(window.__RS_FACTORY_PREVIEW__){state.textContent=`Vista previa: solicitud de ${chosenPkg==='web_basic'?'sitio web':'ecosistema'}, preferencia ${pref}. No se envió ni se guardó.`;return}state.textContent='El envío seguro de solicitudes aún no está habilitado. No se envió ni se guardó nada.';});
+ const notify=document.getElementById('notification-consent-btn'),notice=document.getElementById('notification-consent-state');notify?.addEventListener('click',async()=>{if(!('Notification'in window)){notice.textContent='Este navegador no admite avisos web.';return}if(Notification.permission==='granted'){notice.textContent='Los avisos están permitidos en este navegador.';return}if(Notification.permission==='denied'){notice.textContent='Los avisos están bloqueados. Puede revisar la configuración del navegador.';return}notice.textContent='El navegador le pedirá permiso para recibir avisos. Puede aceptar o rechazar.';const r=await Notification.requestPermission();notice.textContent=r==='granted'?'Avisos permitidos. Puede cambiarlos en su navegador.':'No se activaron los avisos. Puede cambiarlo más adelante.'});
+})();
+</script>
 
 </body>
 

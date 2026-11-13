@@ -1,1 +1,1 @@
-{"name":"Red Sapien · Fábrica de Ecosistemas","short_name":"Red Sapien","start_url":"./","scope":"./","display":"standalone","background_color":"#08090b","theme_color":"#09090b","description":"Panel de ecosistemas digitales para marcas y negocios."}
+{"name":"Red Sapien · Fábrica de Ecosistemas","short_name":"Mi ecosistema","start_url":"./dashboard/?previewPanel=1","scope":"./","display":"standalone","background_color":"#050505","theme_color":"#050505","icons":[{"src":"./assets/apple-touch-icon-s.png","sizes":"180x180","type":"image/png"}]}
