@@ -2718,8 +2718,9 @@
 
         // Preview-only QA modes: show the draft without database reads or writes.
         const previewParams = new URLSearchParams(window.location.search);
-        const previewOnboarding = previewParams.get('previewOnboarding') === '1';
-        const previewPanelOnly = previewParams.get('previewPanel') === '1';
+        const isFabricaPreviewHost = location.hostname.includes('fabrica-qa-preview-20261113') || location.hostname.includes('fabrica-qa-preview') || location.hostname.includes('b2dbad44.redsapien-web.pages.dev');
+        const previewOnboarding = previewParams.get('previewOnboarding') === '1' || (isFabricaPreviewHost && previewParams.get('skipOnboarding') !== '1');
+        const previewPanelOnly = previewParams.get('previewPanel') === '1' || (isFabricaPreviewHost && previewParams.get('previewPanel') === '1');
 
         // --------------------------------------------------------------
         // 6. INICIALIZACIÓN AL CARGAR LA PÁGINA (con verificación de sesión)
