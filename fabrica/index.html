@@ -51,4 +51,4 @@
  });
 })();
 </script>
-<script>if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=3").catch(()=>{}));</script></body></html>
+<script>if("serviceWorker" in navigator)window.addEventListener("load",async()=>{try{const regs=await navigator.serviceWorker.getRegistrations();await Promise.all(regs.filter(r=>new URL(r.scope).pathname.startsWith("/fabrica/")).map(r=>r.unregister()));for(const key of await caches.keys())if(key.startsWith("rs-fabrica-"))await caches.delete(key)}catch(e){}});</script></body></html>
