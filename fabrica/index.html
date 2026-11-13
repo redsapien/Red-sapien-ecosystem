@@ -30,14 +30,14 @@
 </main>
 <footer class="wrap foot">Red Sapien · Manizales, Colombia. El panel muestra estados reales conforme se implementen y conecten los servicios. Google, Meta, GitHub, Cloudflare y otros servicios se conectan con autorización y según sus condiciones.</footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js"></script>
-<script>if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js",{scope:"./"}).catch(()=>{}));</script>
+
 <script>
 (()=>{
  const SUPABASE_URL='https://krygvuvvenizgebincle.supabase.co';
  const SUPABASE_KEY='sb_publishable_06DbVVwkvlDKQ-xYoTyRxg_o4rDpaUh';
  const supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
  const button=document.getElementById('google-sign-in'),message=document.getElementById('auth-message');
- const dashboardUrl=new URL('./dashboard/?previewOnboarding=1',window.location.href).toString();
+ const dashboardUrl=new URL('./dashboard-preview/?previewOnboarding=1',window.location.href).toString();
  const showError=txt=>{message.textContent=txt;button.disabled=false};
  const errorParams=new URLSearchParams(window.location.hash.slice(1));
  if(errorParams.has('error_description'))showError('No se pudo completar el acceso con Google. Revise la configuración del inicio de sesión o inténtelo nuevamente.');
