@@ -754,18 +754,18 @@
 
             <div id="step-1" class="onboarding-step active" aria-hidden="false">
                 <span class="onboarding-step-kicker">PASO 1 · TU PERFIL</span>
-                <h2 class="onboarding-title" id="onboarding-title">¿Cómo te llamas?</h2>
-                <p class="onboarding-sub">Solo tu nombre. Empezamos en un momento.</p>
-                <label class="onboarding-field-label" for="input-person-name">Tu nombre</label>
-                <input id="input-person-name" type="text" autocomplete="given-name" maxlength="80" placeholder="Por ejemplo, Ana" class="onboarding-text-input">
-                <p id="person-name-error" class="onboarding-error" aria-live="polite" hidden>Escribe tu nombre para continuar.</p>
+                <h2 class="onboarding-title" id="onboarding-title">¿Cómo le llamamos?</h2>
+                <p class="onboarding-sub">Con su nombre empezamos a preparar su espacio.</p>
+                <label class="onboarding-field-label" for="input-person-name">Su nombre</label>
+                <input id="input-person-name" type="text" autocomplete="given-name" maxlength="80" placeholder="Ej.: Ana" class="onboarding-text-input">
+                <p id="person-name-error" class="onboarding-error" aria-live="polite" hidden>Escriba su nombre para continuar.</p>
             </div>
 
             <div id="step-2" class="onboarding-step" aria-hidden="true" inert>
                 <span class="onboarding-step-kicker">PASO 2 · TU SECTOR</span>
-                <h2 class="onboarding-title">¿A qué se dedica tu negocio?</h2>
-                <p class="onboarding-sub">Toca el sector que mejor lo describe.</p>
-                <div class="niche-grid-compact" id="niche-grid" role="radiogroup" aria-label="Sector de tu negocio">
+                <h2 class="onboarding-title">¿A qué se dedica su negocio?</h2>
+                <p class="onboarding-sub">Elija el sector que mejor lo describe.</p>
+                <div class="niche-grid-compact" id="niche-grid" role="radiogroup" aria-label="Sector de su negocio">
                     <button class="niche-card" type="button" role="radio" aria-checked="false" data-niche="Servicios profesionales y consultoría"><span class="niche-card-icon" aria-hidden="true">✳</span><span class="label">Servicios profesionales</span></button>
                     <button class="niche-card" type="button" role="radio" aria-checked="false" data-niche="Gastronomía y restaurantes"><span class="niche-card-icon" aria-hidden="true">◈</span><span class="label">Gastronomía</span></button>
                     <button class="niche-card" type="button" role="radio" aria-checked="false" data-niche="Comercio y marcas"><span class="niche-card-icon" aria-hidden="true">▣</span><span class="label">Comercio y marcas</span></button>
@@ -773,25 +773,25 @@
                     <button class="niche-card" type="button" role="radio" aria-checked="false" data-niche="Hogar, talleres y automotriz"><span class="niche-card-icon" aria-hidden="true">⌁</span><span class="label">Hogar, talleres y autos</span></button>
                     <button class="niche-card" type="button" role="radio" aria-checked="false" data-niche="Otros sectores"><span class="niche-card-icon" aria-hidden="true">＋</span><span class="label">Otro sector</span></button>
                 </div>
-                <p id="niche-error" class="onboarding-error" aria-live="polite" hidden>Elige el sector que mejor describe tu negocio.</p>
-                <p class="onboarding-last-step">Elige una opción para continuar automáticamente.</p>
+                <p id="niche-error" class="onboarding-error" aria-live="polite" hidden>Elija el sector que mejor describe su negocio.</p>
+                <p class="onboarding-last-step">Al elegir un sector, pasará al último paso.</p>
             </div>
 
             <div id="step-3" class="onboarding-step" aria-hidden="true" inert>
                 <span class="onboarding-step-kicker">PASO 3 · TU MARCA</span>
-                <h2 class="onboarding-title">¿Cómo se llama tu negocio o marca?</h2>
-                <p class="onboarding-sub">Escríbelo tal como aparece públicamente, por ejemplo, en tus redes.</p>
-                <label class="onboarding-field-label" for="input-business-name">Nombre público de tu negocio</label>
-                <input id="input-business-name" type="text" autocomplete="organization" maxlength="120" placeholder="Por ejemplo, Café Central" class="onboarding-text-input">
-                <p id="business-name-error" class="onboarding-error" aria-live="polite" hidden>Escribe cómo se llama tu negocio para crear tu perfil.</p>
-                <p class="onboarding-last-step">Último paso: agrega el nombre que tus clientes reconocen.</p>
+                <h2 class="onboarding-title">¿Cómo se llama su negocio o marca?</h2>
+                <p class="onboarding-sub">Escríbalo tal como aparece públicamente, por ejemplo, en sus redes.</p>
+                <label class="onboarding-field-label" for="input-business-name">Nombre público de su negocio</label>
+                <input id="input-business-name" type="text" autocomplete="organization" maxlength="120" placeholder="Ej.: Café Central" class="onboarding-text-input">
+                <p id="business-name-error" class="onboarding-error" aria-live="polite" hidden>Escriba el nombre de su negocio para crear su perfil.</p>
+                <p class="onboarding-last-step">Último paso: escriba el nombre que reconocen sus clientes.</p>
             </div>
 
             <div class="onboarding-nav">
                 <button id="onboarding-prev" class="btn" type="button" disabled>Volver</button>
                 <button id="onboarding-next" class="btn btn-primary" type="button" disabled>Continuar</button>
             </div>
-            <p class="onboarding-privacy-note">Estos datos personalizan tu espacio de trabajo.</p>
+            <p class="onboarding-privacy-note">Usaremos estos datos para personalizar su espacio de trabajo.</p>
         </div>
     </div>
 
@@ -876,7 +876,7 @@
                         </div>
                         <button id="activate-btn-pc" onclick="activateEcosystem()" class="flex items-center gap-2.5 px-6 py-3.5 bg-white text-black text-sm font-black uppercase tracking-widest rounded-full hover:bg-gray-200 transition-all active:scale-95 animate-pulse-activate border border-white/50">
                             <span class="w-2 h-2 rounded-full bg-green-500 led-green"></span>
-                            <span data-i18n="btn_activate">Coordinar activación</span>
+                            <span data-i18n="btn_activate">Solicitar activación</span>
                         </button>
                     </div>
                 </div>
@@ -1364,7 +1364,7 @@
             </div>
             <div class="space-y-5">
                 <div>
-                    <label class="block text-sm font-mono text-gray-300 tracking-wider mb-2" data-i18n="matrix_request_label">¿Qué necesitas?</label>
+                    <label class="block text-sm font-mono text-gray-300 tracking-wider mb-2" data-i18n="matrix_request_label">¿Qué necesita?</label>
                     <select id="solicitud-select" class="cyber-select">
                         <option value="" disabled selected data-i18n="matrix_select_option">[ Elige ]</option>
                         <option value="Soporte Técnico" data-i18n="matrix_option_technical">Soporte</option>
@@ -1399,7 +1399,7 @@
             </div>
             <button id="activate-btn-mob" onclick="activateEcosystem()" class="w-full bg-white text-black py-4 px-6 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 cursor-pointer active:scale-95 transition-transform animate-pulse-activate border border-white/50">
                 <span class="w-2.5 h-2.5 rounded-full bg-green-500 led-green"></span>
-                <span class="text-sm font-black uppercase tracking-wider leading-none mt-0.5" data-i18n="btn_activate">Coordinar activación</span>
+                <span class="text-sm font-black uppercase tracking-wider leading-none mt-0.5" data-i18n="btn_activate">Solicitar activación</span>
             </button>
         </div>
     </div>
@@ -1464,7 +1464,7 @@
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         // Ruta relativa a la landing page (desde /dashboard/index.html)
-        const LOGIN_URL = '../';
+        const LOGIN_URL = '../index.html';
         let _authRedirecting = false;
 
         // --------------------------------------------------------------
@@ -1477,7 +1477,7 @@
                 nav_casos: "Casos",
                 nav_notificaciones: "Alertas",
                 welcome_subtitle: "Bienvenid@",
-                btn_activate: "Coordinar activación",
+                btn_activate: "Solicitar activación",
                 btn_support: "Soporte",
                 tooltip_activate: "Solicita el siguiente paso",
                 tooltip_activate_mobile: "Solicita el siguiente paso",
@@ -1554,7 +1554,7 @@
                 scan_percent_label: "· demo",
                 cmd_counter_label: "· demo",
                 matrix_title: "🛰️ Soporte",
-                matrix_request_label: "¿Qué necesitas?",
+                matrix_request_label: "¿Qué necesita?",
                 matrix_select_option: "[ Elige ]",
                 matrix_option_technical: "Soporte",
                 matrix_option_advice: "Asesoría",
@@ -2610,7 +2610,7 @@
                     'fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[300] bg-[var(--accent-color)] border border-white/20 backdrop-blur-md rounded-2xl p-4 shadow-2xl max-w-xs w-full text-center transition-all duration-300 whatsapp-toast text-white';
                 toast.innerHTML = `
                         <span class="text-base font-black uppercase tracking-wider">✅ Tu perfil está listo</span>
-                        <br><span class="text-xs font-mono opacity-80">Ya puedes ver tu espacio y solicitar tu primer activo.</span>
+                        <br><span class="text-xs font-mono opacity-80">Ya puede ver su espacio y solicitar su primer activo.</span>
                     `;
                 document.body.appendChild(toast);
                 setTimeout(() => {
