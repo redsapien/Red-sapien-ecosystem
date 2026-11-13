@@ -18,26 +18,27 @@
 <body>
 <header class="wrap top"><div class="brand"><span class="mark">S</span><span>RED SAPIEN</span></div><span class="mini">Fábrica de Ecosistemas · Colombia</span></header>
 <main>
-<section class="wrap hero" aria-labelledby="hero-title"><div class="eyebrow">Tecnología cercana para su marca</div><h1 id="hero-title">Su negocio merece crecer en digital.</h1><p>Creamos una web para su marca y le ayudamos a dar el siguiente paso con <strong>campañas y herramientas digitales</strong>. Elige lo que necesita y paga al recibir cada entrega.</p>
+<section class="wrap hero" aria-labelledby="hero-title"><div class="eyebrow">Tecnología cercana para su marca</div><h1 id="hero-title">Su negocio merece crecer en digital.</h1><p>Creamos una web para su marca y le ayudamos a dar el siguiente paso con <strong>campañas y herramientas digitales</strong>. Elija lo que necesita y pague al recibir cada entrega.</p>
 <button id="google-sign-in" class="cta" type="button"><span class="google-mark" aria-hidden="true">G</span><span>Continuar con Google</span></button>
-<div class="hint">Regístrese con Google y cuéntenos su nombre, marca y sector.</div><div id="auth-message" class="error" role="status" aria-live="polite"></div>
+<div class="hint">Ingrese con Google y cuéntenos su nombre, marca y sector.</div>
+<a class="hint" style="display:inline-block;margin-top:10px;color:#ddd;text-decoration:underline;text-underline-offset:3px" href="./dashboard/?previewPanel=1">Ver el panel de muestra</a><div id="auth-message" class="error" role="status" aria-live="polite"></div>
 <div class="prices" aria-label="Opciones de servicio">
 <article class="price"><small>Web para su marca</small><strong>$50.000 <span style="font-size:.86rem">COP</span></strong><p>Una página profesional para presentar su negocio y facilitar el contacto por WhatsApp.</p><p class="terms">Pago contra entrega. Alcance y materiales se acuerdan antes de iniciar.</p></article>
 <article class="price featured"><small>Ecosistema · hasta 3 herramientas</small><strong>$130.000 <span style="font-size:.86rem">COP</span></strong><p>Su web y hasta tres herramientas elegidas para apoyar la gestión de su marca.</p><p class="terms">Pago contra entrega. Herramientas e integraciones se confirman según disponibilidad y permisos.</p></article>
 </div></section>
 <section class="section"><div class="wrap"><h2>Un proceso claro, paso a paso</h2><p>Primero conocemos su marca. Luego usted solicita el servicio que necesita y el equipo confirma el alcance, la entrega y las conexiones necesarias.</p><div class="steps"><article class="step"><span class="num">01 · SU PERFIL</span><h3>Cuéntenos de su marca</h3><p>Nombre, negocio y sector; tres pasos breves para preparar su espacio.</p></article><article class="step"><span class="num">02 · SU SOLICITUD</span><h3>Elija lo que necesita</h3><p>Solicite su web o un ecosistema de hasta tres herramientas.</p></article><article class="step"><span class="num">03 · ENTREGA</span><h3>Revise antes de pagar</h3><p>El equipo confirma el alcance. Usted revisa la entrega y paga al recibirla.</p></article></div></div></section>
-<section class="section"><div class="wrap"><h2>Experiencias reales de negocios</h2><p>Conozca ejemplos de proyectos y resultados reportados en Colombia. Los resultados pasados no garantizan resultados futuros.</p><div class="proof"><article><strong>La Papa Prohibida · Manizales</strong><p>19 pedidos efectivos reportados en menos de 30 horas.</p></article><article><strong>Salchipotato · Manizales</strong><p>Más de 3.000 conversaciones iniciadas y CTR de 6,9%, cifras reportadas; conversaciones no equivalen a ventas.</p></article><article><strong>Adme Dental · Manizales</strong><p>Más de 70 mensajes directos a WhatsApp en 72 horas, cifra reportada.</p></article></div></div></section>
+<section class="section"><div class="wrap"><h2>Experiencias reales de negocios</h2><p>Conozca ejemplos de proyectos y resultados reportados en Colombia. Los resultados pasados no garantizan resultados futuros.</p><div class="proof"><article><strong>La Papa Prohibida · Manizales</strong><p>19 pedidos efectivos reportados en menos de 30 horas; cifras de un caso anterior.</p></article><article><strong>Salchipotato · Manizales</strong><p>Más de 3.000 conversaciones iniciadas y CTR de 6,9% reportados; las conversaciones no equivalen a ventas.</p></article><article><strong>Adme Dental · Manizales</strong><p>Más de 70 mensajes directos a WhatsApp en 72 horas, cifra reportada.</p></article></div></div></section>
 </main>
 <footer class="wrap foot">Red Sapien · Manizales, Colombia. El panel muestra estados reales conforme se implementen y conecten los servicios. Google, Meta, GitHub, Cloudflare y otros servicios se conectan con autorización y según sus condiciones.</footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js"></script>
-<script>if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js",{scope:"./"}).catch(()=>{}));</script>
+
 <script>
 (()=>{
  const SUPABASE_URL='https://krygvuvvenizgebincle.supabase.co';
  const SUPABASE_KEY='sb_publishable_06DbVVwkvlDKQ-xYoTyRxg_o4rDpaUh';
  const supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
  const button=document.getElementById('google-sign-in'),message=document.getElementById('auth-message');
- const dashboardUrl=new URL('./dashboard/',window.location.href).toString();
+ const dashboardUrl=new URL('./dashboard/?previewOnboarding=1',window.location.href).toString();
  const showError=txt=>{message.textContent=txt;button.disabled=false};
  const errorParams=new URLSearchParams(window.location.hash.slice(1));
  if(errorParams.has('error_description'))showError('No se pudo completar el acceso con Google. Revise la configuración del inicio de sesión o inténtelo nuevamente.');

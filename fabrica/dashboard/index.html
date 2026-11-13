@@ -10,17 +10,13 @@
     <!-- Favicon dinámico SVG -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23050505' stroke='%23FF3C00' stroke-width='4'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='40' fill='%23FF3C00'%3ERS%3C/text%3E%3C/svg%3E">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../assets/vendor/tailwindcdn.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800%26family=Space+Grotesk:wght@600;700;800;900%26display=swap" rel="stylesheet">
 
-    <!-- Leaflet CSS y JS para el mapa de telemetría -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
     <!-- SDK de Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js">
+    <script src="../assets/vendor/supabase-js-2.39.0.min.js">
     </script>
 
     <script>
@@ -732,6 +728,8 @@
         @media(max-width:600px){.onboarding-modal-overlay{padding:0!important}.onboarding-modal.onboarding-three-step{width:100vw!important;max-width:none!important;height:100dvh!important;min-height:100dvh!important;border-radius:0!important;padding:max(20px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(18px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))!important}.onboarding-three-step .onboarding-step{padding-block:clamp(16px,6vh,44px)!important}.onboarding-three-step .onboarding-title{max-width:18ch!important;font-size:clamp(1.45rem,7vw,2rem)!important}.onboarding-three-step .niche-grid-compact .niche-card{min-height:clamp(62px,10vh,78px)!important;padding:9px!important}.onboarding-three-step .niche-grid-compact .niche-card .label{font-size:clamp(.63rem,2.9vw,.76rem)!important}}
         @media(max-height:640px){.onboarding-modal.onboarding-three-step{justify-content:flex-start!important}.onboarding-three-step .onboarding-step{padding-block:14px!important}.onboarding-three-step .progress-bar-track{margin-bottom:12px!important}.onboarding-three-step .onboarding-sub{margin-bottom:12px!important}.onboarding-three-step .onboarding-nav{margin-top:12px!important}.onboarding-three-step .onboarding-privacy-note{margin-top:8px!important}.onboarding-three-step .niche-grid-compact .niche-card{min-height:50px!important}}
         @media(prefers-reduced-motion:reduce){.onboarding-three-step .onboarding-step{animation:none!important}}
+
+        @media(max-width:600px){.onboarding-modal.onboarding-three-step{justify-content:flex-start!important}.onboarding-three-step .onboarding-step{scroll-margin-block:18px}.onboarding-three-step .onboarding-text-input{font-size:16px!important}body:has(#onboarding-overlay.active){overflow:hidden!important}}
 </style>
 </head>
 
@@ -947,6 +945,11 @@
                         <span class="text-xs font-mono tracking-wider text-gray-300" data-i18n="proud_manizales">Orgullosamente de Manizales</span>
                     </div>
 
+                    <section id="rs-ecosystem-workspace" class="mb-7 rounded-2xl border border-white/10 bg-white/[.025] p-4 md:p-6" aria-labelledby="rs-ecosystem-heading">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-4"><div><p class="text-[10px] uppercase tracking-[.18em] text-gray-400 font-bold">MI ECOSISTEMA</p><h2 id="rs-ecosystem-heading" class="text-xl md:text-2xl text-white font-black">Servicios para su marca</h2><p id="rs-business-summary" class="mt-1 text-sm text-gray-400">Complete su perfil para preparar su espacio.</p></div><span id="rs-business-status" class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-gray-300">Preparación inicial</span></div>
+                        <div id="rs-ecosystem-catalog" class="grid grid-cols-1 md:grid-cols-2 gap-3" aria-live="polite"><article class="rounded-xl border border-white/10 bg-black/30 p-4"><h3 class="font-bold text-white">Web para su marca · $50.000 COP</h3><p class="text-sm text-gray-400 mt-2">Una web profesional para presentar su marca y facilitar el contacto.</p><p class="text-xs text-gray-500 mt-2">Pago contra entrega · alcance confirmado antes de iniciar.</p></article><article class="rounded-xl border border-white/10 bg-black/30 p-4"><h3 class="font-bold text-white">Ecosistema · hasta 3 herramientas · $130.000 COP</h3><p class="text-sm text-gray-400 mt-2">Una web y hasta tres herramientas elegidas para las necesidades de su marca.</p><p class="text-xs text-gray-500 mt-2">Pago contra entrega · alcance confirmado antes de iniciar.</p></article></div>
+                        <div class="mt-5 pt-4 border-t border-white/10"><h3 class="text-sm font-bold text-white">Solicitudes de su marca</h3><div id="rs-requests-list" class="mt-2 text-sm text-gray-400">Todavía no hay solicitudes.</div></div>
+                    </section>
                     <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch px-2 md:px-0">
                         <div class="hidden lg:block absolute top-1/2 left-[calc(33.33%-1rem)] right-[calc(66.66%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-10 -translate-y-1/2"></div>
                         <div class="hidden lg:block absolute top-1/2 left-[calc(66.66%-1rem)] right-[calc(33.33%+1rem)] h-px bg-gradient-to-r from-transparent via-[var(--accent-color)] to-transparent opacity-10 -translate-y-1/2"></div>
@@ -1116,7 +1119,7 @@
                                 </div>
                             </div>
                             <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0 z-10 bg-[#0a0a0a] flex items-center justify-center">
-                                <img src="Image/Antonella-IA.webp" alt="Antonella IA" class="w-full h-full object-cover">
+                                <img src="../dashboard/Image/Antonella-IA.webp" alt="Antonella IA" class="w-full h-full object-cover">
                             </div>
                             <div class="flex flex-col text-left z-10">
                                 <h3 class="text-base md:text-lg font-display font-bold text-white uppercase tracking-tight leading-snug" data-i18n="soporte_monitoreo_titulo">Vista previa del ecosistema</h3>
@@ -1132,7 +1135,7 @@
                         <!-- Equipo Red Sapien · revisión humana -->
                         <div class="w-full bg-white/[0.02] border border-white/5 hover:border-[var(--accent-color)]/30 rounded-xl p-3 md:p-5 flex flex-row items-center gap-4 transition-all shadow-md relative">
                             <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/20 flex-shrink-0 bg-[#0a0a0a] flex items-center justify-center">
-                                <img src="Image/Foto-Sapien.webp" alt="Cristian" class="w-full h-full object-cover">
+                                <img src="../dashboard/Image/Foto-Sapien.webp" alt="Cristian" class="w-full h-full object-cover">
                             </div>
                             <div class="flex flex-col text-left">
                                 <h3 class="text-base md:text-lg font-display font-bold text-white uppercase tracking-tight leading-snug">Cristian López</h3>
@@ -1911,6 +1914,45 @@
             window.open('https://wa.me/573045625920?text=' + encodeURIComponent(message), '_blank', 'noopener,noreferrer');
         }
 
+        let rsCurrentBusinessId=null;let rsPackageCatalog=[];
+        const rsPackageFallback=[
+          {code:'web_basic',name:'Web para su marca',price_cop:50000,description:'Una web profesional para presentar su marca y facilitar el contacto.',included_scope:['Sitio web'],delivery_window:'Plazo confirmado al acordar el alcance.'},
+          {code:'ecosystem_3',name:'Ecosistema · hasta 3 herramientas',price_cop:130000,description:'Una web y hasta tres herramientas elegidas para su marca.',included_scope:['Sitio web','Hasta tres herramientas'],delivery_window:'Plazo confirmado al acordar el alcance.'}
+        ];
+        const rsEsc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        async function loadEcosystemWorkspace(profile){
+          const host=document.getElementById('rs-ecosystem-catalog');if(!host)return;
+          let business=null;
+          if(window.__RS_FACTORY_PREVIEW__){business={id:'preview',business_name:profile?.business_name||wizardData.business_name,contact_name:profile?.nombre||wizardData.person_name,sector:profile?.niche||wizardData.niche,candidate_slug:'vista-previa'};rsPackageCatalog=rsPackageFallback;}
+          else{
+            const {data,error}=await supabase.rpc('rs_ensure_primary_business');
+            if(error||!data?.length){console.error('Business bootstrap failed',error);host.innerHTML='<p class="text-sm text-amber-300">No pudimos preparar su espacio todavía. Su perfil quedó guardado; contacte al equipo para continuar.</p>';return}
+            business=data[0];rsCurrentBusinessId=business.business_id;
+            const result=await supabase.from('rs_ecosystem_packages').select('code,name,price_cop,description,included_scope,delivery_window').eq('is_active',true).order('price_cop');
+            rsPackageCatalog=result.error?rsPackageFallback:(result.data||[]);
+          }
+          rsCurrentBusinessId=business.id||business.business_id;
+          const brand=document.getElementById('brand-headline-name');if(brand)brand.textContent=business.business_name||'SU MARCA';
+          const sum=document.getElementById('rs-business-summary');if(sum)sum.textContent=`${business.contact_name||''}${business.sector?' · '+business.sector:''}`.trim();
+          const status=document.getElementById('rs-business-status');if(status)status.textContent='Perfil listo';
+          const domain=document.getElementById('dynamic-domain');if(domain)domain.textContent=`Subdominio sugerido: ${business.candidate_slug||'pendiente'}.redsapien.co · se activa tras despliegue verificado`;
+          host.innerHTML='';
+          rsPackageCatalog.forEach(pkg=>{const card=document.createElement('article');card.className='rounded-xl border border-white/10 bg-black/30 p-4 flex flex-col gap-2';const price=new Intl.NumberFormat('es-CO').format(pkg.price_cop);card.innerHTML=`<div class="flex items-start justify-between gap-3"><div><h3 class="font-bold text-white">${rsEsc(pkg.name)}</h3><p class="text-sm text-gray-400 mt-1">${rsEsc(pkg.description)}</p></div><strong class="whitespace-nowrap text-white">$${price} COP</strong></div><p class="text-xs text-gray-500">${rsEsc((pkg.included_scope||[]).join(' · '))}</p><p class="text-xs text-gray-500">${rsEsc(pkg.delivery_window||'Plazo a acordar.')}</p><button type="button" class="rs-request-package mt-2 min-h-11 rounded-xl bg-white px-4 py-2 text-sm font-bold text-black hover:bg-gray-200">Solicitar este servicio</button>`;card.querySelector('button').addEventListener('click',e=>requestEcosystemPackage(pkg,e));host.appendChild(card);});
+          if(!window.__RS_FACTORY_PREVIEW__)await loadBusinessRequests(rsCurrentBusinessId);
+        }
+        async function requestEcosystemPackage(pkg,clickEvent){
+          if(!rsCurrentBusinessId){alert('Complete su perfil antes de solicitar un servicio.');return}
+          if(window.__RS_FACTORY_PREVIEW__){alert(`Vista de prueba: se solicitaría «${pkg.name}» por $${new Intl.NumberFormat('es-CO').format(pkg.price_cop)} COP. No se guardó nada.`);return}
+          const button=clickEvent?.currentTarget;if(button){button.disabled=true;button.textContent='Enviando solicitud…'}
+          const {data:{user},error:userError}=await supabase.auth.getUser();
+          if(userError||!user){if(button){button.disabled=false;button.textContent='Solicitar este servicio'}alert('Su sesión no está activa. Inicie sesión nuevamente.');return}
+          const {error}=await supabase.from('rs_service_requests').insert({business_id:rsCurrentBusinessId,requested_by:user.id,package_code:pkg.code,package_price_cop:pkg.price_cop,status:'requested',request_note:''});
+          if(button){button.disabled=false;button.textContent='Solicitar este servicio'}
+          if(error){console.error(error);alert('No pudimos enviar la solicitud. Inténtelo nuevamente.');return}
+          await loadBusinessRequests(rsCurrentBusinessId);alert('Recibimos su solicitud. Confirmaremos el alcance y el plazo antes de iniciar.');
+        }
+        async function loadBusinessRequests(businessId){const el=document.getElementById('rs-requests-list');if(!el||!businessId)return;const {data,error}=await supabase.from('rs_service_requests').select('id,status,package_code,requested_at').eq('business_id',businessId).order('requested_at',{ascending:false}).limit(10);if(error){el.textContent='No pudimos cargar sus solicitudes.';console.error(error);return}if(!data?.length){el.textContent='Todavía no hay solicitudes.';return}const labels={requested:'Recibida · por confirmar',scope_confirmed:'Alcance confirmado',in_progress:'En preparación',preview_ready:'Lista para revisar',delivered:'Entregada',accepted:'Aceptada',paid:'Pago registrado',cancelled:'Cancelada'};el.innerHTML=data.map(r=>`<div class="flex flex-wrap justify-between gap-2 py-2 border-b border-white/5"><span>${rsEsc(r.package_code==='web_basic'?'Web para su marca':'Ecosistema · hasta 3 herramientas')}</span><span class="text-gray-400">${rsEsc(labels[r.status]||'En revisión')}</span></div>`).join('')}
+
         function updateDynamicDomain() {
             let businessName = localStorage.getItem('business_name');
             if (!businessName) { const span=document.getElementById('dynamic-domain'); if(span)span.textContent='El dominio se asignará al desplegar el sitio.'; return; }
@@ -2555,6 +2597,16 @@
         // --- Finalizar onboarding: upsert a Supabase con updated_at ---
         async function finishOnboarding() {
             wizardData.business_name = wizardData.business_name || inputBusiness.value.trim();
+            if (previewOnboarding) {
+                if (!inputLooksLikeName(wizardData.person_name) || !inputLooksLikeName(wizardData.business_name) || !Object.values(nicheNames).includes(wizardData.niche)) {
+                    alert('Revise los tres datos para continuar.'); return;
+                }
+                const previewProfile={business_name:wizardData.business_name,nombre:wizardData.person_name,niche:wizardData.niche,id:'preview'};
+                await loadEcosystemWorkspace(previewProfile);
+                overlay.classList.remove('active'); overlay.style.display='none'; switchWorkspaceView('panel');
+                const note=document.createElement('div');note.setAttribute('role','status');note.className='mx-4 my-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-gray-200';note.textContent=`Vista de prueba: ${wizardData.person_name} · ${wizardData.business_name} · ${wizardData.niche}. No se guardó información.`;
+                document.getElementById('pane-view-panel')?.prepend(note);return;
+            }
             // Contact details are optional and collected only after explaining the integration purpose.
 
             if (!inputLooksLikeName(wizardData.person_name) || !inputLooksLikeName(wizardData.business_name) || !wizardData.niche) {
@@ -2587,8 +2639,12 @@
                     .upsert(profileData, { onConflict: 'id' });
 
                 if (upsertError) {
-                    alert('Error al guardar los datos. Intenta nuevamente.');
-                    console.error(upsertError);
+                    console.error('No se pudo guardar el perfil:', upsertError);
+                    const toastError = document.createElement('div');
+                    toastError.className = 'fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[300] bg-red-700 border border-white/20 rounded-2xl p-4 max-w-sm w-full text-center text-white';
+                    toastError.textContent = 'No pudimos guardar su perfil. Revise la conexión e inténtelo de nuevo.';
+                    document.body.appendChild(toastError);
+                    setTimeout(() => toastError.remove(), 5000);
                     return;
                 }
 
@@ -2681,6 +2737,7 @@
                     localStorage.setItem('onboarding_completed', 'true');
 
                     initNotifications();
+                    await loadEcosystemWorkspace(profile);
 
                     // Offer a user-initiated request; this does not activate integrations or campaigns.
                     document.getElementById('desktop-cta-container')?.classList.remove('opacity-0');
@@ -2692,10 +2749,33 @@
             }
         }
 
+        // Vista de inspección exclusiva del preview: permite revisar el dashboard detrás del modal sin guardar datos.
+        // Isolated preview host: all QA data stays in memory/local rendering and is never persisted.
+        const previewParams = new URLSearchParams(window.location.search);
+        const isFabricaPreviewHost = location.hostname.includes('fabrica-qa-preview') || location.hostname.includes('fabrica-onboarding-preview-2') || location.hostname.includes('b2dbad44.redsapien-web.pages.dev');
+        const previewOnboarding = previewParams.get('previewOnboarding') === '1' || (isFabricaPreviewHost && previewParams.get('previewPanel') !== '1');
+        const previewPanelOnly = previewParams.get('previewPanel') === '1';
+        window.__RS_FACTORY_PREVIEW__ = Boolean(isFabricaPreviewHost);
+
         // --------------------------------------------------------------
         // 6. INICIALIZACIÓN AL CARGAR LA PÁGINA (con verificación de sesión)
         // --------------------------------------------------------------
         window.addEventListener('DOMContentLoaded', async () => {
+            if (isFabricaPreviewHost) {
+                loadPersistedColorPalette(); loadPersistedLanguage(); updateNotificationLED(); updateSupportButtonVisibility();
+                switchWorkspaceView('panel');
+                const title=document.getElementById('brand-headline-name'); if(title) title.textContent=previewPanelOnly?'SU MARCA':'SU MARCA';
+                const domain=document.getElementById('dynamic-domain'); if(domain) domain.textContent='Se confirma al desplegar el sitio';
+                document.getElementById('desktop-cta-container')?.classList.remove('opacity-0');
+                document.getElementById('mobile-cta-container')?.classList.remove('opacity-0');
+                if (previewOnboarding) {
+                    wizardData.person_name=''; wizardData.business_name=''; wizardData.niche='';
+                    inputPerson.value=''; inputBusiness.value='';
+                    nicheGrid.querySelectorAll('.niche-card').forEach(c=>{c.classList.remove('selected');c.setAttribute('aria-checked','false')});
+                    wizardStep=1; updateWizard(); overlay.style.display='flex'; overlay.classList.add('active');
+                } else { overlay.style.display='none'; overlay.classList.remove('active'); }
+                return;
+            }
             const { data: { session } } = await supabase.auth.getSession();
             if (!session) {
                 if (!_authRedirecting) {
