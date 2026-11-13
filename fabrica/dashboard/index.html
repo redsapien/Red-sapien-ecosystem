@@ -10,17 +10,13 @@
     <!-- Favicon dinámico SVG -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23050505' stroke='%23FF3C00' stroke-width='4'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='40' fill='%23FF3C00'%3ERS%3C/text%3E%3C/svg%3E">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../assets/vendor/tailwindcdn.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800%26family=Space+Grotesk:wght@600;700;800;900%26display=swap" rel="stylesheet">
 
-    <!-- Leaflet CSS y JS para el mapa de telemetría -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
     <!-- SDK de Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js">
+    <script src="../assets/vendor/supabase-js-2.39.0.min.js">
     </script>
 
     <script>
@@ -732,6 +728,8 @@
         @media(max-width:600px){.onboarding-modal-overlay{padding:0!important}.onboarding-modal.onboarding-three-step{width:100vw!important;max-width:none!important;height:100dvh!important;min-height:100dvh!important;border-radius:0!important;padding:max(20px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(18px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))!important}.onboarding-three-step .onboarding-step{padding-block:clamp(16px,6vh,44px)!important}.onboarding-three-step .onboarding-title{max-width:18ch!important;font-size:clamp(1.45rem,7vw,2rem)!important}.onboarding-three-step .niche-grid-compact .niche-card{min-height:clamp(62px,10vh,78px)!important;padding:9px!important}.onboarding-three-step .niche-grid-compact .niche-card .label{font-size:clamp(.63rem,2.9vw,.76rem)!important}}
         @media(max-height:640px){.onboarding-modal.onboarding-three-step{justify-content:flex-start!important}.onboarding-three-step .onboarding-step{padding-block:14px!important}.onboarding-three-step .progress-bar-track{margin-bottom:12px!important}.onboarding-three-step .onboarding-sub{margin-bottom:12px!important}.onboarding-three-step .onboarding-nav{margin-top:12px!important}.onboarding-three-step .onboarding-privacy-note{margin-top:8px!important}.onboarding-three-step .niche-grid-compact .niche-card{min-height:50px!important}}
         @media(prefers-reduced-motion:reduce){.onboarding-three-step .onboarding-step{animation:none!important}}
+
+        @media(max-width:600px){.onboarding-modal.onboarding-three-step{justify-content:flex-start!important}.onboarding-three-step .onboarding-step{scroll-margin-block:18px}.onboarding-three-step .onboarding-text-input{font-size:16px!important}body:has(#onboarding-overlay.active){overflow:hidden!important}}
 </style>
 </head>
 
@@ -753,7 +751,7 @@
             </div>
 
             <div id="step-1" class="onboarding-step active" aria-hidden="false">
-                <span class="onboarding-step-kicker">PASO 1 · TU PERFIL</span>
+                <span class="onboarding-step-kicker">PASO 1 · SUS DATOS</span>
                 <h2 class="onboarding-title" id="onboarding-title">¿Cómo le llamamos?</h2>
                 <p class="onboarding-sub">Con su nombre empezamos a preparar su espacio.</p>
                 <label class="onboarding-field-label" for="input-person-name">Su nombre</label>
@@ -762,7 +760,7 @@
             </div>
 
             <div id="step-2" class="onboarding-step" aria-hidden="true" inert>
-                <span class="onboarding-step-kicker">PASO 2 · TU SECTOR</span>
+                <span class="onboarding-step-kicker">PASO 2 · SU NEGOCIO</span>
                 <h2 class="onboarding-title">¿A qué se dedica su negocio?</h2>
                 <p class="onboarding-sub">Elija el sector que mejor lo describe.</p>
                 <div class="niche-grid-compact" id="niche-grid" role="radiogroup" aria-label="Sector de su negocio">
@@ -778,7 +776,7 @@
             </div>
 
             <div id="step-3" class="onboarding-step" aria-hidden="true" inert>
-                <span class="onboarding-step-kicker">PASO 3 · TU MARCA</span>
+                <span class="onboarding-step-kicker">PASO 3 · SU MARCA</span>
                 <h2 class="onboarding-title">¿Cómo se llama su negocio o marca?</h2>
                 <p class="onboarding-sub">Escríbalo tal como aparece públicamente, por ejemplo, en sus redes.</p>
                 <label class="onboarding-field-label" for="input-business-name">Nombre público de su negocio</label>
@@ -2555,6 +2553,18 @@
         // --- Finalizar onboarding: upsert a Supabase con updated_at ---
         async function finishOnboarding() {
             wizardData.business_name = wizardData.business_name || inputBusiness.value.trim();
+            if (previewOnboarding) {
+                if (!inputLooksLikeName(wizardData.person_name) || !inputLooksLikeName(wizardData.business_name) || !Object.values(nicheNames).includes(wizardData.niche)) {
+                    alert('Revise los tres datos para continuar.'); return;
+                }
+                overlay.classList.remove('active'); overlay.style.display='none';
+                const headline=document.getElementById('brand-headline-name'); if(headline)headline.textContent=wizardData.business_name.toUpperCase();
+                const domain=document.getElementById('dynamic-domain'); if(domain)domain.textContent='Vista previa · el dominio se asigna al desplegar';
+                const intro=document.querySelector('#pane-view-panel .workspace-pane');
+                const note=document.createElement('div');note.setAttribute('role','status');note.className='mx-4 my-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-gray-200';note.textContent=`Vista previa del perfil: ${wizardData.person_name} · ${wizardData.business_name} · ${wizardData.niche}. No se guardó en Supabase.`;
+                document.getElementById('pane-view-panel')?.prepend(note);
+                return;
+            }
             // Contact details are optional and collected only after explaining the integration purpose.
 
             if (!inputLooksLikeName(wizardData.person_name) || !inputLooksLikeName(wizardData.business_name) || !wizardData.niche) {
@@ -2587,8 +2597,12 @@
                     .upsert(profileData, { onConflict: 'id' });
 
                 if (upsertError) {
-                    alert('Error al guardar los datos. Intenta nuevamente.');
-                    console.error(upsertError);
+                    console.error('No se pudo guardar el perfil:', upsertError);
+                    const toastError = document.createElement('div');
+                    toastError.className = 'fixed bottom-24 left-1/2 transform -translate-x-1/2 z-[300] bg-red-700 border border-white/20 rounded-2xl p-4 max-w-sm w-full text-center text-white';
+                    toastError.textContent = 'No pudimos guardar su perfil. Revise la conexión e inténtelo de nuevo.';
+                    document.body.appendChild(toastError);
+                    setTimeout(() => toastError.remove(), 5000);
                     return;
                 }
 
@@ -2692,10 +2706,40 @@
             }
         }
 
+        // Vista de inspección exclusiva del preview: permite revisar el dashboard detrás del modal sin guardar datos.
+        const isPreviewPanelInspection = new URLSearchParams(window.location.search).get('previewPanel') === '1';
+        if (isPreviewPanelInspection) {
+            const previewOverlay = document.getElementById('onboarding-overlay');
+            previewOverlay?.classList.remove('active');
+            if (previewOverlay) previewOverlay.style.display = 'none';
+            const previewHeadline = document.getElementById('brand-headline-name');
+            if (previewHeadline) previewHeadline.textContent = localStorage.getItem('business_name') || 'SU MARCA';
+        }
+
+        // Preview-only QA modes: show the draft without database reads or writes.
+        const previewParams = new URLSearchParams(window.location.search);
+        const previewOnboarding = previewParams.get('previewOnboarding') === '1';
+        const previewPanelOnly = previewParams.get('previewPanel') === '1';
+
         // --------------------------------------------------------------
         // 6. INICIALIZACIÓN AL CARGAR LA PÁGINA (con verificación de sesión)
         // --------------------------------------------------------------
         window.addEventListener('DOMContentLoaded', async () => {
+            if (previewOnboarding || previewPanelOnly) {
+                loadPersistedColorPalette(); loadPersistedLanguage(); updateNotificationLED(); updateSupportButtonVisibility();
+                switchWorkspaceView('panel'); startTelemetrySimulation();
+                const title=document.getElementById('brand-headline-name'); if(title) title.textContent=previewPanelOnly?'SU MARCA':'SU MARCA';
+                const domain=document.getElementById('dynamic-domain'); if(domain) domain.textContent='Se confirma al desplegar el sitio';
+                document.getElementById('desktop-cta-container')?.classList.remove('opacity-0');
+                document.getElementById('mobile-cta-container')?.classList.remove('opacity-0');
+                if (previewOnboarding) {
+                    wizardData.person_name=''; wizardData.business_name=''; wizardData.niche='';
+                    inputPerson.value=''; inputBusiness.value='';
+                    nicheGrid.querySelectorAll('.niche-card').forEach(c=>{c.classList.remove('selected');c.setAttribute('aria-checked','false')});
+                    wizardStep=1; updateWizard(); overlay.style.display='flex'; overlay.classList.add('active');
+                } else { overlay.style.display='none'; overlay.classList.remove('active'); }
+                return;
+            }
             const { data: { session } } = await supabase.auth.getSession();
             if (!session) {
                 if (!_authRedirecting) {
