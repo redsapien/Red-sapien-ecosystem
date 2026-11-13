@@ -1848,7 +1848,7 @@ body{background:#050505!important}.ambient-glow-bg{opacity:.3!important}.tech-gr
             if(error||!data?.length){console.error('Business bootstrap failed',error);host.innerHTML='<p class="text-sm text-amber-300">No pudimos preparar su espacio todavía. Su perfil quedó guardado; contacte al equipo para continuar.</p>';return}
             business=data[0];rsCurrentBusinessId=business.business_id;
             const result=await supabase.from('rs_ecosystem_packages').select('code,name,price_cop,description,included_scope,delivery_window').eq('is_active',true).order('price_cop');
-            rsPackageCatalog=result.error?rsPackageFallback:(result.data||[]);
+            rsPackageCatalog=(result.error||!result.data?.length)?rsPackageFallback:result.data;
           }
           rsCurrentBusinessId=business.id||business.business_id;
           if(brand)brand.textContent=business.business_name||'SU MARCA';
